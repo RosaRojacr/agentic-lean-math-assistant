@@ -32,7 +32,15 @@ $$
 
 which includes the full interval from $51/50$ through $4/\pi$. This second result is independently replayable, but it is not yet a Lean theorem.
 
-The current formalization target is to move that scalar certificate into Lean. The interval $1<\lambda<51/50$, the source-to-model transfer, and the full CMV conjecture remain open.
+More recent work with an improved version of the system has found additional approaches that, at the scalar-model level, appear to narrow the surviving range to
+
+$$
+1 < \lambda < \frac{51}{50} = 1.02
+$$
+
+The exact-rational certificate above supports this endpoint, but the supporting Lean declarations are still being written. Until Lean's kernel accepts those theorems, the stronger reduction is not treated here as Lean-verified. The remaining near-one interval, the source-to-model transfer, and the full CMV conjecture remain open.
+
+The primary research goal is a proof of the full CMV conjecture. After that, the system can be applied to other problems or further optimized against CMV as a controlled benchmark: start from a clean state without prior solution artifacts and measure how quickly it can rediscover and certify the result from first principles. The retained one-shot rebuild of the original range reduction is the first example of that benchmark style.
 
 ## What makes it different
 
