@@ -1,0 +1,1 @@
+Premise: every square has nonnegative area.

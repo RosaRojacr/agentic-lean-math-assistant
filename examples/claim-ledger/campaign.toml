@@ -1,0 +1,89 @@
+schema_version = 1
+
+[campaign]
+id = "claim-ledger-demo"
+title = "Verifier-Gated Claim Ledger Demo"
+instructions = "campaign.md"
+runs_dir = "runs"
+
+[[targets]]
+id = "fixture_goal"
+kind = "theorem"
+statement = "The fixture theorem holds."
+scope = "For the retained fixture."
+
+[[obligations]]
+id = "fixture_claim_closure"
+description = "The frozen fixture claim receives an independent verifier decision."
+evidence_stages = ["claim_gate"]
+
+[[inputs]]
+source = "input.txt"
+target = "input.txt"
+
+[[stages]]
+id = "claim_proposer"
+title = "Claim Proposer"
+mode = "research"
+feature = "agent"
+depends_on = []
+max_attempts = 2
+required = true
+failure_policy = "abort"
+
+[stages.config]
+instructions = "proposer.md"
+tools = ["read", "write"]
+category = "proof"
+max_time = 300
+handoff = "claims/proposals.json"
+handoff_schema = "claim-proposals-v1"
+
+[[stages]]
+id = "cold_verifier"
+title = "Cold Independent Verifier"
+mode = "research"
+feature = "agent"
+depends_on = ["claim_proposer", "fixture_gate"]
+max_attempts = 2
+
+required = true
+failure_policy = "abort"
+[stages.config]
+instructions = "verifier.md"
+tools = ["read", "write"]
+category = "verification"
+verifier_type = "symbolic"
+max_time = 300
+handoff = "claims/verdicts.json"
+handoff_schema = "claim-verdicts-v1"
+[[stages]]
+id = "fixture_gate"
+title = "Deterministic Fixture Gate"
+mode = "research"
+feature = "command"
+depends_on = ["claim_proposer"]
+required = true
+failure_policy = "abort"
+
+[stages.config]
+argv = ["python", "-c", "from pathlib import Path; assert Path('input.txt').read_text(encoding='utf-8').strip()"]
+replayable = true
+covers_targets = ["fixture_goal"]
+evidence_inputs = ["input.txt"]
+
+[[stages]]
+id = "claim_gate"
+title = "Deterministic Claim Gate"
+mode = "research"
+feature = "claim_ledger"
+depends_on = ["claim_proposer", "fixture_gate", "cold_verifier"]
+max_attempts = 2
+required = true
+failure_policy = "abort"
+
+[stages.config]
+proposals_stage = "claim_proposer"
+verifier_stages = ["cold_verifier"]
+receipt_stages = ["fixture_gate"]
+required_targets = ["fixture_goal"]

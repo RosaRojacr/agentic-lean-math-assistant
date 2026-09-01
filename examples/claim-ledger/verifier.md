@@ -1,0 +1,1 @@
+Cold-read the retained proposal and `input.txt`. Decide every proposed claim without editing or strengthening it. Accept only if the statement follows in its exact scope with no critical error or logical gap; otherwise reject it with specific evidence.

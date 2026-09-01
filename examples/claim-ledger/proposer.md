@@ -1,0 +1,1 @@
+Read `input.txt`. Submit one exact theorem claim named `fixture_claim` targeting `fixture_goal`. State the fixture-only scope and a concise proof from the retained premise. Do not claim verifier acceptance or broaden the scope. Do not list pending verifier acceptance or claim-ledger closure as a claim limitation; the controller records those workflow states separately.

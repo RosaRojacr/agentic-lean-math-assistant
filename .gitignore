@@ -1,0 +1,41 @@
+# Python environments and bytecode
+.venv/
+__pycache__/
+*.py[cod]
+
+# Python tooling
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local README render
+README.html
+README_files/
+
+# Lean build output
+.lake/
+*.olean
+*.ilean
+*.trace
+
+# Local secrets and harness state
+.env
+.env.*
+.omp/
+.omp-orchestrator.json
+
+# Ephemeral campaign locks
+.campaign.lock
+
+# Local campaign workspaces (promote reviewed artifacts into proof/knowledge)
+projects/*/runs/
+benchmarks/**/runs/

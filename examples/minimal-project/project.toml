@@ -1,0 +1,16 @@
+schema_version = 1
+
+[project]
+id = "minimal-example"
+title = "Minimal Example"
+problem = "problem.md"
+references = "references"
+knowledge = "knowledge"
+runs = "runs"
+
+[regime]
+max_tasks = 4
+max_parallel = 2
+max_restarts = 1
+default_agent_time = 900
+allowed_tools = ["read", "grep", "glob", "bash", "eval", "write", "edit", "web_search"]

@@ -1,0 +1,1 @@
+Premise: the fixture theorem holds for the retained fixture.

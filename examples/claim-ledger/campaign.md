@@ -1,0 +1,1 @@
+Establish the fixture theorem from the retained premise. A proposed claim is not campaign truth until a separately scheduled cold verifier accepts it and the deterministic claim ledger closes `fixture_goal`.

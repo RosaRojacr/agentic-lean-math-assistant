@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+
+      - name: Enable sandbox runtime
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes bubblewrap
+          sudo sysctl --write kernel.unprivileged_userns_clone=1
+          sudo sysctl --write kernel.apparmor_restrict_unprivileged_userns=0
+
+      - name: Install locked dependencies
+        run: uv sync --locked
+
+      - name: Check lockfile
+        run: uv lock --check
+
+      - name: Check formatting
+        run: uv run ruff format --check src tests
+
+      - name: Lint
+        run: uv run ruff check src tests
+
+      - name: Type-check
+        run: uv run mypy src
+
+      - name: Test
+        run: uv run pytest
+
+      - name: Build distributions
+        run: uv build
+
+      - name: Smoke-test wheel
+        run: |
+          uv venv --python "${{ matrix.python-version }}" .release-smoke
+          uv pip install --python .release-smoke/bin/python dist/*.whl
+          .release-smoke/bin/agentic-lean-math-assistant --version
