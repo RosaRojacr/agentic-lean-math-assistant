@@ -8,7 +8,9 @@ The system was designed to run through OMP and Herdr. OMP runs the model agents 
 
 ## Research status
 
-The first major case study was a Lean-checked reduction for the CMV strip-density problem. In the modeled setting, Lean proves that a type-(iv) candidate cannot minimize weighted perimeter when
+The principal case study starts from Antonio Cañete, Michele Miranda Jr., and Davide Vittone's paper *Some Isoperimetric Problems in Planes with Density* [1]. In the strip-density setting relevant here, the paper classifies symmetric circular-arc candidates for an isoperimetric problem. This README abbreviates Cañete, Miranda Jr., and Vittone as **CMV**.
+
+The first formal result in this repository was a Lean-checked reduction for that CMV strip-density model. In the modeled setting, Lean proves that a type-(iv) candidate cannot minimize weighted perimeter when
 
 $$
 \lambda \ge 1.2581840884
@@ -220,6 +222,10 @@ This software can make research more inspectable. It cannot turn an unproved cla
 - A scalar model does not settle the original geometric problem until the source-to-model bridge is proved.
 
 The retained result should always be read together with its assumptions, evidence, and unresolved obligations.
+
+## References
+
+1. Antonio Cañete, Michele Miranda Jr., and Davide Vittone, “Some Isoperimetric Problems in Planes with Density,” *The Journal of Geometric Analysis* 20 (2010), 243-290. [arXiv:0906.1256](https://arxiv.org/abs/0906.1256).
 
 ## License
 
