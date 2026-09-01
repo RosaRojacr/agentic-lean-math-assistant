@@ -4,31 +4,33 @@ Agentic Lean Math Assistant is a research controller for mathematical work that 
 
 A campaign is complete only when its configured checks pass. Depending on the project, those checks may include reproducible commands, exact certificates, independent claim review, semantic comparison, and named Lean declarations with an allowed axiom set.
 
+The system was designed to run through OMP and Herdr. OMP runs the model agents and exposes their allowed tools. Herdr provides the managed terminal workspace in which campaign activity can be inspected. The controller remains responsible for scheduling, retained state, deterministic commands, Lean checks, and acceptance decisions.
+
 ## Research status
 
 The first major case study was a Lean-checked reduction for the CMV strip-density problem. In the modeled setting, Lean proves that a type-(iv) candidate cannot minimize weighted perimeter when
 
-\[
-\lambda \ge 1.2581840884.
-\]
+$$
+\lambda \ge 1.2581840884
+$$
 
 Equivalently, any modeled type-(iv) minimizer must lie in
 
-\[
-1 < \lambda < 1.2581840884.
-\]
+$$
+1 < \lambda < 1.2581840884
+$$
 
 That result can now be rebuilt and checked through the retained one-shot campaign workflow.
 
 A later exact-rational certificate compares the folded type-(iv) branch with its selected equal-area type-(iii) competitor. It proves the scalar perimeter inequality on
 
-\[
-\frac{51}{50} \le \lambda \le \frac97,
-\]
+$$
+\frac{51}{50} \le \lambda \le \frac{9}{7}
+$$
 
-which includes the full interval from \(51/50\) through \(4/\pi\). This second result is independently replayable, but it is not yet a Lean theorem.
+which includes the full interval from $51/50$ through $4/\pi$. This second result is independently replayable, but it is not yet a Lean theorem.
 
-The current formalization target is to move that scalar certificate into Lean. The interval \(1<\lambda<51/50\), the source-to-model transfer, and the full CMV conjecture remain open.
+The current formalization target is to move that scalar certificate into Lean. The interval $1<\lambda<51/50$, the source-to-model transfer, and the full CMV conjecture remain open.
 
 ## What makes it different
 
