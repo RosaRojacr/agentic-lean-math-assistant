@@ -18,11 +18,11 @@ $$
 
 On the exact interval $[51/50,9/7]$, Lean checks an equal-area type-(iii) competitor with strictly smaller weighted perimeter. Above $9/7$, the proof uses the geometric two-cap-to-one-cap replacement. The combined theorem is `CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer_from_51_50`.
 
-Read the [Lean-verified CMV paper](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff.pdf), its [HTML edition](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff.html), and the [project reproduction guide](projects/cmv-strip-density/README.md). The paper links every named formal result directly to its Lean declaration and separates the trusted kernel-checked theorem from numerical generators, source interpretation, and open obligations.
+Read the [Lean-verified CMV paper](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff.pdf), or its [HTML edition](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff.html), and the [project reproduction guide](projects/cmv-strip-density/README.md). The paper links every named formal result directly to its Lean declaration and separates the trusted kernel-checked theorem from numerical generators, source interpretation, and open obligations.
 
 This result closes the modeled range $\lambda\ge51/50$. The punctured near-one interval $1<\lambda<51/50$, universal source classification, source-to-model correspondence, and the full CMV conjecture remain open.
 
-## What makes it different
+## What makes this math assistant unique
 
 Most agent workflows mix three separate questions:
 
