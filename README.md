@@ -10,37 +10,17 @@ The system was designed to run through OMP and Herdr. OMP runs the model agents 
 
 The principal case study starts from Antonio Cañete, Michele Miranda Jr., and Davide Vittone's paper *Some Isoperimetric Problems in Planes with Density* [1]. In the strip-density setting relevant here, the paper classifies symmetric circular-arc candidates for an isoperimetric problem. This README abbreviates Cañete, Miranda Jr., and Vittone as **CMV**.
 
-The first formal result in this repository was a Lean-checked reduction for that CMV strip-density model. In the modeled setting, Lean proves that a type-(iv) candidate cannot minimize weighted perimeter when
+The current formal result is a Lean-verified exclusion of every modeled CMV type-(iv) weighted-perimeter minimizer for
 
 $$
-\lambda \ge 1.2581840884
+\lambda \ge \frac{51}{50}.
 $$
 
-Equivalently, any modeled type-(iv) minimizer must lie in
+On the exact interval $[51/50,9/7]$, Lean checks an equal-area type-(iii) competitor with strictly smaller weighted perimeter. Above $9/7$, the proof uses the geometric two-cap-to-one-cap replacement. The combined theorem is `CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer_from_51_50`.
 
-$$
-1 < \lambda < 1.2581840884
-$$
+Read the [Lean-verified CMV paper](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff.pdf), its [HTML edition](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff.html), and the [project reproduction guide](projects/cmv-strip-density/README.md). The paper links every named formal result directly to its Lean declaration and separates the trusted kernel-checked theorem from numerical generators, source interpretation, and open obligations.
 
-That result can now be rebuilt and checked through the retained one-shot campaign workflow.
-
-A later exact-rational certificate compares the folded type-(iv) branch with its selected equal-area type-(iii) competitor. It proves the scalar perimeter inequality on
-
-$$
-\frac{51}{50} \le \lambda \le \frac{9}{7}
-$$
-
-which includes the full interval from $51/50$ through $4/\pi$. This second result is independently replayable, but it is not yet a Lean theorem.
-
-More recent work with an improved version of the system has found additional approaches that, at the scalar-model level, appear to narrow the surviving range to
-
-$$
-1 < \lambda < \frac{51}{50} = 1.02
-$$
-
-The exact-rational certificate above supports this endpoint, but the supporting Lean declarations are still being written. Until Lean's kernel accepts those theorems, the stronger reduction is not treated here as Lean-verified. The remaining near-one interval, the source-to-model transfer, and the full CMV conjecture remain open.
-
-The primary research goal is a proof of the full CMV conjecture. After that, the system can be applied to other problems or further optimized against CMV as a controlled benchmark: start from a clean state without prior solution artifacts and measure how quickly it can rediscover and certify the result from first principles. The retained one-shot rebuild of the original range reduction is the first example of that benchmark style.
+This result closes the modeled range $\lambda\ge51/50$. The punctured near-one interval $1<\lambda<51/50$, universal source classification, source-to-model correspondence, and the full CMV conjecture remain open.
 
 ## What makes it different
 
