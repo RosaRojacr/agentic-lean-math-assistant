@@ -46,6 +46,13 @@ runs = "runs"
 
 [regime]
 omp = "omp"
+planner_model = "openai-codex/gpt-5.6-sol"
+execution_model = "openai-codex/gpt-5.6-luna"
+analysis_model = "openai-codex/gpt-5.6-terra"
+invention_model = "openai-codex/gpt-5.6-sol"
+audit_model = "openai-codex/gpt-5.6-terra"
+strategy_reflection_model = "openai-codex/gpt-6-astra"
+targeted_task_model = "openai-codex/gpt-6-astra"
 max_tasks = 4
 max_parallel = 2
 max_restarts = 1
@@ -56,6 +63,7 @@ research_agent_seconds = 60
 formalization_agent_seconds = 60
 max_attempts_total = 8
 max_invention_tasks = 1
+max_targeted_tasks = 1
 execution_thinking = "medium"
 analysis_thinking = "high"
 invention_thinking = "xhigh"
@@ -147,12 +155,21 @@ def test_project_parses_success_contract_and_overlays_compute_profile(
         "auxiliary_contract",
     ]
     assert project.autonomy.max_elapsed_minutes == 60
+    assert project.model_for("execution") == "openai-codex/gpt-5.6-luna"
+    assert project.model_for("analysis") == "openai-codex/gpt-5.6-terra"
+    assert project.model_for("invention") == "openai-codex/gpt-5.6-sol"
+    assert project.model_for("audit") == "openai-codex/gpt-5.6-terra"
+    assert project.strategy_reflection_model == "openai-codex/gpt-6-astra"
+    assert project.targeted_task_model == "openai-codex/gpt-6-astra"
+    assert project.max_targeted_tasks == 1
     profiled = project.with_compute_profile("fixture-profile")
     assert profiled.omp == "fixture-omp"
     assert profiled.max_parallel == 1
     assert profiled.max_restarts == 0
     assert profiled.analysis_thinking == "medium"
     assert profiled.audit_thinking == "xhigh"
+    assert profiled.model_for("analysis") == "openai-codex/gpt-5.6-terra"
+    assert profiled.max_targeted_tasks == 1
 
     with pytest.raises(ConfigurationError, match="unknown compute profile"):
         project.with_compute_profile("missing")

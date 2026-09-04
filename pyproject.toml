@@ -57,6 +57,7 @@ dev = [
 
 [project.scripts]
 agentic-lean-math-assistant = "agentic_lean_math_assistant.cli:main"
+autorun = "agentic_lean_math_assistant.autorun:main"
 
 [build-system]
 requires = ["hatchling"]

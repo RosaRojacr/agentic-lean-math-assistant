@@ -151,6 +151,68 @@ uv run agentic-lean-math-assistant autonomy-run \
 
 A campaign reporting “solved” is not enough. The controller independently rechecks the retained evidence and formal targets before accepting the session.
 
+## Conditional model routing and persistent autorun
+
+`autorun` is an unattended, self-prompting controller for long-running project
+work. It reloads the project's `MASTER_PROMPT.md` before every round, retains
+every prompt, output, receipt, and state transition under
+`autorun-runs/<session>/`, and can resume the same session after a controller
+restart. Each normal round still has a fixed deadline and must emit a concrete
+result, summary, and next action.
+
+Projects can route work by reasoning class instead of assigning the most
+expensive model to every task:
+
+```toml
+[regime]
+planner_model = "openai-codex/gpt-5.6-sol"
+execution_model = "openai-codex/gpt-5.6-luna"
+analysis_model = "openai-codex/gpt-5.6-terra"
+invention_model = "openai-codex/gpt-5.6-sol"
+audit_model = "openai-codex/gpt-5.6-terra"
+
+strategy_reflection_model = "openai-codex/gpt-6-astra"
+targeted_task_model = "openai-codex/gpt-6-astra"
+max_targeted_tasks = 1
+```
+
+The planner leaves a task's `model` field null for normal execution. The
+controller then selects `execution_model`, `analysis_model`, `invention_model`,
+or `audit_model` from the task's reasoning class. A non-null task model is an
+explicit targeted escalation: the controller accepts only the configured
+`targeted_task_model` and rejects plans exceeding `max_targeted_tasks`.
+Compute profiles may override the same routing fields without changing the
+project's base policy.
+
+Strategy reflection is isolated from implementation. At the configured
+interval, `autorun` launches a separate, read-only request using
+`strategy_reflection_model`, retains its recommendation, and passes that text
+to the next primary conductor prompt. The reflection cannot execute the ensuing
+implementation round. Its deadline defaults to 15 minutes and it receives no
+empty-output retry, limiting accidental premium-model consumption.
+
+Start, inspect, follow, and stop a session with:
+
+```bash
+uv run agentic-lean-math-assistant autorun \
+  --project path/to/project.toml
+
+uv run agentic-lean-math-assistant autorun-status \
+  --session path/to/autorun-runs/<session>
+
+uv run agentic-lean-math-assistant autorun-status \
+  --session path/to/autorun-runs/<session> \
+  --follow --interval 1 --recap-minutes 10
+
+uv run agentic-lean-math-assistant autorun-stop \
+  --session path/to/autorun-runs/<session>
+```
+
+Use `--model` to override the primary conductor and `--reflection-model` to
+override only the scheduled reflection. The live display identifies the active
+route and model, so a reflection cannot be mistaken for a normal agent round.
+
+
 ## Useful commands
 
 ```text
@@ -160,6 +222,9 @@ resume            resume a retained campaign
 regime-run        run the fixed research regime
 regime-resume     resume a fixed-regime checkpoint
 autonomy-run      run bounded successive campaigns
+autorun           run a persistent self-prompting conductor
+autorun-status    inspect or follow a retained autorun session
+autorun-stop      request a durable stop at the next safe boundary
 status            show authoritative run state
 dashboard         watch stages, targets, and limitations
 claims            inspect claim dependencies and verdicts

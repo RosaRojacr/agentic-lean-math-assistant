@@ -18,6 +18,22 @@ from .autonomy import (
     autonomy_status,
     record_autonomy_decision,
 )
+from .autorun import (
+    AutoRunError,
+    AutoRunRunner,
+    discover_project,
+    follow_autorun_status,
+    request_autorun_stop,
+)
+from .autorun import (
+    add_arguments as add_autorun_arguments,
+)
+from .autorun import (
+    autorun_status as read_autorun_status,
+)
+from .autorun import (
+    options_from_args as autorun_options_from_args,
+)
 from .benchmark import (
     BenchmarkRuntime,
     BenchmarkSuite,
@@ -93,6 +109,21 @@ def _parser() -> argparse.ArgumentParser:
     )
     choose.add_argument("--run", type=Path, required=True)
     choose.add_argument("--strategy", required=True, metavar="ID|stop")
+    autorun = subparsers.add_parser(
+        "autorun", help="run a persistent self-prompting project conductor"
+    )
+    add_autorun_arguments(autorun)
+    autorun_show = subparsers.add_parser(
+        "autorun-status", help="show retained autorun controller state"
+    )
+    autorun_show.add_argument("--session", type=Path, required=True)
+    autorun_show.add_argument("--follow", action="store_true")
+    autorun_show.add_argument("--interval", type=float, default=1.0)
+    autorun_show.add_argument("--recap-minutes", type=float, default=10.0)
+    autorun_stop = subparsers.add_parser(
+        "autorun-stop", help="request a running autorun controller to stop"
+    )
+    autorun_stop.add_argument("--session", type=Path, required=True)
     autonomy_run = subparsers.add_parser(
         "autonomy-run",
         help="run bounded evidence-driven campaigns until the success contract passes",
@@ -472,6 +503,27 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(f"report: {report_path}")
             return 0 if summary["accepted"] else 1
+        if args.command == "autorun-stop":
+            print(request_autorun_stop(args.session))
+            return 0
+        if args.command == "autorun-status":
+            if args.follow:
+                follow_autorun_status(
+                    args.session,
+                    interval_seconds=args.interval,
+                    recap_interval_seconds=args.recap_minutes * 60,
+                )
+                return 0
+            state = read_autorun_status(args.session)
+            print(json.dumps(state, indent=2, sort_keys=True))
+            return 0 if state.get("status") in {"running", "recovering"} else 1
+        if args.command == "autorun":
+            project = ProjectSpec.load(args.project or discover_project())
+            session = AutoRunRunner(project, autorun_options_from_args(args)).run()
+            state = read_autorun_status(session)
+            print(f"autorun status: {state.get('status')}")
+            print(f"session directory: {session}")
+            return 0 if state.get("status") in {"stopped", "paused"} else 1
         if args.command == "autonomy-decide":
             print(record_autonomy_decision(args.session, args.strategy))
             return 0
@@ -631,6 +683,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"run directory: {run_dir}")
         return campaign_status_exit_code(status)
     except (
+        AutoRunError,
         AutonomyError,
         ConfigurationError,
         CampaignRunError,

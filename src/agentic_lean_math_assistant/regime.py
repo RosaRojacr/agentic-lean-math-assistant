@@ -530,6 +530,19 @@ class RegimeRunner:
                         "audit",
                     )
                 },
+                "model_policy": {
+                    "primary": {
+                        reasoning_class: self.project.model_for(reasoning_class)
+                        for reasoning_class in (
+                            "execution",
+                            "analysis",
+                            "invention",
+                            "audit",
+                        )
+                    },
+                    "targeted": self.project.targeted_task_model,
+                    "max_targeted_tasks": self.project.max_targeted_tasks,
+                },
             },
         )
         plan_error: str | None = None
@@ -770,6 +783,22 @@ class RegimeRunner:
                 "orchestration plan exceeds the invention-task budget: "
                 f"{invention_count} > {self.project.max_invention_tasks}"
             )
+        targeted_tasks = [task for task in plan.tasks if task.model is not None]
+        if len(targeted_tasks) > self.project.max_targeted_tasks:
+            raise RegimeError(
+                "orchestration plan exceeds the targeted-model task budget: "
+                f"{len(targeted_tasks)} > {self.project.max_targeted_tasks}"
+            )
+        invalid_targeted_models = {
+            task.model
+            for task in targeted_tasks
+            if task.model != self.project.targeted_task_model
+        }
+        if invalid_targeted_models:
+            raise RegimeError(
+                "targeted tasks must use the configured targeted_task_model: "
+                f"{sorted(invalid_targeted_models)}"
+            )
         missing_pilots = [
             strategy.strategy_id
             for strategy in plan.strategy_portfolio
@@ -976,8 +1005,9 @@ class RegimeRunner:
                     f"continuation_gate = {str(task.continuation_gate).lower()}",
                 ]
             )
-            if task.model is not None:
-                lines.append(f"model = {json.dumps(task.model)}")
+            selected_model = task.model or self.project.model_for(task.reasoning_class)
+            if selected_model is not None:
+                lines.append(f"model = {json.dumps(selected_model)}")
             lines.append(
                 f"thinking = {json.dumps(self.project.thinking_for(task.reasoning_class))}"
             )
@@ -1061,6 +1091,19 @@ class RegimeRunner:
                         "invention",
                         "audit",
                     )
+                },
+                "model_policy": {
+                    "primary": {
+                        reasoning_class: self.project.model_for(reasoning_class)
+                        for reasoning_class in (
+                            "execution",
+                            "analysis",
+                            "invention",
+                            "audit",
+                        )
+                    },
+                    "targeted": self.project.targeted_task_model,
+                    "max_targeted_tasks": self.project.max_targeted_tasks,
                 },
             },
         )

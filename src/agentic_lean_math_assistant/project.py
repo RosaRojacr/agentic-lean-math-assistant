@@ -105,6 +105,12 @@ class ComputeProfile:
     profile_id: str
     omp: str | None
     planner_model: str | None
+    execution_model: str | None
+    analysis_model: str | None
+    invention_model: str | None
+    audit_model: str | None
+    strategy_reflection_model: str | None
+    targeted_task_model: str | None
     planner_thinking: str | None
     max_tasks: int | None
     max_parallel: int | None
@@ -115,6 +121,7 @@ class ComputeProfile:
     formalization_agent_seconds: int | None
     max_attempts_total: int | None
     max_invention_tasks: int | None
+    max_targeted_tasks: int | None
     execution_thinking: str | None
     analysis_thinking: str | None
     invention_thinking: str | None
@@ -130,6 +137,12 @@ class ComputeProfile:
             {
                 "omp",
                 "planner_model",
+                "execution_model",
+                "analysis_model",
+                "invention_model",
+                "audit_model",
+                "strategy_reflection_model",
+                "targeted_task_model",
                 "planner_thinking",
                 "max_tasks",
                 "max_parallel",
@@ -140,6 +153,7 @@ class ComputeProfile:
                 "formalization_agent_seconds",
                 "max_attempts_total",
                 "max_invention_tasks",
+                "max_targeted_tasks",
                 "execution_thinking",
                 "analysis_thinking",
                 "invention_thinking",
@@ -154,6 +168,23 @@ class ComputeProfile:
             omp=_optional(table.get("omp"), f"{label}.omp"),
             planner_model=_optional(
                 table.get("planner_model"), f"{label}.planner_model"
+            ),
+            execution_model=_optional(
+                table.get("execution_model"), f"{label}.execution_model"
+            ),
+            analysis_model=_optional(
+                table.get("analysis_model"), f"{label}.analysis_model"
+            ),
+            invention_model=_optional(
+                table.get("invention_model"), f"{label}.invention_model"
+            ),
+            audit_model=_optional(table.get("audit_model"), f"{label}.audit_model"),
+            strategy_reflection_model=_optional(
+                table.get("strategy_reflection_model"),
+                f"{label}.strategy_reflection_model",
+            ),
+            targeted_task_model=_optional(
+                table.get("targeted_task_model"), f"{label}.targeted_task_model"
             ),
             planner_thinking=_optional(
                 table.get("planner_thinking"), f"{label}.planner_thinking"
@@ -200,6 +231,12 @@ class ComputeProfile:
             max_invention_tasks=_optional_integer(
                 table.get("max_invention_tasks"),
                 f"{label}.max_invention_tasks",
+                0,
+                32,
+            ),
+            max_targeted_tasks=_optional_integer(
+                table.get("max_targeted_tasks"),
+                f"{label}.max_targeted_tasks",
                 0,
                 32,
             ),
@@ -444,6 +481,12 @@ class ProjectSpec:
     inputs: tuple[ProjectInput, ...]
     omp: str
     planner_model: str | None
+    execution_model: str | None
+    analysis_model: str | None
+    invention_model: str | None
+    audit_model: str | None
+    strategy_reflection_model: str | None
+    targeted_task_model: str | None
     planner_thinking: str | None
     max_tasks: int
     max_parallel: int
@@ -455,6 +498,7 @@ class ProjectSpec:
     formalization_agent_seconds: int
     max_attempts_total: int
     max_invention_tasks: int
+    max_targeted_tasks: int
     execution_thinking: str
     analysis_thinking: str
     invention_thinking: str
@@ -485,6 +529,16 @@ class ProjectSpec:
                 if profile.planner_thinking is not None
                 else self.planner_thinking
             ),
+            execution_model=profile.execution_model or self.execution_model,
+            analysis_model=profile.analysis_model or self.analysis_model,
+            invention_model=profile.invention_model or self.invention_model,
+            audit_model=profile.audit_model or self.audit_model,
+            strategy_reflection_model=(
+                profile.strategy_reflection_model or self.strategy_reflection_model
+            ),
+            targeted_task_model=(
+                profile.targeted_task_model or self.targeted_task_model
+            ),
             max_tasks=profile.max_tasks or self.max_tasks,
             max_parallel=profile.max_parallel or self.max_parallel,
             max_restarts=(
@@ -508,11 +562,28 @@ class ProjectSpec:
                 if profile.max_invention_tasks is not None
                 else self.max_invention_tasks
             ),
+            max_targeted_tasks=(
+                profile.max_targeted_tasks
+                if profile.max_targeted_tasks is not None
+                else self.max_targeted_tasks
+            ),
             execution_thinking=(profile.execution_thinking or self.execution_thinking),
             analysis_thinking=profile.analysis_thinking or self.analysis_thinking,
             invention_thinking=profile.invention_thinking or self.invention_thinking,
             audit_thinking=profile.audit_thinking or self.audit_thinking,
         )
+
+    def model_for(self, reasoning_class: str) -> str | None:
+        profiles = {
+            "execution": self.execution_model,
+            "analysis": self.analysis_model,
+            "invention": self.invention_model,
+            "audit": self.audit_model,
+        }
+        try:
+            return profiles[reasoning_class] or self.planner_model
+        except KeyError as exc:
+            raise ValueError(f"unknown reasoning class: {reasoning_class}") from exc
 
     def thinking_for(self, reasoning_class: str) -> str:
         profiles = {
@@ -571,6 +642,12 @@ class ProjectSpec:
             {
                 "omp",
                 "planner_model",
+                "execution_model",
+                "analysis_model",
+                "invention_model",
+                "audit_model",
+                "strategy_reflection_model",
+                "targeted_task_model",
                 "planner_thinking",
                 "max_tasks",
                 "max_parallel",
@@ -582,6 +659,7 @@ class ProjectSpec:
                 "formalization_agent_seconds",
                 "max_attempts_total",
                 "max_invention_tasks",
+                "max_targeted_tasks",
                 "execution_thinking",
                 "analysis_thinking",
                 "invention_thinking",
@@ -647,6 +725,23 @@ class ProjectSpec:
             planner_model=_optional(
                 regime.get("planner_model"), "regime.planner_model"
             ),
+            execution_model=_optional(
+                regime.get("execution_model"), "regime.execution_model"
+            ),
+            analysis_model=_optional(
+                regime.get("analysis_model"), "regime.analysis_model"
+            ),
+            invention_model=_optional(
+                regime.get("invention_model"), "regime.invention_model"
+            ),
+            audit_model=_optional(regime.get("audit_model"), "regime.audit_model"),
+            strategy_reflection_model=_optional(
+                regime.get("strategy_reflection_model"),
+                "regime.strategy_reflection_model",
+            ),
+            targeted_task_model=_optional(
+                regime.get("targeted_task_model"), "regime.targeted_task_model"
+            ),
             planner_thinking=_optional(
                 regime.get("planner_thinking", "high"), "regime.planner_thinking"
             ),
@@ -691,6 +786,12 @@ class ProjectSpec:
             max_invention_tasks=_integer(
                 regime.get("max_invention_tasks", 4),
                 "regime.max_invention_tasks",
+                0,
+                32,
+            ),
+            max_targeted_tasks=_integer(
+                regime.get("max_targeted_tasks", 0),
+                "regime.max_targeted_tasks",
                 0,
                 32,
             ),

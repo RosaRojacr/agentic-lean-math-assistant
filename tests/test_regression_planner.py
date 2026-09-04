@@ -27,6 +27,12 @@ references = "references"
 knowledge = "knowledge"
 runs = "runs"
 [regime]
+planner_model = "openai-codex/gpt-5.6-sol"
+execution_model = "openai-codex/gpt-5.6-luna"
+analysis_model = "openai-codex/gpt-5.6-terra"
+invention_model = "openai-codex/gpt-5.6-sol"
+audit_model = "openai-codex/gpt-5.6-terra"
+targeted_task_model = "openai-codex/gpt-6-astra"
 max_tasks = 6
 max_parallel = 3
 max_restarts = 1
@@ -35,6 +41,7 @@ pilot_agent_seconds = 1000
 research_agent_seconds = 1000
 formalization_agent_seconds = 1000
 max_attempts_total = 20
+max_targeted_tasks = 1
 allowed_tools = ["read", "bash", "eval"]
 """,
         encoding="utf-8",
@@ -149,6 +156,49 @@ def test_policy_accepts_explicit_skips(tmp_path: Path) -> None:
     runner_fixture(tmp_path)._validate_plan_policy(
         plan(skipped_decisions(), [task("work")])
     )
+
+
+def test_policy_limits_explicit_models_to_targeted_astra_tasks(
+    tmp_path: Path,
+) -> None:
+    runner = runner_fixture(tmp_path)
+    targeted = task("targeted")
+    targeted["model"] = "openai-codex/gpt-6-astra"
+    runner._validate_plan_policy(plan(skipped_decisions(), [targeted]))
+
+    wrong_model = task("wrong_model")
+    wrong_model["model"] = "openai-codex/gpt-5.6-sol"
+    with pytest.raises(RegimeError, match="configured targeted_task_model"):
+        runner._validate_plan_policy(plan(skipped_decisions(), [wrong_model]))
+
+    second = task("second")
+    second["model"] = "openai-codex/gpt-6-astra"
+    with pytest.raises(RegimeError, match="targeted-model task budget"):
+        runner._validate_plan_policy(plan(skipped_decisions(), [targeted, second]))
+
+
+def test_generated_campaign_routes_primary_and_targeted_models(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runner = runner_fixture(tmp_path)
+    runner.pre_dir = tmp_path / "pre"
+    runner.pre_dir.mkdir()
+    runner.run_dir = tmp_path / "run"
+    runner.run_dir.mkdir()
+    frozen = tmp_path / "frozen"
+    frozen.mkdir()
+    (frozen / "problem.md").write_text("# Frozen problem\n", encoding="utf-8")
+    monkeypatch.setattr(RegimeRunner, "_freeze_campaign_inputs", lambda _self: frozen)
+    primary = task("primary")
+    targeted = task("targeted")
+    targeted["model"] = "openai-codex/gpt-6-astra"
+
+    manifest = runner._render_generated_campaign(
+        plan(skipped_decisions(), [primary, targeted])
+    ).read_text(encoding="utf-8")
+
+    assert manifest.count('model = "openai-codex/gpt-5.6-luna"') == 1
+    assert manifest.count('model = "openai-codex/gpt-6-astra"') == 1
 
 
 def test_policy_rejects_unknown_or_missing_catalog_decisions(tmp_path: Path) -> None:

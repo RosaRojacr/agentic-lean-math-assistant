@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import sys
+import textwrap
 import threading
 import time
 from dataclasses import dataclass
@@ -51,12 +52,129 @@ def _terminal_columns(stream: TextIO) -> int:
         return 80
 
 
+def _terminal_rows(stream: TextIO) -> int:
+    try:
+        return os.get_terminal_size(stream.fileno()).lines
+    except (AttributeError, OSError):
+        return 24
+
+
 def _truncate(text: str, width: int) -> str:
     if len(text) <= width:
         return text
     if width <= 1:
         return text[:width]
     return text[: width - 1] + "…"
+
+
+class LiveStatusDisplay:
+    """Render one animated, in-place status readout."""
+
+    def __init__(self, *, stream: TextIO | None = None) -> None:
+        self.stream = stream or sys.stdout
+        self._color = _color_enabled(self.stream)
+        self._interactive = hasattr(self.stream, "isatty") and self.stream.isatty()
+        self._frame = 0
+        self._last_plain: str | None = None
+        self._rendered_rows = 0
+
+    def render(self, *, status: str, detail: str, recap: str | None = None) -> None:
+        columns = max(1, _terminal_columns(self.stream) - 1)
+        plain = f"◆ AUTORUN {status} · {detail}"
+        if recap:
+            plain = f"{plain}\n\n{recap}"
+        if not self._interactive:
+            if plain != self._last_plain:
+                print(plain, file=self.stream, flush=True)
+                self._last_plain = plain
+            return
+        status_lines = textwrap.wrap(
+            f"◆ AUTORUN {status} · {detail}",
+            width=columns,
+            subsequent_indent="  ",
+            break_long_words=False,
+            break_on_hyphens=False,
+        ) or [plain]
+        lines = list(status_lines)
+        max_rows = max(1, _terminal_rows(self.stream) - 1)
+        if recap:
+            groups: list[list[str]] = []
+            current_group: list[str] = []
+            for block in recap.split("\n\n"):
+                if block.isupper() and current_group:
+                    groups.append(current_group)
+                    current_group = [block]
+                else:
+                    current_group.append(block)
+            if current_group:
+                groups.append(current_group)
+            for group in groups:
+                group_lines = [""]
+                for block_index, block in enumerate(group):
+                    if block_index:
+                        group_lines.append("")
+                    for source_line in block.splitlines():
+                        group_lines.extend(
+                            textwrap.wrap(
+                                source_line,
+                                width=columns,
+                                break_long_words=False,
+                                break_on_hyphens=False,
+                            )
+                            or [""]
+                        )
+                if len(lines) + len(group_lines) > max_rows:
+                    break
+                lines.extend(group_lines)
+        color = (
+            _GREEN
+            if status == "running"
+            else _YELLOW
+            if status in {"recovering", "paused"}
+            else _RED
+        )
+        frames = ("◆", "●", "◉", "●")
+        symbol = _paint(frames[self._frame % len(frames)], _PURPLE, self._color)
+        head = f"◆ AUTORUN {status}"
+        if lines[0].startswith(head):
+            first_line = (
+                f"{symbol} {_paint('AUTORUN', _BLUE, self._color)} "
+                f"{_paint(status, color, self._color)}"
+                f"{_paint(lines[0][len(head) :], _MUTED, self._color)}"
+            )
+        else:
+            first_line = f"{symbol}{_paint(lines[0][1:], _MUTED, self._color)}"
+        rendered_lines = [first_line]
+        for line in lines[1:]:
+            rendered_lines.append(
+                _paint(
+                    line,
+                    _BLUE if line.isupper() else _MUTED,
+                    self._color,
+                )
+            )
+        self._clear()
+        self.stream.write("\r\n".join(rendered_lines))
+        self.stream.flush()
+        self._rendered_rows = len(rendered_lines)
+        self._frame += 1
+
+    def _clear(self) -> None:
+        self.stream.write(_ENABLE_WRAP + "\r")
+        if self._rendered_rows > 1:
+            self.stream.write(f"\x1b[{self._rendered_rows - 1}A")
+        for row in range(self._rendered_rows):
+            self.stream.write("\x1b[2K")
+            if row + 1 < self._rendered_rows:
+                self.stream.write("\x1b[1B\r")
+        if self._rendered_rows > 1:
+            self.stream.write(f"\x1b[{self._rendered_rows - 1}A")
+        self.stream.write("\r\x1b[2K")
+
+    def finish(self) -> None:
+        if self._interactive:
+            self.stream.write(_ENABLE_WRAP + "\n")
+            self.stream.flush()
 
 
 class PaneHeartbeat:

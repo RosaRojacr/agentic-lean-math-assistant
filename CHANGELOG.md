@@ -26,6 +26,9 @@
   strategy and ALMA-improvement reflection.
 - Added a pane-bounded graphical autorun readout with ten-minute, milestone-rich
   verbal progress recaps, plus incrementally followable round output logs.
+- Added reasoning-class model routing, a separately bounded read-only strategy
+  reflection model, and controller-enforced limits for explicit targeted-model
+  escalations.
 
 
 ## 1.1.1 — 2026-08-31

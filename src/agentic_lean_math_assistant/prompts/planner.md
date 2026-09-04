@@ -20,6 +20,11 @@ Produce the smallest sufficient execution plan for the mathematics task. The con
    - `invention`: genuinely new strategy or hard derivation;
    - `audit`: adversarial checking and reconciliation.
    The controller, not the planner, maps these classes to thinking levels.
+   Use the supplied `model_policy.primary` lanes by leaving `model` null. Set
+   `model` to the exact non-null `model_policy.targeted` value only for a
+   narrowly scoped bottleneck whose `novelty` identifies the retained failure
+   of the primary model and the materially different targeted attempt. Never
+   exceed `model_policy.max_targeted_tasks`.
 8. Give each task exact instructions, dependencies, tools, bounded attempts, expected evidence, and a failure policy:
    - `continue`: retain failure and skip dependent work; requires `required=false`;
    - `abort`: stop because the result is indispensable;
@@ -98,3 +103,6 @@ Return exactly one JSON object, with no Markdown fence:
 ```
 
 All IDs and categories must match `[a-z][a-z0-9_-]*`. A shared task uses `strategy_id: null`. Use only supplied tools and stay within task, phase-agent-second, invocation-attempt, invention-task, parallelism, and restart ceilings. The controller charges each task `2 * timeout * max_attempts` agent-seconds to its declared phase and `2 * max_attempts` invocation attempts. Calculate those sums before returning the plan. If a valid plan exceeds only those two budgets, the controller deterministically reduces attempts and timeouts without dropping tasks, dependencies, evidence obligations, or strategy lanes, and retains both the proposed and normalized plans.
+An explicit non-null task `model` is a cost-bearing targeted escalation, not a
+general model preference. The controller rejects unconfigured models and plans
+that exceed the targeted-task budget.
