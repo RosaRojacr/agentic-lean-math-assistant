@@ -4,7 +4,7 @@ Agentic Lean Math Assistant is a research controller for mathematical work that 
 
 A campaign is complete only when its configured checks pass. Depending on the project, those checks may include reproducible commands, exact certificates, independent claim review, semantic comparison, and named Lean declarations with an allowed axiom set.
 
-The system was designed to run through OMP and Herdr. OMP runs the model agents and exposes their allowed tools. Herdr provides the managed terminal workspace in which campaign activity can be inspected. The controller remains responsible for scheduling, retained state, deterministic commands, Lean checks, and acceptance decisions.
+The system was designed to run through OMP (oh-my=pie) and Herdr. OMP runs the model agents and exposes their allowed tools. Herdr provides the managed terminal workspace in which campaign activity can be inspected. The controller remains responsible for scheduling, retained state, deterministic commands, Lean checks, and acceptance decisions.
 
 ## Research status
 
