@@ -77,6 +77,7 @@ class LiveStatusDisplay:
         self._frame = 0
         self._last_plain: str | None = None
         self._rendered_rows = 0
+        self._rendered_lines: tuple[str, ...] = ()
 
     def render(self, *, status: str, detail: str, recap: str | None = None) -> None:
         columns = max(1, _terminal_columns(self.stream) - 1)
@@ -153,23 +154,33 @@ class LiveStatusDisplay:
                     self._color,
                 )
             )
-        self._clear()
-        self.stream.write("\r\n".join(rendered_lines))
-        self.stream.flush()
-        self._rendered_rows = len(rendered_lines)
+        self._update(rendered_lines)
         self._frame += 1
 
-    def _clear(self) -> None:
-        self.stream.write(_ENABLE_WRAP + "\r")
-        if self._rendered_rows > 1:
-            self.stream.write(f"\x1b[{self._rendered_rows - 1}A")
-        for row in range(self._rendered_rows):
-            self.stream.write("\x1b[2K")
-            if row + 1 < self._rendered_rows:
-                self.stream.write("\x1b[1B\r")
-        if self._rendered_rows > 1:
-            self.stream.write(f"\x1b[{self._rendered_rows - 1}A")
-        self.stream.write("\r\x1b[2K")
+    def _update(self, rendered_lines: list[str]) -> None:
+        previous = self._rendered_lines
+        if not previous:
+            update = _ENABLE_WRAP + "\r" + "\r\n".join(rendered_lines)
+        else:
+            parts = [_ENABLE_WRAP, "\r"]
+            if len(previous) > 1:
+                parts.append(f"\x1b[{len(previous) - 1}A")
+            rows = max(len(previous), len(rendered_lines))
+            for row in range(rows):
+                if row >= len(rendered_lines):
+                    parts.append("\x1b[2K")
+                elif row >= len(previous) or rendered_lines[row] != previous[row]:
+                    parts.extend(("\x1b[2K", rendered_lines[row]))
+                if row + 1 < rows:
+                    parts.append("\x1b[1B\r")
+            if rows > len(rendered_lines):
+                parts.append(f"\x1b[{rows - len(rendered_lines)}A")
+            parts.append("\r")
+            update = "".join(parts)
+        self.stream.write(update)
+        self.stream.flush()
+        self._rendered_rows = len(rendered_lines)
+        self._rendered_lines = tuple(rendered_lines)
 
     def finish(self) -> None:
         if self._interactive:

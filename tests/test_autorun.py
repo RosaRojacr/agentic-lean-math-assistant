@@ -600,6 +600,21 @@ def test_herdr_pane_label_updates_once_per_round(
     ]
 
 
+def test_terminal_title_is_written_only_when_it_changes() -> None:
+    class InteractiveStream(io.StringIO):
+        def isatty(self) -> bool:
+            return True
+
+    output = InteractiveStream()
+    autorun_module._TERMINAL_TITLES.clear()
+
+    autorun_module._set_terminal_title(output, "Autorun round 138 status")
+    autorun_module._set_terminal_title(output, "Autorun round 138 status")
+    autorun_module._set_terminal_title(output, "Autorun round 139 status")
+
+    assert output.getvalue().count("\x1b]0;") == 2
+
+
 def test_live_status_display_replaces_the_current_terminal_line(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -614,12 +629,13 @@ def test_live_status_display_replaces_the_current_terminal_line(
     display = LiveStatusDisplay(stream=output)
 
     display.render(status="running", detail="round 3 · agent running")
+    first_render = output.getvalue()
     display.render(status="running", detail="round 3 · agent running")
+    second_render = output.getvalue()[len(first_render) :]
 
-    rendered = output.getvalue()
-    assert rendered.count("\r\u001b[2K") >= 2
-    assert "\u001b[38;2;187;154;247m" in rendered
-    assert "\n" not in rendered
+    assert second_render.count("\u001b[2K") == 1
+    assert "\u001b[38;2;187;154;247m" in second_render
+    assert "\n" not in second_render
 
 
 def test_live_status_display_wraps_complete_sections_within_pane(
@@ -665,7 +681,8 @@ def test_live_status_display_wraps_complete_sections_within_pane(
     assert "This complete progress update fits in the pane." in first_render
     assert "DETAIL" not in first_render
     assert f"\u001b[{rendered_rows - 1}A" in second_render
-    assert second_render.count("\u001b[2K") >= rendered_rows + 1
+    assert second_render.count("\u001b[2K") == 1
+    assert "PROGRESS UPDATE" not in second_render
 
 
 def test_discover_project_walks_to_nearest_manifest(tmp_path: Path) -> None:

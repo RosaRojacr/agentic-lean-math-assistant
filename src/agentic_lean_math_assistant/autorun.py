@@ -25,6 +25,7 @@ from .terminal_status import LiveStatusDisplay
 
 _HERDR_PANE_LABELS: dict[str, str] = {}
 _HERDR_LABEL_ATTEMPTS: dict[str, tuple[str, float]] = {}
+_TERMINAL_TITLES: dict[int, tuple[TextIO, str]] = {}
 
 
 class AutoRunError(RuntimeError):
@@ -953,8 +954,11 @@ def _set_terminal_title(stream: TextIO, title: str) -> None:
     if not (hasattr(stream, "isatty") and stream.isatty()):
         return
     safe_title = title.replace("\x1b", "").replace("\x07", "").replace("\n", " ")
-    stream.write(f"\x1b]0;{safe_title}\x07")
-    stream.flush()
+    cached = _TERMINAL_TITLES.get(id(stream))
+    if cached is None or cached[0] is not stream or cached[1] != safe_title:
+        stream.write(f"\x1b]0;{safe_title}\x07")
+        stream.flush()
+        _TERMINAL_TITLES[id(stream)] = (stream, safe_title)
     if stream is sys.stdout:
         _sync_herdr_pane_label(safe_title)
 
