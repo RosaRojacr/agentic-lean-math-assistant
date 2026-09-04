@@ -22,6 +22,8 @@ from .autorun import (
     AutoRunError,
     AutoRunRunner,
     discover_project,
+    follow_autorun_events,
+    follow_autorun_output,
     follow_autorun_status,
     request_autorun_stop,
 )
@@ -120,6 +122,16 @@ def _parser() -> argparse.ArgumentParser:
     autorun_show.add_argument("--follow", action="store_true")
     autorun_show.add_argument("--interval", type=float, default=1.0)
     autorun_show.add_argument("--recap-minutes", type=float, default=10.0)
+    autorun_output = subparsers.add_parser(
+        "autorun-output", help="follow output from the active autorun round"
+    )
+    autorun_output.add_argument("--session", type=Path, required=True)
+    autorun_output.add_argument("--interval", type=float, default=1.0)
+    autorun_events = subparsers.add_parser(
+        "autorun-events", help="follow raw autorun events for the active round"
+    )
+    autorun_events.add_argument("--session", type=Path, required=True)
+    autorun_events.add_argument("--interval", type=float, default=1.0)
     autorun_stop = subparsers.add_parser(
         "autorun-stop", help="request a running autorun controller to stop"
     )
@@ -503,6 +515,12 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(f"report: {report_path}")
             return 0 if summary["accepted"] else 1
+        if args.command == "autorun-output":
+            follow_autorun_output(args.session, interval_seconds=args.interval)
+            return 0
+        if args.command == "autorun-events":
+            follow_autorun_events(args.session, interval_seconds=args.interval)
+            return 0
         if args.command == "autorun-stop":
             print(request_autorun_stop(args.session))
             return 0
@@ -512,6 +530,7 @@ def main(argv: list[str] | None = None) -> int:
                     args.session,
                     interval_seconds=args.interval,
                     recap_interval_seconds=args.recap_minutes * 60,
+                    persistent=True,
                 )
                 return 0
             state = read_autorun_status(args.session)

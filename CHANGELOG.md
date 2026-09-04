@@ -29,6 +29,9 @@
 - Added reasoning-class model routing, a separately bounded read-only strategy
   reflection model, and controller-enforced limits for explicit targeted-model
   escalations.
+- Made all autorun pane followers survive controller stop/resume cycles and
+  transient state-read failures. Current-output and raw-event views now follow
+  `active_round` and update their Herdr terminal titles on every round change.
 
 
 ## 1.1.1 — 2026-08-31

@@ -13,6 +13,8 @@ from agentic_lean_math_assistant.autorun import (
     AutoRunRunner,
     autorun_status,
     discover_project,
+    follow_autorun_events,
+    follow_autorun_output,
     follow_autorun_status,
     request_autorun_stop,
 )
@@ -373,6 +375,205 @@ Prefer a small vertical slice before bulk generation.
     assert "VERIFIED BASELINE" in rendered
     assert "CURRENT AUDIT BLOCKER" in rendered
     assert "Prefer a small vertical slice" not in rendered
+
+
+def test_persistent_status_monitor_waits_for_controller_resume(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    initializer = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
+    )
+    session = initializer._select_session()
+    state_path = session / "state.json"
+    state = autorun_status(session)
+    state.update({"status": "paused", "active_round": None})
+    state_path.write_text(json.dumps(state), encoding="utf-8")
+    sleeps = 0
+
+    def resume_then_interrupt(_seconds: float) -> None:
+        nonlocal sleeps
+        sleeps += 1
+        if sleeps == 1:
+            resumed = autorun_status(session)
+            resumed.update(
+                {
+                    "status": "running",
+                    "active_round": 4,
+                    "active_model_route": "primary",
+                    "active_model": "openai-codex/gpt-5.6-sol",
+                }
+            )
+            state_path.write_text(json.dumps(resumed), encoding="utf-8")
+            return
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.time.sleep", resume_then_interrupt
+    )
+    output = io.StringIO()
+    follow_autorun_status(
+        session,
+        interval_seconds=0.001,
+        output=output,
+        persistent=True,
+    )
+
+    rendered = output.getvalue()
+    assert "AUTORUN paused" in rendered
+    assert "AUTORUN running" in rendered
+    assert "round 4" in rendered
+
+
+def test_persistent_status_monitor_recovers_from_unreadable_state(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    initializer = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
+    )
+    session = initializer._select_session()
+    state_path = session / "state.json"
+    retained_state = state_path.read_text(encoding="utf-8")
+    state_path.unlink()
+    sleeps = 0
+
+    def restore_then_interrupt(_seconds: float) -> None:
+        nonlocal sleeps
+        sleeps += 1
+        if sleeps == 1:
+            state_path.write_text(retained_state, encoding="utf-8")
+            return
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.time.sleep", restore_then_interrupt
+    )
+    output = io.StringIO()
+    follow_autorun_status(
+        session,
+        interval_seconds=0.001,
+        output=output,
+        persistent=True,
+    )
+
+    rendered = output.getvalue()
+    assert "AUTORUN recovering" in rendered
+    assert "state unavailable · reconnecting" in rendered
+    assert "AUTORUN running" in rendered
+
+
+def test_round_output_monitor_switches_to_the_active_round(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    class InteractiveStream(io.StringIO):
+        def isatty(self) -> bool:
+            return True
+
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    initializer = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
+    )
+    session = initializer._select_session()
+    state_path = session / "state.json"
+    state = autorun_status(session)
+    state.update(
+        {
+            "status": "running",
+            "active_round": 3,
+            "active_model_route": "primary",
+            "active_model": "openai-codex/gpt-5.6-sol",
+        }
+    )
+    state_path.write_text(json.dumps(state), encoding="utf-8")
+    round_three = session / "rounds" / "round-00003"
+    round_three.mkdir(parents=True)
+    (round_three / "stdout.log").write_text("round three output\n", encoding="utf-8")
+    sleeps = 0
+
+    def advance_then_interrupt(_seconds: float) -> None:
+        nonlocal sleeps
+        sleeps += 1
+        if sleeps == 1:
+            advanced = autorun_status(session)
+            advanced["active_round"] = 4
+            state_path.write_text(json.dumps(advanced), encoding="utf-8")
+            round_four = session / "rounds" / "round-00004"
+            round_four.mkdir(parents=True)
+            (round_four / "stdout.log").write_text(
+                "round four output\n", encoding="utf-8"
+            )
+            return
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.time.sleep", advance_then_interrupt
+    )
+    output = InteractiveStream()
+    follow_autorun_output(session, interval_seconds=0.001, output=output)
+
+    rendered = output.getvalue()
+    assert "\x1b]0;Round 3 Output\x07" in rendered
+    assert "\x1b]0;Round 4 Output\x07" in rendered
+    assert "round three output" in rendered
+    assert "round four output" in rendered
+
+
+def test_raw_event_monitor_tracks_the_active_round(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    class InteractiveStream(io.StringIO):
+        def isatty(self) -> bool:
+            return True
+
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    initializer = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
+    )
+    session = initializer._select_session()
+    state_path = session / "state.json"
+    state = autorun_status(session)
+    state.update(
+        {
+            "status": "running",
+            "active_round": 3,
+            "active_model_route": "primary",
+        }
+    )
+    state_path.write_text(json.dumps(state), encoding="utf-8")
+    AutoRunRunner._event(session, "round_started", "round 3")
+    sleeps = 0
+
+    def advance_then_interrupt(_seconds: float) -> None:
+        nonlocal sleeps
+        sleeps += 1
+        if sleeps == 1:
+            advanced = autorun_status(session)
+            advanced["active_round"] = 4
+            state_path.write_text(json.dumps(advanced), encoding="utf-8")
+            AutoRunRunner._event(session, "round_started", "round 4")
+            return
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.time.sleep", advance_then_interrupt
+    )
+    output = InteractiveStream()
+    follow_autorun_events(session, interval_seconds=0.001, output=output)
+
+    rendered = output.getvalue()
+    assert "\x1b]0;Round 3 Raw events\x07" in rendered
+    assert "\x1b]0;Round 4 Raw events\x07" in rendered
+    assert '"detail": "round 3"' in rendered
+    assert '"detail": "round 4"' in rendered
 
 
 def test_live_status_display_replaces_the_current_terminal_line(

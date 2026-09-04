@@ -850,6 +850,7 @@ def follow_autorun_status(
     interval_seconds: float = 1.0,
     recap_interval_seconds: float = 600.0,
     output: TextIO | None = None,
+    persistent: bool = False,
 ) -> None:
     """Render a live readout with a periodically refreshed verbal recap."""
 
@@ -858,13 +859,25 @@ def follow_autorun_status(
     if recap_interval_seconds <= 0:
         raise ValueError("autorun recap interval must be positive")
     session = session_dir.expanduser().resolve()
-    display = LiveStatusDisplay(stream=output)
+    stream = output or sys.stdout
+    display = LiveStatusDisplay(stream=stream)
     recap = ""
     next_recap_deadline = 0.0
     try:
         while True:
-            state = autorun_status(session)
+            try:
+                state = autorun_status(session)
+            except AutoRunError as exc:
+                display.render(
+                    status="recovering",
+                    detail=f"state unavailable · reconnecting · {exc}",
+                )
+                if not persistent:
+                    raise
+                time.sleep(interval_seconds)
+                continue
             active_round = state.get("active_round")
+            _set_terminal_title(stream, f"Autorun round {active_round or '-'} status")
             receipt = _round_receipt(
                 session, active_round, state.get("active_model_route")
             )
@@ -903,8 +916,152 @@ def follow_autorun_status(
                 )
                 next_recap_deadline = now + recap_interval_seconds
             display.render(status=status, detail=detail, recap=recap)
-            if status in {"stopped", "paused"} and active_round is None:
+            if (
+                not persistent
+                and status in {"stopped", "paused"}
+                and active_round is None
+            ):
                 return
+            time.sleep(interval_seconds)
+    except KeyboardInterrupt:
+        return
+    finally:
+        display.finish()
+
+
+def _set_terminal_title(stream: TextIO, title: str) -> None:
+    if not (hasattr(stream, "isatty") and stream.isatty()):
+        return
+    safe_title = title.replace("\x1b", "").replace("\x07", "").replace("\n", " ")
+    stream.write(f"\x1b]0;{safe_title}\x07")
+    stream.flush()
+
+
+def _tail_lines(path: Path, count: int) -> list[str]:
+    try:
+        size = path.stat().st_size
+        with path.open("rb") as stream:
+            stream.seek(max(0, size - 64 * 1024))
+            data = stream.read()
+    except OSError:
+        return []
+    if size > len(data):
+        _, _, data = data.partition(b"\n")
+    lines = data.decode("utf-8", errors="replace").splitlines()
+    return lines[-count:]
+
+
+def _round_stdout_path(
+    session: Path, active_round: object, route: object
+) -> Path | None:
+    if not isinstance(active_round, int) or isinstance(active_round, bool):
+        return None
+    name = (
+        "strategy-reflection-stdout.log"
+        if route == "strategy_reflection"
+        else "stdout.log"
+    )
+    return session / "rounds" / f"round-{active_round:05d}" / name
+
+
+def follow_autorun_output(
+    session_dir: Path,
+    *,
+    interval_seconds: float = 1.0,
+    output: TextIO | None = None,
+) -> None:
+    """Follow the active round's retained output, switching rounds automatically."""
+
+    if interval_seconds <= 0:
+        raise ValueError("autorun output interval must be positive")
+    session = session_dir.expanduser().resolve()
+    stream = output or sys.stdout
+    display = LiveStatusDisplay(stream=stream)
+    try:
+        while True:
+            try:
+                state = autorun_status(session)
+            except AutoRunError as exc:
+                display.render(
+                    status="recovering",
+                    detail=f"state unavailable · reconnecting · {exc}",
+                )
+                time.sleep(interval_seconds)
+                continue
+            active_round = state.get("active_round")
+            route = state.get("active_model_route")
+            _set_terminal_title(stream, f"Round {active_round or '-'} Output")
+            receipt = _round_receipt(session, active_round, route)
+            path = _round_stdout_path(session, active_round, route)
+            lines = _tail_lines(path, 5) if path is not None else []
+            if lines:
+                body = "\n".join(line[:120] for line in lines)
+            elif path is None:
+                body = "No round is active. Waiting for the controller to resume."
+            else:
+                body = f"{path.name} has no retained output yet."
+            model = state.get("active_model")
+            detail = (
+                f"round {active_round or '-'} · "
+                f"{'reflection' if route == 'strategy_reflection' else 'conductor'} "
+                f"{receipt.get('status', 'idle')} · "
+                f"{str(model).rsplit('/', 1)[-1] if isinstance(model, str) else 'default'}"
+            )
+            display.render(
+                status=str(state.get("status", "unknown")),
+                detail=detail,
+                recap=f"CURRENT ROUND OUTPUT\n\n{body}",
+            )
+            time.sleep(interval_seconds)
+    except KeyboardInterrupt:
+        return
+    finally:
+        display.finish()
+
+
+def follow_autorun_events(
+    session_dir: Path,
+    *,
+    interval_seconds: float = 1.0,
+    output: TextIO | None = None,
+) -> None:
+    """Follow raw controller events while tracking the active round."""
+
+    if interval_seconds <= 0:
+        raise ValueError("autorun events interval must be positive")
+    session = session_dir.expanduser().resolve()
+    stream = output or sys.stdout
+    display = LiveStatusDisplay(stream=stream)
+    try:
+        while True:
+            try:
+                state = autorun_status(session)
+            except AutoRunError as exc:
+                display.render(
+                    status="recovering",
+                    detail=f"state unavailable · reconnecting · {exc}",
+                )
+                time.sleep(interval_seconds)
+                continue
+            active_round = state.get("active_round")
+            route = state.get("active_model_route")
+            _set_terminal_title(stream, f"Round {active_round or '-'} Raw events")
+            receipt = _round_receipt(session, active_round, route)
+            lines = _tail_lines(session / "events.jsonl", 5)
+            body = (
+                "\n".join(lines) if lines else "No controller events are retained yet."
+            )
+            detail = (
+                f"round {active_round or '-'} · "
+                f"{'reflection' if route == 'strategy_reflection' else 'conductor'} "
+                f"{receipt.get('status', 'idle')} · controller "
+                f"{'up' if _pid_is_alive(state.get('pid')) else 'down'}"
+            )
+            display.render(
+                status=str(state.get("status", "unknown")),
+                detail=detail,
+                recap=f"RAW EVENTS\n\n{body}",
+            )
             time.sleep(interval_seconds)
     except KeyboardInterrupt:
         return

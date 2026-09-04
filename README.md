@@ -204,6 +204,14 @@ uv run agentic-lean-math-assistant autorun-status \
   --session path/to/autorun-runs/<session> \
   --follow --interval 1 --recap-minutes 10
 
+uv run agentic-lean-math-assistant autorun-output \
+  --session path/to/autorun-runs/<session> \
+  --interval 1
+
+uv run agentic-lean-math-assistant autorun-events \
+  --session path/to/autorun-runs/<session> \
+  --interval 1
+
 uv run agentic-lean-math-assistant autorun-stop \
   --session path/to/autorun-runs/<session>
 ```
@@ -212,6 +220,11 @@ Use `--model` to override the primary conductor and `--reflection-model` to
 override only the scheduled reflection. The live display identifies the active
 route and model, so a reflection cannot be mistaken for a normal agent round.
 
+All three followers remain attached while the controller is stopped, paused,
+restarted, or temporarily unreadable. They reread `state.json` on every refresh.
+The output and raw-event followers switch to `active_round` automatically and
+set their terminal titles to `Round N Output` and `Round N Raw events`, so a
+Herdr pane cannot remain bound to a completed round.
 
 ## Useful commands
 
@@ -224,6 +237,8 @@ regime-resume     resume a fixed-regime checkpoint
 autonomy-run      run bounded successive campaigns
 autorun           run a persistent self-prompting conductor
 autorun-status    inspect or follow a retained autorun session
+autorun-output    follow retained output from the active round
+autorun-events    follow raw events while tracking the active round
 autorun-stop      request a durable stop at the next safe boundary
 status            show authoritative run state
 dashboard         watch stages, targets, and limitations
