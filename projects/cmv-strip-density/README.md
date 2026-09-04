@@ -48,7 +48,7 @@ lake env lean CMVCutoffAssumptions.lean
 ```
 
 The first command builds the theorem and its complete local import closure.
-The second prints the axioms of the three exported cutoff declarations. The
+The second prints the axioms of the exported cutoff declarations. The
 expected noncomputable Mathlib axiom set is:
 
 ```text
