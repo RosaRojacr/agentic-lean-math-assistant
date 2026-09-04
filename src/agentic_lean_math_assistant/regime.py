@@ -792,7 +792,7 @@ class RegimeRunner:
         invalid_targeted_models = {
             task.model
             for task in targeted_tasks
-            if task.model != self.project.targeted_task_model
+            if task.model is not None and task.model != self.project.targeted_task_model
         }
         if invalid_targeted_models:
             raise RegimeError(
