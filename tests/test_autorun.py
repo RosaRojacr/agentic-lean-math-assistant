@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 from test_autonomy import write_autonomy_project
 
+import agentic_lean_math_assistant.autorun as autorun_module
 from agentic_lean_math_assistant.autorun import (
     AutoRunOptions,
     AutoRunRunner,
@@ -574,6 +575,29 @@ def test_raw_event_monitor_tracks_the_active_round(
     assert "\x1b]0;Round 4 Raw events\x07" in rendered
     assert '"detail": "round 3"' in rendered
     assert '"detail": "round 4"' in rendered
+
+
+def test_herdr_pane_label_updates_once_per_round(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    labels: list[tuple[str, str]] = []
+    monkeypatch.setenv("HERDR_PANE_ID", "w2:p3")
+    autorun_module._HERDR_PANE_LABELS.clear()
+    autorun_module._HERDR_LABEL_ATTEMPTS.clear()
+    monkeypatch.setattr(
+        autorun_module.HerdrClient,
+        "rename_pane",
+        lambda _client, pane_id, label: labels.append((pane_id, label)),
+    )
+
+    autorun_module._sync_herdr_pane_label("Round 3 Raw events")
+    autorun_module._sync_herdr_pane_label("Round 3 Raw events")
+    autorun_module._sync_herdr_pane_label("Round 138 Raw events")
+
+    assert labels == [
+        ("w2:p3", "Round 3 Raw events"),
+        ("w2:p3", "Round 138 Raw events"),
+    ]
 
 
 def test_live_status_display_replaces_the_current_terminal_line(

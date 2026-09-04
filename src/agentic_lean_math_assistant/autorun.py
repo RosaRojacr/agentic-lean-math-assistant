@@ -18,9 +18,13 @@ from .agent_runner import RunnerInterrupted
 from .agent_runner import execute as execute_agent_request
 from .artifacts import atomic_write_json, atomic_write_text, utc_now
 from .config import ConfigurationError
+from .herdr import HerdrClient, HerdrError
 from .project import ProjectSpec
 from .runtime import CampaignRunError, campaign_run_lock
 from .terminal_status import LiveStatusDisplay
+
+_HERDR_PANE_LABELS: dict[str, str] = {}
+_HERDR_LABEL_ATTEMPTS: dict[str, tuple[str, float]] = {}
 
 
 class AutoRunError(RuntimeError):
@@ -929,12 +933,30 @@ def follow_autorun_status(
         display.finish()
 
 
+def _sync_herdr_pane_label(title: str) -> None:
+    pane_id = os.environ.get("HERDR_PANE_ID")
+    if not pane_id or _HERDR_PANE_LABELS.get(pane_id) == title:
+        return
+    now = time.monotonic()
+    attempted = _HERDR_LABEL_ATTEMPTS.get(pane_id)
+    if attempted is not None and attempted[0] == title and now - attempted[1] < 10:
+        return
+    _HERDR_LABEL_ATTEMPTS[pane_id] = (title, now)
+    try:
+        HerdrClient(timeout=5.0).rename_pane(pane_id, title)
+    except HerdrError:
+        return
+    _HERDR_PANE_LABELS[pane_id] = title
+
+
 def _set_terminal_title(stream: TextIO, title: str) -> None:
     if not (hasattr(stream, "isatty") and stream.isatty()):
         return
     safe_title = title.replace("\x1b", "").replace("\x07", "").replace("\n", " ")
     stream.write(f"\x1b]0;{safe_title}\x07")
     stream.flush()
+    if stream is sys.stdout:
+        _sync_herdr_pane_label(safe_title)
 
 
 def _tail_lines(path: Path, count: int) -> list[str]:

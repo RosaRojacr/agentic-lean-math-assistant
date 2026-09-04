@@ -223,8 +223,8 @@ route and model, so a reflection cannot be mistaken for a normal agent round.
 All three followers remain attached while the controller is stopped, paused,
 restarted, or temporarily unreadable. They reread `state.json` on every refresh.
 The output and raw-event followers switch to `active_round` automatically and
-set their terminal titles to `Round N Output` and `Round N Raw events`, so a
-Herdr pane cannot remain bound to a completed round.
+update both their Herdr pane labels and terminal titles to `Round N Output` and
+`Round N Raw events`, so a pane cannot remain bound to a completed round.
 
 ## Useful commands
 
