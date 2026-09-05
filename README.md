@@ -158,7 +158,9 @@ work. It reloads the project's `MASTER_PROMPT.md` before every round, retains
 every prompt, output, receipt, and state transition under
 `autorun-runs/<session>/`, and can resume the same session after a controller
 restart. Each normal round still has a fixed deadline and must emit a concrete
-result, summary, and next action.
+result, summary, next action, and progress classification. A successful process
+invocation is classified separately as incremental, meaningful, blocked, or
+complete; process exit and a passing build are not meaningful progress.
 
 Projects can route work by reasoning class instead of assigning the most
 expensive model to every task:
@@ -184,13 +186,18 @@ explicit targeted escalation: the controller accepts only the configured
 Compute profiles may override the same routing fields without changing the
 project's base policy.
 
-Strategy reflection is isolated from implementation. At the configured
-interval, `autorun` launches a separate, read-only request using
-`strategy_reflection_model`, retains its recommendation, and passes that text
-to the next conductor prompt. Its deadline defaults to 15 minutes and it
-receives no empty-output retry. During a continuous failure streak, one
+Strategy review is a fail-closed meaningful-progress gate. At the configured
+interval, `autorun` launches a separate, read-only Astra request using
+`strategy_reflection_model`. Astra estimates the probability that the current
+course will materially advance the final contract within twelve conductor
+rounds, sets a worthwhile threshold, and chooses `continue` or `change_course`.
+A rejected course cannot be reinstated by a later pass. A course change requires
+a replacement method, abandoned work, milestones, a falsifiable first check, and
+kill criteria. The controller runs up to three Astra passes per gate attempt;
+without a ready plan it retries the gate rather than launching another conductor
+on the rejected course. During a continuous execution-failure streak, one
 conductor round is routed through `targeted_task_model` after every two failed
-primary-model rounds; a successful round restores normal routing.
+primary-model rounds; a successful invocation restores normal routing.
 
 Every autorun agent invocation retains the configured transient cgroup deadline,
 memory, swap, CPU, task, and file-size limits. A trusted project may set
@@ -226,6 +233,9 @@ Use `--model` to override the primary conductor and `--reflection-model` to
 override only the scheduled reflection. The live display identifies the active
 route and model. While recovering, it also reports the exact next retry
 timestamp, distinguishing bounded backoff from a stopped controller.
+The recap also reports the latest execution's progress classification,
+meaningful versus incremental counts, and the latest Astra likelihood,
+worthwhile threshold, decision, and plan status.
 
 All three followers remain attached while the controller is stopped, paused,
 restarted, or temporarily unreadable. They reread `state.json` on every refresh.

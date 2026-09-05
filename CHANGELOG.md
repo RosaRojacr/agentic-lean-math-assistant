@@ -30,6 +30,12 @@
 - Added reasoning-class model routing, a separately bounded read-only strategy
   reflection model, and controller-enforced limits for explicit targeted-model
   escalations.
+- Replaced advisory autorun reflections with a fail-closed meaningful-progress
+  gate: Astra evaluates likelihood versus compute value, must develop and
+  adversarially recheck a concrete replacement plan before changing course, and
+  prevents another conductor round until the strategy is ready.
+- Separated successful process execution from incremental, meaningful, blocked,
+  and complete progress classifications in retained state and live status.
 - Added bounded targeted-model recovery routing after repeated autorun conductor
   failures; successful rounds restore the primary route.
 - Made all autorun pane followers survive controller stop/resume cycles and

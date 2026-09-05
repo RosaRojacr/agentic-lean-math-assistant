@@ -10,6 +10,7 @@ from test_autonomy import write_autonomy_project
 
 import agentic_lean_math_assistant.autorun as autorun_module
 from agentic_lean_math_assistant.autorun import (
+    AutoRunError,
     AutoRunOptions,
     AutoRunRunner,
     autorun_status,
@@ -31,12 +32,29 @@ def write_master_prompt(manifest: Path, text: str = "Prove the exact target.") -
 
 def successful_agent(request_path: Path) -> int:
     request = json.loads(request_path.read_text(encoding="utf-8"))
-    Path(request["output"]).write_text(
-        "AUTORUN_RESULT: progress\n"
-        "AUTORUN_SUMMARY: completed one checked step\n"
-        "AUTORUN_NEXT: prove the next lemma\n",
-        encoding="utf-8",
-    )
+    if request["role_id"] == "autorun_strategy_reflection":
+        output = (
+            "The current approach remains proportionate to the remaining work.\n"
+            "MEANINGFUL_PROGRESS_LIKELIHOOD: 70\n"
+            "MINIMUM_WORTHWHILE_LIKELIHOOD: 50\n"
+            "CURRENT_COURSE_WORTHWHILE: yes\n"
+            "STRATEGY_DECISION: continue\n"
+            "STRATEGY_PLAN_STATUS: ready\n"
+            "CONTINUATION_JUSTIFICATION: the next check tests a scalable lemma\n"
+            "ABANDON_CURRENT_COURSE: n/a\n"
+            "ALTERNATIVE_METHOD: n/a\n"
+            "FIRST_FALSIFIABLE_CHECK: n/a\n"
+            "STRATEGY_MILESTONES: n/a\n"
+            "STRATEGY_KILL_CRITERIA: n/a\n"
+            "REFLECTION_NEXT: prove the next scalable lemma\n"
+        )
+    else:
+        output = (
+            "AUTORUN_RESULT: incremental\n"
+            "AUTORUN_SUMMARY: completed one checked step\n"
+            "AUTORUN_NEXT: prove the next lemma\n"
+        )
+    Path(request["output"]).write_text(output, encoding="utf-8")
     Path(request["receipt"]).write_text(
         json.dumps({"schema_version": 1, "status": "succeeded"}),
         encoding="utf-8",
@@ -77,6 +95,9 @@ def test_autorun_executes_one_self_prompted_round_and_retains_state(
     assert state["status"] == "paused"
     assert state["round_count"] == 1
     assert state["consecutive_failures"] == 0
+    assert state["last_progress_class"] == "incremental"
+    assert state["incremental_round_count"] == 1
+    assert state["meaningful_round_count"] == 0
     assert state["last_output"].endswith("round-00001/output.md")
     assert "Prove the exact target." in observed_prompts[0]
     assert "choose your own next" in observed_prompts[0]
@@ -138,6 +159,7 @@ def test_autorun_routes_only_strategy_reflections_to_astra(
     ]
     reflection_request = observed_requests[1]
     assert reflection_request["role_id"] == "autorun_strategy_reflection"
+    assert "strategy_pass" not in reflection_request
     assert reflection_request["max_time"] == 15 * 60
     assert reflection_request["empty_output_retries"] == 0
     assert reflection_request["tools"] == ["read"]
@@ -145,11 +167,180 @@ def test_autorun_routes_only_strategy_reflections_to_astra(
     main_prompt = (session / "rounds" / "round-00002" / "prompt.md").read_text(
         encoding="utf-8"
     )
-    assert "Bounded strategy reflection" in main_prompt
+    assert "Meaningful-progress strategy gate" in main_prompt
     final_state = autorun_status(session)
     assert final_state["reflection_count"] == 1
     assert final_state["last_model"] == "openai-codex/gpt-5.6-sol"
     assert final_state["last_reflection_model"] == "openai-codex/gpt-6-astra"
+    assert final_state["last_strategy_likelihood"] == 70
+    assert final_state["last_strategy_threshold"] == 50
+    assert final_state["last_strategy_worthwhile"] is True
+    assert final_state["last_strategy_decision"] == "continue"
+    assert final_state["last_strategy_plan_status"] == "ready"
+
+
+def test_strategy_gate_iterates_astra_until_course_change_plan_is_ready(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    project = ProjectSpec.load(manifest)
+    observed_requests: list[dict[str, object]] = []
+
+    def execute(request_path: Path) -> int:
+        request = json.loads(request_path.read_text(encoding="utf-8"))
+        observed_requests.append(request)
+        if request["role_id"] != "autorun_strategy_reflection":
+            return successful_agent(request_path)
+        pass_number = sum(
+            item["role_id"] == "autorun_strategy_reflection"
+            for item in observed_requests
+        )
+        plan_status = "revise" if pass_number == 1 else "ready"
+        alternative = (
+            "n/a"
+            if pass_number == 1
+            else "derive a continuation theorem instead of enumerating tiny cells"
+        )
+        output = (
+            "The current cell-by-cell course cannot cover the remaining domain.\n"
+            "MEANINGFUL_PROGRESS_LIKELIHOOD: 5\n"
+            "MINIMUM_WORTHWHILE_LIKELIHOOD: 50\n"
+            "CURRENT_COURSE_WORTHWHILE: no\n"
+            "STRATEGY_DECISION: change_course\n"
+            f"STRATEGY_PLAN_STATUS: {plan_status}\n"
+            "CONTINUATION_JUSTIFICATION: n/a\n"
+            "ABANDON_CURRENT_COURSE: stop adding adjacent tiny cells\n"
+            f"ALTERNATIVE_METHOD: {alternative}\n"
+            "STRATEGY_MILESTONES: derive local step; prove propagation; cover range\n"
+            "FIRST_FALSIFIABLE_CHECK: prove a uniform continuation step\n"
+            "STRATEGY_KILL_CRITERIA: abandon if the step cannot cross ten cells\n"
+            "REFLECTION_NEXT: test the continuation lemma on the retained branch\n"
+        )
+        Path(request["output"]).write_text(output, encoding="utf-8")
+        Path(request["receipt"]).write_text(
+            json.dumps({"schema_version": 1, "status": "succeeded"}),
+            encoding="utf-8",
+        )
+        return 0
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
+    )
+    first = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+            retry_delay_seconds=0,
+            max_rounds=1,
+        ),
+    )
+    session = first.run()
+    state = autorun_status(session)
+    state["next_reflection_at"] = "2000-01-01T00:00:00Z"
+    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
+
+    resumed = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            session=session,
+            reflection_minutes=120,
+            round_minutes=1,
+            retry_delay_seconds=0,
+            max_rounds=2,
+        ),
+    )
+    resumed.run()
+
+    assert [request["model"] for request in observed_requests] == [
+        "openai-codex/gpt-5.6-sol",
+        "openai-codex/gpt-6-astra",
+        "openai-codex/gpt-6-astra",
+        "openai-codex/gpt-5.6-sol",
+    ]
+    reflection_requests = [
+        request
+        for request in observed_requests
+        if request["role_id"] == "autorun_strategy_reflection"
+    ]
+    assert [Path(str(request["prompt"])).name for request in reflection_requests] == [
+        "strategy-reflection-prompt.md",
+        "strategy-reflection-pass-02-prompt.md",
+    ]
+    conductor_prompt = (session / "rounds" / "round-00002" / "prompt.md").read_text(
+        encoding="utf-8"
+    )
+    assert "derive a continuation theorem instead of enumerating tiny cells" in (
+        conductor_prompt
+    )
+    assert "abandon the rejected course" in " ".join(conductor_prompt.split())
+    final_state = autorun_status(session)
+    assert final_state["last_strategy_likelihood"] == 5
+    assert final_state["last_strategy_threshold"] == 50
+    assert final_state["last_strategy_worthwhile"] is False
+    assert final_state["last_strategy_decision"] == "change_course"
+    assert final_state["last_strategy_plan_status"] == "ready"
+    assert final_state["strategy_change_required"] is False
+
+
+def test_strategy_gate_never_runs_conductor_without_a_ready_plan(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    runner = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+            retry_delay_seconds=0,
+        ),
+    )
+    session = runner._select_session()
+    runner.session_dir = session
+    round_dir = session / "rounds" / "round-00001"
+    round_dir.mkdir(parents=True)
+    passes: list[int] = []
+
+    def unready_review(request_path: Path) -> int:
+        request = json.loads(request_path.read_text(encoding="utf-8"))
+        passes.append(len(passes) + 1)
+        Path(request["output"]).write_text(
+            "MEANINGFUL_PROGRESS_LIKELIHOOD: 5\n"
+            "MINIMUM_WORTHWHILE_LIKELIHOOD: 50\n"
+            "CURRENT_COURSE_WORTHWHILE: no\n"
+            "STRATEGY_DECISION: change_course\n"
+            "STRATEGY_PLAN_STATUS: revise\n"
+            "CONTINUATION_JUSTIFICATION: n/a\n"
+            "ABANDON_CURRENT_COURSE: stop enumerating cells\n"
+            "ALTERNATIVE_METHOD: derive a global continuation theorem\n"
+            "STRATEGY_MILESTONES: local step; propagation; full interval\n"
+            "FIRST_FALSIFIABLE_CHECK: test the local continuation estimate\n"
+            "STRATEGY_KILL_CRITERIA: stop if the estimate cannot cross ten cells\n"
+            "REFLECTION_NEXT: refine the continuation plan\n",
+            encoding="utf-8",
+        )
+        return 0
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.execute_agent_request",
+        unready_review,
+    )
+
+    with pytest.raises(AutoRunError, match="did not produce an approved strategy"):
+        runner._run_strategy_reflection(
+            1,
+            autorun_status(session),
+            master.read_text(encoding="utf-8"),
+            round_dir,
+        )
+
+    assert passes == [1, 2, 3]
+    assert autorun_status(session)["strategy_change_required"] is True
 
 
 def test_autorun_resume_reloads_edited_master_prompt(

@@ -26,6 +26,18 @@ from .terminal_status import LiveStatusDisplay
 _HERDR_PANE_LABELS: dict[str, str] = {}
 _HERDR_LABEL_ATTEMPTS: dict[str, tuple[str, float]] = {}
 _TERMINAL_TITLES: dict[int, tuple[TextIO, str]] = {}
+_STRATEGY_REVIEW_MAX_PASSES = 3
+_PROGRESS_CLASSES = {"incremental", "meaningful", "blocked", "complete"}
+
+
+@dataclass(frozen=True, slots=True)
+class _StrategyAssessment:
+    likelihood: int
+    threshold: int
+    worthwhile: bool
+    decision: str
+    plan_status: str
+    markers: dict[str, str]
 
 
 class AutoRunError(RuntimeError):
@@ -150,6 +162,20 @@ class AutoRunRunner:
             "round_minutes": self.options.round_minutes,
             "round_count": 0,
             "reflection_count": 0,
+            "meaningful_round_count": 0,
+            "incremental_round_count": 0,
+            "blocked_round_count": 0,
+            "complete_round_count": 0,
+            "unclassified_round_count": 0,
+            "last_progress_class": None,
+            "last_strategy_likelihood": None,
+            "last_strategy_threshold": None,
+            "last_strategy_worthwhile": None,
+            "last_strategy_decision": None,
+            "last_strategy_plan_status": None,
+            "last_strategy_review": None,
+            "last_strategy_round": None,
+            "strategy_change_required": False,
             "consecutive_failures": 0,
             "next_retry_at": None,
             "repeated_output_count": 0,
@@ -333,12 +359,20 @@ class AutoRunRunner:
                 if digest == latest.get("last_output_sha256")
                 else 0
             )
+            progress_class = self._round_progress_class(output_path)
             latest["last_output_sha256"] = digest
             latest["repeated_output_count"] = repeated
+            latest["last_progress_class"] = progress_class
+            counter = f"{progress_class}_round_count"
+            latest[counter] = int(latest.get(counter, 0)) + 1
             latest["consecutive_failures"] = 0
             latest["last_error"] = None
             latest["status"] = "running"
-            self._event(self._session(), "round_completed", f"round {index} succeeded")
+            self._event(
+                self._session(),
+                "round_completed",
+                f"round {index} execution completed; progress {progress_class}",
+            )
         else:
             latest["status"] = "recovering"
             latest["consecutive_failures"] = (
@@ -356,22 +390,201 @@ class AutoRunRunner:
         state: dict[str, Any],
         master_text: str,
         round_dir: Path,
-    ) -> Path | None:
+    ) -> Path:
         model = (
             self.options.reflection_model
             or self.project.strategy_reflection_model
             or self.options.model
             or self.project.planner_model
         )
-        prompt_path = round_dir / "strategy-reflection-prompt.md"
-        output_path = round_dir / "strategy-reflection.md"
-        receipt_path = round_dir / "strategy-reflection-receipt.json"
-        prompt = f"""# Bounded autorun strategy reflection
+        read_only_tools = [
+            tool
+            for tool in self.project.allowed_tools
+            if tool in {"read", "grep", "glob", "web_search"}
+        ]
+        required_change = bool(state.get("strategy_change_required", False))
+        prior_review = ""
+        validation_feedback = ""
+        self._event(self._session(), "reflection_started", f"round {index}")
+        self._emit(f"autorun round {index} strategy reflection starting")
 
-Review the retained campaign state and recommend exactly one concrete next action
-for the primary conductor. Do not execute the task, edit files, or claim progress.
-Identify failed assumptions or repeated work to abandon. Prefer the shortest
-credible route to the living mathematical contract.
+        for pass_number in range(1, _STRATEGY_REVIEW_MAX_PASSES + 1):
+            stem = (
+                "strategy-reflection"
+                if pass_number == 1
+                else f"strategy-reflection-pass-{pass_number:02d}"
+            )
+            prompt_path = round_dir / f"{stem}-prompt.md"
+            output_path = round_dir / f"{stem}.md"
+            receipt_path = round_dir / f"{stem}-receipt.json"
+            prompt = self._strategy_reflection_prompt(
+                state,
+                master_text,
+                pass_number=pass_number,
+                required_change=required_change,
+                prior_review=prior_review,
+                validation_feedback=validation_feedback,
+            )
+            atomic_write_text(prompt_path, prompt)
+            request_path = round_dir / f"{stem}-request.json"
+            atomic_write_json(
+                request_path,
+                {
+                    "role_id": "autorun_strategy_reflection",
+                    "attempt": index,
+                    "omp": self.options.omp or self.project.omp,
+                    "workspace": str(self.project.root),
+                    "run_dir": str(self._session()),
+                    "prompt": str(prompt_path),
+                    "output": str(output_path),
+                    "stdout_log": str(round_dir / f"{stem}-stdout.log"),
+                    "stderr_log": str(round_dir / f"{stem}-stderr.log"),
+                    "receipt": str(receipt_path),
+                    "tools": read_only_tools,
+                    "model": model,
+                    "thinking": self.options.thinking or self.project.planner_thinking,
+                    "max_time": self.options.reflection_round_minutes * 60,
+                    "empty_output_retries": 0,
+                    "execution": self.project.execution.to_dict(),
+                    "sandbox_read_paths": [
+                        str(self.project.root),
+                        str(self._session()),
+                        str(self.master_prompt),
+                    ],
+                    "workspace_executables": True,
+                },
+            )
+            active = self._state()
+            active["active_prompt"] = str(prompt_path)
+            active["active_model"] = model
+            active["active_model_route"] = "strategy_reflection"
+            active["active_strategy_pass"] = pass_number
+            active["last_reflection_model"] = model
+            self._save(active)
+            self._event(
+                self._session(),
+                "reflection_pass_started",
+                f"round {index}; pass {pass_number}",
+            )
+            exit_code = execute_agent_request(request_path)
+            if exit_code != 0 or not output_path.is_file():
+                validation_feedback = (
+                    f"Strategy pass {pass_number} failed to produce a retained review."
+                )
+                continue
+
+            prior_review = output_path.read_text(encoding="utf-8").strip()
+            assessment, errors = self._parse_strategy_assessment(prior_review)
+            decision_marker = self._marker_values_from_text(
+                prior_review, {"STRATEGY_DECISION"}
+            ).get("STRATEGY_DECISION")
+            if decision_marker == "change_course":
+                required_change = True
+                pending = self._state()
+                pending["strategy_change_required"] = True
+                self._save(pending)
+            if (
+                assessment is not None
+                and required_change
+                and assessment.decision != "change_course"
+            ):
+                errors.append(
+                    "A prior pass rejected the current course; later passes must "
+                    "refine a replacement rather than reinstate it."
+                )
+            if (
+                assessment is not None
+                and assessment.decision == "change_course"
+                and pass_number == 1
+            ):
+                errors.append(
+                    "A course change requires a second Astra pass to challenge and "
+                    "solidify the replacement plan."
+                )
+            if assessment is not None and not errors:
+                approved = self._state()
+                approved["active_strategy_pass"] = None
+                approved["last_strategy_likelihood"] = assessment.likelihood
+                approved["last_strategy_threshold"] = assessment.threshold
+                approved["last_strategy_worthwhile"] = assessment.worthwhile
+                approved["last_strategy_decision"] = assessment.decision
+                approved["last_strategy_plan_status"] = assessment.plan_status
+                approved["last_strategy_review"] = str(output_path)
+                approved["last_strategy_round"] = index
+                approved["strategy_change_required"] = False
+                self._save(approved)
+                self._event(
+                    self._session(),
+                    "reflection_completed",
+                    (
+                        f"round {index}; decision {assessment.decision}; "
+                        f"likelihood {assessment.likelihood}%"
+                    ),
+                )
+                return output_path
+            validation_feedback = " ".join(errors)
+
+        failed = self._state()
+        failed["active_strategy_pass"] = None
+        failed["strategy_change_required"] = required_change
+        self._save(failed)
+        self._event(
+            self._session(),
+            "reflection_failed",
+            f"round {index}; meaningful-progress gate has no approved plan",
+        )
+        raise AutoRunError(
+            "meaningful-progress gate did not produce an approved strategy after "
+            f"{_STRATEGY_REVIEW_MAX_PASSES} Astra passes"
+        )
+
+    def _strategy_reflection_prompt(
+        self,
+        state: dict[str, Any],
+        master_text: str,
+        *,
+        pass_number: int,
+        required_change: bool,
+        prior_review: str,
+        validation_feedback: str,
+    ) -> str:
+        history = self._recent_progress_history(state)
+        revision = ""
+        if prior_review:
+            revision = f"""
+## Previous Astra review
+
+{prior_review[-20000:]}
+
+## Required revision
+
+{validation_feedback or "Adversarially challenge and strengthen this plan."}
+"""
+        course_constraint = (
+            "A previous pass has already rejected the current course. You must keep "
+            "`STRATEGY_DECISION: change_course` and develop the replacement."
+            if required_change
+            else "No earlier pass in this gate has mandated a course change."
+        )
+        return f"""# Autorun meaningful-progress gate — pass {pass_number}
+
+You are the strategic governor, not an execution agent. Judge whether the current
+course is likely to produce a meaningful result within the next 12 conductor
+rounds. Meaningful means materially reducing distance to the living master
+contract, discharging a load-bearing final obligation, or establishing a method
+that scales to the remaining domain. Another local lemma, slightly better
+constant, or adjacent tiny cell is incremental unless it unlocks such a method.
+Execution success, a passing build, and activity are not meaningful progress by
+themselves.
+
+Estimate the likelihood honestly. Set the minimum likelihood that would justify
+the expected compute, then decide whether the current course is worth continuing.
+If it is not, reject it and use your full reasoning effort to formulate a
+fundamentally different approach. A replacement is ready only when it names the
+method, what to abandon, a falsifiable first check, milestones, and kill criteria.
+Do not execute tasks, edit files, or claim unverified progress.
+
+{course_constraint}
 
 ## Living Master Prompt
 
@@ -380,67 +593,160 @@ credible route to the living mathematical contract.
 ## Retained state
 
 - Session: `{self._session()}`
-- Completed rounds: {int(state.get("round_count", 0))}
+- Completed executions: {int(state.get("round_count", 0))}
+- Meaningful rounds: {int(state.get("meaningful_round_count", 0))}
+- Incremental rounds: {int(state.get("incremental_round_count", 0))}
 - Previous output: `{state.get("last_output") or "None"}`
 - Previous receipt: `{state.get("last_receipt") or "None"}`
 - Previous error: `{state.get("last_error") or "None"}`
 
-Return concise strategy advice ending with:
+## Recent execution trajectory
 
-REFLECTION_NEXT: one concrete action for the primary conductor
+{history}
+{revision}
+## Required machine-readable decision
+
+End with each marker on one line:
+
+MEANINGFUL_PROGRESS_LIKELIHOOD: integer from 0 to 100
+MINIMUM_WORTHWHILE_LIKELIHOOD: integer from 1 to 99
+CURRENT_COURSE_WORTHWHILE: yes | no
+STRATEGY_DECISION: continue | change_course
+STRATEGY_PLAN_STATUS: ready | revise
+CONTINUATION_JUSTIFICATION: required when continuing; otherwise n/a
+ABANDON_CURRENT_COURSE: required for change_course; otherwise n/a
+ALTERNATIVE_METHOD: required for change_course; otherwise n/a
+STRATEGY_MILESTONES: required for change_course; otherwise n/a
+FIRST_FALSIFIABLE_CHECK: required for change_course; otherwise n/a
+STRATEGY_KILL_CRITERIA: required for change_course; otherwise n/a
+REFLECTION_NEXT: one concrete action that follows the approved strategy
 """
-        atomic_write_text(prompt_path, prompt)
-        request_path = round_dir / "strategy-reflection-request.json"
-        read_only_tools = [
-            tool
-            for tool in self.project.allowed_tools
-            if tool in {"read", "grep", "glob", "web_search"}
-        ]
-        atomic_write_json(
-            request_path,
-            {
-                "role_id": "autorun_strategy_reflection",
-                "attempt": index,
-                "omp": self.options.omp or self.project.omp,
-                "workspace": str(self.project.root),
-                "run_dir": str(self._session()),
-                "prompt": str(prompt_path),
-                "output": str(output_path),
-                "stdout_log": str(round_dir / "strategy-reflection-stdout.log"),
-                "stderr_log": str(round_dir / "strategy-reflection-stderr.log"),
-                "receipt": str(receipt_path),
-                "tools": read_only_tools,
-                "model": model,
-                "thinking": self.options.thinking or self.project.planner_thinking,
-                "max_time": self.options.reflection_round_minutes * 60,
-                "empty_output_retries": 0,
-                "execution": self.project.execution.to_dict(),
-                "sandbox_read_paths": [
-                    str(self.project.root),
-                    str(self._session()),
-                    str(self.master_prompt),
-                ],
-                "workspace_executables": True,
-            },
+
+    def _recent_progress_history(self, state: dict[str, Any]) -> str:
+        round_count = int(state.get("round_count", 0))
+        last_review = state.get("last_strategy_round")
+        prior = (
+            int(last_review)
+            if isinstance(last_review, int) and not isinstance(last_review, bool)
+            else 0
         )
-        active = self._state()
-        active["active_prompt"] = str(prompt_path)
-        active["active_model"] = model
-        active["active_model_route"] = "strategy_reflection"
-        active["last_reflection_model"] = model
-        self._save(active)
-        self._event(self._session(), "reflection_started", f"round {index}")
-        self._emit(f"autorun round {index} strategy reflection starting")
-        exit_code = execute_agent_request(request_path)
-        if exit_code == 0 and output_path.is_file():
-            self._event(self._session(), "reflection_completed", f"round {index}")
-            return output_path
-        self._event(
-            self._session(),
-            "reflection_failed",
-            f"round {index}; primary conductor will continue",
+        start = max(1, prior + 1, round_count - 19)
+        rows: list[str] = []
+        for round_index in range(start, round_count + 1):
+            path = self._session() / "rounds" / f"round-{round_index:05d}" / "output.md"
+            markers = self._marker_values(path, {"AUTORUN_RESULT", "AUTORUN_SUMMARY"})
+            if markers:
+                rows.append(
+                    f"- Round {round_index}: "
+                    f"{markers.get('AUTORUN_RESULT', 'unclassified')} — "
+                    f"{markers.get('AUTORUN_SUMMARY', 'No retained summary.')}"
+                )
+        return "\n".join(rows) if rows else "No retained round summaries."
+
+    @staticmethod
+    def _parse_strategy_assessment(
+        text: str,
+    ) -> tuple[_StrategyAssessment | None, list[str]]:
+        names = {
+            "MEANINGFUL_PROGRESS_LIKELIHOOD",
+            "MINIMUM_WORTHWHILE_LIKELIHOOD",
+            "CURRENT_COURSE_WORTHWHILE",
+            "STRATEGY_DECISION",
+            "STRATEGY_PLAN_STATUS",
+            "CONTINUATION_JUSTIFICATION",
+            "ABANDON_CURRENT_COURSE",
+            "ALTERNATIVE_METHOD",
+            "STRATEGY_MILESTONES",
+            "FIRST_FALSIFIABLE_CHECK",
+            "STRATEGY_KILL_CRITERIA",
+            "REFLECTION_NEXT",
+        }
+        markers = AutoRunRunner._marker_values_from_text(text, names)
+        required = {
+            "MEANINGFUL_PROGRESS_LIKELIHOOD",
+            "MINIMUM_WORTHWHILE_LIKELIHOOD",
+            "CURRENT_COURSE_WORTHWHILE",
+            "STRATEGY_DECISION",
+            "STRATEGY_PLAN_STATUS",
+            "REFLECTION_NEXT",
+        }
+        missing = sorted(required - markers.keys())
+        errors = [f"Missing marker {name}." for name in missing]
+        try:
+            likelihood = int(markers["MEANINGFUL_PROGRESS_LIKELIHOOD"])
+            threshold = int(markers["MINIMUM_WORTHWHILE_LIKELIHOOD"])
+        except (KeyError, ValueError):
+            return None, [*errors, "Likelihood markers must be integers."]
+        if not 0 <= likelihood <= 100:
+            errors.append("Meaningful-progress likelihood must be from 0 to 100.")
+        if not 1 <= threshold <= 99:
+            errors.append("Worthwhile likelihood threshold must be from 1 to 99.")
+        worthwhile_text = markers.get("CURRENT_COURSE_WORTHWHILE")
+        if worthwhile_text not in {"yes", "no"}:
+            errors.append("CURRENT_COURSE_WORTHWHILE must be yes or no.")
+        worthwhile = worthwhile_text == "yes"
+        decision = markers.get("STRATEGY_DECISION", "")
+        if decision not in {"continue", "change_course"}:
+            errors.append("STRATEGY_DECISION must be continue or change_course.")
+        plan_status = markers.get("STRATEGY_PLAN_STATUS", "")
+        if plan_status not in {"ready", "revise"}:
+            errors.append("STRATEGY_PLAN_STATUS must be ready or revise.")
+        if worthwhile != (likelihood >= threshold):
+            errors.append(
+                "Worthwhile judgment must match the reported likelihood threshold."
+            )
+        if decision != ("continue" if worthwhile else "change_course"):
+            errors.append("Strategy decision must match the worthwhile judgment.")
+        if plan_status != "ready":
+            errors.append("The strategy plan is not ready.")
+        if decision == "continue":
+            if markers.get("CONTINUATION_JUSTIFICATION") in {None, "", "n/a"}:
+                errors.append("Continuing requires a substantive justification.")
+        elif decision == "change_course":
+            for name in (
+                "ABANDON_CURRENT_COURSE",
+                "ALTERNATIVE_METHOD",
+                "STRATEGY_MILESTONES",
+                "FIRST_FALSIFIABLE_CHECK",
+                "STRATEGY_KILL_CRITERIA",
+            ):
+                if markers.get(name) in {None, "", "n/a"}:
+                    errors.append(f"Course change requires {name}.")
+        return (
+            _StrategyAssessment(
+                likelihood=likelihood,
+                threshold=threshold,
+                worthwhile=worthwhile,
+                decision=decision,
+                plan_status=plan_status,
+                markers=markers,
+            ),
+            errors,
         )
-        return None
+
+    @staticmethod
+    def _marker_values(path: Path, names: set[str]) -> dict[str, str]:
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            return {}
+        return AutoRunRunner._marker_values_from_text(text, names)
+
+    @staticmethod
+    def _marker_values_from_text(text: str, names: set[str]) -> dict[str, str]:
+        markers: dict[str, str] = {}
+        for line in text.splitlines():
+            for name in names:
+                prefix = f"{name}:"
+                if line.startswith(prefix):
+                    markers[name] = line.removeprefix(prefix).strip()
+        return markers
+
+    @staticmethod
+    def _round_progress_class(output_path: Path) -> str:
+        markers = AutoRunRunner._marker_values(output_path, {"AUTORUN_RESULT"})
+        value = markers.get("AUTORUN_RESULT", "unclassified")
+        return value if value in _PROGRESS_CLASSES else "unclassified"
 
     def _round_prompt(
         self,
@@ -457,15 +763,16 @@ REFLECTION_NEXT: one concrete action for the primary conductor
             reflection_text = reflection_output.read_text(encoding="utf-8").strip()
             reflection = f"""
 
-## Bounded strategy reflection
+## Meaningful-progress strategy gate
 
 Source: `{reflection_output}`
 
 {reflection_text}
 
-Treat this as strategy advice, not verified evidence. Check it against the
-repository, then execute the single highest-value reachable action with the
-primary model.
+This is the authoritative strategy decision, not verified mathematical evidence.
+Check its repository claims. If it says `change_course`, abandon the rejected
+course and execute the replacement plan's first falsifiable check; do not spend
+this round making another incremental improvement to the rejected approach.
 """
         return f"""# Autorun conductor round {index}
 
@@ -487,7 +794,7 @@ Source: `{self.master_prompt}`
 - Previous receipt: `{prior_receipt}`
 - Previous controller/agent error: `{failure}`
 - Consecutive failed rounds: {int(state.get("consecutive_failures", 0))}
-- Completed rounds: {int(state.get("round_count", 0))}
+- Completed executions: {int(state.get("round_count", 0))}
 {reflection}
 ## Operating protocol
 
@@ -507,12 +814,15 @@ Source: `{self.master_prompt}`
    unchecked oracle, or `native_decide`.
 10. Keep every command inside the inherited resource-control cgroup. Never use
     `systemd-run`, `nohup`, `disown`, `setsid`, or detached/background processes.
-11. Before returning, save all useful work and state exactly what was verified and
+11. Classify the result as `meaningful` only if it materially advances the final
+    contract or validates a scalable method. Local lemmas, tighter constants, and
+    adjacent tiny cells are `incremental` even when fully verified.
+12. Before returning, save all useful work and state exactly what was verified and
     what the next conductor round should attempt.
 
 End with these machine-readable lines:
 
-AUTORUN_RESULT: progress | blocked | complete
+AUTORUN_RESULT: incremental | meaningful | blocked | complete
 AUTORUN_SUMMARY: one factual sentence
 AUTORUN_NEXT: one concrete next action
 """
@@ -764,9 +1074,9 @@ def _progress_recap(
         "CURRENT RUN",
         (
             f"Controller: {status} and {process_state}. Session: "
-            f"{state.get('round_count', 0)} completed rounds, "
+            f"{state.get('round_count', 0)} completed executions, "
             f"{state.get('consecutive_failures', 0)} consecutive failures, "
-            f"{state.get('reflection_count', 0)} strategy reflections."
+            f"{state.get('reflection_count', 0)} meaningful-progress reviews."
         ),
     ]
     if isinstance(active_round, int) and not isinstance(active_round, bool):
@@ -793,6 +1103,28 @@ def _progress_recap(
         )
     else:
         sections.append("No conductor round is currently active.")
+    decision = state.get("last_strategy_decision")
+    likelihood = state.get("last_strategy_likelihood")
+    threshold = state.get("last_strategy_threshold")
+    if isinstance(decision, str):
+        sections.extend(
+            [
+                "MEANINGFUL-PROGRESS GATE",
+                (
+                    f"Latest decision: {decision}; estimated likelihood "
+                    f"{likelihood}% against a {threshold}% worthwhile threshold. "
+                    f"Plan status: {state.get('last_strategy_plan_status', 'unknown')}."
+                ),
+                (
+                    "Classified executions since gate activation: "
+                    f"{state.get('meaningful_round_count', 0)} meaningful, "
+                    f"{state.get('incremental_round_count', 0)} incremental, "
+                    f"{state.get('blocked_round_count', 0)} blocked, "
+                    f"{state.get('complete_round_count', 0)} complete, "
+                    f"{state.get('unclassified_round_count', 0)} unclassified."
+                ),
+            ]
+        )
     immediate, evidence, milestones = _master_prompt_progress(state)
     if immediate:
         sections.extend(["IMMEDIATE MILESTONE", immediate])
@@ -829,10 +1161,10 @@ def _progress_recap(
         )
     markers = _last_round_markers(state)
     if markers:
-        sections.append("LATEST COMPLETED ROUND")
+        sections.append("LATEST COMPLETED EXECUTION")
         sections.append(
-            "Result: "
-            f"{markers.get('AUTORUN_RESULT', 'unspecified')}. "
+            "Progress classification: "
+            f"{markers.get('AUTORUN_RESULT', 'unclassified')}. "
             f"{markers.get('AUTORUN_SUMMARY', 'No retained summary.')}"
         )
         next_action = markers.get("AUTORUN_NEXT")
@@ -841,8 +1173,8 @@ def _progress_recap(
     else:
         sections.extend(
             [
-                "LATEST COMPLETED ROUND",
-                "No conductor round has produced a retained result in this session yet.",
+                "LATEST COMPLETED EXECUTION",
+                "No conductor execution has produced a retained result yet.",
             ]
         )
     error = state.get("last_error")
@@ -935,7 +1267,7 @@ def follow_autorun_status(
             detail = (
                 f"controller {controller} · round {active_round or '-'} · "
                 f"{activity} {receipt_status}{model} · "
-                f"completed {state.get('round_count', 0)} · "
+                f"executions {state.get('round_count', 0)} · "
                 f"failures {state.get('consecutive_failures', 0)}"
             )
             retry_at = state.get("next_retry_at")
