@@ -341,11 +341,16 @@ def _run_processes(
             cwd = Path(os.readlink(path / "cwd")).resolve()
         except (IndexError, OSError):
             continue
+        try:
+            process_name = path.joinpath("comm").read_text(encoding="utf-8").strip()
+        except OSError:
+            process_name = None
         if (
             len(fields) > 19
             and fields[0] != "Z"
             and fields[1] == "1"
             and (cwd == workspace or cwd.is_relative_to(workspace))
+            and process_name != "systemd-run"
         ):
             result.append(_ProcessTarget(pid=pid, process_start_time=fields[19]))
     return tuple(result)
@@ -558,7 +563,8 @@ def _registered_process_survives(record: RegisteredRunProcess) -> bool:
 
 def _terminate_registered_units(run_dir: Path) -> tuple[str, ...]:
     errors: list[str] = []
-    for record in registered_run_units(run_dir):
+    records = registered_run_units(run_dir)
+    for record in records:
         error = terminate_sandbox_unit(record.unit, record.systemctl)
         if error is not None:
             errors.append(error)

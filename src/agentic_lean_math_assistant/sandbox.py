@@ -49,6 +49,23 @@ class SandboxInvocation:
     environment: Mapping[str, str] | None = None
 
 
+def _resource_properties(
+    policy: ExecutionSpec, runtime_max_seconds: float | None
+) -> tuple[str, ...]:
+    if runtime_max_seconds is None or runtime_max_seconds <= 0:
+        raise SandboxError("resource controls require a positive command deadline")
+    return (
+        "KillMode=control-group",
+        f"MemoryMax={policy.memory_max_mb * _MIB}",
+        "MemorySwapMax=0",
+        f"TasksMax={policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
+        f"LimitNPROC={_current_user_tasks() + policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
+        f"CPUQuota={policy.cpu_quota_percent}%",
+        f"RuntimeMaxSec={max(1, math.ceil(runtime_max_seconds))}s",
+        f"LimitFSIZE={policy.file_size_max_mb * _MIB}",
+    )
+
+
 def prepare_sandbox(
     argv: tuple[str, ...],
     *,
@@ -72,18 +89,6 @@ def prepare_sandbox(
     systemd_run = _required_executable("systemd-run")
     systemctl = _required_executable("systemctl")
     unit = f"campaign-{os.getpid()}-{secrets.token_hex(6)}.service"
-    if runtime_max_seconds is None or runtime_max_seconds <= 0:
-        raise SandboxError("resource controls require a positive command deadline")
-    resource_properties = (
-        "KillMode=control-group",
-        f"MemoryMax={policy.memory_max_mb * _MIB}",
-        "MemorySwapMax=0",
-        f"TasksMax={policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
-        f"LimitNPROC={_current_user_tasks() + policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
-        f"CPUQuota={policy.cpu_quota_percent}%",
-        f"RuntimeMaxSec={max(1, math.ceil(runtime_max_seconds))}s",
-        f"LimitFSIZE={policy.file_size_max_mb * _MIB}",
-    )
     if not policy.sandbox:
         executable_visibility = _executable_visibility(executable)
         allowed_paths = _deduplicate_paths(
@@ -103,6 +108,8 @@ def prepare_sandbox(
             executable,
             allowed_paths,
         )
+        resource_properties = _resource_properties(policy, runtime_max_seconds)
+        assert runtime_max_seconds is not None
         environment_tool = _required_executable("env")
         wrapped = [
             str(systemd_run),
@@ -148,6 +155,8 @@ def prepare_sandbox(
         _is_below(executable, workspace) or _is_lexically_below(executable, workspace)
     ) and not allow_workspace_executables:
         raise SandboxError("workspace executable requires workspace_executables=true")
+    resource_properties = _resource_properties(policy, runtime_max_seconds)
+    assert runtime_max_seconds is not None
 
     executable_visibility = _executable_visibility(executable)
     executable_paths: tuple[Path, ...] = (

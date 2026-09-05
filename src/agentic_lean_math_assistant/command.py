@@ -169,11 +169,7 @@ def run_captured_command(
                 allow_workspace_executables=allow_workspace_executables,
                 runtime_max_seconds=timeout,
             )
-            if invocation.unit is not None:
-                if run_dir is None:
-                    raise SandboxError(
-                        "sandboxed command requires a retained run identity"
-                    )
+            if invocation.unit is not None and run_dir is not None:
                 assert invocation.systemctl is not None
                 register_run_unit(run_dir, invocation.unit, invocation.systemctl)
                 registered_unit = (
@@ -197,7 +193,7 @@ def run_captured_command(
             errors="replace",
             start_new_session=True,
         )
-        if workspace is not None:
+        if workspace is not None and invocation.unit is None:
             owner = run_dir if run_dir is not None else workspace.parent
             registered_process = register_run_process(owner, process.pid)
         assert process.stdout is not None
