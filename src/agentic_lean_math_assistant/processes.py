@@ -428,7 +428,9 @@ def _terminate(
                 pending.add(key)
             continue
         if descriptor is None:
-            unresolved.add(key)
+            members = _group_members(target)
+            if members is None or members:
+                unresolved.add(key)
             continue
         members = _group_members(target)
         if members is None:

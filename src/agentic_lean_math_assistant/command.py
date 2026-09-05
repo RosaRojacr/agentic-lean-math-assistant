@@ -193,7 +193,7 @@ def run_captured_command(
             errors="replace",
             start_new_session=True,
         )
-        if workspace is not None and invocation.unit is None:
+        if workspace is not None:
             owner = run_dir if run_dir is not None else workspace.parent
             registered_process = register_run_process(owner, process.pid)
         assert process.stdout is not None

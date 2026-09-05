@@ -283,9 +283,8 @@ def _invoke(
             errors="replace",
             start_new_session=True,
         )
-        if invocation.unit is None:
-            owner = run_dir if run_dir is not None else workspace.parent
-            registered_process = register_run_process(owner, process.pid)
+        owner = run_dir if run_dir is not None else workspace.parent
+        registered_process = register_run_process(owner, process.pid)
         assert process.stdout is not None
         assert process.stderr is not None
         stdout_thread = threading.Thread(
