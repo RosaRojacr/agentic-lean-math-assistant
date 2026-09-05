@@ -80,6 +80,10 @@ def test_autorun_executes_one_self_prompted_round_and_retains_state(
     assert state["last_output"].endswith("round-00001/output.md")
     assert "Prove the exact target." in observed_prompts[0]
     assert "choose your own next" in observed_prompts[0]
+    assert (
+        "Keep every command inside the inherited resource-control cgroup"
+        in (observed_prompts[0])
+    )
     assert (session / "events.jsonl").is_file()
 
 

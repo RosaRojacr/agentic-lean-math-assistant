@@ -505,7 +505,9 @@ Source: `{self.master_prompt}`
    the sleeping operator and do not enter a polling loop.
 9. Do not weaken the CMV theorem contract. No `sorry`, `admit`, project axioms,
    unchecked oracle, or `native_decide`.
-10. Before returning, save all useful work and state exactly what was verified and
+10. Keep every command inside the inherited resource-control cgroup. Never use
+    `systemd-run`, `nohup`, `disown`, `setsid`, or detached/background processes.
+11. Before returning, save all useful work and state exactly what was verified and
     what the next conductor round should attempt.
 
 End with these machine-readable lines:
