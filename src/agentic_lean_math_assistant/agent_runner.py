@@ -262,7 +262,7 @@ def _invoke(
             if invocation.unit is not None:
                 if run_dir is None:
                     raise SandboxError(
-                        "sandboxed agent requires a retained run identity"
+                        "resource-controlled agent requires a retained run identity"
                     )
                 assert invocation.systemctl is not None
                 register_run_unit(run_dir, invocation.unit, invocation.systemctl)

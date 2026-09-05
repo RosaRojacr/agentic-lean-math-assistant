@@ -191,6 +191,11 @@ to the next primary conductor prompt. The reflection cannot execute the ensuing
 implementation round. Its deadline defaults to 15 minutes and it receives no
 empty-output retry, limiting accidental premium-model consumption.
 
+Every autorun agent invocation retains the configured transient cgroup deadline,
+memory, swap, CPU, task, and file-size limits. A trusted project may set
+`execution.sandbox = false` to disable Bubblewrap namespace isolation without
+removing those resource ceilings.
+
 Start, inspect, follow, and stop a session with:
 
 ```bash

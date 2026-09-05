@@ -33,6 +33,9 @@
 - Made all autorun pane followers survive controller stop/resume cycles and
   transient state-read failures. Current-output and raw-event views now follow
   `active_round` and update their Herdr pane labels on every round change.
+- Enforced transient cgroup resource limits even when a trusted campaign disables
+  Bubblewrap namespace isolation, preventing unbounded agent subprocess memory
+  from exhausting the host.
 
 
 ## 1.1.1 — 2026-08-31

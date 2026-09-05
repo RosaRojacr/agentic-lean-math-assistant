@@ -60,7 +60,7 @@ def prepare_sandbox(
     allow_workspace_executables: bool = False,
     runtime_max_seconds: float | None = None,
 ) -> SandboxInvocation:
-    """Wrap a command in a systemd cgroup and bubblewrap mount namespace."""
+    """Apply cgroup limits and, when enabled, a Bubblewrap mount namespace."""
     executable = _resolve_executable(argv[0], cwd, environment)
     workspace = workspace.resolve()
     if not workspace.is_dir():
@@ -69,6 +69,21 @@ def prepare_sandbox(
         cwd.resolve().relative_to(workspace)
     except ValueError as exc:
         raise SandboxError(f"sandbox cwd escapes workspace: {cwd}") from exc
+    systemd_run = _required_executable("systemd-run")
+    systemctl = _required_executable("systemctl")
+    unit = f"campaign-{os.getpid()}-{secrets.token_hex(6)}.service"
+    if runtime_max_seconds is None or runtime_max_seconds <= 0:
+        raise SandboxError("resource controls require a positive command deadline")
+    resource_properties = (
+        "KillMode=control-group",
+        f"MemoryMax={policy.memory_max_mb * _MIB}",
+        "MemorySwapMax=0",
+        f"TasksMax={policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
+        f"LimitNPROC={_current_user_tasks() + policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
+        f"CPUQuota={policy.cpu_quota_percent}%",
+        f"RuntimeMaxSec={max(1, math.ceil(runtime_max_seconds))}s",
+        f"LimitFSIZE={policy.file_size_max_mb * _MIB}",
+    )
     if not policy.sandbox:
         executable_visibility = _executable_visibility(executable)
         allowed_paths = _deduplicate_paths(
@@ -88,20 +103,46 @@ def prepare_sandbox(
             executable,
             allowed_paths,
         )
+        environment_tool = _required_executable("env")
+        wrapped = [
+            str(systemd_run),
+            "--user",
+            "--wait",
+            "--pipe",
+            "--quiet",
+            "--collect",
+            f"--unit={unit}",
+            f"--working-directory={cwd}",
+        ]
+        for value in resource_properties:
+            wrapped.extend(("--property", value))
+        wrapped.extend(
+            (
+                "--",
+                str(environment_tool),
+                "-i",
+                *(f"{name}={value}" for name, value in effective_environment.items()),
+                *argv,
+            )
+        )
         return SandboxInvocation(
-            argv=argv,
-            unit=None,
-            systemctl=None,
+            argv=tuple(wrapped),
+            unit=unit,
+            systemctl=str(systemctl),
             metadata={
                 "enabled": False,
-                "backend": None,
+                "backend": "systemd-cgroup",
+                "unit": unit,
+                "memory_max_mb": policy.memory_max_mb,
+                "memory_swap_max_mb": 0,
+                "cpu_quota_percent": policy.cpu_quota_percent,
+                "tasks_max": policy.tasks_max,
+                "file_size_max_mb": policy.file_size_max_mb,
+                "runtime_max_seconds": max(1, math.ceil(runtime_max_seconds)),
                 "environment": _environment_metadata(effective_environment, policy),
                 "toolchain": _toolchain_metadata(executable, workspace),
             },
-            environment=effective_environment,
         )
-    systemd_run = _required_executable("systemd-run")
-    systemctl = _required_executable("systemctl")
     bubblewrap = _required_executable("bwrap")
     if (
         _is_below(executable, workspace) or _is_lexically_below(executable, workspace)
@@ -133,18 +174,8 @@ def prepare_sandbox(
             *read_paths,
         )
     )
-    unit = f"campaign-{os.getpid()}-{secrets.token_hex(6)}.service"
-    if runtime_max_seconds is None or runtime_max_seconds <= 0:
-        raise SandboxError("sandbox requires a positive command deadline")
     properties = (
-        "KillMode=control-group",
-        f"MemoryMax={policy.memory_max_mb * _MIB}",
-        "MemorySwapMax=0",
-        f"TasksMax={policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
-        f"LimitNPROC={_current_user_tasks() + policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
-        f"CPUQuota={policy.cpu_quota_percent}%",
-        f"RuntimeMaxSec={max(1, math.ceil(runtime_max_seconds))}s",
-        f"LimitFSIZE={policy.file_size_max_mb * _MIB}",
+        *resource_properties,
         "NoExecPaths=/",
         "ExecPaths=" + " ".join(_systemd_path(path) for path in allowed_paths),
     )

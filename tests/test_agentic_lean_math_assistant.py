@@ -1971,6 +1971,30 @@ def test_sandbox_enforces_memory_limit(
     assert receipt["sandbox"]["memory_swap_max_mb"] == 0
 
 
+def test_memory_limit_survives_explicit_namespace_opt_out(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = _command_manifest(
+        tmp_path,
+        "import time; value=bytearray(256 * 1024 * 1024); time.sleep(1)",
+        execution="[execution]\nsandbox = false\nmemory_max_mb = 64",
+    )
+
+    run_dir = CampaignBuilder(
+        CampaignSpec.load(manifest), options=_options(tmp_path, monkeypatch)
+    ).run()
+    state = json.loads((run_dir / "state.json").read_text(encoding="utf-8"))
+    receipt_path = next((run_dir / "stages" / "check").glob("attempt-*.json"))
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+
+    assert state["stages"]["check"]["status"] == "failed"
+    assert receipt["exit_code"] != 0
+    assert receipt["sandbox"]["enabled"] is False
+    assert receipt["sandbox"]["backend"] == "systemd-cgroup"
+    assert receipt["sandbox"]["memory_max_mb"] == 64
+    assert receipt["sandbox"]["memory_swap_max_mb"] == 0
+
+
 def test_sandbox_enforces_process_limit(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
