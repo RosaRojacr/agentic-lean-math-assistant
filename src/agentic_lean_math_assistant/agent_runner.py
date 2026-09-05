@@ -259,11 +259,7 @@ def _invoke(
                 allow_workspace_executables=allow_workspace_executables,
                 runtime_max_seconds=max_time + 60,
             )
-            if invocation.unit is not None:
-                if run_dir is None:
-                    raise SandboxError(
-                        "resource-controlled agent requires a retained run identity"
-                    )
+            if invocation.unit is not None and run_dir is not None:
                 assert invocation.systemctl is not None
                 register_run_unit(run_dir, invocation.unit, invocation.systemctl)
                 registered_unit = (
