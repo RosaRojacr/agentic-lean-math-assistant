@@ -187,9 +187,10 @@ project's base policy.
 Strategy reflection is isolated from implementation. At the configured
 interval, `autorun` launches a separate, read-only request using
 `strategy_reflection_model`, retains its recommendation, and passes that text
-to the next primary conductor prompt. The reflection cannot execute the ensuing
-implementation round. Its deadline defaults to 15 minutes and it receives no
-empty-output retry, limiting accidental premium-model consumption.
+to the next conductor prompt. Its deadline defaults to 15 minutes and it
+receives no empty-output retry. During a continuous failure streak, one
+conductor round is routed through `targeted_task_model` after every two failed
+primary-model rounds; a successful round restores normal routing.
 
 Every autorun agent invocation retains the configured transient cgroup deadline,
 memory, swap, CPU, task, and file-size limits. A trusted project may set
@@ -223,7 +224,8 @@ uv run agentic-lean-math-assistant autorun-stop \
 
 Use `--model` to override the primary conductor and `--reflection-model` to
 override only the scheduled reflection. The live display identifies the active
-route and model, so a reflection cannot be mistaken for a normal agent round.
+route and model. While recovering, it also reports the exact next retry
+timestamp, distinguishing bounded backoff from a stopped controller.
 
 All three followers remain attached while the controller is stopped, paused,
 restarted, or temporarily unreadable. They reread `state.json` on every refresh.

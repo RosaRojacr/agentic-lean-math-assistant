@@ -151,6 +151,7 @@ class AutoRunRunner:
             "round_count": 0,
             "reflection_count": 0,
             "consecutive_failures": 0,
+            "next_retry_at": None,
             "repeated_output_count": 0,
             "last_output_sha256": None,
             "last_output": None,
@@ -177,6 +178,7 @@ class AutoRunRunner:
         state["status"] = "running"
         state["pid"] = os.getpid()
         state["stop_requested"] = False
+        state["next_retry_at"] = None
         state["last_error"] = None
         self._save(state)
         self._event(self._session(), "resumed", "autorun controller running")
@@ -251,6 +253,7 @@ class AutoRunRunner:
             raise AutoRunError("Master Prompt is empty")
         master_digest = hashlib.sha256(master_text.encode("utf-8")).hexdigest()
         state["status"] = "running"
+        state["next_retry_at"] = None
         state["heartbeat_at"] = utc_now()
         state["master_prompt_sha256"] = master_digest
         state["active_round"] = index
@@ -270,7 +273,7 @@ class AutoRunRunner:
         prompt_path = round_dir / "prompt.md"
         output_path = round_dir / "output.md"
         receipt_path = round_dir / "receipt.json"
-        primary_model = self.options.model or self.project.planner_model
+        conductor_model, model_route = self._conductor_model(state)
         atomic_write_text(prompt_path, prompt)
         request_path = round_dir / "request.json"
         atomic_write_json(
@@ -287,7 +290,7 @@ class AutoRunRunner:
                 "stderr_log": str(round_dir / "stderr.log"),
                 "receipt": str(receipt_path),
                 "tools": list(self.project.allowed_tools),
-                "model": primary_model,
+                "model": conductor_model,
                 "thinking": self.options.thinking or self.project.planner_thinking,
                 "max_time": self.options.round_minutes * 60,
                 "empty_output_retries": 1,
@@ -302,8 +305,8 @@ class AutoRunRunner:
         )
         state = self._state()
         state["active_prompt"] = str(prompt_path)
-        state["active_model"] = primary_model
-        state["active_model_route"] = "primary"
+        state["active_model"] = conductor_model
+        state["active_model_route"] = model_route
         self._save(state)
         self._event(self._session(), "round_started", f"round {index}")
         self._emit(f"autorun round {index} starting")
@@ -312,7 +315,7 @@ class AutoRunRunner:
         latest["round_count"] = index
         latest["active_round"] = None
         latest["active_prompt"] = None
-        latest["last_model"] = primary_model
+        latest["last_model"] = conductor_model
         latest["active_model"] = None
         latest["active_model_route"] = None
         latest["last_receipt"] = str(receipt_path)
@@ -512,13 +515,38 @@ AUTORUN_SUMMARY: one factual sentence
 AUTORUN_NEXT: one concrete next action
 """
 
+    def _conductor_model(self, state: dict[str, Any]) -> tuple[str | None, str]:
+        primary_model = self.options.model or self.project.planner_model
+        targeted_model = self.project.targeted_task_model
+        failures = int(state.get("consecutive_failures", 0))
+        if (
+            targeted_model is not None
+            and targeted_model != primary_model
+            and failures >= 2
+            and failures % 3 == 2
+        ):
+            return targeted_model, "targeted_recovery"
+        return primary_model, "primary"
+
     def _sleep_after_failure(self, failures: int) -> None:
         delay = min(
             300.0, self.options.retry_delay_seconds * (2 ** min(failures - 1, 4))
         )
+        retry_at = (
+            self._format_time(datetime.now(UTC) + timedelta(seconds=delay))
+            if delay > 0
+            else None
+        )
+        state = self._state()
+        state["next_retry_at"] = retry_at
+        self._save(state)
         if delay > 0:
             self._emit(f"autorun retrying after {delay:g} seconds")
             time.sleep(delay)
+            state = self._state()
+            if state.get("next_retry_at") == retry_at:
+                state["next_retry_at"] = None
+                self._save(state)
 
     def _master_prompt_digest(self) -> str:
         return hashlib.sha256(self.master_prompt.read_bytes()).hexdigest()
@@ -908,6 +936,9 @@ def follow_autorun_status(
                 f"completed {state.get('round_count', 0)} · "
                 f"failures {state.get('consecutive_failures', 0)}"
             )
+            retry_at = state.get("next_retry_at")
+            if status == "recovering" and isinstance(retry_at, str):
+                detail += f" · retry at {retry_at}"
             now = time.monotonic()
             if now >= next_recap_deadline:
                 updated_at = datetime.now(UTC)

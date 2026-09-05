@@ -30,9 +30,13 @@
 - Added reasoning-class model routing, a separately bounded read-only strategy
   reflection model, and controller-enforced limits for explicit targeted-model
   escalations.
+- Added bounded targeted-model recovery routing after repeated autorun conductor
+  failures; successful rounds restore the primary route.
 - Made all autorun pane followers survive controller stop/resume cycles and
   transient state-read failures. Current-output and raw-event views now follow
   `active_round` and update their Herdr pane labels on every round change.
+- Added the exact next-retry timestamp to recovering autorun status displays,
+  distinguishing intentional exponential backoff from a stopped controller.
 - Enforced transient cgroup resource limits even when a trusted campaign disables
   Bubblewrap namespace isolation, preventing unbounded agent subprocess memory
   from exhausting the host.

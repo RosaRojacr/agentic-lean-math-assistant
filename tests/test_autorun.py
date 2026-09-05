@@ -202,24 +202,33 @@ def test_autorun_recovers_after_failed_agent_round(
     master = write_master_prompt(manifest)
     project = ProjectSpec.load(manifest)
     attempts = 0
+    session_path: Path | None = None
+    retry_deadlines: list[str | None] = []
 
     def execute(request_path: Path) -> int:
-        nonlocal attempts
+        nonlocal attempts, session_path
         attempts += 1
+        request = json.loads(request_path.read_text(encoding="utf-8"))
+        session_path = Path(str(request["run_dir"]))
         if attempts == 1:
             return 1
         return successful_agent(request_path)
 
+    def observe_retry_deadline(_seconds: float) -> None:
+        assert session_path is not None
+        retry_deadlines.append(autorun_status(session_path).get("next_retry_at"))
+
     monkeypatch.setattr(
         "agentic_lean_math_assistant.autorun.execute_agent_request", execute
     )
+    monkeypatch.setattr(autorun_module.time, "sleep", observe_retry_deadline)
     runner = AutoRunRunner(
         project,
         AutoRunOptions(
             master_prompt=master,
             reflection_minutes=120,
             round_minutes=1,
-            retry_delay_seconds=0,
+            retry_delay_seconds=1,
             max_rounds=2,
         ),
     )
@@ -231,9 +240,63 @@ def test_autorun_recovers_after_failed_agent_round(
     assert state["status"] == "paused"
     assert state["round_count"] == 2
     assert state["consecutive_failures"] == 0
+    assert len(retry_deadlines) == 1
+    assert isinstance(retry_deadlines[0], str)
+    assert state["next_retry_at"] is None
     assert "Previous controller/agent error" in (
         session / "rounds" / "round-00002" / "prompt.md"
     ).read_text(encoding="utf-8")
+
+
+def test_autorun_bounds_targeted_model_recovery_attempts(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    project = ProjectSpec.load(manifest)
+    conductor_models: list[str] = []
+    conductor_routes: list[str] = []
+
+    def execute(request_path: Path) -> int:
+        request = json.loads(request_path.read_text(encoding="utf-8"))
+        if request["role_id"] == "autorun_strategy_reflection":
+            return successful_agent(request_path)
+        conductor_models.append(str(request["model"]))
+        state = autorun_status(Path(str(request["run_dir"])))
+        conductor_routes.append(str(state["active_model_route"]))
+        return 1
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
+    )
+    runner = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+            retry_delay_seconds=0,
+            max_rounds=5,
+        ),
+    )
+
+    session = runner.run()
+
+    assert conductor_models == [
+        "openai-codex/gpt-5.6-sol",
+        "openai-codex/gpt-5.6-sol",
+        "openai-codex/gpt-6-astra",
+        "openai-codex/gpt-5.6-sol",
+        "openai-codex/gpt-5.6-sol",
+    ]
+    assert conductor_routes == [
+        "primary",
+        "primary",
+        "targeted_recovery",
+        "primary",
+        "primary",
+    ]
+    assert autorun_status(session)["consecutive_failures"] == 5
 
 
 def test_autorun_skips_an_interrupted_round_directory_on_resume(
@@ -378,7 +441,7 @@ Prefer a small vertical slice before bulk generation.
     assert "Prefer a small vertical slice" not in rendered
 
 
-def test_persistent_status_monitor_waits_for_controller_resume(
+def test_persistent_status_monitor_shows_recovery_deadline_until_resume(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     manifest = write_autonomy_project(tmp_path)
@@ -390,7 +453,13 @@ def test_persistent_status_monitor_waits_for_controller_resume(
     session = initializer._select_session()
     state_path = session / "state.json"
     state = autorun_status(session)
-    state.update({"status": "paused", "active_round": None})
+    state.update(
+        {
+            "status": "recovering",
+            "active_round": None,
+            "next_retry_at": "2099-01-01T00:00:00Z",
+        }
+    )
     state_path.write_text(json.dumps(state), encoding="utf-8")
     sleeps = 0
 
@@ -405,6 +474,7 @@ def test_persistent_status_monitor_waits_for_controller_resume(
                     "active_round": 4,
                     "active_model_route": "primary",
                     "active_model": "openai-codex/gpt-5.6-sol",
+                    "next_retry_at": None,
                 }
             )
             state_path.write_text(json.dumps(resumed), encoding="utf-8")
@@ -423,7 +493,8 @@ def test_persistent_status_monitor_waits_for_controller_resume(
     )
 
     rendered = output.getvalue()
-    assert "AUTORUN paused" in rendered
+    assert "AUTORUN recovering" in rendered
+    assert "retry at 2099-01-01T00:00:00Z" in rendered
     assert "AUTORUN running" in rendered
     assert "round 4" in rendered
 
