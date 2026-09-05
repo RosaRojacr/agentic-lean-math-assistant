@@ -241,6 +241,9 @@ def test_autorun_migrates_v1_state_and_separates_attempts(
     state["schema_version"] = 1
     state["consecutive_failures"] = 2
     for name in (
+        "blocked_round_count",
+        "complete_round_count",
+        "unclassified_round_count",
         "attempt_count",
         "controller_failure_count",
         "agent_execution_failure_count",
@@ -266,6 +269,9 @@ def test_autorun_migrates_v1_state_and_separates_attempts(
     assert migrated["attempt_count"] == 7
     assert migrated["consecutive_execution_failures"] == 2
     assert "consecutive_failures" not in migrated
+    assert migrated["blocked_round_count"] == 0
+    assert migrated["complete_round_count"] == 0
+    assert migrated["unclassified_round_count"] == 0
 
 
 def test_round_monitor_paths_are_strategy_pass_aware(tmp_path: Path) -> None:

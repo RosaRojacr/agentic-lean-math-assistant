@@ -1303,6 +1303,17 @@ EVIDENCE: retained artifact or verified observable supporting the milestone resu
             )
             value.update(
                 {
+                    "meaningful_round_count": int(
+                        value.get("meaningful_round_count", 0)
+                    ),
+                    "incremental_round_count": int(
+                        value.get("incremental_round_count", 0)
+                    ),
+                    "blocked_round_count": int(value.get("blocked_round_count", 0)),
+                    "complete_round_count": int(value.get("complete_round_count", 0)),
+                    "unclassified_round_count": int(
+                        value.get("unclassified_round_count", 0)
+                    ),
                     "controller_failure_count": 0,
                     "agent_execution_failure_count": 0,
                     "verification_failure_count": 0,
