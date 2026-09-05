@@ -37,6 +37,17 @@
   gate: Astra evaluates likelihood versus compute value, must develop and
   adversarially recheck a concrete replacement plan before changing course, and
   prevents another conductor round until the strategy is ready.
+- Made the worthwhile likelihood threshold and strategy horizon project-owned.
+  Astra now compares at least two candidates, and every accepted decision is
+  atomically retained as an active contract with observable milestones,
+  deadlines, compute cost, a first falsification check, and kill criteria.
+- Added independent read-only progress adjudication and manifest-owned JSON
+  progress metrics. Conductor classifications are retained as claims; only the
+  adjudicated result updates progress counters or strategy milestone state.
+- Added validated schema-v2 autorun state with automatic v1 migration, distinct
+  attempt and completed-execution counts, separate controller, execution,
+  verification, gate, and mathematical-blocker failures, live heartbeats during
+  agent calls, and pass-aware reflection/adjudication monitor paths.
 - Separated successful process execution from incremental, meaningful, blocked,
   and complete progress classifications in retained state and live status.
 - Added bounded targeted-model recovery routing after repeated autorun conductor

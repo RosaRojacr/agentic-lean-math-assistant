@@ -154,13 +154,14 @@ A campaign reporting “solved” is not enough. The controller independently re
 ## Conditional model routing and persistent autorun
 
 `autorun` is an unattended, self-prompting controller for long-running project
-work. It reloads the project's `MASTER_PROMPT.md` before every round, retains
-every prompt, output, receipt, and state transition under
-`autorun-runs/<session>/`, and can resume the same session after a controller
-restart. Each normal round still has a fixed deadline and must emit a concrete
-result, summary, next action, and progress classification. A successful process
-invocation is classified separately as incremental, meaningful, blocked, or
-complete; process exit and a passing build are not meaningful progress.
+work. It reloads the project's `MASTER_PROMPT.md` before every attempt, retains
+every prompt, output, receipt, metric, adjudication, and state transition under
+`autorun-runs/<session>/`, and resumes the same session after a controller
+restart. `attempt_count` tracks every launched conductor attempt; `round_count`
+tracks completed executions. The conductor's progress marker is retained as a
+claim. A separate read-only adjudicator classifies verified progress as
+incremental, meaningful, blocked, or complete; process exit and a passing build
+are not meaningful progress.
 
 Projects can route work by reasoning class instead of assigning the most
 expensive model to every task:
@@ -178,6 +179,26 @@ targeted_task_model = "openai-codex/gpt-6-astra"
 max_targeted_tasks = 1
 ```
 
+Projects own the strategy threshold, deadline horizon, adjudication budget, and
+optional trusted progress measurements:
+
+```toml
+[autorun]
+worthwhile_likelihood_threshold = 30
+strategy_horizon_rounds = 12
+adjudication_minutes = 5
+
+[[autorun.progress_metrics]]
+id = "coverage"
+command = ["python3", "scripts/report_coverage.py"]
+timeout = 300
+```
+
+Each metric command runs from the project root under the configured execution
+policy and must emit one JSON object. Its bounded stdout, stderr, hashes, parsed
+value, and error state are retained before adjudication. Keep metric commands in
+the trusted project manifest; conductor output cannot add or change them.
+
 The planner leaves a task's `model` field null for normal execution. The
 controller then selects `execution_model`, `analysis_model`, `invention_model`,
 or `audit_model` from the task's reasoning class. A non-null task model is an
@@ -187,17 +208,25 @@ Compute profiles may override the same routing fields without changing the
 project's base policy.
 
 Strategy review is a fail-closed meaningful-progress gate. At the configured
-interval, `autorun` launches a separate, read-only Astra request using
-`strategy_reflection_model`. Astra estimates the probability that the current
-course will materially advance the final contract within twelve conductor
-rounds, sets a worthwhile threshold, and chooses `continue` or `change_course`.
-A rejected course cannot be reinstated by a later pass. A course change requires
-a replacement method, abandoned work, milestones, a falsifiable first check, and
-kill criteria. The controller runs up to three Astra passes per gate attempt;
-without a ready plan it retries the gate rather than launching another conductor
-on the rejected course. During a continuous execution-failure streak, one
-conductor round is routed through `targeted_task_model` after every two failed
-primary-model rounds; a successful invocation restores normal routing.
+interval—or when a contract drifts, is falsified, or misses an evidence
+deadline—`autorun` launches a separate, read-only Astra request using
+`strategy_reflection_model`. The worthwhile threshold comes from `[autorun]`;
+Astra cannot choose or relax it. Astra must compare at least two distinct
+candidate strategies and return likelihood, expected compute cost, time to first
+evidence, ordered observable milestones, kill criteria, and one next action.
+
+The accepted decision is atomically persisted as the active strategy contract
+before conductor execution. Milestone and horizon deadlines are measured in
+completed executions. A rejected course cannot be reinstated by a later pass,
+and a replacement must have higher likelihood than the rejected course while
+clearing policy. The controller runs up to three Astra passes; without a valid
+contract it retries the gate rather than launching a conductor. The independent
+progress adjudicator then evaluates the conductor report, repository evidence,
+trusted metrics, and active contract. Drift, falsification, and missed deadlines
+force another strategy gate. During a continuous execution-failure streak, one
+conductor attempt is routed through `targeted_task_model` after every two failed
+primary-model attempts; controller, agent-execution, verification, strategy-gate,
+and mathematical-blocker failures have separate retained counters.
 
 Every autorun agent invocation retains the configured transient cgroup deadline,
 memory, swap, CPU, task, and file-size limits. A trusted project may set

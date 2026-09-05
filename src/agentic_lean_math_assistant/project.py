@@ -470,6 +470,86 @@ class ProjectInput:
 
 
 @dataclass(frozen=True, slots=True)
+class ProgressMetricSpec:
+    metric_id: str
+    command: tuple[str, ...]
+    timeout: int
+
+    @classmethod
+    def parse(cls, value: object, index: int) -> Self:
+        label = f"autorun.progress_metrics[{index}]"
+        table = _keys(value, label, {"id", "command"}, {"timeout"})
+        metric_id = _text(table["id"], f"{label}.id")
+        if not metric_id.replace("-", "_").isidentifier():
+            raise ConfigurationError(f"{label}.id must be an identifier")
+        raw_command = table["command"]
+        if (
+            not isinstance(raw_command, list)
+            or not raw_command
+            or not all(isinstance(item, str) and item for item in raw_command)
+        ):
+            raise ConfigurationError(f"{label}.command must be a nonempty string array")
+        return cls(
+            metric_id=metric_id,
+            command=tuple(raw_command),
+            timeout=_integer(table.get("timeout", 300), f"{label}.timeout", 1, 3600),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class AutorunSpec:
+    worthwhile_likelihood_threshold: int
+    strategy_horizon_rounds: int
+    adjudication_minutes: int
+    progress_metrics: tuple[ProgressMetricSpec, ...]
+
+    @classmethod
+    def parse(cls, value: object) -> Self:
+        table = _keys(
+            value or {},
+            "autorun",
+            set(),
+            {
+                "worthwhile_likelihood_threshold",
+                "strategy_horizon_rounds",
+                "adjudication_minutes",
+                "progress_metrics",
+            },
+        )
+        raw_metrics = table.get("progress_metrics", [])
+        if not isinstance(raw_metrics, list):
+            raise ConfigurationError("autorun.progress_metrics must be an array")
+        metrics = tuple(
+            ProgressMetricSpec.parse(item, index)
+            for index, item in enumerate(raw_metrics)
+        )
+        metric_ids = [metric.metric_id for metric in metrics]
+        if len(metric_ids) != len(set(metric_ids)):
+            raise ConfigurationError("autorun progress metric IDs must be unique")
+        return cls(
+            worthwhile_likelihood_threshold=_integer(
+                table.get("worthwhile_likelihood_threshold", 30),
+                "autorun.worthwhile_likelihood_threshold",
+                1,
+                99,
+            ),
+            strategy_horizon_rounds=_integer(
+                table.get("strategy_horizon_rounds", 12),
+                "autorun.strategy_horizon_rounds",
+                2,
+                100,
+            ),
+            adjudication_minutes=_integer(
+                table.get("adjudication_minutes", 5),
+                "autorun.adjudication_minutes",
+                1,
+                30,
+            ),
+            progress_metrics=metrics,
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class ProjectSpec:
     manifest_path: Path
     project_id: str
@@ -506,6 +586,7 @@ class ProjectSpec:
     execution: ExecutionSpec
     compute_profiles: tuple[ComputeProfile, ...]
     autonomy: AutonomySpec
+    autorun: AutorunSpec
 
     def with_compute_profile(self, profile_id: str | None) -> Self:
         if profile_id is None:
@@ -617,7 +698,14 @@ class ProjectSpec:
             value,
             "project manifest",
             {"schema_version", "project"},
-            {"regime", "inputs", "execution", "autonomy", "compute_profiles"},
+            {
+                "regime",
+                "inputs",
+                "execution",
+                "autonomy",
+                "autorun",
+                "compute_profiles",
+            },
         )
         if top["schema_version"] != 1:
             raise ConfigurationError("project schema_version must be 1")
@@ -706,6 +794,7 @@ class ProjectSpec:
         if len(profile_ids) != len(set(profile_ids)):
             raise ConfigurationError("compute profile IDs must be unique")
         autonomy = AutonomySpec.parse(top.get("autonomy"))
+        autorun = AutorunSpec.parse(top.get("autorun"))
         if autonomy.compute_profile is not None and autonomy.compute_profile not in set(
             profile_ids
         ):
@@ -814,4 +903,5 @@ class ProjectSpec:
             execution=ExecutionSpec.from_table(top.get("execution"), root),
             compute_profiles=compute_profiles,
             autonomy=autonomy,
+            autorun=autorun,
         )

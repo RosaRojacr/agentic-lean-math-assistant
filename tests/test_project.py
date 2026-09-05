@@ -70,6 +70,33 @@ memory_max_mb = 8192
     assert project.execution.memory_max_mb == 8192
 
 
+def test_project_spec_loads_autorun_policy_and_trusted_metrics(
+    tmp_path: Path,
+) -> None:
+    project = ProjectSpec.load(
+        write_project(
+            tmp_path,
+            execution="""[autorun]
+worthwhile_likelihood_threshold = 42
+strategy_horizon_rounds = 9
+adjudication_minutes = 7
+
+[[autorun.progress_metrics]]
+id = "coverage"
+command = ["python3", "metric.py"]
+timeout = 45
+""",
+        )
+    )
+
+    assert project.autorun.worthwhile_likelihood_threshold == 42
+    assert project.autorun.strategy_horizon_rounds == 9
+    assert project.autorun.adjudication_minutes == 7
+    assert project.autorun.progress_metrics[0].metric_id == "coverage"
+    assert project.autorun.progress_metrics[0].command == ("python3", "metric.py")
+    assert project.autorun.progress_metrics[0].timeout == 45
+
+
 def test_project_spec_rejects_reserved_input_target(tmp_path: Path) -> None:
     with pytest.raises(ConfigurationError, match="reserved target"):
         ProjectSpec.load(write_project(tmp_path, input_target="knowledge"))

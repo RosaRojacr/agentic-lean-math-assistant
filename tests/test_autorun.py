@@ -34,25 +34,41 @@ def successful_agent(request_path: Path) -> int:
     request = json.loads(request_path.read_text(encoding="utf-8"))
     if request["role_id"] == "autorun_strategy_reflection":
         output = (
-            "The current approach remains proportionate to the remaining work.\n"
+            "The current approach remains proportionate after comparing alternatives.\n"
             "MEANINGFUL_PROGRESS_LIKELIHOOD: 70\n"
-            "MINIMUM_WORTHWHILE_LIKELIHOOD: 50\n"
+            "MINIMUM_WORTHWHILE_LIKELIHOOD: 30\n"
             "CURRENT_COURSE_WORTHWHILE: yes\n"
             "STRATEGY_DECISION: continue\n"
             "STRATEGY_PLAN_STATUS: ready\n"
-            "CONTINUATION_JUSTIFICATION: the next check tests a scalable lemma\n"
-            "ABANDON_CURRENT_COURSE: n/a\n"
-            "ALTERNATIVE_METHOD: n/a\n"
-            "FIRST_FALSIFIABLE_CHECK: n/a\n"
-            "STRATEGY_MILESTONES: n/a\n"
-            "STRATEGY_KILL_CRITERIA: n/a\n"
+            "REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD: 70\n"
+            "EXPECTED_ROUNDS_TO_FIRST_EVIDENCE: 2\n"
+            "EXPECTED_COMPUTE_COST: low\n"
+            "COURSE_TO_ABANDON: n/a\n"
+            "CANDIDATE_STRATEGIES: scalable lemma || finite enumeration\n"
+            "SELECTED_METHOD: prove the scalable lemma interface\n"
+            "STRATEGY_MILESTONES: 2::checked scalable lemma; 6::target coverage\n"
+            "FIRST_FALSIFIABLE_CHECK: compile the scalable lemma\n"
+            "STRATEGY_KILL_CRITERIA: lemma cannot state required bound || counterexample\n"
             "REFLECTION_NEXT: prove the next scalable lemma\n"
+        )
+    elif request["role_id"] == "autorun_progress_adjudicator":
+        output = (
+            "ADJUDICATED_PROGRESS: incremental\n"
+            "STRATEGY_ALIGNMENT: aligned\n"
+            "MILESTONE_RESULT: advanced\n"
+            "MILESTONE_INDEX: 1\n"
+            "ADJUDICATION_REASON: the checked step is real but not load-bearing\n"
+            "VERIFIED_SCOPE_DELTA: one local obligation was discharged\n"
         )
     else:
         output = (
-            "AUTORUN_RESULT: incremental\n"
+            "AUTORUN_RESULT: meaningful\n"
             "AUTORUN_SUMMARY: completed one checked step\n"
             "AUTORUN_NEXT: prove the next lemma\n"
+            "STRATEGY_ID: strategy-00001\n"
+            "STRATEGY_MILESTONE: 1\n"
+            "MILESTONE_RESULT: advanced\n"
+            "EVIDENCE: focused check passed\n"
         )
     Path(request["output"]).write_text(output, encoding="utf-8")
     Path(request["receipt"]).write_text(
@@ -94,18 +110,179 @@ def test_autorun_executes_one_self_prompted_round_and_retains_state(
 
     assert state["status"] == "paused"
     assert state["round_count"] == 1
-    assert state["consecutive_failures"] == 0
+    assert state["consecutive_execution_failures"] == 0
+    assert state["last_progress_claim"] == "meaningful"
     assert state["last_progress_class"] == "incremental"
     assert state["incremental_round_count"] == 1
     assert state["meaningful_round_count"] == 0
     assert state["last_output"].endswith("round-00001/output.md")
-    assert "Prove the exact target." in observed_prompts[0]
-    assert "choose your own next" in observed_prompts[0]
+    conductor_prompt = next(
+        prompt for prompt in observed_prompts if "choose your own next" in prompt
+    )
+    assert "Prove the exact target." in conductor_prompt
+    assert "choose your own next" in conductor_prompt
     assert (
         "Keep every command inside the inherited resource-control cgroup"
-        in (observed_prompts[0])
+        in conductor_prompt
     )
     assert (session / "events.jsonl").is_file()
+
+
+def test_autorun_runs_trusted_metric_before_independent_adjudication(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    text = manifest.read_text(encoding="utf-8")
+    manifest.write_text(
+        text.replace(
+            "[autonomy]",
+            """[autorun]
+worthwhile_likelihood_threshold = 30
+strategy_horizon_rounds = 12
+adjudication_minutes = 5
+
+[[autorun.progress_metrics]]
+id = "coverage"
+command = ["python3", "-c", 'import json; print(json.dumps({"covered": 7}))']
+timeout = 10
+
+[autonomy]""",
+        ),
+        encoding="utf-8",
+    )
+    master = write_master_prompt(manifest)
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.execute_agent_request",
+        successful_agent,
+    )
+    session = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+            retry_delay_seconds=0,
+            max_rounds=1,
+        ),
+    ).run()
+
+    metric = json.loads(
+        (
+            session / "rounds" / "round-00001" / "progress-metric-coverage.json"
+        ).read_text(encoding="utf-8")
+    )
+    state = autorun_status(session)
+    assert metric["error"] is None
+    assert metric["value"] == {"covered": 7}
+    assert state["last_progress_claim"] == "meaningful"
+    assert state["last_progress_class"] == "incremental"
+    assert state["last_adjudication_model"] == "openai-codex/gpt-5.6-terra"
+
+
+def test_adjudicated_strategy_falsification_forces_next_reflection(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+
+    def execute(request_path: Path) -> int:
+        request = json.loads(request_path.read_text(encoding="utf-8"))
+        if request["role_id"] != "autorun_progress_adjudicator":
+            return successful_agent(request_path)
+        Path(request["output"]).write_text(
+            "ADJUDICATED_PROGRESS: blocked\n"
+            "STRATEGY_ALIGNMENT: falsified\n"
+            "MILESTONE_RESULT: falsified\n"
+            "MILESTONE_INDEX: 1\n"
+            "ADJUDICATION_REASON: the required estimate has a checked counterexample\n"
+            "VERIFIED_SCOPE_DELTA: no target coverage was added\n",
+            encoding="utf-8",
+        )
+        Path(request["receipt"]).write_text(
+            json.dumps({"schema_version": 1, "status": "succeeded"}),
+            encoding="utf-8",
+        )
+        return 0
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
+    )
+    session = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+            retry_delay_seconds=0,
+            max_rounds=1,
+        ),
+    ).run()
+
+    state = autorun_status(session)
+    assert state["last_progress_class"] == "blocked"
+    assert state["mathematical_blocker_count"] == 1
+    assert state["strategy_change_required"] is True
+    assert state["active_strategy"]["status"] == "falsified"
+    assert state["active_strategy"]["milestones"][0]["status"] == "falsified"
+    assert AutoRunRunner._strategy_requires_review(state) is True
+
+
+def test_autorun_migrates_v1_state_and_separates_attempts(
+    tmp_path: Path,
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    runner = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
+    )
+    session = runner._select_session()
+    state = json.loads((session / "state.json").read_text(encoding="utf-8"))
+    state["schema_version"] = 1
+    state["consecutive_failures"] = 2
+    for name in (
+        "attempt_count",
+        "controller_failure_count",
+        "agent_execution_failure_count",
+        "verification_failure_count",
+        "strategy_gate_failure_count",
+        "mathematical_blocker_count",
+        "consecutive_execution_failures",
+        "last_failure_class",
+        "active_strategy",
+        "strategy_history",
+        "last_progress_claim",
+        "last_progress_adjudication",
+        "last_adjudication_review",
+        "last_adjudication_model",
+    ):
+        state.pop(name, None)
+    rounds = session / "rounds"
+    (rounds / "round-00007").mkdir(parents=True)
+    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
+
+    migrated = autorun_status(session)
+    assert migrated["schema_version"] == 2
+    assert migrated["attempt_count"] == 7
+    assert migrated["consecutive_execution_failures"] == 2
+    assert "consecutive_failures" not in migrated
+
+
+def test_round_monitor_paths_are_strategy_pass_aware(tmp_path: Path) -> None:
+    round_dir = tmp_path / "rounds" / "round-00003"
+    round_dir.mkdir(parents=True)
+    receipt = round_dir / "strategy-reflection-pass-02-receipt.json"
+    stdout = round_dir / "strategy-reflection-pass-02-stdout.log"
+    receipt.write_text('{"status": "running"}', encoding="utf-8")
+    stdout.write_text("pass two\n", encoding="utf-8")
+
+    assert autorun_module._round_receipt(tmp_path, 3, "strategy_reflection", 2) == {
+        "status": "running"
+    }
+    assert (
+        autorun_module._round_stdout_path(tmp_path, 3, "strategy_reflection", 2)
+        == stdout
+    )
 
 
 def test_autorun_routes_only_strategy_reflections_to_astra(
@@ -153,11 +330,14 @@ def test_autorun_routes_only_strategy_reflections_to_astra(
     resumed.run()
 
     assert [request["model"] for request in observed_requests] == [
-        "openai-codex/gpt-5.6-sol",
         "openai-codex/gpt-6-astra",
         "openai-codex/gpt-5.6-sol",
+        "openai-codex/gpt-5.6-terra",
+        "openai-codex/gpt-6-astra",
+        "openai-codex/gpt-5.6-sol",
+        "openai-codex/gpt-5.6-terra",
     ]
-    reflection_request = observed_requests[1]
+    reflection_request = observed_requests[3]
     assert reflection_request["role_id"] == "autorun_strategy_reflection"
     assert "strategy_pass" not in reflection_request
     assert reflection_request["max_time"] == 15 * 60
@@ -169,11 +349,11 @@ def test_autorun_routes_only_strategy_reflections_to_astra(
     )
     assert "Meaningful-progress strategy gate" in main_prompt
     final_state = autorun_status(session)
-    assert final_state["reflection_count"] == 1
+    assert final_state["reflection_count"] == 2
     assert final_state["last_model"] == "openai-codex/gpt-5.6-sol"
     assert final_state["last_reflection_model"] == "openai-codex/gpt-6-astra"
     assert final_state["last_strategy_likelihood"] == 70
-    assert final_state["last_strategy_threshold"] == 50
+    assert final_state["last_strategy_threshold"] == 30
     assert final_state["last_strategy_worthwhile"] is True
     assert final_state["last_strategy_decision"] == "continue"
     assert final_state["last_strategy_plan_status"] == "ready"
@@ -197,24 +377,23 @@ def test_strategy_gate_iterates_astra_until_course_change_plan_is_ready(
             for item in observed_requests
         )
         plan_status = "revise" if pass_number == 1 else "ready"
-        alternative = (
-            "n/a"
-            if pass_number == 1
-            else "derive a continuation theorem instead of enumerating tiny cells"
-        )
+        selected = "derive a continuation theorem instead of enumerating tiny cells"
         output = (
             "The current cell-by-cell course cannot cover the remaining domain.\n"
             "MEANINGFUL_PROGRESS_LIKELIHOOD: 5\n"
-            "MINIMUM_WORTHWHILE_LIKELIHOOD: 50\n"
+            "MINIMUM_WORTHWHILE_LIKELIHOOD: 30\n"
             "CURRENT_COURSE_WORTHWHILE: no\n"
             "STRATEGY_DECISION: change_course\n"
             f"STRATEGY_PLAN_STATUS: {plan_status}\n"
-            "CONTINUATION_JUSTIFICATION: n/a\n"
-            "ABANDON_CURRENT_COURSE: stop adding adjacent tiny cells\n"
-            f"ALTERNATIVE_METHOD: {alternative}\n"
-            "STRATEGY_MILESTONES: derive local step; prove propagation; cover range\n"
+            "REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD: 65\n"
+            "EXPECTED_ROUNDS_TO_FIRST_EVIDENCE: 2\n"
+            "EXPECTED_COMPUTE_COST: medium\n"
+            "COURSE_TO_ABANDON: stop adding adjacent tiny cells\n"
+            "CANDIDATE_STRATEGIES: continuation theorem || interval atlas\n"
+            f"SELECTED_METHOD: {selected}\n"
+            "STRATEGY_MILESTONES: 2::derive local step; 6::prove propagation\n"
             "FIRST_FALSIFIABLE_CHECK: prove a uniform continuation step\n"
-            "STRATEGY_KILL_CRITERIA: abandon if the step cannot cross ten cells\n"
+            "STRATEGY_KILL_CRITERIA: cannot cross ten cells || constants diverge\n"
             "REFLECTION_NEXT: test the continuation lemma on the retained branch\n"
         )
         Path(request["output"]).write_text(output, encoding="utf-8")
@@ -238,28 +417,13 @@ def test_strategy_gate_iterates_astra_until_course_change_plan_is_ready(
         ),
     )
     session = first.run()
-    state = autorun_status(session)
-    state["next_reflection_at"] = "2000-01-01T00:00:00Z"
-    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
-
-    resumed = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            session=session,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=2,
-        ),
-    )
-    resumed.run()
+    final_state = autorun_status(session)
 
     assert [request["model"] for request in observed_requests] == [
-        "openai-codex/gpt-5.6-sol",
         "openai-codex/gpt-6-astra",
         "openai-codex/gpt-6-astra",
         "openai-codex/gpt-5.6-sol",
+        "openai-codex/gpt-5.6-terra",
     ]
     reflection_requests = [
         request
@@ -270,20 +434,22 @@ def test_strategy_gate_iterates_astra_until_course_change_plan_is_ready(
         "strategy-reflection-prompt.md",
         "strategy-reflection-pass-02-prompt.md",
     ]
-    conductor_prompt = (session / "rounds" / "round-00002" / "prompt.md").read_text(
+    conductor_prompt = (session / "rounds" / "round-00001" / "prompt.md").read_text(
         encoding="utf-8"
     )
     assert "derive a continuation theorem instead of enumerating tiny cells" in (
         conductor_prompt
     )
     assert "abandon the rejected course" in " ".join(conductor_prompt.split())
-    final_state = autorun_status(session)
     assert final_state["last_strategy_likelihood"] == 5
-    assert final_state["last_strategy_threshold"] == 50
+    assert final_state["last_strategy_threshold"] == 30
     assert final_state["last_strategy_worthwhile"] is False
     assert final_state["last_strategy_decision"] == "change_course"
     assert final_state["last_strategy_plan_status"] == "ready"
     assert final_state["strategy_change_required"] is False
+    assert final_state["active_strategy"]["selected_likelihood"] == 65
+    assert len(final_state["active_strategy"]["candidate_strategies"]) == 2
+    assert final_state["active_strategy"]["milestones"][0]["deadline_execution"] == 2
 
 
 def test_strategy_gate_never_runs_conductor_without_a_ready_plan(
@@ -311,16 +477,19 @@ def test_strategy_gate_never_runs_conductor_without_a_ready_plan(
         passes.append(len(passes) + 1)
         Path(request["output"]).write_text(
             "MEANINGFUL_PROGRESS_LIKELIHOOD: 5\n"
-            "MINIMUM_WORTHWHILE_LIKELIHOOD: 50\n"
+            "MINIMUM_WORTHWHILE_LIKELIHOOD: 30\n"
             "CURRENT_COURSE_WORTHWHILE: no\n"
             "STRATEGY_DECISION: change_course\n"
             "STRATEGY_PLAN_STATUS: revise\n"
-            "CONTINUATION_JUSTIFICATION: n/a\n"
-            "ABANDON_CURRENT_COURSE: stop enumerating cells\n"
-            "ALTERNATIVE_METHOD: derive a global continuation theorem\n"
-            "STRATEGY_MILESTONES: local step; propagation; full interval\n"
+            "REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD: 60\n"
+            "EXPECTED_ROUNDS_TO_FIRST_EVIDENCE: 2\n"
+            "EXPECTED_COMPUTE_COST: medium\n"
+            "COURSE_TO_ABANDON: stop enumerating cells\n"
+            "CANDIDATE_STRATEGIES: continuation theorem || interval atlas\n"
+            "SELECTED_METHOD: derive a global continuation theorem\n"
+            "STRATEGY_MILESTONES: 2::local step; 6::full interval\n"
             "FIRST_FALSIFIABLE_CHECK: test the local continuation estimate\n"
-            "STRATEGY_KILL_CRITERIA: stop if the estimate cannot cross ten cells\n"
+            "STRATEGY_KILL_CRITERIA: estimate fails || constants diverge\n"
             "REFLECTION_NEXT: refine the continuation plan\n",
             encoding="utf-8",
         )
@@ -385,8 +554,11 @@ def test_autorun_resume_reloads_edited_master_prompt(
     )
     assert resumed.run() == session
 
-    assert "First objective." in observed_prompts[0]
-    assert "Changed objective." in observed_prompts[1]
+    conductor_prompts = [
+        prompt for prompt in observed_prompts if "choose your own next" in prompt
+    ]
+    assert "First objective." in conductor_prompts[0]
+    assert "Changed objective." in conductor_prompts[1]
     assert autorun_status(session)["round_count"] == 2
 
 
@@ -396,16 +568,24 @@ def test_autorun_recovers_after_failed_agent_round(
     manifest = write_autonomy_project(tmp_path)
     master = write_master_prompt(manifest)
     project = ProjectSpec.load(manifest)
-    attempts = 0
+    conductor_attempts = 0
     session_path: Path | None = None
     retry_deadlines: list[str | None] = []
+    accepted_before_failure: list[bool] = []
 
     def execute(request_path: Path) -> int:
-        nonlocal attempts, session_path
-        attempts += 1
+        nonlocal conductor_attempts, session_path
         request = json.loads(request_path.read_text(encoding="utf-8"))
         session_path = Path(str(request["run_dir"]))
-        if attempts == 1:
+        if request["role_id"] != "autorun_conductor":
+            return successful_agent(request_path)
+        conductor_attempts += 1
+        if conductor_attempts == 1:
+            retained = autorun_status(session_path)
+            accepted_before_failure.append(
+                retained["reflection_count"] == 1
+                and isinstance(retained["active_strategy"], dict)
+            )
             return 1
         return successful_agent(request_path)
 
@@ -431,13 +611,16 @@ def test_autorun_recovers_after_failed_agent_round(
     session = runner.run()
     state = autorun_status(session)
 
-    assert attempts == 2
+    assert conductor_attempts == 2
     assert state["status"] == "paused"
-    assert state["round_count"] == 2
-    assert state["consecutive_failures"] == 0
+    assert state["attempt_count"] == 2
+    assert state["round_count"] == 1
+    assert state["agent_execution_failure_count"] == 1
+    assert state["consecutive_execution_failures"] == 0
     assert len(retry_deadlines) == 1
     assert isinstance(retry_deadlines[0], str)
     assert state["next_retry_at"] is None
+    assert accepted_before_failure == [True]
     assert "Previous controller/agent error" in (
         session / "rounds" / "round-00002" / "prompt.md"
     ).read_text(encoding="utf-8")
@@ -454,7 +637,7 @@ def test_autorun_bounds_targeted_model_recovery_attempts(
 
     def execute(request_path: Path) -> int:
         request = json.loads(request_path.read_text(encoding="utf-8"))
-        if request["role_id"] == "autorun_strategy_reflection":
+        if request["role_id"] != "autorun_conductor":
             return successful_agent(request_path)
         conductor_models.append(str(request["model"]))
         state = autorun_status(Path(str(request["run_dir"])))
@@ -491,7 +674,11 @@ def test_autorun_bounds_targeted_model_recovery_attempts(
         "primary",
         "primary",
     ]
-    assert autorun_status(session)["consecutive_failures"] == 5
+    state = autorun_status(session)
+    assert state["attempt_count"] == 5
+    assert state["round_count"] == 0
+    assert state["agent_execution_failure_count"] == 5
+    assert state["consecutive_execution_failures"] == 5
 
 
 def test_autorun_skips_an_interrupted_round_directory_on_resume(
@@ -532,7 +719,9 @@ def test_autorun_skips_an_interrupted_round_directory_on_resume(
     )
 
     assert resumed.run() == session
-    assert autorun_status(session)["round_count"] == 3
+    state = autorun_status(session)
+    assert state["attempt_count"] == 3
+    assert state["round_count"] == 2
     assert (session / "rounds" / "round-00003" / "output.md").is_file()
     assert (orphan / "interrupted.txt").read_text(encoding="utf-8") == (
         "partial work retained\n"

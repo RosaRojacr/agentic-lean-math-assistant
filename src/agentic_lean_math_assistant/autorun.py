@@ -8,15 +8,19 @@ import json
 import os
 import re
 import sys
+import threading
 import time
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Any, NoReturn, TextIO
+from typing import Any, NoReturn, TextIO, TypedDict
 
 from .agent_runner import RunnerInterrupted
 from .agent_runner import execute as execute_agent_request
 from .artifacts import atomic_write_json, atomic_write_text, utc_now
+from .command import run_captured_command
 from .config import ConfigurationError
 from .herdr import HerdrClient, HerdrError
 from .project import ProjectSpec
@@ -37,11 +41,123 @@ class _StrategyAssessment:
     worthwhile: bool
     decision: str
     plan_status: str
+    replacement_likelihood: int | None
+    first_evidence_rounds: int | None
+    compute_cost: str | None
+    alternatives: tuple[str, ...]
+    milestones: tuple[tuple[int, str], ...]
     markers: dict[str, str]
+
+
+@dataclass(frozen=True, slots=True)
+class _ProgressAdjudication:
+    progress_class: str
+    strategy_alignment: str
+    milestone_result: str
+    reason: str
+    verified_scope_delta: str
+    milestone_index: int | None
+
+
+class StrategyMilestone(TypedDict):
+    index: int
+    deadline_execution: int
+    observable: str
+    status: str
+
+
+class StrategyContract(TypedDict):
+    schema_version: int
+    strategy_id: str
+    status: str
+    decision: str
+    accepted_attempt: int
+    accepted_execution: int
+    horizon_rounds: int
+    deadline_execution: int
+    first_evidence_deadline_execution: int
+    first_evidence_observed: bool
+    course_to_abandon: str
+    selected_method: str
+    selected_likelihood: int | None
+    worthwhile_threshold: int
+    expected_compute_cost: str | None
+    candidate_strategies: list[str]
+    milestones: list[StrategyMilestone]
+    first_falsifiable_check: str
+    kill_criteria: list[str]
+    next_action: str
+    last_alignment: str | None
+    last_milestone_result: str | None
+
+
+class AutoRunState(TypedDict, total=False):
+    schema_version: int
+    session_id: str
+    status: str
+    pid: int | None
+    project_manifest: str
+    master_prompt: str
+    master_prompt_sha256: str
+    created_at: str
+    updated_at: str
+    heartbeat_at: str
+    next_reflection_at: str
+    reflection_minutes: int
+    reflection_round_minutes: int
+    round_minutes: int
+    round_count: int
+    attempt_count: int
+    reflection_count: int
+    meaningful_round_count: int
+    incremental_round_count: int
+    blocked_round_count: int
+    complete_round_count: int
+    unclassified_round_count: int
+    controller_failure_count: int
+    agent_execution_failure_count: int
+    verification_failure_count: int
+    strategy_gate_failure_count: int
+    mathematical_blocker_count: int
+    consecutive_execution_failures: int
+    last_failure_class: str | None
+    active_strategy: StrategyContract | None
+    strategy_history: list[dict[str, Any]]
+    last_progress_claim: str | None
+    last_progress_class: str | None
+    last_progress_adjudication: dict[str, str] | None
+    last_adjudication_review: str | None
+    last_adjudication_model: str | None
+    last_strategy_likelihood: int | None
+    last_strategy_threshold: int | None
+    last_strategy_worthwhile: bool | None
+    last_strategy_decision: str | None
+    last_strategy_plan_status: str | None
+    last_strategy_review: str | None
+    last_strategy_round: int | None
+    strategy_change_required: bool
+    next_retry_at: str | None
+    repeated_output_count: int
+    last_output_sha256: str | None
+    last_output: str | None
+    last_receipt: str | None
+    active_round: int | None
+    active_prompt: str | None
+    active_model: str | None
+    active_model_route: str | None
+    active_strategy_pass: int | None
+    last_model: str | None
+    last_reflection_model: str | None
+    last_error: str | None
+    stop_requested: bool
 
 
 class AutoRunError(RuntimeError):
     """The persistent autorun controller has an invalid retained state."""
+
+
+class StrategyGateError(AutoRunError):
+    """The meaningful-progress gate failed before execution could resume."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -92,6 +208,7 @@ class AutoRunRunner:
                 f"Master Prompt must be a regular file: {self.master_prompt}"
             )
         self.session_dir: Path | None = None
+        self._state_lock = threading.RLock()
 
     def run(self) -> Path:
         """Create or resume the active session and drive it until explicitly stopped."""
@@ -144,7 +261,7 @@ class AutoRunRunner:
         session.mkdir()
         now = datetime.now(UTC)
         state: dict[str, Any] = {
-            "schema_version": 1,
+            "schema_version": 2,
             "session_id": session_id,
             "project_manifest": str(self.base_project.manifest_path),
             "master_prompt": str(self.master_prompt),
@@ -162,11 +279,25 @@ class AutoRunRunner:
             "round_minutes": self.options.round_minutes,
             "round_count": 0,
             "reflection_count": 0,
+            "attempt_count": 0,
             "meaningful_round_count": 0,
             "incremental_round_count": 0,
             "blocked_round_count": 0,
             "complete_round_count": 0,
             "unclassified_round_count": 0,
+            "controller_failure_count": 0,
+            "agent_execution_failure_count": 0,
+            "verification_failure_count": 0,
+            "strategy_gate_failure_count": 0,
+            "mathematical_blocker_count": 0,
+            "consecutive_execution_failures": 0,
+            "last_failure_class": None,
+            "active_strategy": None,
+            "strategy_history": [],
+            "last_progress_claim": None,
+            "last_progress_adjudication": None,
+            "last_adjudication_review": None,
+            "last_adjudication_model": None,
             "last_progress_class": None,
             "last_strategy_likelihood": None,
             "last_strategy_threshold": None,
@@ -176,7 +307,6 @@ class AutoRunRunner:
             "last_strategy_review": None,
             "last_strategy_round": None,
             "strategy_change_required": False,
-            "consecutive_failures": 0,
             "next_retry_at": None,
             "repeated_output_count": 0,
             "last_output_sha256": None,
@@ -222,7 +352,7 @@ class AutoRunRunner:
                 return self._session()
             if (
                 self.options.max_rounds is not None
-                and int(state["round_count"]) >= self.options.max_rounds
+                and int(state["attempt_count"]) >= self.options.max_rounds
             ):
                 state["status"] = "paused"
                 state["pid"] = None
@@ -241,19 +371,32 @@ class AutoRunRunner:
                 self._save(interrupted)
                 self._event(self._session(), "interrupted", interrupted["last_error"])
                 raise
+            except StrategyGateError as exc:
+                failed = self._state()
+                failed["status"] = "recovering"
+                failed["strategy_gate_failure_count"] = (
+                    int(failed.get("strategy_gate_failure_count", 0)) + 1
+                )
+                failed["last_failure_class"] = "strategy_gate"
+                failed["last_error"] = str(exc)
+                self._save(failed)
+                self._event(self._session(), "strategy_gate_error", str(exc))
+                self._emit(f"autorun strategy gate rejected review: {exc}")
+                self._sleep_after_failure(int(failed["strategy_gate_failure_count"]))
             except Exception as exc:  # noqa: BLE001 - the supervisor must recover.
                 failed = self._state()
                 failed["status"] = "recovering"
-                failed["consecutive_failures"] = (
-                    int(failed.get("consecutive_failures", 0)) + 1
+                failed["controller_failure_count"] = (
+                    int(failed.get("controller_failure_count", 0)) + 1
                 )
+                failed["last_failure_class"] = "controller"
                 failed["last_error"] = f"{type(exc).__name__}: {exc}"
                 self._save(failed)
                 self._event(self._session(), "controller_error", failed["last_error"])
                 self._emit(
                     f"autorun recovered from controller error: {failed['last_error']}"
                 )
-                self._sleep_after_failure(int(failed["consecutive_failures"]))
+                self._sleep_after_failure(int(failed["controller_failure_count"]))
 
     def _run_round(self, state: dict[str, Any]) -> None:
         rounds_root = self._session() / "rounds"
@@ -263,17 +406,20 @@ class AutoRunRunner:
             for path in rounds_root.glob("round-*")
             if path.is_dir() and path.name.removeprefix("round-").isdigit()
         ]
-        index = max([int(state["round_count"]), *retained_indices], default=0) + 1
+        index = (
+            max([int(state.get("attempt_count", 0)), *retained_indices], default=0) + 1
+        )
         round_dir = rounds_root / f"round-{index:05d}"
         round_dir.mkdir()
         now = datetime.now(UTC)
         reflection_due = now >= self._parse_time(str(state["next_reflection_at"]))
-        reflection_due = (
-            reflection_due or int(state.get("consecutive_failures", 0)) >= 2
+        reflection_due = reflection_due or (
+            int(state.get("consecutive_execution_failures", 0)) >= 2
         )
         reflection_due = (
             reflection_due or int(state.get("repeated_output_count", 0)) >= 2
         )
+        reflection_due = reflection_due or self._strategy_requires_review(state)
         master_text = self.master_prompt.read_text(encoding="utf-8").strip()
         if not master_text:
             raise AutoRunError("Master Prompt is empty")
@@ -282,6 +428,7 @@ class AutoRunRunner:
         state["next_retry_at"] = None
         state["heartbeat_at"] = utc_now()
         state["master_prompt_sha256"] = master_digest
+        state["attempt_count"] = index
         state["active_round"] = index
         self._save(state)
 
@@ -290,6 +437,8 @@ class AutoRunRunner:
             if reflection_due
             else None
         )
+        if reflection_output is not None:
+            state = self._state()
         prompt = self._round_prompt(
             index,
             state,
@@ -336,9 +485,8 @@ class AutoRunRunner:
         self._save(state)
         self._event(self._session(), "round_started", f"round {index}")
         self._emit(f"autorun round {index} starting")
-        exit_code = execute_agent_request(request_path)
+        exit_code = self._execute_with_heartbeat(request_path)
         latest = self._state()
-        latest["round_count"] = index
         latest["active_round"] = None
         latest["active_prompt"] = None
         latest["last_model"] = conductor_model
@@ -347,42 +495,99 @@ class AutoRunRunner:
         latest["last_receipt"] = str(receipt_path)
         latest["last_output"] = str(output_path) if output_path.is_file() else None
         latest["heartbeat_at"] = utc_now()
-        if reflection_due:
-            latest["reflection_count"] = int(latest["reflection_count"]) + 1
-            latest["next_reflection_at"] = self._format_time(
-                datetime.now(UTC) + timedelta(minutes=int(latest["reflection_minutes"]))
-            )
         if exit_code == 0 and output_path.is_file():
+            claim = self._round_progress_class(output_path)
             digest = hashlib.sha256(output_path.read_bytes()).hexdigest()
             repeated = (
                 int(latest.get("repeated_output_count", 0)) + 1
                 if digest == latest.get("last_output_sha256")
                 else 0
             )
-            progress_class = self._round_progress_class(output_path)
             latest["last_output_sha256"] = digest
             latest["repeated_output_count"] = repeated
-            latest["last_progress_class"] = progress_class
-            counter = f"{progress_class}_round_count"
-            latest[counter] = int(latest.get(counter, 0)) + 1
-            latest["consecutive_failures"] = 0
-            latest["last_error"] = None
+            latest["last_progress_claim"] = claim
+            latest["consecutive_execution_failures"] = 0
+            latest["round_count"] = int(latest.get("round_count", 0)) + 1
+            self._save(latest)
+
+            metrics, metric_failures = self._run_progress_metrics(round_dir)
+            adjudication, adjudication_path, adjudication_model = (
+                self._run_progress_adjudication(index, round_dir, output_path, metrics)
+            )
+            latest = self._state()
+            latest["active_round"] = None
+            latest["active_prompt"] = None
+            latest["active_model"] = None
+            latest["active_model_route"] = None
+            latest["last_adjudication_model"] = adjudication_model
+            latest["verification_failure_count"] = (
+                int(latest.get("verification_failure_count", 0)) + metric_failures
+            )
+            if adjudication is None:
+                latest["last_progress_class"] = "unclassified"
+                latest["unclassified_round_count"] = (
+                    int(latest.get("unclassified_round_count", 0)) + 1
+                )
+                latest["verification_failure_count"] = (
+                    int(latest.get("verification_failure_count", 0)) + 1
+                )
+                latest["last_progress_adjudication"] = None
+                latest["last_adjudication_review"] = (
+                    str(adjudication_path) if adjudication_path.is_file() else None
+                )
+                latest["last_failure_class"] = "verification"
+                latest["last_error"] = (
+                    f"progress adjudication for attempt {index} failed"
+                )
+                progress_class = "unclassified"
+            else:
+                progress_class = adjudication.progress_class
+                latest["last_progress_class"] = progress_class
+                latest["last_progress_adjudication"] = {
+                    "reason": adjudication.reason,
+                    "verified_scope_delta": adjudication.verified_scope_delta,
+                    "strategy_alignment": adjudication.strategy_alignment,
+                    "milestone_result": adjudication.milestone_result,
+                }
+                latest["last_adjudication_review"] = str(adjudication_path)
+                counter = f"{progress_class}_round_count"
+                latest[counter] = int(latest.get(counter, 0)) + 1
+                if progress_class == "blocked":
+                    latest["mathematical_blocker_count"] = (
+                        int(latest.get("mathematical_blocker_count", 0)) + 1
+                    )
+                self._apply_adjudication_to_strategy(latest, adjudication)
+                latest["last_failure_class"] = (
+                    "verification" if metric_failures else None
+                )
+                latest["last_error"] = (
+                    f"{metric_failures} trusted progress metric(s) failed"
+                    if metric_failures
+                    else None
+                )
             latest["status"] = "running"
             self._event(
                 self._session(),
                 "round_completed",
-                f"round {index} execution completed; progress {progress_class}",
+                (
+                    f"attempt {index} execution completed; conductor claimed {claim}; "
+                    f"adjudicated {progress_class}"
+                ),
             )
         else:
             latest["status"] = "recovering"
-            latest["consecutive_failures"] = (
-                int(latest.get("consecutive_failures", 0)) + 1
+            latest["agent_execution_failure_count"] = (
+                int(latest.get("agent_execution_failure_count", 0)) + 1
             )
-            latest["last_error"] = f"agent round {index} failed; see {receipt_path}"
+            latest["consecutive_execution_failures"] = (
+                int(latest.get("consecutive_execution_failures", 0)) + 1
+            )
+            latest["last_failure_class"] = "agent_execution"
+            latest["last_error"] = f"agent attempt {index} failed; see {receipt_path}"
             self._event(self._session(), "round_failed", latest["last_error"])
         self._save(latest)
         if exit_code != 0:
-            self._sleep_after_failure(int(latest["consecutive_failures"]))
+            self._sleep_after_failure(int(latest["consecutive_execution_failures"]))
 
     def _run_strategy_reflection(
         self,
@@ -466,7 +671,7 @@ class AutoRunRunner:
                 "reflection_pass_started",
                 f"round {index}; pass {pass_number}",
             )
-            exit_code = execute_agent_request(request_path)
+            exit_code = self._execute_with_heartbeat(request_path)
             if exit_code != 0 or not output_path.is_file():
                 validation_feedback = (
                     f"Strategy pass {pass_number} failed to produce a retained review."
@@ -474,7 +679,11 @@ class AutoRunRunner:
                 continue
 
             prior_review = output_path.read_text(encoding="utf-8").strip()
-            assessment, errors = self._parse_strategy_assessment(prior_review)
+            assessment, errors = self._parse_strategy_assessment(
+                prior_review,
+                policy_threshold=self.project.autorun.worthwhile_likelihood_threshold,
+                horizon_rounds=self.project.autorun.strategy_horizon_rounds,
+            )
             decision_marker = self._marker_values_from_text(
                 prior_review, {"STRATEGY_DECISION"}
             ).get("STRATEGY_DECISION")
@@ -503,6 +712,16 @@ class AutoRunRunner:
                 )
             if assessment is not None and not errors:
                 approved = self._state()
+                previous = approved.get("active_strategy")
+                history = list(approved.get("strategy_history", []))
+                if isinstance(previous, dict):
+                    prior_contract = dict(previous)
+                    prior_contract["status"] = "superseded"
+                    history.append(prior_contract)
+                approved["active_strategy"] = self._strategy_contract(
+                    index, approved, assessment
+                )
+                approved["strategy_history"] = history[-20:]
                 approved["active_strategy_pass"] = None
                 approved["last_strategy_likelihood"] = assessment.likelihood
                 approved["last_strategy_threshold"] = assessment.threshold
@@ -512,13 +731,19 @@ class AutoRunRunner:
                 approved["last_strategy_review"] = str(output_path)
                 approved["last_strategy_round"] = index
                 approved["strategy_change_required"] = False
+                approved["reflection_count"] = int(approved["reflection_count"]) + 1
+                approved["next_reflection_at"] = self._format_time(
+                    datetime.now(UTC)
+                    + timedelta(minutes=int(approved["reflection_minutes"]))
+                )
+                approved["last_failure_class"] = None
                 self._save(approved)
                 self._event(
                     self._session(),
                     "reflection_completed",
                     (
                         f"round {index}; decision {assessment.decision}; "
-                        f"likelihood {assessment.likelihood}%"
+                        f"selected likelihood {assessment.replacement_likelihood}%"
                     ),
                 )
                 return output_path
@@ -533,7 +758,7 @@ class AutoRunRunner:
             "reflection_failed",
             f"round {index}; meaningful-progress gate has no approved plan",
         )
-        raise AutoRunError(
+        raise StrategyGateError(
             "meaningful-progress gate did not produce an approved strategy after "
             f"{_STRATEGY_REVIEW_MAX_PASSES} Astra passes"
         )
@@ -549,6 +774,7 @@ class AutoRunRunner:
         validation_feedback: str,
     ) -> str:
         history = self._recent_progress_history(state)
+        policy = self.project.autorun
         revision = ""
         if prior_review:
             revision = f"""
@@ -561,39 +787,48 @@ class AutoRunRunner:
 {validation_feedback or "Adversarially challenge and strengthen this plan."}
 """
         course_constraint = (
-            "A previous pass has already rejected the current course. You must keep "
-            "`STRATEGY_DECISION: change_course` and develop the replacement."
+            "A previous pass or missed strategy deadline has rejected the current "
+            "course. Keep `STRATEGY_DECISION: change_course` and develop a replacement."
             if required_change
             else "No earlier pass in this gate has mandated a course change."
+        )
+        active_strategy = json.dumps(
+            state.get("active_strategy"), indent=2, sort_keys=True
         )
         return f"""# Autorun meaningful-progress gate — pass {pass_number}
 
 You are the strategic governor, not an execution agent. Judge whether the current
-course is likely to produce a meaningful result within the next 12 conductor
-rounds. Meaningful means materially reducing distance to the living master
-contract, discharging a load-bearing final obligation, or establishing a method
-that scales to the remaining domain. Another local lemma, slightly better
-constant, or adjacent tiny cell is incremental unless it unlocks such a method.
-Execution success, a passing build, and activity are not meaningful progress by
-themselves.
+course is likely to produce a meaningful result within the next
+{policy.strategy_horizon_rounds} completed conductor rounds. Meaningful means
+materially reducing distance to the living master contract, discharging a
+load-bearing final obligation, or establishing a method that scales to the
+remaining domain. Local lemmas, slightly better constants, passing builds, and
+activity are only incremental unless they unlock that path.
 
-Estimate the likelihood honestly. Set the minimum likelihood that would justify
-the expected compute, then decide whether the current course is worth continuing.
-If it is not, reject it and use your full reasoning effort to formulate a
-fundamentally different approach. A replacement is ready only when it names the
-method, what to abandon, a falsifiable first check, milestones, and kill criteria.
-Do not execute tasks, edit files, or claim unverified progress.
-When proposing a replacement, write a detailed report before the markers. Explain
-the evidence against the rejected course, the replacement's governing idea and
-interfaces, staged milestones, first falsification experiment, resource bounds,
-risks, kill criteria, and fallback. This report is retained and displayed to the
-operator, so make it concrete and self-contained.
+The minimum worthwhile likelihood is project policy:
+{policy.worthwhile_likelihood_threshold}%. You may not choose or relax it. Compare
+at least two concrete candidate strategies, including the current course when it
+remains viable. Estimate likelihood, rounds to first observable evidence, and
+compute cost for the selected strategy. The replacement must beat a rejected
+course and clear policy.
+
+Produce an enforceable contract: a selected method, ordered milestones with
+deadlines relative to acceptance, a falsifiable first check, kill criteria, and
+one next action. Do not execute tasks, edit files, or claim unverified progress.
+Write a detailed report before the markers explaining evidence, candidate
+comparison, governing interfaces, resource bounds, risks, and fallback.
 
 {course_constraint}
 
 ## Living Master Prompt
 
 {master_text}
+
+## Current active strategy contract
+
+```json
+{active_strategy}
+```
 
 ## Retained state
 
@@ -602,30 +837,112 @@ operator, so make it concrete and self-contained.
 - Meaningful rounds: {int(state.get("meaningful_round_count", 0))}
 - Incremental rounds: {int(state.get("incremental_round_count", 0))}
 - Previous output: `{state.get("last_output") or "None"}`
-- Previous receipt: `{state.get("last_receipt") or "None"}`
+- Previous adjudication: `{state.get("last_adjudication_review") or "None"}`
 - Previous error: `{state.get("last_error") or "None"}`
 
-## Recent execution trajectory
+## Recent adjudicated trajectory
 
 {history}
 {revision}
 ## Required machine-readable decision
 
-End with each marker on one line:
+End with each marker on one line. Separate candidates and kill criteria with
+`||`. Encode milestones as `round_offset::observable`, separated by semicolons.
 
-MEANINGFUL_PROGRESS_LIKELIHOOD: integer from 0 to 100
-MINIMUM_WORTHWHILE_LIKELIHOOD: integer from 1 to 99
+MEANINGFUL_PROGRESS_LIKELIHOOD: integer from 0 to 100 for current course
+MINIMUM_WORTHWHILE_LIKELIHOOD: {policy.worthwhile_likelihood_threshold}
 CURRENT_COURSE_WORTHWHILE: yes | no
 STRATEGY_DECISION: continue | change_course
 STRATEGY_PLAN_STATUS: ready | revise
-CONTINUATION_JUSTIFICATION: required when continuing; otherwise n/a
-ABANDON_CURRENT_COURSE: required for change_course; otherwise n/a
-ALTERNATIVE_METHOD: required for change_course; otherwise n/a
-STRATEGY_MILESTONES: required for change_course; otherwise n/a
-FIRST_FALSIFIABLE_CHECK: required for change_course; otherwise n/a
-STRATEGY_KILL_CRITERIA: required for change_course; otherwise n/a
-REFLECTION_NEXT: one concrete action that follows the approved strategy
+REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD: integer from 0 to 100 for selected strategy
+EXPECTED_ROUNDS_TO_FIRST_EVIDENCE: integer from 1 to {policy.strategy_horizon_rounds}
+EXPECTED_COMPUTE_COST: low | medium | high
+COURSE_TO_ABANDON: required for change_course; otherwise n/a
+CANDIDATE_STRATEGIES: at least two distinct concrete candidates separated by ||
+SELECTED_METHOD: the selected method and governing interface
+STRATEGY_MILESTONES: e.g. 2::observable first check; 6::load-bearing result
+FIRST_FALSIFIABLE_CHECK: exact observable check
+STRATEGY_KILL_CRITERIA: concrete criteria separated by ||
+REFLECTION_NEXT: one concrete action required by this contract
 """
+
+    def _strategy_contract(
+        self,
+        attempt: int,
+        state: dict[str, Any],
+        assessment: _StrategyAssessment,
+    ) -> dict[str, Any]:
+        accepted_execution = int(state.get("round_count", 0))
+        horizon = self.project.autorun.strategy_horizon_rounds
+        markers = assessment.markers
+        return {
+            "schema_version": 1,
+            "strategy_id": f"strategy-{int(state.get('reflection_count', 0)) + 1:05d}",
+            "status": "active",
+            "decision": assessment.decision,
+            "accepted_attempt": attempt,
+            "accepted_execution": accepted_execution,
+            "horizon_rounds": horizon,
+            "deadline_execution": accepted_execution + horizon,
+            "first_evidence_deadline_execution": (
+                accepted_execution + int(assessment.first_evidence_rounds or 1)
+            ),
+            "first_evidence_observed": False,
+            "course_to_abandon": markers["COURSE_TO_ABANDON"],
+            "selected_method": markers["SELECTED_METHOD"],
+            "selected_likelihood": assessment.replacement_likelihood,
+            "worthwhile_threshold": assessment.threshold,
+            "expected_compute_cost": assessment.compute_cost,
+            "candidate_strategies": list(assessment.alternatives),
+            "milestones": [
+                {
+                    "index": milestone_index,
+                    "deadline_execution": accepted_execution + offset,
+                    "observable": observable,
+                    "status": "pending",
+                }
+                for milestone_index, (offset, observable) in enumerate(
+                    assessment.milestones, start=1
+                )
+            ],
+            "first_falsifiable_check": markers["FIRST_FALSIFIABLE_CHECK"],
+            "kill_criteria": [
+                item.strip()
+                for item in markers["STRATEGY_KILL_CRITERIA"].split("||")
+                if item.strip()
+            ],
+            "next_action": markers["REFLECTION_NEXT"],
+            "last_alignment": None,
+            "last_milestone_result": None,
+        }
+
+    @staticmethod
+    def _strategy_requires_review(state: dict[str, Any]) -> bool:
+        if bool(state.get("strategy_change_required", False)):
+            return True
+        strategy = state.get("active_strategy")
+        if not isinstance(strategy, dict):
+            return True
+        if strategy.get("status") != "active":
+            return True
+        completed = int(state.get("round_count", 0))
+        if completed >= int(strategy.get("deadline_execution", completed)):
+            return True
+        if not bool(
+            strategy.get("first_evidence_observed", False)
+        ) and completed >= int(
+            strategy.get("first_evidence_deadline_execution", completed)
+        ):
+            return True
+        milestones = strategy.get("milestones")
+        if isinstance(milestones, list):
+            return any(
+                isinstance(item, dict)
+                and item.get("status") == "pending"
+                and completed >= int(item.get("deadline_execution", completed))
+                for item in milestones
+            )
+        return True
 
     def _recent_progress_history(self, state: dict[str, Any]) -> str:
         round_count = int(state.get("round_count", 0))
@@ -651,6 +968,9 @@ REFLECTION_NEXT: one concrete action that follows the approved strategy
     @staticmethod
     def _parse_strategy_assessment(
         text: str,
+        *,
+        policy_threshold: int = 30,
+        horizon_rounds: int = 12,
     ) -> tuple[_StrategyAssessment | None, list[str]]:
         names = {
             "MEANINGFUL_PROGRESS_LIKELIHOOD",
@@ -658,34 +978,47 @@ REFLECTION_NEXT: one concrete action that follows the approved strategy
             "CURRENT_COURSE_WORTHWHILE",
             "STRATEGY_DECISION",
             "STRATEGY_PLAN_STATUS",
-            "CONTINUATION_JUSTIFICATION",
-            "ABANDON_CURRENT_COURSE",
-            "ALTERNATIVE_METHOD",
+            "REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD",
+            "EXPECTED_ROUNDS_TO_FIRST_EVIDENCE",
+            "EXPECTED_COMPUTE_COST",
+            "COURSE_TO_ABANDON",
+            "CANDIDATE_STRATEGIES",
+            "SELECTED_METHOD",
             "STRATEGY_MILESTONES",
             "FIRST_FALSIFIABLE_CHECK",
             "STRATEGY_KILL_CRITERIA",
             "REFLECTION_NEXT",
         }
         markers = AutoRunRunner._marker_values_from_text(text, names)
-        required = {
-            "MEANINGFUL_PROGRESS_LIKELIHOOD",
-            "MINIMUM_WORTHWHILE_LIKELIHOOD",
-            "CURRENT_COURSE_WORTHWHILE",
-            "STRATEGY_DECISION",
-            "STRATEGY_PLAN_STATUS",
-            "REFLECTION_NEXT",
-        }
-        missing = sorted(required - markers.keys())
+        missing = sorted(names - markers.keys())
         errors = [f"Missing marker {name}." for name in missing]
         try:
             likelihood = int(markers["MEANINGFUL_PROGRESS_LIKELIHOOD"])
             threshold = int(markers["MINIMUM_WORTHWHILE_LIKELIHOOD"])
+            replacement_likelihood = int(
+                markers["REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD"]
+            )
+            first_evidence_rounds = int(markers["EXPECTED_ROUNDS_TO_FIRST_EVIDENCE"])
         except (KeyError, ValueError):
-            return None, [*errors, "Likelihood markers must be integers."]
+            return None, [
+                *errors,
+                "Likelihood and first-evidence markers must be integers.",
+            ]
         if not 0 <= likelihood <= 100:
             errors.append("Meaningful-progress likelihood must be from 0 to 100.")
-        if not 1 <= threshold <= 99:
-            errors.append("Worthwhile likelihood threshold must be from 1 to 99.")
+        if threshold != policy_threshold:
+            errors.append(
+                "MINIMUM_WORTHWHILE_LIKELIHOOD must equal the project policy "
+                f"threshold of {policy_threshold}."
+            )
+        if not 0 <= replacement_likelihood <= 100:
+            errors.append("Replacement likelihood must be from 0 to 100.")
+        if replacement_likelihood < policy_threshold:
+            errors.append("Selected strategy is below the policy threshold.")
+        if not 1 <= first_evidence_rounds <= horizon_rounds:
+            errors.append(
+                f"First evidence must be due within 1 to {horizon_rounds} rounds."
+            )
         worthwhile_text = markers.get("CURRENT_COURSE_WORTHWHILE")
         if worthwhile_text not in {"yes", "no"}:
             errors.append("CURRENT_COURSE_WORTHWHILE must be yes or no.")
@@ -696,27 +1029,70 @@ REFLECTION_NEXT: one concrete action that follows the approved strategy
         plan_status = markers.get("STRATEGY_PLAN_STATUS", "")
         if plan_status not in {"ready", "revise"}:
             errors.append("STRATEGY_PLAN_STATUS must be ready or revise.")
-        if worthwhile != (likelihood >= threshold):
-            errors.append(
-                "Worthwhile judgment must match the reported likelihood threshold."
-            )
+        compute_cost = markers.get("EXPECTED_COMPUTE_COST")
+        if compute_cost not in {"low", "medium", "high"}:
+            errors.append("EXPECTED_COMPUTE_COST must be low, medium, or high.")
+        if worthwhile != (likelihood >= policy_threshold):
+            errors.append("Worthwhile judgment must match the policy-owned threshold.")
         if decision != ("continue" if worthwhile else "change_course"):
             errors.append("Strategy decision must match the worthwhile judgment.")
         if plan_status != "ready":
             errors.append("The strategy plan is not ready.")
-        if decision == "continue":
-            if markers.get("CONTINUATION_JUSTIFICATION") in {None, "", "n/a"}:
-                errors.append("Continuing requires a substantive justification.")
-        elif decision == "change_course":
-            for name in (
-                "ABANDON_CURRENT_COURSE",
-                "ALTERNATIVE_METHOD",
-                "STRATEGY_MILESTONES",
-                "FIRST_FALSIFIABLE_CHECK",
-                "STRATEGY_KILL_CRITERIA",
-            ):
-                if markers.get(name) in {None, "", "n/a"}:
-                    errors.append(f"Course change requires {name}.")
+        if decision == "change_course" and replacement_likelihood <= likelihood:
+            errors.append(
+                "A replacement must have a higher likelihood than the rejected course."
+            )
+        if decision == "change_course" and markers.get("COURSE_TO_ABANDON") in {
+            None,
+            "",
+            "n/a",
+        }:
+            errors.append("A course change must name the course being abandoned.")
+        for name in (
+            "SELECTED_METHOD",
+            "FIRST_FALSIFIABLE_CHECK",
+            "STRATEGY_KILL_CRITERIA",
+            "REFLECTION_NEXT",
+        ):
+            if markers.get(name) in {None, "", "n/a"}:
+                errors.append(f"An enforceable strategy requires {name}.")
+        alternatives = tuple(
+            item.strip()
+            for item in markers.get("CANDIDATE_STRATEGIES", "").split("||")
+            if item.strip()
+        )
+        if len(alternatives) < 2 or len(set(alternatives)) != len(alternatives):
+            errors.append(
+                "CANDIDATE_STRATEGIES must contain at least two distinct candidates "
+                "separated by `||`."
+            )
+        milestones: list[tuple[int, str]] = []
+        for raw_milestone in markers.get("STRATEGY_MILESTONES", "").split(";"):
+            raw_milestone = raw_milestone.strip()
+            if not raw_milestone:
+                continue
+            try:
+                offset_text, observable = raw_milestone.split("::", 1)
+                offset = int(offset_text.strip())
+            except ValueError:
+                errors.append(
+                    "Each milestone must use `round_offset::observable` syntax."
+                )
+                continue
+            observable = observable.strip()
+            if not observable or not 1 <= offset <= horizon_rounds:
+                errors.append(
+                    f"Milestone offsets must be within 1 to {horizon_rounds} "
+                    "and observables must be nonempty."
+                )
+            milestones.append((offset, observable))
+        offsets = [offset for offset, _ in milestones]
+        if not milestones or offsets != sorted(set(offsets)):
+            errors.append("Milestone offsets must be present, unique, and increasing.")
+        elif offsets[0] > first_evidence_rounds:
+            errors.append(
+                "The first milestone must be due no later than first evidence."
+            )
         return (
             _StrategyAssessment(
                 likelihood=likelihood,
@@ -724,6 +1100,11 @@ REFLECTION_NEXT: one concrete action that follows the approved strategy
                 worthwhile=worthwhile,
                 decision=decision,
                 plan_status=plan_status,
+                replacement_likelihood=replacement_likelihood,
+                first_evidence_rounds=first_evidence_rounds,
+                compute_cost=compute_cost,
+                alternatives=alternatives,
+                milestones=tuple(milestones),
                 markers=markers,
             ),
             errors,
@@ -763,6 +1144,9 @@ REFLECTION_NEXT: one concrete action that follows the approved strategy
         prior_output = state.get("last_output") or "None"
         prior_receipt = state.get("last_receipt") or "None"
         failure = state.get("last_error") or "None"
+        active_strategy = json.dumps(
+            state.get("active_strategy"), indent=2, sort_keys=True
+        )
         reflection = ""
         if reflection_output is not None:
             reflection_text = reflection_output.read_text(encoding="utf-8").strip()
@@ -798,8 +1182,18 @@ Source: `{self.master_prompt}`
 - Previous output: `{prior_output}`
 - Previous receipt: `{prior_receipt}`
 - Previous controller/agent error: `{failure}`
-- Consecutive failed rounds: {int(state.get("consecutive_failures", 0))}
+- Consecutive execution failures: {int(state.get("consecutive_execution_failures", 0))}
 - Completed executions: {int(state.get("round_count", 0))}
+
+## Enforceable active strategy
+
+```json
+{active_strategy}
+```
+
+Your task must implement this contract's next action or current pending milestone.
+Do not silently drift. If evidence falsifies a kill criterion, report it instead
+of substituting a nearby task.
 {reflection}
 ## Operating protocol
 
@@ -825,17 +1219,23 @@ Source: `{self.master_prompt}`
 12. Before returning, save all useful work and state exactly what was verified and
     what the next conductor round should attempt.
 
-End with these machine-readable lines:
+End with these machine-readable lines. `AUTORUN_RESULT` is your claim and will be
+independently adjudicated:
 
 AUTORUN_RESULT: incremental | meaningful | blocked | complete
 AUTORUN_SUMMARY: one factual sentence
 AUTORUN_NEXT: one concrete next action
+STRATEGY_ID: exact active strategy ID
+STRATEGY_MILESTONE: integer milestone index | n/a
+MILESTONE_RESULT: advanced | unchanged | falsified | complete
+EVIDENCE: retained artifact or verified observable supporting the milestone result
+
 """
 
     def _conductor_model(self, state: dict[str, Any]) -> tuple[str | None, str]:
         primary_model = self.options.model or self.project.planner_model
         targeted_model = self.project.targeted_task_model
-        failures = int(state.get("consecutive_failures", 0))
+        failures = int(state.get("consecutive_execution_failures", 0))
         if (
             targeted_model is not None
             and targeted_model != primary_model
@@ -859,7 +1259,8 @@ AUTORUN_NEXT: one concrete next action
         self._save(state)
         if delay > 0:
             self._emit(f"autorun retrying after {delay:g} seconds")
-            time.sleep(delay)
+            with self._heartbeat():
+                time.sleep(delay)
             state = self._state()
             if state.get("next_retry_at") == retry_at:
                 state["next_retry_at"] = None
@@ -874,21 +1275,155 @@ AUTORUN_NEXT: one concrete next action
         return self.session_dir
 
     def _state(self) -> dict[str, Any]:
-        return self._read_state_from(self._session())
+        with self._state_lock:
+            return self._read_state_from(self._session())
 
     @staticmethod
     def _read_state_from(session: Path) -> dict[str, Any]:
         try:
-            value = json.loads((session / "state.json").read_text(encoding="utf-8"))
+            loaded = json.loads((session / "state.json").read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError) as exc:
             raise AutoRunError(f"cannot read autorun state: {exc}") from exc
-        if not isinstance(value, dict) or value.get("schema_version") != 1:
+        if not isinstance(loaded, dict):
             raise AutoRunError("autorun state is malformed")
+        value: dict[str, Any] = dict(loaded)
+        version = value.get("schema_version")
+        if version == 1:
+            retained_attempts = [
+                int(path.name.removeprefix("round-"))
+                for path in (session / "rounds").glob("round-*")
+                if path.is_dir() and path.name.removeprefix("round-").isdigit()
+            ]
+            value["schema_version"] = 2
+            value["attempt_count"] = max(
+                [int(value.get("round_count", 0)), *retained_attempts], default=0
+            )
+            value["consecutive_execution_failures"] = int(
+                value.pop("consecutive_failures", 0)
+            )
+            value.update(
+                {
+                    "controller_failure_count": 0,
+                    "agent_execution_failure_count": 0,
+                    "verification_failure_count": 0,
+                    "strategy_gate_failure_count": 0,
+                    "mathematical_blocker_count": int(
+                        value.get("blocked_round_count", 0)
+                    ),
+                    "last_failure_class": None,
+                    "active_strategy": None,
+                    "strategy_history": [],
+                    "last_progress_claim": value.get("last_progress_class"),
+                    "last_progress_adjudication": None,
+                    "last_adjudication_review": None,
+                    "last_adjudication_model": None,
+                }
+            )
+        elif version != 2:
+            raise AutoRunError(f"unsupported autorun state schema: {version!r}")
+        required_text = {
+            "session_id",
+            "status",
+            "created_at",
+            "updated_at",
+            "heartbeat_at",
+            "next_reflection_at",
+        }
+        if any(
+            not isinstance(value.get(name), str) or not str(value[name]).strip()
+            for name in required_text
+        ):
+            raise AutoRunError("autorun state has invalid text or timestamp fields")
+        allowed_status = {"running", "recovering", "paused", "stopped"}
+        if value["status"] not in allowed_status:
+            raise AutoRunError("autorun state has an invalid status")
+        count_fields = {
+            "round_count",
+            "attempt_count",
+            "reflection_count",
+            "meaningful_round_count",
+            "incremental_round_count",
+            "blocked_round_count",
+            "complete_round_count",
+            "unclassified_round_count",
+            "controller_failure_count",
+            "agent_execution_failure_count",
+            "verification_failure_count",
+            "strategy_gate_failure_count",
+            "mathematical_blocker_count",
+            "consecutive_execution_failures",
+        }
+        for name in count_fields:
+            item = value.get(name)
+            if isinstance(item, bool) or not isinstance(item, int) or item < 0:
+                raise AutoRunError(f"autorun state field {name} must be nonnegative")
+        if int(value["attempt_count"]) < int(value["round_count"]):
+            raise AutoRunError("autorun attempt count precedes completed executions")
+        strategy = value.get("active_strategy")
+        if strategy is not None:
+            if not isinstance(strategy, dict):
+                raise AutoRunError("active strategy contract must be a table")
+            required_strategy = {
+                "strategy_id",
+                "status",
+                "deadline_execution",
+                "first_evidence_deadline_execution",
+                "milestones",
+                "kill_criteria",
+            }
+            if required_strategy - strategy.keys():
+                raise AutoRunError("active strategy contract is incomplete")
+            if strategy["status"] not in {
+                "active",
+                "drifted",
+                "falsified",
+                "complete",
+                "superseded",
+            }:
+                raise AutoRunError("active strategy contract has an invalid status")
+            for name in ("deadline_execution", "first_evidence_deadline_execution"):
+                item = strategy[name]
+                if isinstance(item, bool) or not isinstance(item, int) or item < 0:
+                    raise AutoRunError(
+                        f"active strategy field {name} must be nonnegative"
+                    )
+            if not isinstance(strategy["milestones"], list) or not isinstance(
+                strategy["kill_criteria"], list
+            ):
+                raise AutoRunError(
+                    "active strategy milestones and kill criteria must be arrays"
+                )
+        history = value.get("strategy_history")
+        if not isinstance(history, list):
+            raise AutoRunError("strategy history must be an array")
         return value
 
     def _save(self, state: dict[str, Any]) -> None:
-        state["updated_at"] = utc_now()
-        atomic_write_json(self._session() / "state.json", state)
+        with self._state_lock:
+            state["updated_at"] = utc_now()
+            atomic_write_json(self._session() / "state.json", state)
+
+    @contextmanager
+    def _heartbeat(self) -> Iterator[None]:
+        stopped = threading.Event()
+
+        def update_heartbeat() -> None:
+            while not stopped.wait(15):
+                current = self._state()
+                current["heartbeat_at"] = utc_now()
+                self._save(current)
+
+        heartbeat = threading.Thread(target=update_heartbeat, daemon=True)
+        heartbeat.start()
+        try:
+            yield
+        finally:
+            stopped.set()
+            heartbeat.join()
+
+    def _execute_with_heartbeat(self, request_path: Path) -> int:
+        with self._heartbeat():
+            return execute_agent_request(request_path)
 
     @staticmethod
     def _event(session: Path, event: str, detail: str) -> None:
@@ -916,6 +1451,242 @@ AUTORUN_NEXT: one concrete next action
 
     def _emit(self, text: str) -> None:
         print(text, file=self.output, flush=True)
+
+    def _run_progress_metrics(
+        self, round_dir: Path
+    ) -> tuple[list[dict[str, Any]], int]:
+        results: list[dict[str, Any]] = []
+        failures = 0
+        for metric in self.project.autorun.progress_metrics:
+            with self._heartbeat():
+                captured = run_captured_command(
+                    metric.command,
+                    cwd=self.project.root,
+                    env=os.environ,
+                    timeout=metric.timeout,
+                    execution=self.project.execution,
+                    workspace=self.project.root,
+                    allow_workspace_executables=True,
+                    run_dir=self._session(),
+                    read_paths=(self.project.root, self._session()),
+                )
+            parsed: object | None = None
+            parse_error: str | None = None
+            if captured.exit_code == 0 and captured.error is None:
+                try:
+                    parsed = json.loads(captured.stdout)
+                    if not isinstance(parsed, dict):
+                        raise TypeError("metric output is not a JSON object")
+                except (json.JSONDecodeError, TypeError) as exc:
+                    parse_error = str(exc)
+            else:
+                parse_error = captured.error or f"exit code {captured.exit_code}"
+            if parse_error is not None:
+                failures += 1
+            retained = {
+                "schema_version": 1,
+                "metric_id": metric.metric_id,
+                "command": list(metric.command),
+                "exit_code": captured.exit_code,
+                "error": parse_error,
+                "value": parsed,
+                "stdout": captured.stdout,
+                "stderr": captured.stderr,
+                "stdout_sha256": captured.stdout_sha256,
+                "stderr_sha256": captured.stderr_sha256,
+                "stdout_truncated": captured.stdout_truncated,
+                "stderr_truncated": captured.stderr_truncated,
+            }
+            atomic_write_json(
+                round_dir / f"progress-metric-{metric.metric_id}.json", retained
+            )
+            results.append(retained)
+        atomic_write_json(round_dir / "progress-metrics.json", results)
+        return results, failures
+
+    def _run_progress_adjudication(
+        self,
+        index: int,
+        round_dir: Path,
+        conductor_output: Path,
+        metrics: list[dict[str, Any]],
+    ) -> tuple[_ProgressAdjudication | None, Path, str | None]:
+        prompt_path = round_dir / "progress-adjudication-prompt.md"
+        output_path = round_dir / "progress-adjudication.md"
+        receipt_path = round_dir / "progress-adjudication-receipt.json"
+        request_path = round_dir / "progress-adjudication-request.json"
+        current = self._state()
+        model = (
+            self.project.analysis_model
+            or self.options.reflection_model
+            or self.project.strategy_reflection_model
+            or self.options.model
+            or self.project.planner_model
+        )
+        conductor_text = conductor_output.read_text(encoding="utf-8").strip()
+        prompt = f"""# Independent autorun progress adjudication
+
+You are a read-only adjudicator, independent of the conductor that performed the
+work. Inspect the repository, retained artifacts, active strategy, and trusted
+project metrics. Do not edit files. The conductor's `AUTORUN_RESULT` is a claim,
+not evidence. Classify only verified observable progress toward the living master
+contract. Local lemmas, tighter constants, passing builds, and activity are
+incremental unless they discharge a load-bearing obligation or validate a method
+that scales to the remaining domain.
+
+## Living Master Prompt
+
+{self.master_prompt.read_text(encoding="utf-8").strip()}
+
+## Active strategy contract
+
+```json
+{json.dumps(current.get("active_strategy"), indent=2, sort_keys=True)}
+```
+
+## Trusted project progress metrics
+
+```json
+{json.dumps(metrics, indent=2, sort_keys=True)}
+```
+
+## Conductor report
+
+Source: `{conductor_output}`
+
+{conductor_text[-30000:]}
+
+End with these exact markers:
+
+ADJUDICATED_PROGRESS: incremental | meaningful | blocked | complete
+STRATEGY_ALIGNMENT: aligned | drifted | falsified | complete | n/a
+MILESTONE_RESULT: advanced | unchanged | falsified | complete | n/a
+MILESTONE_INDEX: integer | n/a
+ADJUDICATION_REASON: one evidence-based sentence
+VERIFIED_SCOPE_DELTA: exact verified change in final-contract coverage
+"""
+        atomic_write_text(prompt_path, prompt)
+        read_only_tools = [
+            tool
+            for tool in self.project.allowed_tools
+            if tool in {"read", "grep", "glob", "web_search"}
+        ]
+        atomic_write_json(
+            request_path,
+            {
+                "role_id": "autorun_progress_adjudicator",
+                "attempt": index,
+                "omp": self.options.omp or self.project.omp,
+                "workspace": str(self.project.root),
+                "run_dir": str(self._session()),
+                "prompt": str(prompt_path),
+                "output": str(output_path),
+                "stdout_log": str(round_dir / "progress-adjudication-stdout.log"),
+                "stderr_log": str(round_dir / "progress-adjudication-stderr.log"),
+                "receipt": str(receipt_path),
+                "tools": read_only_tools,
+                "model": model,
+                "thinking": self.options.thinking or self.project.analysis_thinking,
+                "max_time": self.project.autorun.adjudication_minutes * 60,
+                "empty_output_retries": 0,
+                "execution": self.project.execution.to_dict(),
+                "sandbox_read_paths": [
+                    str(self.project.root),
+                    str(self._session()),
+                    str(self.master_prompt),
+                ],
+                "workspace_executables": True,
+            },
+        )
+        active = self._state()
+        active["active_prompt"] = str(prompt_path)
+        active["active_model"] = model
+        active["active_model_route"] = "progress_adjudication"
+        self._save(active)
+        self._event(self._session(), "progress_adjudication_started", f"round {index}")
+        exit_code = self._execute_with_heartbeat(request_path)
+        if exit_code != 0 or not output_path.is_file():
+            return None, output_path, model
+        return (
+            self._parse_progress_adjudication(output_path.read_text(encoding="utf-8")),
+            output_path,
+            model,
+        )
+
+    @staticmethod
+    def _parse_progress_adjudication(text: str) -> _ProgressAdjudication | None:
+        names = {
+            "ADJUDICATED_PROGRESS",
+            "STRATEGY_ALIGNMENT",
+            "MILESTONE_RESULT",
+            "MILESTONE_INDEX",
+            "ADJUDICATION_REASON",
+            "VERIFIED_SCOPE_DELTA",
+        }
+        markers = AutoRunRunner._marker_values_from_text(text, names)
+        if names - markers.keys():
+            return None
+        progress = markers["ADJUDICATED_PROGRESS"]
+        alignment = markers["STRATEGY_ALIGNMENT"]
+        milestone_result = markers["MILESTONE_RESULT"]
+        if progress not in {"incremental", "meaningful", "blocked", "complete"}:
+            return None
+        if alignment not in {"aligned", "drifted", "falsified", "complete", "n/a"}:
+            return None
+        if milestone_result not in {
+            "advanced",
+            "unchanged",
+            "falsified",
+            "complete",
+            "n/a",
+        }:
+            return None
+        raw_index = markers["MILESTONE_INDEX"]
+        try:
+            milestone_index = None if raw_index == "n/a" else int(raw_index)
+        except ValueError:
+            return None
+        if milestone_index is not None and milestone_index < 1:
+            return None
+        if not markers["ADJUDICATION_REASON"] or not markers["VERIFIED_SCOPE_DELTA"]:
+            return None
+        return _ProgressAdjudication(
+            progress_class=progress,
+            strategy_alignment=alignment,
+            milestone_result=milestone_result,
+            milestone_index=milestone_index,
+            reason=markers["ADJUDICATION_REASON"],
+            verified_scope_delta=markers["VERIFIED_SCOPE_DELTA"],
+        )
+
+    @staticmethod
+    def _apply_adjudication_to_strategy(
+        state: dict[str, Any], adjudication: _ProgressAdjudication
+    ) -> None:
+        strategy = state.get("active_strategy")
+        if not isinstance(strategy, dict):
+            return
+        strategy = dict(strategy)
+        strategy["last_alignment"] = adjudication.strategy_alignment
+        strategy["last_milestone_result"] = adjudication.milestone_result
+        if adjudication.strategy_alignment in {"drifted", "falsified"}:
+            strategy["status"] = adjudication.strategy_alignment
+            state["strategy_change_required"] = True
+            state["next_reflection_at"] = utc_now()
+        elif adjudication.strategy_alignment == "complete":
+            strategy["status"] = "complete"
+        if adjudication.milestone_result == "advanced":
+            strategy["first_evidence_observed"] = True
+        milestones = strategy.get("milestones")
+        if (
+            adjudication.milestone_index is not None
+            and isinstance(milestones, list)
+            and adjudication.milestone_index <= len(milestones)
+        ):
+            milestone = milestones[adjudication.milestone_index - 1]
+            if isinstance(milestone, dict):
+                milestone["status"] = adjudication.milestone_result
+        state["active_strategy"] = strategy
 
 
 def discover_project(start: Path | None = None) -> Path:
@@ -945,16 +1716,39 @@ def _pid_is_alive(value: object) -> bool:
     return True
 
 
+def _heartbeat_is_fresh(value: object, *, maximum_age_seconds: int = 90) -> bool:
+    if not isinstance(value, str):
+        return False
+    try:
+        heartbeat = datetime.fromisoformat(value)
+    except ValueError:
+        return False
+    return (datetime.now(UTC) - heartbeat.astimezone(UTC)).total_seconds() <= (
+        maximum_age_seconds
+    )
+
+
 def _round_receipt(
-    session: Path, active_round: object, active_route: object
+    session: Path,
+    active_round: object,
+    active_route: object,
+    strategy_pass: object = None,
 ) -> dict[str, Any]:
     if not isinstance(active_round, int) or isinstance(active_round, bool):
         return {}
-    name = (
-        "strategy-reflection-receipt.json"
-        if active_route == "strategy_reflection"
-        else "receipt.json"
-    )
+    if active_route == "strategy_reflection":
+        suffix = (
+            f"-pass-{strategy_pass:02d}"
+            if isinstance(strategy_pass, int)
+            and not isinstance(strategy_pass, bool)
+            and strategy_pass > 1
+            else ""
+        )
+        name = f"strategy-reflection{suffix}-receipt.json"
+    elif active_route == "progress_adjudication":
+        name = "progress-adjudication-receipt.json"
+    else:
+        name = "receipt.json"
     path = session / "rounds" / f"round-{active_round:05d}" / name
     if not path.is_file():
         return {}
@@ -1143,8 +1937,12 @@ def _progress_recap(
         (
             f"Controller: {status} and {process_state}. Session: "
             f"{state.get('round_count', 0)} completed executions, "
-            f"{state.get('consecutive_failures', 0)} consecutive failures, "
-            f"{state.get('reflection_count', 0)} meaningful-progress reviews."
+            f"{state.get('attempt_count', 0)} attempts, "
+            f"{state.get('consecutive_execution_failures', 0)} consecutive "
+            f"execution failures, {state.get('controller_failure_count', 0)} "
+            f"controller failures, {state.get('verification_failure_count', 0)} "
+            f"verification failures, and {state.get('reflection_count', 0)} "
+            "meaningful-progress reviews."
         ),
     ]
     if isinstance(active_round, int) and not isinstance(active_round, bool):
@@ -1316,7 +2114,10 @@ def follow_autorun_status(
             active_round = state.get("active_round")
             _set_terminal_title(stream, f"Autorun round {active_round or '-'} status")
             receipt = _round_receipt(
-                session, active_round, state.get("active_model_route")
+                session,
+                active_round,
+                state.get("active_model_route"),
+                state.get("active_strategy_pass"),
             )
             receipt_status = receipt.get(
                 "status",
@@ -1324,10 +2125,21 @@ def follow_autorun_status(
                 if isinstance(active_round, int) and not isinstance(active_round, bool)
                 else "idle",
             )
-            controller = "up" if _pid_is_alive(state.get("pid")) else "down"
+            pid_alive = _pid_is_alive(state.get("pid"))
+            heartbeat_fresh = _heartbeat_is_fresh(state.get("heartbeat_at"))
+            controller = (
+                "up"
+                if pid_alive and heartbeat_fresh
+                else "stalled"
+                if pid_alive
+                else "down"
+            )
             status = str(state.get("status", "unknown"))
             route = str(state.get("active_model_route") or "primary")
-            activity = "reflection" if route == "strategy_reflection" else "agent"
+            activity = {
+                "strategy_reflection": "reflection",
+                "progress_adjudication": "adjudication",
+            }.get(route, "agent")
             model_value = state.get("active_model")
             model = (
                 f" · {str(model_value).rsplit('/', 1)[-1]}"
@@ -1338,7 +2150,10 @@ def follow_autorun_status(
                 f"controller {controller} · round {active_round or '-'} · "
                 f"{activity} {receipt_status}{model} · "
                 f"executions {state.get('round_count', 0)} · "
-                f"failures {state.get('consecutive_failures', 0)}"
+                f"exec/controller/verify failures "
+                f"{state.get('consecutive_execution_failures', 0)}/"
+                f"{state.get('controller_failure_count', 0)}/"
+                f"{state.get('verification_failure_count', 0)}"
             )
             retry_at = state.get("next_retry_at")
             if status == "recovering" and isinstance(retry_at, str):
@@ -1413,15 +2228,26 @@ def _tail_lines(path: Path, count: int) -> list[str]:
 
 
 def _round_stdout_path(
-    session: Path, active_round: object, route: object
+    session: Path,
+    active_round: object,
+    route: object,
+    strategy_pass: object = None,
 ) -> Path | None:
     if not isinstance(active_round, int) or isinstance(active_round, bool):
         return None
-    name = (
-        "strategy-reflection-stdout.log"
-        if route == "strategy_reflection"
-        else "stdout.log"
-    )
+    if route == "strategy_reflection":
+        suffix = (
+            f"-pass-{strategy_pass:02d}"
+            if isinstance(strategy_pass, int)
+            and not isinstance(strategy_pass, bool)
+            and strategy_pass > 1
+            else ""
+        )
+        name = f"strategy-reflection{suffix}-stdout.log"
+    elif route == "progress_adjudication":
+        name = "progress-adjudication-stdout.log"
+    else:
+        name = "stdout.log"
     return session / "rounds" / f"round-{active_round:05d}" / name
 
 
@@ -1452,8 +2278,12 @@ def follow_autorun_output(
             active_round = state.get("active_round")
             route = state.get("active_model_route")
             _set_terminal_title(stream, f"Round {active_round or '-'} Output")
-            receipt = _round_receipt(session, active_round, route)
-            path = _round_stdout_path(session, active_round, route)
+            receipt = _round_receipt(
+                session, active_round, route, state.get("active_strategy_pass")
+            )
+            path = _round_stdout_path(
+                session, active_round, route, state.get("active_strategy_pass")
+            )
             lines = _tail_lines(path, 5) if path is not None else []
             if lines:
                 body = "\n".join(line[:120] for line in lines)
@@ -1507,7 +2337,9 @@ def follow_autorun_events(
             active_round = state.get("active_round")
             route = state.get("active_model_route")
             _set_terminal_title(stream, f"Round {active_round or '-'} Raw events")
-            receipt = _round_receipt(session, active_round, route)
+            receipt = _round_receipt(
+                session, active_round, route, state.get("active_strategy_pass")
+            )
             lines = _tail_lines(session / "events.jsonl", 5)
             body = (
                 "\n".join(lines) if lines else "No controller events are retained yet."
