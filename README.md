@@ -233,15 +233,20 @@ Use `--model` to override the primary conductor and `--reflection-model` to
 override only the scheduled reflection. The live display identifies the active
 route and model. While recovering, it also reports the exact next retry
 timestamp, distinguishing bounded backoff from a stopped controller.
-The recap also reports the latest execution's progress classification,
-meaningful versus incremental counts, and the latest Astra likelihood,
-worthwhile threshold, decision, and plan status.
+The recap reports the latest execution's progress classification, meaningful
+versus incremental counts, and the latest Astra likelihood, worthwhile
+threshold, decision, and plan status. When Astra changes course, the left status
+pane also presents its detailed operator report: rejected course, replacement
+method, milestones, first falsifiable check, kill criteria, and next action.
 
 All three followers remain attached while the controller is stopped, paused,
 restarted, or temporarily unreadable. They reread `state.json` on every refresh.
 The output and raw-event followers switch to `active_round` automatically and
 update both their Herdr pane labels and terminal titles to `Round N Output` and
 `Round N Raw events`, so a pane cannot remain bound to a completed round.
+Interactive followers use a dedicated alternate-screen dashboard and repaint the
+entire bounded frame. Prior frames cannot accumulate in pane scrollback or remain
+visible after a shorter refresh.
 
 ## Useful commands
 

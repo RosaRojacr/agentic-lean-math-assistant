@@ -583,6 +583,11 @@ If it is not, reject it and use your full reasoning effort to formulate a
 fundamentally different approach. A replacement is ready only when it names the
 method, what to abandon, a falsifiable first check, milestones, and kill criteria.
 Do not execute tasks, edit files, or claim unverified progress.
+When proposing a replacement, write a detailed report before the markers. Explain
+the evidence against the rejected course, the replacement's governing idea and
+interfaces, staged milestones, first falsification experiment, resource bounds,
+risks, kill criteria, and fallback. This report is retained and displayed to the
+operator, so make it concrete and self-contained.
 
 {course_constraint}
 
@@ -1053,6 +1058,69 @@ def _last_round_markers(state: dict[str, Any]) -> dict[str, str]:
     return markers
 
 
+def _compact_strategy_field(value: str, *, limit: int = 150) -> str:
+    normalized = " ".join(value.split())
+    if len(normalized) <= limit:
+        return normalized
+    prefix = normalized[: limit - 1].rsplit(" ", 1)[0]
+    return f"{prefix or normalized[: limit - 1]}…"
+
+
+def _strategy_report_sections(state: dict[str, Any]) -> list[str]:
+    value = state.get("last_strategy_review")
+    if state.get("last_strategy_decision") != "change_course" or not isinstance(
+        value, str
+    ):
+        return []
+    markers = AutoRunRunner._marker_values(
+        Path(value),
+        {
+            "ABANDON_CURRENT_COURSE",
+            "ALTERNATIVE_METHOD",
+            "STRATEGY_MILESTONES",
+            "FIRST_FALSIFIABLE_CHECK",
+            "STRATEGY_KILL_CRITERIA",
+            "REFLECTION_NEXT",
+        },
+    )
+    required = (
+        "ABANDON_CURRENT_COURSE",
+        "ALTERNATIVE_METHOD",
+        "STRATEGY_MILESTONES",
+        "FIRST_FALSIFIABLE_CHECK",
+        "STRATEGY_KILL_CRITERIA",
+        "REFLECTION_NEXT",
+    )
+    if any(markers.get(name) in {None, "", "n/a"} for name in required):
+        return []
+    return [
+        "ASTRA STRATEGY REPORT",
+        (
+            "Astra changed course after estimating meaningful-progress likelihood "
+            f"at {state.get('last_strategy_likelihood')}% against a "
+            f"{state.get('last_strategy_threshold')}% worthwhile threshold. "
+            f"Plan status: {state.get('last_strategy_plan_status', 'unknown')}. "
+            "Classified executions since gate activation: "
+            f"{state.get('meaningful_round_count', 0)} meaningful, "
+            f"{state.get('incremental_round_count', 0)} incremental, "
+            f"{state.get('blocked_round_count', 0)} blocked, "
+            f"{state.get('complete_round_count', 0)} complete."
+        ),
+        "REJECTED COURSE",
+        _compact_strategy_field(markers["ABANDON_CURRENT_COURSE"]),
+        "REPLACEMENT METHOD",
+        _compact_strategy_field(markers["ALTERNATIVE_METHOD"]),
+        "STRATEGY MILESTONES",
+        _compact_strategy_field(markers["STRATEGY_MILESTONES"]),
+        "FIRST FALSIFIABLE CHECK",
+        _compact_strategy_field(markers["FIRST_FALSIFIABLE_CHECK"]),
+        "KILL CRITERIA",
+        _compact_strategy_field(markers["STRATEGY_KILL_CRITERIA"]),
+        "STRATEGY NEXT ACTION",
+        _compact_strategy_field(markers["REFLECTION_NEXT"]),
+    ]
+
+
 def _progress_recap(
     session: Path,
     state: dict[str, Any],
@@ -1103,16 +1171,18 @@ def _progress_recap(
         )
     else:
         sections.append("No conductor round is currently active.")
+    strategy_report = _strategy_report_sections(state)
     decision = state.get("last_strategy_decision")
-    likelihood = state.get("last_strategy_likelihood")
-    threshold = state.get("last_strategy_threshold")
-    if isinstance(decision, str):
+    if strategy_report:
+        sections.extend(strategy_report)
+    elif isinstance(decision, str):
         sections.extend(
             [
                 "MEANINGFUL-PROGRESS GATE",
                 (
                     f"Latest decision: {decision}; estimated likelihood "
-                    f"{likelihood}% against a {threshold}% worthwhile threshold. "
+                    f"{state.get('last_strategy_likelihood')}% against a "
+                    f"{state.get('last_strategy_threshold')}% worthwhile threshold. "
                     f"Plan status: {state.get('last_strategy_plan_status', 'unknown')}."
                 ),
                 (

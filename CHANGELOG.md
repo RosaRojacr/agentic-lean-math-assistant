@@ -25,8 +25,11 @@
   recovers from agent failures with bounded backoff, and forces periodic
   strategy and ALMA-improvement reflection.
 - Added a pane-bounded graphical autorun readout with ten-minute, milestone-rich
-  verbal progress recaps, plus incrementally followable round output logs. Live
-  refreshes repaint only changed rows instead of flashing the complete pane.
+  verbal progress recaps, plus incrementally followable round output logs.
+  Interactive followers use a fully repainted alternate screen, eliminating
+  stale status, output, and raw-event frames from pane scrollback.
+- Added Astra's detailed replacement-strategy report to the left status pane
+  whenever the meaningful-progress gate changes course.
 - Added reasoning-class model routing, a separately bounded read-only strategy
   reflection model, and controller-enforced limits for explicit targeted-model
   escalations.

@@ -14,6 +14,14 @@ _RESET = "\x1b[0m"
 _CLEAR = "\r\x1b[2K"
 _DISABLE_WRAP = "\x1b[?7l"
 _ENABLE_WRAP = "\x1b[?7h"
+_ENTER_ALT_SCREEN = "\x1b[?1049h"
+_EXIT_ALT_SCREEN = "\x1b[?1049l"
+_HIDE_CURSOR = "\x1b[?25l"
+_SHOW_CURSOR = "\x1b[?25h"
+_HOME = "\x1b[H"
+_ERASE_DISPLAY = "\x1b[2J"
+_ERASE_SCROLLBACK = "\x1b[3J"
+_ERASE_TO_END = "\x1b[J"
 _PURPLE = "\x1b[38;2;187;154;247m"
 _BLUE = "\x1b[38;2;122;162;247m"
 _GREEN = "\x1b[38;2;158;206;106m"
@@ -76,8 +84,7 @@ class LiveStatusDisplay:
         self._interactive = hasattr(self.stream, "isatty") and self.stream.isatty()
         self._frame = 0
         self._last_plain: str | None = None
-        self._rendered_rows = 0
-        self._rendered_lines: tuple[str, ...] = ()
+        self._screen_entered = False
 
     def render(self, *, status: str, detail: str, recap: str | None = None) -> None:
         columns = max(1, _terminal_columns(self.stream) - 1)
@@ -158,34 +165,34 @@ class LiveStatusDisplay:
         self._frame += 1
 
     def _update(self, rendered_lines: list[str]) -> None:
-        previous = self._rendered_lines
-        if not previous:
-            update = _ENABLE_WRAP + "\r" + "\r\n".join(rendered_lines)
-        else:
-            parts = [_ENABLE_WRAP, "\r"]
-            if len(previous) > 1:
-                parts.append(f"\x1b[{len(previous) - 1}A")
-            rows = max(len(previous), len(rendered_lines))
-            for row in range(rows):
-                if row >= len(rendered_lines):
-                    parts.append("\x1b[2K")
-                elif row >= len(previous) or rendered_lines[row] != previous[row]:
-                    parts.extend(("\x1b[2K", rendered_lines[row]))
-                if row + 1 < rows:
-                    parts.append("\x1b[1B\r")
-            if rows > len(rendered_lines):
-                parts.append(f"\x1b[{rows - len(rendered_lines)}A")
-            parts.append("\r")
-            update = "".join(parts)
-        self.stream.write(update)
+        parts: list[str] = []
+        if not self._screen_entered:
+            parts.extend(
+                (
+                    _ERASE_SCROLLBACK,
+                    _ENTER_ALT_SCREEN,
+                    _HIDE_CURSOR,
+                    _DISABLE_WRAP,
+                    _ERASE_DISPLAY,
+                )
+            )
+            self._screen_entered = True
+        parts.append(_HOME)
+        for row, line in enumerate(rendered_lines):
+            parts.extend((_CLEAR, line))
+            if row + 1 < len(rendered_lines):
+                parts.append("\r\n")
+        parts.append(_ERASE_TO_END)
+        self.stream.write("".join(parts))
         self.stream.flush()
-        self._rendered_rows = len(rendered_lines)
-        self._rendered_lines = tuple(rendered_lines)
 
     def finish(self) -> None:
-        if self._interactive:
-            self.stream.write(_ENABLE_WRAP + "\n")
+        if self._interactive and self._screen_entered:
+            self.stream.write(
+                _HOME + _ERASE_DISPLAY + _ENABLE_WRAP + _SHOW_CURSOR + _EXIT_ALT_SCREEN
+            )
             self.stream.flush()
+            self._screen_entered = False
 
 
 class PaneHeartbeat:

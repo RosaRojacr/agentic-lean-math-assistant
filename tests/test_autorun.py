@@ -636,6 +636,57 @@ Prefer a small vertical slice before bulk generation.
     assert "Prefer a small vertical slice" not in rendered
 
 
+def test_follow_monitor_adds_detailed_astra_strategy_report(
+    tmp_path: Path,
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    initializer = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
+    )
+    session = initializer._select_session()
+    review = session / "strategy-review.md"
+    review.write_text(
+        "ABANDON_CURRENT_COURSE: stop enumerating adjacent cells\n"
+        "ALTERNATIVE_METHOD: derive a scale-local certificate atlas\n"
+        "STRATEGY_MILESTONES: pilot two bands; replay the consumer; fill coverage\n"
+        "FIRST_FALSIFIABLE_CHECK: certify both pilot bands within two rounds\n"
+        "STRATEGY_KILL_CRITERIA: stop if either pilot band needs bespoke tuning\n"
+        "REFLECTION_NEXT: run the bounded two-band pilot\n",
+        encoding="utf-8",
+    )
+    state = autorun_status(session)
+    state.update(
+        {
+            "status": "paused",
+            "last_strategy_decision": "change_course",
+            "last_strategy_likelihood": 5,
+            "last_strategy_threshold": 30,
+            "last_strategy_plan_status": "ready",
+            "last_strategy_review": str(review),
+        }
+    )
+    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
+    output = io.StringIO()
+
+    follow_autorun_status(
+        session,
+        interval_seconds=0.001,
+        output=output,
+    )
+
+    rendered = output.getvalue()
+    assert "ASTRA STRATEGY REPORT" in rendered
+    assert "5% against a 30% worthwhile threshold" in rendered
+    assert "REJECTED COURSE\n\nstop enumerating adjacent cells" in rendered
+    assert "REPLACEMENT METHOD\n\nderive a scale-local certificate atlas" in rendered
+    assert "STRATEGY MILESTONES" in rendered
+    assert "FIRST FALSIFIABLE CHECK" in rendered
+    assert "KILL CRITERIA" in rendered
+    assert "STRATEGY NEXT ACTION\n\nrun the bounded two-band pilot" in rendered
+
+
 def test_persistent_status_monitor_shows_recovery_deadline_until_resume(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -881,7 +932,7 @@ def test_terminal_title_is_written_only_when_it_changes() -> None:
     assert output.getvalue().count("\x1b]0;") == 2
 
 
-def test_live_status_display_replaces_the_current_terminal_line(
+def test_live_status_display_erases_scrollback_in_an_alternate_screen(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     class InteractiveStream(io.StringIO):
@@ -894,14 +945,21 @@ def test_live_status_display_replaces_the_current_terminal_line(
     output = InteractiveStream()
     display = LiveStatusDisplay(stream=output)
 
-    display.render(status="running", detail="round 3 · agent running")
+    display.render(status="running", detail="obsolete long status")
     first_render = output.getvalue()
-    display.render(status="running", detail="round 3 · agent running")
+    display.render(status="running", detail="current status")
     second_render = output.getvalue()[len(first_render) :]
+    display.finish()
+    finish = output.getvalue()[len(first_render) + len(second_render) :]
 
-    assert second_render.count("\u001b[2K") == 1
-    assert "\u001b[38;2;187;154;247m" in second_render
-    assert "\n" not in second_render
+    assert first_render.startswith("\u001b[3J\u001b[?1049h")
+    assert "\u001b[?25l\u001b[?7l\u001b[2J\u001b[H" in first_render
+    assert second_render.startswith("\u001b[H\r\u001b[2K")
+    assert "current status" in second_render
+    assert "obsolete long status" not in second_render
+    assert second_render.endswith("\u001b[J")
+    assert "\u001b[1A" not in second_render
+    assert finish.endswith("\u001b[?25h\u001b[?1049l")
 
 
 def test_live_status_display_wraps_complete_sections_within_pane(
@@ -946,9 +1004,10 @@ def test_live_status_display_wraps_complete_sections_within_pane(
     assert "PROGRESS UPDATE" in first_render
     assert "This complete progress update fits in the pane." in first_render
     assert "DETAIL" not in first_render
-    assert f"\u001b[{rendered_rows - 1}A" in second_render
-    assert second_render.count("\u001b[2K") == 1
-    assert "PROGRESS UPDATE" not in second_render
+    assert second_render.startswith("\u001b[H\r\u001b[2K")
+    assert second_render.count("\u001b[2K") == rendered_rows
+    assert "PROGRESS UPDATE" in second_render
+    assert "DETAIL" not in second_render
 
 
 def test_discover_project_walks_to_nearest_manifest(tmp_path: Path) -> None:
