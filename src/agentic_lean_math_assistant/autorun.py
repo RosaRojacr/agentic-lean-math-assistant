@@ -1686,7 +1686,7 @@ VERIFIED_SCOPE_DELTA: exact verified change in final-contract coverage
             state["next_reflection_at"] = utc_now()
         elif adjudication.strategy_alignment == "complete":
             strategy["status"] = "complete"
-        if adjudication.milestone_result == "advanced":
+        if adjudication.milestone_result in {"advanced", "complete"}:
             strategy["first_evidence_observed"] = True
         milestones = strategy.get("milestones")
         if (

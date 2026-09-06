@@ -55,7 +55,7 @@ def successful_agent(request_path: Path) -> int:
         output = (
             "ADJUDICATED_PROGRESS: incremental\n"
             "STRATEGY_ALIGNMENT: aligned\n"
-            "MILESTONE_RESULT: advanced\n"
+            "MILESTONE_RESULT: complete\n"
             "MILESTONE_INDEX: 1\n"
             "ADJUDICATION_REASON: the checked step is real but not load-bearing\n"
             "VERIFIED_SCOPE_DELTA: one local obligation was discharged\n"
@@ -120,6 +120,8 @@ def test_autorun_executes_one_self_prompted_round_and_retains_state(
         prompt for prompt in observed_prompts if "choose your own next" in prompt
     )
     assert "Prove the exact target." in conductor_prompt
+    assert state["active_strategy"]["first_evidence_observed"] is True
+    assert state["active_strategy"]["milestones"][0]["status"] == "complete"
     assert "choose your own next" in conductor_prompt
     assert (
         "Keep every command inside the inherited resource-control cgroup"
