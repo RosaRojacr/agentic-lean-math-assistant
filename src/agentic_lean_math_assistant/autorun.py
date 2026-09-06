@@ -1905,7 +1905,7 @@ def _strategy_report_sections(state: dict[str, Any]) -> list[str]:
             f"at {state.get('last_strategy_likelihood')}% against a "
             f"{state.get('last_strategy_threshold')}% worthwhile threshold. "
             f"Plan status: {state.get('last_strategy_plan_status', 'unknown')}. "
-            "Classified executions since gate activation: "
+            "Retained adjudicated executions: "
             f"{state.get('meaningful_round_count', 0)} meaningful, "
             f"{state.get('incremental_round_count', 0)} incremental, "
             f"{state.get('blocked_round_count', 0)} blocked, "
@@ -1995,7 +1995,7 @@ def _progress_recap(
                     f"Plan status: {state.get('last_strategy_plan_status', 'unknown')}."
                 ),
                 (
-                    "Classified executions since gate activation: "
+                    "Retained adjudicated executions: "
                     f"{state.get('meaningful_round_count', 0)} meaningful, "
                     f"{state.get('incremental_round_count', 0)} incremental, "
                     f"{state.get('blocked_round_count', 0)} blocked, "
