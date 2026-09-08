@@ -1,0 +1,8 @@
+import CMVFourArcExhaustion
+
+#print axioms FourArcCandidate.mem_assembly_carrier_vertical_reflection
+#print axioms FourArcCandidate.mem_assembly_carrier_horizontal_reflection
+#print axioms CMVRelaxation.CandidateLowerCap.exists_lowerCap_patch_family
+#print axioms CMVRelaxation.CandidateLeftSide.exists_leftSide_patch_family
+#print axioms CMVRelaxation.CandidateFourArc.frontierWeightedPerimeter_eq_four_components
+#print axioms CMVRelaxation.CandidateFourArc.exists_fourArc_patch_family_and_bound

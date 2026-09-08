@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "1d23ab79f8de3cc6a995d50fedc6bcf232caa47c3d68c7d9105dd506381f1d8d",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/reconstruct_signed_resolution/attempt-01.md",
+    "agents/analytic/reconstruct_signed_resolution/attempt-01.json",
+    "agents/verification/audit_resolution/attempt-01.md",
+    "agents/verification/audit_resolution/attempt-01.json"
+  ],
+  "limitations": [
+    "The claim is an ordered-field argument instantiated over the reals.",
+    "The current audit independently checks the symbolic branches and exact witness but does not provide a theorem-prover artifact for the universally quantified classification.",
+    "The promotion establishes a refutation and signed classification, not the requested false universal proof."
+  ],
+  "report": {
+    "path": "analytic/20260823T024453Z-130e0f-reconstruct_signed_resolution.md",
+    "sha256": "3636bcaad55f9784442d850782609673f1a95f32fb361ece9bfac0b85b6bd39c",
+    "size": 2882
+  },
+  "run_id": "20260823T024453Z-130e0f",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "signed_classification",
+  "summary": "Over the reals with nonzero b and d and a/b > c/d, bd > 0 implies ad > bc while bd < 0 implies ad < bc; the exact tuple (0,1,1,-1) lies in the second branch and refutes the original universal implication.",
+  "task_id": "reconstruct_signed_resolution",
+  "verified_by": [
+    "audit_resolution"
+  ]
+}

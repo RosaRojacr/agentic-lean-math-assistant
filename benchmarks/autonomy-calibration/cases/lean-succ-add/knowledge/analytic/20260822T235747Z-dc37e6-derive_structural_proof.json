@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "8b31eea1c9c2aa8780e2f1f55d6915612798d23dae9ba8ea291137be0fdf153d",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_structural_proof/attempt-01.md",
+    "agents/audit/continuation_gate/attempt-01.md",
+    "agents/audit/continuation_gate/attempt-01-continuation.json"
+  ],
+  "limitations": [
+    "Restricted to the recursive behavior of Nat.add and this theorem shape in the pinned Lean 4.33.1 environment; it does not independently certify the final retained-source edit or project build."
+  ],
+  "report": {
+    "path": "analytic/20260822T235747Z-dc37e6-derive_structural_proof.md",
+    "sha256": "69b3a57124fed84f12927c50ef75aea203865836a9b265c18b7476eff0ff42bd",
+    "size": 1897
+  },
+  "run_id": "20260822T235747Z-dc37e6",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "structural_derivation",
+  "summary": "Under Lean 4.33.1, induction on the second addend with `rfl` for zero and `congrArg Nat.succ ih` for successor proves the exact target without using a successor-addition theorem or axioms.",
+  "task_id": "derive_structural_proof",
+  "verified_by": [
+    "continuation_gate"
+  ]
+}

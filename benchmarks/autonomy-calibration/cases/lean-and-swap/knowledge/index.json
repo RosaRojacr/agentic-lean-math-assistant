@@ -1,0 +1,71 @@
+{
+  "artifacts": [
+    {
+      "path": "analytic/20260823T000834Z-cda0c6-inspect_and_derive.json",
+      "sha256": "eb71914eda8a6d6100fb4ae9663815392d3099ca49364d8318d8ef06e578efe2",
+      "size": 1132
+    },
+    {
+      "path": "analytic/20260823T000834Z-cda0c6-inspect_and_derive.md",
+      "sha256": "fa73911606e0360232e83963927c8a933d4dc01657bc24c7553370265c0e8a7e",
+      "size": 1673
+    },
+    {
+      "path": "analytic/20260823T043622Z-af1239-inspect_and_probe.json",
+      "sha256": "7fc2fcff5976782f58e49855e1748ae1aeea0e3ab3c19eece6265d48e97dff1d",
+      "size": 1185
+    },
+    {
+      "path": "analytic/20260823T043622Z-af1239-inspect_and_probe.md",
+      "sha256": "a071e4cf6a98c0b8fea6411f1b079aa59b1944f1eaab54175c170b974f78020a",
+      "size": 1702
+    },
+    {
+      "path": "analytic/20260823T073629Z-637b83-probe_constructor.json",
+      "sha256": "73b95947660d77fd33a002feca753ed425cc2994c7529482768d86d9bc112779",
+      "size": 1160
+    },
+    {
+      "path": "analytic/20260823T073629Z-637b83-probe_constructor.md",
+      "sha256": "f7783af1f41a17375664c6441c066ac1d105aae5b9fd0f4b64a243009d59591b",
+      "size": 1695
+    },
+    {
+      "path": "formalization/20260823T000834Z-cda0c6-repair_and_build.json",
+      "sha256": "4417308a87dc1d3c2fec3dc96a107e5c44df56f366f9e1ca950f91d377dc7b47",
+      "size": 1138
+    },
+    {
+      "path": "formalization/20260823T000834Z-cda0c6-repair_and_build.md",
+      "sha256": "60b6de9f6a6fade80992413e931393d54c0c352a5cc19b86915155ff373e0343",
+      "size": 905
+    },
+    {
+      "path": "formalization/20260823T043622Z-af1239-repair_and_certify.json",
+      "sha256": "05cdf8aaace13d685cf4a44df726dd3d15632e1f2d7d82e094fcd16ef48002ac",
+      "size": 1218
+    },
+    {
+      "path": "formalization/20260823T043622Z-af1239-repair_and_certify.md",
+      "sha256": "d7e2a4741d50bd4e4428eb23e080b4aa77d0930b9f5c573f5e6278952bab6c5a",
+      "size": 1103
+    },
+    {
+      "path": "formalization/20260823T073629Z-637b83-repair_and_certify.json",
+      "sha256": "3203dd7126fe4564bd29c132520ab8e8752bae01a78ba3d64c72a1b3cebcf759",
+      "size": 1431
+    },
+    {
+      "path": "formalization/20260823T073629Z-637b83-repair_and_certify.md",
+      "sha256": "b635cc43c6d7d444c277edf07b3a1c2c909b41f27a09db8fdde2c77d3790fc18",
+      "size": 879
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "cfb7448380bf26381e140dcfc11be71ee22e06278007a3e2d184b2cd52d508af",
+      "size": 2487
+    }
+  ],
+  "generated_at": "2026-08-23T07:51:16Z",
+  "schema_version": 1
+}

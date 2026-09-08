@@ -1,0 +1,71 @@
+{
+  "artifacts": [
+    {
+      "path": "analytic/20260822T234941Z-5c8f19-derive_consecutive_proof.json",
+      "sha256": "f7c2679179c28ccf931d766228134709adfa2336839780be6bc7327ad4cef418",
+      "size": 1294
+    },
+    {
+      "path": "analytic/20260822T234941Z-5c8f19-derive_consecutive_proof.md",
+      "sha256": "909105da6b448c83cdce2817b1f42032f943c08b1f832b78126dd5fd60fea1f9",
+      "size": 3111
+    },
+    {
+      "path": "analytic/20260823T033721Z-319ecf-assemble_complete_proof.json",
+      "sha256": "d58ca6951db8607590d72679513e715663f807489d21191f2cf552e4c63e01bd",
+      "size": 1437
+    },
+    {
+      "path": "analytic/20260823T033721Z-319ecf-assemble_complete_proof.md",
+      "sha256": "000efef94fd7670ed1198ea77362332d1f78ea91ecb5f6ba7b7dd4fb86ff2647",
+      "size": 661
+    },
+    {
+      "path": "analytic/20260823T041540Z-425127-synthesize_proof.json",
+      "sha256": "3d2d8c74e4204f97dde005fc892ad33b6fb8dcccd29f042ba02f7b363b290fd6",
+      "size": 1311
+    },
+    {
+      "path": "analytic/20260823T041540Z-425127-synthesize_proof.md",
+      "sha256": "24d3feb75f9a0d6c38deb77de372f06ee9381b10ab2b753c32d6aa1bd2af7a8f",
+      "size": 5128
+    },
+    {
+      "path": "analytic/20260823T070630Z-a1f6ec-construct_analytic_proof.json",
+      "sha256": "cac537533f0877eac7f977e6a2fd1aad3c05e3689129b70ddb70b1ed1017d106",
+      "size": 1241
+    },
+    {
+      "path": "analytic/20260823T070630Z-a1f6ec-construct_analytic_proof.md",
+      "sha256": "ac6cc77363da87e0b083a4ea7a8a2bb54e04a96268ef00a6b9a7ffd222dc6073",
+      "size": 4872
+    },
+    {
+      "path": "computational/20260822T234941Z-5c8f19-check_residue_classes.json",
+      "sha256": "baa6ea4b4bf8815df75550a38480003b7e5d468bf232ba6a7340b96b47dc6560",
+      "size": 1400
+    },
+    {
+      "path": "computational/20260822T234941Z-5c8f19-check_residue_classes.md",
+      "sha256": "60879851d42b24b4818414fcc736958b706cf5d0726f1381e71b010551a0bfc8",
+      "size": 1571
+    },
+    {
+      "path": "computational/20260823T070630Z-a1f6ec-check_residue_certificate.json",
+      "sha256": "bc3bce3553bbff8908a6913b7e82599e173de8984db0dd3bdb09b400305e8f4d",
+      "size": 1441
+    },
+    {
+      "path": "computational/20260823T070630Z-a1f6ec-check_residue_certificate.md",
+      "sha256": "82b02024409f8481634d3477a87eb9ca3e107f10b142853be4904ce157ce4a8f",
+      "size": 744
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "c6aaebc456f6856df4bc3a219af569ad83ebdf35b645ac0441e282dcc9776b94",
+      "size": 2625
+    }
+  ],
+  "generated_at": "2026-08-23T07:20:10Z",
+  "schema_version": 1
+}

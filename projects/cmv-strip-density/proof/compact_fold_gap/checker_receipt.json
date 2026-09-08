@@ -1,0 +1,36 @@
+{
+  "adjacencies": 1023,
+  "boxes": 1024,
+  "coverage": [
+    "33/32",
+    "9/7"
+  ],
+  "division_denominator_checks": 180260,
+  "four_over_pi_interior_margins": {
+    "128_minus_33_pi_upper": "2749/113",
+    "nine_pi_lower_minus_28": "29/106"
+  },
+  "global_gap": [
+    "-334791461589540923/1000000000000000000",
+    "-22504264408021/200000000000000000"
+  ],
+  "minimum_equal_area_sign_margin": "829469327958127/100000000000000000",
+  "minimum_fold_sign_margin": "605033063915921/250000000000000000",
+  "near_one_overlap": [
+    "33/32",
+    "17/16"
+  ],
+  "payload_sha256": "1e521465baea066de4aa82bfcfff7aab2cc35b7b479d2941a6873a1cef79414e",
+  "pi_proof_bounds": [
+    "333/106",
+    "355/113"
+  ],
+  "python": "3.14.5",
+  "roots": {
+    "equal_area_existence_unique": 1024,
+    "fold_existence_unique": 1024
+  },
+  "schema": "cmv-compact-rational-certificate-v1",
+  "status": "PASS",
+  "unresolved_boxes": 0
+}

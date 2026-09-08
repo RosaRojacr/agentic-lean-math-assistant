@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "title": "Narrowing the Range",
+  "subtitle": "A machine-checked refinement of the CMV four-arc bound",
+  "authors": "Rosa Pavlak",
+  "skills": ["Lean 4", "Python", "exact arithmetic", "formal verification", "reproducible research"],
+  "cmv_source": {
+    "id": "CMV",
+    "path": "references/Canete2010.pdf",
+    "sha256": "0ee9b4787aa3c09f9a4ed05fb66563a820cd13596af401b76e7900e597711230",
+    "bibliography": "A. Cañete, M. Miranda Jr., and D. Vittone, Some Isoperimetric Problems in Planes with Density, Journal of Geometric Analysis 20 (2010), 243–290; arXiv:0906.1256."
+  },
+  "sections": [
+    {
+      "id": "result",
+      "title": "Result and exact scope",
+      "claims": [
+        {
+          "id": "modeled-range",
+          "title": "Certified modeled range reduction",
+          "statement": "For every explicitly modeled FourArcCandidate satisfying the recorded CMV type-(iv) hypotheses, weighted-perimeter minimality implies 1 < λ < 1.2581840884.",
+          "display": "modeled minimizer  ⟹  1 < λ < 1.2581840884",
+          "details": ["At or above the inclusive cutoff, Lean derives a contradiction from exact area preservation and strict weighted-perimeter improvement."],
+          "citations": [
+            {"kind": "lean", "file": "RangeReduction.lean", "declaration": "cmv_type_four_range_reduction"},
+            {"kind": "lean", "file": "CandidateExclusion.lean", "declaration": "cmv_type_four_not_minimizing"}
+          ]
+        },
+        {
+          "id": "source-scope",
+          "title": "Source-facing conclusion is conditional",
+          "statement": "The exported Lean theorem quantifies over FourArcCandidate, not over arbitrary finite-perimeter subsets of the plane. Applying it to every source-level CMV type-(iv) minimizer additionally requires CMV's candidate reduction and a source-to-coordinate reduced-boundary correspondence.",
+          "details": ["This report does not claim the full CMV conjecture and does not claim existence of a type-(iv) minimizer below the cutoff."],
+          "citations": [
+            {"kind": "lean", "file": "CandidateExclusion.lean", "declaration": "type_four_minimizer_open_range"},
+            {"kind": "cmv", "locator": "Proposition 3.6 and Lemma 3.8", "page": 15, "anchors": ["Propositions 3.5 and 3.6", "Lemma 3.8"]},
+            {"kind": "cmv", "locator": "Proposition 3.9", "page": 18, "anchors": ["Proposition 3.9", "vertical reflective symmetry"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "source",
+      "title": "Published CMV inputs",
+      "claims": [
+        {
+          "id": "strip-density",
+          "title": "Strip-density problem",
+          "statement": "CMV study the planar density equal to 1 on |y| ≤ 1 and λ outside the strip, with λ > 1, using weighted area and reduced-boundary weighted perimeter.",
+          "display": "fλ(x,y) = 1  for |y| ≤ 1;   fλ(x,y) = λ  for |y| > 1",
+          "details": ["The interface itself has density 1 under this convention."],
+          "citations": [
+            {"kind": "cmv", "locator": "§3.2, strip-density definition", "page": 13, "anchors": ["The strip", "with λ > 1"]},
+            {"kind": "cmv", "locator": "§2, reduced-boundary perimeter", "page": 3, "anchors": ["reduced boundary", "perimeter measure"]}
+          ]
+        },
+        {
+          "id": "candidate-classification",
+          "title": "Candidate reduction",
+          "statement": "CMV's symmetry results and Lemma 3.8 reduce vertically symmetric planar candidates to four families; type (iv) has two strip arcs and two reflected exterior arcs of equal radius.",
+          "details": ["Proposition 3.9 supplies vertical reflection symmetry for planar isoperimetric regions; Lemma 3.8 alone is not a theorem about every minimizer."],
+          "citations": [
+            {"kind": "cmv", "locator": "Lemma 3.8", "page": 15, "anchors": ["Lemma 3.8", "four circular arcs"]},
+            {"kind": "cmv", "locator": "Proposition 3.9", "page": 18, "anchors": ["Proposition 3.9", "vertical reflective symmetry"]}
+          ]
+        },
+        {
+          "id": "published-cap-argument",
+          "title": "Published cap substitution",
+          "statement": "The proof of CMV Theorem 3.16 replaces two congruent exterior caps by one doubled-area cap and an exposed chord, reducing the comparison to 2 arc(x) − arc(2x) > 1/λ.",
+          "details": ["CMV prove the lower bound π/4 and obtain exclusion for λ ≥ 4/π; Remark 3.17 identifies the true minimum as the sharper constant without evaluating it."],
+          "citations": [
+            {"kind": "cmv", "locator": "Theorem 3.16, proof, and Remark 3.17", "page": 24, "anchors": ["h(x) := 2arc(x)", "Remark 3.17"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "analysis",
+      "title": "Machine-checked scalar analysis",
+      "claims": [
+        {
+          "id": "segment-formulas",
+          "title": "Unit-chord circular segments",
+          "statement": "For half-central angle 0 < θ < π, the formal model uses arc length ℓ(θ) = θ/sin θ and area a(θ) = (θ − sin θ cos θ)/(4 sin² θ).",
+          "details": ["The interval includes minor, semicircular, and major circular segments."],
+          "citations": [
+            {"kind": "lean", "file": "MorgansArcFunction.lean", "declaration": "ell"},
+            {"kind": "lean", "file": "MorgansArcFunction.lean", "declaration": "area"}
+          ]
+        },
+        {
+          "id": "positive-inverse",
+          "title": "Positive-area inverse",
+          "statement": "Lean proves that area is strictly increasing on (0,π), reaches every positive area, and defines θOf on the positive branch used by arc.",
+          "details": ["The inverse branch, rather than an unconstrained root choice, fixes all later angle identities."],
+          "citations": [
+            {"kind": "lean", "file": "MorgansArcFunction.lean", "declaration": "area_strictMonoOn"},
+            {"kind": "lean", "file": "MorgansArcFunction.lean", "declaration": "area_surjOn"}
+          ]
+        },
+        {
+          "id": "arc-derivative",
+          "title": "Exact derivative of arc",
+          "statement": "For x > 0, Lean proves HasDerivAt arc (2 sin(θOf x)) x.",
+          "display": "arc′(x) = 2 sin(θOf x)",
+          "details": ["This follows from the inverse-area derivative and cancellation of the common positive factor sin θ − θ cos θ."],
+          "citations": [
+            {"kind": "lean", "file": "MorgansArcFunction.lean", "declaration": "hasDerivAt_arc"}
+          ]
+        },
+        {
+          "id": "comparison-derivative",
+          "title": "Comparison derivative and tails",
+          "statement": "For g(x) = 2 arc(x) − arc(2x), Lean proves the exact derivative and proves it is negative on the small-x tail and positive on the large-x tail.",
+          "display": "g′(x) = 4 sin(θOf x) − 4 sin(θOf(2x))",
+          "details": ["These strict signs force every stationary minimum into the compact middle interval."],
+          "citations": [
+            {"kind": "lean", "file": "GFunction.lean", "declaration": "hasDerivAt_g"},
+            {"kind": "lean", "file": "GFunction.lean", "declaration": "g_deriv_neg"},
+            {"kind": "lean", "file": "GFunction.lean", "declaration": "g_deriv_pos"}
+          ]
+        },
+        {
+          "id": "stationary-root",
+          "title": "Unique stationary parameter",
+          "statement": "Lean defines θstar and proves it is the unique root on the selected interval of 3θ − 3 sin θ cos θ − π = 0.",
+          "display": "3θ★ − 3 sin θ★ cos θ★ = π",
+          "details": ["The uniqueness theorem is tied to a proved strict-monotonicity argument, not a floating-point root finder."],
+          "citations": [
+            {"kind": "lean", "file": "Minimiser.lean", "declaration": "θstar_spec"},
+            {"kind": "lean", "file": "Minimiser.lean", "declaration": "θstar_unique"}
+          ]
+        },
+        {
+          "id": "global-minimum",
+          "title": "Global lower bound",
+          "statement": "Lean proves 3 cos θstar ≤ g(x) for every x > 0; this is a whole-domain theorem, not a sampled numerical minimum.",
+          "display": "3 cos θ★ ≤ g(x)   for every x > 0",
+          "details": ["The middle-interval monotonicity and the two tail signs supply complete positive-domain coverage."],
+          "citations": [
+            {"kind": "lean", "file": "MinimumValue.lean", "declaration": "min_g_eq_three_mul_cos_θstar"}
+          ]
+        },
+        {
+          "id": "exact-certificate",
+          "title": "Exact inclusive cutoff",
+          "statement": "The optimized Lean certificate proves 1/λ < g(x) for every x > 0 whenever 1.2581840884 ≤ λ.",
+          "display": "1.2581840884 ≤ λ  ∧  0 < x  ⟹  1/λ < g(x)",
+          "details": ["The decimal is elaborated as an exact rational. The formal theorem uses rational trigonometric enclosures, not a floating-point oracle."],
+          "citations": [
+            {"kind": "lean", "file": "Certificate.lean", "declaration": "cmv_comparison_bound_optimized"},
+            {"kind": "lean", "file": "RangeReduction.lean", "declaration": "cmv_range_reduction"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geometry",
+      "title": "Machine-checked coordinate geometry",
+      "claims": [
+        {
+          "id": "coordinate-normalization",
+          "title": "Cap normalization",
+          "statement": "For the explicit FourArcCandidate coordinates, the normalized cap area capX equals area(alpha), so the scalar theorem applies to the candidate's exterior cap.",
+          "details": ["This is a theorem about the Lean coordinate structure; it is not by itself the source-to-model classification theorem."],
+          "citations": [
+            {"kind": "lean", "file": "FourArcCandidate.lean", "declaration": "capX_eq_area"}
+          ]
+        },
+        {
+          "id": "replacement-area",
+          "title": "Doubled-area replacement",
+          "statement": "Lean proves that the inserted replacement cap has Euclidean area exactly twice the original exterior-cap area and that the resulting modeled weighted area is preserved.",
+          "citations": [
+            {"kind": "lean", "file": "CapReplacement.lean", "declaration": "replacement_cap_area"},
+            {"kind": "lean", "file": "GeometricBridge.lean", "declaration": "cap_replacement_preserves_area"}
+          ]
+        },
+        {
+          "id": "type-three-carrier",
+          "title": "Branch-complete type-(iii) carrier",
+          "statement": "Lean constructs a closed coordinate carrier for every regular modeled type-(iii) profile and proves that its exterior arc is major, semicircular, or minor exactly as h is below, equal to, or above 1/2; the bottom segment degenerates exactly at h = 1/2.",
+          "details": ["This closes the coordinate-constructor prerequisite only. Weighted-area and complete-frontier formulas, reduced-boundary equivalence, equal-area root selection, and source normalization remain separate obligations."],
+          "citations": [
+            {"kind": "cmv", "locator": "Lemma 3.8", "page": 15, "anchors": ["Lemma 3.8", "(iii)"]},
+            {"kind": "lean", "file": "TypeThreeAssembly.lean", "declaration": "isClosed_carrier"},
+            {"kind": "lean", "file": "TypeThreeAssembly.lean", "declaration": "branch_complete"}
+          ]
+        },
+        {
+          "id": "frontier-integrals",
+          "title": "Complete Euclidean frontier costs",
+          "statement": "Lean identifies the component perimeter formulas for both the original and replacement coordinate carriers with canonical weighted integrals over their complete topological frontiers using the Euclidean metric.",
+          "details": ["The proof includes the exposed chord and treats pairwise joins as one-dimensional Hausdorff-null overlaps."],
+          "citations": [
+            {"kind": "lean", "file": "FrontierPerimeter.lean", "declaration": "fourArc_frontier_weightedPerimeter_eq"},
+            {"kind": "lean", "file": "FrontierPerimeter.lean", "declaration": "replacement_frontier_weightedPerimeter_eq"}
+          ]
+        },
+        {
+          "id": "perimeter-factorization",
+          "title": "Exact perimeter difference",
+          "statement": "The modeled perimeter difference factors as capChord · (1 − λ g(capX)).",
+          "display": "Pnew − Pold = L · (1 − λ g(x))",
+          "details": ["Positivity of the chord and the certified scalar inequality make this expression strictly negative at the inclusive cutoff."],
+          "citations": [
+            {"kind": "lean", "file": "GeometricBridge.lean", "declaration": "cap_replacement_perimeter_difference"},
+            {"kind": "lean", "file": "GeometricBridge.lean", "declaration": "cap_replacement_strictly_improves"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "title": "Trust boundary and reproducibility",
+      "claims": [
+        {
+          "id": "kernel-contract",
+          "title": "Exact declaration contract",
+          "statement": "The one-shot campaign compiles an immutable external contract that checks the scalar theorem, the modeled candidate theorem, and every Lean declaration cited by this report.",
+          "details": ["The controller independently queries the transitive axioms of each requested declaration and accepts only propext, Classical.choice, and Quot.sound."],
+          "citations": [
+            {"kind": "lean", "file": "RangeReduction.lean", "declaration": "cmv_range_reduction"},
+            {"kind": "lean", "file": "RangeReduction.lean", "declaration": "cmv_type_four_range_reduction"}
+          ]
+        },
+        {
+          "id": "claim-citations",
+          "title": "Citation-complete document",
+          "statement": "Every substantive claim card in this HTML and PDF has at least one resolved CMV locator or one resolved Lean declaration citation; Lean links point to copied, line-addressable source pages whose hashes are recorded in citations.json.",
+          "details": ["Document validation is an independent campaign gate and cannot turn a failed Lean gate into a successful proof claim."],
+          "citations": [
+            {"kind": "lean", "file": "RangeReduction.lean", "declaration": "cmv_type_four_range_reduction"}
+          ]
+        }
+      ]
+    }
+  ]
+}

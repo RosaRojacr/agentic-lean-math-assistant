@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "d5efb634549065921a90b6017f6ff14ca817dbd0e496c723aa1434a5f3838eeb",
+  "category": "formalization",
+  "evidence": [
+    "agents/formalization/repair_and_certify/attempt-01.md",
+    "workspace/agents/formalization/repair_and_certify/build-evidence.md",
+    "workspace/proof/Calibration.lean",
+    "agents/audit/audit_completion/attempt-01.md",
+    "agents/audit/audit_completion/attempt-01.json"
+  ],
+  "limitations": [
+    "The certificate is scoped to the retained project inventory and audited Calibration.lean SHA-256 85f5aed591e39ba1a6028f70ce7dd51eb1e1f070daf162406670315b219b48af under Lean 4.33.1."
+  ],
+  "report": {
+    "path": "formalization/20260823T043622Z-af1239-repair_and_certify.md",
+    "sha256": "d7e2a4741d50bd4e4428eb23e080b4aa77d0930b9f5c573f5e6278952bab6c5a",
+    "size": 1103
+  },
+  "run_id": "20260823T043622Z-af1239",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": null,
+  "summary": "The final retained theorem uses the explicit constructor proof, preserves its declaration, contains no prohibited constructs, builds under pinned Lean 4.33.1, and reports no axioms.",
+  "task_id": "repair_and_certify",
+  "verified_by": [
+    "audit_completion"
+  ]
+}

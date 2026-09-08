@@ -1,7 +1,16 @@
 import CMVModeledCutoff
 
-/-! Focused publication audit for the Lean-verified `51 / 50` cutoff. -/
+/-! Focused publication audit for the all-density modeled exclusion and the
+independently retained `51 / 50` cutoff. -/
 
+#print axioms CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer
+#print axioms CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer_through_1001_1000
+#print axioms CMVModeledCutoff.sourceCarrier_not_isMinimizer
+#print axioms CMVModeledCutoff.canonicalCarrier_not_isMinimizer
+#print axioms CMVModeledCutoff.relaxedSourceCarrier_not_isMinimizer_of_aeHorizontalCongruence
+#print axioms CMVModeledCutoff.relaxedSourceCarrier_not_isMinimizer_of_rawFourArcCoordinates
+#print axioms CMVModeledCutoff.relaxedSourceCarrier_not_isMinimizer_of_horizontalSections
+#print axioms CMVModeledCutoff.relaxedSourceCarrier_not_isMinimizer_of_centeredIntervals_of_measure_eq
 #print axioms CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer_from_51_50
 #print axioms CMVModeledCutoff.type_four_minimizer_implies_lambda_lt_51_50
 #print axioms CMVModeledCutoff.sourceCarrier_not_isMinimizer_from_51_50

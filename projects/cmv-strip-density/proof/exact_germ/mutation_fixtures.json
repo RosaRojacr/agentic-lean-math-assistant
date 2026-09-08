@@ -1,0 +1,35 @@
+{
+  "schema": "cmv-exact-height-germ-mutations-v1",
+  "mutations": [
+    {
+      "id": "fold-jacobian-sign",
+      "field": "fold_jacobian",
+      "replacement": "-1"
+    },
+    {
+      "id": "equal-area-determinant-sign",
+      "field": "equal_area_determinant",
+      "replacement": "-3*pi"
+    },
+    {
+      "id": "gap-leading-sign",
+      "field": "first_gap_term",
+      "replacement": "3/4*pi*x^4"
+    },
+    {
+      "id": "gap-leading-factor",
+      "field": "first_gap_term",
+      "replacement": "-1/2*pi*x^4"
+    },
+    {
+      "id": "wrong-height-branch",
+      "field": "branch_polynomial",
+      "replacement": "r^3-6*r-4=(r-2)*(r^2+2*r+2)"
+    },
+    {
+      "id": "descending-branch-sign",
+      "field": "descending_branch_guard",
+      "replacement": "K3 tends to 3/2*pi > 0"
+    }
+  ]
+}

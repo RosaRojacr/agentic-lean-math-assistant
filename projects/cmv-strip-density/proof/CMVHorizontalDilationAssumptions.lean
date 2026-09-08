@@ -1,0 +1,7 @@
+import CMVHorizontalDilation
+
+#print axioms CMVRelaxation.hausdorffRestrict_euclideanHorizontalDilation_le
+#print axioms CMVRelaxation.euclideanFrontier_horizontalDilation
+#print axioms CMVRelaxation.hausdorffMeasure_euclideanFrontier_horizontalDilation_le
+#print axioms CMVRelaxation.frontierMeasure_horizontalDilation_le
+#print axioms CMVRelaxation.smoothCost_horizontalDilation_le

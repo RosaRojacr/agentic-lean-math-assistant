@@ -1,0 +1,45 @@
+{
+  "schema": "cmv-opposite-face-bridge-mutations-v1",
+  "mutations": [
+    {
+      "id": "type4-cosine-face",
+      "brick": 0,
+      "field": "radii",
+      "index": 1,
+      "replacement": "1/10000000000",
+      "expected_code": "C4_ETA_LO_NOT_NEGATIVE"
+    },
+    {
+      "id": "fold-face",
+      "brick": 0,
+      "field": "radii",
+      "index": 0,
+      "replacement": "1/1000000000",
+      "expected_code": "F_XI_LO_NOT_POSITIVE"
+    },
+    {
+      "id": "type3-cosine-face",
+      "brick": 0,
+      "field": "radii",
+      "index": 3,
+      "replacement": "1/10000000000",
+      "expected_code": "C3_SIGMA_LO_NOT_NEGATIVE"
+    },
+    {
+      "id": "equal-area-face",
+      "brick": 0,
+      "field": "radii",
+      "index": 2,
+      "replacement": "1/1000000000",
+      "expected_code": "E_RHO_LO_NOT_NEGATIVE"
+    },
+    {
+      "id": "descending-branch-uniqueness",
+      "brick": 0,
+      "field": "centers",
+      "index": 2,
+      "replacement": "1/10",
+      "expected_code": "DESCENDING_K3_NOT_NEGATIVE"
+    }
+  ]
+}

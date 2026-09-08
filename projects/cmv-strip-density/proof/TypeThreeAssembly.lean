@@ -1451,6 +1451,30 @@ theorem coreCarrier_y_bounds {p : PlanePoint}
   · exact abs_le.mpr hleft.2.2
   · exact abs_le.mpr hright.2.2
 
+/-- Above the source strip, the genuine type-(iii) carrier is exactly its
+actual exterior cap; none of the three core pieces can occur there. -/
+theorem mem_carrier_iff_mem_outerCap_of_one_lt
+    {p : PlanePoint} (hy : (1 : ℝ) < p.2) :
+    p ∈ a.carrier ↔ p ∈ a.outerCap.carrier := by
+  constructor
+  · rintro (hcore | hcap)
+    · have hyCore := (abs_le.mp (a.coreCarrier_y_bounds hcore)).2
+      exact False.elim (not_lt_of_ge hyCore hy)
+    · exact hcap
+  · exact Or.inr
+
+/-- Set-level exterior identity for the actual type-(iii) source carrier. -/
+theorem carrier_inter_above_one :
+    a.carrier ∩ {p : PlanePoint | (1 : ℝ) < p.2} =
+      a.outerCap.carrier ∩ {p : PlanePoint | (1 : ℝ) < p.2} := by
+  ext p
+  simp only [Set.mem_inter_iff, Set.mem_setOf_eq]
+  constructor
+  · rintro ⟨hp, hy⟩
+    exact ⟨(a.mem_carrier_iff_mem_outerCap_of_one_lt hy).mp hp, hy⟩
+  · rintro ⟨hp, hy⟩
+    exact ⟨(a.mem_carrier_iff_mem_outerCap_of_one_lt hy).mpr hp, hy⟩
+
 /-- Exact planar volume of the strip core.  The two translated half-segments
 partition the standard side cap, including its major and semicircular
 branches. -/

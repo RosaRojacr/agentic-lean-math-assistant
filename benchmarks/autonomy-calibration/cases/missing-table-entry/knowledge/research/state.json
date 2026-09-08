@@ -1,0 +1,32 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "workspace/problem.md defines the supplied-transcription-only evidence boundary, rejects interpolation from neighboring rows, and specifies the required response when unique recovery is impossible.",
+      "workspace/references/source.md retains Table 2 rows 5 through 8, records c₇ as '[ROW ILLEGIBLE IN RETAINED SCAN]', states that no recurrence, interpolation rule, or closed formula is supplied, and identifies the legible original row-7 page as unavailable.",
+      "workspace/knowledge/analytic/20260823T003634Z-5c59c6-derive_source_gap.md gives an accepted non-uniqueness certificate and identifies the required unavailable fragment as the legible coefficient cell in Table 2 row j = 7.",
+      "workspace/knowledge/source_extraction/20260823T014302Z-6eea4b-extract_allowed_evidence.md records the admissible source statements and confirms that no numerical value can be inferred.",
+      "workspace/knowledge/source_extraction/20260823T022122Z-0c0ccb-revalidate_source.md confirms that the retained extraction remains current with no substantive discrepancy.",
+      "workspace/knowledge/research/state.json records a prior skip for the same problem and retained reference inventory."
+    ],
+    "reason": "The problem and retained reference inventory are unchanged from the prior skip. The task permits only the supplied Table 2 transcription; that transcription marks row j = 7 as illegible, states that no recurrence, interpolation rule, or closed formula is supplied, and says the original page with a legible row 7 is unavailable. Accepted analytic and source-extraction artifacts already prove non-unique recoverability and identify the exact missing fragment. New publication research cannot change the permitted strategy, verification, or conclusion without violating the explicit source boundary.",
+    "reconsider_if": [
+      "A retained scan or transcription containing a legible Table 2 row j = 7 coefficient cell becomes available.",
+      "A retained source explicitly stating c₇ or a uniquely determining recurrence or closed formula is added.",
+      "The problem's source boundary changes to permit consulting the original publication or another external source.",
+      "The problem statement or retained reference inventory changes."
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "3588065133a9a485599940009c675f5071da13c1d43e99b7c238be86aa828d1d",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "e1f0c096b9a02fa68bdd8817a6892b4baa6e37ede953ce9fc2daabe9ca92990b",
+      "size": 304
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T08:24:20Z"
+}

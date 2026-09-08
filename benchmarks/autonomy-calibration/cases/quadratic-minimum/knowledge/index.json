@@ -1,0 +1,61 @@
+{
+  "artifacts": [
+    {
+      "path": "analytic/20260822T234455Z-98d441-derive_minimum.json",
+      "sha256": "79bede486f49f89a89d5a285428d138e62d597817b1321c969d92ab567fd9469",
+      "size": 1039
+    },
+    {
+      "path": "analytic/20260822T234455Z-98d441-derive_minimum.md",
+      "sha256": "22ba8a505765c252197321f9a2bbbca27ad65f3f127aab15fb4be7ceaafe2ba4",
+      "size": 1101
+    },
+    {
+      "path": "analytic/20260823T033157Z-e849e3-revalidate_minimum.json",
+      "sha256": "3247512b971d0957870f97b5caa0b6970d0d46c6a738e7bb68152b8ee7b2d66f",
+      "size": 1125
+    },
+    {
+      "path": "analytic/20260823T033157Z-e849e3-revalidate_minimum.md",
+      "sha256": "51dcf9b13f77421cd6d1d9813ba81c7aad4715ee7eda5b768a43b7618df21f3e",
+      "size": 2435
+    },
+    {
+      "path": "analytic/20260823T041027Z-0cf247-derive_minimum.json",
+      "sha256": "aaa57d47fe45e7d60aed4ac41c8017e2278cedfec29239e8ae7f6891f62c923d",
+      "size": 1115
+    },
+    {
+      "path": "analytic/20260823T041027Z-0cf247-derive_minimum.md",
+      "sha256": "8667239d278d0e89bb6601f5f2caa14057ca04b6ed3cbad1f242ea71fcddad16",
+      "size": 1213
+    },
+    {
+      "path": "analytic/20260823T062624Z-74c75c-synthesize_minimum.json",
+      "sha256": "5174c9f320ebfacca2b65a071b540f924803bd36ce2d8d6c90799b920db24dde",
+      "size": 1016
+    },
+    {
+      "path": "analytic/20260823T062624Z-74c75c-synthesize_minimum.md",
+      "sha256": "312a6c713f6968af4552f584671ef676da36f6ac8e10731d7e8370496f145b38",
+      "size": 1297
+    },
+    {
+      "path": "analytic/20260823T070049Z-b80c66-produce_exact_solution.json",
+      "sha256": "0ad86ad8fd53f4823be41cf8637b049ef7874519b8680bf667b9d69bd9629a87",
+      "size": 1194
+    },
+    {
+      "path": "analytic/20260823T070049Z-b80c66-produce_exact_solution.md",
+      "sha256": "5c777ebdfa9adfcec756c9e1e7e2b760572149e0312b442ccbbfdec9c9bfd80c",
+      "size": 1215
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "b02dd1e58f6e7aa90324c9b8c74af3fb5f4309ffce2927cd56f7a7beb82d1425",
+      "size": 1930
+    }
+  ],
+  "generated_at": "2026-08-23T07:06:30Z",
+  "schema_version": 1
+}

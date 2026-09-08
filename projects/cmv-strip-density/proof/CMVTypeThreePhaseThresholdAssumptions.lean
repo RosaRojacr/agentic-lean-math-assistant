@@ -1,0 +1,16 @@
+import CMVTypeThreePhaseThreshold
+
+#print axioms LeanSuffixAnalytic.typeThreeSupportGap_hasDerivAt
+#print axioms LeanSuffixAnalytic.typeThreeSupportGap_half
+#print axioms LeanSuffixAnalytic.typeThreeSupportGap_continuousAt_one
+#print axioms LeanSuffixAnalytic.typeThreeSupportGap_one_eq_endpointGap
+#print axioms LeanSuffixAnalytic.typeThreeSupportGap_one_pos
+#print axioms LeanSuffixAnalytic.typeThreeFold_neg_of_supportGap_nonpos
+#print axioms LeanSuffixAnalytic.typeThreeArea_gt_pi_of_half_le
+#print axioms LeanSuffixAnalytic.typeThreeSupportGap_existsUnique_zero
+#print axioms LeanSuffixAnalytic.typeThreeSupportGapRoot
+#print axioms LeanSuffixAnalytic.typeThreeSupportGapRoot_spec
+#print axioms LeanSuffixAnalytic.typeThreeSupportGap_sign_partition
+#print axioms LeanSuffixAnalytic.typeThreePhaseThreshold
+#print axioms LeanSuffixAnalytic.typeThreePhaseThreshold_eq
+#print axioms LeanSuffixAnalytic.typeThreePhaseThreshold_gt_pi

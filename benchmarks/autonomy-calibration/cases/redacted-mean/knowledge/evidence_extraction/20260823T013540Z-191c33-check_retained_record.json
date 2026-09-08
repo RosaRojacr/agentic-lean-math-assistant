@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "a9f54821189da5139ca8466579c9c60a90c42ca6ba198a11179a09c5f1d1568e",
+  "category": "evidence_extraction",
+  "evidence": [
+    "input-snapshot/references/source.md",
+    "agents/evidence_extraction/check_retained_record/attempt-01.md",
+    "agents/analytic_audit/audit_mean_determination/attempt-01.md",
+    "agents/evidence_extraction/check_retained_record/attempt-01.json",
+    "agents/analytic_audit/audit_mean_determination/attempt-01.json"
+  ],
+  "limitations": [
+    "The claim is limited to the retained workspace inventory inspected in this run.",
+    "It neither identifies the actual third measurement nor rules out authoritative evidence outside the retained inventory.",
+    "It does not produce a unique numerical mean."
+  ],
+  "report": {
+    "path": "evidence_extraction/20260823T013540Z-191c33-check_retained_record.md",
+    "sha256": "10f9fa58337bceaa05a250e8a1e0e262130dce4a48fb15adc1e2c4a4fba84858",
+    "size": 2529
+  },
+  "run_id": "20260823T013540Z-191c33",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "exact_recovery",
+  "summary": "Within the bounded retained workspace, R-17 has visible values 4, 8, and 10, an unavailable third slot, no retained range/checksum/aggregate/relationship constraining that slot, and no alternate unredacted record.",
+  "task_id": "check_retained_record",
+  "verified_by": [
+    "audit_mean_determination"
+  ]
+}

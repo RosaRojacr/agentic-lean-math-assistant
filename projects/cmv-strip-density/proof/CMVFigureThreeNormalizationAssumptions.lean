@@ -1,0 +1,17 @@
+import CMVFigureThreeNormalization
+
+namespace CMVFigureThree.SourceIncidence
+
+#print axioms strictAssembly_radius
+#print axioms primary_signed_vertical_offset
+#print axioms primary_right_signed_vertical_offset
+#print axioms primary_theta_eq_strictAssembly_outerAngle
+#print axioms leftStripCenter_fst_eq
+#print axioms rightStripCenter_fst_eq
+#print axioms tangentLeft_fst_eq
+#print axioms tangentRight_fst_eq
+#print axioms normalizePoint_tangentLeft_eq
+#print axioms normalizePoint_tangentRight_eq
+#print axioms normalizePoint_image_tangentInterval_eq_horizontalSection
+
+end CMVFigureThree.SourceIncidence

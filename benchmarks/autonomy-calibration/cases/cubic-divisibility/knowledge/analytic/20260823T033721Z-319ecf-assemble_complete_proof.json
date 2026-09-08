@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "e40cc07395f4407e1877ba7a255589efa7f59e4f0a42d651963d138f798e435d",
+  "category": "analytic",
+  "evidence": [
+    "workspace/agents/analytic/assemble_complete_proof/candidate.md",
+    "agents/analytic/assemble_complete_proof/attempt-01.md",
+    "workspace/agents/audit/audit_complete_proof/report.md",
+    "agents/audit/audit_complete_proof/attempt-01.md",
+    "agents/audit/audit_complete_proof/attempt-01.json"
+  ],
+  "limitations": [
+    "Scope is n in the integers and modulus 6.",
+    "This is independently audited prose mathematics, not a proof-assistant kernel certificate.",
+    "The finite residue table requires the included Euclidean-division and congruence-transfer argument for universal coverage."
+  ],
+  "report": {
+    "path": "analytic/20260823T033721Z-319ecf-assemble_complete_proof.md",
+    "sha256": "000efef94fd7670ed1198ea77362332d1f78ea91ecb5f6ba7b7dd4fb86ff2647",
+    "size": 661
+  },
+  "run_id": "20260823T033721Z-319ecf",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "dual_certificate",
+  "summary": "For every integer n, 6 divides n^3-n: the factorization (n-1)n(n+1) supplies explicit quotient witnesses for 2 and 3, the Bezout witness 1=3-2 recombines them into an explicit quotient by 6, and a separate exhaustive modulo-6 argument independently verifies the theorem.",
+  "task_id": "assemble_complete_proof",
+  "verified_by": [
+    "audit_complete_proof"
+  ]
+}

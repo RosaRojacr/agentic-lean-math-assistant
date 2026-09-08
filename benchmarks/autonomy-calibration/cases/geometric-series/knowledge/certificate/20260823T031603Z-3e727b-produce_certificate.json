@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "59b9b3ac9eb7e36ee0a61d429ffeffbd8617c862c36642c5296e7eefd07029d7",
+  "category": "certificate",
+  "evidence": [
+    "workspace/agents/certificate/produce_certificate/certificate.md",
+    "workspace/agents/audit/audit_certificate/audit.md",
+    "workspace/agents/audit/audit_certificate/integer-command-output.txt"
+  ],
+  "limitations": [
+    "The general identity is asserted only for positive integer m and r!=1 in a number system where division by the nonzero element r-1 is defined.",
+    "The independent termwise computation certifies only the fixed eight-term integer sum in the original problem.",
+    "The deterministic command is supplementary exact-integer evidence, not a formal proof-assistant check."
+  ],
+  "report": {
+    "path": "certificate/20260823T031603Z-3e727b-produce_certificate.md",
+    "sha256": "8434848dc886d0fcc1734e9bd177204d11c70d79625ab0984f48024b1e67dff9",
+    "size": 807
+  },
+  "run_id": "20260823T031603Z-3e727b",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "dual_exact_certificate",
+  "summary": "A self-contained exact certificate derives the finite geometric-series identity by multiplication and subtraction, specializes it to sum_{k=0}^{7} 3*2^k=765, and independently verifies the fixed sum by direct termwise integer addition.",
+  "task_id": "produce_certificate",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

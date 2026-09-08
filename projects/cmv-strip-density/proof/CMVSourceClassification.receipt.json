@@ -1,0 +1,108 @@
+{
+  "schema": 2,
+  "strategy_id": "strategy-00035",
+  "round": 208,
+  "milestone_indices": [6],
+  "milestone_name": "regular type-(iv) source-coordinate and Figure-4 symmetry reduction",
+  "result": "complete",
+  "files": {
+    "proof/CMVSourceClassification.lean": "9293fb3968f74a582efe338ede9f895707df49fbfbc7bf52f2a163ee8a11efb3",
+    "proof/CMVModeledCutoff.lean": "30f96b8bddc34b21080a5b0c9239b3d65200424259653e1f05c182f569fb5c73",
+    "proof/lakefile.toml": "3ae0fc98079fffafa567f29d17010fd9638b333b3eb83036c2d18228ef357a5b",
+    "proof/_Assumptions.lean": "e2a9d01533542f6b5923c8ba89c0c4b9f3f068da37ac90270b9cf8d641e41e89",
+    "MASTER_PROMPT.md": "df6c86e89052dd1ca7879a5494e96296ff1914a9f6cac6cf81c4c4af1bcb9bea",
+    "README.md": "ed4f1b89abef81f3505151334f24add90a1f45306161f9126c93f1e22ab68386"
+  },
+  "source": {
+    "path": "references/Canete2010.pdf",
+    "sha256": "0ee9b4787aa3c09f9a4ed05fb66563a820cd13596af401b76e7900e597711230",
+    "locators": [
+      "Lemma 3.8, printed page 15, extracted lines 494--510: type-(iv) regions have four equal-radius circular arcs and horizontal reflective symmetry, up to density-preserving isometries.",
+      "Lemma 3.8 Step 2, printed pages 16--17, extracted lines 533--570: equation (24), the two Snell laws (25), and vertical-axis center alignment force sin(alpha) = sin(beta) = 1/R.",
+      "Proposition 3.9, printed page 18, extracted lines 586--596: isoperimetric regions inherit vertical reflective symmetry.",
+      "Equation (27), printed page 19, extracted lines 600--619: the type-(iv) curvature parameter satisfies 0 < h <= 1 and the principal exterior angle is arccos(h/lambda)."
+    ]
+  },
+  "declarations": [
+    "CMVSourceClassification.figure4_scalar_reduction",
+    "CMVSourceClassification.RawFourArcCoordinates",
+    "CMVSourceClassification.RawFourArcCoordinates.SatisfiesRegularSnell",
+    "CMVSourceClassification.RawFourArcCoordinates.toCanonicalProfile",
+    "CMVSourceClassification.RawFourArcCoordinates.exteriorHalfAngle_eq_profile_alpha",
+    "CMVSourceClassification.RawFourArcCoordinates.centeredCarrier_eq_profile_carrier",
+    "CMVSourceClassification.RawFourArcCoordinates.horizontallyCongruent_profile",
+    "CMVSourceClassification.RawFourArcCoordinates.almostEverywhereHorizontallyCongruent_profile_of_ae",
+    "CMVSourceClassification.RawFourArcCoordinates.exists_profile_and_candidate",
+    "CMVModeledCutoff.relaxedSourceCarrier_not_isMinimizer_from_51_50_of_rawFourArcCoordinates",
+    "CMVModeledCutoff.relaxedSourceCarrier_minimizer_open_range_51_50_of_rawFourArcCoordinates"
+  ],
+  "checked_contract": {
+    "figure4_scalar_rigidity": "The strip-height equation, both Snell equations, principal nonnegative cosine branches, and vertical-axis center alignment imply equal strip-angle sines and a = b = 1/R; horizontal symmetry is a conclusion at this scalar interface.",
+    "independent_raw_geometry": "RawFourArcCoordinates contains only sourceRadius, exteriorHalfAngle, and horizontalPlacement. Its rectangle, two strip-side circular segments, and two exterior caps are defined directly by circle and half-plane predicates.",
+    "strict_regular_profile": "SatisfiesRegularSnell supplies lambda > 1, R > 1, the principal exterior-angle branch, and lambda*cos(angle) = 1/R. toCanonicalProfile kernel-derives 0 < h = 1/R < 1.",
+    "principal_angle_rigidity": "Real.arccos uniqueness derives exteriorHalfAngle = profile.alpha from the source Snell equation and principal branch bounds.",
+    "carrier_rigidity": "The independently defined five-piece centered carrier is proved literally equal to CanonicalTypeIVProfile.carrier; arbitrary placement is then proved to be a horizontal translate.",
+    "representative_lift": "An arbitrary sourceCarrier identified almost everywhere with raw.carrier is proved AlmostEverywhereHorizontallyCongruent to the canonical profile. Exact set equality is not claimed for arbitrary finite-perimeter representatives.",
+    "cutoff_integration": "The relaxed source cutoff and open-range conclusion consume raw regular data plus the visible almost-everywhere source realization, while CompatibleWithModel remains explicit."
+  },
+  "excluded_hypotheses": [
+    "FourArcCandidate or CanonicalTypeIVProfile fields in RawFourArcCoordinates",
+    "candidate/profile equality or congruence fields in SatisfiesRegularSnell",
+    "exact horizontal congruence for arbitrary almost-everywhere representatives",
+    "caller-supplied NormalizationWitness in the raw-coordinate cutoff consumers"
+  ],
+  "retained_explicit_hypotheses": [
+    "strict regularity R > 1, because the source equation gives only 0 < h <= 1 while CanonicalTypeIVProfile requires h < 1",
+    "an almost-everywhere sourceCarrier = raw.carrier realization pending the universal GMT classification",
+    "CompatibleWithModel for source-minimizer transfer and the cutoff"
+  ],
+  "axioms": {
+    "audited_set": ["propext", "Classical.choice", "Quot.sound"],
+    "project_axioms_added": []
+  },
+  "verification": [
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean CMVSourceClassification.lean",
+      "exit_code": 0,
+      "wall_seconds": 37.85,
+      "result": "Final simplified Figure-4 and source-coordinate module typechecked."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake build CMVSourceClassificationSupport CMVModeledCutoff",
+      "exit_code": 0,
+      "wall_seconds": 43.12,
+      "result": "Build completed successfully (8881 jobs); both changed modules built."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean _ClassificationAudit.lean",
+      "exit_code": 0,
+      "wall_seconds": 4.27,
+      "result": "Focused temporary contract and axiom audit reported only propext, Classical.choice, and Quot.sound for the Figure-4 theorem, source-coordinate reduction, representative lift, and cutoff consumers; the temporary file was removed."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake build",
+      "exit_code": 0,
+      "wall_seconds": 2.79,
+      "result": "Full build completed successfully (8894 jobs)."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean _Assumptions.lean",
+      "exit_code": 0,
+      "wall_seconds": 5.78,
+      "result": "Permanent repository axiom ledger completed with the new declarations included."
+    },
+    {
+      "tool": "functions.grep",
+      "path": "proof/CMVSourceClassification.lean;proof/CMVModeledCutoff.lean",
+      "pattern": "\\b(sorry|admit|native_decide|axiom)\\b",
+      "result": "No matches found"
+    }
+  ],
+  "scope_boundary": "This milestone proves the CMV Step-2 scalar symmetry reduction and normalizes an explicit regular closed type-(iv) representative. It does not prove that every source-admissible minimizer has the required regular four-arc structure, nor does it prove source/reduced-boundary compatibility. Therefore it adds no unconditional density coverage.",
+  "next_action": "Formalize the upstream GMT classification interface from a source-admissible minimizer to an almost-everywhere regular four-arc representative: reduced-boundary regularity, common-curvature circular pieces, Snell junction laws, interval slices, and exclusion of non-type-(iv) alternatives. Then discharge CompatibleWithModel from the reduced-boundary/frontier identification."
+}

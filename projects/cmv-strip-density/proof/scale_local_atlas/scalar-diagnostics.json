@@ -1,0 +1,31 @@
+{
+  "status": "INDEPENDENT_SCALAR_AUDIT_PASS",
+  "proof_status": "NOT_KERNEL_REPLAYED",
+  "enclosure_method": "source-native centered first-order Taylor interval",
+  "density_coverage_added": false,
+  "inventory_records": 833,
+  "literal_source_records": 833,
+  "literal_source_sample_evaluations": 29988,
+  "required_guard_count_per_cell": 44,
+  "atan_budget_count_per_cell": 4,
+  "sqrt_square_witnesses_per_cell": 4,
+  "reciprocal_product_witnesses_per_cell": 8,
+  "machin_terms_per_arctangent": 36,
+  "mutation_checks": {
+    "missing_remote": true,
+    "missing_cell": true,
+    "wrong_endpoint": true,
+    "floating_endpoint": true,
+    "noncanonical_rational": true,
+    "precision_escalation": true,
+    "atan_escalation": true,
+    "reversed_bracket": true,
+    "additional_subdivision": true
+  },
+  "cpu_seconds": 7.9766765049999995,
+  "sha256": {
+    "manifest": "f0670a50a10f7ce2a5622cde50e616dc7e6a5c9c56d6d0a1edbd670bbe841d50",
+    "enclosures": "086ec73c5f4511edc34814de944588f09a6c2cac282fc130585c0d4a6d1d205f",
+    "checker": "f582af21df3f419a1a8ab136f421fe5559e4be351af078a467a8ef0676eaced1"
+  }
+}

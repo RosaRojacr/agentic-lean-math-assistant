@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python3",
+    "proof/scale_local_atlas/check_atlas.py",
+    "proof/scale_local_atlas/pilot.json",
+    "--output",
+    "proof/scale_local_atlas/enclosures.json"
+  ],
+  "exit": 0,
+  "seconds": 6.78003897301096,
+  "stdout": "{\"status\": \"PILOT_ENCLOSURES_PASS\", \"proof_status\": \"NOT_KERNEL_REPLAYED\", \"bits\": 160, \"remainder_terms\": 20}\naccepted 64/64 on ['251/40326519148554080', '251/5040814893569260']\naccepted 64/64 on ['1/1000', '1/500']\n",
+  "stderr": ""
+}

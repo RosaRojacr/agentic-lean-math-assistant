@@ -1,0 +1,22 @@
+{
+  "cells": 1024,
+  "certificate_sha256": "3d4cff02d0d56713591b648b81ddbd4a92bde4c00fc9a137318a47ec2899e52d",
+  "checker_command": [
+    "/usr/bin/python3",
+    "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/runs/20260831T044743Z-7bcfc2/workspace/agents/computation/compact_rational_certificate/check_compact_certificate.py",
+    "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/runs/20260831T044743Z-7bcfc2/workspace/agents/computation/compact_rational_certificate/compact_certificate.json",
+    "--receipt",
+    "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/runs/20260831T044743Z-7bcfc2/workspace/agents/computation/compact_rational_certificate/checker_receipt.json"
+  ],
+  "checker_sha256": "1ca2153cfc1dc3eee447f4fe4243b68250b83775c780f11d5023ba89c94022ad",
+  "checker_stdout_sha256": "588d0b686714eb7022093991771c8440c0164cda6acd6ad93b829a80cc09e8f6",
+  "h3_root_padding": "1/512",
+  "h4_root_padding": "1/32768",
+  "mpmath": "1.4.1",
+  "mpmath_decimal_digits": 110,
+  "payload_sha256": "1e521465baea066de4aa82bfcfff7aab2cc35b7b479d2941a6873a1cef79414e",
+  "producer_sha256": "045283f71cc168067161a9c6c6b788e8133259bf69994cff59a9159e93594804",
+  "python": "3.14.5",
+  "root_denominator_bits": 48,
+  "status": "GENERATED_AND_INDEPENDENTLY_CHECKED"
+}

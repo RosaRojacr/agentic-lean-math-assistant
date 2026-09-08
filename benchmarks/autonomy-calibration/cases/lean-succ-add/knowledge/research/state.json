@@ -1,0 +1,33 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "problem.md defines the unchanged theorem, forbids `sorry`, `admit`, new axioms, and weakened statements, and requires `lake build` plus an axiom-free report",
+      "references/source.md defines the pinned `proof/lean-toolchain` and kernel-checked build as the verification contract",
+      "knowledge/research/state.json records a prior `skip` for the same problem and reference inventory",
+      "knowledge/analytic/20260822T235747Z-dc37e6-find_library_proof.md verifies that `Nat.succ_add m n` proves the exact theorem under Lean 4.33.1 without axioms",
+      "knowledge/analytic/20260822T235747Z-dc37e6-derive_structural_proof.md verifies an independent induction proof using `rfl` and `congrArg Nat.succ ih` under Lean 4.33.1 without axioms",
+      "knowledge/proof_probe/20260823T042201Z-835c69-pilot_library_candidate.md confirms the library proof against the exact live declaration and pinned toolchain",
+      "knowledge/lean_formalization/20260823T042201Z-835c69-apply_proof_and_build.md records the corrected retained source, successful `lake build`, axiom-free output, and no forbidden constructs"
+    ],
+    "reason": "No new publication research is necessary. The problem and retained reference inventory are unchanged, and the prior research state already records a skip. Accepted local evidence identifies two complete proofs for the exact theorem under the pinned Lean 4.33.1 toolchain, including `Nat.succ_add m n`, and further records a successful retained-source edit, `lake build`, standalone axiom check, and forbidden-construct scan. Remaining work is local verification or reuse of the retained correction; publication research would not materially change the mathematical strategy, task decomposition, verification, or trust boundary.",
+    "reconsider_if": [
+      "The theorem statement, imports, Lean toolchain, dependency set, or retained source changes",
+      "Local compiler diagnostics reject both retained proof strategies for a reason not covered by the accepted evidence",
+      "Acceptance expands beyond unchanged-statement kernel compilation, placeholder and axiom exclusion, `lake build`, and `#print axioms`",
+      "A nonstandard mathematical dependency is introduced whose definitions or theorem locators are absent from retained local sources and accepted knowledge"
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "0328633375b1ea1ef1879ae27261d5b4f0c496446242e2fbab45a52e87218222",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "e348f113361b0f66788296c3b8d828b808f184978432437817b14359f8e40821",
+      "size": 214
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T07:32:44Z"
+}

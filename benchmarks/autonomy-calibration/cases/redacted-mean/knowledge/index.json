@@ -1,0 +1,71 @@
+{
+  "artifacts": [
+    {
+      "path": "analytic/20260823T003155Z-77cbe0-derive_ambiguity.json",
+      "sha256": "083639ea20b2df7b56ba253a277bc7b9334cec29c83d7444d93ba7f6be9a7403",
+      "size": 1290
+    },
+    {
+      "path": "analytic/20260823T003155Z-77cbe0-derive_ambiguity.md",
+      "sha256": "43e1ecce95c430ed2639fb81be9aeae2c2e23ae6798961107e72ce814ec4879c",
+      "size": 1906
+    },
+    {
+      "path": "analytic/20260823T010319Z-dac861-revalidate_mean.json",
+      "sha256": "c8ab08e3df0605415b0e4ac47d118a3a6853fafa1466976658da38f27e688fcd",
+      "size": 1275
+    },
+    {
+      "path": "analytic/20260823T010319Z-dac861-revalidate_mean.md",
+      "sha256": "ac0b283c4a8facecfe1e000e380fde3d6fa5f2157140faf3238434f4e56ac382",
+      "size": 2478
+    },
+    {
+      "path": "analytic/20260823T021306Z-12a23d-derive_mean_status.json",
+      "sha256": "552aba61c720eaa585c0f007bed856849d8c652ddb1721605a390cca72e07947",
+      "size": 1322
+    },
+    {
+      "path": "analytic/20260823T021306Z-12a23d-derive_mean_status.md",
+      "sha256": "b28aa6de56643fa62a87f517d897ccdca8222a817b85642cae44fa2e38e1460d",
+      "size": 2784
+    },
+    {
+      "path": "analytic/20260823T050852Z-925473-build_mean_certificate.json",
+      "sha256": "b7642287415cd94e1f64a3b9cd735dcea3295187134987f60f521a5b75d34e29",
+      "size": 1392
+    },
+    {
+      "path": "analytic/20260823T050852Z-925473-build_mean_certificate.md",
+      "sha256": "fdca6dfebcd4a9a2770cfd3f2af5362215054c484b76a1a08dd7864cbf4afd9d",
+      "size": 2332
+    },
+    {
+      "path": "analytic/20260823T080519Z-8423e9-derive_retained_mean.json",
+      "sha256": "e46cef5e14f9e80538085a7300040aec40b25b1cad75cbcc60c1aed0fcfe0d4f",
+      "size": 1154
+    },
+    {
+      "path": "analytic/20260823T080519Z-8423e9-derive_retained_mean.md",
+      "sha256": "21ffd11f00e9c2d5e1f81bf734ae123f542189e56f7b0ee788b1dba3cc46050c",
+      "size": 2185
+    },
+    {
+      "path": "evidence_extraction/20260823T013540Z-191c33-check_retained_record.json",
+      "sha256": "fda822094b1958da26b48b098f03cd130ed4ed8fa6c137d6423db9a6074326be",
+      "size": 1409
+    },
+    {
+      "path": "evidence_extraction/20260823T013540Z-191c33-check_retained_record.md",
+      "sha256": "10f9fa58337bceaa05a250e8a1e0e262130dce4a48fb15adc1e2c4a4fba84858",
+      "size": 2529
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "8a4ab4c98fcae5e435dd683a234ef77e1ad886c0dbc15fe650ec41bf759834dd",
+      "size": 2983
+    }
+  ],
+  "generated_at": "2026-08-23T08:16:57Z",
+  "schema_version": 1
+}

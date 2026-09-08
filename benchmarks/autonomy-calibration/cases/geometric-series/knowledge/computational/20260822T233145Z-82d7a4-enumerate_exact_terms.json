@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "34aa009a29dff369d6dc8ec25d4a2f4ff094823677cc9dd3e3abc479089b1ae2",
+  "category": "computational",
+  "evidence": [
+    "agents/computational/enumerate_exact_terms/attempt-01.md",
+    "agents/verification/audit_certificate/attempt-01.md"
+  ],
+  "limitations": [
+    "This promotion certifies only the fixed eight-term integer computation, not a general geometric-series identity.",
+    "No command transcript is retained; promotion rests on displayed exact arithmetic independently reproduced by the audit."
+  ],
+  "report": {
+    "path": "computational/20260822T233145Z-82d7a4-enumerate_exact_terms.md",
+    "sha256": "32d1c9ff04d01e1f08810f7d88bba6d02ec7424ba26ba4849ff9c30fe65ce3e8",
+    "size": 752
+  },
+  "run_id": "20260822T233145Z-82d7a4",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "termwise_check",
+  "summary": "Direct evaluation for k=0 through 7 gives 3, 6, 12, 24, 48, 96, 192, and 384, whose exact cumulative sum is 765 without using the geometric-series closed form.",
+  "task_id": "enumerate_exact_terms",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

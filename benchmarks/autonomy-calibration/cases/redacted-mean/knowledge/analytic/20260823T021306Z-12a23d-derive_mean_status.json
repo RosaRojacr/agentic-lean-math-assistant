@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "cd77ebd53e183376e9bb3ed9e80c41202422769a4b93826b56622a20ca87f0ca",
+  "category": "analytic",
+  "evidence": [
+    "input-snapshot/references/source.md",
+    "agents/analytic/derive_mean_status/attempt-01.md",
+    "agents/verification/audit_mean_status/attempt-01.md"
+  ],
+  "limitations": [
+    "The claim is bounded to the retained workspace and its stated absence of constraints.",
+    "It does not identify, estimate, or constrain the actual redacted value.",
+    "The witness values are illustrative compatible completions, not historical measurements."
+  ],
+  "report": {
+    "path": "analytic/20260823T021306Z-12a23d-derive_mean_status.md",
+    "sha256": "b28aa6de56643fa62a87f517d897ccdca8222a817b85642cae44fa2e38e1460d",
+    "size": 2784
+  },
+  "run_id": "20260823T021306Z-12a23d",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "symbolic_identifiability",
+  "summary": "For retained record R-17 with ordered slots 4, 8, x, and 10 and no retained constraint on x, the complete all-four mean family is (22+x)/4; x=0 and x=4 are compatible completions yielding distinct means 11/2 and 13/2, so uniqueness requires the original third measurement or equivalent evidence uniquely fixing it.",
+  "task_id": "derive_mean_status",
+  "verified_by": [
+    "audit_mean_status"
+  ]
+}

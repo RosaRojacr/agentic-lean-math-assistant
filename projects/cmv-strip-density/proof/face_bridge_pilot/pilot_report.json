@@ -1,0 +1,88 @@
+{
+  "schema": "cmv-opposite-face-bridge-pilot-report-v1",
+  "stage": "face_bridge_pilot",
+  "status": "PROTOTYPE_PROGRESS_CERTIFIED",
+  "strongest_justified_theorem": {
+    "quantifier": "For every lambda in [51/50,102001/100000] union [25781/25000,33/32]",
+    "statement": "The certified slanted angle brick contains a type-(iv) fold root and a descending-branch type-(iii) equal-area root. The fold and selected equal-area root are unique in the certified branch, and P3-P4<0 strictly.",
+    "proof_scope": "Exact Fraction interval arithmetic with exact rational pi and trigonometric enclosures; this is a scalar-model pilot theorem, not a source-profile or Lean theorem.",
+    "coarse_exact_consequences": [
+      "Every retained opposite-face signed margin is greater than 1/1000000000.",
+      "The certified -K3 margin is greater than 4 on both bricks.",
+      "The certified -G margin is greater than 3/1000 on both bricks.",
+      "All sign transfers have strictly positive branch and denominator factors."
+    ]
+  },
+  "coordinates": {
+    "h4": "cos(x)",
+    "q3": "cos(w)",
+    "h3": "(1+cos(w))/2",
+    "constraints": {
+      "C4": "cos(x)-lambda*cos(y)",
+      "F": "cos(x)*(sin(y)-sin(x))-sin(x)*sin(y)*(lambda*y+pi/2-x)",
+      "C3": "cos(w)-lambda*cos(v)",
+      "E": "2*cos(x)^2*N3-(1+cos(w))^2*N4",
+      "G": "cos(x)*(B3+d3)-(1+cos(w))*B4"
+    },
+    "abbreviations": {
+      "B4": "lambda*y+pi/2-x",
+      "d4": "sin(y)-sin(x)",
+      "N4": "B4+cos(x)*d4",
+      "B3": "lambda*v+pi-w",
+      "d3": "sin(v)-sin(w)",
+      "N3": "B3+(cos(w)+2)*d3"
+    },
+    "sign_equivalences": [
+      "On C4=0, F=(sin(x)*sin(y)/4)*K4.",
+      "E has the sign of A3-A4 after multiplication by a strictly positive factor.",
+      "G has the sign of P3-P4 after multiplication by a strictly positive factor."
+    ]
+  },
+  "existence_and_uniqueness": {
+    "existence": "For fixed centered lambda coordinate, opposite eta/xi faces give C4=F=0; after fixing that root, opposite sigma/rho faces give C3=E=0. This is two sequential Poincare-Miranda applications on slanted rational bricks.",
+    "fold_uniqueness": "C4 uniquely determines y. On C4=0, K4'=4*h4^2*(U^-3-lambda*D^-3)>0 because lambda>1 and y>x; h4=cos(x) decreases. Thus the fold root is unique.",
+    "equal_area_uniqueness": "C3 uniquely determines v. The exact enclosure K3<0 gives dA3/dh3=K3/h3^3<0, while h3 decreases with w. Thus A3 increases strictly with w and the selected equal-area root is unique.",
+    "prohibited_method": "No interval Jacobian is formed or inverted."
+  },
+  "rational_domain_reduction": {
+    "proposed_near_one_overlap": "The future quantitative germ certificate should prove through lambda_g>=51/50; the first brick includes lambda=51/50.",
+    "certified_lower_prototype": "[51/50,102001/100000]",
+    "remaining_uncertified_open_interval": "(102001/100000,25781/25000)",
+    "certified_upper_prototype": "[25781/25000,33/32]",
+    "compact_overlap": "The upper prototype includes 33/32, the retained compact certificate's lower endpoint.",
+    "production_plan": "Tile the one remaining open rational interval by adjacent slanted bricks; each row must independently pass the same four face pairs, K3 guard, and G upper-bound check. Then compose only after independently checking the future germ endpoint and retained compact-certificate hash/coverage."
+  },
+  "reproducibility": {
+    "commands": [
+      "cd agents/analytic/face_bridge_pilot && python3 generate_bridge.py",
+      "cd agents/analytic/face_bridge_pilot && python3 check_bridge.py --output checker_receipt.json",
+      "cd agents/analytic/face_bridge_pilot && python3 run_mutations.py",
+      "cd agents/analytic/face_bridge_pilot && sha256sum check_bridge.py bridge_certificate.json checker_receipt.json generate_bridge.py generation_receipt.json mutation_fixtures.json run_mutations.py mutation_receipt.json ../../../proof/verify_calculus.py ../../../proof/exact_germ/exact_germ_checker.py"
+    ],
+    "versions": {
+      "python": "3.14.5",
+      "mpmath": "1.4.1",
+      "proof_decision": "Python stdlib fractions.Fraction; mpmath producer is untrusted"
+    },
+    "hashes": {
+      "check_bridge.py": "c4731e14afee8ed097e8f24b27412464050633b1c9a4c56e0624954441d0b0fd",
+      "bridge_certificate.json": "30593dc3d0b8ba283f709f0585f8f461839793a8f9013a32600cec2c9e0e0147",
+      "checker_receipt.json": "ac76399653a26926b5443d01d3a3ea6f8a360b260073afa8c7794a5beac6d2da",
+      "generate_bridge.py": "426407dfc06bce25135e18538a9a4a921b41f76a948a45a0170480caade54ccc",
+      "generation_receipt.json": "9aef6ced668eddb55f23e53e40067c427c116303dc52cb1aedf9ea1d42f6bddc",
+      "mutation_fixtures.json": "c42aa58b4c984373611c28817489b38e4c1c2100cca8c7ad61d9cbeeb8c8ed1b",
+      "run_mutations.py": "8d1cba1f65bb751b819abfb1d66fe6f3c14dfb2386a4e9931a97dc3789134e32",
+      "mutation_receipt.json": "0b5ac8ab5e99a8d5b795bf84234dc39aeee35a8b32f876f5b54d82841ab87eee",
+      "proof/verify_calculus.py": "61f8ca964996b090b62b61cebd070339448103860d1637962ce3940aa954d150"
+    },
+    "mutation_result": "5/5 rejected by the real checker after semantic rehashing: C4 face, fold face, C3 face, equal-area face, and descending K3 uniqueness guard. Each receipt retains the first exact failing interval."
+  },
+  "limitations_and_unresolved_obligations": [
+    "This pilot does not cover the open interval (102001/100000,25781/25000); rational_bridge_sign is not yet discharged.",
+    "The near-one germ currently proves only a formal jet. It must still provide an explicit lambda_g>=51/50 or force a lower bridge endpoint.",
+    "The compact certificate was not rerun or recomposed in this stage; 33/32 is only the exact proposed seam here.",
+    "The mutation suite is intentionally pilot-sized and does not yet cover gap, upper-face, branch, arithmetic, schema, coverage, or second-brick defects.",
+    "No Lean declaration or source-profile bridge follows from this Python scalar pilot.",
+    "No claim is made here about all lambda in (1,4/pi), all admissible regions, or CMV Conjecture 3.12."
+  ]
+}

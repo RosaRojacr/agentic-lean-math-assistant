@@ -1,0 +1,129 @@
+{
+  "schema": "cmv-middle-face-tiling-post-hardening-audit-v1",
+  "status": "PASS",
+  "verdict": "Independent scoped audit passed. The current middle_tiling artifacts are internally consistent, the fresh checker result is PASS, and no concrete correctness bug was found.",
+  "checks": {
+    "checker_receipt": {
+      "status": "PASS",
+      "fresh_checker_rerun": "PASS",
+      "fresh_result_exactly_matches_stored_receipt_except_retained_per-brick-hash-array": true,
+      "brick_count": 113,
+      "closed_interval_covered": true,
+      "adjacent_by_exact_equality": true,
+      "seam_count_including_prototypes": 114
+    },
+    "per_brick_receipts": {
+      "expected": 113,
+      "found": 113,
+      "names_exactly_B0000_through_B0112": true,
+      "stored_receipt_hashes": 113,
+      "all_receipt_byte_hashes_match": true,
+      "all_status_PASS": true,
+      "all_certificate_hashes_match_manifest_and_current_shards": true,
+      "all_checker_hashes_match_current_checker": true,
+      "all_kernel_hashes_match_current_kernel": true,
+      "all_lambda_intervals_match_shards": true,
+      "all_21_strict_margins_positive": true
+    },
+    "coverage_and_seams": {
+      "target": [
+        "102001/100000",
+        "25781/25000"
+      ],
+      "first_left_endpoint_exact": true,
+      "last_right_endpoint_exact": true,
+      "all_112_internal_boundaries_equal_exactly": true,
+      "seams_total": 114,
+      "internal_seams": 112,
+      "prototype_seams": 2,
+      "all_seam_lambdas_match_expected_boundaries": true,
+      "all_seam_k3_margins_positive": true
+    },
+    "canonical_kernel_pin": {
+      "path": "proof/face_bridge_pilot/check_bridge.py",
+      "path_is_canonical_literal": true,
+      "pinned_sha256_matches_current_kernel": true,
+      "checker_enforces_KERNEL_HASH_MISMATCH_on_divergence": true
+    },
+    "semantic_hashes": {
+      "manifest_payload_hash_matches": true,
+      "all_113_shard_payload_hashes_match": true,
+      "all_113_manifest_certificate_hashes_match_current_shard_bytes": true
+    },
+    "mutation_receipt": {
+      "status": "PASS",
+      "total": 30,
+      "rejected": 30,
+      "fixture_ids_unique_and_exactly_match_result_ids": true,
+      "all_expected_codes_equal_actual_codes": true,
+      "all_rejected": true,
+      "PAYLOAD_HASH_MISMATCH": {
+        "present": true,
+        "rejected": true,
+        "mutation_id": "manifest-semantic-hash"
+      },
+      "SHARD_PAYLOAD_HASH_MISMATCH": {
+        "present": true,
+        "rejected": true,
+        "mutation_id": "shard-semantic-hash"
+      },
+      "recorded_manifest_checker_kernel_fixtures_runner_hashes_all_current": true
+    },
+    "representative_inspection": {
+      "B0000": {
+        "lambda": [
+          "102001/100000",
+          "102011/100000"
+        ],
+        "shard_sha256": "f8acbb968802bf49489725eb5d3763f8c8ab9c5a7a9e37c1463ffeeb338e6b69",
+        "receipt_sha256": "2261a0548c3e951eeda0d562a3b397300307473b894479e14882b1989560ce37",
+        "receipt_status": "PASS",
+        "strict_margin_count": 21,
+        "all_strict_margins_positive": true,
+        "semantic_and_link_hashes_match": true
+      },
+      "B0056": {
+        "lambda": [
+          "102561/100000",
+          "102571/100000"
+        ],
+        "shard_sha256": "4b51f1ff671b6a7f986a9a60783953a3d2ef3d83321c762a5c783e24734e0a53",
+        "receipt_sha256": "013fdbf45cff0c66ba00d6aa5702be7432cc43c646e63079fbdbbfdbd124e7ae",
+        "receipt_status": "PASS",
+        "strict_margin_count": 21,
+        "all_strict_margins_positive": true,
+        "semantic_and_link_hashes_match": true
+      },
+      "B0112": {
+        "lambda": [
+          "103121/100000",
+          "25781/25000"
+        ],
+        "shard_sha256": "50dd5ef33ad41c707932f2173a4c76fe16d4033025b1cef30f1adb9dfb54d9f2",
+        "receipt_sha256": "0963335e553b2fd513900ed74381c25f0ba71e7834a3eba571d41e77c78f75c7",
+        "receipt_status": "PASS",
+        "strict_margin_count": 21,
+        "all_strict_margins_positive": true,
+        "semantic_and_link_hashes_match": true
+      }
+    }
+  },
+  "limitations": [
+    "Scope was limited to agents/analytic/tile_middle_interval/middle_tiling and its pinned canonical kernel and pilot dependencies; no broader campaign obligations were assessed.",
+    "The checker was independently re-executed without writing an output receipt. The mutation runner was not re-executed because it creates transient mutation files in the audited directory; mutation verification instead checked the complete 30-result receipt, every fixture/result correspondence, rejection code, and all recorded hashes against current bytes."
+  ],
+  "audited_hashes": {
+    "manifest_sha256": "0fe3ee91519ca4bbfa43d562e950308a6ebbc3c11fbad178bdcb3c112aa443b3",
+    "manifest_payload_sha256": "d20c02a381696b4b1f3ea0790fcc089f0f026c4b9a2a23a50110287176334b4e",
+    "checker_sha256": "2a23e1a4f17e8d4d434802f63ca452b41fd449e115b59078a4ca86e322820405",
+    "checker_receipt_sha256": "6f77822da5748c50744824ae3b2cf187a490d66251c65338c3a07cb0f3737d1f",
+    "kernel_sha256": "c4731e14afee8ed097e8f24b27412464050633b1c9a4c56e0624954441d0b0fd",
+    "pilot_certificate_sha256": "30593dc3d0b8ba283f709f0585f8f461839793a8f9013a32600cec2c9e0e0147",
+    "generator_sha256": "b491fc2d7082f131c126a28119c0e92be73f5c1dc834854b2ca905fb39ff5c50",
+    "generation_receipt_sha256": "561b5a9ea045a643f852635c4f2aadb88bc310446662d91de28bc0ad529c127a",
+    "mutation_fixtures_sha256": "b40aa88a986c0bb2e12a77044fc908cf8fa6d8c995bbc2c7090d4bddb59f386e",
+    "mutation_runner_sha256": "8cffe44be307120f81de9b99f6372206f102979a05b14650bdba76e2f56f1422",
+    "mutation_receipt_sha256": "1549bd0df4c0b1e1668910e046c2a5b40820df202b334a5a49f3c17775a99c89"
+  },
+  "concrete_correctness_bug": null
+}

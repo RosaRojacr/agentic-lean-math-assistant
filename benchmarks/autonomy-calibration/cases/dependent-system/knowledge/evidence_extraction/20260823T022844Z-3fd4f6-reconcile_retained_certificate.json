@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "5b486e8531a4c7c3ce0b93e6b5dd20e0c8c70f4343c8896fbc5071fb5f225089",
+  "category": "evidence_extraction",
+  "evidence": [
+    "agents/evidence_extraction/reconcile_retained_certificate/attempt-01.md",
+    "agents/mathematical_audit/audit_determination/attempt-01.md"
+  ],
+  "limitations": [
+    "Applies only while the two displayed equations are the complete constraints and x,y are real.",
+    "An added independent condition changes the conclusion and defines a different problem.",
+    "Verified by exact analytic audit; no machine-check artifact was retained."
+  ],
+  "report": {
+    "path": "evidence_extraction/20260823T022844Z-3fd4f6-reconcile_retained_certificate.md",
+    "sha256": "94708a733d90fea0f7922be7544d911342c5d10f3a419ede0a5a5348f5349eec",
+    "size": 1371
+  },
+  "run_id": "20260823T022844Z-3fd4f6",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_reconciliation",
+  "summary": "For the complete displayed system over the reals, (2,2|8)=2(1,1|4), and the exact solutions (0,4) and (1,3) yield unequal x-y values -4 and -2; therefore no single exact numerical value of x-y is entailed.",
+  "task_id": "reconcile_retained_certificate",
+  "verified_by": [
+    "audit_determination"
+  ]
+}

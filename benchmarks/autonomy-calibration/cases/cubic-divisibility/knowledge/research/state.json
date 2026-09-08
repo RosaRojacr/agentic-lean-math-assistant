@@ -1,0 +1,31 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "references/source.md: among two consecutive integers one is even, among three consecutive integers one is divisible by 3, 2 and 3 are coprime, and standard integer factorization and divisibility rules are permitted.",
+      "knowledge/analytic/20260822T234941Z-5c8f19-derive_consecutive_proof.md: factorization and consecutive-integer proof with explicit divisibility witnesses and coverage of zero and negative integers.",
+      "knowledge/analytic/20260823T033721Z-319ecf-assemble_complete_proof.json and knowledge/analytic/20260823T041540Z-425127-synthesize_proof.md: accepted assembled and synthesized proofs of the required obligations.",
+      "knowledge/computational/20260822T234941Z-5c8f19-check_residue_classes.md: independent check of residues 0 through 5 modulo 6, including coverage of arbitrary and negative integers.",
+      "knowledge/research/state.json: prior skip decision for the unchanged problem and retained source inventory."
+    ],
+    "reason": "No concrete publication-research gap remains. The problem and retained reference inventory match the prior skip state: references/source.md supplies the consecutive-integer divisibility facts, coprimality of 2 and 3, and standard factorization and divisibility rules. The accepted knowledge index retains analytic proofs covering factorization, divisibility by 2 and 3, recombination to divisibility by 6, and signed-integer cases, plus a computational artifact covering all six residue classes modulo 6. These materials already determine the mathematical strategy, verification obligations, and source locators required by the task.",
+    "reconsider_if": [
+      "The problem changes to require publication citations, historical attribution, named results, or a stronger generalization.",
+      "The retained reference or accepted analytic and computational artifacts are removed, invalidated, or materially changed.",
+      "A formal proof environment is imposed and exact library lemmas or formal source locators become necessary.",
+      "Verification identifies an unresolved obligation concerning factorization, divisibility recombination, negative integers, zero, or the modulo-6 residue check."
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "430721a7a4fa8337e93f37c880cc853e672944d57780af32aece7c589abff50b",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "588f5648f7474b0179ce39124b47ffb5c2dc0328b73660b4312005398da7f7cd",
+      "size": 244
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T07:20:10Z"
+}

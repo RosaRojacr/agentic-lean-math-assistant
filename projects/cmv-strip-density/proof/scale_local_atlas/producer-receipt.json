@@ -1,0 +1,653 @@
+{
+  "status": "PRODUCER_ONLY",
+  "precision_decimal_digits": 65,
+  "predictor_dyadic_bits": 100,
+  "predictor_remainder_terms": 64,
+  "elapsed_seconds": 53.03575354401255,
+  "attempts": [
+    [
+      {
+        "index": 0,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 1,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 2,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 3,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 4,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 5,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 6,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 7,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 8,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 9,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 10,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 11,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 12,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 13,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 14,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 15,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 16,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 17,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 18,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 19,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 20,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 21,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 22,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 23,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 24,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 25,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 26,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 27,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 28,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 29,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 30,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 31,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 32,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 33,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 34,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 35,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 36,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 37,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 38,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 39,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 40,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 41,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 42,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 43,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 44,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 45,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 46,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 47,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 48,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 49,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 50,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 51,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 52,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 53,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 54,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 55,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 56,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 57,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 58,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 59,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 60,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 61,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 62,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 63,
+        "doublings": 0,
+        "status": "ENCLOSURES_PASS"
+      }
+    ],
+    [
+      {
+        "index": 0,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 1,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 2,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 3,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 4,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 5,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 6,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 7,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 8,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 9,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 10,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 11,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 12,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 13,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 14,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 15,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 16,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 17,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 18,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 19,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 20,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 21,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 22,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 23,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 24,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 25,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 26,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 27,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 28,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 29,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 30,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 31,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 32,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 33,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 34,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 35,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 36,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 37,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 38,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 39,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 40,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 41,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 42,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 43,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 44,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 45,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 46,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 47,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 48,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 49,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 50,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 51,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 52,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 53,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 54,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 55,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 56,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 57,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 58,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 59,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 60,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 61,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 62,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      },
+      {
+        "index": 63,
+        "doublings": 3,
+        "status": "ENCLOSURES_PASS"
+      }
+    ]
+  ]
+}

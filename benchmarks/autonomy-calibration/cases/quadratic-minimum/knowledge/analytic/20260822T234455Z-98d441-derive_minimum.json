@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "edd24bf4a066e916bf43c658f0d31411b9f8ad0369fb82bc8abf01031d12ed54",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_minimum/attempt-01.md",
+    "agents/verification/audit_proof/attempt-01.md",
+    "agents/verification/audit_proof/attempt-01.json"
+  ],
+  "limitations": [
+    "Restricted to this polynomial over the real numbers.",
+    "Established by exact algebra and an independent prose audit, not by proof-assistant formalization or a computer-algebra certificate."
+  ],
+  "report": {
+    "path": "analytic/20260822T234455Z-98d441-derive_minimum.md",
+    "sha256": "22ba8a505765c252197321f9a2bbbca27ad65f3f127aab15fb4be7ceaafe2ba4",
+    "size": 1101
+  },
+  "run_id": "20260822T234455Z-98d441",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "complete_square",
+  "summary": "For the real function f(x) = x^2 - 6x + 13, the exact global minimum value is 4 and the unique attaining point is x = 3.",
+  "task_id": "derive_minimum",
+  "verified_by": [
+    "audit_proof"
+  ]
+}

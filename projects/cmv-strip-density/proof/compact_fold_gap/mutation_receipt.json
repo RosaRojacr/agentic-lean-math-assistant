@@ -1,0 +1,49 @@
+{
+  "baseline": {
+    "returncode": 0,
+    "status": "PASS",
+    "stdout_sha256": "588d0b686714eb7022093991771c8440c0164cda6acd6ad93b829a80cc09e8f6"
+  },
+  "certificate_sha256": "3d4cff02d0d56713591b648b81ddbd4a92bde4c00fc9a137318a47ec2899e52d",
+  "checker_sha256": "1ca2153cfc1dc3eee447f4fe4243b68250b83775c780f11d5023ba89c94022ad",
+  "fixtures_sha256": "2e8c05ccce2f4f817db41bebff2aeb6a55bcd67bbb395a1455af60e83957e4a9",
+  "mutation_total": 4,
+  "mutations_rejected": 4,
+  "python": "3.14.5",
+  "results": [
+    {
+      "expected_error": "box[0]: fields",
+      "id": "serialized_sign",
+      "kind": "sign",
+      "returncode": 1,
+      "status": "REJECTED",
+      "stderr": "FAIL box[0]: fields ['gap_sign', 'h3_root', 'h4_root', 'lambda'] != ['h3_root', 'h4_root', 'lambda']"
+    },
+    {
+      "expected_error": "box[0]: fold upper sign unresolved",
+      "id": "fold_root_bound",
+      "kind": "bound",
+      "returncode": 1,
+      "status": "REJECTED",
+      "stderr": "FAIL box[0]: fold upper sign unresolved (-6.35087)"
+    },
+    {
+      "expected_error": "box[0]: coverage gap or overlap",
+      "id": "lambda_coverage",
+      "kind": "coverage",
+      "returncode": 1,
+      "status": "REJECTED",
+      "stderr": "FAIL box[0]: coverage gap or overlap"
+    },
+    {
+      "expected_error": "box[0]: fields",
+      "id": "missing_root_payload",
+      "kind": "payload",
+      "returncode": 1,
+      "status": "REJECTED",
+      "stderr": "FAIL box[0]: fields ['h4_root', 'lambda'] != ['h3_root', 'h4_root', 'lambda']"
+    }
+  ],
+  "runner_sha256": "8a8d485aa4c09ed874020a8e5fd9c1a7233a018d881a4db33cba466888689452",
+  "status": "PASS"
+}

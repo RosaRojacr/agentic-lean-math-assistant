@@ -1,0 +1,92 @@
+{
+  "base": {
+    "e0": "1/4*pi",
+    "lambda_minus_one_leading": "1/2*pi*x^3",
+    "r0": "2",
+    "z0": "1/2*pi"
+  },
+  "branch_polynomial": "r^3-6*r+4=(r-2)*(r^2+2*r-2)",
+  "checks": {
+    "checker_sha256": "6d1b0e31ccff195f5537afe5cd61303349b7ac3fa55462ebf13aed7d26506bf4",
+    "exact_decision_type": "fractions.Fraction Laurent polynomials",
+    "fixtures_sha256": "559ee37196beaa9de1adc820bf64cc3d26533d6188f485335c6c8c892b5d544c",
+    "mutation_results": {
+      "descending-branch-sign": true,
+      "equal-area-determinant-sign": true,
+      "fold-jacobian-sign": true,
+      "gap-leading-factor": true,
+      "gap-leading-sign": true,
+      "wrong-height-branch": true
+    },
+    "mutations_rejected": "6/6",
+    "python": "3.14.5",
+    "source_sha256": "0ee9b4787aa3c09f9a4ed05fb66563a820cd13596af401b76e7900e597711230"
+  },
+  "descending_branch_guard": "K3 tends to -3/2*pi < 0",
+  "first_nonzero_gap_term": "-3/4*pi*x^4",
+  "gap_coefficients_x0_through_x5": {
+    "0": "0",
+    "1": "0",
+    "2": "0",
+    "3": "0",
+    "4": "-3/4*pi",
+    "5": "-7/8*pi^2"
+  },
+  "jacobians": {
+    "equal_area_determinant": "3*pi",
+    "equal_area_matrix": [
+      [
+        "-1/4*pi",
+        "-2"
+      ],
+      [
+        "2*pi",
+        "4"
+      ]
+    ],
+    "equal_area_matrix_order": [
+      "r",
+      "e"
+    ],
+    "fold_dF_dz": "1"
+  },
+  "jets": {
+    "e": [
+      "1/4*pi",
+      "7/48*pi^2",
+      "379/4608*pi^3",
+      "65/288*pi^2 + 3745/82944*pi^4",
+      "-13/180*pi + 9241/27648*pi^3 + 96665/3981312*pi^5",
+      "2417/4320*pi^2 + 337369/995328*pi^4 + 1228097/95551488*pi^6"
+    ],
+    "r": [
+      "2",
+      "5/24*pi",
+      "4/3 + 43/576*pi^2",
+      "55/36*pi + 2233/82944*pi^3",
+      "-2/9 + 4393/3456*pi^2 + 2155/221184*pi^4",
+      "175/72*pi + 452207/497664*pi^3 + 84199/23887872*pi^5"
+    ],
+    "z": [
+      "1/2*pi",
+      "1/4*pi^2",
+      "5/6*pi + 1/8*pi^3",
+      "9/8*pi^2 + 1/16*pi^4",
+      "167/90*pi + 17/16*pi^3 + 1/32*pi^5",
+      "557/120*pi^2 + 41/48*pi^4 + 1/64*pi^6"
+    ]
+  },
+  "parameterization": {
+    "h3": "(1+cos(w))/2",
+    "h4": "cos(x)",
+    "lambda": "cos(x)/cos(y)",
+    "q3": "cos(w)",
+    "u": "1-cos(x)",
+    "v": "w+x^2*e(x)",
+    "w": "x*r(x)",
+    "y": "x+x^2*z(x)"
+  },
+  "schema": "cmv-exact-height-germ-pilot-v1",
+  "selected_branch": "r=2 (descending type-(iii) height branch)",
+  "strict_sign_basis": "pi>0 and x>0"
+}

@@ -1,0 +1,9 @@
+import CMVRigidProjection
+
+#print axioms CMVRelaxation.measurePreserving_euclideanIsometry
+#print axioms CMVRelaxation.measurePreserving_euclideanRigidMap
+#print axioms CMVRelaxation.characteristicDistance_euclideanRigidMap
+#print axioms CMVRelaxation.rigid_projection_defect
+#print axioms CMVRelaxation.rigid_projection_defect_setLIntegral
+#print axioms CMVRelaxation.RigidProjectionPatch.payoff_le_localCost_add_error
+#print axioms CMVRelaxation.RigidProjectionPatch.finset_sum_payoff_le_smoothCost_add_error

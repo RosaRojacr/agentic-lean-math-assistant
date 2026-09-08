@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "6189f6a0db324c1409dfaef14a803a8d9682589b8e53555a11d354a430ad8a84",
+  "category": "analytic",
+  "evidence": [
+    "workspace/agents/analytic/scalar_formula_producer/scalar_spec.md",
+    "workspace/agents/analytic/scalar_formula_producer/checker_receipt.json",
+    "workspace/agents/audit/formula_mutation_audit/independent_derivation.md",
+    "workspace/agents/audit/formula_mutation_audit/mutation_matrix.json",
+    "workspace/agents/audit/formula_mutation_audit/audit_report.md"
+  ],
+  "limitations": [
+    "The exact derivation is human and the checker is finite 80-digit corroboration, not a Lean proof.",
+    "No fold topology, equal-area theorem, Gamma sign, source normalization, geometric competitor, minimization exclusion, or CMV theorem follows from the formulas alone.",
+    "The producer's statement that the h = 1/2 radius-two E3 disk overlaps type (i) is false; the audit identifies it as the Lemma 3.8(iii) zero-segment degeneration."
+  ],
+  "report": {
+    "path": "analytic/20260824T205221Z-b63aa6-scalar_formula_producer.md",
+    "sha256": "84360996a0a7f401537c4fef5a3475638dcb0b8eb798b303da280321f7a62f34",
+    "size": 3208
+  },
+  "run_id": "20260824T205221Z-b63aa6",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "exact_scalar_branch",
+  "summary": "The branch-explicit A3, P3, A4, and P4 formulas, principal inverse-trigonometric branches, centers, counterclockwise orientations, signs, E3 major/semicircular/minor transition, and 0 < h < 1 regular domain are safe to reuse after applying the audit's h = 1/2 endpoint-label correction.",
+  "task_id": "scalar_formula_producer",
+  "verified_by": [
+    "formula_mutation_audit"
+  ]
+}

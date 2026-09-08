@@ -1,0 +1,31 @@
+{
+  "assessment_sha256": "c4313abb5c31242da22edaaa6bf1e85988736fb22bdcfc6682a06256531ecf78",
+  "category": "formalization",
+  "evidence": [
+    "workspace/proof/Calibration.lean",
+    "workspace/agents/formalization/repair_and_certify/build-evidence.md",
+    "workspace/agents/formalization/repair_and_certify/evidence/scan.status",
+    "workspace/agents/formalization/repair_and_certify/evidence/build.status",
+    "workspace/agents/formalization/repair_and_certify/evidence/build.stdout",
+    "workspace/agents/formalization/repair_and_certify/evidence/lean.status",
+    "workspace/agents/formalization/repair_and_certify/evidence/lean.stdout",
+    "agents/audit/audit_certificate/attempt-01.md"
+  ],
+  "limitations": [
+    "Certification is scoped to the retained campaign source and pinned leanprover/lean4:v4.33.1 environment."
+  ],
+  "report": {
+    "path": "formalization/20260823T073629Z-637b83-repair_and_certify.md",
+    "sha256": "b635cc43c6d7d444c277edf07b3a1c2c909b41f27a09db8fdde2c77d3790fc18",
+    "size": 879
+  },
+  "run_id": "20260823T073629Z-637b83",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": null,
+  "summary": "The retained repaired theorem has the unchanged declaration, a complete explicit conjunction-symmetry body, no prohibited constructs, a successful pinned Lake build, and an axiom-free report.",
+  "task_id": "repair_and_certify",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "attempt": 1,
+  "category": "analytic",
+  "error": "OMP exited with 0 and produced no output",
+  "receipt": "attempt-01.json",
+  "schema_version": 1,
+  "stage": "near_one_chart"
+}

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "mutations": [
+    {
+      "id": "type3_cap_density_parentheses",
+      "description": "Replace lambda*alpha-sin(alpha)*cos(beta) by lambda*(alpha-sin(alpha)*cos(beta))."
+    },
+    {
+      "id": "type3_bottom_width_plus",
+      "description": "Replace the type-(iii) bottom half-width S-U by S+U."
+    },
+    {
+      "id": "type3_core_qu_sign",
+      "description": "Reverse the signed q*U Green term in the strip core."
+    },
+    {
+      "id": "type3_acute_alpha",
+      "description": "Force alpha=acos(abs(2h-1)/lambda), losing the major branch below h=1/2."
+    },
+    {
+      "id": "type3_exterior_complement",
+      "description": "Replace the oriented exterior half-angle alpha by pi-alpha."
+    },
+    {
+      "id": "type4_cap_density_parentheses",
+      "description": "Move lambda inside the circular-segment parentheses."
+    },
+    {
+      "id": "type4_core_segment_sign",
+      "description": "Reverse the -h*sqrt(1-h^2) side-segment sign."
+    },
+    {
+      "id": "type4_exterior_complement",
+      "description": "Use the exterior complementary arc pi-alpha."
+    },
+    {
+      "id": "type4_drop_lower_cap",
+      "description": "Omit one of the two weighted exterior caps."
+    },
+    {
+      "id": "type3_qprime_one",
+      "description": "Differentiate q=2h-1 as if q'=1."
+    },
+    {
+      "id": "legendre_d_sign",
+      "description": "Reverse the sign of d_lambda in P-2hA=-4d_lambda."
+    }
+  ]
+}

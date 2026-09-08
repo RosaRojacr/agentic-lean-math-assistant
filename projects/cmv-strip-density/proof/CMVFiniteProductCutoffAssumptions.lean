@@ -1,0 +1,11 @@
+import CMVFiniteProductCutoff
+
+#print axioms CMVRelaxation.FiniteProductCutoff.contDiff_beta
+#print axioms CMVRelaxation.FiniteProductCutoff.exists_deriv_bound
+#print axioms CMVRelaxation.FiniteProductCutoff.contDiff_cutoff
+#print axioms CMVRelaxation.FiniteProductCutoff.cutoff_eq_one_of_mem_ball
+#print axioms CMVRelaxation.FiniteProductCutoff.volume_tsupport_cutoff_le
+#print axioms CMVRelaxation.FiniteProductCutoff.hasDerivAt_cutoff_fst
+#print axioms CMVRelaxation.FiniteProductCutoff.hasDerivAt_cutoff_snd
+#print axioms CMVRelaxation.FiniteProductCutoff.integral_abs_coordinateDerivatives_le
+#print axioms CMVRelaxation.FiniteProductCutoff.exists_universal_cutoff_constant

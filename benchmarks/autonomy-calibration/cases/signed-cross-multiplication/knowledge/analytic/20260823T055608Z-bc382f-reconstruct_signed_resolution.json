@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "8a3eb8fe4425e09d3eb133dc1a970276c8ab5e85ee054d4075309e8630dc5135",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/reconstruct_signed_resolution/attempt-01.md",
+    "agents/audit/audit_resolution/attempt-01.md",
+    "agents/audit/audit_resolution/attempt-01.json"
+  ],
+  "limitations": [
+    "This is a refutation and signed classification, not a proof of the original universal claim.",
+    "No standalone replayable exact-arithmetic certificate or proof-assistant artifact was retained."
+  ],
+  "report": {
+    "path": "analytic/20260823T055608Z-bc382f-reconstruct_signed_resolution.md",
+    "sha256": "4f1374aa397adcbeab9f5381f42330b75543a70728f5897a6f86301943b7e980",
+    "size": 2529
+  },
+  "run_id": "20260823T055608Z-bc382f",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "signed_case_split",
+  "summary": "For nonzero b,d and a/b>c/d, bd>0 implies ad>bc while bd<0 implies ad<bc; hence the original universal implication is false, with exact witness (0,1,1,-1).",
+  "task_id": "reconstruct_signed_resolution",
+  "verified_by": [
+    "audit_resolution"
+  ]
+}

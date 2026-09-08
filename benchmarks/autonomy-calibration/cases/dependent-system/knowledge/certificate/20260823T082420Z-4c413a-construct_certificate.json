@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "7c33640dcd0b2b7b118f702c2e91fdfbd30aa9c18483a3ae205cc8a02c19159e",
+  "category": "certificate",
+  "evidence": [
+    "agents/certificate/construct_certificate/attempt-01.md",
+    "agents/audit/audit_certificate/attempt-01.md"
+  ],
+  "limitations": [
+    "The claim applies only to the complete retained real-domain constraints and must be re-derived if any equation or auxiliary condition changes.",
+    "This non-identifiability certificate does not supply the originally requested numerical value."
+  ],
+  "report": {
+    "path": "certificate/20260823T082420Z-4c413a-construct_certificate.md",
+    "sha256": "e1bfff690d35b871c6c4c96d4c5cf0175392d4163193eefa57fa057788b5a9c9",
+    "size": 940
+  },
+  "run_id": "20260823T082420Z-4c413a",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "exact_dependency_certificate",
+  "summary": "Under exactly x+y=4 and 2x+2y=8 for real x and y, the augmented rows are dependent and x-y is not uniquely determined, as witnessed by valid differences -4 and -2.",
+  "task_id": "construct_certificate",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

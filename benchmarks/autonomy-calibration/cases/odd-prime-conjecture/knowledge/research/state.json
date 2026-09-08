@@ -1,0 +1,33 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "workspace/problem.md states the exact universal claim, requires testing small admissible integers, and requires treating any counterexample as a disproof rather than a successful proof.",
+      "workspace/references/source.md supplies the operative definitions of odd and prime.",
+      "workspace/knowledge/arithmetic/20260823T004744Z-eb4e4b-certify_counterexample.md and its accepted metadata certify 9 as an admissible non-prime witness, verified by audit_counterexample.",
+      "workspace/knowledge/arithmetic/20260823T015635Z-1e574b-adjudicate_claim.md and its accepted metadata establish the quantified refutation and report no unresolved obligations, verified by audit_adjudication.",
+      "workspace/knowledge/arithmetic/20260823T023612Z-a9f76f-apply_retained_certificate.md and its accepted metadata confirm applicability to the unchanged theorem and definitions, verified by audit_current_applicability.",
+      "workspace/knowledge/arithmetic/20260823T053918Z-793a32-apply_retained_witness.md and its accepted metadata provide the latest self-contained application of the retained witness, verified by audit_retained_witness.",
+      "workspace/knowledge/research/state.json records a prior skip for the same problem and retained reference inventory."
+    ],
+    "reason": "The problem and retained definitions are unchanged, and accepted, independently audited knowledge already resolves the task with exact source locators. The witness 9 is an integer greater than 1, is odd because 9 = 2·4 + 1, and is not prime because 9 = 3·3 gives the nontrivial positive divisor 3. Therefore the universal claim is false and no valid proof can be supplied as stated. New publication research could not materially change the mathematical strategy, verification, or trust boundary.",
+    "reconsider_if": [
+      "The theorem or its hypotheses change so that 9 is no longer an admissible instance.",
+      "The retained definitions of odd or prime change, or additional semantic constraints are introduced.",
+      "The task changes to require formalization in a specified proof assistant or foundational system with library-specific source requirements.",
+      "Any accepted counterexample, adjudication, or applicability artifact is withdrawn, invalidated, or superseded by an unresolved verification obligation."
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "1d5770294bcf697db699efc95f5c65bd99a418ad64dd28e45e07dbbcf7395da0",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "27335446c261060a5145d0a62271e328518528f61bde9037122f0ba1733858bd",
+      "size": 230
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T08:45:02Z"
+}

@@ -1,0 +1,19 @@
+import CMVFourArcChordVariation
+
+#print axioms FourArcCandidate.chordVariationValid_self
+#print axioms FourArcCandidate.eventually_chordVariationValid
+#print axioms FourArcCandidate.chordVariedAssembly_upperCap_area
+#print axioms FourArcCandidate.chordVariedAssembly_lowerCap_area
+#print axioms FourArcCandidate.chordVariedAssembly_weightedArea
+#print axioms FourArcCandidate.chordVariedAssembly_frontierPerimeter
+#print axioms FourArcCandidate.chordFrontierPerimeter_self
+#print axioms FourArcCandidate.chordAdjustedX_hasDerivAt_self
+#print axioms FourArcCandidate.chordFrontierPerimeter_hasDerivAt
+#print axioms FourArcCandidate.localChordAssembly_weightedArea
+#print axioms FourArcCandidate.localChordAssembly_frontierPerimeter_hasDerivAt
+#print axioms FourArcCandidate.exact_area_chord_descent
+#print axioms FourArcCandidate.exists_chordVariedAssembly_frontierPerimeter_lt
+#print axioms FourArcCandidate.chordDefectSpecimen_positive
+#print axioms FourArcCandidate.chordDefectSpecimen_negative
+#print axioms FourArcCandidate.chordDefectSpecimen_positive_descent
+#print axioms FourArcCandidate.chordDefectSpecimen_negative_descent

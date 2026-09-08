@@ -1,0 +1,16 @@
+{
+  "generator_sha256": "b491fc2d7082f131c126a28119c0e92be73f5c1dc834854b2ca905fb39ff5c50",
+  "manifest_sha256": "0fe3ee91519ca4bbfa43d562e950308a6ebbc3c11fbad178bdcb3c112aa443b3",
+  "mpmath_version": "1.4.1",
+  "precision_decimal_digits": 100,
+  "producer_is_proof_decision": false,
+  "python": "3.14.5",
+  "retained_bricks": 113,
+  "retained_manifest_identical": true,
+  "schema": "cmv-middle-face-tiling-generation-receipt-v1",
+  "status": "PASS",
+  "target_lambda": [
+    "102001/100000",
+    "25781/25000"
+  ]
+}

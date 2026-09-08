@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "strategy_id": "strategy-00035",
+  "milestone_index": 2,
+  "milestone_name": "relaxed-functional and representative invariance with source adapter",
+  "result": "complete",
+  "module": "proof/CMVRelaxation.lean",
+  "module_sha256": "4842a3aa0492f1bb2d3244c03d6f034a1eb405fde57f4cc7d592e4b05d6ed533",
+  "lakefile_sha256": "f39502dabd668a568394b0f5413bb52d22f728065a820447f90d8bf78792955f",
+  "assumption_audit_sha256": "fe688809615bac90d13dc79fd3b428da623a09410a931357c68bd11419f807cb",
+  "checked_contract": {
+    "translation_invariance_including_infinity": "CMVRelaxation.relaxedPerimeter_horizontalTranslation identifies the complete ENNReal cost families in both directions",
+    "representative_invariance_including_infinity": "CMVRelaxation.relaxedPerimeter_congr_ae transports null measurability and convergence across almost-everywhere equality",
+    "area_representative_invariance": "CMVRelaxation.weightedArea_congr_ae",
+    "source_adapter": "CMVRelaxation.relaxedSourceSemantics",
+    "source_finiteness": "NullMeasurableSet E volume and CMVRelaxation.relaxedPerimeter lam E < top",
+    "finite_real_conversion": "CMVRelaxation.relaxedSourceSemantics_ofReal_perimeter and CMVRelaxation.relaxedSourceSemantics_perimeter_le_iff",
+    "adapter_translation_invariance": "CMVRelaxation.relaxedSourceSemantics_isFinitePerimeter_horizontalTranslation_iff and CMVRelaxation.relaxedSourceSemantics_perimeter_horizontalTranslation",
+    "adapter_representative_invariance": "CMVRelaxation.relaxedSourceSemantics_isFinitePerimeter_congr_ae and CMVRelaxation.relaxedSourceSemantics_perimeter_congr_ae"
+  },
+  "verification": [
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake build CMVRelaxationTransport",
+      "exit_code": 0,
+      "wall_seconds": 6.86,
+      "result": "Build completed successfully (8703 jobs)."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean _Assumptions.lean",
+      "exit_code": 0,
+      "wall_seconds": 8.53,
+      "result": "All newly audited CMVRelaxation declarations report only propext, Classical.choice, and Quot.sound."
+    },
+    {
+      "tool": "functions.grep",
+      "path": "proof/CMVRelaxation.lean",
+      "pattern": "\\b(sorry|admit|native_decide)\\b|^\\s*axiom\\b",
+      "result": "No matches found"
+    }
+  ],
+  "audited_declarations": [
+    "CMVRelaxation.nullMeasurableSet_horizontalTranslation_image",
+    "CMVRelaxation.nullMeasurableSet_horizontalTranslation_iff",
+    "CMVRelaxation.characteristicDistance_congr_ae",
+    "CMVRelaxation.SmoothSequence.convergesTo_congr_ae",
+    "CMVRelaxation.relaxedPerimeter_horizontalTranslation",
+    "CMVRelaxation.relaxedPerimeter_congr_ae",
+    "CMVRelaxation.weightedArea_congr_ae",
+    "CMVRelaxation.relaxedSourceSemantics",
+    "CMVRelaxation.relaxedSourceSemantics_ofReal_perimeter",
+    "CMVRelaxation.relaxedSourceSemantics_perimeter_le_iff",
+    "CMVRelaxation.relaxedSourceSemantics_isFinitePerimeter_horizontalTranslation_iff",
+    "CMVRelaxation.relaxedSourceSemantics_perimeter_horizontalTranslation",
+    "CMVRelaxation.relaxedSourceSemantics_isFinitePerimeter_congr_ae",
+    "CMVRelaxation.relaxedSourceSemantics_perimeter_congr_ae"
+  ],
+  "scope_boundary": "No NormalizationWitness theorem is yet constructed for exact or almost-everywhere horizontally classified canonical profiles; model compatibility and universal classification remain separate obligations.",
+  "next_action": "Construct relaxedSourceSemantics.NormalizationWitness from source-finiteness plus exact horizontal congruence, then extend it to almost-everywhere horizontal classification without compatibility, frontier equality, or supplied approximating sequences."
+}

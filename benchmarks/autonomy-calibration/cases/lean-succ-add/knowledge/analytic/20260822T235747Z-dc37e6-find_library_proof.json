@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "8b31eea1c9c2aa8780e2f1f55d6915612798d23dae9ba8ea291137be0fdf153d",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/find_library_proof/attempt-01.md",
+    "agents/audit/continuation_gate/attempt-01.md",
+    "agents/audit/continuation_gate/attempt-01-continuation.json"
+  ],
+  "limitations": [
+    "Restricted to the exact Nat theorem shape and the pinned Lean 4.33.1 environment; this claim does not by itself certify a later source mutation or whole-project build."
+  ],
+  "report": {
+    "path": "analytic/20260822T235747Z-dc37e6-find_library_proof.md",
+    "sha256": "f98ce70ae63f3c9fd188918429e51225cd57948d231a89dc1ee68692302c6de7",
+    "size": 1454
+  },
+  "run_id": "20260822T235747Z-dc37e6",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "library_lemma",
+  "summary": "Under Lean 4.33.1, `Nat.succ_add m n` proves the exact equality `Nat.succ m + n = Nat.succ (m + n)` and has no axiom dependencies.",
+  "task_id": "find_library_proof",
+  "verified_by": [
+    "continuation_gate"
+  ]
+}

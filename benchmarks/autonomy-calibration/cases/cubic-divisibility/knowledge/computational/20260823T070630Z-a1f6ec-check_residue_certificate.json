@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "562937a8a280e1ac83bfe799561410eb783cde18453a7b033caa73b1445aca74",
+  "category": "computational",
+  "evidence": [
+    "workspace/agents/computational/check_residue_certificate/attempt-01.md",
+    "agents/computational/check_residue_certificate/attempt-01.md",
+    "agents/computational/check_residue_certificate/attempt-01.json",
+    "agents/audit/audit_complete_certificate/attempt-01.md",
+    "agents/audit/audit_complete_certificate/attempt-01.json",
+    "workspace/agents/audit/audit_complete_certificate/verifier.py"
+  ],
+  "limitations": [
+    "Scope is the polynomial x^3-x over integer inputs modulo 6.",
+    "The six-row table must travel with the Euclidean-division coverage and congruence-transfer proof; finite computation alone is not universal."
+  ],
+  "report": {
+    "path": "computational/20260823T070630Z-a1f6ec-check_residue_certificate.md",
+    "sha256": "82b02024409f8481634d3477a87eb9ca3e107f10b142853be4904ce157ce4a8f",
+    "size": 744
+  },
+  "run_id": "20260823T070630Z-a1f6ec",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "residue_enumeration",
+  "summary": "For residues r=0,1,2,3,4,5, the exact values r^3-r are 0,0,6,24,60,120 with quotients 0,0,1,4,10,20; Euclidean division and an algebraic transfer identity extend this independent certificate to every integer.",
+  "task_id": "check_residue_certificate",
+  "verified_by": [
+    "audit_complete_certificate"
+  ]
+}

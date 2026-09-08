@@ -1,0 +1,9 @@
+import CMVStrictPacking
+
+#print axioms CMVRelaxation.StrictPacking.exists_uniform_finite_bound
+#print axioms CMVRelaxation.StrictPacking.isCompact_marginTuples
+#print axioms CMVRelaxation.StrictPacking.superlevel_eq_iUnion_marginHeights
+#print axioms CMVRelaxation.StrictPacking.measurable_count
+#print axioms CMVRelaxation.StrictPacking.count_empty
+#print axioms CMVRelaxation.StrictPacking.count_twoVerticalSegments_eq_two_of_lt_two_mul
+#print axioms CMVRelaxation.StrictPacking.count_twoVerticalSegments_eq_one_at_spacing

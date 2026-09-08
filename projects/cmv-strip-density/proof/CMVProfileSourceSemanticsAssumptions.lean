@@ -1,0 +1,16 @@
+import CMVProfileSourceSemantics
+
+namespace CMVRelaxation.ProfileSourceSemantics
+
+#print axioms frontierWeightedPerimeter_nonneg
+#print axioms relaxedPerimeter_lt_top_profile
+#print axioms isAdmissible_profile
+#print axioms profile_perimeter_eq_frontier
+#print axioms compatibleWithModel_of_model_covered
+#print axioms profile_not_isMinimizer_of_model_covered
+#print axioms
+  sourceCarrier_not_isMinimizer_of_horizontalCongruence_of_model_covered
+#print axioms
+  sourceCarrier_not_isMinimizer_of_aeHorizontalCongruence_of_model_covered
+
+end CMVRelaxation.ProfileSourceSemantics

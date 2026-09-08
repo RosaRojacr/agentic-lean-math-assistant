@@ -1,0 +1,31 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "problem.md specifies the unchanged polymorphic theorem and prohibits sorry, admit, new axioms, and strengthened premises",
+      "references/source.md specifies the pinned-toolchain build and axiom-report contract",
+      "knowledge/analytic/20260823T001852Z-296d3e-derive_induction.md derives the nil and cons cases and supplies the complete structural-induction proof",
+      "knowledge/formal_probe/20260823T045557Z-8dd436-pilot_replay.md records a successful isolated Lean 4.33.1 replay with no axiom dependencies",
+      "knowledge/lean_formalization/20260823T045557Z-8dd436-formalize_proof.md records a successful lake build and empty axiom report under the pinned toolchain",
+      "knowledge/research/state.json records a prior skip for the same problem and retained source inventory"
+    ],
+    "reason": "The problem, retained reference inventory, and verification contract are unchanged. Accepted knowledge already derives the exact polymorphic structural-induction proof, records successful replay and full lake build with pinned Lean 4.33.1, and reports that the theorem depends on no axioms. New publication research would not materially change the proof strategy, verification, or trust boundary.",
+    "reconsider_if": [
+      "The theorem statement, imports, retained references, pinned toolchain, or verification contract changes",
+      "The accepted proof or retained build and axiom evidence is removed or invalidated",
+      "Local compilation exposes Lean or library behavior not resolved by the retained replay and build evidence"
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "bc437ab21fa016bff2a1d491a74b2536380a7c0637a289b610cafcab4f496f1b",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "e348f113361b0f66788296c3b8d828b808f184978432437817b14359f8e40821",
+      "size": 214
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T08:05:19Z"
+}

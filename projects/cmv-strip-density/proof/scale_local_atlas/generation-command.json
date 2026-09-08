@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "proof/scale_local_atlas/generate_pilot.py",
+    "--output",
+    "proof/scale_local_atlas/pilot.json",
+    "--receipt",
+    "proof/scale_local_atlas/producer-receipt.json"
+  ],
+  "exit": 0,
+  "seconds": 53.09941040999547,
+  "stdout": "band 251/40326519148554080 .. 251/5040814893569260: 64/64\nband 1/1000 .. 1/500: 64/64\n{\"status\": \"PRODUCER_ONLY\", \"precision_decimal_digits\": 65, \"predictor_dyadic_bits\": 100, \"predictor_remainder_terms\": 64, \"elapsed_seconds\": 53.03575354401255}\n",
+  "stderr": ""
+}

@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "b338e836271c2014ed54d42158f558184325c32944fbcd4a9f253d4d4edf7ea5",
+  "category": "verification",
+  "evidence": [
+    "workspace/agents/verification/reconcile_dual_routes/reconciliation.md",
+    "workspace/agents/verification/reconcile_dual_routes/exact-integer-transcript.txt",
+    "workspace/agents/audit/audit_continuation/audit.json",
+    "workspace/agents/audit/audit_continuation/exact-recomputation.txt"
+  ],
+  "limitations": [
+    "The exact-integer execution is not proof-assistant kernel verification.",
+    "Historical promoted reports contain incomplete source-stage provenance paths; this promotion covers the unchanged current problem and current-run reconciliation only."
+  ],
+  "report": {
+    "path": "verification/20260823T060404Z-0c34ef-reconcile_dual_routes.md",
+    "sha256": "390ddfe46015fc80ab285ca2ba8590b890cc6fd9e81584de4b6a71c3c73f8e35",
+    "size": 841
+  },
+  "run_id": "20260823T060404Z-0c34ef",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_dual_route",
+  "summary": "For the unchanged fixed problem, the retained first-principles derivation applies and direct exact enumeration gives [3,6,12,24,48,96,192,384] with sum 765 without using the geometric-series closed form.",
+  "task_id": "reconcile_dual_routes",
+  "verified_by": [
+    "audit_continuation"
+  ]
+}

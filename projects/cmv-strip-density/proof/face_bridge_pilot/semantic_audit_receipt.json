@@ -1,0 +1,34 @@
+{
+  "schema": "cmv-opposite-face-bridge-semantic-audit-v1",
+  "status": "PASS",
+  "proof_decision": false,
+  "verdict": "No correctness bug or material overclaim found in the pilot artifacts.",
+  "checks": [
+    "C4 and C3 impose cos(x)=lambda*cos(y) and cos(w)=lambda*cos(v).",
+    "On C4=0, F=(sin(x)*sin(y)/4)*K4; all factors used for sign transfer are strictly positive.",
+    "E=0 is exactly A3=A4 after multiplication by positive cos(x)^2*(1+cos(w))^2/2.",
+    "G has the sign of P3-P4 after multiplication by the positive factor cos(x)*(1+cos(w))/4.",
+    "K3 is the descending-branch derivative quantity in proof/verify_calculus.py.",
+    "Machin pi, Taylor trigonometric bounds, and centered mean-value enclosures are outward exact-rational enclosures.",
+    "Opposite faces are uniform in the free centered lambda coordinate; two sequential Poincare-Miranda applications prove existence.",
+    "C4 and C3 uniquely eliminate y and v; strict K4 monotonicity and K3<0 prove scalar uniqueness without Jacobian inversion."
+  ],
+  "limitations": [
+    "The exact certificate covers only [51/50,102001/100000] and [25781/25000,33/32]. It does not cover the open interval between them.",
+    "The proposed near-one endpoint 51/50 is a requirement on the future germ certificate, not an established overlap in this pilot.",
+    "The compact endpoint 33/32 is an exact endpoint of the second pilot brick; composition with the retained compact certificate was not rechecked here.",
+    "The five semantic mutations cover one face failure for each equation and the K3 uniqueness guard; they do not exhaust schema, arithmetic, upper-face, gap, or second-brick mutations.",
+    "The mpmath producer supplies untrusted witnesses only; every mathematical decision is recomputed by check_bridge.py."
+  ],
+  "algebra_locators": {
+    "pilot_model": "check_bridge.py lines 294-317",
+    "retained_type3": "proof/verify_calculus.py lines 118-132 and 190-204",
+    "retained_type4": "proof/verify_calculus.py lines 163-174 and 190-204"
+  },
+  "audited_hashes": {
+    "check_bridge.py": "c4731e14afee8ed097e8f24b27412464050633b1c9a4c56e0624954441d0b0fd",
+    "bridge_certificate.json": "30593dc3d0b8ba283f709f0585f8f461839793a8f9013a32600cec2c9e0e0147",
+    "checker_receipt.json": "ac76399653a26926b5443d01d3a3ea6f8a360b260073afa8c7794a5beac6d2da",
+    "proof/verify_calculus.py": "61f8ca964996b090b62b61cebd070339448103860d1637962ce3940aa954d150"
+  }
+}

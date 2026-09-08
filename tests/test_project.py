@@ -70,33 +70,133 @@ memory_max_mb = 8192
     assert project.execution.memory_max_mb == 8192
 
 
-def test_project_spec_loads_autorun_policy_and_trusted_metrics(
+def test_project_spec_rejects_reserved_input_target(tmp_path: Path) -> None:
+    with pytest.raises(ConfigurationError, match="reserved target"):
+        ProjectSpec.load(write_project(tmp_path, input_target="knowledge"))
+
+
+def test_autorun_policy_defaults(tmp_path: Path) -> None:
+    project = ProjectSpec.load(write_project(tmp_path))
+    assert project.autorun.max_strategy_executions == 100
+    assert project.autorun.adjudication_minutes == 5
+    assert project.autorun.progress_metrics == ()
+
+
+@pytest.mark.parametrize("value", [1, 100])
+def test_autorun_max_strategy_executions_boundaries(
+    tmp_path: Path, value: int
+) -> None:
+    project = ProjectSpec.load(
+        write_project(
+            tmp_path,
+            execution=f"""[autorun]
+max_strategy_executions = {value}
+""",
+        )
+    )
+    assert project.autorun.max_strategy_executions == value
+
+
+@pytest.mark.parametrize("value", [0, 101])
+def test_autorun_max_strategy_executions_rejects_out_of_bounds(
+    tmp_path: Path, value: int
+) -> None:
+    with pytest.raises(ConfigurationError, match="max_strategy_executions"):
+        ProjectSpec.load(
+            write_project(
+                tmp_path,
+                execution=f"""[autorun]
+max_strategy_executions = {value}
+""",
+            )
+        )
+
+
+def test_autorun_legacy_strategy_horizon_rounds_alias(tmp_path: Path) -> None:
+    project = ProjectSpec.load(
+        write_project(
+            tmp_path,
+            execution="""[autorun]
+strategy_horizon_rounds = 9
+""",
+        )
+    )
+    assert project.autorun.max_strategy_executions == 9
+
+
+def test_autorun_rejects_new_and_legacy_ceiling_keys_together(
+    tmp_path: Path,
+) -> None:
+    with pytest.raises(ConfigurationError, match="cannot both be specified"):
+        ProjectSpec.load(
+            write_project(
+                tmp_path,
+                execution="""[autorun]
+max_strategy_executions = 10
+strategy_horizon_rounds = 9
+""",
+            )
+        )
+
+
+def test_autorun_rejects_worthwhile_likelihood_threshold(
+    tmp_path: Path,
+) -> None:
+    with pytest.raises(
+        ConfigurationError,
+        match="delete it because strategy selection belongs to the strategy governor",
+    ):
+        ProjectSpec.load(
+            write_project(
+                tmp_path,
+                execution="""[autorun]
+worthwhile_likelihood_threshold = 30
+""",
+            )
+        )
+
+
+def test_autorun_progress_metric_parsing_and_duplicate_ids(
     tmp_path: Path,
 ) -> None:
     project = ProjectSpec.load(
         write_project(
             tmp_path,
             execution="""[autorun]
-worthwhile_likelihood_threshold = 42
-strategy_horizon_rounds = 9
 adjudication_minutes = 7
-
-[[autorun.progress_metrics]]
-id = "coverage"
-command = ["python3", "metric.py"]
-timeout = 45
+progress_metrics = [
+  { id = "scope-delta", command = ["python", "metric.py"], timeout = 12 },
+]
 """,
         )
     )
+    metric = project.autorun.progress_metrics[0]
+    assert metric.metric_id == "scope-delta"
+    assert metric.command == ("python", "metric.py")
+    assert metric.timeout == 12
+    duplicate_root = tmp_path / "duplicate"
+    duplicate_root.mkdir()
+    with pytest.raises(ConfigurationError, match="metric IDs must be unique"):
+        ProjectSpec.load(
+            write_project(
+                duplicate_root,
+                execution="""[autorun]
+progress_metrics = [
+  { id = "scope", command = ["one"] },
+  { id = "scope", command = ["two"] },
+]
+""",
+            )
+        )
 
-    assert project.autorun.worthwhile_likelihood_threshold == 42
-    assert project.autorun.strategy_horizon_rounds == 9
-    assert project.autorun.adjudication_minutes == 7
-    assert project.autorun.progress_metrics[0].metric_id == "coverage"
-    assert project.autorun.progress_metrics[0].command == ("python3", "metric.py")
-    assert project.autorun.progress_metrics[0].timeout == 45
 
-
-def test_project_spec_rejects_reserved_input_target(tmp_path: Path) -> None:
-    with pytest.raises(ConfigurationError, match="reserved target"):
-        ProjectSpec.load(write_project(tmp_path, input_target="knowledge"))
+def test_autorun_rejects_unknown_keys(tmp_path: Path) -> None:
+    with pytest.raises(ConfigurationError, match="extra"):
+        ProjectSpec.load(
+            write_project(
+                tmp_path,
+                execution="""[autorun]
+unexpected_gate = 4
+""",
+            )
+        )

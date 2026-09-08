@@ -1,0 +1,15 @@
+import CMVStadiumRecovery
+
+#print axioms stripCore_frontier_weightedPerimeter_eq
+#print axioms CMVRelaxation.StadiumRecovery.weightedArea_carrier
+#print axioms CMVRelaxation.StadiumRecovery.frontierWeightedPerimeter_carrier
+#print axioms CMVRelaxation.StadiumRecovery.closedUnitDisk_ae_eq_unitDisk
+#print axioms CMVRelaxation.StadiumRecovery.closedUnitDisk_euclidean_image
+#print axioms CMVRelaxation.StadiumRecovery.frontier_unitDisk_euclidean_eq_closed
+#print axioms CMVRelaxation.StadiumRecovery.smoothCost_unitDisk_eq_closed
+#print axioms
+  CMVRelaxation.StadiumRecovery.unitDiskConstantSequence_converges_closed
+#print axioms CMVRelaxation.StadiumRecovery.relaxedPerimeter_closedUnitDisk_eq
+#print axioms CMVRelaxation.StadiumRecovery.contDiff_q
+#print axioms CMVRelaxation.StadiumRecovery.q_le_one
+#print axioms CMVRelaxation.StadiumRecovery.closure_domain_subset_closedStrip

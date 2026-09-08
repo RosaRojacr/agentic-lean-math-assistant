@@ -1658,6 +1658,137 @@ private theorem core_param_length (c : StripCore) :
   field_simp [ne_of_gt c.curvature_pos]
   ring
 
+/-- The complete topological frontier of a strip core includes both circular
+side arcs and both horizontal segments.  All four pieces have density one. -/
+theorem stripCore_frontier_weightedPerimeter_eq
+    (lam : ℝ) (c : StripCore) :
+    WeightedPerimeter lam (FrontierMeasure c.carrier) =
+      c.boundaryArcLength + 2 * c.chord := by
+  let upper : HorizontalSegment :=
+    { chord := c.chord
+      midpointX := 0
+      baseY := 1
+      chord_pos := c.chord_pos }
+  let lower : HorizontalSegment :=
+    { chord := c.chord
+      midpointX := 0
+      baseY := -1
+      chord_pos := c.chord_pos }
+  have hupper : upper.carrier = c.upperChordTrace := by
+    ext p
+    simp [upper, HorizontalSegment.carrier, StripCore.upperChordTrace]
+  have hlower : lower.carrier = c.lowerChordTrace := by
+    ext p
+    simp [lower, HorizontalSegment.carrier, StripCore.lowerChordTrace]
+  have hoverlap :
+      pairwiseOverlap c.leftArcTrace c.rightArcTrace
+          upper.carrier lower.carrier ⊆ joinSet c.chord := by
+    intro p hp
+    simp only [pairwiseOverlap, mem_union, mem_inter_iff] at hp
+    rcases hp with hLR | hLU | hLL | hRU | hRL | hUL
+    · exact False.elim (by
+        have hl := hLR.1.2.1
+        have hr := hLR.2.2.1
+        linarith [c.chord_pos])
+    · have hy : p.2 = 1 := by
+        simpa [upper, HorizontalSegment.carrier] using hLU.2.1
+      have hxBound : |p.1| ≤ c.chord / 2 := by
+        simpa [upper, HorizontalSegment.carrier] using hLU.2.2
+      have hx := eq_left_of_bounds hLU.1.2.1 hxBound
+      have hpEq : p = (-c.chord / 2, 1) := Prod.ext hx hy
+      simp [joinSet, hpEq]
+    · have hy : p.2 = -1 := by
+        simpa [lower, HorizontalSegment.carrier] using hLL.2.1
+      have hxBound : |p.1| ≤ c.chord / 2 := by
+        simpa [lower, HorizontalSegment.carrier] using hLL.2.2
+      have hx := eq_left_of_bounds hLL.1.2.1 hxBound
+      have hpEq : p = (-c.chord / 2, -1) := Prod.ext hx hy
+      simp [joinSet, hpEq]
+    · have hy : p.2 = 1 := by
+        simpa [upper, HorizontalSegment.carrier] using hRU.2.1
+      have hxBound : |p.1| ≤ c.chord / 2 := by
+        simpa [upper, HorizontalSegment.carrier] using hRU.2.2
+      have hx := eq_right_of_bounds hRU.1.2.1 hxBound
+      have hpEq : p = (c.chord / 2, 1) := Prod.ext hx hy
+      simp [joinSet, hpEq]
+    · have hy : p.2 = -1 := by
+        simpa [lower, HorizontalSegment.carrier] using hRL.2.1
+      have hxBound : |p.1| ≤ c.chord / 2 := by
+        simpa [lower, HorizontalSegment.carrier] using hRL.2.2
+      have hx := eq_right_of_bounds hRL.1.2.1 hxBound
+      have hpEq : p = (c.chord / 2, -1) := Prod.ext hx hy
+      simp [joinSet, hpEq]
+    · have hyUpper : p.2 = 1 := by
+        simpa [upper, HorizontalSegment.carrier] using hUL.1.1
+      have hyLower : p.2 = -1 := by
+        simpa [lower, HorizontalSegment.carrier] using hUL.2.1
+      linarith
+  have hnull :
+      (μH[1] : Measure EuclideanPlane)
+          (planeEuclideanHomeomorph '' pairwiseOverlap
+            c.leftArcTrace c.rightArcTrace upper.carrier lower.carrier) = 0 :=
+    measure_mono_null (image_mono hoverlap)
+      (hausdorffMeasure_one_euclideanJoinSet c.chord)
+  have hpairs :
+      AEDisjoint (μH[1] : Measure EuclideanPlane)
+          (planeEuclideanHomeomorph '' c.leftArcTrace)
+          (planeEuclideanHomeomorph '' c.rightArcTrace) ∧
+      AEDisjoint (μH[1] : Measure EuclideanPlane)
+          (planeEuclideanHomeomorph '' c.leftArcTrace)
+          (planeEuclideanHomeomorph '' upper.carrier) ∧
+      AEDisjoint (μH[1] : Measure EuclideanPlane)
+          (planeEuclideanHomeomorph '' c.leftArcTrace)
+          (planeEuclideanHomeomorph '' lower.carrier) ∧
+      AEDisjoint (μH[1] : Measure EuclideanPlane)
+          (planeEuclideanHomeomorph '' c.rightArcTrace)
+          (planeEuclideanHomeomorph '' upper.carrier) ∧
+      AEDisjoint (μH[1] : Measure EuclideanPlane)
+          (planeEuclideanHomeomorph '' c.rightArcTrace)
+          (planeEuclideanHomeomorph '' lower.carrier) ∧
+      AEDisjoint (μH[1] : Measure EuclideanPlane)
+          (planeEuclideanHomeomorph '' upper.carrier)
+          (planeEuclideanHomeomorph '' lower.carrier) := by
+    apply pairwise_aedisjoint_of_overlap_null
+    simpa only [euclideanPairwiseOverlap, pairwiseOverlap, image_union,
+      Set.image_inter planeEuclideanHomeomorph.injective] using hnull
+  rcases hpairs with ⟨hAB, hAC, hAD, hBC, hBD, hCD⟩
+  have hAint := euclideanStripDensity_integrableOn_of_measure_ne_top
+    lam (s := planeEuclideanHomeomorph '' c.leftArcTrace) (by
+      rw [exact_euclidean_leftArcTrace_hausdorffMeasure]
+      exact ENNReal.ofReal_ne_top)
+  have hBint := euclideanStripDensity_integrableOn_of_measure_ne_top
+    lam (s := planeEuclideanHomeomorph '' c.rightArcTrace) (by
+      rw [exact_euclidean_rightArcTrace_hausdorffMeasure]
+      exact ENNReal.ofReal_ne_top)
+  have hCint := euclideanStripDensity_integrableOn_of_measure_ne_top
+    lam (s := planeEuclideanHomeomorph '' upper.carrier) (by
+      rw [exact_euclidean_segmentCarrier_hausdorffMeasure]
+      exact ENNReal.ofReal_ne_top)
+  have hDint := euclideanStripDensity_integrableOn_of_measure_ne_top
+    lam (s := planeEuclideanHomeomorph '' lower.carrier) (by
+      rw [exact_euclidean_segmentCarrier_hausdorffMeasure]
+      exact ENNReal.ofReal_ne_top)
+  unfold WeightedPerimeter FrontierMeasure
+  rw [integral_map
+    planeEuclideanHomeomorph.symm.continuous.measurable.aemeasurable
+    (measurable_stripDensity lam).aestronglyMeasurable]
+  change (∫ z in frontier (planeEuclideanHomeomorph '' c.carrier),
+    euclideanStripDensity lam z ∂(μH[1] : Measure EuclideanPlane)) =
+      c.boundaryArcLength + 2 * c.chord
+  rw [← planeEuclideanHomeomorph.image_frontier, c.frontier_carrier,
+    image_union, image_union, image_union, ← hupper, ← hlower]
+  rw [integral_four_union hAB hAC hAD hBC hBD hCD
+    (measurableSet_euclidean_rightArcTrace c)
+    (measurableSet_euclidean_segmentCarrier upper)
+    (measurableSet_euclidean_segmentCarrier lower)
+    hAint hBint hCint hDint]
+  rw [left_integral, right_integral,
+    segment_integral lam upper (by simp [upper]),
+    segment_integral lam lower (by simp [lower]),
+    core_param_length, StripCore.boundaryArcLength]
+  simp only [upper, lower, HorizontalSegment.euclideanLength]
+  ring
+
 /-- The explicit four-arc boundary cost equals the canonical weighted H¹
 integral on the complete topological frontier of its coordinate carrier. -/
 theorem fourArc_frontier_weightedPerimeter_eq

@@ -18,7 +18,6 @@ from agentic_lean_math_assistant.autorun import (
     follow_autorun_events,
     follow_autorun_output,
     follow_autorun_status,
-    request_autorun_stop,
 )
 from agentic_lean_math_assistant.project import ProjectSpec
 from agentic_lean_math_assistant.terminal_status import LiveStatusDisplay
@@ -30,47 +29,99 @@ def write_master_prompt(manifest: Path, text: str = "Prove the exact target.") -
     return prompt
 
 
+def _proposal(
+    *,
+    decision: str = "select",
+    base_strategy_id: str | None = None,
+    base_revision: int | None = None,
+    review_after: int = 3,
+    checkpoint_after: int = 2,
+    checkpoint_id: str = "first_check",
+) -> str:
+    value = {
+        "schema_version": 1,
+        "decision": decision,
+        "base_strategy_id": base_strategy_id,
+        "base_revision": base_revision,
+        "selected_method": "Use the retained interface to discharge the target.",
+        "decision_reason": "This course has an observable bounded next step.",
+        "next_action": "Implement and verify the bounded next step.",
+        "review_after_executions": review_after,
+        "checkpoints": [
+            {
+                "id": checkpoint_id,
+                "after_executions": checkpoint_after,
+                "observable": "The named acceptance obligation is discharged.",
+            }
+        ],
+        "stop_conditions": [
+            {
+                "id": "method_breaks",
+                "observable": "The retained interface contradicts the required result.",
+            }
+        ],
+    }
+    return "STRATEGY_PROPOSAL_JSON: " + json.dumps(value, separators=(",", ":"))
+
+
+def _claim(
+    *,
+    strategy_id: str = "strategy-00001",
+    revision: int = 1,
+    checkpoint_id: str | None = "first_check",
+) -> str:
+    return "CONDUCTOR_RESULT_JSON: " + json.dumps(
+        {
+            "schema_version": 1,
+            "strategy_id": strategy_id,
+            "strategy_revision": revision,
+            "checkpoint_id": checkpoint_id,
+            "progress_class": "meaningful",
+            "summary": "The bounded acceptance obligation was verified.",
+            "evidence": "proof/verified-artifact",
+        },
+        separators=(",", ":"),
+    )
+
+
+def _adjudication(
+    *,
+    strategy_id: str = "strategy-00001",
+    revision: int = 1,
+    progress_class: str = "meaningful",
+    alignment: str = "aligned",
+    checkpoint_id: str | None = "first_check",
+    checkpoint_result: str = "satisfied",
+    stop_id: str | None = None,
+) -> str:
+    return "PROGRESS_ADJUDICATION_JSON: " + json.dumps(
+        {
+            "schema_version": 1,
+            "strategy_id": strategy_id,
+            "strategy_revision": revision,
+            "progress_class": progress_class,
+            "alignment": alignment,
+            "checkpoint_id": checkpoint_id,
+            "checkpoint_result": checkpoint_result,
+            "triggered_stop_condition_id": stop_id,
+            "reason": "Repository evidence matches the active observable.",
+            "verified_scope_delta": "One named acceptance obligation is now verified.",
+        },
+        separators=(",", ":"),
+    )
+
+
 def successful_agent(request_path: Path) -> int:
     request = json.loads(request_path.read_text(encoding="utf-8"))
     if request["role_id"] == "autorun_strategy_reflection":
-        output = (
-            "The current approach remains proportionate after comparing alternatives.\n"
-            "MEANINGFUL_PROGRESS_LIKELIHOOD: 70\n"
-            "MINIMUM_WORTHWHILE_LIKELIHOOD: 30\n"
-            "CURRENT_COURSE_WORTHWHILE: yes\n"
-            "STRATEGY_DECISION: continue\n"
-            "STRATEGY_PLAN_STATUS: ready\n"
-            "REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD: 70\n"
-            "EXPECTED_ROUNDS_TO_FIRST_EVIDENCE: 2\n"
-            "EXPECTED_COMPUTE_COST: low\n"
-            "COURSE_TO_ABANDON: n/a\n"
-            "CANDIDATE_STRATEGIES: scalable lemma || finite enumeration\n"
-            "SELECTED_METHOD: prove the scalable lemma interface\n"
-            "STRATEGY_MILESTONES: 2::checked scalable lemma; 6::target coverage\n"
-            "FIRST_FALSIFIABLE_CHECK: compile the scalable lemma\n"
-            "STRATEGY_KILL_CRITERIA: lemma cannot state required bound || counterexample\n"
-            "REFLECTION_NEXT: prove the next scalable lemma\n"
-        )
+        output = _proposal()
+    elif request["role_id"] == "autorun_conductor":
+        output = _claim()
     elif request["role_id"] == "autorun_progress_adjudicator":
-        output = (
-            "ADJUDICATED_PROGRESS: incremental\n"
-            "STRATEGY_ALIGNMENT: aligned\n"
-            "MILESTONE_RESULT: complete\n"
-            "MILESTONE_INDEX: 1\n"
-            "ADJUDICATION_REASON: the checked step is real but not load-bearing\n"
-            "VERIFIED_SCOPE_DELTA: one local obligation was discharged\n"
-        )
+        output = _adjudication()
     else:
-        output = (
-            "AUTORUN_RESULT: meaningful\n"
-            "AUTORUN_SUMMARY: completed one checked step\n"
-            "AUTORUN_NEXT: prove the next lemma\n"
-            "STRATEGY_ID: strategy-00001\n"
-            "STRATEGY_MILESTONE: 1\n"
-            "MILESTONE_RESULT: advanced\n"
-            "EVIDENCE: focused check passed\n"
-        )
-    Path(request["output"]).write_text(output, encoding="utf-8")
+        raise AssertionError(f"unexpected role {request['role_id']}")
+    Path(request["output"]).write_text(output + "\n", encoding="utf-8")
     Path(request["receipt"]).write_text(
         json.dumps({"schema_version": 1, "status": "succeeded"}),
         encoding="utf-8",
@@ -78,24 +129,73 @@ def successful_agent(request_path: Path) -> int:
     return 0
 
 
-def test_autorun_executes_one_self_prompted_round_and_retains_state(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def _contract(
+    *,
+    revision: int = 1,
+    accepted_execution: int = 0,
+    hard_deadline: int = 10,
+    review_due: int = 3,
+    checkpoint_due: int = 2,
+    status: str = "active",
+    checkpoint_status: str = "pending",
+) -> dict[str, object]:
+    return {
+        "schema_version": 2,
+        "strategy_id": "strategy-00001",
+        "revision": revision,
+        "status": status,
+        "selected_method": "Use the retained interface.",
+        "decision_reason": "It exposes an observable next step.",
+        "accepted_attempt": revision,
+        "accepted_execution": accepted_execution,
+        "lineage_started_execution": 0,
+        "hard_deadline_execution": hard_deadline,
+        "review_due_execution": review_due,
+        "next_action": "Discharge the next obligation.",
+        "checkpoints": [
+            {
+                "id": "first_check",
+                "due_execution": checkpoint_due,
+                "observable": "The named obligation is verified.",
+                "status": checkpoint_status,
+                "last_result": None,
+                "last_adjudication_execution": None,
+            }
+        ],
+        "stop_conditions": [
+            {
+                "id": "method_breaks",
+                "observable": "The interface contradicts the required result.",
+                "triggered": False,
+                "last_adjudication_execution": None,
+            }
+        ],
+        "last_alignment": None,
+        "last_checkpoint_result": None,
+    }
+
+
+def _strategy_state(
+    strategy: dict[str, object] | None = None,
+    *,
+    execution: int = 0,
+) -> dict[str, object]:
+    return {
+        "round_count": execution,
+        "attempt_count": execution,
+        "reflection_count": 0,
+        "active_strategy": strategy,
+        "strategy_history": [],
+        "adjudication_history": [],
+        "strategy_change_required": False,
+    }
+
+
+def _runner(tmp_path: Path) -> AutoRunRunner:
     manifest = write_autonomy_project(tmp_path)
     master = write_master_prompt(manifest)
-    project = ProjectSpec.load(manifest)
-    observed_prompts: list[str] = []
-
-    def execute(request_path: Path) -> int:
-        request = json.loads(request_path.read_text(encoding="utf-8"))
-        observed_prompts.append(Path(request["prompt"]).read_text(encoding="utf-8"))
-        return successful_agent(request_path)
-
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
-    )
-    runner = AutoRunRunner(
-        project,
+    return AutoRunRunner(
+        ProjectSpec.load(manifest),
         AutoRunOptions(
             master_prompt=master,
             reflection_minutes=120,
@@ -105,366 +205,653 @@ def test_autorun_executes_one_self_prompted_round_and_retains_state(
         ),
     )
 
+
+def test_first_round_selects_strategy_before_sol_and_adjudicates_afterward(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runner = _runner(tmp_path)
+    requests: list[dict[str, object]] = []
+
+    def execute(path: Path) -> int:
+        requests.append(json.loads(path.read_text(encoding="utf-8")))
+        return successful_agent(path)
+
+    monkeypatch.setattr(autorun_module, "execute_agent_request", execute)
     session = runner.run()
     state = autorun_status(session)
 
-    assert state["status"] == "paused"
-    assert state["round_count"] == 1
-    assert state["consecutive_execution_failures"] == 0
-    assert state["last_progress_claim"] == "meaningful"
-    assert state["last_progress_class"] == "incremental"
-    assert state["incremental_round_count"] == 1
-    assert state["meaningful_round_count"] == 0
-    assert state["last_output"].endswith("round-00001/output.md")
-    conductor_prompt = next(
-        prompt for prompt in observed_prompts if "choose your own next" in prompt
-    )
-    assert "Prove the exact target." in conductor_prompt
-    assert state["active_strategy"]["first_evidence_observed"] is True
-    assert state["active_strategy"]["milestones"][0]["status"] == "complete"
-    assert "choose your own next" in conductor_prompt
-    assert (
-        "Keep every command inside the inherited resource-control cgroup"
-        in conductor_prompt
-    )
-    assert (session / "events.jsonl").is_file()
+    assert [item["role_id"] for item in requests] == [
+        "autorun_strategy_reflection",
+        "autorun_conductor",
+        "autorun_progress_adjudicator",
+    ]
+    assert requests[0]["model"] == "openai-codex/gpt-6-astra"
+    assert requests[0]["tools"] == ["read"]
+    assert requests[1]["model"] == "openai-codex/gpt-5.6-sol"
+    assert requests[1]["tools"] == ["read", "write"]
+    assert requests[2]["model"] == "openai-codex/gpt-5.6-terra"
+    assert requests[2]["tools"] == ["read"]
+    assert state["schema_version"] == 3
+    assert state["active_strategy"]["schema_version"] == 2
+    assert state["active_strategy"]["checkpoints"][0]["status"] == "satisfied"
+    assert state["adjudication_history"][0]["execution"] == 1
 
 
-def test_autorun_runs_trusted_metric_before_independent_adjudication(
+def test_invalid_strategy_json_fails_closed_without_launching_sol(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    text = manifest.read_text(encoding="utf-8")
-    manifest.write_text(
-        text.replace(
-            "[autonomy]",
-            """[autorun]
-worthwhile_likelihood_threshold = 30
-strategy_horizon_rounds = 12
-adjudication_minutes = 5
+    runner = _runner(tmp_path)
+    requests: list[dict[str, object]] = []
 
-[[autorun.progress_metrics]]
-id = "coverage"
-command = ["python3", "-c", 'import json; print(json.dumps({"covered": 7}))']
-timeout = 10
-
-[autonomy]""",
-        ),
-        encoding="utf-8",
-    )
-    master = write_master_prompt(manifest)
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request",
-        successful_agent,
-    )
-    session = AutoRunRunner(
-        ProjectSpec.load(manifest),
-        AutoRunOptions(
-            master_prompt=master,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=1,
-        ),
-    ).run()
-
-    metric = json.loads(
-        (
-            session / "rounds" / "round-00001" / "progress-metric-coverage.json"
-        ).read_text(encoding="utf-8")
-    )
-    state = autorun_status(session)
-    assert metric["error"] is None
-    assert metric["value"] == {"covered": 7}
-    assert state["last_progress_claim"] == "meaningful"
-    assert state["last_progress_class"] == "incremental"
-    assert state["last_adjudication_model"] == "openai-codex/gpt-5.6-terra"
-
-
-def test_adjudicated_strategy_falsification_forces_next_reflection(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
-
-    def execute(request_path: Path) -> int:
-        request = json.loads(request_path.read_text(encoding="utf-8"))
-        if request["role_id"] != "autorun_progress_adjudicator":
-            return successful_agent(request_path)
+    def execute(path: Path) -> int:
+        request = json.loads(path.read_text(encoding="utf-8"))
+        requests.append(request)
         Path(request["output"]).write_text(
-            "ADJUDICATED_PROGRESS: blocked\n"
-            "STRATEGY_ALIGNMENT: falsified\n"
-            "MILESTONE_RESULT: falsified\n"
-            "MILESTONE_INDEX: 1\n"
-            "ADJUDICATION_REASON: the required estimate has a checked counterexample\n"
-            "VERIFIED_SCOPE_DELTA: no target coverage was added\n",
-            encoding="utf-8",
-        )
-        Path(request["receipt"]).write_text(
-            json.dumps({"schema_version": 1, "status": "succeeded"}),
-            encoding="utf-8",
+            "STRATEGY_PROPOSAL_JSON: {bad}\n", encoding="utf-8"
         )
         return 0
 
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
-    )
-    session = AutoRunRunner(
-        ProjectSpec.load(manifest),
-        AutoRunOptions(
-            master_prompt=master,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=1,
-        ),
-    ).run()
-
-    state = autorun_status(session)
-    assert state["last_progress_class"] == "blocked"
-    assert state["mathematical_blocker_count"] == 1
-    assert state["strategy_change_required"] is True
-    assert state["active_strategy"]["status"] == "falsified"
-    assert state["active_strategy"]["milestones"][0]["status"] == "falsified"
-    assert AutoRunRunner._strategy_requires_review(state) is True
+    monkeypatch.setattr(autorun_module, "execute_agent_request", execute)
+    state = autorun_status(runner.run())
+    assert [item["role_id"] for item in requests] == [
+        "autorun_strategy_reflection"
+    ]
+    assert state["active_strategy"] is None
+    assert state["active_prompt"] is None
+    assert state["active_model"] is None
+    assert "invalid JSON" in state["last_error"]
 
 
-def test_autorun_migrates_v1_state_and_separates_attempts(
+def test_governor_selects_review_and_checkpoint_offsets_below_operator_ceiling(
     tmp_path: Path,
 ) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
-    runner = AutoRunRunner(
-        ProjectSpec.load(manifest),
-        AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
+    runner = _runner(tmp_path)
+    state = _strategy_state()
+    proposal, errors = runner._parse_strategy_proposal(
+        _proposal(review_after=7, checkpoint_after=4),
+        state=state,
+        max_strategy_executions=10,
     )
-    session = runner._select_session()
-    state = json.loads((session / "state.json").read_text(encoding="utf-8"))
-    state["schema_version"] = 1
-    state["consecutive_failures"] = 2
-    for name in (
-        "blocked_round_count",
-        "complete_round_count",
-        "unclassified_round_count",
-        "attempt_count",
-        "controller_failure_count",
-        "agent_execution_failure_count",
-        "verification_failure_count",
-        "strategy_gate_failure_count",
-        "mathematical_blocker_count",
-        "consecutive_execution_failures",
-        "last_failure_class",
-        "active_strategy",
-        "strategy_history",
-        "last_progress_claim",
-        "last_progress_adjudication",
-        "last_adjudication_review",
-        "last_adjudication_model",
-    ):
-        state.pop(name, None)
-    rounds = session / "rounds"
-    (rounds / "round-00007").mkdir(parents=True)
-    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
-
-    migrated = autorun_status(session)
-    assert migrated["schema_version"] == 2
-    assert migrated["attempt_count"] == 7
-    assert migrated["consecutive_execution_failures"] == 2
-    assert "consecutive_failures" not in migrated
-    assert migrated["blocked_round_count"] == 0
-    assert migrated["complete_round_count"] == 0
-    assert migrated["unclassified_round_count"] == 0
+    assert errors == []
+    assert proposal is not None
+    contract = runner._materialize_strategy_contract(1, state, proposal)
+    assert contract["review_due_execution"] == 7
+    assert contract["checkpoints"][0]["due_execution"] == 4
+    state["active_strategy"] = contract
+    assert not runner._strategy_requires_review(state)
 
 
-def test_round_monitor_paths_are_strategy_pass_aware(tmp_path: Path) -> None:
-    round_dir = tmp_path / "rounds" / "round-00003"
-    round_dir.mkdir(parents=True)
-    receipt = round_dir / "strategy-reflection-pass-02-receipt.json"
-    stdout = round_dir / "strategy-reflection-pass-02-stdout.log"
-    receipt.write_text('{"status": "running"}', encoding="utf-8")
-    stdout.write_text("pass two\n", encoding="utf-8")
+def test_checkpoint_or_adaptive_review_due_triggers_reflection_not_falsification() -> None:
+    strategy = _contract(review_due=2, checkpoint_due=3)
+    state = _strategy_state(strategy, execution=2)
+    assert AutoRunRunner._strategy_requires_review(state)
+    assert strategy["status"] == "active"
+    strategy["review_due_execution"] = 5
+    strategy["checkpoints"][0]["due_execution"] = 2
+    assert AutoRunRunner._strategy_requires_review(state)
+    assert strategy["checkpoints"][0]["status"] == "pending"
 
-    assert autorun_module._round_receipt(tmp_path, 3, "strategy_reflection", 2) == {
-        "status": "running"
-    }
+
+def test_continued_strategy_keeps_deadline_and_prompt_identity(
+    tmp_path: Path,
+) -> None:
+    runner = _runner(tmp_path)
+    runner.session_dir = tmp_path
+    strategy = _contract(review_due=2, checkpoint_due=2, checkpoint_status="advanced")
+    state = _strategy_state(strategy, execution=2)
+    state["adjudication_history"] = [
+        {
+            "strategy_id": "strategy-00001",
+            "strategy_revision": 1,
+            "execution": 2,
+            "alignment": "aligned",
+            "checkpoint_result": "advanced",
+        }
+    ]
+    proposal, errors = runner._parse_strategy_proposal(
+        _proposal(
+            decision="continue",
+            base_strategy_id="strategy-00001",
+            base_revision=1,
+            review_after=2,
+            checkpoint_after=1,
+        ),
+        state=state,
+        max_strategy_executions=100,
+    )
+    assert errors == []
+    assert proposal is not None
+    revised = runner._materialize_strategy_contract(3, state, proposal)
+    assert revised["strategy_id"] == "strategy-00001"
+    assert revised["revision"] == 2
+    assert revised["lineage_started_execution"] == 0
+    assert revised["hard_deadline_execution"] == 10
+    assert state["strategy_history"][-1]["checkpoints"][0]["status"] == "revised"
+    state["active_strategy"] = revised
+    prompt = runner._round_prompt(3, state, "Prove the exact target.")
+    marker = next(
+        line.removeprefix("CONDUCTOR_RESULT_JSON: ")
+        for line in prompt.splitlines()
+        if line.startswith("CONDUCTOR_RESULT_JSON: ")
+    )
+    claim = json.loads(marker)
+    assert claim["strategy_id"] == revised["strategy_id"]
+    assert claim["strategy_revision"] == revised["revision"]
+
+
+@pytest.mark.parametrize("checkpoint_result", ["advanced", "satisfied"])
+def test_overdue_soft_gate_requires_current_revision_aligned_progress(
+    tmp_path: Path,
+    checkpoint_result: str,
+) -> None:
+    runner = _runner(tmp_path)
+    strategy = _contract(
+        revision=2,
+        accepted_execution=1,
+        review_due=2,
+        checkpoint_due=2,
+    )
+    state = _strategy_state(strategy, execution=2)
+    proposal_text = _proposal(
+        decision="continue",
+        base_strategy_id="strategy-00001",
+        base_revision=2,
+        review_after=1,
+        checkpoint_after=1,
+    )
+
+    assert "- Replacement is mandatory: true" in runner._strategy_reflection_prompt(
+        state, "Prove the exact target."
+    )
+    proposal, errors = AutoRunRunner._parse_strategy_proposal(
+        proposal_text,
+        state=state,
+        max_strategy_executions=100,
+    )
+    assert proposal is None
+    assert any("replacement is required" in item for item in errors)
+
+    state["adjudication_history"] = [
+        {
+            "strategy_id": "strategy-00001",
+            "strategy_revision": 1,
+            "execution": 2,
+            "alignment": "aligned",
+            "checkpoint_result": checkpoint_result,
+        }
+    ]
+    assert "- Replacement is mandatory: true" in runner._strategy_reflection_prompt(
+        state, "Prove the exact target."
+    )
+    proposal, errors = AutoRunRunner._parse_strategy_proposal(
+        proposal_text,
+        state=state,
+        max_strategy_executions=100,
+    )
+    assert proposal is None
+    assert any("replacement is required" in item for item in errors)
+
+    state["adjudication_history"].append(
+        {
+            "strategy_id": "strategy-00001",
+            "strategy_revision": 2,
+            "execution": 2,
+            "alignment": "aligned",
+            "checkpoint_result": checkpoint_result,
+        }
+    )
+    assert "- Replacement is mandatory: false" in runner._strategy_reflection_prompt(
+        state, "Prove the exact target."
+    )
+    proposal, errors = AutoRunRunner._parse_strategy_proposal(
+        proposal_text,
+        state=state,
+        max_strategy_executions=100,
+    )
+    assert errors == []
+    assert proposal is not None
+
+
+def test_hard_lineage_deadline_cannot_be_extended_by_continue() -> None:
+    strategy = _contract(hard_deadline=2, review_due=2, checkpoint_due=2)
+    state = _strategy_state(strategy, execution=2)
+    state["adjudication_history"] = [
+        {
+            "strategy_id": "strategy-00001",
+            "strategy_revision": 1,
+            "execution": 2,
+            "alignment": "aligned",
+            "checkpoint_result": "advanced",
+        }
+    ]
+    proposal, errors = AutoRunRunner._parse_strategy_proposal(
+        _proposal(
+            decision="continue",
+            base_strategy_id="strategy-00001",
+            base_revision=1,
+            review_after=1,
+            checkpoint_after=1,
+        ),
+        state=state,
+        max_strategy_executions=100,
+    )
+    assert proposal is None
+    assert any("replacement is required" in item for item in errors)
+
+
+def test_expired_lineage_replacement_gets_fresh_operator_ceiling(
+    tmp_path: Path,
+) -> None:
+    runner = _runner(tmp_path)
+    strategy = _contract(
+        hard_deadline=2,
+        review_due=2,
+        checkpoint_due=2,
+        status="expired",
+    )
+    state = _strategy_state(strategy, execution=2)
+    state["strategy_change_required"] = True
+    proposal, errors = AutoRunRunner._parse_strategy_proposal(
+        _proposal(
+            decision="change_course",
+            base_strategy_id="strategy-00001",
+            base_revision=1,
+            review_after=75,
+            checkpoint_after=50,
+        ),
+        state=state,
+        max_strategy_executions=100,
+    )
+    assert errors == []
+    assert proposal is not None
+    replacement = runner._materialize_strategy_contract(3, state, proposal)
+    assert replacement["hard_deadline_execution"] == 102
+    assert replacement["review_due_execution"] == 77
+    assert replacement["checkpoints"][0]["due_execution"] == 52
+
+
+def test_change_course_allocates_new_lineage_and_archives_old_contract(
+    tmp_path: Path,
+) -> None:
+    runner = _runner(tmp_path)
+    strategy = _contract(status="falsified")
+    state = _strategy_state(strategy, execution=4)
+    state["strategy_change_required"] = True
+    proposal, errors = runner._parse_strategy_proposal(
+        _proposal(
+            decision="change_course",
+            base_strategy_id="strategy-00001",
+            base_revision=1,
+        ),
+        state=state,
+        max_strategy_executions=100,
+    )
+    assert errors == []
+    assert proposal is not None
+    replacement = runner._materialize_strategy_contract(5, state, proposal)
+    assert replacement["strategy_id"] == "strategy-00002"
+    assert replacement["revision"] == 1
+    assert replacement["lineage_started_execution"] == 4
+    assert replacement["hard_deadline_execution"] == 104
+    assert state["strategy_history"][-1]["status"] == "falsified"
+
+
+@pytest.mark.parametrize(
+    ("alignment", "checkpoint_result", "stop_id", "expected"),
+    [
+        ("drifted", "n/a", None, "drifted"),
+        ("falsified", "falsified", None, "falsified"),
+        ("falsified", "n/a", "method_breaks", "falsified"),
+    ],
+)
+def test_falsification_drift_and_triggered_stop_condition_each_require_change(
+    alignment: str,
+    checkpoint_result: str,
+    stop_id: str | None,
+    expected: str,
+) -> None:
+    checkpoint_id = "first_check" if checkpoint_result == "falsified" else None
+    parsed = AutoRunRunner._parse_progress_adjudication(
+        _adjudication(
+            alignment=alignment,
+            checkpoint_id=checkpoint_id,
+            checkpoint_result=checkpoint_result,
+            stop_id=stop_id,
+        ),
+        strategy=_contract(),
+    )
+    assert parsed is not None
+    state = _strategy_state(_contract(), execution=1)
+    AutoRunRunner._apply_adjudication_to_strategy(
+        state, parsed, attempt=1, execution=1, artifact="adjudication.json"
+    )
+    assert state["strategy_change_required"] is True
+    assert state["active_strategy"]["status"] == expected
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        _adjudication(revision=2),
+        _adjudication(checkpoint_id="unknown"),
+        _adjudication(checkpoint_id="first_check", checkpoint_result="n/a"),
+    ],
+)
+def test_invalid_or_wrong_strategy_adjudication_cannot_advance_checkpoint(
+    text: str,
+) -> None:
+    strategy = _contract()
+    strategy["checkpoints"].append(
+        {
+            "id": "second_check",
+            "due_execution": 4,
+            "observable": "A later obligation is verified.",
+            "status": "pending",
+            "last_result": None,
+            "last_adjudication_execution": None,
+        }
+    )
     assert (
-        autorun_module._round_stdout_path(tmp_path, 3, "strategy_reflection", 2)
-        == stdout
+        AutoRunRunner._parse_progress_adjudication(text, strategy=strategy) is None
     )
+    assert strategy["checkpoints"][0]["status"] == "pending"
 
 
-def test_autorun_routes_only_strategy_reflections_to_astra(
+def test_round_adjudication_prompt_matches_earliest_checkpoint_parser_order(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
-    project = ProjectSpec.load(manifest)
-    observed_requests: list[dict[str, object]] = []
+    runner = _runner(tmp_path)
+    runner.session_dir = tmp_path
+    strategy = _contract(revision=2)
+    strategy["checkpoints"].append(
+        {
+            "id": "second_check",
+            "due_execution": 4,
+            "observable": "A later obligation is verified.",
+            "status": "pending",
+            "last_result": None,
+            "last_adjudication_execution": None,
+        }
+    )
+    state = _strategy_state(strategy, execution=1)
+    monkeypatch.setattr(runner, "_state", lambda: state)
+    monkeypatch.setattr(runner, "_save", lambda _state: None)
+
+    round_dir = tmp_path / "round-00302"
+    round_dir.mkdir()
+    conductor_output = round_dir / "response.md"
+    conductor_output.write_text(
+        _claim(revision=2, checkpoint_id="second_check"), encoding="utf-8"
+    )
 
     def execute(request_path: Path) -> int:
         request = json.loads(request_path.read_text(encoding="utf-8"))
-        observed_requests.append(request)
-        return successful_agent(request_path)
-
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
-    )
-    first = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=1,
-        ),
-    )
-    session = first.run()
-    state = autorun_status(session)
-    state["next_reflection_at"] = "2000-01-01T00:00:00Z"
-    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
-
-    resumed = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            session=session,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=2,
-        ),
-    )
-    resumed.run()
-
-    assert [request["model"] for request in observed_requests] == [
-        "openai-codex/gpt-6-astra",
-        "openai-codex/gpt-5.6-sol",
-        "openai-codex/gpt-5.6-terra",
-        "openai-codex/gpt-6-astra",
-        "openai-codex/gpt-5.6-sol",
-        "openai-codex/gpt-5.6-terra",
-    ]
-    reflection_request = observed_requests[3]
-    assert reflection_request["role_id"] == "autorun_strategy_reflection"
-    assert "strategy_pass" not in reflection_request
-    assert reflection_request["max_time"] == 15 * 60
-    assert reflection_request["empty_output_retries"] == 0
-    assert reflection_request["tools"] == ["read"]
-    assert reflection_request["workspace_executables"] is True
-    main_prompt = (session / "rounds" / "round-00002" / "prompt.md").read_text(
-        encoding="utf-8"
-    )
-    assert "Meaningful-progress strategy gate" in main_prompt
-    final_state = autorun_status(session)
-    assert final_state["reflection_count"] == 2
-    assert final_state["last_model"] == "openai-codex/gpt-5.6-sol"
-    assert final_state["last_reflection_model"] == "openai-codex/gpt-6-astra"
-    assert final_state["last_strategy_likelihood"] == 70
-    assert final_state["last_strategy_threshold"] == 30
-    assert final_state["last_strategy_worthwhile"] is True
-    assert final_state["last_strategy_decision"] == "continue"
-    assert final_state["last_strategy_plan_status"] == "ready"
-
-
-def test_strategy_gate_iterates_astra_until_course_change_plan_is_ready(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
-    project = ProjectSpec.load(manifest)
-    observed_requests: list[dict[str, object]] = []
-
-    def execute(request_path: Path) -> int:
-        request = json.loads(request_path.read_text(encoding="utf-8"))
-        observed_requests.append(request)
-        if request["role_id"] != "autorun_strategy_reflection":
-            return successful_agent(request_path)
-        pass_number = sum(
-            item["role_id"] == "autorun_strategy_reflection"
-            for item in observed_requests
-        )
-        plan_status = "revise" if pass_number == 1 else "ready"
-        selected = "derive a continuation theorem instead of enumerating tiny cells"
-        output = (
-            "The current cell-by-cell course cannot cover the remaining domain.\n"
-            "MEANINGFUL_PROGRESS_LIKELIHOOD: 5\n"
-            "MINIMUM_WORTHWHILE_LIKELIHOOD: 30\n"
-            "CURRENT_COURSE_WORTHWHILE: no\n"
-            "STRATEGY_DECISION: change_course\n"
-            f"STRATEGY_PLAN_STATUS: {plan_status}\n"
-            "REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD: 65\n"
-            "EXPECTED_ROUNDS_TO_FIRST_EVIDENCE: 2\n"
-            "EXPECTED_COMPUTE_COST: medium\n"
-            "COURSE_TO_ABANDON: stop adding adjacent tiny cells\n"
-            "CANDIDATE_STRATEGIES: continuation theorem || interval atlas\n"
-            f"SELECTED_METHOD: {selected}\n"
-            "STRATEGY_MILESTONES: 2::derive local step; 6::prove propagation\n"
-            "FIRST_FALSIFIABLE_CHECK: prove a uniform continuation step\n"
-            "STRATEGY_KILL_CRITERIA: cannot cross ten cells || constants diverge\n"
-            "REFLECTION_NEXT: test the continuation lemma on the retained branch\n"
-        )
-        Path(request["output"]).write_text(output, encoding="utf-8")
-        Path(request["receipt"]).write_text(
-            json.dumps({"schema_version": 1, "status": "succeeded"}),
+        Path(request["output"]).write_text(
+            _adjudication(revision=2, checkpoint_id="first_check"),
             encoding="utf-8",
         )
         return 0
 
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
+    monkeypatch.setattr(runner, "_execute_with_heartbeat", execute)
+    adjudication, _, _ = runner._run_progress_adjudication(
+        302, round_dir, conductor_output, []
     )
-    first = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=1,
-        ),
-    )
-    session = first.run()
-    final_state = autorun_status(session)
 
-    assert [request["model"] for request in observed_requests] == [
-        "openai-codex/gpt-6-astra",
-        "openai-codex/gpt-6-astra",
-        "openai-codex/gpt-5.6-sol",
-        "openai-codex/gpt-5.6-terra",
-    ]
-    reflection_requests = [
-        request
-        for request in observed_requests
-        if request["role_id"] == "autorun_strategy_reflection"
-    ]
-    assert [Path(str(request["prompt"])).name for request in reflection_requests] == [
-        "strategy-reflection-prompt.md",
-        "strategy-reflection-pass-02-prompt.md",
-    ]
-    conductor_prompt = (session / "rounds" / "round-00001" / "prompt.md").read_text(
+    assert adjudication is not None
+    assert adjudication.checkpoint_id == "first_check"
+    prompt = (round_dir / "progress-adjudication-prompt.md").read_text(
         encoding="utf-8"
     )
-    assert "derive a continuation theorem instead of enumerating tiny cells" in (
-        conductor_prompt
+    assert "Active strategy ID: `strategy-00001`" in prompt
+    assert "Active strategy revision: `2`" in prompt
+    assert "Earliest admissible checkpoint ID: `first_check`" in prompt
+    assert (
+        'Earliest admissible checkpoint observable: "The named obligation is verified."'
+        in prompt
     )
-    assert "abandon the rejected course" in " ".join(conductor_prompt.split())
-    assert final_state["last_strategy_likelihood"] == 5
-    assert final_state["last_strategy_threshold"] == 30
-    assert final_state["last_strategy_worthwhile"] is False
-    assert final_state["last_strategy_decision"] == "change_course"
-    assert final_state["last_strategy_plan_status"] == "ready"
-    assert final_state["strategy_change_required"] is False
-    assert final_state["active_strategy"]["selected_likelihood"] == 65
-    assert len(final_state["active_strategy"]["candidate_strategies"]) == 2
-    assert final_state["active_strategy"]["milestones"][0]["deadline_execution"] == 2
+    assert '`checkpoint_id="first_check"`' in prompt
+    normalized_prompt = " ".join(prompt.split())
+    assert (
+        '`progress_class="complete"` and `alignment="complete"` each mean that '
+        "the entire Living Master Prompt is complete"
+    ) in normalized_prompt
+    assert (
+        "If all strategy checkpoints are complete but any global obligation in "
+        "the Living Master Prompt remains, use `progress_class=\"meaningful\"`, "
+        'not `"complete"`'
+    ) in normalized_prompt
+    assert (
+        AutoRunRunner._parse_progress_adjudication(
+            _adjudication(revision=2, checkpoint_id="second_check"),
+            strategy=strategy,
+        )
+        is None
+    )
 
 
-def test_strategy_gate_never_runs_conductor_without_a_ready_plan(
+def test_unchanged_checkpoint_remains_pending_and_overdue() -> None:
+    strategy = _contract(review_due=2, checkpoint_due=1)
+    parsed = AutoRunRunner._parse_progress_adjudication(
+        _adjudication(checkpoint_result="unchanged"),
+        strategy=strategy,
+    )
+    assert parsed is not None
+    state = _strategy_state(strategy, execution=1)
+    AutoRunRunner._apply_adjudication_to_strategy(
+        state, parsed, attempt=1, execution=1, artifact="adjudication.json"
+    )
+    assert state["active_strategy"]["checkpoints"][0]["status"] == "pending"
+    assert AutoRunRunner._strategy_requires_review(state)
+
+
+def test_only_aligned_indexed_advanced_or_satisfied_result_records_evidence() -> None:
+    state = _strategy_state(_contract(accepted_execution=1), execution=2)
+    state["adjudication_history"] = [
+        {
+            "strategy_id": "strategy-00001",
+            "strategy_revision": 1,
+            "execution": 2,
+            "alignment": "drifted",
+            "checkpoint_result": "advanced",
+        }
+    ]
+    assert not AutoRunRunner._has_aligned_revision_progress(state)
+    state["adjudication_history"][0]["alignment"] = "aligned"
+    assert AutoRunRunner._has_aligned_revision_progress(state)
+
+
+def test_reflection_trajectory_contains_adjudicated_delta_not_conductor_claim(
+    tmp_path: Path,
+) -> None:
+    runner = _runner(tmp_path)
+    runner.session_dir = tmp_path
+    state = _strategy_state(_contract(), execution=1)
+    state["adjudication_history"] = [
+        {
+            "attempt": 1,
+            "execution": 1,
+            "strategy_id": "strategy-00001",
+            "strategy_revision": 1,
+            "progress_class": "meaningful",
+            "alignment": "aligned",
+            "checkpoint_id": "first_check",
+            "checkpoint_result": "advanced",
+            "reason": "independent reason",
+            "verified_scope_delta": "independent delta",
+        }
+    ]
+    history = runner._recent_progress_history(state)
+    assert "independent delta" in history
+    assert "conductor claim" not in history
+
+
+def test_repeated_execution_failures_never_route_conductor_to_governor_model(
+    tmp_path: Path,
+) -> None:
+    runner = _runner(tmp_path)
+    assert runner._conductor_model({"consecutive_execution_failures": 20}) == (
+        "openai-codex/gpt-5.6-sol",
+        "primary",
+    )
+
+
+def test_complete_adjudication_stops_without_another_reflection() -> None:
+    parsed = AutoRunRunner._parse_progress_adjudication(
+        _adjudication(
+            progress_class="complete",
+            alignment="complete",
+            checkpoint_id=None,
+            checkpoint_result="n/a",
+        ),
+        strategy=_contract(),
+    )
+    assert parsed is not None
+    state = _strategy_state(_contract(), execution=1)
+    state["status"] = "running"
+    AutoRunRunner._apply_adjudication_to_strategy(
+        state, parsed, attempt=1, execution=1, artifact="adjudication.json"
+    )
+    assert state["status"] == "stopped"
+    assert state["active_strategy"]["status"] == "complete"
+
+
+def _retained_state(schema_version: int) -> dict[str, object]:
+    return {
+        "schema_version": schema_version,
+        "session_id": "session",
+        "project_manifest": "/project/project.toml",
+        "master_prompt": "/project/MASTER_PROMPT.md",
+        "master_prompt_sha256": "digest",
+        "status": "paused",
+        "pid": None,
+        "created_at": "2026-01-01T00:00:00Z",
+        "updated_at": "2026-01-01T00:00:00Z",
+        "heartbeat_at": "2026-01-01T00:00:00Z",
+        "next_reflection_at": "2026-01-01T01:00:00Z",
+        "reflection_minutes": 120,
+        "reflection_round_minutes": 15,
+        "round_minutes": 90,
+        "round_count": 1,
+        "attempt_count": 2,
+        "reflection_count": 1,
+        "meaningful_round_count": 1,
+        "incremental_round_count": 0,
+        "blocked_round_count": 0,
+        "complete_round_count": 0,
+        "unclassified_round_count": 0,
+        "controller_failure_count": 0,
+        "agent_execution_failure_count": 1,
+        "verification_failure_count": 0,
+        "strategy_gate_failure_count": 0,
+        "mathematical_blocker_count": 0,
+        "consecutive_execution_failures": 0,
+        "last_failure_class": None,
+        "active_strategy": {"schema_version": 1, "status": "active"},
+        "strategy_history": [{"raw": "retained"}],
+        "last_progress_claim": "meaningful",
+        "last_progress_adjudication": None,
+        "last_adjudication_review": "/session/adjudication.md",
+        "last_adjudication_model": "analysis",
+        "last_progress_class": "meaningful",
+        "last_strategy_decision": "continue",
+        "last_strategy_review": "/session/reflection.md",
+        "last_strategy_round": 1,
+        "strategy_change_required": False,
+        "next_retry_at": None,
+        "repeated_output_count": 0,
+        "last_output_sha256": "digest",
+        "last_output": "/session/output.md",
+        "last_receipt": "/session/receipt.json",
+        "active_round": None,
+        "active_prompt": None,
+        "active_model": None,
+        "active_model_route": None,
+        "active_strategy_pass": 2,
+        "last_model": "primary",
+        "last_reflection_model": "governor",
+        "last_error": None,
+        "stop_requested": False,
+    }
+
+
+@pytest.mark.parametrize("schema_version", [1, 2])
+def test_schema_1_and_2_sessions_upgrade_to_3_and_reflect_before_execution(
+    tmp_path: Path, schema_version: int
+) -> None:
+    session = tmp_path / f"schema-{schema_version}"
+    (session / "rounds" / "round-00002").mkdir(parents=True)
+    retained = _retained_state(schema_version)
+    if schema_version == 1:
+        retained.pop("attempt_count")
+        retained["consecutive_failures"] = retained.pop(
+            "consecutive_execution_failures"
+        )
+    (session / "state.json").write_text(json.dumps(retained), encoding="utf-8")
+    state = AutoRunRunner._read_state_from(session)
+    assert state["schema_version"] == 3
+    assert state["round_count"] == 1
+    assert state["attempt_count"] == 2
+    assert state["last_output"] == "/session/output.md"
+    assert state["active_strategy"] is None
+    assert state["strategy_change_required"] is True
+    assert "active_strategy_pass" not in state
+    if schema_version == 2:
+        assert state["legacy_strategy_state"]["active_strategy"]["schema_version"] == 1
+    else:
+        assert state["legacy_strategy_state"]["active_strategy"] is None
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("revision", True),
+        ("status", "ready"),
+        ("strategy_id", "bad id"),
+        ("review_due_execution", 0),
+        ("hard_deadline_execution", 101),
+        ("checkpoints", {}),
+        ("stop_conditions", {}),
+    ],
+)
+def test_malformed_schema_3_nested_contract_is_rejected(
+    field: str, value: object
+) -> None:
+    strategy = _contract()
+    strategy[field] = value
+    with pytest.raises(AutoRunError):
+        AutoRunRunner._validate_strategy_contract(
+            strategy, completed_execution=0, require_active=False
+        )
+
+
+def test_resume_preserves_absolute_soft_and_hard_gate_deadlines() -> None:
+    strategy = _contract(review_due=7, checkpoint_due=5, hard_deadline=10)
+    AutoRunRunner._validate_strategy_contract(
+        strategy, completed_execution=3, require_active=True
+    )
+    assert strategy["review_due_execution"] == 7
+    assert strategy["checkpoints"][0]["due_execution"] == 5
+    assert strategy["hard_deadline_execution"] == 10
+
+
+def test_status_renders_persisted_contract_instead_of_raw_governor_markers() -> None:
+    report = "\n".join(
+        autorun_module._strategy_report_sections(
+            _strategy_state(_contract(review_due=7, checkpoint_due=5))
+        )
+    )
+    assert "strategy-00001 revision 1" in report
+    assert "first_check at execution 5" in report
+    assert "Due at successful execution 7" in report
+    assert "hard deadline 10" in report
+
+
+def test_generic_governor_conductor_and_adjudicator_prompts_have_no_project_vocabulary(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    master_text = "LIVING CONTRACT SENTINEL"
     manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
+    master = write_master_prompt(manifest, master_text)
     runner = AutoRunRunner(
         ProjectSpec.load(manifest),
         AutoRunOptions(
@@ -472,300 +859,32 @@ def test_strategy_gate_never_runs_conductor_without_a_ready_plan(
             reflection_minutes=120,
             round_minutes=1,
             retry_delay_seconds=0,
-        ),
-    )
-    session = runner._select_session()
-    runner.session_dir = session
-    round_dir = session / "rounds" / "round-00001"
-    round_dir.mkdir(parents=True)
-    passes: list[int] = []
-
-    def unready_review(request_path: Path) -> int:
-        request = json.loads(request_path.read_text(encoding="utf-8"))
-        passes.append(len(passes) + 1)
-        Path(request["output"]).write_text(
-            "MEANINGFUL_PROGRESS_LIKELIHOOD: 5\n"
-            "MINIMUM_WORTHWHILE_LIKELIHOOD: 30\n"
-            "CURRENT_COURSE_WORTHWHILE: no\n"
-            "STRATEGY_DECISION: change_course\n"
-            "STRATEGY_PLAN_STATUS: revise\n"
-            "REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD: 60\n"
-            "EXPECTED_ROUNDS_TO_FIRST_EVIDENCE: 2\n"
-            "EXPECTED_COMPUTE_COST: medium\n"
-            "COURSE_TO_ABANDON: stop enumerating cells\n"
-            "CANDIDATE_STRATEGIES: continuation theorem || interval atlas\n"
-            "SELECTED_METHOD: derive a global continuation theorem\n"
-            "STRATEGY_MILESTONES: 2::local step; 6::full interval\n"
-            "FIRST_FALSIFIABLE_CHECK: test the local continuation estimate\n"
-            "STRATEGY_KILL_CRITERIA: estimate fails || constants diverge\n"
-            "REFLECTION_NEXT: refine the continuation plan\n",
-            encoding="utf-8",
-        )
-        return 0
-
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request",
-        unready_review,
-    )
-
-    with pytest.raises(AutoRunError, match="did not produce an approved strategy"):
-        runner._run_strategy_reflection(
-            1,
-            autorun_status(session),
-            master.read_text(encoding="utf-8"),
-            round_dir,
-        )
-
-    assert passes == [1, 2, 3]
-    assert autorun_status(session)["strategy_change_required"] is True
-
-
-def test_autorun_resume_reloads_edited_master_prompt(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest, "First objective.")
-    project = ProjectSpec.load(manifest)
-    observed_prompts: list[str] = []
-
-    def execute(request_path: Path) -> int:
-        request = json.loads(request_path.read_text(encoding="utf-8"))
-        observed_prompts.append(Path(request["prompt"]).read_text(encoding="utf-8"))
-        return successful_agent(request_path)
-
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
-    )
-    first = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
             max_rounds=1,
         ),
     )
-    session = first.run()
-    master.write_text("# Master Prompt\n\nChanged objective.\n", encoding="utf-8")
+    prompts: list[str] = []
 
-    resumed = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            session=session,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=2,
-        ),
-    )
-    assert resumed.run() == session
+    def execute(path: Path) -> int:
+        request = json.loads(path.read_text(encoding="utf-8"))
+        prompts.append(Path(request["prompt"]).read_text(encoding="utf-8"))
+        return successful_agent(path)
 
-    conductor_prompts = [
-        prompt for prompt in observed_prompts if "choose your own next" in prompt
-    ]
-    assert "First objective." in conductor_prompts[0]
-    assert "Changed objective." in conductor_prompts[1]
-    assert autorun_status(session)["round_count"] == 2
-
-
-def test_autorun_recovers_after_failed_agent_round(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
-    project = ProjectSpec.load(manifest)
-    conductor_attempts = 0
-    session_path: Path | None = None
-    retry_deadlines: list[str | None] = []
-    accepted_before_failure: list[bool] = []
-
-    def execute(request_path: Path) -> int:
-        nonlocal conductor_attempts, session_path
-        request = json.loads(request_path.read_text(encoding="utf-8"))
-        session_path = Path(str(request["run_dir"]))
-        if request["role_id"] != "autorun_conductor":
-            return successful_agent(request_path)
-        conductor_attempts += 1
-        if conductor_attempts == 1:
-            retained = autorun_status(session_path)
-            accepted_before_failure.append(
-                retained["reflection_count"] == 1
-                and isinstance(retained["active_strategy"], dict)
-            )
-            return 1
-        return successful_agent(request_path)
-
-    def observe_retry_deadline(_seconds: float) -> None:
-        assert session_path is not None
-        retry_deadlines.append(autorun_status(session_path).get("next_retry_at"))
-
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
-    )
-    monkeypatch.setattr(autorun_module.time, "sleep", observe_retry_deadline)
-    runner = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=1,
-            max_rounds=2,
-        ),
-    )
-
-    session = runner.run()
-    state = autorun_status(session)
-
-    assert conductor_attempts == 2
-    assert state["status"] == "paused"
-    assert state["attempt_count"] == 2
-    assert state["round_count"] == 1
-    assert state["agent_execution_failure_count"] == 1
-    assert state["consecutive_execution_failures"] == 0
-    assert len(retry_deadlines) == 1
-    assert isinstance(retry_deadlines[0], str)
-    assert state["next_retry_at"] is None
-    assert accepted_before_failure == [True]
-    assert "Previous controller/agent error" in (
-        session / "rounds" / "round-00002" / "prompt.md"
-    ).read_text(encoding="utf-8")
-
-
-def test_autorun_bounds_targeted_model_recovery_attempts(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
-    project = ProjectSpec.load(manifest)
-    conductor_models: list[str] = []
-    conductor_routes: list[str] = []
-
-    def execute(request_path: Path) -> int:
-        request = json.loads(request_path.read_text(encoding="utf-8"))
-        if request["role_id"] != "autorun_conductor":
-            return successful_agent(request_path)
-        conductor_models.append(str(request["model"]))
-        state = autorun_status(Path(str(request["run_dir"])))
-        conductor_routes.append(str(state["active_model_route"]))
-        return 1
-
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request", execute
-    )
-    runner = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=5,
-        ),
-    )
-
-    session = runner.run()
-
-    assert conductor_models == [
-        "openai-codex/gpt-5.6-sol",
-        "openai-codex/gpt-5.6-sol",
-        "openai-codex/gpt-6-astra",
-        "openai-codex/gpt-5.6-sol",
-        "openai-codex/gpt-5.6-sol",
-    ]
-    assert conductor_routes == [
-        "primary",
-        "primary",
-        "targeted_recovery",
-        "primary",
-        "primary",
-    ]
-    state = autorun_status(session)
-    assert state["attempt_count"] == 5
-    assert state["round_count"] == 0
-    assert state["agent_execution_failure_count"] == 5
-    assert state["consecutive_execution_failures"] == 5
-
-
-def test_autorun_skips_an_interrupted_round_directory_on_resume(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
-    project = ProjectSpec.load(manifest)
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request",
-        successful_agent,
-    )
-    first = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=1,
-        ),
-    )
-    session = first.run()
-    orphan = session / "rounds" / "round-00002"
-    orphan.mkdir()
-    (orphan / "interrupted.txt").write_text("partial work retained\n", encoding="utf-8")
-
-    resumed = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            session=session,
-            reflection_minutes=120,
-            round_minutes=1,
-            retry_delay_seconds=0,
-            max_rounds=3,
-        ),
-    )
-
-    assert resumed.run() == session
-    state = autorun_status(session)
-    assert state["attempt_count"] == 3
-    assert state["round_count"] == 2
-    assert (session / "rounds" / "round-00003" / "output.md").is_file()
-    assert (orphan / "interrupted.txt").read_text(encoding="utf-8") == (
-        "partial work retained\n"
-    )
-
-
-def test_autorun_stop_request_is_durable(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    manifest = write_autonomy_project(tmp_path)
-    master = write_master_prompt(manifest)
-    project = ProjectSpec.load(manifest)
-    initializer = AutoRunRunner(
-        project,
-        AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
-    )
-    session = initializer._select_session()
-
-    assert request_autorun_stop(session).startswith("autorun stop requested:")
-    monkeypatch.setattr(
-        "agentic_lean_math_assistant.autorun.execute_agent_request",
-        lambda _request: pytest.fail("stopped autorun must not start an agent"),
-    )
-    runner = AutoRunRunner(
-        project,
-        AutoRunOptions(
-            master_prompt=master,
-            session=session,
-            reflection_minutes=120,
-            round_minutes=1,
-        ),
-    )
-
-    assert runner.run() == session
-    assert autorun_status(session)["status"] == "stopped"
-
+    monkeypatch.setattr(autorun_module, "execute_agent_request", execute)
+    runner.run()
+    assert len(prompts) == 3
+    for prompt in prompts:
+        assert master_text in prompt
+        for forbidden in (
+            "CMV",
+            "Lean",
+            "ALMA",
+            "Astra",
+            "tiny cells",
+            "sorry",
+            "admit",
+            "native_decide",
+        ):
+            assert forbidden not in prompt
 
 def test_follow_monitor_renders_graphical_status_and_verbal_recap(
     tmp_path: Path,
@@ -833,7 +952,7 @@ Prefer a small vertical slice before bulk generation.
     assert "Prefer a small vertical slice" not in rendered
 
 
-def test_follow_monitor_adds_detailed_astra_strategy_report(
+def test_follow_monitor_renders_persisted_strategy_contract(
     tmp_path: Path,
 ) -> None:
     manifest = write_autonomy_project(tmp_path)
@@ -843,27 +962,10 @@ def test_follow_monitor_adds_detailed_astra_strategy_report(
         AutoRunOptions(master_prompt=master, reflection_minutes=120, round_minutes=1),
     )
     session = initializer._select_session()
-    review = session / "strategy-review.md"
-    review.write_text(
-        "ABANDON_CURRENT_COURSE: stop enumerating adjacent cells\n"
-        "ALTERNATIVE_METHOD: derive a scale-local certificate atlas\n"
-        "STRATEGY_MILESTONES: pilot two bands; replay the consumer; fill coverage\n"
-        "FIRST_FALSIFIABLE_CHECK: certify both pilot bands within two rounds\n"
-        "STRATEGY_KILL_CRITERIA: stop if either pilot band needs bespoke tuning\n"
-        "REFLECTION_NEXT: run the bounded two-band pilot\n",
-        encoding="utf-8",
-    )
     state = autorun_status(session)
-    state.update(
-        {
-            "status": "paused",
-            "last_strategy_decision": "change_course",
-            "last_strategy_likelihood": 5,
-            "last_strategy_threshold": 30,
-            "last_strategy_plan_status": "ready",
-            "last_strategy_review": str(review),
-        }
-    )
+    state["status"] = "paused"
+    state["attempt_count"] = 1
+    state["active_strategy"] = _contract(review_due=7, checkpoint_due=5)
     (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
     output = io.StringIO()
 
@@ -874,14 +976,14 @@ def test_follow_monitor_adds_detailed_astra_strategy_report(
     )
 
     rendered = output.getvalue()
-    assert "ASTRA STRATEGY REPORT" in rendered
-    assert "5% against a 30% worthwhile threshold" in rendered
-    assert "REJECTED COURSE\n\nstop enumerating adjacent cells" in rendered
-    assert "REPLACEMENT METHOD\n\nderive a scale-local certificate atlas" in rendered
-    assert "STRATEGY MILESTONES" in rendered
-    assert "FIRST FALSIFIABLE CHECK" in rendered
-    assert "KILL CRITERIA" in rendered
-    assert "STRATEGY NEXT ACTION\n\nrun the bounded two-band pilot" in rendered
+    assert "ACTIVE STRATEGY CONTRACT" in rendered
+    assert "strategy-00001 revision 1 is active" in rendered
+    assert "NEXT CHECKPOINT" in rendered
+    assert "first_check at execution 5" in rendered
+    assert "ADAPTIVE REVIEW" in rendered
+    assert "Due at successful execution 7" in rendered
+    assert "IMMUTABLE LINEAGE CEILING" in rendered
+    assert "hard deadline 10" in rendered
 
 
 def test_persistent_status_monitor_shows_recovery_deadline_until_resume(
@@ -940,6 +1042,8 @@ def test_persistent_status_monitor_shows_recovery_deadline_until_resume(
     assert "retry at 2099-01-01T00:00:00Z" in rendered
     assert "AUTORUN running" in rendered
     assert "round 4" in rendered
+    assert "Controller: recovering and responding." in rendered
+    assert "Controller: running and responding." in rendered
 
 
 def test_persistent_status_monitor_recovers_from_unreadable_state(

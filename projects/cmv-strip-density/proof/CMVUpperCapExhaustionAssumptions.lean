@@ -1,0 +1,15 @@
+import CMVUpperCapExhaustion
+import TypeThreeAssembly
+
+#print axioms CMVRelaxation.UpperCapPatchSource
+#print axioms CMVRelaxation.UpperCapPatch.exists_patch_family_and_bound
+#print axioms CMVRelaxation.FourArcUpperCap.source
+#print axioms CMVRelaxation.FourArcUpperCap.exists_upperCap_patch_family_and_bound
+#print axioms CMVRelaxation.TypeThreeUpperCap.source
+#print axioms CMVRelaxation.TypeThreeUpperCap.exists_upperCap_patch_family_and_bound
+#print axioms CMVRelaxation.TypeThreeUpperCap.majorArcAssembly_outerAngle_major
+#print axioms
+  CMVRelaxation.TypeThreeUpperCap.majorArcAssembly_exists_upperCap_patch_family_and_bound
+#print axioms CMVRelaxation.finiteMesh_index_bounds_and_sin
+#print axioms TypeThreeAssembly.mem_carrier_iff_mem_outerCap_of_one_lt
+#print axioms TypeThreeAssembly.carrier_inter_above_one

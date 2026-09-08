@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "61e9ee8e01a9e00499d53b896e628c914abbb0f9f42ac886afcf253a6c6c75de",
+  "category": "computational",
+  "evidence": [
+    "agents/computational/verify_exact_counterexample/attempt-01.md",
+    "workspace/agents/computational/verify_exact_counterexample/verify.py",
+    "workspace/agents/computational/verify_exact_counterexample/certificate-output.txt",
+    "agents/audit/audit_resolution/attempt-01.md",
+    "agents/audit/audit_resolution/attempt-01.json"
+  ],
+  "limitations": [
+    "This finite witness refutes the universal claim but does not itself establish the full signed classification.",
+    "Verification used exact Python fractions.Fraction arithmetic rather than a theorem prover.",
+    "The saved certificate has an extra metadata key absent from verifier output, although all shared mathematical fields agree."
+  ],
+  "report": {
+    "path": "computational/20260823T084502Z-229a06-verify_exact_counterexample.md",
+    "sha256": "37521bb78f2e60e679090e27ac4a780e27e07a44596738e1d44ea07cfdf79b61",
+    "size": 1022
+  },
+  "run_id": "20260823T084502Z-229a06",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "exact_counterexample",
+  "summary": "The exact tuple (a,b,c,d)=(0,1,1,-1) has nonzero mixed-sign denominators and satisfies a/b>c/d while ad>bc is false.",
+  "task_id": "verify_exact_counterexample",
+  "verified_by": [
+    "audit_resolution"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "2f9f88b834ef59a62d6db3445f8fa4df4ab9d19f560f01566e6e33da34ca84e8",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_source_gap/attempt-01.md",
+    "agents/audit/audit_source_gap/attempt-01.md",
+    "input-snapshot/problem.md",
+    "input-snapshot/references/source.md"
+  ],
+  "limitations": [
+    "Valid only under the supplied-transcription evidence boundary.",
+    "Does not determine the actual value of c₇.",
+    "The assignments 0 and 1 are logical witnesses, not candidate readings of the original cell.",
+    "Must be reconsidered if a legible row-7 coefficient cell or an explicit governing rule becomes admissible."
+  ],
+  "report": {
+    "path": "analytic/20260823T003634Z-5c59c6-derive_source_gap.md",
+    "sha256": "bc195af57b7be4757dfa09f3652b16b93ad302c1add915710249cad5a2679432",
+    "size": 1749
+  },
+  "run_id": "20260823T003634Z-5c59c6",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "source_nonuniqueness",
+  "summary": "Under the supplied Table 2 transcription alone, c₇ is not uniquely recoverable because c₇ = 0 and c₇ = 1 are distinct compatible completions; direct recovery requires the legible coefficient cell in Table 2 row j = 7 on the unavailable original page.",
+  "task_id": "derive_source_gap",
+  "verified_by": [
+    "audit_source_gap"
+  ]
+}

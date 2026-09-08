@@ -1,0 +1,20 @@
+import CMVTypeThreeSmoothRecovery
+
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.signedLowerPatch_sdiff_interior_subset_changeSupport
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.combinedSurgeryDomain_eq_rightLowerLocal_on_modelNeighborhood
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.combinedSurgeryDomain_eq_leftLowerLocal_on_modelNeighborhood
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.upperSurgeryDomain_eq_interior_belowTransition
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.upperSurgeryDomain_eq_upperBlend_on_modelNeighborhood
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.upperSurgeryDomain_eq_interior_aboveTransition
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.isSmoothDomain_combinedSurgeryDomain
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.nondegenerateRecoverySequence_converges_carrier
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.typeThreeRecoverySequence_converges_carrier

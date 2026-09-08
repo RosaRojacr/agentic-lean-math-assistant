@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "863ecc4214a74b14df54060d6e5d084f99d546926ec0b7cc82993237846753d4",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/synthesize_proof/attempt-01.md",
+    "agents/analytic/synthesize_proof/attempt-01.json",
+    "agents/audit/audit_proof/attempt-01.md",
+    "agents/audit/audit_proof/attempt-01.json"
+  ],
+  "limitations": [
+    "This is independently audited prose mathematics, not a proof-assistant kernel certificate.",
+    "Scope is integer inputs and modulus 6.",
+    "The residue table must travel with its Euclidean-division and congruence-transfer justification."
+  ],
+  "report": {
+    "path": "analytic/20260823T041540Z-425127-synthesize_proof.md",
+    "sha256": "24d3feb75f9a0d6c38deb77de372f06ee9381b10ab2b753c32d6aa1bd2af7a8f",
+    "size": 5128
+  },
+  "run_id": "20260823T041540Z-425127",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "dual_certificate_synthesis",
+  "summary": "For every integer n, including zero and negative integers, 6 divides n^3-n; explicit factorization and quotient witnesses establish divisibility by 2 and 3, Bezout recombination constructs a quotient by 6, and a separate exhaustive modulo-6 argument independently verifies the theorem.",
+  "task_id": "synthesize_proof",
+  "verified_by": [
+    "audit_proof"
+  ]
+}

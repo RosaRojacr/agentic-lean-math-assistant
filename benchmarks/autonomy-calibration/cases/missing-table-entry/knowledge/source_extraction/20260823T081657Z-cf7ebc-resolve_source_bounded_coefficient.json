@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "09521d26a84a469135861ead47e883b67a2ee417ce704a616eb32830bc7d4ff4",
+  "category": "source_extraction",
+  "evidence": [
+    "agents/source_extraction/resolve_source_bounded_coefficient/attempt-01.md",
+    "agents/source_extraction/resolve_source_bounded_coefficient/attempt-01.json",
+    "agents/verification/audit_unique_recoverability/attempt-01.md",
+    "agents/verification/audit_unique_recoverability/attempt-01.json"
+  ],
+  "limitations": [
+    "Valid only under the supplied-transcription evidence boundary.",
+    "Does not determine the actual numerical value of c_7.",
+    "The assignments 0 and 1 are logical witnesses, not candidate readings.",
+    "Must be reconsidered if a legible row-7 cell or an explicit uniquely determining source statement becomes admissible."
+  ],
+  "report": {
+    "path": "source_extraction/20260823T081657Z-cf7ebc-resolve_source_bounded_coefficient.md",
+    "sha256": "271c5f3c6e6bf43252abb37ecaabea04e8dfc421e2b1480b9853987f9a198cfd",
+    "size": 2575
+  },
+  "run_id": "20260823T081657Z-cf7ebc",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "literal_source_recovery",
+  "summary": "Under the supplied Table 2 transcription alone, row j=7 contains only an illegibility marker and no supplied governing rule uniquely determines c_7; c_7=0 and c_7=1 are distinct compatible completions, so direct recovery requires the legible row-7 coefficient cell on the unavailable original page.",
+  "task_id": "resolve_source_bounded_coefficient",
+  "verified_by": [
+    "audit_unique_recoverability"
+  ]
+}

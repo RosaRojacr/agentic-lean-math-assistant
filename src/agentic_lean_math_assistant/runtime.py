@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import errno
 import fcntl
+import filecmp
 import fnmatch
 import json
 import os
@@ -790,8 +791,8 @@ class CampaignBuilder:
                 self._write_evidence()
                 self._consume(stage, result)
                 stage_state = self.state["stages"][stage.stage_id]
-                attempt = int(stage_state["attempts"])
-                self._clear_checkpoint(stage.stage_id, attempt)
+                if stage_state["status"] != "pending":
+                    self._clear_stage_checkpoints(stage.stage_id)
                 self._write_evidence()
                 if self.state["status"] != "running":
                     break
@@ -893,6 +894,16 @@ class CampaignBuilder:
         elif checkpoint.is_dir():
             shutil.rmtree(checkpoint)
         _fsync_directory(self.run_dir / "recovery")
+
+    def _clear_stage_checkpoints(self, stage_id: str) -> None:
+        assert self.run_dir is not None
+        recovery = self.run_dir / "recovery"
+        for checkpoint in recovery.glob(f"{stage_id}-attempt-*"):
+            if checkpoint.is_symlink() or checkpoint.is_file():
+                checkpoint.unlink()
+            elif checkpoint.is_dir():
+                shutil.rmtree(checkpoint)
+        _fsync_directory(recovery)
 
     def _cleanup_orphan_checkpoints(self) -> None:
         assert self.run_dir is not None
@@ -1039,9 +1050,11 @@ class CampaignBuilder:
             )
         stage_state = self.state["stages"][stage.stage_id]
         stage_state["summary"] = result.summary
-        stage_state["artifacts"] = [
-            self._retained_path(path) for path in result.artifacts
-        ]
+        prior_artifacts = tuple(stage_state["artifacts"])
+        result_artifacts = tuple(self._retained_path(path) for path in result.artifacts)
+        stage_state["artifacts"] = list(
+            dict.fromkeys((*prior_artifacts, *result_artifacts))
+        )
         stage_state["completed_at"] = utc_now()
         if result.succeeded:
             stage_state["status"] = "succeeded"
@@ -1064,10 +1077,20 @@ class CampaignBuilder:
             self._route_retry(result.retry_targets, (result.summary,), stage)
             return
         if stage_state["attempts"] < stage.max_attempts:
-            self._restore_retry_checkpoint(stage)
+            partial = self._retain_partial_agent_output(stage)
+            stage_state["artifacts"].extend(
+                self._retained_path(path) for path in partial
+            )
             stage_state["status"] = "pending"
-            stage_state["feedback"] = [result.summary]
-            self._event(stage.stage_id, "retrying", result.summary)
+            stage_state["completed_at"] = None
+            stage_state["feedback"] = [
+                f"{result.summary}; continue from the retained partial workspace"
+            ]
+            self._event(
+                stage.stage_id,
+                "retrying",
+                f"{result.summary}; continuing from partial workspace",
+            )
             self._save_state()
             return
         self._restore_retry_checkpoint(stage)
@@ -1156,12 +1179,109 @@ class CampaignBuilder:
         finally:
             shutil.rmtree(temporary, ignore_errors=True)
 
+    def _retain_partial_workspace(self, stage: StageSpec) -> tuple[Path, ...]:
+        """Retain files changed by a failed final attempt before rollback."""
+        assert self.run_dir is not None and self.workspace is not None
+        config = self.configs[stage.stage_id]
+        category = getattr(config, "category", None)
+        if not isinstance(category, str):
+            return ()
+        attempt = int(self.state["stages"][stage.stage_id]["attempts"])
+        checkpoints = tuple(
+            self._checkpoint_path(stage.stage_id, candidate)
+            for candidate in range(1, attempt + 1)
+            if self._checkpoint_path(stage.stage_id, candidate).is_dir()
+        )
+        if not checkpoints:
+            return ()
+        baseline = checkpoints[0]
+        stage_dir = self.run_dir / "agents" / category / stage.stage_id
+        destination = stage_dir / f"attempt-{attempt:02d}-workspace-partial"
+        receipt = stage_dir / f"attempt-{attempt:02d}-workspace-partial.json"
+        if destination.exists() or receipt.exists():
+            raise CampaignRunError(
+                f"partial workspace already retained for stage {stage.stage_id!r} "
+                f"attempt {attempt}"
+            )
+        stage_dir.mkdir(parents=True, exist_ok=True)
+        temporary = Path(
+            tempfile.mkdtemp(prefix=f".{destination.name}-", dir=stage_dir)
+        )
+        changed: list[str] = []
+        deleted: list[str] = []
+
+        def ignored(relative: Path) -> bool:
+            return any(part in _CHECKPOINT_IGNORED_NAMES for part in relative.parts)
+
+        try:
+            for path in sorted(self.workspace.rglob("*")):
+                relative = path.relative_to(self.workspace)
+                if ignored(relative) or path.is_symlink() or not path.is_file():
+                    continue
+                original = baseline / relative
+                if (
+                    original.is_file()
+                    and not original.is_symlink()
+                    and filecmp.cmp(path, original, shallow=False)
+                ):
+                    continue
+                target = temporary / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(path, target)
+                changed.append(relative.as_posix())
+            for original in sorted(baseline.rglob("*")):
+                relative = original.relative_to(baseline)
+                if (
+                    ignored(relative)
+                    or original.is_symlink()
+                    or not original.is_file()
+                    or (self.workspace / relative).exists()
+                ):
+                    continue
+                deleted.append(relative.as_posix())
+            if not changed and not deleted:
+                return ()
+            _fsync_tree(temporary)
+            os.replace(temporary, destination)
+            _fsync_directory(stage_dir)
+            atomic_write_json(
+                receipt,
+                {
+                    "schema_version": 1,
+                    "stage": stage.stage_id,
+                    "attempt": attempt,
+                    "status": "partial-workspace",
+                    "baseline_attempt": 1,
+                    "changed": changed,
+                    "deleted": deleted,
+                },
+            )
+            return (
+                receipt,
+                *(destination / relative for relative in changed),
+            )
+        finally:
+            shutil.rmtree(temporary, ignore_errors=True)
+
     def _restore_retry_checkpoint(self, stage: StageSpec) -> None:
-        partial = self._retain_partial_agent_output(stage)
+        partial = (
+            *self._retain_partial_agent_output(stage),
+            *self._retain_partial_workspace(stage),
+        )
         stage_state = self.state["stages"][stage.stage_id]
         stage_state["artifacts"].extend(self._retained_path(path) for path in partial)
         attempt = int(stage_state["attempts"])
-        if not self._restore_checkpoint(stage.stage_id, attempt):
+        baseline_attempt = next(
+            (
+                candidate
+                for candidate in range(1, attempt + 1)
+                if self._checkpoint_path(stage.stage_id, candidate).is_dir()
+            ),
+            None,
+        )
+        if baseline_attempt is None or not self._restore_checkpoint(
+            stage.stage_id, baseline_attempt
+        ):
             raise CampaignRunError(
                 f"retrying stage {stage.stage_id!r} has no recovery checkpoint"
             )
@@ -1834,15 +1954,9 @@ def campaign_resolved_for_run(run_dir: Path) -> Path:
 
 def _write_campaign_evidence(run_dir: Path, *, campaign_id: str, status: str) -> None:
     evidence = run_dir / "evidence.json"
-    excluded = {"evidence.json", ".campaign.lock"}
-    workspace = run_dir / "workspace"
-    if workspace.is_dir():
-        excluded.update(
-            path.relative_to(run_dir).as_posix()
-            for path in workspace.rglob("*")
-            if path.is_file()
-        )
-    artifacts = digest_tree(run_dir, exclude=excluded)
+    artifacts = digest_tree(
+        run_dir, exclude={"evidence.json", ".campaign.lock", "workspace"}
+    )
     atomic_write_json(
         evidence,
         {

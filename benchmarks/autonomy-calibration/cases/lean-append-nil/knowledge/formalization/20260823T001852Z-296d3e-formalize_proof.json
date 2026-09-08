@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "01170b3f09c768d0a1a791ca722e6afb95c33af1f77116c0a081b2ce7338002f",
+  "category": "formalization",
+  "evidence": [
+    "workspace/proof/Calibration.lean",
+    "workspace/agents/formalization/formalize_proof/lake-build.log",
+    "workspace/agents/verification/audit_certificate/report.md"
+  ],
+  "limitations": [
+    "Certified only for the retained project and leanprover/lean4:v4.33.1 toolchain.",
+    "The successful commands required the elan executable to be addressed explicitly or added to PATH."
+  ],
+  "report": {
+    "path": "formalization/20260823T001852Z-296d3e-formalize_proof.md",
+    "sha256": "bc38f1b9902b51947881d40ff388b68a90c3ed6ddc133a6380c8ec049306ee20",
+    "size": 1002
+  },
+  "run_id": "20260823T001852Z-296d3e",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "structural_induction",
+  "summary": "The final direct induction proof using congrArg (List.cons x) ih preserves the retained theorem statement and builds with an empty axiom dependency set in the pinned project.",
+  "task_id": "formalize_proof",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

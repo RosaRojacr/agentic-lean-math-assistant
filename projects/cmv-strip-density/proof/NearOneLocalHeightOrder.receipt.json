@@ -1,0 +1,44 @@
+{
+  "module": "NearOneLocalHeightOrder.lean",
+  "theorem": "NearOneLocalHeightOrder.height_order_iff",
+  "import": "NearOneAnalyticSystem",
+  "scope": "Scale-local height-order equivalence, with no endpoint-box assumptions or extension.",
+  "source_sha256": "b57c6bd53e33b0f850da9dade2fcf6747a35c8e04165ac31801c002254e7da4b",
+  "olean_sha256": "cf76053373355e06143cff26980e98445229d9a5c4dd90d2c85585fab20cf1e8",
+  "cwd": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/proof",
+  "environment": {
+    "PATH": "/home/rosa/.elan/bin:/home/rosa/.local/bin:/home/rosa/bin:/usr/bin:/usr:/var/lib/snapd/snap/bin"
+  },
+  "verification": [
+    {
+      "command": "lake env lean NearOneLocalHeightOrder.lean",
+      "timeout_seconds": 120,
+      "foreground": true,
+      "exit_code": 0,
+      "wall_seconds": 2.66,
+      "lean_diagnostics": []
+    },
+    {
+      "command": "lake env lean -o .lake/build/lib/lean/NearOneLocalHeightOrder.olean NearOneLocalHeightOrder.lean",
+      "timeout_seconds": 120,
+      "foreground": true,
+      "exit_code": 0,
+      "wall_seconds": 2.63,
+      "lean_diagnostics": []
+    },
+    {
+      "command": "lake env lean /tmp/NearOneLocalHeightOrderAudit.G2zzVJ.lean",
+      "audit_source": "import NearOneLocalHeightOrder\n\n#print axioms NearOneLocalHeightOrder.height_order_iff\n",
+      "timeout_seconds": 120,
+      "foreground": true,
+      "exit_code": 0,
+      "wall_seconds": 2.28,
+      "output": "'NearOneLocalHeightOrder.height_order_iff' depends on axioms: [propext, Classical.choice, Quot.sound]",
+      "temporary_audit_source_removed": true
+    }
+  ],
+  "lake_warning_each_command": "warning: Gametheory: repository '/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/proof/.lake/packages/Gametheory' has local changes",
+  "axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "sorryAx": false,
+  "other_source_files_or_lakefile_changed": false
+}

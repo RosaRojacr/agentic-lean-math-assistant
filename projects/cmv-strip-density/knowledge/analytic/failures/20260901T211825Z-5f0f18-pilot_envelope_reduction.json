@@ -1,0 +1,8 @@
+{
+  "attempt": 1,
+  "category": "analytic",
+  "error": "OMP deadline exceeded after 2400 seconds",
+  "receipt": "attempt-01.json",
+  "schema_version": 1,
+  "stage": "pilot_envelope_reduction"
+}

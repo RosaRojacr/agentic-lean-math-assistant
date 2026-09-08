@@ -1,0 +1,267 @@
+schema_version = 1
+
+[campaign]
+id = "cmv-range-reduction-one-shot"
+title = "One-shot CMV Lean proof and cited report"
+instructions = "campaign.md"
+runs_dir = "runs"
+
+[execution]
+sandbox = false
+workspace_max_mb = 32768
+
+[[inputs]]
+source = "../proof"
+target = "proof"
+excludes = [
+  ".lake",
+  ".lake/**",
+  "__pycache__",
+  "__pycache__/**",
+  "RangeReduction.lean",
+  "proof-manifest.json",
+]
+
+[[inputs]]
+source = "../proof/.lake"
+target = "proof/.lake"
+strategy = "symlink"
+
+[[inputs]]
+source = "../references/Canete2010.pdf"
+target = "references/Canete2010.pdf"
+
+[[inputs]]
+source = "assemble_proof.py"
+target = "tools/assemble_proof.py"
+
+[[inputs]]
+source = "render_report.py"
+target = "tools/render_report.py"
+
+[[inputs]]
+source = "verify_report.py"
+target = "tools/verify_report.py"
+
+[[inputs]]
+source = "replay_release.py"
+target = "tools/replay_release.py"
+
+[[inputs]]
+source = "report-claims.json"
+target = "report/report-claims.json"
+
+[[inputs]]
+source = "report-contract.lean"
+target = "contracts/report-contract.lean"
+
+[[targets]]
+id = "cmv_range_bound"
+kind = "formalization"
+statement = "For every real λ and FourArcCandidate candidate, if candidate satisfies SatisfiesCMVTypeIVHypotheses and candidate is an IsWeightedPerimeterMinimizer, then 1 < λ and λ < 1.2581840884."
+scope = "Exactly the modeled FourArcCandidate theorem cmv_type_four_range_reduction; source-to-model transfer and minimizer existence are excluded."
+
+[[obligations]]
+id = "lean_range_reduction"
+description = "The generated RangeReduction root and every cited declaration pass the immutable Lean contract with only the allowed axioms."
+evidence_stages = ["verify_lean_contract"]
+
+[[obligations]]
+id = "exact_cutoff_certificate"
+description = "The independent exact-arithmetic checker accepts the inclusive 1.2581840884 cutoff."
+evidence_stages = ["verify_exact_certificate"]
+
+[[obligations]]
+id = "citation_complete_document"
+description = "Every substantive HTML and PDF claim resolves to an authenticated CMV page or a compiled Lean declaration."
+evidence_stages = ["render_cited_document", "verify_document"]
+
+[[obligations]]
+id = "separate_failure_gates"
+description = "Proof acceptance, certificate replay, document rendering, document validation, and promotion have separate retained dispositions."
+evidence_stages = ["verify_lean_contract", "verify_exact_certificate", "render_cited_document", "verify_document", "promote_deliverable"]
+
+[[obligations]]
+id = "claim_ledger_closure"
+description = "The exact modeled range claim receives an independent cold-verifier decision backed by the retained Lean gate, bound proof hashes, and replayed certificate and document evidence."
+evidence_stages = ["claim_gate"]
+
+[[obligations]]
+id = "semantic_equivalence"
+description = "An independent semantic reviewer confirms that the narrow informal statement matches cmv_type_four_range_reduction without source-level generalization."
+evidence_stages = ["semantic_gate"]
+
+[[stages]]
+id = "assemble_lean_proof"
+title = "Assemble the stable Lean range-reduction root"
+mode = "build"
+feature = "command"
+depends_on = []
+required = true
+failure_policy = "abort"
+[stages.config]
+argv = ["python", "tools/assemble_proof.py"]
+cwd = "."
+timeout = 60
+
+[[stages]]
+id = "verify_lean_contract"
+title = "Kernel-check the immutable Lean contract"
+mode = "build"
+feature = "lean_contract"
+depends_on = ["assemble_lean_proof"]
+required = true
+failure_policy = "abort"
+[stages.config]
+project = "proof"
+contract = "contracts/report-contract.lean"
+allowed_axioms = ["propext", "Classical.choice", "Quot.sound"]
+timeout = 1800
+
+[[stages]]
+id = "verify_exact_certificate"
+title = "Replay the exact cutoff certificate"
+mode = "build"
+feature = "command"
+depends_on = ["verify_lean_contract"]
+required = true
+failure_policy = "abort"
+[stages.config]
+argv = ["python", "verify_certificate.py"]
+cwd = "proof"
+timeout = 180
+
+[[stages]]
+id = "render_cited_document"
+title = "Render the citation-complete HTML and PDF"
+mode = "build"
+feature = "command"
+depends_on = ["verify_exact_certificate"]
+required = true
+failure_policy = "abort"
+[stages.config]
+argv = ["python", "tools/render_report.py"]
+cwd = "."
+timeout = 300
+
+[[stages]]
+id = "verify_document"
+title = "Validate citations, links, HTML, and PDF"
+mode = "build"
+feature = "command"
+depends_on = ["render_cited_document"]
+required = true
+failure_policy = "abort"
+[stages.config]
+argv = ["python", "tools/verify_report.py"]
+cwd = "."
+timeout = 180
+
+[[stages]]
+id = "claim_proposer"
+title = "Freeze the exact modeled range claim"
+mode = "build"
+feature = "agent"
+depends_on = ["verify_lean_contract", "verify_exact_certificate", "verify_document"]
+max_attempts = 2
+required = true
+failure_policy = "abort"
+[stages.config]
+instructions = "claim_proposer.md"
+tools = ["read", "grep", "glob", "write"]
+category = "formalization"
+max_time = 600
+handoff = "claims/proposals.json"
+handoff_schema = "claim-proposals-v1"
+
+[[stages]]
+id = "replay_release_evidence"
+title = "Bind proof hashes and replay certificate and document evidence"
+mode = "build"
+feature = "command"
+depends_on = ["claim_proposer", "verify_lean_contract", "verify_exact_certificate", "verify_document"]
+required = true
+failure_policy = "abort"
+[stages.config]
+argv = ["python", "tools/replay_release.py"]
+cwd = "."
+timeout = 1800
+replayable = true
+covers_targets = ["cmv_range_bound"]
+evidence_inputs = ["proof/RangeReduction.lean", "proof/proof-manifest.json", "contracts/report-contract.lean", "deliverable/citations.json", "deliverable/verification/report-verification.json"]
+
+[[stages]]
+id = "cold_claim_verifier"
+title = "Cold-verify the modeled range claim"
+mode = "build"
+feature = "agent"
+depends_on = ["claim_proposer", "replay_release_evidence", "verify_lean_contract", "verify_document"]
+max_attempts = 2
+required = true
+failure_policy = "abort"
+[stages.config]
+instructions = "claim_verifier.md"
+tools = ["read", "grep", "glob", "write"]
+category = "verification"
+verifier_type = "lean"
+max_time = 900
+handoff = "claims/verdicts.json"
+handoff_schema = "claim-verdicts-v1"
+
+[[stages]]
+id = "claim_gate"
+title = "Close the native mathematical claim ledger"
+mode = "build"
+feature = "claim_ledger"
+depends_on = ["claim_proposer", "replay_release_evidence", "cold_claim_verifier"]
+required = true
+failure_policy = "abort"
+[stages.config]
+proposals_stage = "claim_proposer"
+verifier_stages = ["cold_claim_verifier"]
+receipt_stages = ["replay_release_evidence"]
+required_targets = ["cmv_range_bound"]
+
+[[stages]]
+id = "semantic_reviewer"
+title = "Review informal-to-formal equivalence"
+mode = "build"
+feature = "agent"
+depends_on = ["verify_lean_contract", "verify_document"]
+max_attempts = 2
+required = true
+failure_policy = "abort"
+[stages.config]
+instructions = "semantic_reviewer.md"
+tools = ["read", "grep", "glob", "write"]
+category = "verification"
+verifier_type = "semantic"
+max_time = 900
+handoff = "reviews/semantic.json"
+handoff_schema = "semantic-review-v1"
+
+[[stages]]
+id = "semantic_gate"
+title = "Gate modeled theorem semantic equivalence"
+mode = "build"
+feature = "semantic_contract"
+depends_on = ["verify_lean_contract", "semantic_reviewer"]
+required = true
+failure_policy = "abort"
+[stages.config]
+lean_stage = "verify_lean_contract"
+reviewer_stage = "semantic_reviewer"
+declaration = "cmv_type_four_range_reduction"
+informal_statement = "For every real λ and FourArcCandidate candidate, if candidate satisfies SatisfiesCMVTypeIVHypotheses and candidate is an IsWeightedPerimeterMinimizer, then 1 < λ and λ < 1.2581840884."
+
+[[stages]]
+id = "promote_deliverable"
+title = "Promote the independently verified deliverable"
+mode = "build"
+feature = "artifact_promote"
+depends_on = ["verify_document", "claim_gate", "semantic_gate"]
+required = true
+failure_policy = "abort"
+[stages.config]
+source = "deliverable"
+destination = "output"

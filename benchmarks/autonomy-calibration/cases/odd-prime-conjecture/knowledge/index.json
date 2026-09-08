@@ -1,0 +1,61 @@
+{
+  "artifacts": [
+    {
+      "path": "arithmetic/20260823T004744Z-eb4e4b-certify_counterexample.json",
+      "sha256": "635016d18e4a307f01f2a104a591c82c596e2e1d555b8e326cb2ef72be280674",
+      "size": 1554
+    },
+    {
+      "path": "arithmetic/20260823T004744Z-eb4e4b-certify_counterexample.md",
+      "sha256": "03132d9efb03cafe60804ee6ed7a8ae92dc95cce9e8697fbd458540a177c434b",
+      "size": 1011
+    },
+    {
+      "path": "arithmetic/20260823T015635Z-1e574b-adjudicate_claim.json",
+      "sha256": "c3fe1fdacb54256bd18eeb622e893af6da81d4d05d7c16675ae358a4559ee61f",
+      "size": 1456
+    },
+    {
+      "path": "arithmetic/20260823T015635Z-1e574b-adjudicate_claim.md",
+      "sha256": "2adb10ca737f0e144a3bcc7c2ccc83e7af066470ef4b383b3afbe609e465c2ab",
+      "size": 2785
+    },
+    {
+      "path": "arithmetic/20260823T023612Z-a9f76f-apply_retained_certificate.json",
+      "sha256": "61ed410dbcf0a07e95eb2c1fe6eb871df785afec7e822ac0ea750c5167795849",
+      "size": 1409
+    },
+    {
+      "path": "arithmetic/20260823T023612Z-a9f76f-apply_retained_certificate.md",
+      "sha256": "2571ad1b9a2087b6712fac9ea6ca69cbe0e8d3f1cd57d98fed0f82e3ebbc6ab6",
+      "size": 2509
+    },
+    {
+      "path": "arithmetic/20260823T053918Z-793a32-apply_retained_witness.json",
+      "sha256": "1ecd56c29a1e456b9ec3b59ba55d3f46c91009cbfcb66913af96f5028aaa7dba",
+      "size": 1373
+    },
+    {
+      "path": "arithmetic/20260823T053918Z-793a32-apply_retained_witness.md",
+      "sha256": "e6fd5bc911194e56b11109ce260140a922f3d7c988d4174ad93fd8c5e1e73786",
+      "size": 3133
+    },
+    {
+      "path": "arithmetic/20260823T083647Z-8fa325-apply_retained_witness.json",
+      "sha256": "ff514d160334653f4123ced1fb3ed4b581479bc9cc524983e56c41fb1025e57c",
+      "size": 1389
+    },
+    {
+      "path": "arithmetic/20260823T083647Z-8fa325-apply_retained_witness.md",
+      "sha256": "4920a6511ad597e6dc6a9ce27af8a75904c09e9aee67a78bcb1e0d65c11f612d",
+      "size": 3114
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "de6febf8fab345d655faefe74b185ed2c54c2b2c0897cedd54228439c32e75f8",
+      "size": 2769
+    }
+  ],
+  "generated_at": "2026-08-23T08:45:02Z",
+  "schema_version": 1
+}

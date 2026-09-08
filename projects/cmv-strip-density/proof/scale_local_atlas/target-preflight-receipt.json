@@ -1,0 +1,110 @@
+{
+  "status": "TARGET_MANIFEST_NUMERICAL_PREFLIGHT_PASS_SEMANTIC_GATE_PARTIAL",
+  "proof_status": "NO_NEW_DENSITY_COVERAGE",
+  "schema": "cmv-scale-local-target-manifest-v1",
+  "target": {
+    "delta0": "251/40326519148554080",
+    "delta_hi": "1/1000",
+    "bands": 13,
+    "cells_per_band": 64,
+    "cells": 832,
+    "scale_formula": "sigma_j=2^j/126334 for j=0,...,12",
+    "band_formula": "[8^j*delta0,min(8^(j+1)*delta0,1/1000)]",
+    "exact_checks": [
+      "positive scales and cell dimensions",
+      "exact prescribed scale in every cell",
+      "invertible rational preconditioners",
+      "exact outer endpoints",
+      "exact internal adjacency",
+      "at most 64 subslabs per band",
+      "eight strict mean-value face signs per cell",
+      "all eighteen positive guards per cell",
+      "negative normalized gap per cell",
+      "arctangent remainder arguments bounded by 1/2"
+    ]
+  },
+  "numerical_replay": {
+    "status": "TARGET_MANIFEST_ENCLOSURES_PASS",
+    "proof_status": "NOT_KERNEL_REPLAYED",
+    "outward_bits": 160,
+    "remainder_terms": 20,
+    "accepted_cells": 832,
+    "weakest_normalized_face": {
+      "band": 10,
+      "cell": 11,
+      "row": 3,
+      "scale": "512/63167",
+      "mu": ["35391/1280", "9287/320"],
+      "margin": "491213927429668716790994324263746689264367/11194489393805925718147224628574326553789333504"
+    }
+  },
+  "kernel_checked_shared_semantics": {
+    "module": "NearOneLocalTranscription.lean",
+    "declarations": [
+      "NearOneLocalTranscription.realContains_coordinatewise_meanValue_five",
+      "NearOneLocalTranscription.atanQuotientSqRemainder_eq_orderFour",
+      "NearOneLocalTranscription.atanQuotient_eq_orderSix",
+      "NearOneLocalTranscription.hasDerivAt_atanQuotient_orderSix",
+      "NearOneLocalTranscription.regularizedThirdRow_div_sq_eq_complete_div_four"
+    ],
+    "facts": [
+      "five-coordinate enclosure is a checked telescope of five scalar mean-value applications",
+      "the actual atan quotient retains the exact x^6*R3 analytic tail",
+      "the displayed derivative includes both the polynomial derivative and actual R3 derivative",
+      "under nonzero s and the three source denominator guards, regularizedThirdRow/s^2 equals completeThirdRowNumerator/s^4"
+    ],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "commands": [
+    {
+      "command": "python3 scale_local_atlas/generate_pilot.py --campaign target --output scale_local_atlas/target-manifest.json --receipt scale_local_atlas/target-producer-receipt.json",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 286.20,
+      "max_rss_kib": 36652
+    },
+    {
+      "command": "python3 scale_local_atlas/check_atlas.py scale_local_atlas/target-manifest.json --output scale_local_atlas/target-enclosures.json",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 44.46,
+      "max_rss_kib": 51264
+    },
+    {
+      "command": "python3 scale_local_atlas/audit_pilot.py --certificate scale_local_atlas/target-manifest.json --enclosures scale_local_atlas/target-enclosures.json --metrics scale_local_atlas/target-metrics.json --output scale_local_atlas/target-diagnostics.json",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 2.30,
+      "max_rss_kib": 92644
+    },
+    {
+      "command": "/home/rosa/.elan/bin/lake build NearOneLocalTranscription",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 2.85,
+      "max_rss_kib": 1011040
+    },
+    {
+      "command": "/home/rosa/.elan/bin/lake env lean _Assumptions.lean",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 5.71,
+      "max_rss_kib": 8675976
+    }
+  ],
+  "sha256": {
+    "check_atlas.py": "d0f0aeb1621b7ae71b6e5648d512e2c9fdac56de66683eaaf715b0d04360431e",
+    "generate_pilot.py": "3f5478ace8331bdc99463bde055af754c56c2528965d4f5de79c4d24fd27888a",
+    "audit_pilot.py": "0018288713e0b49578149d940e3067dd623b4137740220d6a64a264581e11c4f",
+    "target-manifest.json": "53c5c2c87afa2bd006a441a151d8c9e948086402aa35fa195cdf0e26661cee99",
+    "target-enclosures.json": "3847bf9eb292583fe37b775fa057783d126e21ec1b67be5ae1a9d5fe693f29c9",
+    "target-metrics.json": "496850090f505230895654b483bdd0f33f30778d2169ec9fd04ea73b004220db",
+    "target-diagnostics.json": "ef372a90aaea6b8e65aaef899c7402a3bb1ee3bd1081271d7647b834b3e2905c",
+    "NearOneLocalTranscription.lean": "367460af2b8e34c1343658d7f9dc87f39dacabde0769cfe81fc07ce3966b040f"
+  },
+  "remaining_offset_2_gate": [
+    "prove the fixed generated third expression equal to the actual source transcription",
+    "kernel-replay its value and all five coordinate-slice derivative enclosures on the seam-adjoining and remote pilot cells",
+    "prove their denominator and remainder-domain guards before derivative use"
+  ]
+}

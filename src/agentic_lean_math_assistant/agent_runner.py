@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import os
 import signal
@@ -13,7 +14,7 @@ import threading
 import time
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, TextIO
+from typing import Any, TextIO, cast
 
 from .command import (
     _process_exited_without_reaping,
@@ -203,6 +204,26 @@ def _retain_and_write(
     heartbeat.write(destination, f"{prefix}{value}")
 
 
+class _LiveLog(io.TextIOBase):
+    """Tee subprocess output to the console and a followable retained file."""
+
+    def __init__(self, console: TextIO, path: Path) -> None:
+        self.console = console
+        self.path = path
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.path.write_text("", encoding="utf-8")
+
+    def write(self, text: str) -> int:
+        self.console.write(text)
+        with self.path.open("a", encoding="utf-8") as stream:
+            stream.write(text)
+            stream.flush()
+        return len(text)
+
+    def flush(self) -> None:
+        self.console.flush()
+
+
 def _invoke(
     command: list[str],
     workspace: Path,
@@ -212,12 +233,16 @@ def _invoke(
     read_paths: tuple[Path, ...] = (),
     allow_workspace_executables: bool = False,
     run_dir: Path | None = None,
+    stdout_destination: TextIO | None = None,
+    stderr_destination: TextIO | None = None,
 ) -> tuple[int, str, str, bool, bool, str | None, dict[str, object]]:
     stdout_chunks: list[str] = []
     stderr_chunks: list[str] = []
     stdout_truncated = [False]
     stderr_truncated = [False]
     exit_code = 1
+    stdout_target = stdout_destination or sys.stdout
+    stderr_target = stderr_destination or sys.stderr
     error: str | None = None
     process: subprocess.Popen[str] | None = None
     registered_process: RegisteredRunProcess | None = None
@@ -291,7 +316,7 @@ def _invoke(
             target=_pump,
             args=(
                 process.stdout,
-                sys.stdout,
+                stdout_target,
                 stdout_chunks,
                 [0],
                 stdout_truncated,
@@ -305,7 +330,7 @@ def _invoke(
             target=_pump,
             args=(
                 process.stderr,
-                sys.stderr,
+                stderr_target,
                 stderr_chunks,
                 [0],
                 stderr_truncated,
@@ -327,6 +352,13 @@ def _invoke(
                 exit_code = process.wait()
                 break
             now = time.monotonic()
+            if now >= deadline:
+                cgroup_error = terminate_sandbox(invocation)
+                _signal_process_group(process, signal.SIGKILL)
+                process.wait()
+                exit_code = 124
+                error = f"OMP exceeded the runner deadline of {max_time + 60} seconds"
+                break
             if execution is not None and now >= next_workspace_check:
                 exceeded, _observed = workspace_size_exceeds(
                     workspace, execution.workspace_max_mb * 1024 * 1024
@@ -341,14 +373,7 @@ def _invoke(
                         f"{execution.workspace_max_mb} MiB"
                     )
                     break
-                next_workspace_check = now + 0.25
-            if now >= deadline:
-                cgroup_error = terminate_sandbox(invocation)
-                _signal_process_group(process, signal.SIGKILL)
-                process.wait()
-                exit_code = 124
-                error = f"OMP exceeded the runner deadline of {max_time + 60} seconds"
-                break
+                next_workspace_check = time.monotonic() + 1.0
             time.sleep(min(0.25, max(0.0, deadline - now)))
         stdout_thread.join(timeout=10)
         stderr_thread.join(timeout=10)
@@ -549,6 +574,8 @@ def execute(request_path: Path) -> int:
     print(f"[{role_id}] attempt {attempt} starting", flush=True)
     heartbeat = PaneHeartbeat(role_id)
     heartbeat.start()
+    live_stdout = cast(TextIO, _LiveLog(sys.stdout, stdout_log))
+    live_stderr = cast(TextIO, _LiveLog(sys.stderr, stderr_log))
     stdout_captures: list[str] = []
     stderr_captures: list[str] = []
     final_stdout = ""
@@ -575,6 +602,8 @@ def execute(request_path: Path) -> int:
             sandbox_read_paths,
             workspace_executables,
             run_dir,
+            stdout_destination=live_stdout,
+            stderr_destination=live_stderr,
         )
         signal_value = sandbox.get("interrupted_signal")
         if isinstance(signal_value, int) and not isinstance(signal_value, bool):

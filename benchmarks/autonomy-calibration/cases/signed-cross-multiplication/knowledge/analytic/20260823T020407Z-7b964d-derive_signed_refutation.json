@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "c7fa39117f618a4090e403ba5bd79c0093ec254cf19d2b57cec752bb73c50da0",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_signed_refutation/attempt-01.md",
+    "agents/audit/audit_signed_refutation/attempt-01.md",
+    "workspace/agents/audit/audit_signed_refutation/independent_certificate.py"
+  ],
+  "limitations": [
+    "The claim is an ordered-field argument instantiated over the reals.",
+    "The executable audit machine-checks the exact rational witness, not the universally quantified classification in a theorem prover.",
+    "Prior-run auxiliary certificates are absent from this run; accepted snapshot records and the current independent certificate are retained."
+  ],
+  "report": {
+    "path": "analytic/20260823T020407Z-7b964d-derive_signed_refutation.md",
+    "sha256": "4a83ad5d24f2ad4cdc82aaa4877d8e9ca8104c35248ea9049dbb9f7707da0586",
+    "size": 2695
+  },
+  "run_id": "20260823T020407Z-7b964d",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "signed_exact_refutation",
+  "summary": "For nonzero real b,d under a/b>c/d, ad-bc has the sign of bd: bd>0 implies ad>bc and bd<0 implies ad<bc; the exact tuple (0,1,1,-1) is a mixed-sign counterexample to the original universal implication.",
+  "task_id": "derive_signed_refutation",
+  "verified_by": [
+    "audit_signed_refutation"
+  ]
+}

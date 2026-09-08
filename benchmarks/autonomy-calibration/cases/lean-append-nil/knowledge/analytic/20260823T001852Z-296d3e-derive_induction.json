@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "01170b3f09c768d0a1a791ca722e6afb95c33af1f77116c0a081b2ce7338002f",
+  "category": "analytic",
+  "evidence": [
+    "workspace/agents/analytic/derive_induction/report.md",
+    "workspace/agents/verification/continuation_gate/attempt-01.json"
+  ],
+  "limitations": [
+    "Verified for the exact retained statement under Lean 4.33.1.",
+    "The pilot certificate elaborated a temporary candidate and did not itself install or full-build the deliverable."
+  ],
+  "report": {
+    "path": "analytic/20260823T001852Z-296d3e-derive_induction.md",
+    "sha256": "e4e608073018711edef18b08641686387f41cef2473aa7cd5738998d6adf5d50",
+    "size": 1732
+  },
+  "run_id": "20260823T001852Z-296d3e",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "structural_induction",
+  "summary": "For the exact theorem append_nil_calibration {α : Type} (xs : List α) : xs ++ [] = xs, structural induction with nil reflexivity and cons-tail rewriting by the induction hypothesis is a complete axiom-free Lean proof.",
+  "task_id": "derive_induction",
+  "verified_by": [
+    "continuation_gate"
+  ]
+}

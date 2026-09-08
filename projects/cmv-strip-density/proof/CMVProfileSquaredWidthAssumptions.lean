@@ -1,0 +1,31 @@
+import CMVProfileSharpRecovery
+
+#print axioms CMVRelaxation.ProfileSquaredRecovery.safeScale_pos
+#print axioms CMVRelaxation.ProfileSquaredRecovery.safeSquare_mem_Icc
+#print axioms CMVRelaxation.ProfileSquaredRecovery.safeSquare_lt_radius_sq
+#print axioms CMVRelaxation.ProfileSquaredRecovery.contDiff_safeSquare
+#print axioms CMVRelaxation.ProfileSquaredRecovery.contDiff_sideSquare
+#print axioms CMVRelaxation.ProfileSquaredRecovery.attachmentSquares
+#print axioms CMVRelaxation.ProfileSquaredRecovery.q_ge_positive_attachment
+#print axioms CMVRelaxation.ProfileSquaredRecovery.mem_profile_iff_sq_le_targetQ
+#print axioms CMVRelaxation.ProfileSquaredRecovery.q_eq_zero_iff
+#print axioms CMVRelaxation.ProfileSquaredRecovery.hasDerivAt_q_upperPole
+#print axioms CMVRelaxation.ProfileSquaredRecovery.hasDerivAt_q_lowerPole
+#print axioms CMVRelaxation.ProfileSquaredRecovery.isSmoothDomain_domain
+#print axioms
+  CMVRelaxation.ProfileSquaredRecovery.characteristicDistance_domain_profile_le
+#print axioms CMVRelaxation.ProfileSquaredRecovery.recoverySequence_converges
+#print axioms
+  CMVRelaxation.ProfileSharpRecovery.realized_frontier_subset_profile_union_actualJunctionTrace
+#print axioms
+  CMVRelaxation.ProfileSharpRecovery.exists_scaled_actual_junction_union_hausdorffMeasure
+#print axioms
+  CMVRelaxation.ProfileSharpRecovery.extended_frontierCost_eq_smoothCost_profile
+#print axioms
+  CMVRelaxation.ProfileSharpRecovery.exists_sharp_smoothCost_domain_bound
+#print axioms
+  CMVRelaxation.ProfileSharpRecovery.recoverySequence_cost_le_frontierCost
+#print axioms
+  CMVRelaxation.ProfileSharpRecovery.relaxedPerimeter_le_frontierCost_profile
+#print axioms
+  CMVRelaxation.ProfileSharpRecovery.relaxedPerimeter_eq_frontierCost_profile

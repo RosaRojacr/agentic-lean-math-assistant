@@ -1,0 +1,71 @@
+{
+  "artifacts": [
+    {
+      "path": "analytic/20260823T004123Z-703163-derive_system_result.json",
+      "sha256": "8e44f829e6372caa447518df4822b469de596a794faedc923b1965c6b82a7f0e",
+      "size": 1418
+    },
+    {
+      "path": "analytic/20260823T004123Z-703163-derive_system_result.md",
+      "sha256": "88610a3e474cef666d4f493f029bdebfc06358cebf1fbc6efe7f5f49d1b7b501",
+      "size": 1444
+    },
+    {
+      "path": "analytic/20260823T011347Z-32bf4e-produce_exact_answer.json",
+      "sha256": "84390766351165021339b1e9a025081d5d02e3ad538ac2269228ef72eb72633e",
+      "size": 1362
+    },
+    {
+      "path": "analytic/20260823T011347Z-32bf4e-produce_exact_answer.md",
+      "sha256": "dbbecb20f18ac964a353467eaa996cae303b1ca34239e0d02951a801773eed84",
+      "size": 1120
+    },
+    {
+      "path": "analytic/20260823T015022Z-31c929-convert_retained_certificate.json",
+      "sha256": "87b727ca123daf29fe3d86262050722fb524953c58c7fa80ce1ead2b587e31c6",
+      "size": 1338
+    },
+    {
+      "path": "analytic/20260823T015022Z-31c929-convert_retained_certificate.md",
+      "sha256": "648bcf9fd5e8ed56044fa7b4932d5a9c96b10bdf195fb7ccf20648d68964abd9",
+      "size": 1524
+    },
+    {
+      "path": "analytic/20260823T053229Z-3e0d5f-reconstruct_system_result.json",
+      "sha256": "a1097370e373bb74c9036918f878de0ec436a6b3972339597513bf85485912b6",
+      "size": 1182
+    },
+    {
+      "path": "analytic/20260823T053229Z-3e0d5f-reconstruct_system_result.md",
+      "sha256": "350f65871e7a67d259165fdd62c507426bb1998d4e4ba9f728c5ba9c5487274d",
+      "size": 1928
+    },
+    {
+      "path": "certificate/20260823T082420Z-4c413a-construct_certificate.json",
+      "sha256": "43c65664b0cefbb6be418b19a7c23220d56f435545d2856845bd386223ea88b0",
+      "size": 1126
+    },
+    {
+      "path": "certificate/20260823T082420Z-4c413a-construct_certificate.md",
+      "sha256": "e1bfff690d35b871c6c4c96d4c5cf0175392d4163193eefa57fa057788b5a9c9",
+      "size": 940
+    },
+    {
+      "path": "evidence_extraction/20260823T022844Z-3fd4f6-reconcile_retained_certificate.json",
+      "sha256": "b8506bd31a92576ed3f0ca6602d97989af5c5966a16aec741005d55ec7265ced",
+      "size": 1256
+    },
+    {
+      "path": "evidence_extraction/20260823T022844Z-3fd4f6-reconcile_retained_certificate.md",
+      "sha256": "94708a733d90fea0f7922be7544d911342c5d10f3a419ede0a5a5348f5349eec",
+      "size": 1371
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "d941f0e8ddaf839c5c69727268ff2fcc5fa4facaed6d8854c3bb2c8339d88f74",
+      "size": 2292
+    }
+  ],
+  "generated_at": "2026-08-23T08:31:54Z",
+  "schema_version": 1
+}

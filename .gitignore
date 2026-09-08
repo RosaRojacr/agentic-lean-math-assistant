@@ -39,3 +39,5 @@ README_files/
 # Local campaign workspaces (promote reviewed artifacts into proof/knowledge)
 projects/*/runs/
 benchmarks/**/runs/
+projects/*/autorun-runs/
+projects/*/autonomy-runs/

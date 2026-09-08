@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "7b38a06c9045492def625869863a3b95b510ebe8fcf510cfd3109d9393642a7a",
+  "category": "formalization",
+  "evidence": [
+    "workspace/agents/formalization/repair_and_build/build-evidence.md",
+    "workspace/agents/verification/audit_certificate/audit-evidence.md",
+    "agents/verification/audit_certificate/attempt-01.json"
+  ],
+  "limitations": [
+    "Certified only for the retained source hash and pinned Lean 4.33.1 project; the initial bare-lake PATH failures were environment invocation failures resolved by exposing /home/rosa/.elan/bin."
+  ],
+  "report": {
+    "path": "formalization/20260823T000834Z-cda0c6-repair_and_build.md",
+    "sha256": "60b6de9f6a6fade80992413e931393d54c0c352a5cc19b86915155ff373e0343",
+    "size": 905
+  },
+  "run_id": "20260823T000834Z-cda0c6",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "direct_constructor",
+  "summary": "The retained repaired source preserves the theorem statement, passes the pinned project build, and the imported theorem has an empty Lean axiom report.",
+  "task_id": "repair_and_build",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

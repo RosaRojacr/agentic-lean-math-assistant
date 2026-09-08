@@ -1,0 +1,29 @@
+schema_version = 1
+
+[project]
+id = "signed-cross-multiplication"
+title = "Signed Cross Multiplication"
+problem = "problem.md"
+references = "references"
+knowledge = "knowledge"
+runs = "runs"
+
+[regime]
+planner_thinking = "medium"
+max_tasks = 4
+max_parallel = 2
+max_restarts = 0
+default_agent_time = 300
+allowed_tools = ["read", "grep", "glob", "bash", "eval", "write", "edit"]
+pilot_agent_seconds = 7200
+research_agent_seconds = 7200
+formalization_agent_seconds = 7200
+max_attempts_total = 16
+max_invention_tasks = 1
+execution_thinking = "medium"
+analysis_thinking = "medium"
+invention_thinking = "high"
+audit_thinking = "high"
+
+[execution]
+sandbox = false

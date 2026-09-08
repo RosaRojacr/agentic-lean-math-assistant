@@ -47,6 +47,7 @@ from .features import FeatureRegistry
 from .inspection import inspect_assurance, inspect_claim_ledgers
 from .processes import stop_all_campaigns
 from .project import ProjectSpec
+from .proof_attempt import run_candidate_proof_gate
 from .publication import plan_publication, publish_campaign
 from .regime import (
     RegimeError,
@@ -253,6 +254,18 @@ def _parser() -> argparse.ArgumentParser:
         help="resume a running schema-v2 report",
     )
     _runtime_arguments(benchmark, include_runs=False)
+    proof_attempt = subparsers.add_parser(
+        "proof-attempt",
+        help="verify one retained Lean candidate against a trusted typed contract",
+    )
+    proof_attempt.add_argument("--project", type=Path, required=True)
+    proof_attempt.add_argument("--candidate", type=Path, required=True)
+    proof_attempt.add_argument("--contract", type=Path, required=True)
+    proof_attempt.add_argument("--trusted-declaration", required=True)
+    proof_attempt.add_argument("--allowed-axiom", action="append", default=[])
+    proof_attempt.add_argument("--lake", default="lake")
+    proof_attempt.add_argument("--timeout", type=float, default=180.0)
+    proof_attempt.add_argument("--receipt", type=Path, required=True)
     subparsers.add_parser("stop-all", help="stop every active campaign")
     return parser
 
@@ -482,6 +495,22 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(f"regression receipt: {receipt}")
             return 0
+        if args.command == "proof-attempt":
+            receipt = args.receipt.expanduser().resolve()
+            result = run_candidate_proof_gate(
+                args.project,
+                candidate_path=args.candidate,
+                contract_path=args.contract,
+                trusted_declaration=args.trusted_declaration,
+                allowed_axioms=tuple(args.allowed_axiom),
+                lake=args.lake,
+                timeout=args.timeout,
+                run_dir=receipt.parent,
+            )
+            atomic_write_json(receipt, result.to_dict())
+            print(f"proof attempt: {result.status}")
+            print(f"receipt: {receipt}")
+            return 0 if result.passed else 1
         if args.command == "features":
             for feature_id in FeatureRegistry().feature_ids:
                 print(feature_id)

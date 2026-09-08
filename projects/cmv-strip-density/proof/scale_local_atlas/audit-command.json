@@ -1,0 +1,12 @@
+{
+  "command": [
+    "python3",
+    "proof/scale_local_atlas/audit_pilot.py",
+    "--output",
+    "proof/scale_local_atlas/diagnostics.json"
+  ],
+  "exit": 0,
+  "seconds": 2.2070104619924678,
+  "stdout": "{\"status\": \"DIAGNOSTICS_PASS_NOT_PROOF\", \"generation_reproduced\": true, \"arithmetic_enclosures\": 118, \"remainder_enclosures\": 24, \"source_rational_spotchecks\": 40, \"invalid_operation_rejections\": 6, \"scope\": \"Finite arithmetic diagnostics and exact rational source spotchecks; not a universal identity or Lean proof.\"}\n",
+  "stderr": ""
+}

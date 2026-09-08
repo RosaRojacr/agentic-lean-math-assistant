@@ -71,6 +71,7 @@ include = [
     "src/agentic_lean_math_assistant",
     "pyproject.toml",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE",
 ]
 exclude = [
@@ -78,8 +79,14 @@ exclude = [
     "/.hypothesis",
     "/.python-version",
     "/.gitignore",
+    "/benchmarks",
+    "/examples",
+    "/projects",
+    "/scripts",
     "/tests",
     "/uv.lock",
+    "/V1_SUPPORT*",
+    "/V2_*",
 ]
 
 [tool.pytest.ini_options]

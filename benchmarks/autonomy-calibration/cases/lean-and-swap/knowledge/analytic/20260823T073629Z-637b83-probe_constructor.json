@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "c4313abb5c31242da22edaaa6bf1e85988736fb22bdcfc6682a06256531ecf78",
+  "category": "analytic",
+  "evidence": [
+    "workspace/agents/analytic/probe_constructor/Probe.lean",
+    "workspace/agents/analytic/probe_constructor/evidence.json",
+    "agents/audit/audit_pilot/attempt-01.md",
+    "agents/audit/audit_pilot/attempt-01-continuation.json"
+  ],
+  "limitations": [
+    "The pilot did not modify the retained proof source or certify a project build; it established only isolated proof acceptance and an isolated axiom report under the pinned toolchain."
+  ],
+  "report": {
+    "path": "analytic/20260823T073629Z-637b83-probe_constructor.md",
+    "sha256": "f7783af1f41a17375664c6441c066ac1d105aae5b9fd0f4b64a243009d59591b",
+    "size": 1695
+  },
+  "run_id": "20260823T073629Z-637b83",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "constructor_revalidation",
+  "summary": "Under pinned Lean 4.33.1, the explicit intro/cases/And.intro hQ hP proof inhabits P ∧ Q → Q ∧ P and the isolated probe theorem reports no axiom dependencies.",
+  "task_id": "probe_constructor",
+  "verified_by": [
+    "audit_pilot"
+  ]
+}

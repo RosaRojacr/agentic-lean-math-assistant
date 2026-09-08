@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "d5efb634549065921a90b6017f6ff14ca817dbd0e496c723aa1434a5f3838eeb",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/inspect_and_probe/attempt-01.md",
+    "agents/analytic/inspect_and_probe/attempt-01.json",
+    "agents/audit/continuation_audit/attempt-01-continuation.json"
+  ],
+  "limitations": [
+    "This establishes source identity and proof feasibility in the audited pre-repair inventory; the temporary probe alone does not establish that the retained theorem source was repaired."
+  ],
+  "report": {
+    "path": "analytic/20260823T043622Z-af1239-inspect_and_probe.md",
+    "sha256": "a071e4cf6a98c0b8fea6411f1b079aa59b1944f1eaab54175c170b974f78020a",
+    "size": 1702
+  },
+  "run_id": "20260823T043622Z-af1239",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "direct_constructor",
+  "summary": "For the current pre-repair workspace, the declaration exactly matched conjunction symmetry under the Lean 4.33.1 project inventory, and an isolated intro/cases/And.intro constructor proof compiled with an axiom report containing no axioms.",
+  "task_id": "inspect_and_probe",
+  "verified_by": [
+    "continuation_audit"
+  ]
+}

@@ -18,6 +18,9 @@ from .config import ExecutionSpec
 
 _MIB = 1024 * 1024
 _SANDBOX_TASK_OVERHEAD = 8
+_REGENERABLE_WORKSPACE_DIRECTORIES = frozenset(
+    {".lake", "__pycache__", ".mypy_cache", ".pytest_cache", ".ruff_cache"}
+)
 _DEPENDENCY_MANIFESTS = frozenset(
     {
         "Cargo.lock",
@@ -149,6 +152,7 @@ def prepare_sandbox(
                 "environment": _environment_metadata(effective_environment, policy),
                 "toolchain": _toolchain_metadata(executable, workspace),
             },
+            environment=None,
         )
     bubblewrap = _required_executable("bwrap")
     if (
@@ -324,7 +328,7 @@ def terminate_sandbox_unit(unit: str, systemctl: str) -> str | None:
 
 
 def workspace_size_exceeds(root: Path, limit_bytes: int) -> tuple[bool, int]:
-    """Bound regular bytes and inode-like entries without following symlinks."""
+    """Bound durable regular bytes and entries without traversing caches."""
     total = 0
     pending = [root]
     while pending:
@@ -334,6 +338,10 @@ def workspace_size_exceeds(root: Path, limit_bytes: int) -> tuple[bool, int]:
         except (FileNotFoundError, NotADirectoryError):
             continue
         for entry in entries:
+            if entry.name in _REGENERABLE_WORKSPACE_DIRECTORIES and entry.is_dir(
+                follow_symlinks=False
+            ):
+                continue
             try:
                 total += 4096
                 if entry.is_dir(follow_symlinks=False):

@@ -1,0 +1,30 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "references/source.md states that iterated Euclidean division yields the gcd as the last nonzero remainder and that back-substitution yields a Bézout linear combination.",
+      "knowledge/analytic/20260823T040411Z-4ce263-compose_certificate.md gives the complete chain 84=2*30+24, 30=24+6, 24=4*6+0; derives u=-1 and v=3; verifies 6 divides both inputs; and proves every common divisor divides 6.",
+      "knowledge/analytic/20260823T040411Z-4ce263-compose_certificate.json marks that certificate accepted and verified by audit_certificate.",
+      "knowledge/research/state.json records a prior skip for the same problem and retained reference inventory."
+    ],
+    "reason": "The unchanged concrete task is fully covered by retained local material. references/source.md supplies the Euclidean-algorithm and Bézout principles, while the latest accepted and independently audited certificate gives the complete remainder chain, explicit coefficients, and both required divisibility arguments. The prior research state also records a skip for the same problem and source inventory, so new publication research would not materially change the strategy, verification, or trust boundary.",
+    "reconsider_if": [
+      "The problem changes or expands beyond the concrete pair 84 and 30.",
+      "A proof-assistant formalization, library-specific theorem locator, or external publication citation becomes required.",
+      "The retained source inventory changes or a retained source becomes unavailable.",
+      "A later audit identifies an error or unresolved obligation in the accepted certificates."
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "349dd71bc43d04e44a8cbe01513614c628dcfc415d7a4ddd67c4b063a17007b3",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "764244965111cc0fd345e2995444b1def568ee6f127a041864ee1a6da6e66a56",
+      "size": 267
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T07:00:49Z"
+}

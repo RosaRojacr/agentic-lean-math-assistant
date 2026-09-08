@@ -1,0 +1,34 @@
+{
+  "module": "NearOneAtanRemainder.lean",
+  "scope": "Generic exact arctangent-remainder recurrence, differentiation, value and derivative bounds, and k=3/N=20 tail specializations for scale-local atlas replay.",
+  "source_sha256": "81bd7fee06847476f4ba7cd333fd6ec50747426ef836b6c73742064a566739bb",
+  "commands": [
+    {
+      "command": "/home/rosa/.elan/bin/lake build NearOneLocalAtlas",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 5.29
+    },
+    {
+      "command": "/home/rosa/.elan/bin/lake env lean _Assumptions.lean",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 28.68
+    }
+  ],
+  "audited_declarations": [
+    "NearOneAtanRemainder.atanRemainder_one",
+    "NearOneAtanRemainder.atanRemainder_finite_expansion",
+    "NearOneAtanRemainder.hasDerivAt_atanRemainder",
+    "NearOneAtanRemainder.atanRemainder_tail_value_le",
+    "NearOneAtanRemainder.atanRemainder_tail_deriv_le",
+    "NearOneAtanRemainder.atanRemainder_three_tail_value_le",
+    "NearOneAtanRemainder.atanRemainder_three_tail_deriv_le"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "new_kernel_checked_density_coverage": "none"
+}

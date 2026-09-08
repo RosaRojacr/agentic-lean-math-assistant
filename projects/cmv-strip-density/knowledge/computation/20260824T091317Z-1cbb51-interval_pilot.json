@@ -1,0 +1,31 @@
+{
+  "assessment_sha256": "f3700c6361c431da1751c0fdf7bfe670e4cdb5e45840b26c16f4f5f49aa82cb0",
+  "category": "computation",
+  "evidence": [
+    "workspace/agents/computation/interval_pilot/interval_probe.py",
+    "workspace/agents/computation/interval_pilot/interval_results.json",
+    "workspace/agents/audit/continuation_gate/gate_audit.json",
+    "workspace/agents/audit/formal_certificate_audit/compact_interval.log"
+  ],
+  "limitations": [
+    "The certificate is conditional on the audited exact formula/root-topology contracts and MPFR/Python/ABI correctness.",
+    "The artifact explicitly sets global_proof_claimed=false and proves no source-profile bridge.",
+    "It covers only [17/16,3/2]."
+  ],
+  "report": {
+    "path": "computation/20260824T091317Z-1cbb51-interval_pilot.md",
+    "sha256": "2e0f829953865ef6bd774c89e0edd761d1f38b0aef692f5f7843ed7509eda94f",
+    "size": 4317
+  },
+  "run_id": "20260824T091317Z-1cbb51",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "interval_branch_bound",
+  "summary": "At 224-bit directed MPFR precision, 127 exactly adjacent dyadic boxes with zero unresolved boxes certify the encoded fold gap Gamma(lambda)<0 throughout [17/16,3/2].",
+  "task_id": "interval_pilot",
+  "verified_by": [
+    "continuation_gate",
+    "proof_audit",
+    "formal_certificate_audit"
+  ]
+}

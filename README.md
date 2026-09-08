@@ -1,351 +1,491 @@
 # Agentic Lean Math Assistant
 
-Agentic Lean Math Assistant is a research controller for mathematical work that may involve computation, source analysis, and Lean. It can coordinate several agents, but it does not treat agreement between agents or confident prose as proof.
+Agentic Lean Math Assistant is a Python 3.12 to 3.14 controller for bounded multi-agent mathematical research and Lean 4 formalization. It freezes each project contract, records execution and evidence, and closes a configured target only after every declared command, claim, formal, and semantic check passes.
 
-A campaign is complete only when its configured checks pass. Depending on the project, those checks may include reproducible commands, exact certificates, independent claim review, semantic comparison, and named Lean declarations with an allowed axiom set.
+<p align="center">
+  <img src="docs/program-map.svg" width="100%" alt="Agentic Lean Math Assistant program map showing the governed research lifecycle and fail-closed autorun loop, with separate roles for strategy review, planning, execution, independent adjudication, and controller-owned truth transitions.">
+</p>
 
-The system was designed to run through OMP (oh-my=pie) and Herdr. OMP runs the model agents and exposes their allowed tools. Herdr provides the managed terminal workspace in which campaign activity can be inspected. The controller remains responsible for scheduling, retained state, deterministic commands, Lean checks, and acceptance decisions.
+<p align="center"><a href="docs/program-map.html"><strong>Open the standalone HTML Program Map</strong></a></p>
 
-## Research status
+## CMV case study
 
-The principal case study starts from Antonio Cañete, Michele Miranda Jr., and Davide Vittone's paper *Some Isoperimetric Problems in Planes with Density* [1]. In the strip-density setting relevant here, the paper classifies symmetric circular-arc candidates for an isoperimetric problem. This README abbreviates Cañete, Miranda Jr., and Vittone as **CMV**.
+The canonical project studies the Cañete–Miranda–Vittone strip-density isoperimetry problem. For density 1 on the strip $|y|\le 1$ and density $\lambda>1$ outside it, the current Lean development proves that the checked type-(iv) four-arc family is not minimizing at any admissible density. It constructs an equal-area type-(iii) or constrained-chord competitor with strictly smaller weighted perimeter.
 
-The current formal result is a Lean-verified exclusion of every modeled CMV type-(iv) weighted-perimeter minimizer for
+The proved scope has three distinct levels:
 
-$$
-\lambda \ge \frac{51}{50}.
-$$
+| Level | Current result |
+|---|---|
+| Modeled candidate | Every `FourArcCandidate` satisfying the formal CMV type-(iv) hypotheses is excluded for every $\lambda>1$. |
+| Literal source carrier | Every checked four-arc carrier is excluded for every $\lambda>1$, including $h=1$, horizontal translates, almost-everywhere horizontal representatives, and raw closed geometry with source radius $R\ge1$. The latest direct source theorem does not require a contact-law premise. |
+| Arbitrary source minimizer | Open. The proof does not derive the required carrier classification from every source-admissible minimizer. |
 
-On the exact interval $[51/50,9/7]$, Lean checks an equal-area type-(iii) competitor with strictly smaller weighted perimeter. Above $9/7$, the proof uses the geometric two-cap-to-one-cap replacement. The combined theorem is `CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer_from_51_50`.
+The main declarations are in:
 
-Read the [Lean-verified CMV paper](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff.pdf), or its [HTML edition](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff.html), and the [project reproduction guide](projects/cmv-strip-density/README.md). The paper links every named formal result directly to its Lean declaration and separates the trusted kernel-checked theorem from numerical generators, source interpretation, and open obligations.
+- [`CMVModeledCutoff.lean`](projects/cmv-strip-density/proof/CMVModeledCutoff.lean), including `candidate_not_isWeightedPerimeterMinimizer` for every $\lambda>1$;
+- [`CMVTypeThreeSourceExclusion.lean`](projects/cmv-strip-density/proof/CMVTypeThreeSourceExclusion.lean), including `candidateCarrier_not_isMinimizer` and the contact-law-free raw-carrier exclusions;
+- [`CMVSourceClassification.lean`](projects/cmv-strip-density/proof/CMVSourceClassification.lean), which separates closed geometry from density and Snell-law data.
 
-This result closes the modeled range $\lambda\ge51/50$. The punctured near-one interval $1<\lambda<51/50$, universal source classification, source-to-model correspondence, and the full CMV conjecture remain open.
+An independent proof path retains the exact cutoff $\lambda\ge51/50$. It composes 1,139 exact-rational cells across $[51/50,9/7]$ and uses a formal cap replacement above $9/7$. That path remains useful as a separate certificate even though the later analytic theorem closes the modeled range for every $\lambda>1$.
 
-## What makes this math assistant unique
+### Paper and retained evidence
 
-Most agent workflows mix three separate questions:
+The paper [A Lean-Verified 51/50 Cutoff and the Remaining-Range Frontier](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.pdf) states the theorem levels, proof architecture, trust boundary, and open classification problem. Its sources are available as [Markdown](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.md) and [standalone HTML](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.html). The PDF freezes its evidence through autorun round 269. The current proof tree and [`projects/cmv-strip-density/README.md`](projects/cmv-strip-density/README.md) are the living scope record for later adjudicated work.
 
-1. Did the process run?
-2. Was useful evidence produced?
-3. Is the mathematical claim actually established?
+Verification assets include:
 
-This controller records those questions separately.
+- the pinned compiler in `projects/cmv-strip-density/proof/lean-toolchain` and pinned dependencies in `projects/cmv-strip-density/proof/lake-manifest.json`;
+- `projects/cmv-strip-density/proof/_Assumptions.lean` and focused `projects/cmv-strip-density/proof/*Assumptions.lean` ledgers;
+- exact certificate data and checkers under `projects/cmv-strip-density/proof/compact_fold_gap/`, `projects/cmv-strip-density/proof/middle_face_tiling/`, `projects/cmv-strip-density/proof/exact_germ/`, and `projects/cmv-strip-density/proof/face_bridge_pilot/`;
+- retained generator, checker, and mutation receipts beside those certificates;
+- controller and publication receipts under the retained campaign and autorun directories.
 
-- **Execution state** records attempts, failures, retries, checkpoints, and invalidations.
-- **Evidence state** records immutable inputs, commands, outputs, receipts, hashes, and limitations.
-- **Mathematical state** records claims, dependencies, independent verdicts, required targets, and unresolved obligations.
+Run the focused current source exclusion checks from the repository root:
 
-An agent cannot approve its own claim. A successful campaign must satisfy the contracts declared before execution.
+```bash
+cd projects/cmv-strip-density/proof
+lake build CMVContactLawFreeSourceExclusionSupport
+lake env lean CMVFourArcChordVariationAssumptions.lean
+lake env lean CMVFourArcRecoveryAssumptions.lean
+lake env lean CMVFourArcSourceCompetitorAssumptions.lean
+lake env lean CMVTypeThreeSourceExclusionAssumptions.lean
+```
 
-## Main safeguards
+Run the full Lean build and permanent axiom ledger:
 
-### Frozen inputs and retained evidence
+```bash
+cd projects/cmv-strip-density/proof
+lake build
+lake env lean _Assumptions.lean
+```
 
-Each run starts from an immutable input snapshot. Commands, prompts, outputs, handoffs, receipts, state transitions, and failures are retained with SHA-256 identities. Replay rejects changed inputs, executables, dependency manifests, environments, or sandbox policies.
+Run the independent certificate checks:
 
-### Verifier-gated claims
+```bash
+cd projects/cmv-strip-density/proof
+uv run python verify_certificate.py
+uv run python verify_full_domain.py
+uv run python verify_calculus.py
+python compact_fold_gap/check_compact_certificate.py \
+  compact_fold_gap/compact_certificate.json
+python compact_fold_gap/run_mutations.py
+python exact_germ/exact_germ_checker.py \
+  --output exact_germ/independent-check.json
+python exact_germ/semantic_audit.py
+python face_bridge_pilot/check_bridge.py \
+  --output face_bridge_pilot/independent-check.json
+python face_bridge_pilot/run_mutations.py
+python middle_face_tiling/check_tiling.py \
+  middle_face_tiling/manifest.json \
+  --output middle_face_tiling/independent-check.json
+python middle_face_tiling/run_mutations.py
+```
 
-Claims have exact statements, scopes, dependencies, proof descriptions, and limitations. Independent verifier stages must decide every configured claim. The controller rejects malformed graphs, missing verdicts, stale evidence, unresolved critical errors, and claims that depend on rejected premises.
+Rebuild the paper with:
 
-### Lean boundary
+```bash
+cd projects/cmv-strip-density/reports
+./build-lean-verified-cmv-frontier.sh
+```
 
-For a configured Lean target, the controller builds the retained source, loads the compiled declaration, checks its exact type, and asks Lean for its axioms. This avoids relying on a copied theorem statement or regex-parsed terminal output.
+The Markdown, HTML, and PDF explain the result. They are not part of the mathematical trust boundary.
 
-A separate semantic review compares the Lean declaration with the intended informal theorem, including hypotheses, quantifiers, domains, branches, and boundary cases. Compilation alone does not establish that the right theorem was formalized.
+### What remains open
 
-### Linux sandbox
+The project does not claim an unconditional proof of CMV Conjecture 3.12. The remaining obligation is geometric and measure-theoretic classification. A full proof must derive bilateral symmetry, common-circle geometry, configuration enumeration, and exact or almost-everywhere carrier identification from every relevant source minimizer. Residual Figure-5 configurations from CMV Lemma 3.8 also remain unresolved. The checked Figure-3, Figure-4, and Figure-5 modules narrow that interface without closing it.
 
-Agent, command, replay, and Lean stages run in Bubblewrap namespaces and transient user-systemd cgroups by default. The retained workspace is the only writable host path, networking is disabled unless explicitly enabled, and resource limits are recorded in the receipt.
+## Quick evaluation
 
-Sandbox creation fails closed. Running without the sandbox requires an explicit manifest setting.
+Install the locked environment, inspect the version, validate a self-contained campaign, and run the release smoke test:
 
-## Requirements
+```bash
+uv sync --locked
+uv run agentic-lean-math-assistant --version
+uv run agentic-lean-math-assistant validate \
+  --campaign examples/claim-ledger/campaign.toml
+uv run pytest -q tests/test_release.py
+```
 
-- Linux
-- Python 3.12, 3.13, or 3.14
-- [uv](https://docs.astral.sh/uv/)
-- Bubblewrap and user-systemd for sandboxed execution
-- OMP and Herdr for live multi-agent campaigns
-- Lean and Lake for projects with formal targets
+The package version is `1.1.1`. Current unreleased work is listed at the top of [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Install
+
+Requirements:
+
+- Linux with `os.pidfd_open`, a working `systemd --user` manager, and Bubblewrap;
+- Python 3.12, 3.13, or 3.14;
+- [`uv`](https://docs.astral.sh/uv/);
+- OMP on `PATH`, or an explicit `--omp` path;
+- Herdr on `PATH`, or an explicit `--herdr` path;
+- Lean and Lake for formal-proof stages.
+
+Install the locked base environment:
 
 ```bash
 uv sync --locked
 ```
 
-Optional research dependencies:
+Install notebook and scientific packages when a project needs them:
 
 ```bash
 uv sync --locked --extra research
 ```
 
-Optional regression backends:
+Install the optional regression backend with:
 
 ```bash
 uv sync --locked --extra ml
 ```
 
-## Try the included claim-ledger example
+TensorFlow is selected only on supported Python versions. The linear regression workflow remains available without it.
 
-Validation checks the manifest and feature contracts without launching agents:
+## Program model
+
+The engine is problem-agnostic. A project manifest supplies the problem, frozen inputs, tools, model routes, budgets, source policy, containment policy, and exact success contract. The CMV project is one demanding instance of that engine; its geometry is not built into the controller.
+
+The controller distinguishes three records:
+
+1. **Execution state** records which stages ran, failed, retried, resumed, or were invalidated.
+2. **Evidence state** records immutable inputs, prompts, commands, outputs, receipts, digests, reports, and limitations.
+3. **Truth state** records exact claims, dependency edges, verifier decisions, Lean declarations, semantic findings, and target closure.
+
+A successful process can add evidence. It cannot by itself change truth state.
+
+## Fixed research regime
+
+`regime-run` implements a fixed research, plan, execute, assess cycle:
+
+1. A research gate decides whether new publication work is needed.
+2. Publication research records accessible sources and names critical inaccessible sources.
+3. The operator either supplies a missing critical source, records an explicit waiver, or leaves the run checkpointed.
+4. The planner emits a schema-v3 strategy DAG with obligations, falsification tests, evidence requirements, reasoning classes, capability choices, budgets, and failure policy.
+5. The controller validates the plan before any campaign stage runs. Invalid plans receive bounded repair attempts.
+6. Capped pilot tasks run before expensive descendants. Audit continuation gates can stop those descendants.
+7. Ready stages execute against the retained workspace with bounded attempts and novelty checks on retries.
+8. The main assessment disposes every frozen obligation and reports solved, unsolved, or blocked. The controller records compute use and any allowed successor choices.
+
+Interactive use asks for the inaccessible-source policy before starting agents:
+
+```bash
+uv run agentic-lean-math-assistant regime-run \
+  --project projects/cmv-strip-density/project.toml
+```
+
+Non-interactive use must state the policy:
+
+```bash
+uv run agentic-lean-math-assistant regime-run \
+  --project projects/cmv-strip-density/project.toml \
+  --missing-source-policy checkpoint \
+  --headless
+```
+
+Use `--missing-source-policy continue` only when retaining the source limitation is acceptable.
+
+### Agent roles
+
+Model names and budgets come from each project manifest. The current CMV manifest routes work as follows:
+
+- **Sol** plans campaigns, performs invention work, writes the main assessment, and serves as the autorun conductor.
+- **Luna** handles mechanical execution work.
+- **Terra** performs established analysis, audit, and independent autorun progress adjudication.
+- **Astra** reviews autorun strategy. A campaign may also use Astra for a targeted task only when the manifest quota allows it and the plan ties it to retained evidence of a primary-model failure.
+
+These are alternative reasoning routes, not a chain in which every agent handles every task. Agents propose plans and artifacts. The controller validates plans, owns state changes, enforces limits, and decides whether configured gates have passed.
+
+## Claims and target closure
+
+A campaign can declare exact targets in TOML and use a `claim_ledger` stage to close them. The proposer emits a strict `claim-proposals-v1` handoff. Separately scheduled verifiers emit complete `claim-verdicts-v1` handoffs.
+
+The controller rejects malformed IDs, unknown dependencies, cycles, duplicate targets, incomplete verdict sets, and acceptance verdicts that report critical errors or gaps. It blocks descendants of rejected premises. Claim IDs are content hashes over the exact statement, scope, proof, limitations, target, campaign, and predecessor IDs, so changing a premise changes its descendants.
+
+Target closure can also require replayable command receipts that name the targets and frozen inputs they cover. The controller re-digests those inputs at closure and replay. A verifier must decide every proposed claim, and every configured verifier must accept before the target closes. An optional independent adjudicator can resolve retained verifier disagreement.
+
+Run the minimal claim-ledger example:
 
 ```bash
 uv run agentic-lean-math-assistant validate \
   --campaign examples/claim-ledger/campaign.toml
-```
-
-To run the campaign with OMP and Herdr available:
-
-```bash
 uv run agentic-lean-math-assistant run \
   --campaign examples/claim-ledger/campaign.toml
+uv run agentic-lean-math-assistant claims \
+  --run examples/claim-ledger/runs/<run-id>
 ```
 
-After the run, inspect its state, claims, and trust boundaries:
+The final command prints the content-addressed claims, verdicts, evidence references, and required-target status.
 
-```bash
-uv run agentic-lean-math-assistant status --run examples/claim-ledger/runs/<run-id>
-uv run agentic-lean-math-assistant claims --run examples/claim-ledger/runs/<run-id>
-uv run agentic-lean-math-assistant audit --run examples/claim-ledger/runs/<run-id>
-uv run agentic-lean-math-assistant verify --run examples/claim-ledger/runs/<run-id>
-```
+## Lean and semantic boundaries
 
-The example contains a proposer, an independent verifier, a deterministic command gate, and a final claim gate. It is intentionally small enough to inspect by hand.
+A `lean_contract` stage compiles the formal contract from the immutable input snapshot. The controller then loads the compiled module through its own Lean helper, checks each configured declaration at the exact expected type, calls `Lean.collectAxioms`, and enforces the allowed axiom set. It does not trust mutable workspace text or parse a model-written axiom report.
 
-## Fixed research regime
+A separate `semantic_contract` reviewer compares the informal and formal statements. Its strict record covers hypotheses, quantifiers, domains, symbols, branches, degeneracies, and boundary cases. A report of equivalence cannot contain a hidden added hypothesis or unresolved mismatch.
 
-`regime-run` provides a standard research loop:
+These gates answer different questions:
 
-1. inspect the problem, references, and retained knowledge;
-2. decide whether new source research is needed;
-3. create a bounded plan with explicit obligations and falsification checks;
-4. run the permitted tasks;
-5. assess every obligation and produce a solved, unsolved, or blocked result;
-6. retain the evidence and wait for an explicit next-strategy decision when work remains.
+- Did the Lean kernel accept the exact declaration under the allowed axioms?
+- Does that declaration express the theorem in the project contract?
 
-Start with the included minimal project:
+Compilation answers only the first question. A model claim answers neither. Both checks must pass when the project configures both.
 
-```bash
-uv run agentic-lean-math-assistant regime-run \
-  --project examples/minimal-project/project.toml
-```
+## Execution containment
 
-An unresolved run does not silently continue forever. The controller records the available strategies and waits for a user decision:
+Generic campaigns default to a fail-closed Linux sandbox. Bubblewrap gives each stage private mount, PID, and network namespaces. The retained workspace is the writable host path; home, `/tmp`, and `/run` are private. Outbound networking is disabled by default. A transient user-systemd cgroup enforces time, memory, swap, CPU, task-count, and file-size limits.
 
-```bash
-uv run agentic-lean-math-assistant choose-strategy \
-  --run <run-directory> \
-  --strategy <strategy-id-or-stop>
-```
+The manifest controls environment names, executable paths, network access, workspace size, and whether generated workspace binaries may run. Secret environment values are forbidden for sandboxed untrusted stages because arbitrary code could encode them into retained artifacts. Receipts fingerprint the effective non-secret environment, executable bytes, dependency manifests, and sandbox policy.
 
-## Bounded autonomy
+Sandbox creation has no automatic unsandboxed fallback. A manifest may set `sandbox = false` only as an explicit trust decision. Namespace isolation then disappears, but cgroup resource limits still apply and the receipt records the choice. The CMV manifest uses this trusted mode so OMP can access the operator's existing login. Do not use that manifest for untrusted prompts or inputs.
 
-Projects may define an exact success contract: required files, Lean declarations and types, allowed axioms, and independent verification commands. `autonomy-run` can then execute successive bounded campaigns until that contract passes or a campaign, time, or failure limit is reached.
+## Bounded campaign autonomy
+
+`autonomy-run` executes successive fixed-regime campaigns under a project-specific success contract:
 
 ```bash
 uv run agentic-lean-math-assistant autonomy-run \
-  --project path/to/project.toml
+  --project projects/cmv-strip-density/project.toml \
+  --headless
 ```
 
-A campaign reporting “solved” is not enough. The controller independently rechecks the retained evidence and formal targets before accepting the session.
+The manifest caps campaign count, elapsed time, consecutive failures, and analysis time. Between campaigns, a read-only optimizer receives the original problem, retained outcome, limitations, evidence gaps, compute ledger, and exact success contract. Its successor directive cannot change the problem or success hash.
 
-## Conditional model routing and persistent autorun
+A campaign's `solved` report is still only a claim. Before autonomous success, the controller rechecks the evidence index, required artifacts, build command, exact theorem types, axiom reports, and every configured verification command. Exhausted time, campaign, or failure budgets produce a retained checkpoint or `budget_exhausted` state rather than success.
 
-`autorun` is an unattended, self-prompting controller for long-running project
-work. It reloads the project's `MASTER_PROMPT.md` before every attempt, retains
-every prompt, output, receipt, metric, adjudication, and state transition under
-`autorun-runs/<session>/`, and resumes the same session after a controller
-restart. `attempt_count` tracks every launched conductor attempt; `round_count`
-tracks completed executions. The conductor's progress marker is retained as a
-claim. A separate read-only adjudicator classifies verified progress as
-incremental, meaningful, blocked, or complete; process exit and a passing build
-are not meaningful progress.
-
-Projects can route work by reasoning class instead of assigning the most
-expensive model to every task:
-
-```toml
-[regime]
-planner_model = "openai-codex/gpt-5.6-sol"
-execution_model = "openai-codex/gpt-5.6-luna"
-analysis_model = "openai-codex/gpt-5.6-terra"
-invention_model = "openai-codex/gpt-5.6-sol"
-audit_model = "openai-codex/gpt-5.6-terra"
-
-strategy_reflection_model = "openai-codex/gpt-6-astra"
-targeted_task_model = "openai-codex/gpt-6-astra"
-max_targeted_tasks = 1
-```
-
-Projects own the strategy threshold, deadline horizon, adjudication budget, and
-optional trusted progress measurements:
-
-```toml
-[autorun]
-worthwhile_likelihood_threshold = 30
-strategy_horizon_rounds = 12
-adjudication_minutes = 5
-
-[[autorun.progress_metrics]]
-id = "coverage"
-command = ["python3", "scripts/report_coverage.py"]
-timeout = 300
-```
-
-Each metric command runs from the project root under the configured execution
-policy and must emit one JSON object. Its bounded stdout, stderr, hashes, parsed
-value, and error state are retained before adjudication. Keep metric commands in
-the trusted project manifest; conductor output cannot add or change them.
-
-The planner leaves a task's `model` field null for normal execution. The
-controller then selects `execution_model`, `analysis_model`, `invention_model`,
-or `audit_model` from the task's reasoning class. A non-null task model is an
-explicit targeted escalation: the controller accepts only the configured
-`targeted_task_model` and rejects plans exceeding `max_targeted_tasks`.
-Compute profiles may override the same routing fields without changing the
-project's base policy.
-
-Strategy review is a fail-closed meaningful-progress gate. At the configured
-interval—or when a contract drifts, is falsified, or misses an evidence
-deadline—`autorun` launches a separate, read-only Astra request using
-`strategy_reflection_model`. The worthwhile threshold comes from `[autorun]`;
-Astra cannot choose or relax it. Astra must compare at least two distinct
-candidate strategies and return likelihood, expected compute cost, time to first
-evidence, ordered observable milestones, kill criteria, and one next action.
-
-The accepted decision is atomically persisted as the active strategy contract
-before conductor execution. Milestone and horizon deadlines are measured in
-completed executions. A rejected course cannot be reinstated by a later pass,
-and a replacement must have higher likelihood than the rejected course while
-clearing policy. The controller runs up to three Astra passes; without a valid
-contract it retries the gate rather than launching a conductor. The independent
-progress adjudicator then evaluates the conductor report, repository evidence,
-trusted metrics, and active contract. Drift, falsification, and missed deadlines
-force another strategy gate. During a continuous execution-failure streak, one
-conductor attempt is routed through `targeted_task_model` after every two failed
-primary-model attempts; controller, agent-execution, verification, strategy-gate,
-and mathematical-blocker failures have separate retained counters.
-
-Every autorun agent invocation retains the configured transient cgroup deadline,
-memory, swap, CPU, task, and file-size limits. A trusted project may set
-`execution.sandbox = false` to disable Bubblewrap namespace isolation without
-removing those resource ceilings.
-
-Start, inspect, follow, and stop a session with:
+Unless AFK selection is enabled, the controller waits for an operator decision before a successor campaign. Inspect and control a session with:
 
 ```bash
+uv run agentic-lean-math-assistant autonomy-status \
+  --session projects/cmv-strip-density/autonomy-runs/<session-id>
+uv run agentic-lean-math-assistant autonomy-decide \
+  --session projects/cmv-strip-density/autonomy-runs/<session-id> \
+  --strategy <strategy-id|recommended|stop>
+uv run agentic-lean-math-assistant autonomy-resume \
+  --project projects/cmv-strip-density/project.toml \
+  --session projects/cmv-strip-density/autonomy-runs/<session-id> \
+  --headless
+```
+
+## Persistent autorun
+
+`autorun` is the unattended project conductor. It reloads `MASTER_PROMPT.md` before every round and retains the prompt, output, receipt, trusted metrics, strategy contract, independent adjudication, and controller event under `autorun-runs/<session>/`.
+
+Astra reviews strategy without editing the project. Sol executes each validated round with the project's allowed tools. Terra independently judges observable progress. The controller accepts only strict, current-revision protocol records and is the only component that mutates retained strategy or progress state.
+
+The first execution waits for a valid strategy. Soft reviews and checkpoints request another strategy decision but do not falsify work or reset hard ceilings. Continuation preserves the strategy ID, lineage start, and hard deadline. A course change archives the old contract and starts a new lineage. Invalid, stale, wrong-order, or incomplete output receives no progress credit.
+
+The default conductor round limit is 90 minutes. Strategy health reviews occur on the configured 120 to 240 minute interval, repeated output, or repeated execution failure. Failures use bounded backoff and remain on the Sol conductor route. They never reroute execution to Astra. The manifest may cap each lineage at 1 to 100 successful executions and may add trusted progress-metric commands.
+
+Start autorun with either console entry point:
+
+```bash
+uv run autorun \
+  --project projects/cmv-strip-density/project.toml
+
 uv run agentic-lean-math-assistant autorun \
-  --project path/to/project.toml
+  --project projects/cmv-strip-density/project.toml \
+  --reflection-round-minutes 15
+```
 
-uv run agentic-lean-math-assistant autorun-status \
-  --session path/to/autorun-runs/<session>
+An interrupted controller resumes the active retained session. Edit `MASTER_PROMPT.md` while it runs; the next round reads the new contents.
 
+Use the live status, output, and event followers or request a durable stop:
+
+```bash
 uv run agentic-lean-math-assistant autorun-status \
-  --session path/to/autorun-runs/<session> \
+  --session projects/cmv-strip-density/autorun-runs/<session-id> \
   --follow --interval 1 --recap-minutes 10
-
 uv run agentic-lean-math-assistant autorun-output \
-  --session path/to/autorun-runs/<session> \
+  --session projects/cmv-strip-density/autorun-runs/<session-id> \
   --interval 1
-
 uv run agentic-lean-math-assistant autorun-events \
-  --session path/to/autorun-runs/<session> \
+  --session projects/cmv-strip-density/autorun-runs/<session-id> \
   --interval 1
-
 uv run agentic-lean-math-assistant autorun-stop \
-  --session path/to/autorun-runs/<session>
+  --session projects/cmv-strip-density/autorun-runs/<session-id>
 ```
 
-Use `--model` to override the primary conductor and `--reflection-model` to
-override only the scheduled reflection. The live display identifies the active
-route and model. While recovering, it also reports the exact next retry
-timestamp, distinguishing bounded backoff from a stopped controller.
-The recap reports the latest execution's progress classification, meaningful
-versus incremental counts, and the latest Astra likelihood, worthwhile
-threshold, decision, and plan status. When Astra changes course, the left status
-pane also presents its detailed operator report: rejected course, replacement
-method, milestones, first falsifiable check, kill criteria, and next action.
+The followers reread `state.json`, follow the active round, and reconnect across stop and resume cycles. Status shows the validated strategy contract, independent progress counts, retry time, current objective, and critical-path recap. Agent stdout is never used as controller state.
 
-All three followers remain attached while the controller is stopped, paused,
-restarted, or temporarily unreadable. They reread `state.json` on every refresh.
-The output and raw-event followers switch to `active_round` automatically and
-update both their Herdr pane labels and terminal titles to `Round N Output` and
-`Round N Raw events`, so a pane cannot remain bound to a completed round.
-Interactive followers use a dedicated alternate-screen dashboard and repaint the
-entire bounded frame. Prior frames cannot accumulate in pane scrollback or remain
-visible after a shorter refresh.
+## Resume and recovery
 
-## Useful commands
+When a regime run waits for a publication, add the source to the project's `references/` directory and resume:
 
-```text
-validate          validate a campaign without running it
-run               start a campaign DAG
-resume            resume a retained campaign
-regime-run        run the fixed research regime
-regime-resume     resume a fixed-regime checkpoint
-autonomy-run      run bounded successive campaigns
-autorun           run a persistent self-prompting conductor
-autorun-status    inspect or follow a retained autorun session
-autorun-output    follow retained output from the active round
-autorun-events    follow raw events while tracking the active round
-autorun-stop      request a durable stop at the next safe boundary
-status            show authoritative run state
-dashboard         watch stages, targets, and limitations
-claims            inspect claim dependencies and verdicts
-audit             report passed and missing trust boundaries
-verify            verify the retained evidence bundle
-replay            rerun an allowlisted frozen command
-publish-plan      show an immutable publication plan
-publish           apply an explicitly approved publication plan
-stop-all          terminate registered campaign processes
+```bash
+uv run agentic-lean-math-assistant regime-resume \
+  --project projects/cmv-strip-density/project.toml \
+  --run projects/cmv-strip-density/runs/<run-id>
 ```
 
-Run the CLI with `--help` or append `--help` to any command for its full arguments.
+To continue while retaining the missing-source limitation:
+
+```bash
+uv run agentic-lean-math-assistant regime-resume \
+  --project projects/cmv-strip-density/project.toml \
+  --run projects/cmv-strip-density/runs/<run-id> \
+  --waive-missing-sources
+```
+
+After an unresolved campaign, record a retained successor choice:
+
+```bash
+uv run agentic-lean-math-assistant choose-strategy \
+  --run projects/cmv-strip-density/runs/<run-id> \
+  --strategy <strategy-id|stop>
+```
+
+Generic campaign runs can retry failed stages or one named stage:
+
+```bash
+uv run agentic-lean-math-assistant resume \
+  --run path/to/runs/<run-id> \
+  --retry-stage <stage-id> \
+  --feedback "Use the retained failure evidence."
+```
+
+Each campaign and pre-campaign phase keeps an append-only `events.jsonl` journal with monotonic sequence numbers and SHA-256 links. `state.json` is an atomic projection, not the recovery authority. Before a stage attempt, the runtime checkpoints the retained workspace. After controller death it terminates registered stale processes, restores interrupted attempts, records the interruption, and applies the configured retry policy. Evidence verification rejects edits, deletions, reordering, omitted files, and unexpected retained files.
+
+## Inspect, verify, replay, and publish
+
+Use the read-only inspection commands on a retained campaign:
+
+```bash
+uv run agentic-lean-math-assistant status --run path/to/runs/<run-id>
+uv run agentic-lean-math-assistant dashboard --watch --run path/to/runs/<run-id>
+uv run agentic-lean-math-assistant claims --run path/to/runs/<run-id>
+uv run agentic-lean-math-assistant audit --run path/to/runs/<run-id>
+uv run agentic-lean-math-assistant verify --run path/to/runs/<run-id>
+```
+
+`audit` reports execution, evidence integrity, formal verification, semantic assurance, claim closure, obligation coverage, and unresolved limitations as separate fields. It does not turn agent prose into proof.
+
+A stage marked `replayable = true` can rerun its frozen command without a shell or caller-supplied arguments:
+
+```bash
+uv run agentic-lean-math-assistant replay \
+  --run path/to/runs/<run-id> \
+  --stage <allowlisted-command-stage>
+```
+
+Replay rejects changed evidence inputs, environment, executable bytes, dependency manifests, or containment policy. The new receipt joins the evidence index.
+
+Publication uses two explicit steps:
+
+```bash
+uv run agentic-lean-math-assistant publish-plan \
+  --run path/to/runs/<run-id>
+uv run agentic-lean-math-assistant publish \
+  --run path/to/runs/<run-id> \
+  --approve-digest <sha256>
+```
+
+The first command reports every added, changed, deleted, and preserved path and hashes the plan. The second rechecks the source and destination, applies only that digest, verifies the result, and retains a publication receipt. Interrupted publication is rolled back before a new plan is accepted.
+
+Use `uv run agentic-lean-math-assistant stop-all` to close every registered campaign process and retained Herdr workspace.
+
+## Numeric regression capability
+
+Regression is an optional research aid, not proof. Assessment and fitting are separate commands:
+
+```bash
+uv run agentic-lean-math-assistant regression-assess \
+  --features retained/features.npy \
+  --targets retained/targets.npy \
+  --output retained/regression-assessment.json
+
+uv run agentic-lean-math-assistant regression-fit \
+  --features retained/features.npy \
+  --targets retained/targets.npy \
+  --config retained/regression.json \
+  --output retained/regression-fit
+```
+
+The loader accepts Python lists and `.npy`, `.npz`, `.csv`, `.tsv`, or nested-array `.json` files. A strict JSON or TOML config selects linear regression or a bounded TensorFlow dense model. Fitting uses a held-out split, train-only normalization, an ordinary least-squares baseline, retained hashes, per-target metrics, and explicit `proof_status = "not_proof"`. The planner must explicitly use or skip assessment and fitting; numeric files do not silently trigger training.
+
+## Blind autonomy benchmarks
+
+Benchmark expectations live in a suite manifest outside each agent snapshot:
+
+```bash
+uv run python benchmarks/autonomy-calibration/validation/validate_cases.py
+uv run agentic-lean-math-assistant benchmark \
+  --suite benchmarks/autonomy-calibration/benchmark.toml \
+  --headless
+```
+
+The included calibration suite has 12 cases: four exact derivations, three Lean repairs, three underdetermined tasks, and two false-closure traps. The report records expected and observed outcomes, false closures, case errors, run paths, compute ledgers, and manifest digests. One failed case does not prevent later cases from running. Acceptance requires every expected outcome to match with no false closure or case error.
+
+Resume an interrupted schema-v2 report with:
+
+```bash
+uv run agentic-lean-math-assistant benchmark \
+  --resume path/to/benchmark-report.json \
+  --headless
+```
+
+Resume verifies the suite snapshot, completed prefix, scoring, report directory, and completed project-manifest digests before running the first unfinished case. The hosted-agent calibration manifests set `execution.sandbox = false` so OMP can use an existing login. Run only the trusted repository cases in that mode.
 
 ## Repository layout
 
 ```text
-src/agentic_lean_math_assistant/   controller and reusable library
-examples/                          minimal runnable examples
-tests/                             unit, failure-path, and integration tests
-.github/workflows/ci.yml           Python 3.12–3.14 CI
-pyproject.toml                     package and tool configuration
-uv.lock                            locked dependency graph
+docs/
+  program-map.html                 standalone accessible architecture map
+  program-map.svg                  README program map
+src/agentic_lean_math_assistant/   orchestration package
+  claims.py                        claim contracts and target closure
+  lean.py                          exact declaration and axiom checks
+  semantic.py                      informal-to-formal review contract
+  inspection.py                    retained assurance inspection
+  regime.py                        fixed research regime
+  autonomy.py                      bounded multi-campaign controller
+  autorun.py                       persistent strategy and execution loop
+  sandbox.py                       Bubblewrap and cgroup containment
+  publication.py                   digest-approved publication
+  regression.py                    optional numeric assessment and fitting
+examples/claim-ledger/             minimal verifier-gated campaign
+projects/cmv-strip-density/
+  project.toml                     CMV models, budgets, inputs, and success policy
+  problem.md                       canonical mathematical contract
+  MASTER_PROMPT.md                 living autorun contract
+  references/                      frozen source material
+  knowledge/                       promoted research state
+  proof/                           canonical Lean project and certificates
+  reports/                         Markdown, HTML, PDF, and build scripts
+  runs/                            selected campaign evidence
+benchmarks/autonomy-calibration/   12-case blind outcome suite
+scripts/                           release and verification utilities
+tests/                             unit, property, failure-path, and end-to-end tests
+CHANGELOG.md                       released and unreleased changes
+V2_BUILD_PLAN.md                   unimplemented native-v2 roadmap
 ```
 
-The new repository intentionally excludes historical campaign workspaces, superseded design documents, benchmark output, release bundles, and earlier version reports.
+New raw campaign runs, generated caches, and duplicate proof trees are ignored. Selected campaign and benchmark evidence remains in the repository when it supports audit or replay.
 
-## Development
+## Development checks
+
+Run the same package checks used by CI:
 
 ```bash
 uv lock --check
-uv run ruff format --check src tests
-uv run ruff check src tests
-uv run mypy src
-uv run pytest
+uv run ruff format --check src tests scripts benchmarks/cmv-range-reduction/validation
+uv run ruff check src tests scripts benchmarks/cmv-range-reduction/validation
+uv run mypy src scripts benchmarks/cmv-range-reduction/validation/validate_result.py
+uv run pytest -q
 uv build
 ```
 
-The clean core suite currently contains 304 passing tests and one optional-backend skip. CI repeats formatting, linting, type checking, tests, package builds, and installed-wheel smoke tests on Python 3.12, 3.13, and 3.14.
+CI qualifies Python 3.12, 3.13, and 3.14, smoke-tests the installed wheel, builds the retained Lean project, validates the blind benchmark certificates, and runs the independent CMV certificate checkers.
 
-## Limits of the system
+## Release, roadmap, and license
 
-This software can make research more inspectable. It cannot turn an unproved claim into a theorem.
+The current package release is `1.1.1`. Build and verify a candidate from a completed one-shot proof campaign with:
 
-- Agent agreement is not evidence.
-- Floating-point output is not automatically a proof.
-- A passing Lean build does not guarantee that the formal statement matches the intended theorem.
-- Mutation tests show that selected failures are detected; they do not prove that a checker has no bugs.
-- A scalar model does not settle the original geometric problem until the source-to-model bridge is proved.
+```bash
+uv run python scripts/build_release.py \
+  --proof-run projects/cmv-strip-density/one-shot/runs/<run-id>
+uv run python scripts/verify_release.py \
+  --candidate dist/agentic-lean-math-assistant-1.1.1
+```
 
-The retained result should always be read together with its assumptions, evidence, and unresolved obligations.
+The builder verifies the retained evidence, package metadata, bounded source distribution, proof archive, required PDFs, manifest, and checksums. It does not create a tag, push a branch, or publish externally.
 
-## References
+[`V2_BUILD_PLAN.md`](V2_BUILD_PLAN.md) describes a substantially different native control plane. Its implementation has not started, and it is not part of this release. The v1 Python controller documented here remains the shipped system.
 
-1. Antonio Cañete, Michele Miranda Jr., and Davide Vittone, “Some Isoperimetric Problems in Planes with Density,” *The Journal of Geometric Analysis* 20 (2010), 243-290. [arXiv:0906.1256](https://arxiv.org/abs/0906.1256).
-
-## License
-
-This repository is currently distributed under the terms in [`LICENSE`](LICENSE).
+This repository is a proprietary portfolio release. Copyright © 2026 Rosa Pavlak. Viewing the repository and running the documented verification commands for personal evaluation, educational review, or employment assessment is permitted. No license is granted to use, copy, modify, distribute, sublicense, or sell the software, proofs, reports, or other materials. See [`LICENSE`](LICENSE) for the exact terms.

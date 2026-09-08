@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "3857d0b7b32a76feb14166cf426ecfded8ebf4ad92edd2272dfaf100d53cd254",
+  "category": "lean_formalization",
+  "evidence": [
+    "workspace/proof/Calibration.lean",
+    "workspace/agents/lean_formalization/formalize_proof/build-evidence.txt",
+    "workspace/agents/formal_audit/audit_certificate/audit-certificate.txt"
+  ],
+  "limitations": [
+    "The certificate is scoped to the retained source identity and the audited leanprover/lean4:v4.33.1 project configuration; bare lake was unavailable on PATH, so authoritative commands used /home/rosa/.elan/bin/lake."
+  ],
+  "report": {
+    "path": "lean_formalization/20260823T075116Z-05bddd-formalize_proof.md",
+    "sha256": "aeebc608ed37136fc1e2c5ede89938b820ec7e986383105bdf1326ed84fe672e",
+    "size": 928
+  },
+  "run_id": "20260823T075116Z-05bddd",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": null,
+  "summary": "The retained final Calibration.lean preserves the exact polymorphic declaration, contains a complete proof without forbidden constructs, clean-builds under pinned Lean 4.33.1, and has an empty axiom report.",
+  "task_id": "formalize_proof",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

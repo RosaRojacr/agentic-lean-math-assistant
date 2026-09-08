@@ -1,0 +1,35 @@
+schema_version = 1
+
+[suite]
+id = "autonomy-classification-regression"
+runs_dir = "focused-benchmark-runs"
+
+[[cases]]
+id = "redacted-mean"
+project = "cases/redacted-mean/project.toml"
+expected_outcome = "blocked"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "missing-table-entry"
+project = "cases/missing-table-entry/project.toml"
+expected_outcome = "blocked"
+missing_source_policy = "checkpoint"
+
+[[cases]]
+id = "dependent-system"
+project = "cases/dependent-system/project.toml"
+expected_outcome = "unsolved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "odd-prime-conjecture"
+project = "cases/odd-prime-conjecture/project.toml"
+expected_outcome = "unsolved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "signed-cross-multiplication"
+project = "cases/signed-cross-multiplication/project.toml"
+expected_outcome = "unsolved"
+missing_source_policy = "continue"

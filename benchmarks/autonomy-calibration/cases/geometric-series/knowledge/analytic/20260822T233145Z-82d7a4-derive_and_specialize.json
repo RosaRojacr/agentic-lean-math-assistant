@@ -1,0 +1,25 @@
+{
+  "assessment_sha256": "34aa009a29dff369d6dc8ec25d4a2f4ff094823677cc9dd3e3abc479089b1ae2",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_and_specialize/attempt-01.md",
+    "agents/verification/audit_certificate/attempt-01.md"
+  ],
+  "limitations": [
+    "The general identity is promoted only for positive integer m and field-valued r != 1, where division by r-1 is defined."
+  ],
+  "report": {
+    "path": "analytic/20260822T233145Z-82d7a4-derive_and_specialize.md",
+    "sha256": "82637a12eff196fd9def33c1f207b507c4a4e8363cb45e6251b994f86244a86e",
+    "size": 1151
+  },
+  "run_id": "20260822T233145Z-82d7a4",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "algebraic_derivation",
+  "summary": "For positive integer m and field-valued r != 1, multiplying and subtracting the displayed finite sum derives 1+r+...+r^(m-1)=(r^m-1)/(r-1); specializing m=8, r=2 and multiplying by 3 gives 765.",
+  "task_id": "derive_and_specialize",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

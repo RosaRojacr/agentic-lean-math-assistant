@@ -1,0 +1,101 @@
+schema_version = 1
+
+[project]
+id = "cmv-strip-density"
+title = "CMV Strip-Density Isoperimetry"
+problem = "problem.md"
+references = "references"
+knowledge = "knowledge"
+runs = "runs"
+
+[regime]
+omp = "omp"
+planner_model = "openai-codex/gpt-5.6-sol"
+execution_model = "openai-codex/gpt-5.6-luna"
+analysis_model = "openai-codex/gpt-5.6-terra"
+invention_model = "openai-codex/gpt-5.6-sol"
+audit_model = "openai-codex/gpt-5.6-terra"
+strategy_reflection_model = "openai-codex/gpt-6-astra"
+targeted_task_model = "openai-codex/gpt-6-astra"
+planner_thinking = "xhigh"
+max_tasks = 16
+max_parallel = 8
+max_restarts = 1
+default_agent_time = 2400
+allowed_tools = ["read", "grep", "glob", "bash", "eval", "write", "edit", "web_search"]
+pilot_agent_seconds = 28800
+research_agent_seconds = 72000
+formalization_agent_seconds = 50400
+max_attempts_total = 32
+max_invention_tasks = 4
+max_targeted_tasks = 1
+execution_thinking = "medium"
+analysis_thinking = "high"
+invention_thinking = "high"
+audit_thinking = "high"
+
+[[compute_profiles]]
+id = "local-balanced"
+omp = "omp"
+planner_thinking = "xhigh"
+execution_thinking = "medium"
+analysis_thinking = "high"
+invention_thinking = "high"
+audit_thinking = "high"
+max_parallel = 8
+default_agent_time = 2400
+pilot_agent_seconds = 28800
+research_agent_seconds = 72000
+formalization_agent_seconds = 50400
+max_attempts_total = 32
+max_invention_tasks = 4
+
+[execution]
+sandbox = false
+workspace_max_mb = 32768
+memory_max_mb = 10240
+tasks_max = 256
+
+[autonomy]
+enabled = true
+approval_timeout_minutes = 15
+afk_autonomy = true
+max_campaigns = 12
+max_consecutive_failures = 3
+max_elapsed_minutes = 10080
+analysis_agent_seconds = 2400
+compute_profile = "local-balanced"
+
+[autonomy.success]
+workspace = "proof"
+build_command = ["lake", "build"]
+allowed_axioms = ["propext", "Quot.sound", "Classical.choice"]
+verification_commands = [
+    ["uv", "run", "python", "verify_certificate.py"],
+    ["uv", "run", "python", "verify_full_domain.py"],
+    ["uv", "run", "python", "verify_calculus.py"],
+    ["python", "compact_fold_gap/check_compact_certificate.py", "compact_fold_gap/compact_certificate.json"],
+    ["python", "compact_fold_gap/run_mutations.py"],
+    ["python", "exact_germ/exact_germ_checker.py", "--output", "exact_germ/independent-check.json"],
+    ["python", "exact_germ/semantic_audit.py"],
+    ["python", "face_bridge_pilot/check_bridge.py", "--output", "face_bridge_pilot/independent-check.json"],
+    ["python", "face_bridge_pilot/run_mutations.py"],
+    ["python", "middle_face_tiling/check_tiling.py", "middle_face_tiling/manifest.json", "--output", "middle_face_tiling/independent-check.json"],
+    ["python", "middle_face_tiling/run_mutations.py"],
+]
+required_artifacts = ["CMVConjecture.lean"]
+
+[[autonomy.success.theorems]]
+module = "CMVConjecture"
+declaration = "cmv_conjecture_3_12"
+type = "∀ {lam : ℝ} (candidate : FourArcCandidate lam), candidate.SatisfiesCMVTypeIVHypotheses → candidate.IsWeightedPerimeterMinimizer → False"
+
+[[inputs]]
+path = "proof"
+target = "proof"
+excludes = [".lake", ".lake/**", ".git/**", "__pycache__", "__pycache__/**"]
+
+[[inputs]]
+path = "reports"
+target = "reports"
+excludes = [".ipynb_checkpoints", ".ipynb_checkpoints/**", "__pycache__", "__pycache__/**"]

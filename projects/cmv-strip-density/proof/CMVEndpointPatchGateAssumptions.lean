@@ -1,0 +1,7 @@
+import CMVEndpointPatchGate
+
+#print axioms FourArcCandidate.endpoint_satisfiesCMVTypeIVHypotheses
+#print axioms CMVRelaxation.FourArcUpperCap.exists_upperCap_patch_family_and_bound
+#print axioms CMVRelaxation.FourArcRightSide.exists_rightSide_patch_family_and_bound
+#print axioms CMVRelaxation.exists_endpoint_upperCap_patch_family_and_bound
+#print axioms CMVRelaxation.exists_endpoint_rightSide_patch_family_and_bound

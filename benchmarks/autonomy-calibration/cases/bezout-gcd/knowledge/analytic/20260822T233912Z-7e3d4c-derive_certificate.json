@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "14968f34917506cc64395c5140a2045215a522e595ef19cf3565a67d74bfd0ec",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_certificate/attempt-01.md",
+    "agents/verification/audit_certificate/attempt-01.md",
+    "agents/verification/audit_certificate/attempt-01.json"
+  ],
+  "limitations": [
+    "This is a certificate for the concrete inputs 84 and 30, not a newly established general algorithm or theorem.",
+    "The exhaustive enumeration checks positive divisors only; the displayed linear-combination arguments establish the universal statement for arbitrary integer common divisors.",
+    "No proof-assistant formalization was produced or required."
+  ],
+  "report": {
+    "path": "analytic/20260822T233912Z-7e3d4c-derive_certificate.md",
+    "sha256": "a3c3dd3ec1e2372def0990d1537a0906c9b596582c8ed2ea0aa3d25adc13bd15",
+    "size": 2528
+  },
+  "run_id": "20260822T233912Z-7e3d4c",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "euclidean_bezout",
+  "summary": "For the concrete pair (84,30), the complete Euclidean chain has last nonzero remainder 6; Bezout coefficients (-1,3) give 84(-1)+30(3)=6; 6 divides both inputs; and every common divisor divides 6.",
+  "task_id": "derive_certificate",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

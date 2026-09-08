@@ -195,6 +195,82 @@ theorem upper_vertical_reflection (t : ℝ) :
   simp [FourArcAssembly.upperCap, OneSidedCircularCap.arcPoint,
     assembly, sin_neg]
 
+/-- The literal four-arc carrier is invariant under reflection in the vertical
+source axis, including at `h = 1`. -/
+theorem mem_assembly_carrier_vertical_reflection (p : PlanePoint) :
+    (-p.1, p.2) ∈ candidate.assembly.carrier ↔
+      p ∈ candidate.assembly.carrier := by
+  have hcenters : candidate.stripCore.leftCenterX =
+      -candidate.stripCore.rightCenterX := by
+    unfold StripCore.leftCenterX StripCore.rightCenterX
+    ring
+  simp only [FourArcAssembly.carrier, StripCore.carrier,
+    StripCore.rectangleCarrier, StripCore.leftCapCarrier,
+    StripCore.rightCapCarrier, OneSidedCircularCap.carrier,
+    OneSidedCircularCap.radiusSquaredAt, OneSidedCircularCap.center,
+    FourArcAssembly.upperCap, FourArcAssembly.lowerCap,
+    FourArcCandidate.assembly, Set.mem_union, Set.mem_ofPred_eq]
+  rw [hcenters]
+  constructor
+  · rintro ((((hrect | hleft) | hright) | hupper) | hlower)
+    · left; left; left; left
+      exact ⟨by linarith [hrect.2.1], by linarith [hrect.1], hrect.2.2⟩
+    · left; left; right
+      exact ⟨by nlinarith [hleft.1], by linarith [hleft.2.1], hleft.2.2⟩
+    · left; left; left; right
+      exact ⟨by nlinarith [hright.1], by linarith [hright.2.1], hright.2.2⟩
+    · left; right
+      exact ⟨by nlinarith [hupper.1], hupper.2⟩
+    · right
+      exact ⟨by nlinarith [hlower.1], hlower.2⟩
+  · rintro ((((hrect | hleft) | hright) | hupper) | hlower)
+    · left; left; left; left
+      exact ⟨by linarith [hrect.2.1], by linarith [hrect.1], hrect.2.2⟩
+    · left; left; right
+      exact ⟨by nlinarith [hleft.1], by linarith [hleft.2.1], hleft.2.2⟩
+    · left; left; left; right
+      exact ⟨by nlinarith [hright.1], by linarith [hright.2.1], hright.2.2⟩
+    · left; right
+      exact ⟨by nlinarith [hupper.1], hupper.2⟩
+    · right
+      exact ⟨by nlinarith [hlower.1], hlower.2⟩
+
+/-- The literal four-arc carrier is invariant under reflection in the
+horizontal source axis, including at `h = 1`. -/
+theorem mem_assembly_carrier_horizontal_reflection (p : PlanePoint) :
+    (p.1, -p.2) ∈ candidate.assembly.carrier ↔
+      p ∈ candidate.assembly.carrier := by
+  simp only [FourArcAssembly.carrier, StripCore.carrier,
+    StripCore.rectangleCarrier, StripCore.leftCapCarrier,
+    StripCore.rightCapCarrier, OneSidedCircularCap.carrier,
+    OneSidedCircularCap.radiusSquaredAt, OneSidedCircularCap.center,
+    FourArcAssembly.upperCap, FourArcAssembly.lowerCap,
+    OneSidedCircularCap.radius, FourArcCandidate.assembly,
+    Set.mem_union, Set.mem_ofPred_eq, abs_neg]
+  constructor
+  · rintro ((((hrect | hleft) | hright) | hupper) | hlower)
+    · left; left; left; left
+      exact ⟨hrect.1, hrect.2.1, hrect.2.2⟩
+    · left; left; left; right
+      exact ⟨by nlinarith [hleft.1], hleft.2.1, hleft.2.2⟩
+    · left; left; right
+      exact ⟨by nlinarith [hright.1], hright.2.1, hright.2.2⟩
+    · right
+      exact ⟨by nlinarith [hupper.1], by linarith [hupper.2]⟩
+    · left; right
+      exact ⟨by nlinarith [hlower.1], by linarith [hlower.2]⟩
+  · rintro ((((hrect | hleft) | hright) | hupper) | hlower)
+    · left; left; left; left
+      exact ⟨hrect.1, hrect.2.1, hrect.2.2⟩
+    · left; left; left; right
+      exact ⟨by nlinarith [hleft.1], hleft.2.1, hleft.2.2⟩
+    · left; left; right
+      exact ⟨by nlinarith [hright.1], hright.2.1, hright.2.2⟩
+    · right
+      exact ⟨by nlinarith [hupper.1], by linarith [hupper.2]⟩
+    · left; right
+      exact ⟨by nlinarith [hlower.1], by linarith [hlower.2]⟩
+
 /-- The source incidence equation gives the accepted principal arccos
 parameterization. -/
 theorem alpha_eq_arccos (h : candidate.SatisfiesCMVTypeIVHypotheses) :
@@ -212,26 +288,64 @@ theorem alpha_eq_arccos (h : candidate.SatisfiesCMVTypeIVHypotheses) :
   exact (div_eq_iff (ne_of_gt hlam_pos)).2 (by
     simpa [mul_comm] using h.snell_incidence.symm)
 
-/-- A concrete `h = 1` constructor proves that the geometric hypothesis
-predicate is consistent for every strip density `lam > 1`. -/
+/-- The literal closed-curvature candidate at `h = 1` and principal exterior
+angle `arccos (1 / lam)`. -/
+def endpoint {lam : ℝ} (hlam : 1 < lam) : FourArcCandidate lam where
+  h := 1
+  alpha := arccos (1 / lam)
+  h_pos := by norm_num
+  h_le_one := le_rfl
+  alpha_pos := by
+    exact Real.arccos_pos.mpr
+      ((div_lt_one (lt_trans zero_lt_one hlam)).2 hlam)
+  alpha_lt_pi_div_two := by
+    exact Real.arccos_lt_pi_div_two.mpr
+      (one_div_pos.mpr (lt_trans zero_lt_one hlam))
+
+@[simp] theorem endpoint_h {lam : ℝ} (hlam : 1 < lam) :
+    (endpoint hlam).h = 1 := rfl
+
+@[simp] theorem endpoint_alpha {lam : ℝ} (hlam : 1 < lam) :
+    (endpoint hlam).alpha = arccos (1 / lam) := rfl
+
+/-- The weighted upper-cap length of the literal endpoint candidate. -/
+theorem endpoint_upperCap_weightedArcLength
+    {lam : ℝ} (hlam : 1 < lam) :
+    lam * (endpoint hlam).assembly.upperCap.arcLength =
+      2 * lam * Real.arccos (1 / lam) := by
+  rw [cap_arcLength_eq_two_radius_theta,
+    (endpoint hlam).four_arcs_common_radius.1]
+  simp [endpoint, assembly, stripCore, StripCore.radius,
+    FourArcAssembly.upperCap]
+  ring
+
+/-- The complete right-side arc of the literal endpoint candidate is a
+semicircle of length `pi`. -/
+theorem endpoint_rightSide_arcLength
+    {lam : ℝ} (hlam : 1 < lam) :
+    coreArcEnd (endpoint hlam).stripCore -
+        coreArcStart (endpoint hlam).stripCore = Real.pi := by
+  simp [coreArcEnd, coreArcStart, endpoint, stripCore,
+    StripCore.radius, StripCore.sideAngle]
+
+/-- The literal endpoint candidate satisfies the source density and incidence
+laws at every admissible density. -/
+theorem endpoint_satisfiesCMVTypeIVHypotheses
+    {lam : ℝ} (hlam : 1 < lam) :
+    (endpoint hlam).SatisfiesCMVTypeIVHypotheses := by
+  have hlam_pos : 0 < lam := lt_trans zero_lt_one hlam
+  have hxlt : (1 : ℝ) / lam < 1 := (div_lt_one hlam_pos).2 hlam
+  refine { density_jump := hlam, snell_incidence := ?_ }
+  change lam * cos (arccos (1 / lam)) = 1
+  rw [Real.cos_arccos (by linarith [one_div_pos.mpr hlam_pos]) hxlt.le]
+  field_simp [ne_of_gt hlam_pos]
+
+/-- The geometric hypothesis predicate is inhabited by the literal endpoint
+candidate for every strip density `lam > 1`. -/
 theorem hypotheses_nonempty {lam : ℝ} (hlam : 1 < lam) :
     ∃ candidate : FourArcCandidate lam,
-      candidate.SatisfiesCMVTypeIVHypotheses := by
-  have hlam_pos : 0 < lam := lt_trans zero_lt_one hlam
-  have hxpos : 0 < (1 : ℝ) / lam := one_div_pos.mpr hlam_pos
-  have hxlt : (1 : ℝ) / lam < 1 := (div_lt_one hlam_pos).2 hlam
-  let candidate : FourArcCandidate lam :=
-    { h := 1
-      alpha := arccos (1 / lam)
-      h_pos := by norm_num
-      h_le_one := le_rfl
-      alpha_pos := Real.arccos_pos.mpr hxlt
-      alpha_lt_pi_div_two := Real.arccos_lt_pi_div_two.mpr hxpos }
-  refine ⟨candidate, ?_⟩
-  refine { density_jump := hlam, snell_incidence := ?_ }
-  dsimp [candidate]
-  rw [Real.cos_arccos (by linarith) hxlt.le]
-  field_simp [ne_of_gt hlam_pos]
+      candidate.SatisfiesCMVTypeIVHypotheses :=
+  ⟨endpoint hlam, endpoint_satisfiesCMVTypeIVHypotheses hlam⟩
 
 /-- The strip side-segment formula obtained from the coordinate constructor. -/
 theorem side_caps_area_formula :

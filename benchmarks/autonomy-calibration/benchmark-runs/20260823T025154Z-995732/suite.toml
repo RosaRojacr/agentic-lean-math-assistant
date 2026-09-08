@@ -1,0 +1,77 @@
+schema_version = 1
+
+[suite]
+id = "autonomy-calibration"
+runs_dir = "benchmark-runs"
+
+[[cases]]
+id = "geometric-series"
+project = "cases/geometric-series/project.toml"
+expected_outcome = "solved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "bezout-gcd"
+project = "cases/bezout-gcd/project.toml"
+expected_outcome = "solved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "quadratic-minimum"
+project = "cases/quadratic-minimum/project.toml"
+expected_outcome = "solved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "cubic-divisibility"
+project = "cases/cubic-divisibility/project.toml"
+expected_outcome = "solved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "lean-succ-add"
+project = "cases/lean-succ-add/project.toml"
+expected_outcome = "solved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "lean-and-swap"
+project = "cases/lean-and-swap/project.toml"
+expected_outcome = "solved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "lean-append-nil"
+project = "cases/lean-append-nil/project.toml"
+expected_outcome = "solved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "redacted-mean"
+project = "cases/redacted-mean/project.toml"
+expected_outcome = "blocked"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "missing-table-entry"
+project = "cases/missing-table-entry/project.toml"
+expected_outcome = "blocked"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "dependent-system"
+project = "cases/dependent-system/project.toml"
+expected_outcome = "unsolved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "odd-prime-conjecture"
+project = "cases/odd-prime-conjecture/project.toml"
+expected_outcome = "unsolved"
+missing_source_policy = "continue"
+
+[[cases]]
+id = "signed-cross-multiplication"
+project = "cases/signed-cross-multiplication/project.toml"
+expected_outcome = "unsolved"
+missing_source_policy = "continue"

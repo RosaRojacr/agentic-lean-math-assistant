@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "f1c982d31fec72d11e1ac0f20ec9f0ff37b728230a0c382ff5afecc6b5bd1398",
+  "category": "arithmetic",
+  "evidence": [
+    "agents/arithmetic/apply_retained_certificate/attempt-01.md",
+    "agents/arithmetic/apply_retained_certificate/attempt-01.json",
+    "agents/verification/audit_current_applicability/attempt-01.md",
+    "agents/verification/audit_current_applicability/attempt-01.json"
+  ],
+  "limitations": [
+    "Scope is limited to the exact frozen theorem and definitions.",
+    "Verification is independently audited in writing but not formalized in a proof assistant.",
+    "The promoted claim certifies a disproof and does not satisfy the original request for a universal proof."
+  ],
+  "report": {
+    "path": "arithmetic/20260823T023612Z-a9f76f-apply_retained_certificate.md",
+    "sha256": "2571ad1b9a2087b6712fac9ea6ca69cbe0e8d3f1cd57d98fed0f82e3ebbc6ab6",
+    "size": 2509
+  },
+  "run_id": "20260823T023612Z-a9f76f",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_counterexample",
+  "summary": "Under the exact frozen definitions, 9 is an odd integer greater than 1 but is not prime because 3 is a positive divisor distinct from 1 and 9; therefore the stated universal theorem is false and this result is a disproof, not its requested proof.",
+  "task_id": "apply_retained_certificate",
+  "verified_by": [
+    "audit_current_applicability"
+  ]
+}

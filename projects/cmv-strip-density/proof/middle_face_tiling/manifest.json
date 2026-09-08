@@ -1,0 +1,586 @@
+{
+  "adjacency": "exact-equality",
+  "arithmetic": {
+    "atan_terms": 36,
+    "decision_type": "fractions.Fraction mean-value intervals",
+    "pi_formula": "16*atan(1/5)-4*atan(1/239)",
+    "trig_terms": 14
+  },
+  "brick_count": 113,
+  "bricks": [
+    {
+      "brick_id": "B0000",
+      "certificate_sha256": "f8acbb968802bf49489725eb5d3763f8c8ab9c5a7a9e37c1463ffeeb338e6b69",
+      "path": "bricks/B0000.json"
+    },
+    {
+      "brick_id": "B0001",
+      "certificate_sha256": "e28697c6cdb1d9dd373947db311080b9b8930fde245dee587847f82fe8b3ce2e",
+      "path": "bricks/B0001.json"
+    },
+    {
+      "brick_id": "B0002",
+      "certificate_sha256": "d712036a55e72f559cc8cca31f3e898ad055067b2b8a45382a4f6a38b6ce6a1b",
+      "path": "bricks/B0002.json"
+    },
+    {
+      "brick_id": "B0003",
+      "certificate_sha256": "a4c64d5150b828c5a0e93d562679ff309369b5be2c10f3fd35585a0c8451614b",
+      "path": "bricks/B0003.json"
+    },
+    {
+      "brick_id": "B0004",
+      "certificate_sha256": "81c5b1d1abd6cbc7d44b1a435efbf0e084a3c26eaa9520a391b4222fbaac36f9",
+      "path": "bricks/B0004.json"
+    },
+    {
+      "brick_id": "B0005",
+      "certificate_sha256": "e772ea32939e71ad2f0eb73ed54e664795bb150fbbef28b5ea3ba014d04249f2",
+      "path": "bricks/B0005.json"
+    },
+    {
+      "brick_id": "B0006",
+      "certificate_sha256": "a3dce3a566d449a57ae08b164713c2bc429d11974a356754984e13801c36db22",
+      "path": "bricks/B0006.json"
+    },
+    {
+      "brick_id": "B0007",
+      "certificate_sha256": "ddb50ae68fdc79c39495837777fcb0be6a346663419a5c2db116a47685844fa9",
+      "path": "bricks/B0007.json"
+    },
+    {
+      "brick_id": "B0008",
+      "certificate_sha256": "08ca1d6c846296887218b5210793dbdeab00ebeb94c32dc88115a94c8ce16d41",
+      "path": "bricks/B0008.json"
+    },
+    {
+      "brick_id": "B0009",
+      "certificate_sha256": "0f170cc5ca705fad23fbddc1af4e1bdb0f48be68139d62c02b2db6de1fbc5d21",
+      "path": "bricks/B0009.json"
+    },
+    {
+      "brick_id": "B0010",
+      "certificate_sha256": "89eaa73b3c9ee6c1f15d6a445cf0012dab4e0b55972dfcf34b5264c776a20058",
+      "path": "bricks/B0010.json"
+    },
+    {
+      "brick_id": "B0011",
+      "certificate_sha256": "e58a7587cd41e8254e02d9886ef0c45c8f194c8470725d561e49c27a2b9f5d3e",
+      "path": "bricks/B0011.json"
+    },
+    {
+      "brick_id": "B0012",
+      "certificate_sha256": "24d0fc2dda1db055848e0759421c5a6b88440d59390b6175ef48f9502b854f9c",
+      "path": "bricks/B0012.json"
+    },
+    {
+      "brick_id": "B0013",
+      "certificate_sha256": "8adf80905fca3096cccbc3d5ead178f670c1d942fc50c15ae2dabdd50f25b540",
+      "path": "bricks/B0013.json"
+    },
+    {
+      "brick_id": "B0014",
+      "certificate_sha256": "b91adfd642ea550080c47c69c5091c9b51b453a8ea26644087af8975f68c0b2f",
+      "path": "bricks/B0014.json"
+    },
+    {
+      "brick_id": "B0015",
+      "certificate_sha256": "7cc33dfa264e0f468387630df1d75dc86477f3222881aa68a548eeea59e4c139",
+      "path": "bricks/B0015.json"
+    },
+    {
+      "brick_id": "B0016",
+      "certificate_sha256": "7fa24f670ac09839a8c35e6971aee84444db22ec383fd8a06498d3724a9b0513",
+      "path": "bricks/B0016.json"
+    },
+    {
+      "brick_id": "B0017",
+      "certificate_sha256": "8890b7398e61304e07de4532d4552507184dfe1d236897ead5b58a29bc62bba1",
+      "path": "bricks/B0017.json"
+    },
+    {
+      "brick_id": "B0018",
+      "certificate_sha256": "4ac8d5a67860334b38efad8e4b2677c50d7713aa6e6701b1924aae75ad643224",
+      "path": "bricks/B0018.json"
+    },
+    {
+      "brick_id": "B0019",
+      "certificate_sha256": "a8d26d391e31ae857194f365be26a2b10204832cbebb074c218c4e9a2fed4e14",
+      "path": "bricks/B0019.json"
+    },
+    {
+      "brick_id": "B0020",
+      "certificate_sha256": "fce7c83288270dc359e9fb33117e3185804d9664ed8d99a76111e5334e8ecfe8",
+      "path": "bricks/B0020.json"
+    },
+    {
+      "brick_id": "B0021",
+      "certificate_sha256": "a43781e80774eec24864cdacc20515fa44230725fb3e5649f2e38f044d2cb56d",
+      "path": "bricks/B0021.json"
+    },
+    {
+      "brick_id": "B0022",
+      "certificate_sha256": "a6aa0776265a2261fcba45f4a811f8615e9b6a726ff0553540a97cdbf79e82bc",
+      "path": "bricks/B0022.json"
+    },
+    {
+      "brick_id": "B0023",
+      "certificate_sha256": "c0a8e90b7293e63712c38db4e18b23b467b7bc0f368675daefa81153fd6746d9",
+      "path": "bricks/B0023.json"
+    },
+    {
+      "brick_id": "B0024",
+      "certificate_sha256": "c1f04287bd5776772866e22858c29c220044ed0d204ac751eb5b687a6be897ea",
+      "path": "bricks/B0024.json"
+    },
+    {
+      "brick_id": "B0025",
+      "certificate_sha256": "ee4e57b161aa09064d59fb2eb06357c52ba2011a1a88003561561d74fb713b57",
+      "path": "bricks/B0025.json"
+    },
+    {
+      "brick_id": "B0026",
+      "certificate_sha256": "d4a1807bbe4ae06c37bb46059c073e56ba81753f4a33a3646690959aa5dd703a",
+      "path": "bricks/B0026.json"
+    },
+    {
+      "brick_id": "B0027",
+      "certificate_sha256": "52e879bfca5093d471363260f28d4b3f0b2bf4bc4ec293a627695efa1f480f28",
+      "path": "bricks/B0027.json"
+    },
+    {
+      "brick_id": "B0028",
+      "certificate_sha256": "8d074bf4638209671beadc9381f011ad117861b9e835445b553ce07eb4fe183a",
+      "path": "bricks/B0028.json"
+    },
+    {
+      "brick_id": "B0029",
+      "certificate_sha256": "1375fe9ab66eb9b6d46bd7b23e0ae49a8599ad3c1d848721bdf9332cc001fb28",
+      "path": "bricks/B0029.json"
+    },
+    {
+      "brick_id": "B0030",
+      "certificate_sha256": "ca447aab575d3391f8dd4b11a1359a910c791090a5c921bf51bb6c1e660c1a33",
+      "path": "bricks/B0030.json"
+    },
+    {
+      "brick_id": "B0031",
+      "certificate_sha256": "f7e79493d8e8882d790f49dc6a21272a28bc8232d1c6efa8534836eb9de105a5",
+      "path": "bricks/B0031.json"
+    },
+    {
+      "brick_id": "B0032",
+      "certificate_sha256": "befc6e1e9a9b3868e45e207c8f489f5e9a15c691a489c17aa0f98acd6a83d00a",
+      "path": "bricks/B0032.json"
+    },
+    {
+      "brick_id": "B0033",
+      "certificate_sha256": "2a43c5ca492aeb31dbd27700c15e050c98215f11fc5e9a302a57f0be8b36e994",
+      "path": "bricks/B0033.json"
+    },
+    {
+      "brick_id": "B0034",
+      "certificate_sha256": "14b7d7a56dd7a11dea717c9eccea46bca119ac74093847b47daa81ff3e4b4b60",
+      "path": "bricks/B0034.json"
+    },
+    {
+      "brick_id": "B0035",
+      "certificate_sha256": "3143f9f305e3b69cfe53ed5bf2343a699e8bcfc24e61fd167040e9f505770ed7",
+      "path": "bricks/B0035.json"
+    },
+    {
+      "brick_id": "B0036",
+      "certificate_sha256": "db765c69e70aaac08ec2524d9a23f93ae79c279ddbdaef52b9a482c3258bc152",
+      "path": "bricks/B0036.json"
+    },
+    {
+      "brick_id": "B0037",
+      "certificate_sha256": "2e365f6faa008bda9b25139e3caaf6f40e06a46f118a17bcc70f39c6f49d0c21",
+      "path": "bricks/B0037.json"
+    },
+    {
+      "brick_id": "B0038",
+      "certificate_sha256": "44b1551aa25826149c30e1d75aa6c9dcff60041488d4ca7bcca35908c2ecc8c7",
+      "path": "bricks/B0038.json"
+    },
+    {
+      "brick_id": "B0039",
+      "certificate_sha256": "4a6395aac542518b7a87b160566a19f62ad87608921f7f8b5789faa9fcdae292",
+      "path": "bricks/B0039.json"
+    },
+    {
+      "brick_id": "B0040",
+      "certificate_sha256": "cce465d68692a1e3972b7aa96bceb338c164b363babe46fc9858cf6b2ad53bd2",
+      "path": "bricks/B0040.json"
+    },
+    {
+      "brick_id": "B0041",
+      "certificate_sha256": "dd79d52201430ad835513e22385d7d161ce2300eadad5e3448e181cf83efc879",
+      "path": "bricks/B0041.json"
+    },
+    {
+      "brick_id": "B0042",
+      "certificate_sha256": "e051682f03a315199a7c898d3c60cf8e3a609db0241caa766da040ac6e9c2c52",
+      "path": "bricks/B0042.json"
+    },
+    {
+      "brick_id": "B0043",
+      "certificate_sha256": "2ce2cc6319c4050451b72762fb6ec6d32aba07703132bc7eccc4c62067e93040",
+      "path": "bricks/B0043.json"
+    },
+    {
+      "brick_id": "B0044",
+      "certificate_sha256": "124d066cc8cd3fb763d13bfb195214074b11fe76891bacc24d4d711d3c42d9f7",
+      "path": "bricks/B0044.json"
+    },
+    {
+      "brick_id": "B0045",
+      "certificate_sha256": "914d467148db91b2db26d1818fbec99ffcc605668574eb4f04e136d31b47c48e",
+      "path": "bricks/B0045.json"
+    },
+    {
+      "brick_id": "B0046",
+      "certificate_sha256": "880a8b54105665a40e0a5cba6dd12a0c046f71036a084346fd2956ee15459af7",
+      "path": "bricks/B0046.json"
+    },
+    {
+      "brick_id": "B0047",
+      "certificate_sha256": "090497bec8f8a97e88de5743ac38ce8fbff283c386021fc1971543d6ab22288c",
+      "path": "bricks/B0047.json"
+    },
+    {
+      "brick_id": "B0048",
+      "certificate_sha256": "5c1a17b5fffffe5831678abd168041116bcd3256c2b254a34539e7929f845da3",
+      "path": "bricks/B0048.json"
+    },
+    {
+      "brick_id": "B0049",
+      "certificate_sha256": "1f134227bbf93951761dbe762e1c536f5acbd53b2cdd0d348e3e3dc19a49fa26",
+      "path": "bricks/B0049.json"
+    },
+    {
+      "brick_id": "B0050",
+      "certificate_sha256": "9ac36d4eee5a9fbbef0ad05829d264b0941e4f7a0e731db6e6ff6feb85d9ad1d",
+      "path": "bricks/B0050.json"
+    },
+    {
+      "brick_id": "B0051",
+      "certificate_sha256": "a74f87f6d8d99e67bb3ede9cd2a20ff91691180686b4cc93087004e9973b0642",
+      "path": "bricks/B0051.json"
+    },
+    {
+      "brick_id": "B0052",
+      "certificate_sha256": "01759e8e8bf3cb64bad3a8b8ae1978dc00270178ec01a2b9ecc9e7d3fcd9a153",
+      "path": "bricks/B0052.json"
+    },
+    {
+      "brick_id": "B0053",
+      "certificate_sha256": "7ec6e75a2162ea6c29608a4b89919b6932ccaa199881c805b8a655eb19ac77af",
+      "path": "bricks/B0053.json"
+    },
+    {
+      "brick_id": "B0054",
+      "certificate_sha256": "51580e185a84cd97420f5d001c24933a718cdcfbe560be391d5a3be8e043831c",
+      "path": "bricks/B0054.json"
+    },
+    {
+      "brick_id": "B0055",
+      "certificate_sha256": "74c5000a00d76eac624db10119f60b3825beb28bcada37221cb556a119cb5d86",
+      "path": "bricks/B0055.json"
+    },
+    {
+      "brick_id": "B0056",
+      "certificate_sha256": "4b51f1ff671b6a7f986a9a60783953a3d2ef3d83321c762a5c783e24734e0a53",
+      "path": "bricks/B0056.json"
+    },
+    {
+      "brick_id": "B0057",
+      "certificate_sha256": "51bf6b146906e9d93d44f6700f5802b787479d329b0b64061f1d58f8f83614f8",
+      "path": "bricks/B0057.json"
+    },
+    {
+      "brick_id": "B0058",
+      "certificate_sha256": "6e5abea687106f9466273dfb87d03413137173d19d216bd9ae283553bd6cba1a",
+      "path": "bricks/B0058.json"
+    },
+    {
+      "brick_id": "B0059",
+      "certificate_sha256": "0c8b151f629191c0b5643dd551a50596dd6512c5c359d9ffed4488200d40b64b",
+      "path": "bricks/B0059.json"
+    },
+    {
+      "brick_id": "B0060",
+      "certificate_sha256": "29e261a02348034ef67c4757464ba4c49b0061141d5d97a95b316a8b9553a6e9",
+      "path": "bricks/B0060.json"
+    },
+    {
+      "brick_id": "B0061",
+      "certificate_sha256": "06f9369d3c7f360e552c697b048e67a40087812970d407c5855cfdb8d79ff3b4",
+      "path": "bricks/B0061.json"
+    },
+    {
+      "brick_id": "B0062",
+      "certificate_sha256": "ff145c751e8d4d0deb93f38c6f1d05d72b18c0f4302d2000f1c9705c7272be1a",
+      "path": "bricks/B0062.json"
+    },
+    {
+      "brick_id": "B0063",
+      "certificate_sha256": "dcd7c180924d983fa76f51de970f90062b21841df8c8741059cf3759c9297b86",
+      "path": "bricks/B0063.json"
+    },
+    {
+      "brick_id": "B0064",
+      "certificate_sha256": "b4e76c74e3f868d7db43ad0a82688aa383f52bbc2ffd830b42b2c23046bfeb32",
+      "path": "bricks/B0064.json"
+    },
+    {
+      "brick_id": "B0065",
+      "certificate_sha256": "c4583ae42bca13461137c66d1b6da318dfde83d925dd1b6a50a39316ecf5d86e",
+      "path": "bricks/B0065.json"
+    },
+    {
+      "brick_id": "B0066",
+      "certificate_sha256": "44a214d67d02e1c10001e5f84720f53aee435edaad4301a1c7b7272cf640de29",
+      "path": "bricks/B0066.json"
+    },
+    {
+      "brick_id": "B0067",
+      "certificate_sha256": "5d6b9b73ca18eae9000c2b4a564901574f6c98946fae5cc1311d9c4a3a055217",
+      "path": "bricks/B0067.json"
+    },
+    {
+      "brick_id": "B0068",
+      "certificate_sha256": "81eec04667236773828b9a9d4afbb77808226069322311883a11730b0e43b531",
+      "path": "bricks/B0068.json"
+    },
+    {
+      "brick_id": "B0069",
+      "certificate_sha256": "ef88b83a85b1fc1a720d4cca8076effa5d46117a15773e0f533a51fee2f05105",
+      "path": "bricks/B0069.json"
+    },
+    {
+      "brick_id": "B0070",
+      "certificate_sha256": "bb4537667443c8fb70f8fb1678ded23f3894f34ff303a0e12bc088a505045e6e",
+      "path": "bricks/B0070.json"
+    },
+    {
+      "brick_id": "B0071",
+      "certificate_sha256": "7348357dd7102e186b0492cf38b55d4a49e9ec5db010558a4ac7e16f2fa1a930",
+      "path": "bricks/B0071.json"
+    },
+    {
+      "brick_id": "B0072",
+      "certificate_sha256": "3aeff4114cf71e0f0576fef26e53fdc96efa60a49f99f06f64a13942cb27a5d1",
+      "path": "bricks/B0072.json"
+    },
+    {
+      "brick_id": "B0073",
+      "certificate_sha256": "22cd7bd40463c31a81c72a6098e9c5ff9868c12fb2aa7bc5c054097d0016a9c6",
+      "path": "bricks/B0073.json"
+    },
+    {
+      "brick_id": "B0074",
+      "certificate_sha256": "8572e8dc799098c04bd0e8e1390e95097e0f88d4b0aeb0ab8213116ff43f6756",
+      "path": "bricks/B0074.json"
+    },
+    {
+      "brick_id": "B0075",
+      "certificate_sha256": "bd58e257b063f9244c0f666818c2912afb61a4a988def15e8c1b120f322452d8",
+      "path": "bricks/B0075.json"
+    },
+    {
+      "brick_id": "B0076",
+      "certificate_sha256": "87d32ca7fe58327b2bb312bdaa5c708cd9d78795951bf1d0ad05f0f084b12626",
+      "path": "bricks/B0076.json"
+    },
+    {
+      "brick_id": "B0077",
+      "certificate_sha256": "7662cb1e545a894d27b77bd689e52413b4dc9f79b6267c9fef31b32edcca7d10",
+      "path": "bricks/B0077.json"
+    },
+    {
+      "brick_id": "B0078",
+      "certificate_sha256": "9e44d5bb8cda9872b528aaaef802fbabcd1ce9f43e3df824a91af7d625d6cb14",
+      "path": "bricks/B0078.json"
+    },
+    {
+      "brick_id": "B0079",
+      "certificate_sha256": "333b44413dee59fd9281d7b01a71b9c414aaa958b48e5657e16f4d29c9bb8cd0",
+      "path": "bricks/B0079.json"
+    },
+    {
+      "brick_id": "B0080",
+      "certificate_sha256": "4f3c8c94edada4be046e95fce82244f7d43d62a366144a4f1de90496c80f1aa4",
+      "path": "bricks/B0080.json"
+    },
+    {
+      "brick_id": "B0081",
+      "certificate_sha256": "1edf3cb6820883650b2602617d8b023dbd2da30c069e13e38ad4fa06201a7af8",
+      "path": "bricks/B0081.json"
+    },
+    {
+      "brick_id": "B0082",
+      "certificate_sha256": "ff90a1415877d8244a45663b67dee0a280d41ad98bd2d7c2d00230756ff6dc9b",
+      "path": "bricks/B0082.json"
+    },
+    {
+      "brick_id": "B0083",
+      "certificate_sha256": "7dab4b4c17c2b8393fa19a74ff9642df22b30347961354f00d5e24f0cf807bf3",
+      "path": "bricks/B0083.json"
+    },
+    {
+      "brick_id": "B0084",
+      "certificate_sha256": "4449c016d77c6b300ae2ea4ddcdc7f203a9e3a5051488dd9ca8c5fc600944f0a",
+      "path": "bricks/B0084.json"
+    },
+    {
+      "brick_id": "B0085",
+      "certificate_sha256": "006583298e644545c3810fa57844ec65015990cbbd54a5e49e2f51e91ffa149c",
+      "path": "bricks/B0085.json"
+    },
+    {
+      "brick_id": "B0086",
+      "certificate_sha256": "263d700da8835233a12814aacf8bee44a86f89a71648b76059be7685f0048b11",
+      "path": "bricks/B0086.json"
+    },
+    {
+      "brick_id": "B0087",
+      "certificate_sha256": "45c998da820145c44c2900829c50a95ecd5c4e5e4aa4d3bd6fcd302319ebb0c9",
+      "path": "bricks/B0087.json"
+    },
+    {
+      "brick_id": "B0088",
+      "certificate_sha256": "9291351ae1f0530802f3564b7be7a1ffcddcdfdd170bb02cdc07196e144f31bb",
+      "path": "bricks/B0088.json"
+    },
+    {
+      "brick_id": "B0089",
+      "certificate_sha256": "689ce4d2e7b1288a6f784594ca9ca4a41e900c467682568e11c5bac7d0cec547",
+      "path": "bricks/B0089.json"
+    },
+    {
+      "brick_id": "B0090",
+      "certificate_sha256": "31dccdf7d15a78ef4e75aa1f73f9956037df26b5d6d0127b7189b01136de47d9",
+      "path": "bricks/B0090.json"
+    },
+    {
+      "brick_id": "B0091",
+      "certificate_sha256": "f6c780eb43bad8c759763f789b985853b323011fed8a0925abdc41fdac8b9148",
+      "path": "bricks/B0091.json"
+    },
+    {
+      "brick_id": "B0092",
+      "certificate_sha256": "e8e8486d45b4cc21aa918ccecf1bc3a12c82d353de617e00d55b0d22b4a239e6",
+      "path": "bricks/B0092.json"
+    },
+    {
+      "brick_id": "B0093",
+      "certificate_sha256": "d73053fb6c1612088672eb9a37f86ce6aa36fcf107d10621ba371b6de95ee368",
+      "path": "bricks/B0093.json"
+    },
+    {
+      "brick_id": "B0094",
+      "certificate_sha256": "6eec7ebe0d732a37d70cfbb5230a452b3021841fd519075a6391dc568e7f58c8",
+      "path": "bricks/B0094.json"
+    },
+    {
+      "brick_id": "B0095",
+      "certificate_sha256": "7c016cefad3fd634a64bdb5bef639ca9aa1a7cb6bace06882fa5b79b17349aa9",
+      "path": "bricks/B0095.json"
+    },
+    {
+      "brick_id": "B0096",
+      "certificate_sha256": "2eabde19367dc77bfc4b6b455f4cea328aa7b133e785dc3b8a6756c62d2a41bb",
+      "path": "bricks/B0096.json"
+    },
+    {
+      "brick_id": "B0097",
+      "certificate_sha256": "2c7c2167c44b2d47516e5fe262df54a908449320840a6d45a049696000f20754",
+      "path": "bricks/B0097.json"
+    },
+    {
+      "brick_id": "B0098",
+      "certificate_sha256": "6f218bfb70315cf1ef8a1af31e75afa64104ba3bde408d2fe94a6339ec776817",
+      "path": "bricks/B0098.json"
+    },
+    {
+      "brick_id": "B0099",
+      "certificate_sha256": "0f94f0ccafd18f55d97c3f7cc600d8a280db5bb31d4b5e00847ee2156d1ed896",
+      "path": "bricks/B0099.json"
+    },
+    {
+      "brick_id": "B0100",
+      "certificate_sha256": "41a6fef7d01818bb1cd818945ac0ecd317e2a75b3689a9fc5ceaee7a955c2501",
+      "path": "bricks/B0100.json"
+    },
+    {
+      "brick_id": "B0101",
+      "certificate_sha256": "0cbcb22167dda17598f45e499dd7cae5f06450f1094eab28c1524602ef2a3565",
+      "path": "bricks/B0101.json"
+    },
+    {
+      "brick_id": "B0102",
+      "certificate_sha256": "b3f273385dccf15851268203d0e615a3da0ffd5b771d4343a93e68f6902751de",
+      "path": "bricks/B0102.json"
+    },
+    {
+      "brick_id": "B0103",
+      "certificate_sha256": "fcac3881329b11ac58eb18338d1e4f5bf8b86b1fb93bb07ce7ec33518d368e85",
+      "path": "bricks/B0103.json"
+    },
+    {
+      "brick_id": "B0104",
+      "certificate_sha256": "3a9eda5e95f817256dcb72ec826e983cc3aa56483fe0bf9a9e20eac110b4a493",
+      "path": "bricks/B0104.json"
+    },
+    {
+      "brick_id": "B0105",
+      "certificate_sha256": "3a16eb02ab27cd35617a0cebd25cd8244ae9fb86b9d00cd1bd123973d97e74b5",
+      "path": "bricks/B0105.json"
+    },
+    {
+      "brick_id": "B0106",
+      "certificate_sha256": "e6f208a0f0ca9db2d93dca2dd7b86b10e6ed831b60e17677f4b75b86fa72a62b",
+      "path": "bricks/B0106.json"
+    },
+    {
+      "brick_id": "B0107",
+      "certificate_sha256": "14f08c0bc8ce9e691604122b2ded320de9e3d137466e5278456a8b6374688244",
+      "path": "bricks/B0107.json"
+    },
+    {
+      "brick_id": "B0108",
+      "certificate_sha256": "83ea9be373cafdfe004b4548b62a091ea29ea58b4f99e50d9ec2f3d14550f300",
+      "path": "bricks/B0108.json"
+    },
+    {
+      "brick_id": "B0109",
+      "certificate_sha256": "9b78002e8a0bd47ab93dfcc761fefa700a58862b1f3a978d3293522f5aad4fc4",
+      "path": "bricks/B0109.json"
+    },
+    {
+      "brick_id": "B0110",
+      "certificate_sha256": "f0caebc38ee80b519542e7fffa77bb80b6dfefd7259f1635387526ee0d602758",
+      "path": "bricks/B0110.json"
+    },
+    {
+      "brick_id": "B0111",
+      "certificate_sha256": "82e02032bc11cdec22ac08711db140298d9a9178133415ed1e5f0f55c13163ee",
+      "path": "bricks/B0111.json"
+    },
+    {
+      "brick_id": "B0112",
+      "certificate_sha256": "50dd5ef33ad41c707932f2173a4c76fe16d4033025b1cef30f1adb9dfb54d9f2",
+      "path": "bricks/B0112.json"
+    }
+  ],
+  "left_prototype_overlap": "102001/100000",
+  "model": "cmv-angle-fold-equal-area-v1",
+  "payload_sha256": "d20c02a381696b4b1f3ea0790fcc089f0f026c4b9a2a23a50110287176334b4e",
+  "right_prototype_overlap": "25781/25000",
+  "schema": "cmv-middle-face-tiling-manifest-v1",
+  "target_lambda": [
+    "102001/100000",
+    "25781/25000"
+  ]
+}

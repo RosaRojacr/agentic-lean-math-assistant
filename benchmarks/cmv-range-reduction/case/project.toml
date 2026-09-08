@@ -1,0 +1,36 @@
+schema_version = 1
+
+[project]
+id = "cold-cmv-range-reduction"
+title = "Cold Reconstruction of the CMV Four-Arc Range Reduction"
+problem = "problem.md"
+references = "references"
+knowledge = "knowledge"
+runs = "runs"
+
+[regime]
+omp = "omp"
+planner_thinking = "xhigh"
+max_tasks = 16
+max_parallel = 8
+max_restarts = 1
+default_agent_time = 3600
+allowed_tools = ["read", "grep", "glob", "bash", "eval", "write", "edit"]
+pilot_agent_seconds = 28800
+research_agent_seconds = 72000
+formalization_agent_seconds = 72000
+max_attempts_total = 32
+max_invention_tasks = 6
+execution_thinking = "high"
+analysis_thinking = "high"
+invention_thinking = "xhigh"
+audit_thinking = "xhigh"
+
+[execution]
+sandbox = false
+workspace_max_mb = 32768
+
+[[inputs]]
+path = "proof"
+target = "proof"
+excludes = [".lake", ".lake/**", ".git/**", "__pycache__", "__pycache__/**"]

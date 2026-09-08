@@ -1,0 +1,12 @@
+import CMVFigureThreeNonfit
+
+namespace CMVFigureThree.TypeThreeAssembly
+
+#print axioms horizontalSection_neg_one
+#print axioms horizontalSection_horizontalTranslation
+#print axioms horizontalSection_horizontalTranslation_semicircular
+#print axioms bottomChord_lt_contactChord
+#print axioms chordCarrier_not_subset_translated_horizontalSection
+#print axioms semicircular_chordCarrier_not_subset_translated_horizontalSection
+
+end CMVFigureThree.TypeThreeAssembly

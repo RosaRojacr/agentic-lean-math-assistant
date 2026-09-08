@@ -1,0 +1,104 @@
+{
+  "schema": 2,
+  "strategy_id": "strategy-00035",
+  "round": 209,
+  "milestone_indices": [7],
+  "milestone_name": "horizontal-section reconstruction for universal source classification",
+  "result": "advanced",
+  "files": {
+    "proof/CMVSourceSectionClassification.lean": "2d8f34f0b6ec534ef9cd12eb86d6e5c90172e6e9f504b128a69c97b2a51aa497",
+    "proof/CMVModeledCutoff.lean": "7242057a4705a96d7d7ced4fc02dfe531f62bee81318e0674c904e9f71c7b68f",
+    "proof/lakefile.toml": "27f69a255e0c705f78062616fc30da361f1adfc931384c1d1ff0b274f6cdf8dd",
+    "proof/_Assumptions.lean": "95998a171bf0967b1ad65fcb23128f1d62b674a3f2f7d38b8c660c0457097f24",
+    "MASTER_PROMPT.md": "789043d6de0bfdf4d78a6b0a0dff2cd7cda15502938a1f21738ff8214969538d",
+    "README.md": "a57520fa5d81f94ee680d62fc1d36364265502342c6bcdaa701f43874acf2015"
+  },
+  "source": {
+    "path": "references/Canete2010.pdf",
+    "sha256": "0ee9b4787aa3c09f9a4ed05fb66563a820cd13596af401b76e7900e597711230",
+    "locators": [
+      "Proposition 3.6 discussion, printed page 14, extracted lines 473--487: Schwarz symmetrization preserves weighted volume, does not increase perimeter, and an isoperimetric region has interval horizontal slices almost everywhere in dimension two.",
+      "Lemma 3.8 preamble and statement, printed page 15, extracted lines 494--503: connected planar isoperimetric regions have almost all horizontal slices intervals and type-(iv) candidates consist of four equal-radius circular arcs satisfying Snell's law.",
+      "Lemma 3.8 proof, printed pages 15--16, extracted lines 509--533: arc continuation and Steps 1--3 exclude the other boundary configurations.",
+      "Lemma 3.8 Step 2, printed pages 16--17, extracted lines 533--570: the four-arc configuration is forced to be horizontally symmetric."
+    ]
+  },
+  "declarations": [
+    "CMVSourceClassification.horizontalSection",
+    "CMVSourceClassification.ae_eq_of_ae_horizontalSection_eq",
+    "CMVSourceClassification.RawFourArcCoordinates.isClosed_carrier",
+    "CMVSourceClassification.RawFourArcCoordinates.measurableSet_carrier",
+    "CMVSourceClassification.HasTypeIVHorizontalSections",
+    "CMVSourceClassification.sourceCarrier_ae_rawCarrier_of_horizontalSections",
+    "CMVSourceClassification.almostEverywhereHorizontallyCongruent_profile_of_horizontalSections",
+    "CMVModeledCutoff.relaxedSourceCarrier_not_isMinimizer_from_51_50_of_horizontalSections",
+    "CMVModeledCutoff.relaxedSourceCarrier_minimizer_open_range_51_50_of_horizontalSections"
+  ],
+  "checked_contract": {
+    "raw_measurability": "Each of the rectangle, two strip-side disk segments, and two exterior disk caps is closed; their finite union and arbitrary horizontal-translation image are closed and Borel measurable.",
+    "null_measurable_fubini": "For null-measurable E and F, almost-everywhere equality of almost every horizontal section implies E = F almost everywhere in planar volume. The proof passes through measurable representatives, transports null equality through coordinate swap, and uses both Fubini orders.",
+    "sectionwise_interface": "HasTypeIVHorizontalSections states one-dimensional almost-everywhere slice agreement and does not contain a planar equality or congruence field.",
+    "classification_composition": "Sectionwise agreement plus source null measurability gives planar almost-everywhere equality with the independent raw carrier and then AlmostEverywhereHorizontallyCongruent with the canonical profile.",
+    "cutoff_integration": "The concrete relaxed cutoff and open-range consumer derive source null measurability from IsMinimizer and consume HasTypeIVHorizontalSections without a caller-supplied planar equality or NormalizationWitness. CompatibleWithModel remains explicit."
+  },
+  "excluded_hypotheses": [
+    "planar sourceCarrier = raw.carrier equality in the sectionwise cutoff consumer",
+    "planar sourceCarrier = raw.carrier almost-everywhere premise in the sectionwise cutoff consumer",
+    "caller-supplied NullMeasurableSet premise in the sectionwise cutoff consumer",
+    "caller-supplied NormalizationWitness"
+  ],
+  "retained_explicit_hypotheses": [
+    "strict regular source radius and Snell data",
+    "HasTypeIVHorizontalSections; proving it for every source minimizer remains the geometric/GMT obligation",
+    "CompatibleWithModel"
+  ],
+  "axioms": {
+    "audited_set": ["propext", "Classical.choice", "Quot.sound"],
+    "project_axioms_added": []
+  },
+  "verification": [
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean CMVSourceSectionClassification.lean",
+      "exit_code": 0,
+      "wall_seconds": 4.15,
+      "result": "The horizontal-section reconstruction module typechecked."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake build CMVSourceClassificationSupport CMVModeledCutoff",
+      "exit_code": 0,
+      "wall_seconds": 9.53,
+      "result": "Targeted build completed successfully (8882 jobs)."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean _SectionClassificationAudit.lean",
+      "exit_code": 0,
+      "wall_seconds": 4.22,
+      "result": "Focused temporary audit reported only propext, Classical.choice, and Quot.sound for all seven principal reconstruction and cutoff declarations; the temporary file was removed."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean _Assumptions.lean",
+      "exit_code": 0,
+      "wall_seconds": 5.96,
+      "result": "The permanent repository axiom ledger completed with the new declarations included."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake build",
+      "exit_code": 0,
+      "wall_seconds": 2.75,
+      "result": "Full build completed successfully (8895 jobs)."
+    },
+    {
+      "tool": "functions.grep",
+      "path": "proof/CMVSourceSectionClassification.lean;proof/CMVModeledCutoff.lean",
+      "pattern": "\\bsorry\\b|\\badmit\\b|\\bnative_decide\\b|^\\s*axiom\\b",
+      "result": "No matches found"
+    }
+  ],
+  "scope_boundary": "This round proves the null-measurable Fubini reconstruction and threads CMV's horizontal-slice output into the concrete cutoff. It does not prove that every source minimizer has the required sections, does not prove reduced-boundary/model compatibility, and adds no unconditional density coverage.",
+  "next_action": "Define the source-side symmetrized regular type-(iv) boundary data and derive HasTypeIVHorizontalSections from interval slices plus equal-curvature circular arc continuation, keeping Lemma 3.8's excluded configurations explicit; then feed that result to the checked sectionwise cutoff consumer."
+}

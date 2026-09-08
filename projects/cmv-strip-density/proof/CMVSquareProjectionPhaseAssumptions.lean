@@ -1,0 +1,7 @@
+import CMVSquareProjectionPhase
+
+#print axioms CMVRelaxation.isCompact_horizontalCrossingFibers
+#print axioms CMVRelaxation.measurableSet_horizontalCrossingFibers
+#print axioms CMVRelaxation.horizontalSegment_subset_or_subset_compl
+#print axioms CMVRelaxation.projectionBox_diff_crossingProjectionProduct_commonPhase
+#print axioms CMVRelaxation.projectionBox_phase_subset_crossingProjectionProduct

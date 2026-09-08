@@ -1,0 +1,32 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "problem.md defines the complete task, requires checking equation independence, and prohibits auxiliary assumptions.",
+      "references/source.md confirms that x and y are real and that the two displayed equations are the complete retained constraints.",
+      "knowledge/analytic/20260823T053229Z-3e0d5f-reconstruct_system_result.md proves rank one, derives (x,y)=(t,4-t), and shows x-y=2t-4 is not constant.",
+      "knowledge/analytic/20260823T015022Z-31c929-convert_retained_certificate.md supplies an exact non-identifiability certificate using dependent augmented rows and witnesses with x-y=-4 and x-y=-2.",
+      "knowledge/evidence_extraction/20260823T022844Z-3fd4f6-reconcile_retained_certificate.md reconciles the retained evidence and records no unresolved obligations.",
+      "knowledge/research/state.json records a prior skip for the same problem and retained reference inventory."
+    ],
+    "reason": "The problem, retained source inventory, and prior research conclusion are unchanged. The retained accepted artifacts exactly establish that the second augmented row is twice the first, derive the complete real solution set, and verify two solutions yielding different values of x-y. No publication-level gap could materially change the task decomposition, mathematical strategy, verification, or trust boundary.",
+    "reconsider_if": [
+      "The equations, real-number domain, requested conclusion, or retained source inventory changes.",
+      "An additional sign, integrality, ordering, optimization, normalization, or independent constraint is introduced.",
+      "A new obligation requires a publication citation, historical attribution, or formal theorem absent from the retained exact derivations.",
+      "An accepted certificate is withdrawn, contradicted, or found not to match the complete source constraints."
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "631c8c8553c6bf4816b86acfeb2c72db79d37145408ed7cbda620ce71404820c",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "f40a35e54476b1857a18fb2362a1d8ccbd457aae3cd89416d865e4577c9e8f92",
+      "size": 236
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T08:31:54Z"
+}

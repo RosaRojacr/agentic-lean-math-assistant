@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "e04cc66993917d03a460f22c3c5435e7a51877c5d0daf5c1a1f2701fcb5d855e",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_consecutive_proof/attempt-01.md",
+    "agents/analytic/derive_consecutive_proof/attempt-01.json",
+    "workspace/agents/verification/audit_complete_argument/attempt-01.md",
+    "agents/verification/audit_complete_argument/attempt-01.json"
+  ],
+  "limitations": [
+    "Scope is n in the integers and uses the elementary consecutive-integer and coprimality facts retained in input-snapshot/references/source.md.",
+    "This is an independently audited elementary proof, not a proof-assistant kernel certificate."
+  ],
+  "report": {
+    "path": "analytic/20260822T234941Z-5c8f19-derive_consecutive_proof.md",
+    "sha256": "909105da6b448c83cdce2817b1f42032f943c08b1f832b78126dd5fd60fea1f9",
+    "size": 3111
+  },
+  "run_id": "20260822T234941Z-5c8f19",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "consecutive_factors",
+  "summary": "For every integer n, n^3-n factors as (n-1)n(n+1); explicit quotient witnesses prove divisibility by 2 and 3, and the Bezout witness 1=3-2 recombines them to prove divisibility by 6.",
+  "task_id": "derive_consecutive_proof",
+  "verified_by": [
+    "audit_complete_argument"
+  ]
+}

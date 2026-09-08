@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "f6254e99d9b8ac3fea8f4d44ad0ae1c71de8b0415514009bc71e5d84127a185e",
+  "category": "certificate",
+  "evidence": [
+    "agents/certificate/compose_certificate/attempt-01.md",
+    "agents/certificate/compose_certificate/attempt-01.json",
+    "agents/audit/audit_certificate/attempt-01.md",
+    "agents/audit/audit_certificate/attempt-01.json"
+  ],
+  "limitations": [
+    "Restricted to the concrete integer pair (84,30); it does not establish a new general Euclidean-algorithm theorem or gcd implementation.",
+    "The certificate is independently audited mathematical prose with concrete arithmetic checks, not a proof-assistant formalization."
+  ],
+  "report": {
+    "path": "certificate/20260823T065250Z-9467dc-compose_certificate.md",
+    "sha256": "282ba3a97899db44d204867be93b41c96caa1a0f01b3577a30a58f441bad6576",
+    "size": 2055
+  },
+  "run_id": "20260823T065250Z-9467dc",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_certificate_reconstruction",
+  "summary": "For the concrete pair (84,30), gcd(84,30)=6; the complete Euclidean chain is 84=2*30+24, 30=1*24+6, 24=4*6+0; back-substitution gives u=-1 and v=3; 6 divides both inputs; and every integer common divisor divides 6.",
+  "task_id": "compose_certificate",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

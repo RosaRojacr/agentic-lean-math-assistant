@@ -1,0 +1,28 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "references/source.md states that every real square is nonnegative, with equality if and only if its base is zero, and that completing the square preserves equality over the reals.",
+      "knowledge/index.json inventories four retained analytic result pairs for this same quadratic-minimum task and the current prior research state.",
+      "knowledge/research/state.json records a prior skip and three independently audited accepted derivations establishing f(x)=(x-3)^2+4, the minimum value 4, direct attainment f(3)=4, and uniqueness of the minimizer x=3."
+    ],
+    "reason": "The problem, retained reference inventory, and proof obligations are unchanged from the prior skip. The retained source gives the only external fact needed, and the accepted knowledge index plus prior research state record multiple audited derivations of the exact identity f(x)=(x-3)^2+4, the global bound f(x)>=4, direct attainment at x=3, and the exhaustive equality case. New publication research would not materially affect the mathematical strategy, verification, decomposition, or trust boundary.",
+    "reconsider_if": [
+      "The polynomial, real domain, or requested conclusion changes.",
+      "A retained source or accepted analytic artifact is removed, invalidated, or found inconsistent with the problem.",
+      "The task adds a requirement for published attribution, calculus, proof-assistant certification, or computer-algebra certification not covered by the retained materials."
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "c49726361204d39b32cbf1be9373d710bd91ba035106bc9c4112431966cc9d36",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "e5e32260227ecfda9f23086a841aa2989cee89ca558a57accef9ed155ba26ae1",
+      "size": 191
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T07:06:30Z"
+}

@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "4399db0c9dc11339af2c1e6da8ed8b7aed699d699205999e8aff9dbd616395bb",
+  "category": "lean_formalization",
+  "evidence": [
+    "workspace/proof/Calibration.lean",
+    "workspace/agents/lean_formalization/apply_and_build/execution-evidence.txt",
+    "workspace/agents/formalization_audit/audit_deliverable/report.md"
+  ],
+  "limitations": [
+    "The verification is scoped to the retained project and pinned Lean 4.33.1 environment; the Elan binary directory must be supplied explicitly or through PATH."
+  ],
+  "report": {
+    "path": "lean_formalization/20260823T072010Z-9bf16e-apply_and_build.md",
+    "sha256": "653a1170b7a971dba266097bdc37963cd00e0383f611532838efbb8845fe93cc",
+    "size": 1359
+  },
+  "run_id": "20260823T072010Z-9bf16e",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": null,
+  "summary": "The retained `proof/Calibration.lean` preserves the exact theorem statement, replaces only the unresolved proof with `Nat.succ_add m n`, excludes forbidden constructs, builds successfully, and reports no axiom dependencies.",
+  "task_id": "apply_and_build",
+  "verified_by": [
+    "audit_deliverable"
+  ]
+}

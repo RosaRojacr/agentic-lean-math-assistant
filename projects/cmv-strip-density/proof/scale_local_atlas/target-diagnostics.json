@@ -1,0 +1,9 @@
+{
+  "status": "DIAGNOSTICS_PASS_NOT_PROOF",
+  "generation_reproduced": true,
+  "arithmetic_enclosures": 118,
+  "remainder_enclosures": 24,
+  "source_rational_spotchecks": 40,
+  "invalid_operation_rejections": 6,
+  "scope": "Finite arithmetic diagnostics and exact rational source spotchecks; not a universal identity or Lean proof."
+}

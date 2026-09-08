@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "7b38a06c9045492def625869863a3b95b510ebe8fcf510cfd3109d9393642a7a",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/inspect_and_derive/attempt-01.md",
+    "workspace/agents/audit/audit_candidate/audit-evidence.md",
+    "agents/audit/audit_candidate/attempt-01.json"
+  ],
+  "limitations": [
+    "Applies to the exact retained declaration and pinned Lean 4.33.1 project environment; it makes no claim about altered declarations or unrelated toolchains."
+  ],
+  "report": {
+    "path": "analytic/20260823T000834Z-cda0c6-inspect_and_derive.md",
+    "sha256": "fa73911606e0360232e83963927c8a933d4dc01657bc24c7553370265c0e8a7e",
+    "size": 1673
+  },
+  "run_id": "20260823T000834Z-cda0c6",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "direct_constructor",
+  "summary": "For the exact retained declaration theorem and_swap_calibration (P Q : Prop) : P ∧ Q → Q ∧ P, eliminating the input conjunction and returning And.intro hQ hP is a typecorrect axiom-free proof under pinned Lean 4.33.1.",
+  "task_id": "inspect_and_derive",
+  "verified_by": [
+    "audit_candidate"
+  ]
+}

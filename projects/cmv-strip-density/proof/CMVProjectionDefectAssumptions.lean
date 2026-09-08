@@ -1,0 +1,10 @@
+import CMVProjectionDefect
+
+#print axioms CMVRelaxation.frontierMeasure_apply_eq_euclidean
+#print axioms CMVRelaxation.projection_defect
+#print axioms CMVRelaxation.ofReal_mul_frontierMeasure_le_setLIntegral
+#print axioms CMVRelaxation.projection_defect_smoothCost
+#print axioms CMVRelaxation.SmoothSequence.cost_add_ge_of_pointwise_add_distance
+#print axioms CMVRelaxation.FrozenCanonicalCap.collar_certificate
+#print axioms CMVRelaxation.FrozenCanonicalCap.smoothCost_add_distance_ge_one
+#print axioms CMVRelaxation.FrozenCanonicalCap.smoothSequence_cost_ge_one

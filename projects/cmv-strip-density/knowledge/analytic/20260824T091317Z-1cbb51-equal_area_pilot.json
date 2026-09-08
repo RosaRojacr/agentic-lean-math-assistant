@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "f3700c6361c431da1751c0fdf7bfe670e4cdb5e45840b26c16f4f5f49aa82cb0",
+  "category": "analytic",
+  "evidence": [
+    "workspace/agents/analytic/equal_area_pilot/report.md",
+    "workspace/agents/audit/continuation_gate/gate_audit.json",
+    "workspace/agents/audit/proof_audit/audit.md"
+  ],
+  "limitations": [
+    "This is exact human scalar mathematics, not a Lean theorem or source-carrier theorem.",
+    "The all-root numerical probe is falsification evidence only; upper roots can lose even when the descending root wins.",
+    "The sign of Gamma requires the separately audited interval and large-density arguments."
+  ],
+  "report": {
+    "path": "analytic/20260824T091317Z-1cbb51-equal_area_pilot.md",
+    "sha256": "ec574d5b3be493132d23526464d10de964c80d14db81f633d9f297a2dceb9d1d",
+    "size": 2924
+  },
+  "run_id": "20260824T091317Z-1cbb51",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "equal_area_elimination",
+  "summary": "Under the audited CMV scalar formulas, each area family has one fold; every type-(iv) target has a unique descending type-(iii) equal-area root; a second root has the exact A4(h4)<A3(1) criterion; the descending root has least type-(iii) perimeter; and the global minimum-gap maximum is Gamma(lambda) at the type-(iv) fold.",
+  "task_id": "equal_area_pilot",
+  "verified_by": [
+    "continuation_gate",
+    "proof_audit"
+  ]
+}

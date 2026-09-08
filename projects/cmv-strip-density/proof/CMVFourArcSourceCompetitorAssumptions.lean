@@ -1,0 +1,17 @@
+import CMVFourArcSourceCompetitor
+
+#print axioms FourArcCandidate.curvatureVariedAssembly_weightedArea
+#print axioms FourArcCandidate.curvatureVariedAssembly_frontierPerimeter
+#print axioms FourArcCandidate.curvatureAdjustedX_continuousAt_self
+#print axioms FourArcCandidate.curvatureFrontierPerimeter_continuousAt_self
+#print axioms FourArcCandidate.exists_strictCurvatureAssembly_frontierPerimeter_lt
+
+namespace CMVRelaxation.FourArcSourceCompetitor
+
+#print axioms exists_source_competitor_relaxedPerimeter_lt_of_defect
+#print axioms interiorDefectSpecimen_positive_source_competitor
+#print axioms interiorDefectSpecimen_negative_source_competitor
+#print axioms endpointDefectSpecimen_positive_source_competitor
+#print axioms endpointDefectSpecimen_negative_source_competitor
+
+end CMVRelaxation.FourArcSourceCompetitor

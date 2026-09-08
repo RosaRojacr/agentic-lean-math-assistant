@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "26624f620310ee6857856881c49b368e86c16d295fbeb09e5ca0de78299c3c9a",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/reconstruct_system_result/attempt-01.md",
+    "agents/audit/audit_nonidentifiability/attempt-01.md"
+  ],
+  "limitations": [
+    "The claim applies only to the exact retained equations over the real numbers with no auxiliary constraint.",
+    "It certifies non-identifiability and does not justify any particular numerical value of x-y.",
+    "The audit used exact witness substitution rather than proof-assistant formalization."
+  ],
+  "report": {
+    "path": "analytic/20260823T053229Z-3e0d5f-reconstruct_system_result.md",
+    "sha256": "350f65871e7a67d259165fdd62c507426bb1998d4e4ba9f728c5ba9c5487274d",
+    "size": 1928
+  },
+  "run_id": "20260823T053229Z-3e0d5f",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "row_space_analysis",
+  "summary": "For the retained real system x+y=4 and 2x+2y=8, the second augmented row is twice the first, the solution set is (t,4-t), and x-y is not uniquely determined.",
+  "task_id": "reconstruct_system_result",
+  "verified_by": [
+    "audit_nonidentifiability"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "case_id": "geometric-series",
+      "compute_ledger": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/geometric-series/runs/20260823T025154Z-eaa249/compute-ledger.json",
+      "error": "RegimeError: meta-agent 'main_assessment' failed; see /mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/geometric-series/runs/20260823T025154Z-eaa249/pre-campaign/roles/main_assessment",
+      "expected_outcome": "solved",
+      "false_closure": false,
+      "matched": false,
+      "observed_outcome": "error",
+      "project_manifest": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/geometric-series/project.toml",
+      "project_manifest_sha256": "d856cc026b8b44ca160eafdb033eb3464ea6e9f9ac101d0b2902b92cb8f5b2d4",
+      "run_dir": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/geometric-series/runs/20260823T025154Z-eaa249"
+    }
+  ],
+  "completed_at": null,
+  "run_id": "20260823T025154Z-995732",
+  "schema_version": 2,
+  "started_at": "2026-08-23T02:51:54Z",
+  "status": "running",
+  "suite_id": "autonomy-calibration",
+  "suite_manifest": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/benchmark.toml",
+  "suite_manifest_sha256": "1c657de1661978e15dca2a9cab94f02275f02832f10da443dc3cc81c03eb54dd",
+  "suite_manifest_snapshot": "suite.toml",
+  "summary": {
+    "accepted": false,
+    "cases": 12,
+    "completed": 1,
+    "errors": 1,
+    "failed": 1,
+    "false_closures": 0,
+    "passed": 0
+  }
+}

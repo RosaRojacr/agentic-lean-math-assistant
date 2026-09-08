@@ -74,11 +74,28 @@ def digest_file(path: Path, *, relative_to: Path) -> Artifact:
 
 
 def digest_tree(root: Path, *, exclude: set[str] | None = None) -> tuple[Artifact, ...]:
-    omitted = exclude or set()
-    return tuple(
-        digest_file(path, relative_to=root)
-        for path in sorted(item for item in root.rglob("*") if item.is_file())
-        if path.relative_to(root).as_posix() not in omitted
+    omitted = {PurePosixPath(path) for path in exclude or set()}
+    files: list[Path] = []
+    for current, directories, filenames in os.walk(root):
+        directory = Path(current)
+        relative_directory = PurePosixPath(directory.relative_to(root).as_posix())
+        directories[:] = sorted(
+            name
+            for name in directories
+            if not _path_is_excluded(relative_directory / name, omitted)
+        )
+        files.extend(
+            path
+            for name in sorted(filenames)
+            if not _path_is_excluded(relative_directory / name, omitted)
+            and (path := directory / name).is_file()
+        )
+    return tuple(digest_file(path, relative_to=root) for path in sorted(files))
+
+
+def _path_is_excluded(relative: PurePosixPath, omitted: set[PurePosixPath]) -> bool:
+    return any(
+        excluded == relative or excluded in relative.parents for excluded in omitted
     )
 
 

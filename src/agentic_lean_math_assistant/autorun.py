@@ -30,65 +30,71 @@ from .terminal_status import LiveStatusDisplay
 _HERDR_PANE_LABELS: dict[str, str] = {}
 _HERDR_LABEL_ATTEMPTS: dict[str, tuple[str, float]] = {}
 _TERMINAL_TITLES: dict[int, tuple[TextIO, str]] = {}
-_STRATEGY_REVIEW_MAX_PASSES = 3
 _PROGRESS_CLASSES = {"incremental", "meaningful", "blocked", "complete"}
+_ID_PATTERN = re.compile(r"^[a-z][a-z0-9_-]{0,63}$")
+_TEXT_LIMIT = 2_000
+_STRATEGY_HISTORY_LIMIT = 128
 
 
 @dataclass(frozen=True, slots=True)
-class _StrategyAssessment:
-    likelihood: int
-    threshold: int
-    worthwhile: bool
+class _StrategyProposal:
     decision: str
-    plan_status: str
-    replacement_likelihood: int | None
-    first_evidence_rounds: int | None
-    compute_cost: str | None
-    alternatives: tuple[str, ...]
-    milestones: tuple[tuple[int, str], ...]
-    markers: dict[str, str]
+    base_strategy_id: str | None
+    base_revision: int | None
+    selected_method: str
+    decision_reason: str
+    next_action: str
+    review_after_executions: int
+    checkpoints: tuple[dict[str, Any], ...]
+    stop_conditions: tuple[dict[str, Any], ...]
 
 
 @dataclass(frozen=True, slots=True)
 class _ProgressAdjudication:
+    strategy_id: str
+    strategy_revision: int
     progress_class: str
-    strategy_alignment: str
-    milestone_result: str
+    alignment: str
+    checkpoint_id: str | None
+    checkpoint_result: str
+    triggered_stop_condition_id: str | None
     reason: str
     verified_scope_delta: str
-    milestone_index: int | None
 
 
-class StrategyMilestone(TypedDict):
-    index: int
-    deadline_execution: int
+class StrategyCheckpoint(TypedDict):
+    id: str
+    due_execution: int
     observable: str
     status: str
+    last_result: str | None
+    last_adjudication_execution: int | None
+
+
+class StrategyStopCondition(TypedDict):
+    id: str
+    observable: str
+    triggered: bool
+    last_adjudication_execution: int | None
 
 
 class StrategyContract(TypedDict):
     schema_version: int
     strategy_id: str
+    revision: int
     status: str
-    decision: str
+    selected_method: str
+    decision_reason: str
     accepted_attempt: int
     accepted_execution: int
-    horizon_rounds: int
-    deadline_execution: int
-    first_evidence_deadline_execution: int
-    first_evidence_observed: bool
-    course_to_abandon: str
-    selected_method: str
-    selected_likelihood: int | None
-    worthwhile_threshold: int
-    expected_compute_cost: str | None
-    candidate_strategies: list[str]
-    milestones: list[StrategyMilestone]
-    first_falsifiable_check: str
-    kill_criteria: list[str]
+    lineage_started_execution: int
+    hard_deadline_execution: int
+    review_due_execution: int
     next_action: str
+    checkpoints: list[StrategyCheckpoint]
+    stop_conditions: list[StrategyStopCondition]
     last_alignment: str | None
-    last_milestone_result: str | None
+    last_checkpoint_result: str | None
 
 
 class AutoRunState(TypedDict, total=False):
@@ -123,16 +129,14 @@ class AutoRunState(TypedDict, total=False):
     last_failure_class: str | None
     active_strategy: StrategyContract | None
     strategy_history: list[dict[str, Any]]
+    adjudication_history: list[dict[str, Any]]
+    legacy_strategy_state: dict[str, Any] | None
     last_progress_claim: str | None
     last_progress_class: str | None
-    last_progress_adjudication: dict[str, str] | None
+    last_progress_adjudication: dict[str, Any] | None
     last_adjudication_review: str | None
     last_adjudication_model: str | None
-    last_strategy_likelihood: int | None
-    last_strategy_threshold: int | None
-    last_strategy_worthwhile: bool | None
     last_strategy_decision: str | None
-    last_strategy_plan_status: str | None
     last_strategy_review: str | None
     last_strategy_round: int | None
     strategy_change_required: bool
@@ -145,7 +149,6 @@ class AutoRunState(TypedDict, total=False):
     active_prompt: str | None
     active_model: str | None
     active_model_route: str | None
-    active_strategy_pass: int | None
     last_model: str | None
     last_reflection_model: str | None
     last_error: str | None
@@ -261,7 +264,7 @@ class AutoRunRunner:
         session.mkdir()
         now = datetime.now(UTC)
         state: dict[str, Any] = {
-            "schema_version": 2,
+            "schema_version": 3,
             "session_id": session_id,
             "project_manifest": str(self.base_project.manifest_path),
             "master_prompt": str(self.master_prompt),
@@ -294,16 +297,14 @@ class AutoRunRunner:
             "last_failure_class": None,
             "active_strategy": None,
             "strategy_history": [],
+            "adjudication_history": [],
+            "legacy_strategy_state": None,
             "last_progress_claim": None,
             "last_progress_adjudication": None,
             "last_adjudication_review": None,
             "last_adjudication_model": None,
             "last_progress_class": None,
-            "last_strategy_likelihood": None,
-            "last_strategy_threshold": None,
-            "last_strategy_worthwhile": None,
             "last_strategy_decision": None,
-            "last_strategy_plan_status": None,
             "last_strategy_review": None,
             "last_strategy_round": None,
             "strategy_change_required": False,
@@ -331,6 +332,15 @@ class AutoRunRunner:
         retained_prompt = state.get("master_prompt")
         if retained_prompt != str(self.master_prompt):
             raise AutoRunError("autorun session uses a different Master Prompt")
+        active_strategy = state.get("active_strategy")
+        if (
+            state.get("status") == "stopped"
+            and isinstance(active_strategy, dict)
+            and active_strategy.get("status") == "complete"
+        ):
+            state["pid"] = None
+            self._save(state)
+            return
         state["status"] = "running"
         state["pid"] = os.getpid()
         state["stop_requested"] = False
@@ -343,6 +353,15 @@ class AutoRunRunner:
     def _drive(self) -> Path:
         while True:
             state = self._state()
+            active_strategy = state.get("active_strategy")
+            if (
+                state.get("status") == "stopped"
+                and isinstance(active_strategy, dict)
+                and active_strategy.get("status") == "complete"
+            ):
+                state["pid"] = None
+                self._save(state)
+                return self._session()
             if state.get("stop_requested") or (self._session() / "STOP").exists():
                 state["status"] = "stopped"
                 state["pid"] = None
@@ -412,39 +431,35 @@ class AutoRunRunner:
         round_dir = rounds_root / f"round-{index:05d}"
         round_dir.mkdir()
         now = datetime.now(UTC)
-        reflection_due = now >= self._parse_time(str(state["next_reflection_at"]))
-        reflection_due = reflection_due or (
-            int(state.get("consecutive_execution_failures", 0)) >= 2
-        )
         reflection_due = (
-            reflection_due or int(state.get("repeated_output_count", 0)) >= 2
+            now >= self._parse_time(str(state["next_reflection_at"]))
+            or int(state.get("consecutive_execution_failures", 0)) >= 2
+            or int(state.get("repeated_output_count", 0)) >= 2
+            or self._strategy_requires_review(state)
         )
-        reflection_due = reflection_due or self._strategy_requires_review(state)
         master_text = self.master_prompt.read_text(encoding="utf-8").strip()
         if not master_text:
             raise AutoRunError("Master Prompt is empty")
-        master_digest = hashlib.sha256(master_text.encode("utf-8")).hexdigest()
         state["status"] = "running"
         state["next_retry_at"] = None
         state["heartbeat_at"] = utc_now()
-        state["master_prompt_sha256"] = master_digest
+        state["master_prompt_sha256"] = hashlib.sha256(
+            master_text.encode("utf-8")
+        ).hexdigest()
         state["attempt_count"] = index
         state["active_round"] = index
         self._save(state)
 
-        reflection_output = (
+        if reflection_due:
             self._run_strategy_reflection(index, state, master_text, round_dir)
-            if reflection_due
-            else None
-        )
-        if reflection_output is not None:
             state = self._state()
-        prompt = self._round_prompt(
-            index,
-            state,
-            master_text,
-            reflection_output=reflection_output,
+        strategy = state.get("active_strategy")
+        self._validate_strategy_contract(
+            strategy,
+            completed_execution=int(state.get("round_count", 0)),
+            require_active=True,
         )
+        prompt = self._round_prompt(index, state, master_text)
         prompt_path = round_dir / "prompt.md"
         output_path = round_dir / "output.md"
         receipt_path = round_dir / "receipt.json"
@@ -478,11 +493,11 @@ class AutoRunRunner:
                 "workspace_executables": True,
             },
         )
-        state = self._state()
-        state["active_prompt"] = str(prompt_path)
-        state["active_model"] = conductor_model
-        state["active_model_route"] = model_route
-        self._save(state)
+        active = self._state()
+        active["active_prompt"] = str(prompt_path)
+        active["active_model"] = conductor_model
+        active["active_model_route"] = model_route
+        self._save(active)
         self._event(self._session(), "round_started", f"round {index}")
         self._emit(f"autorun round {index} starting")
         exit_code = self._execute_with_heartbeat(request_path)
@@ -496,16 +511,17 @@ class AutoRunRunner:
         latest["last_output"] = str(output_path) if output_path.is_file() else None
         latest["heartbeat_at"] = utc_now()
         if exit_code == 0 and output_path.is_file():
-            claim = self._round_progress_class(output_path)
+            claim = self._parse_conductor_claim(output_path.read_text(encoding="utf-8"))
             digest = hashlib.sha256(output_path.read_bytes()).hexdigest()
-            repeated = (
+            latest["repeated_output_count"] = (
                 int(latest.get("repeated_output_count", 0)) + 1
                 if digest == latest.get("last_output_sha256")
                 else 0
             )
             latest["last_output_sha256"] = digest
-            latest["repeated_output_count"] = repeated
-            latest["last_progress_claim"] = claim
+            latest["last_progress_claim"] = (
+                claim.get("progress_class") if claim is not None else "unclassified"
+            )
             latest["consecutive_execution_failures"] = 0
             latest["round_count"] = int(latest.get("round_count", 0)) + 1
             self._save(latest)
@@ -544,10 +560,17 @@ class AutoRunRunner:
                 progress_class = adjudication.progress_class
                 latest["last_progress_class"] = progress_class
                 latest["last_progress_adjudication"] = {
+                    "strategy_id": adjudication.strategy_id,
+                    "strategy_revision": adjudication.strategy_revision,
+                    "progress_class": adjudication.progress_class,
+                    "alignment": adjudication.alignment,
+                    "checkpoint_id": adjudication.checkpoint_id,
+                    "checkpoint_result": adjudication.checkpoint_result,
+                    "triggered_stop_condition_id": (
+                        adjudication.triggered_stop_condition_id
+                    ),
                     "reason": adjudication.reason,
                     "verified_scope_delta": adjudication.verified_scope_delta,
-                    "strategy_alignment": adjudication.strategy_alignment,
-                    "milestone_result": adjudication.milestone_result,
                 }
                 latest["last_adjudication_review"] = str(adjudication_path)
                 counter = f"{progress_class}_round_count"
@@ -556,7 +579,13 @@ class AutoRunRunner:
                     latest["mathematical_blocker_count"] = (
                         int(latest.get("mathematical_blocker_count", 0)) + 1
                     )
-                self._apply_adjudication_to_strategy(latest, adjudication)
+                self._apply_adjudication_to_strategy(
+                    latest,
+                    adjudication,
+                    attempt=index,
+                    execution=int(latest["round_count"]),
+                    artifact=str(adjudication_path),
+                )
                 latest["last_failure_class"] = (
                     "verification" if metric_failures else None
                 )
@@ -565,13 +594,14 @@ class AutoRunRunner:
                     if metric_failures
                     else None
                 )
-            latest["status"] = "running"
+            if latest.get("status") != "stopped":
+                latest["status"] = "running"
             self._event(
                 self._session(),
                 "round_completed",
                 (
-                    f"attempt {index} execution completed; conductor claimed {claim}; "
-                    f"adjudicated {progress_class}"
+                    f"attempt {index} execution completed; conductor claimed "
+                    f"{latest.get('last_progress_claim')}; adjudicated {progress_class}"
                 ),
             )
         else:
@@ -607,568 +637,574 @@ class AutoRunRunner:
             for tool in self.project.allowed_tools
             if tool in {"read", "grep", "glob", "web_search"}
         ]
-        required_change = bool(state.get("strategy_change_required", False))
-        prior_review = ""
-        validation_feedback = ""
+        current = self._state()
+        current_strategy = current.get("active_strategy")
+        if (
+            isinstance(current_strategy, dict)
+            and current_strategy.get("status") == "active"
+            and int(current.get("round_count", 0))
+            >= int(current_strategy.get("hard_deadline_execution", 0))
+        ):
+            expired = json.loads(json.dumps(current_strategy))
+            expired["status"] = "expired"
+            current["active_strategy"] = expired
+            current["strategy_change_required"] = True
+            self._save(current)
+        state = self._state()
+        prompt_path = round_dir / "strategy-reflection-prompt.md"
+        output_path = round_dir / "strategy-reflection.md"
+        receipt_path = round_dir / "strategy-reflection-receipt.json"
+        request_path = round_dir / "strategy-reflection-request.json"
+        atomic_write_text(
+            prompt_path,
+            self._strategy_reflection_prompt(state, master_text),
+        )
+        atomic_write_json(
+            request_path,
+            {
+                "role_id": "autorun_strategy_reflection",
+                "attempt": index,
+                "omp": self.options.omp or self.project.omp,
+                "workspace": str(self.project.root),
+                "run_dir": str(self._session()),
+                "prompt": str(prompt_path),
+                "output": str(output_path),
+                "stdout_log": str(round_dir / "strategy-reflection-stdout.log"),
+                "stderr_log": str(round_dir / "strategy-reflection-stderr.log"),
+                "receipt": str(receipt_path),
+                "tools": read_only_tools,
+                "model": model,
+                "thinking": self.options.thinking or self.project.planner_thinking,
+                "max_time": self.options.reflection_round_minutes * 60,
+                "empty_output_retries": 0,
+                "execution": self.project.execution.to_dict(),
+                "sandbox_read_paths": [
+                    str(self.project.root),
+                    str(self._session()),
+                    str(self.master_prompt),
+                ],
+                "workspace_executables": True,
+            },
+        )
+        active = self._state()
+        active["active_prompt"] = str(prompt_path)
+        active["active_model"] = model
+        active["active_model_route"] = "strategy_reflection"
+        active["last_reflection_model"] = model
+        self._save(active)
         self._event(self._session(), "reflection_started", f"round {index}")
         self._emit(f"autorun round {index} strategy reflection starting")
-
-        for pass_number in range(1, _STRATEGY_REVIEW_MAX_PASSES + 1):
-            stem = (
-                "strategy-reflection"
-                if pass_number == 1
-                else f"strategy-reflection-pass-{pass_number:02d}"
+        exit_code = self._execute_with_heartbeat(request_path)
+        proposal: _StrategyProposal | None = None
+        errors: list[str] = []
+        if exit_code != 0 or not output_path.is_file():
+            errors.append("strategy governor did not produce a retained response")
+        else:
+            proposal, errors = self._parse_strategy_proposal(
+                output_path.read_text(encoding="utf-8"),
+                state=self._state(),
+                max_strategy_executions=self.project.autorun.max_strategy_executions,
             )
-            prompt_path = round_dir / f"{stem}-prompt.md"
-            output_path = round_dir / f"{stem}.md"
-            receipt_path = round_dir / f"{stem}-receipt.json"
-            prompt = self._strategy_reflection_prompt(
-                state,
-                master_text,
-                pass_number=pass_number,
-                required_change=required_change,
-                prior_review=prior_review,
-                validation_feedback=validation_feedback,
+        if proposal is None or errors:
+            failed = self._state()
+            failed["active_round"] = None
+            failed["active_prompt"] = None
+            failed["active_model"] = None
+            failed["active_model_route"] = None
+            failed["last_strategy_review"] = (
+                str(output_path) if output_path.is_file() else None
             )
-            atomic_write_text(prompt_path, prompt)
-            request_path = round_dir / f"{stem}-request.json"
-            atomic_write_json(
-                request_path,
-                {
-                    "role_id": "autorun_strategy_reflection",
-                    "attempt": index,
-                    "omp": self.options.omp or self.project.omp,
-                    "workspace": str(self.project.root),
-                    "run_dir": str(self._session()),
-                    "prompt": str(prompt_path),
-                    "output": str(output_path),
-                    "stdout_log": str(round_dir / f"{stem}-stdout.log"),
-                    "stderr_log": str(round_dir / f"{stem}-stderr.log"),
-                    "receipt": str(receipt_path),
-                    "tools": read_only_tools,
-                    "model": model,
-                    "thinking": self.options.thinking or self.project.planner_thinking,
-                    "max_time": self.options.reflection_round_minutes * 60,
-                    "empty_output_retries": 0,
-                    "execution": self.project.execution.to_dict(),
-                    "sandbox_read_paths": [
-                        str(self.project.root),
-                        str(self._session()),
-                        str(self.master_prompt),
-                    ],
-                    "workspace_executables": True,
-                },
-            )
-            active = self._state()
-            active["active_prompt"] = str(prompt_path)
-            active["active_model"] = model
-            active["active_model_route"] = "strategy_reflection"
-            active["active_strategy_pass"] = pass_number
-            active["last_reflection_model"] = model
-            self._save(active)
+            failed["last_error"] = "strategy proposal invalid: " + "; ".join(errors)
+            self._save(failed)
             self._event(
                 self._session(),
-                "reflection_pass_started",
-                f"round {index}; pass {pass_number}",
+                "reflection_failed",
+                f"round {index}; {failed['last_error']}",
             )
-            exit_code = self._execute_with_heartbeat(request_path)
-            if exit_code != 0 or not output_path.is_file():
-                validation_feedback = (
-                    f"Strategy pass {pass_number} failed to produce a retained review."
-                )
-                continue
+            raise StrategyGateError(str(failed["last_error"]))
 
-            prior_review = output_path.read_text(encoding="utf-8").strip()
-            assessment, errors = self._parse_strategy_assessment(
-                prior_review,
-                policy_threshold=self.project.autorun.worthwhile_likelihood_threshold,
-                horizon_rounds=self.project.autorun.strategy_horizon_rounds,
-            )
-            decision_marker = self._marker_values_from_text(
-                prior_review, {"STRATEGY_DECISION"}
-            ).get("STRATEGY_DECISION")
-            if decision_marker == "change_course":
-                required_change = True
-                pending = self._state()
-                pending["strategy_change_required"] = True
-                self._save(pending)
-            if (
-                assessment is not None
-                and required_change
-                and assessment.decision != "change_course"
-            ):
-                errors.append(
-                    "A prior pass rejected the current course; later passes must "
-                    "refine a replacement rather than reinstate it."
-                )
-            if (
-                assessment is not None
-                and assessment.decision == "change_course"
-                and pass_number == 1
-            ):
-                errors.append(
-                    "A course change requires a second Astra pass to challenge and "
-                    "solidify the replacement plan."
-                )
-            if assessment is not None and not errors:
-                approved = self._state()
-                previous = approved.get("active_strategy")
-                history = list(approved.get("strategy_history", []))
-                if isinstance(previous, dict):
-                    prior_contract = dict(previous)
-                    prior_contract["status"] = "superseded"
-                    history.append(prior_contract)
-                approved["active_strategy"] = self._strategy_contract(
-                    index, approved, assessment
-                )
-                approved["strategy_history"] = history[-20:]
-                approved["active_strategy_pass"] = None
-                approved["last_strategy_likelihood"] = assessment.likelihood
-                approved["last_strategy_threshold"] = assessment.threshold
-                approved["last_strategy_worthwhile"] = assessment.worthwhile
-                approved["last_strategy_decision"] = assessment.decision
-                approved["last_strategy_plan_status"] = assessment.plan_status
-                approved["last_strategy_review"] = str(output_path)
-                approved["last_strategy_round"] = index
-                approved["strategy_change_required"] = False
-                approved["reflection_count"] = int(approved["reflection_count"]) + 1
-                approved["next_reflection_at"] = self._format_time(
-                    datetime.now(UTC)
-                    + timedelta(minutes=int(approved["reflection_minutes"]))
-                )
-                approved["last_failure_class"] = None
-                self._save(approved)
-                self._event(
-                    self._session(),
-                    "reflection_completed",
-                    (
-                        f"round {index}; decision {assessment.decision}; "
-                        f"selected likelihood {assessment.replacement_likelihood}%"
-                    ),
-                )
-                return output_path
-            validation_feedback = " ".join(errors)
-
-        failed = self._state()
-        failed["active_strategy_pass"] = None
-        failed["strategy_change_required"] = required_change
-        self._save(failed)
+        approved = self._state()
+        approved["active_strategy"] = self._materialize_strategy_contract(
+            index,
+            approved,
+            proposal,
+        )
+        approved["last_strategy_decision"] = proposal.decision
+        approved["last_strategy_review"] = str(output_path)
+        approved["last_strategy_round"] = index
+        approved["strategy_change_required"] = False
+        approved["reflection_count"] = int(approved["reflection_count"]) + 1
+        approved["next_reflection_at"] = self._format_time(
+            datetime.now(UTC)
+            + timedelta(minutes=int(approved["reflection_minutes"]))
+        )
+        approved["last_failure_class"] = None
+        approved["last_error"] = None
+        approved["active_prompt"] = None
+        approved["active_model"] = None
+        approved["active_model_route"] = None
+        self._save(approved)
         self._event(
             self._session(),
-            "reflection_failed",
-            f"round {index}; meaningful-progress gate has no approved plan",
+            "reflection_completed",
+            f"round {index}; decision {proposal.decision}",
         )
-        raise StrategyGateError(
-            "meaningful-progress gate did not produce an approved strategy after "
-            f"{_STRATEGY_REVIEW_MAX_PASSES} Astra passes"
-        )
+        return output_path
 
     def _strategy_reflection_prompt(
         self,
         state: dict[str, Any],
         master_text: str,
-        *,
-        pass_number: int,
-        required_change: bool,
-        prior_review: str,
-        validation_feedback: str,
     ) -> str:
-        history = self._recent_progress_history(state)
-        policy = self.project.autorun
-        revision = ""
-        if prior_review:
-            revision = f"""
-## Previous Astra review
+        completed = int(state.get("round_count", 0))
+        active = state.get("active_strategy")
+        remaining = self.project.autorun.max_strategy_executions
+        if isinstance(active, dict):
+            remaining = max(
+                0, int(active.get("hard_deadline_execution", completed)) - completed
+            )
+        replacement_required = self._strategy_replacement_required(state)
+        return f"""# Strategy governance review
 
-{prior_review[-20000:]}
-
-## Required revision
-
-{validation_feedback or "Adversarially challenge and strengthen this plan."}
-"""
-        course_constraint = (
-            "A previous pass or missed strategy deadline has rejected the current "
-            "course. Keep `STRATEGY_DECISION: change_course` and develop a replacement."
-            if required_change
-            else "No earlier pass in this gate has mandated a course change."
-        )
-        active_strategy = json.dumps(
-            state.get("active_strategy"), indent=2, sort_keys=True
-        )
-        return f"""# Autorun meaningful-progress gate — pass {pass_number}
-
-You are the strategic governor, not an execution agent. Judge whether the current
-course is likely to produce a meaningful result within the next
-{policy.strategy_horizon_rounds} completed conductor rounds. Meaningful means
-materially reducing distance to the living master contract, discharging a
-load-bearing final obligation, or establishing a method that scales to the
-remaining domain. Local lemmas, slightly better constants, passing builds, and
-activity are only incremental unless they unlock that path.
-
-The minimum worthwhile likelihood is project policy:
-{policy.worthwhile_likelihood_threshold}%. You may not choose or relax it. Compare
-at least two concrete candidate strategies, including the current course when it
-remains viable. Estimate likelihood, rounds to first observable evidence, and
-compute cost for the selected strategy. The replacement must beat a rejected
-course and clear policy.
-
-Produce an enforceable contract: a selected method, ordered milestones with
-deadlines relative to acceptance, a falsifiable first check, kill criteria, and
-one next action. Do not execute tasks, edit files, or claim unverified progress.
-Write a detailed report before the markers explaining evidence, candidate
-comparison, governing interfaces, resource bounds, risks, and fallback.
-
-{course_constraint}
+You are the read-only strategy governor. Select or revise the method and its
+observable soft gates. Do not execute work, edit files, adjudicate progress, alter
+operator policy, or weaken the living master contract. A due checkpoint or review
+date requests a decision; it does not by itself falsify a method. When replacement
+is required, select a genuinely different course rather than renaming the old one.
 
 ## Living Master Prompt
 
 {master_text}
 
-## Current active strategy contract
+## Current retained contract
 
 ```json
-{active_strategy}
+{json.dumps(active, indent=2, sort_keys=True)}
 ```
 
-## Retained state
+## Immutable controller context
 
-- Session: `{self._session()}`
-- Completed executions: {int(state.get("round_count", 0))}
-- Meaningful rounds: {int(state.get("meaningful_round_count", 0))}
-- Incremental rounds: {int(state.get("incremental_round_count", 0))}
-- Previous output: `{state.get("last_output") or "None"}`
-- Previous adjudication: `{state.get("last_adjudication_review") or "None"}`
-- Previous error: `{state.get("last_error") or "None"}`
+- Completed successful executions: {completed}
+- Remaining executions in the current lineage: {remaining}
+- Replacement is mandatory: {str(replacement_required).lower()}
+- Operator maximum for a new lineage: {self.project.autorun.max_strategy_executions}
+- Last execution output: `{state.get("last_output") or "None"}`
+- Last independent adjudication: `{state.get("last_adjudication_review") or "None"}`
+- Last controller error: `{state.get("last_error") or "None"}`
 
-## Recent adjudicated trajectory
+## Recent independently adjudicated trajectory
 
-{history}
-{revision}
-## Required machine-readable decision
+{self._recent_progress_history(state)}
 
-End with each marker on one line. Separate candidates and kill criteria with
-`||`. Encode milestones as `round_offset::observable`, separated by semicolons.
+## Required protocol
 
-MEANINGFUL_PROGRESS_LIKELIHOOD: integer from 0 to 100 for current course
-MINIMUM_WORTHWHILE_LIKELIHOOD: {policy.worthwhile_likelihood_threshold}
-CURRENT_COURSE_WORTHWHILE: yes | no
-STRATEGY_DECISION: continue | change_course
-STRATEGY_PLAN_STATUS: ready | revise
-REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD: integer from 0 to 100 for selected strategy
-EXPECTED_ROUNDS_TO_FIRST_EVIDENCE: integer from 1 to {policy.strategy_horizon_rounds}
-EXPECTED_COMPUTE_COST: low | medium | high
-COURSE_TO_ABANDON: required for change_course; otherwise n/a
-CANDIDATE_STRATEGIES: at least two distinct concrete candidates separated by ||
-SELECTED_METHOD: the selected method and governing interface
-STRATEGY_MILESTONES: e.g. 2::observable first check; 6::load-bearing result
-FIRST_FALSIFIABLE_CHECK: exact observable check
-STRATEGY_KILL_CRITERIA: concrete criteria separated by ||
-REFLECTION_NEXT: one concrete action required by this contract
+End with exactly one final single-line marker whose value is a JSON object:
+
+STRATEGY_PROPOSAL_JSON: {{"schema_version":1,"decision":"select|continue|change_course","base_strategy_id":null,"base_revision":null,"selected_method":"method","decision_reason":"reason","next_action":"action","review_after_executions":1,"checkpoints":[{{"id":"check_id","after_executions":1,"observable":"observable effect"}}],"stop_conditions":[{{"id":"stop_id","observable":"observable trigger"}}]}}
+
+Use `select` only when no active contract exists. For `continue` or
+`change_course`, copy the exact active strategy ID and revision into the base
+fields. Offsets are relative to the current successful-execution count and must be
+strictly increasing. A continuation is bounded by the remaining current-lineage
+budget; a selection or course change is bounded by the operator maximum for its
+new lineage.
 """
 
-    def _strategy_contract(
+    def _materialize_strategy_contract(
         self,
         attempt: int,
         state: dict[str, Any],
-        assessment: _StrategyAssessment,
-    ) -> dict[str, Any]:
-        accepted_execution = int(state.get("round_count", 0))
-        horizon = self.project.autorun.strategy_horizon_rounds
-        markers = assessment.markers
-        return {
-            "schema_version": 1,
-            "strategy_id": f"strategy-{int(state.get('reflection_count', 0)) + 1:05d}",
-            "status": "active",
-            "decision": assessment.decision,
-            "accepted_attempt": attempt,
-            "accepted_execution": accepted_execution,
-            "horizon_rounds": horizon,
-            "deadline_execution": accepted_execution + horizon,
-            "first_evidence_deadline_execution": (
-                accepted_execution + int(assessment.first_evidence_rounds or 1)
-            ),
-            "first_evidence_observed": False,
-            "course_to_abandon": markers["COURSE_TO_ABANDON"],
-            "selected_method": markers["SELECTED_METHOD"],
-            "selected_likelihood": assessment.replacement_likelihood,
-            "worthwhile_threshold": assessment.threshold,
-            "expected_compute_cost": assessment.compute_cost,
-            "candidate_strategies": list(assessment.alternatives),
-            "milestones": [
-                {
-                    "index": milestone_index,
-                    "deadline_execution": accepted_execution + offset,
-                    "observable": observable,
-                    "status": "pending",
-                }
-                for milestone_index, (offset, observable) in enumerate(
-                    assessment.milestones, start=1
+        proposal: _StrategyProposal,
+    ) -> StrategyContract:
+        completed = int(state.get("round_count", 0))
+        previous = state.get("active_strategy")
+        history = list(state.get("strategy_history", []))
+        if isinstance(previous, dict):
+            archived = json.loads(json.dumps(previous))
+            if archived.get("status") == "active":
+                archived["status"] = "superseded"
+            if proposal.decision == "continue":
+                for checkpoint in archived.get("checkpoints", []):
+                    if (
+                        isinstance(checkpoint, dict)
+                        and checkpoint.get("status") in {"pending", "advanced"}
+                    ):
+                        checkpoint["status"] = "revised"
+            history.append(archived)
+        state["strategy_history"] = history[-_STRATEGY_HISTORY_LIMIT:]
+
+        if proposal.decision == "continue":
+            assert isinstance(previous, dict)
+            strategy_id = str(previous["strategy_id"])
+            revision = int(previous["revision"]) + 1
+            lineage_started = int(previous["lineage_started_execution"])
+            hard_deadline = int(previous["hard_deadline_execution"])
+        else:
+            used_numbers: list[int] = []
+            for candidate in [*history, previous]:
+                if isinstance(candidate, dict):
+                    identifier = candidate.get("strategy_id")
+                    if (
+                        isinstance(identifier, str)
+                        and identifier.startswith("strategy-")
+                        and identifier.removeprefix("strategy-").isdigit()
+                    ):
+                        used_numbers.append(
+                            int(identifier.removeprefix("strategy-"))
+                        )
+            strategy_id = f"strategy-{max(used_numbers, default=0) + 1:05d}"
+            revision = 1
+            lineage_started = completed
+            hard_deadline = (
+                completed + self.project.autorun.max_strategy_executions
+            )
+        return StrategyContract(
+            schema_version=2,
+            strategy_id=strategy_id,
+            revision=revision,
+            status="active",
+            selected_method=proposal.selected_method,
+            decision_reason=proposal.decision_reason,
+            accepted_attempt=attempt,
+            accepted_execution=completed,
+            lineage_started_execution=lineage_started,
+            hard_deadline_execution=hard_deadline,
+            review_due_execution=completed + proposal.review_after_executions,
+            next_action=proposal.next_action,
+            checkpoints=[
+                StrategyCheckpoint(
+                    id=str(item["id"]),
+                    due_execution=completed + int(item["after_executions"]),
+                    observable=str(item["observable"]),
+                    status="pending",
+                    last_result=None,
+                    last_adjudication_execution=None,
                 )
+                for item in proposal.checkpoints
             ],
-            "first_falsifiable_check": markers["FIRST_FALSIFIABLE_CHECK"],
-            "kill_criteria": [
-                item.strip()
-                for item in markers["STRATEGY_KILL_CRITERIA"].split("||")
-                if item.strip()
+            stop_conditions=[
+                StrategyStopCondition(
+                    id=str(item["id"]),
+                    observable=str(item["observable"]),
+                    triggered=False,
+                    last_adjudication_execution=None,
+                )
+                for item in proposal.stop_conditions
             ],
-            "next_action": markers["REFLECTION_NEXT"],
-            "last_alignment": None,
-            "last_milestone_result": None,
-        }
+            last_alignment=None,
+            last_checkpoint_result=None,
+        )
+
+    @staticmethod
+    def _soft_gate_due(state: dict[str, Any]) -> bool:
+        strategy = state.get("active_strategy")
+        if not isinstance(strategy, dict):
+            return True
+        completed = int(state.get("round_count", 0))
+        if completed >= int(strategy.get("review_due_execution", completed)):
+            return True
+        checkpoints = strategy.get("checkpoints")
+        return not isinstance(checkpoints, list) or any(
+            isinstance(item, dict)
+            and item.get("status") in {"pending", "advanced"}
+            and completed >= int(item.get("due_execution", completed))
+            for item in checkpoints
+        )
+
+    @staticmethod
+    def _strategy_replacement_required(state: dict[str, Any]) -> bool:
+        if bool(state.get("strategy_change_required", False)):
+            return True
+        strategy = state.get("active_strategy")
+        if not isinstance(strategy, dict) or strategy.get("status") != "active":
+            return True
+        completed = int(state.get("round_count", 0))
+        return completed >= int(
+            strategy.get("hard_deadline_execution", completed)
+        ) or (
+            AutoRunRunner._soft_gate_due(state)
+            and not AutoRunRunner._has_aligned_revision_progress(state)
+        )
+
 
     @staticmethod
     def _strategy_requires_review(state: dict[str, Any]) -> bool:
         if bool(state.get("strategy_change_required", False)):
             return True
         strategy = state.get("active_strategy")
-        if not isinstance(strategy, dict):
-            return True
-        if strategy.get("status") != "active":
+        if not isinstance(strategy, dict) or strategy.get("status") != "active":
             return True
         completed = int(state.get("round_count", 0))
-        if completed >= int(strategy.get("deadline_execution", completed)):
+        if completed >= int(strategy.get("hard_deadline_execution", completed)):
             return True
-        if not bool(
-            strategy.get("first_evidence_observed", False)
-        ) and completed >= int(
-            strategy.get("first_evidence_deadline_execution", completed)
-        ):
-            return True
-        milestones = strategy.get("milestones")
-        if isinstance(milestones, list):
-            return any(
-                isinstance(item, dict)
-                and item.get("status") == "pending"
-                and completed >= int(item.get("deadline_execution", completed))
-                for item in milestones
-            )
-        return True
+        return AutoRunRunner._soft_gate_due(state)
+
+    @staticmethod
+    def _has_aligned_revision_progress(state: dict[str, Any]) -> bool:
+        strategy = state.get("active_strategy")
+        if not isinstance(strategy, dict):
+            return False
+        accepted_execution = int(strategy.get("accepted_execution", 0))
+        return any(
+            isinstance(item, dict)
+            and item.get("strategy_id") == strategy.get("strategy_id")
+            and item.get("strategy_revision") == strategy.get("revision")
+            and item.get("alignment") == "aligned"
+            and item.get("checkpoint_result") in {"advanced", "satisfied"}
+            and isinstance(item.get("execution"), int)
+            and int(item["execution"]) > accepted_execution
+            for item in state.get("adjudication_history", [])
+        )
 
     def _recent_progress_history(self, state: dict[str, Any]) -> str:
-        round_count = int(state.get("round_count", 0))
-        last_review = state.get("last_strategy_round")
-        prior = (
-            int(last_review)
-            if isinstance(last_review, int) and not isinstance(last_review, bool)
-            else 0
-        )
-        start = max(1, prior + 1, round_count - 19)
         rows: list[str] = []
-        for round_index in range(start, round_count + 1):
-            path = self._session() / "rounds" / f"round-{round_index:05d}" / "output.md"
-            markers = self._marker_values(path, {"AUTORUN_RESULT", "AUTORUN_SUMMARY"})
-            if markers:
-                rows.append(
-                    f"- Round {round_index}: "
-                    f"{markers.get('AUTORUN_RESULT', 'unclassified')} — "
-                    f"{markers.get('AUTORUN_SUMMARY', 'No retained summary.')}"
+        for item in state.get("adjudication_history", [])[-20:]:
+            if not isinstance(item, dict):
+                continue
+            rows.append(
+                json.dumps(
+                    {
+                        "attempt": item.get("attempt"),
+                        "execution": item.get("execution"),
+                        "strategy_id": item.get("strategy_id"),
+                        "strategy_revision": item.get("strategy_revision"),
+                        "progress_class": item.get("progress_class"),
+                        "alignment": item.get("alignment"),
+                        "checkpoint_id": item.get("checkpoint_id"),
+                        "checkpoint_result": item.get("checkpoint_result"),
+                        "reason": item.get("reason"),
+                        "verified_scope_delta": item.get("verified_scope_delta"),
+                    },
+                    sort_keys=True,
                 )
-        return "\n".join(rows) if rows else "No retained round summaries."
+            )
+        return "\n".join(rows) if rows else "No retained independent adjudications."
 
     @staticmethod
-    def _parse_strategy_assessment(
+    def _strict_json_marker(text: str, marker: str) -> tuple[object | None, list[str]]:
+        prefix = f"{marker}:"
+        lines = text.splitlines()
+        matches = [line for line in lines if line.startswith(prefix)]
+        if len(matches) != 1:
+            return None, [f"expected exactly one {marker} marker line"]
+        nonempty = [line for line in lines if line.strip()]
+        if not nonempty or nonempty[-1] != matches[0]:
+            return None, [f"{marker} must be the final nonempty line"]
+        payload = matches[0].removeprefix(prefix)
+        if not payload.startswith(" ") or payload != payload.rstrip():
+            return None, [f"{marker} must contain one trimmed JSON value"]
+        try:
+            return json.loads(payload[1:]), []
+        except json.JSONDecodeError as exc:
+            return None, [f"{marker} contains invalid JSON: {exc.msg}"]
+
+    @staticmethod
+    def _parse_strategy_proposal(
         text: str,
         *,
-        policy_threshold: int = 30,
-        horizon_rounds: int = 12,
-    ) -> tuple[_StrategyAssessment | None, list[str]]:
-        names = {
-            "MEANINGFUL_PROGRESS_LIKELIHOOD",
-            "MINIMUM_WORTHWHILE_LIKELIHOOD",
-            "CURRENT_COURSE_WORTHWHILE",
-            "STRATEGY_DECISION",
-            "STRATEGY_PLAN_STATUS",
-            "REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD",
-            "EXPECTED_ROUNDS_TO_FIRST_EVIDENCE",
-            "EXPECTED_COMPUTE_COST",
-            "COURSE_TO_ABANDON",
-            "CANDIDATE_STRATEGIES",
-            "SELECTED_METHOD",
-            "STRATEGY_MILESTONES",
-            "FIRST_FALSIFIABLE_CHECK",
-            "STRATEGY_KILL_CRITERIA",
-            "REFLECTION_NEXT",
+        state: dict[str, Any],
+        max_strategy_executions: int,
+    ) -> tuple[_StrategyProposal | None, list[str]]:
+        raw, errors = AutoRunRunner._strict_json_marker(
+            text, "STRATEGY_PROPOSAL_JSON"
+        )
+        if errors:
+            return None, errors
+        if not isinstance(raw, dict):
+            return None, ["strategy proposal must be a JSON object"]
+        required = {
+            "schema_version",
+            "decision",
+            "base_strategy_id",
+            "base_revision",
+            "selected_method",
+            "decision_reason",
+            "next_action",
+            "review_after_executions",
+            "checkpoints",
+            "stop_conditions",
         }
-        markers = AutoRunRunner._marker_values_from_text(text, names)
-        missing = sorted(names - markers.keys())
-        errors = [f"Missing marker {name}." for name in missing]
-        try:
-            likelihood = int(markers["MEANINGFUL_PROGRESS_LIKELIHOOD"])
-            threshold = int(markers["MINIMUM_WORTHWHILE_LIKELIHOOD"])
-            replacement_likelihood = int(
-                markers["REPLACEMENT_MEANINGFUL_PROGRESS_LIKELIHOOD"]
-            )
-            first_evidence_rounds = int(markers["EXPECTED_ROUNDS_TO_FIRST_EVIDENCE"])
-        except (KeyError, ValueError):
+        if set(raw) != required:
+            missing = sorted(required - raw.keys())
+            unknown = sorted(raw.keys() - required)
             return None, [
-                *errors,
-                "Likelihood and first-evidence markers must be integers.",
+                f"strategy proposal keys mismatch; missing={missing}; unknown={unknown}"
             ]
-        if not 0 <= likelihood <= 100:
-            errors.append("Meaningful-progress likelihood must be from 0 to 100.")
-        if threshold != policy_threshold:
-            errors.append(
-                "MINIMUM_WORTHWHILE_LIKELIHOOD must equal the project policy "
-                f"threshold of {policy_threshold}."
-            )
-        if not 0 <= replacement_likelihood <= 100:
-            errors.append("Replacement likelihood must be from 0 to 100.")
-        if replacement_likelihood < policy_threshold:
-            errors.append("Selected strategy is below the policy threshold.")
-        if not 1 <= first_evidence_rounds <= horizon_rounds:
-            errors.append(
-                f"First evidence must be due within 1 to {horizon_rounds} rounds."
-            )
-        worthwhile_text = markers.get("CURRENT_COURSE_WORTHWHILE")
-        if worthwhile_text not in {"yes", "no"}:
-            errors.append("CURRENT_COURSE_WORTHWHILE must be yes or no.")
-        worthwhile = worthwhile_text == "yes"
-        decision = markers.get("STRATEGY_DECISION", "")
-        if decision not in {"continue", "change_course"}:
-            errors.append("STRATEGY_DECISION must be continue or change_course.")
-        plan_status = markers.get("STRATEGY_PLAN_STATUS", "")
-        if plan_status not in {"ready", "revise"}:
-            errors.append("STRATEGY_PLAN_STATUS must be ready or revise.")
-        compute_cost = markers.get("EXPECTED_COMPUTE_COST")
-        if compute_cost not in {"low", "medium", "high"}:
-            errors.append("EXPECTED_COMPUTE_COST must be low, medium, or high.")
-        if worthwhile != (likelihood >= policy_threshold):
-            errors.append("Worthwhile judgment must match the policy-owned threshold.")
-        if decision != ("continue" if worthwhile else "change_course"):
-            errors.append("Strategy decision must match the worthwhile judgment.")
-        if plan_status != "ready":
-            errors.append("The strategy plan is not ready.")
-        if decision == "change_course" and replacement_likelihood <= likelihood:
-            errors.append(
-                "A replacement must have a higher likelihood than the rejected course."
-            )
-        if decision == "change_course" and markers.get("COURSE_TO_ABANDON") in {
-            None,
-            "",
-            "n/a",
-        }:
-            errors.append("A course change must name the course being abandoned.")
-        for name in (
-            "SELECTED_METHOD",
-            "FIRST_FALSIFIABLE_CHECK",
-            "STRATEGY_KILL_CRITERIA",
-            "REFLECTION_NEXT",
+        if type(raw["schema_version"]) is not int or raw["schema_version"] != 1:
+            errors.append("strategy proposal schema_version must be integer 1")
+        decision = raw["decision"]
+        if (
+            not isinstance(decision, str)
+            or decision not in {"select", "continue", "change_course"}
         ):
-            if markers.get(name) in {None, "", "n/a"}:
-                errors.append(f"An enforceable strategy requires {name}.")
-        alternatives = tuple(
-            item.strip()
-            for item in markers.get("CANDIDATE_STRATEGIES", "").split("||")
-            if item.strip()
+            errors.append("strategy proposal decision is invalid")
+        for name in ("selected_method", "decision_reason", "next_action"):
+            item = raw[name]
+            if (
+                not isinstance(item, str)
+                or not item
+                or item != item.strip()
+                or len(item) > _TEXT_LIMIT
+            ):
+                errors.append(f"strategy proposal {name} must be trimmed text")
+        review_after = raw["review_after_executions"]
+        if type(review_after) is not int:
+            errors.append("review_after_executions must be an integer")
+        active = state.get("active_strategy")
+        completed = int(state.get("round_count", 0))
+        if decision == "continue" and isinstance(active, dict):
+            offset_limit = (
+                int(active.get("hard_deadline_execution", completed)) - completed
+            )
+        else:
+            offset_limit = max_strategy_executions
+        if (
+            type(review_after) is not int
+            or not 1 <= review_after <= offset_limit
+        ):
+            errors.append(
+                "review_after_executions exceeds the available lineage executions"
+            )
+        base_id = raw["base_strategy_id"]
+        base_revision = raw["base_revision"]
+        if decision == "select":
+            if active is not None or base_id is not None or base_revision is not None:
+                errors.append("select requires no active strategy and null base fields")
+        elif decision in {"continue", "change_course"}:
+            if not isinstance(active, dict):
+                errors.append(f"{decision} requires an active strategy")
+            elif (
+                base_id != active.get("strategy_id")
+                or base_revision != active.get("revision")
+                or type(base_revision) is not int
+            ):
+                errors.append(f"{decision} base strategy ID and revision are stale")
+        if decision == "change_course" and active is None:
+            errors.append("change_course is invalid without a prior active strategy")
+        if (
+            decision == "continue"
+            and AutoRunRunner._strategy_replacement_required(state)
+        ):
+            errors.append("continue is forbidden because course replacement is required")
+
+        def validate_items(
+            name: str, required_keys: set[str], with_offset: bool
+        ) -> tuple[dict[str, Any], ...]:
+            value = raw[name]
+            if not isinstance(value, list) or not 1 <= len(value) <= 8:
+                errors.append(f"{name} must contain 1 to 8 objects")
+                return ()
+            parsed: list[dict[str, Any]] = []
+            ids: list[str] = []
+            offsets: list[int] = []
+            for index, item in enumerate(value):
+                if not isinstance(item, dict) or set(item) != required_keys:
+                    errors.append(f"{name}[{index}] has invalid keys")
+                    continue
+                item_id = item.get("id")
+                observable = item.get("observable")
+                if not isinstance(item_id, str) or _ID_PATTERN.fullmatch(item_id) is None:
+                    errors.append(f"{name}[{index}].id is invalid")
+                else:
+                    ids.append(item_id)
+                if (
+                    not isinstance(observable, str)
+                    or not observable
+                    or observable != observable.strip()
+                    or len(observable) > _TEXT_LIMIT
+                ):
+                    errors.append(f"{name}[{index}].observable must be trimmed text")
+                if with_offset:
+                    offset = item.get("after_executions")
+                    if (
+                        isinstance(offset, bool)
+                        or not isinstance(offset, int)
+                        or not 1 <= offset <= offset_limit
+                    ):
+                        errors.append(
+                            f"{name}[{index}].after_executions is outside the lineage"
+                        )
+                    else:
+                        offsets.append(offset)
+                parsed.append(dict(item))
+            if len(ids) != len(set(ids)):
+                errors.append(f"{name} IDs must be unique")
+            if with_offset and offsets != sorted(set(offsets)):
+                errors.append("checkpoint offsets must be strictly increasing")
+            return tuple(parsed)
+
+        checkpoints = validate_items(
+            "checkpoints", {"id", "after_executions", "observable"}, True
         )
-        if len(alternatives) < 2 or len(set(alternatives)) != len(alternatives):
-            errors.append(
-                "CANDIDATE_STRATEGIES must contain at least two distinct candidates "
-                "separated by `||`."
-            )
-        milestones: list[tuple[int, str]] = []
-        for raw_milestone in markers.get("STRATEGY_MILESTONES", "").split(";"):
-            raw_milestone = raw_milestone.strip()
-            if not raw_milestone:
-                continue
-            try:
-                offset_text, observable = raw_milestone.split("::", 1)
-                offset = int(offset_text.strip())
-            except ValueError:
-                errors.append(
-                    "Each milestone must use `round_offset::observable` syntax."
-                )
-                continue
-            observable = observable.strip()
-            if not observable or not 1 <= offset <= horizon_rounds:
-                errors.append(
-                    f"Milestone offsets must be within 1 to {horizon_rounds} "
-                    "and observables must be nonempty."
-                )
-            milestones.append((offset, observable))
-        offsets = [offset for offset, _ in milestones]
-        if not milestones or offsets != sorted(set(offsets)):
-            errors.append("Milestone offsets must be present, unique, and increasing.")
-        elif offsets[0] > first_evidence_rounds:
-            errors.append(
-                "The first milestone must be due no later than first evidence."
-            )
+        stop_conditions = validate_items(
+            "stop_conditions", {"id", "observable"}, False
+        )
+        if errors:
+            return None, errors
         return (
-            _StrategyAssessment(
-                likelihood=likelihood,
-                threshold=threshold,
-                worthwhile=worthwhile,
-                decision=decision,
-                plan_status=plan_status,
-                replacement_likelihood=replacement_likelihood,
-                first_evidence_rounds=first_evidence_rounds,
-                compute_cost=compute_cost,
-                alternatives=alternatives,
-                milestones=tuple(milestones),
-                markers=markers,
+            _StrategyProposal(
+                decision=str(decision),
+                base_strategy_id=base_id,
+                base_revision=base_revision,
+                selected_method=str(raw["selected_method"]),
+                decision_reason=str(raw["decision_reason"]),
+                next_action=str(raw["next_action"]),
+                review_after_executions=int(review_after),
+                checkpoints=checkpoints,
+                stop_conditions=stop_conditions,
             ),
-            errors,
+            [],
         )
 
     @staticmethod
-    def _marker_values(path: Path, names: set[str]) -> dict[str, str]:
-        try:
-            text = path.read_text(encoding="utf-8")
-        except OSError:
-            return {}
-        return AutoRunRunner._marker_values_from_text(text, names)
-
-    @staticmethod
-    def _marker_values_from_text(text: str, names: set[str]) -> dict[str, str]:
-        markers: dict[str, str] = {}
-        for line in text.splitlines():
-            for name in names:
-                prefix = f"{name}:"
-                if line.startswith(prefix):
-                    markers[name] = line.removeprefix(prefix).strip()
-        return markers
-
-    @staticmethod
-    def _round_progress_class(output_path: Path) -> str:
-        markers = AutoRunRunner._marker_values(output_path, {"AUTORUN_RESULT"})
-        value = markers.get("AUTORUN_RESULT", "unclassified")
-        return value if value in _PROGRESS_CLASSES else "unclassified"
+    def _parse_conductor_claim(text: str) -> dict[str, Any] | None:
+        raw, errors = AutoRunRunner._strict_json_marker(text, "CONDUCTOR_RESULT_JSON")
+        if errors or not isinstance(raw, dict):
+            return None
+        required = {
+            "schema_version",
+            "strategy_id",
+            "strategy_revision",
+            "checkpoint_id",
+            "progress_class",
+            "summary",
+            "evidence",
+        }
+        if set(raw) != required:
+            return None
+        if (
+            type(raw["schema_version"]) is not int
+            or raw["schema_version"] != 1
+            or not isinstance(raw["progress_class"], str)
+            or raw["progress_class"] not in _PROGRESS_CLASSES
+            or not isinstance(raw["strategy_id"], str)
+            or type(raw["strategy_revision"]) is not int
+            or (
+                raw["checkpoint_id"] is not None
+                and not isinstance(raw["checkpoint_id"], str)
+            )
+            or not isinstance(raw["summary"], str)
+            or not isinstance(raw["evidence"], str)
+        ):
+            return None
+        return raw
 
     def _round_prompt(
         self,
         index: int,
         state: dict[str, Any],
         master_text: str,
-        reflection_output: Path | None,
     ) -> str:
-        prior_output = state.get("last_output") or "None"
-        prior_receipt = state.get("last_receipt") or "None"
-        failure = state.get("last_error") or "None"
-        active_strategy = json.dumps(
-            state.get("active_strategy"), indent=2, sort_keys=True
-        )
-        reflection = ""
-        if reflection_output is not None:
-            reflection_text = reflection_output.read_text(encoding="utf-8").strip()
-            reflection = f"""
-
-## Meaningful-progress strategy gate
-
-Source: `{reflection_output}`
-
-{reflection_text}
-
-This is the authoritative strategy decision, not verified mathematical evidence.
-Check its repository claims. If it says `change_course`, abandon the rejected
-course and execute the replacement plan's first falsifiable check; do not spend
-this round making another incremental improvement to the rejected approach.
-"""
+        strategy = state.get("active_strategy")
+        assert isinstance(strategy, dict)
+        active_strategy = json.dumps(strategy, indent=2, sort_keys=True)
         return f"""# Autorun conductor round {index}
 
-You are the autonomous conductor for an unattended Agentic Lean Math Assistant
-session. Work directly in `{self.project.root}`. You must choose your own next
-specific task from the living Master Prompt, execute it, and verify its effect.
-Do not merely propose work for a later agent.
+You are the configured primary conductor for an unattended project session. Work
+directly in `{self.project.root}` and execute the deeply validated active contract.
+Preserve the living master contract and configured trust and resource policy.
+Verify observable effects, do not silently drift, and do not weaken acceptance
+criteria. Do not merely propose work for a later agent.
 
 ## Living Master Prompt
 
@@ -1179,71 +1215,34 @@ Source: `{self.master_prompt}`
 ## Retained context
 
 - Autorun session: `{self._session()}`
-- Previous output: `{prior_output}`
-- Previous receipt: `{prior_receipt}`
-- Previous controller/agent error: `{failure}`
+- Previous output: `{state.get("last_output") or "None"}`
+- Previous receipt: `{state.get("last_receipt") or "None"}`
+- Previous controller or agent error: `{state.get("last_error") or "None"}`
 - Consecutive execution failures: {int(state.get("consecutive_execution_failures", 0))}
-- Completed executions: {int(state.get("round_count", 0))}
+- Completed successful executions: {int(state.get("round_count", 0))}
 
-## Enforceable active strategy
+## Enforceable active strategy contract
 
 ```json
 {active_strategy}
 ```
 
-Your task must implement this contract's next action or current pending milestone.
-Do not silently drift. If evidence falsifies a kill criterion, report it instead
-of substituting a nearby task.
-{reflection}
-## Operating protocol
+Execute the contract's next action and relevant current checkpoint. Inspect
+retained evidence first, implement a complete reachable change now, and run
+focused verification for significant changes. If observed evidence conflicts with
+the method, checkpoint, stop conditions, or acceptance criteria, report that
+conflict rather than substituting a nearby task. Keep commands inside the inherited
+resource controls and save all useful work before returning.
 
-1. Inspect the current repository and retained evidence before choosing work.
-2. Formulate a precise self-prompt for the single highest-leverage reachable task.
-3. Prefer a complete vertical slice that changes a named proof obligation or removes
-   a demonstrated ALMA bottleneck.
-4. Implement the task now. Preserve useful partial work in small compilable files.
-5. Run focused verification for every significant behavioral or formal change.
-6. Never claim mathematical closure from prose, process exit, unproved certificate
-   data, or a theorem with unmatched hypotheses.
-7. Do not retry an unchanged failed approach. Diagnose it, change strategy, or work
-   on an independent critical-path obligation.
-8. If blocked on one path, immediately choose another useful path. Do not wait for
-   the sleeping operator and do not enter a polling loop.
-9. Do not weaken the CMV theorem contract. No `sorry`, `admit`, project axioms,
-   unchecked oracle, or `native_decide`.
-10. Keep every command inside the inherited resource-control cgroup. Never use
-    `systemd-run`, `nohup`, `disown`, `setsid`, or detached/background processes.
-11. Classify the result as `meaningful` only if it materially advances the final
-    contract or validates a scalable method. Local lemmas, tighter constants, and
-    adjacent tiny cells are `incremental` even when fully verified.
-12. Before returning, save all useful work and state exactly what was verified and
-    what the next conductor round should attempt.
+End with exactly one final single-line claim. This report is evidence supplied to
+the independent adjudicator and cannot mutate governance state:
 
-End with these machine-readable lines. `AUTORUN_RESULT` is your claim and will be
-independently adjudicated:
-
-AUTORUN_RESULT: incremental | meaningful | blocked | complete
-AUTORUN_SUMMARY: one factual sentence
-AUTORUN_NEXT: one concrete next action
-STRATEGY_ID: exact active strategy ID
-STRATEGY_MILESTONE: integer milestone index | n/a
-MILESTONE_RESULT: advanced | unchanged | falsified | complete
-EVIDENCE: retained artifact or verified observable supporting the milestone result
-
+CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_id']}","strategy_revision":{strategy['revision']},"checkpoint_id":null,"progress_class":"incremental|meaningful|blocked|complete","summary":"factual result","evidence":"retained artifact or verified observable"}}
 """
 
     def _conductor_model(self, state: dict[str, Any]) -> tuple[str | None, str]:
-        primary_model = self.options.model or self.project.planner_model
-        targeted_model = self.project.targeted_task_model
-        failures = int(state.get("consecutive_execution_failures", 0))
-        if (
-            targeted_model is not None
-            and targeted_model != primary_model
-            and failures >= 2
-            and failures % 3 == 2
-        ):
-            return targeted_model, "targeted_recovery"
-        return primary_model, "primary"
+        del state
+        return self.options.model or self.project.planner_model, "primary"
 
     def _sleep_after_failure(self, failures: int) -> None:
         delay = min(
@@ -1288,6 +1287,8 @@ EVIDENCE: retained artifact or verified observable supporting the milestone resu
             raise AutoRunError("autorun state is malformed")
         value: dict[str, Any] = dict(loaded)
         version = value.get("schema_version")
+        if type(version) is not int:
+            raise AutoRunError(f"unsupported autorun state schema: {version!r}")
         if version == 1:
             retained_attempts = [
                 int(path.name.removeprefix("round-"))
@@ -1330,8 +1331,105 @@ EVIDENCE: retained artifact or verified observable supporting the milestone resu
                     "last_adjudication_model": None,
                 }
             )
-        elif version != 2:
+            version = 2
+        if version == 2:
+            legacy_names = {
+                "active_strategy",
+                "strategy_history",
+                "last_strategy_likelihood",
+                "last_strategy_threshold",
+                "last_strategy_worthwhile",
+                "last_strategy_decision",
+                "last_strategy_plan_status",
+                "last_strategy_review",
+                "last_strategy_round",
+            }
+            legacy = {
+                name: value.get(name)
+                for name in legacy_names
+                if name in value
+            }
+            history = list(value.get("strategy_history", []))
+            old_active = value.get("active_strategy")
+            if isinstance(old_active, dict):
+                archived = json.loads(json.dumps(old_active))
+                archived["status"] = "superseded"
+                archived["archive_reason"] = "state_schema_upgrade"
+                history.append(archived)
+            adjudication_history: list[dict[str, Any]] = []
+            old_adjudication = value.get("last_progress_adjudication")
+            required_adjudication = {
+                "strategy_id",
+                "strategy_revision",
+                "progress_class",
+                "alignment",
+                "checkpoint_id",
+                "checkpoint_result",
+                "triggered_stop_condition_id",
+                "reason",
+                "verified_scope_delta",
+            }
+            if (
+                isinstance(old_adjudication, dict)
+                and required_adjudication <= old_adjudication.keys()
+            ):
+                adjudication_history.append(
+                    {
+                        "attempt": int(value.get("attempt_count", 0)),
+                        "execution": int(value.get("round_count", 0)),
+                        **{
+                            name: old_adjudication[name]
+                            for name in required_adjudication
+                        },
+                        "artifact": value.get("last_adjudication_review"),
+                    }
+                )
+            for name in legacy_names:
+                value.pop(name, None)
+            value.update(
+                {
+                    "schema_version": 3,
+                    "active_strategy": None,
+                    "strategy_history": history[-_STRATEGY_HISTORY_LIMIT:],
+                    "adjudication_history": adjudication_history,
+                    "legacy_strategy_state": legacy,
+                    "strategy_change_required": True,
+                    "next_reflection_at": utc_now(),
+                    "last_strategy_decision": None,
+                    "last_strategy_review": None,
+                    "last_strategy_round": None,
+                }
+            )
+            version = 3
+        if version != 3:
             raise AutoRunError(f"unsupported autorun state schema: {version!r}")
+        value.pop("active_strategy_pass", None)
+
+        defaults: dict[str, Any] = {
+            "attempt_count": int(value.get("round_count", 0)),
+            "reflection_count": 0,
+            "meaningful_round_count": 0,
+            "incremental_round_count": 0,
+            "blocked_round_count": 0,
+            "complete_round_count": 0,
+            "unclassified_round_count": 0,
+            "controller_failure_count": 0,
+            "agent_execution_failure_count": 0,
+            "verification_failure_count": 0,
+            "strategy_gate_failure_count": 0,
+            "mathematical_blocker_count": 0,
+            "consecutive_execution_failures": 0,
+            "strategy_history": [],
+            "adjudication_history": [],
+            "legacy_strategy_state": None,
+            "active_strategy": None,
+            "strategy_change_required": False,
+            "repeated_output_count": 0,
+            "stop_requested": False,
+        }
+        for name, default in defaults.items():
+            value.setdefault(name, default)
+
         required_text = {
             "session_id",
             "status",
@@ -1345,8 +1443,17 @@ EVIDENCE: retained artifact or verified observable supporting the milestone resu
             for name in required_text
         ):
             raise AutoRunError("autorun state has invalid text or timestamp fields")
-        allowed_status = {"running", "recovering", "paused", "stopped"}
-        if value["status"] not in allowed_status:
+        for name in ("created_at", "updated_at", "heartbeat_at", "next_reflection_at"):
+            try:
+                AutoRunRunner._parse_time(str(value[name]))
+            except (TypeError, ValueError, AutoRunError) as exc:
+                raise AutoRunError(f"autorun state field {name} is invalid") from exc
+        if not isinstance(value["status"], str) or value["status"] not in {
+            "running",
+            "recovering",
+            "paused",
+            "stopped",
+        }:
             raise AutoRunError("autorun state has an invalid status")
         count_fields = {
             "round_count",
@@ -1363,6 +1470,7 @@ EVIDENCE: retained artifact or verified observable supporting the milestone resu
             "strategy_gate_failure_count",
             "mathematical_blocker_count",
             "consecutive_execution_failures",
+            "repeated_output_count",
         }
         for name in count_fields:
             item = value.get(name)
@@ -1370,44 +1478,357 @@ EVIDENCE: retained artifact or verified observable supporting the milestone resu
                 raise AutoRunError(f"autorun state field {name} must be nonnegative")
         if int(value["attempt_count"]) < int(value["round_count"]):
             raise AutoRunError("autorun attempt count precedes completed executions")
+        for name in ("strategy_change_required", "stop_requested"):
+            if not isinstance(value.get(name), bool):
+                raise AutoRunError(f"autorun state field {name} must be boolean")
         strategy = value.get("active_strategy")
         if strategy is not None:
-            if not isinstance(strategy, dict):
-                raise AutoRunError("active strategy contract must be a table")
-            required_strategy = {
-                "strategy_id",
-                "status",
-                "deadline_execution",
-                "first_evidence_deadline_execution",
-                "milestones",
-                "kill_criteria",
-            }
-            if required_strategy - strategy.keys():
-                raise AutoRunError("active strategy contract is incomplete")
-            if strategy["status"] not in {
-                "active",
-                "drifted",
-                "falsified",
-                "complete",
-                "superseded",
-            }:
-                raise AutoRunError("active strategy contract has an invalid status")
-            for name in ("deadline_execution", "first_evidence_deadline_execution"):
-                item = strategy[name]
-                if isinstance(item, bool) or not isinstance(item, int) or item < 0:
-                    raise AutoRunError(
-                        f"active strategy field {name} must be nonnegative"
-                    )
-            if not isinstance(strategy["milestones"], list) or not isinstance(
-                strategy["kill_criteria"], list
+            AutoRunRunner._validate_strategy_contract(
+                strategy,
+                completed_execution=int(value["round_count"]),
+                require_active=False,
+            )
+            if int(strategy["accepted_attempt"]) > int(value["attempt_count"]):
+                raise AutoRunError("active strategy acceptance attempt is in the future")
+            if strategy["status"] in {"drifted", "falsified", "expired"} and not bool(
+                value["strategy_change_required"]
             ):
                 raise AutoRunError(
-                    "active strategy milestones and kill criteria must be arrays"
+                    "terminal strategy rejection must require course replacement"
                 )
+            if strategy["status"] == "complete" and value["status"] != "stopped":
+                raise AutoRunError("a complete strategy requires a stopped session")
         history = value.get("strategy_history")
-        if not isinstance(history, list):
-            raise AutoRunError("strategy history must be an array")
+        if not isinstance(history, list) or not all(
+            isinstance(item, dict) for item in history
+        ):
+            raise AutoRunError("strategy history must be an array of objects")
+        adjudications = value.get("adjudication_history")
+        if not isinstance(adjudications, list):
+            raise AutoRunError("adjudication history must be an array")
+        for item in adjudications:
+            AutoRunRunner._validate_adjudication_history_entry(
+                item, int(value["round_count"]), int(value["attempt_count"])
+            )
+        if isinstance(strategy, dict):
+            prior_revisions = [
+                int(item["revision"])
+                for item in history
+                if item.get("schema_version") == 2
+                and item.get("strategy_id") == strategy["strategy_id"]
+                and isinstance(item.get("revision"), int)
+                and not isinstance(item.get("revision"), bool)
+            ]
+            if prior_revisions and max(prior_revisions) >= int(strategy["revision"]):
+                raise AutoRunError("active strategy revision does not follow history")
         return value
+
+    @staticmethod
+    def _validate_strategy_contract(
+        strategy: object,
+        *,
+        completed_execution: int,
+        require_active: bool,
+    ) -> None:
+        if not isinstance(strategy, dict):
+            raise AutoRunError("active strategy contract must be an object")
+        required = {
+            "schema_version",
+            "strategy_id",
+            "revision",
+            "status",
+            "selected_method",
+            "decision_reason",
+            "accepted_attempt",
+            "accepted_execution",
+            "lineage_started_execution",
+            "hard_deadline_execution",
+            "review_due_execution",
+            "next_action",
+            "checkpoints",
+            "stop_conditions",
+            "last_alignment",
+            "last_checkpoint_result",
+        }
+        if set(strategy) != required:
+            raise AutoRunError("active strategy contract has unknown or missing fields")
+        if (
+            type(strategy["schema_version"]) is not int
+            or strategy["schema_version"] != 2
+        ):
+            raise AutoRunError("active strategy contract schema must be integer 2")
+        strategy_id = strategy["strategy_id"]
+        if (
+            not isinstance(strategy_id, str)
+            or re.fullmatch(r"strategy-[0-9]{5}", strategy_id) is None
+        ):
+            raise AutoRunError("active strategy ID is invalid")
+        revision = strategy["revision"]
+        if type(revision) is not int or revision < 1:
+            raise AutoRunError("active strategy revision must be positive")
+        statuses = {
+            "active",
+            "drifted",
+            "falsified",
+            "complete",
+            "superseded",
+            "expired",
+        }
+        if (
+            not isinstance(strategy["status"], str)
+            or strategy["status"] not in statuses
+        ):
+            raise AutoRunError("active strategy contract has an invalid status")
+        if require_active and strategy["status"] != "active":
+            raise AutoRunError("execution requires an active strategy contract")
+        for name in ("selected_method", "decision_reason", "next_action"):
+            text = strategy[name]
+            if (
+                not isinstance(text, str)
+                or not text
+                or text != text.strip()
+                or len(text) > _TEXT_LIMIT
+            ):
+                raise AutoRunError(f"active strategy field {name} is invalid")
+        counters: dict[str, int] = {}
+        for name in (
+            "accepted_attempt",
+            "accepted_execution",
+            "lineage_started_execution",
+            "hard_deadline_execution",
+            "review_due_execution",
+        ):
+            item = strategy[name]
+            if isinstance(item, bool) or not isinstance(item, int) or item < 0:
+                raise AutoRunError(f"active strategy field {name} is invalid")
+            counters[name] = item
+        if not (
+            counters["lineage_started_execution"]
+            <= counters["accepted_execution"]
+            <= completed_execution
+        ):
+            raise AutoRunError("active strategy base counters are inconsistent")
+        if not (
+            counters["accepted_execution"]
+            < counters["review_due_execution"]
+            <= counters["hard_deadline_execution"]
+        ):
+            raise AutoRunError("active strategy soft deadline ordering is invalid")
+        lineage_budget = (
+            counters["hard_deadline_execution"]
+            - counters["lineage_started_execution"]
+        )
+        if not 1 <= lineage_budget <= 100:
+            raise AutoRunError("active strategy hard lineage deadline is inconsistent")
+        checkpoints = strategy["checkpoints"]
+        if not isinstance(checkpoints, list) or not 1 <= len(checkpoints) <= 8:
+            raise AutoRunError("active strategy checkpoints must contain 1 to 8 items")
+        checkpoint_ids: list[str] = []
+        checkpoint_deadlines: list[int] = []
+        for checkpoint in checkpoints:
+            if not isinstance(checkpoint, dict) or set(checkpoint) != {
+                "id",
+                "due_execution",
+                "observable",
+                "status",
+                "last_result",
+                "last_adjudication_execution",
+            }:
+                raise AutoRunError("active strategy checkpoint is malformed")
+            checkpoint_id = checkpoint["id"]
+            if (
+                not isinstance(checkpoint_id, str)
+                or _ID_PATTERN.fullmatch(checkpoint_id) is None
+            ):
+                raise AutoRunError("active strategy checkpoint ID is invalid")
+            checkpoint_ids.append(checkpoint_id)
+            due = checkpoint["due_execution"]
+            if (
+                isinstance(due, bool)
+                or not isinstance(due, int)
+                or not counters["accepted_execution"]
+                < due
+                <= counters["hard_deadline_execution"]
+            ):
+                raise AutoRunError("active strategy checkpoint deadline is invalid")
+            checkpoint_deadlines.append(due)
+            observable = checkpoint["observable"]
+            if (
+                not isinstance(observable, str)
+                or not observable
+                or observable != observable.strip()
+                or len(observable) > _TEXT_LIMIT
+            ):
+                raise AutoRunError("active strategy checkpoint observable is invalid")
+            if (
+                not isinstance(checkpoint["status"], str)
+                or checkpoint["status"]
+                not in {
+                    "pending",
+                    "advanced",
+                    "satisfied",
+                    "revised",
+                    "falsified",
+                }
+            ):
+                raise AutoRunError("active strategy checkpoint status is invalid")
+            result = checkpoint["last_result"]
+            if (
+                result is not None
+                and (
+                    not isinstance(result, str)
+                    or result
+                    not in {
+                        "advanced",
+                        "satisfied",
+                        "unchanged",
+                        "falsified",
+                        "n/a",
+                    }
+                )
+            ):
+                raise AutoRunError("active strategy checkpoint result is invalid")
+            adjudicated_at = checkpoint["last_adjudication_execution"]
+            if adjudicated_at is not None and (
+                isinstance(adjudicated_at, bool)
+                or not isinstance(adjudicated_at, int)
+                or not 0 <= adjudicated_at <= completed_execution
+            ):
+                raise AutoRunError("active strategy checkpoint adjudication is invalid")
+        if (
+            len(checkpoint_ids) != len(set(checkpoint_ids))
+            or checkpoint_deadlines != sorted(set(checkpoint_deadlines))
+        ):
+            raise AutoRunError("active strategy checkpoints are not unique and ordered")
+        stop_conditions = strategy["stop_conditions"]
+        if not isinstance(stop_conditions, list) or not 1 <= len(stop_conditions) <= 8:
+            raise AutoRunError(
+                "active strategy stop conditions must contain 1 to 8 items"
+            )
+        stop_ids: list[str] = []
+        for stop in stop_conditions:
+            if not isinstance(stop, dict) or set(stop) != {
+                "id",
+                "observable",
+                "triggered",
+                "last_adjudication_execution",
+            }:
+                raise AutoRunError("active strategy stop condition is malformed")
+            stop_id = stop["id"]
+            if not isinstance(stop_id, str) or _ID_PATTERN.fullmatch(stop_id) is None:
+                raise AutoRunError("active strategy stop condition ID is invalid")
+            stop_ids.append(stop_id)
+            observable = stop["observable"]
+            if (
+                not isinstance(observable, str)
+                or not observable
+                or observable != observable.strip()
+                or len(observable) > _TEXT_LIMIT
+            ):
+                raise AutoRunError("active strategy stop condition observable is invalid")
+            if not isinstance(stop["triggered"], bool):
+                raise AutoRunError("active strategy stop trigger must be boolean")
+            adjudicated_at = stop["last_adjudication_execution"]
+            if adjudicated_at is not None and (
+                isinstance(adjudicated_at, bool)
+                or not isinstance(adjudicated_at, int)
+                or not 0 <= adjudicated_at <= completed_execution
+            ):
+                raise AutoRunError("active strategy stop adjudication is invalid")
+        if len(stop_ids) != len(set(stop_ids)):
+            raise AutoRunError("active strategy stop condition IDs must be unique")
+        last_alignment = strategy["last_alignment"]
+        if (
+            last_alignment is not None
+            and (
+                not isinstance(last_alignment, str)
+                or last_alignment
+                not in {"aligned", "drifted", "falsified", "complete", "n/a"}
+            )
+        ):
+            raise AutoRunError("active strategy last alignment is invalid")
+        last_result = strategy["last_checkpoint_result"]
+        if (
+            last_result is not None
+            and (
+                not isinstance(last_result, str)
+                or last_result
+                not in {
+                    "advanced",
+                    "satisfied",
+                    "unchanged",
+                    "falsified",
+                    "n/a",
+                }
+            )
+        ):
+            raise AutoRunError("active strategy last checkpoint result is invalid")
+
+    @staticmethod
+    def _validate_adjudication_history_entry(
+        entry: object, completed_execution: int, attempt_count: int
+    ) -> None:
+        if not isinstance(entry, dict):
+            raise AutoRunError("adjudication history entry must be an object")
+        required = {
+            "attempt",
+            "execution",
+            "strategy_id",
+            "strategy_revision",
+            "progress_class",
+            "alignment",
+            "checkpoint_id",
+            "checkpoint_result",
+            "triggered_stop_condition_id",
+            "reason",
+            "verified_scope_delta",
+            "artifact",
+        }
+        if set(entry) != required:
+            raise AutoRunError("adjudication history entry has unknown or missing fields")
+        for name, maximum in (
+            ("attempt", attempt_count),
+            ("execution", completed_execution),
+        ):
+            item = entry[name]
+            if (
+                isinstance(item, bool)
+                or not isinstance(item, int)
+                or not 0 <= item <= maximum
+            ):
+                raise AutoRunError(f"adjudication history {name} is invalid")
+        if (
+            not isinstance(entry["strategy_id"], str)
+            or re.fullmatch(r"strategy-[0-9]{5}", entry["strategy_id"]) is None
+            or type(entry["strategy_revision"]) is not int
+            or entry["strategy_revision"] < 1
+            or not isinstance(entry["progress_class"], str)
+            or entry["progress_class"] not in _PROGRESS_CLASSES
+            or not isinstance(entry["alignment"], str)
+            or entry["alignment"]
+            not in {"aligned", "drifted", "falsified", "complete", "n/a"}
+            or not isinstance(entry["checkpoint_result"], str)
+            or entry["checkpoint_result"]
+            not in {"advanced", "satisfied", "unchanged", "falsified", "n/a"}
+        ):
+            raise AutoRunError("adjudication history classification is invalid")
+        for name in ("checkpoint_id", "triggered_stop_condition_id"):
+            item = entry[name]
+            if item is not None and (
+                not isinstance(item, str) or _ID_PATTERN.fullmatch(item) is None
+            ):
+                raise AutoRunError(f"adjudication history {name} is invalid")
+        for name in ("reason", "verified_scope_delta"):
+            item = entry[name]
+            if (
+                not isinstance(item, str)
+                or not item
+                or item != item.strip()
+                or len(item) > _TEXT_LIMIT
+            ):
+                raise AutoRunError(f"adjudication history {name} is invalid")
+        if entry["artifact"] is not None and not isinstance(entry["artifact"], str):
+            raise AutoRunError("adjudication history artifact is invalid")
 
     def _save(self, state: dict[str, Any]) -> None:
         with self._state_lock:
@@ -1515,6 +1936,20 @@ EVIDENCE: retained artifact or verified observable supporting the milestone resu
         atomic_write_json(round_dir / "progress-metrics.json", results)
         return results, failures
 
+    @staticmethod
+    def _earliest_admissible_checkpoint(
+        strategy: dict[str, Any],
+    ) -> dict[str, Any] | None:
+        return next(
+            (
+                item
+                for item in strategy.get("checkpoints", [])
+                if isinstance(item, dict)
+                and item.get("status") in {"pending", "advanced"}
+            ),
+            None,
+        )
+
     def _run_progress_adjudication(
         self,
         index: int,
@@ -1527,23 +1962,68 @@ EVIDENCE: retained artifact or verified observable supporting the milestone resu
         receipt_path = round_dir / "progress-adjudication-receipt.json"
         request_path = round_dir / "progress-adjudication-request.json"
         current = self._state()
+        strategy = current.get("active_strategy")
+        self._validate_strategy_contract(
+            strategy,
+            completed_execution=int(current.get("round_count", 0)),
+            require_active=True,
+        )
+        assert isinstance(strategy, dict)
         model = (
             self.project.analysis_model
-            or self.options.reflection_model
-            or self.project.strategy_reflection_model
             or self.options.model
             or self.project.planner_model
         )
         conductor_text = conductor_output.read_text(encoding="utf-8").strip()
+        claim = self._parse_conductor_claim(conductor_text)
+        claim_mismatch = claim is None or (
+            claim.get("strategy_id") != strategy["strategy_id"]
+            or claim.get("strategy_revision") != strategy["revision"]
+            or (
+                claim.get("checkpoint_id") is not None
+                and claim.get("checkpoint_id")
+                not in {
+                    item["id"]
+                    for item in strategy["checkpoints"]
+                    if isinstance(item, dict)
+                }
+            )
+        )
+        expected_checkpoint = self._earliest_admissible_checkpoint(strategy)
+        if expected_checkpoint is None:
+            checkpoint_instructions = """- Earliest admissible checkpoint: none.
+- Observable: none; the active strategy has no pending or advanced checkpoint.
+- No non-`n/a` checkpoint result is admissible. Use `checkpoint_result="n/a"`
+  with `checkpoint_id=null`."""
+        else:
+            expected_checkpoint_id = expected_checkpoint["id"]
+            expected_checkpoint_observable = expected_checkpoint["observable"]
+            checkpoint_instructions = f"""- Earliest admissible checkpoint ID: `{expected_checkpoint_id}`.
+- Earliest admissible checkpoint observable: {json.dumps(expected_checkpoint_observable)}
+- Every non-`n/a` `checkpoint_result` must use exactly
+  `checkpoint_id="{expected_checkpoint_id}"`. A result naming any later checkpoint
+  will be rejected, even when that later checkpoint was verified."""
         prompt = f"""# Independent autorun progress adjudication
 
-You are a read-only adjudicator, independent of the conductor that performed the
-work. Inspect the repository, retained artifacts, active strategy, and trusted
-project metrics. Do not edit files. The conductor's `AUTORUN_RESULT` is a claim,
-not evidence. Classify only verified observable progress toward the living master
-contract. Local lemmas, tighter constants, passing builds, and activity are
-incremental unless they discharge a load-bearing obligation or validate a method
-that scales to the remaining domain.
+You are a read-only adjudicator independent of both the strategy governor and the
+conductor. Inspect retained artifacts, the repository, the active contract, and
+trusted project metrics. Do not edit files. The conductor report is a claim, not
+authority. Classify only verified observable progress toward the living master
+contract. A report with a missing or mismatched strategy identity must be treated
+as drift rather than credited to the active contract.
+
+The required active strategy identity and checkpoint ordering are:
+
+- Active strategy ID: `{strategy["strategy_id"]}`.
+- Active strategy revision: `{strategy["revision"]}`.
+{checkpoint_instructions}
+
+`progress_class="complete"` and `alignment="complete"` each mean that the entire
+Living Master Prompt is complete. They do not mean merely that the active
+strategy, or even all of its checkpoints, is complete. If all strategy
+checkpoints are complete but any global obligation in the Living Master Prompt
+remains, use `progress_class="meaningful"`, not `"complete"`, and do not use
+`alignment="complete"`.
 
 ## Living Master Prompt
 
@@ -1552,7 +2032,7 @@ that scales to the remaining domain.
 ## Active strategy contract
 
 ```json
-{json.dumps(current.get("active_strategy"), indent=2, sort_keys=True)}
+{json.dumps(strategy, indent=2, sort_keys=True)}
 ```
 
 ## Trusted project progress metrics
@@ -1564,17 +2044,13 @@ that scales to the remaining domain.
 ## Conductor report
 
 Source: `{conductor_output}`
+Identity mismatch: {str(claim_mismatch).lower()}
 
 {conductor_text[-30000:]}
 
-End with these exact markers:
+End with exactly one final single-line marker:
 
-ADJUDICATED_PROGRESS: incremental | meaningful | blocked | complete
-STRATEGY_ALIGNMENT: aligned | drifted | falsified | complete | n/a
-MILESTONE_RESULT: advanced | unchanged | falsified | complete | n/a
-MILESTONE_INDEX: integer | n/a
-ADJUDICATION_REASON: one evidence-based sentence
-VERIFIED_SCOPE_DELTA: exact verified change in final-contract coverage
+PROGRESS_ADJUDICATION_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_id']}","strategy_revision":{strategy['revision']},"progress_class":"incremental|meaningful|blocked|complete","alignment":"aligned|drifted|falsified|complete|n/a","checkpoint_id":null,"checkpoint_result":"advanced|satisfied|unchanged|falsified|n/a","triggered_stop_condition_id":null,"reason":"evidence-based reason","verified_scope_delta":"verified change in contract coverage"}}
 """
         atomic_write_text(prompt_path, prompt)
         read_only_tools = [
@@ -1617,88 +2093,233 @@ VERIFIED_SCOPE_DELTA: exact verified change in final-contract coverage
         self._event(self._session(), "progress_adjudication_started", f"round {index}")
         exit_code = self._execute_with_heartbeat(request_path)
         if exit_code != 0 or not output_path.is_file():
+            if claim_mismatch:
+                blocked = self._state()
+                blocked["strategy_change_required"] = True
+                blocked["next_reflection_at"] = utc_now()
+                self._save(blocked)
             return None, output_path, model
-        return (
-            self._parse_progress_adjudication(output_path.read_text(encoding="utf-8")),
-            output_path,
-            model,
+        adjudication = self._parse_progress_adjudication(
+            output_path.read_text(encoding="utf-8"),
+            strategy=strategy,
+            claim_mismatch=claim_mismatch,
         )
+        if adjudication is None and claim_mismatch:
+            blocked = self._state()
+            blocked["strategy_change_required"] = True
+            blocked["next_reflection_at"] = utc_now()
+            self._save(blocked)
+        return adjudication, output_path, model
 
     @staticmethod
-    def _parse_progress_adjudication(text: str) -> _ProgressAdjudication | None:
-        names = {
-            "ADJUDICATED_PROGRESS",
-            "STRATEGY_ALIGNMENT",
-            "MILESTONE_RESULT",
-            "MILESTONE_INDEX",
-            "ADJUDICATION_REASON",
-            "VERIFIED_SCOPE_DELTA",
+    def _parse_progress_adjudication(
+        text: str,
+        *,
+        strategy: dict[str, Any],
+        claim_mismatch: bool = False,
+    ) -> _ProgressAdjudication | None:
+        raw, errors = AutoRunRunner._strict_json_marker(
+            text, "PROGRESS_ADJUDICATION_JSON"
+        )
+        if errors or not isinstance(raw, dict):
+            return None
+        required = {
+            "schema_version",
+            "strategy_id",
+            "strategy_revision",
+            "progress_class",
+            "alignment",
+            "checkpoint_id",
+            "checkpoint_result",
+            "triggered_stop_condition_id",
+            "reason",
+            "verified_scope_delta",
         }
-        markers = AutoRunRunner._marker_values_from_text(text, names)
-        if names - markers.keys():
+        if set(raw) != required:
             return None
-        progress = markers["ADJUDICATED_PROGRESS"]
-        alignment = markers["STRATEGY_ALIGNMENT"]
-        milestone_result = markers["MILESTONE_RESULT"]
-        if progress not in {"incremental", "meaningful", "blocked", "complete"}:
+        if type(raw["schema_version"]) is not int or raw["schema_version"] != 1:
             return None
-        if alignment not in {"aligned", "drifted", "falsified", "complete", "n/a"}:
+        if (
+            raw["strategy_id"] != strategy.get("strategy_id")
+            or type(raw["strategy_revision"]) is not int
+            or raw["strategy_revision"] != strategy.get("revision")
+        ):
             return None
-        if milestone_result not in {
-            "advanced",
-            "unchanged",
-            "falsified",
-            "complete",
-            "n/a",
-        }:
+        progress = raw["progress_class"]
+        alignment = raw["alignment"]
+        checkpoint_result = raw["checkpoint_result"]
+        if not isinstance(progress, str) or progress not in _PROGRESS_CLASSES:
             return None
-        raw_index = markers["MILESTONE_INDEX"]
-        try:
-            milestone_index = None if raw_index == "n/a" else int(raw_index)
-        except ValueError:
+        if (
+            not isinstance(alignment, str)
+            or alignment
+            not in {
+                "aligned",
+                "drifted",
+                "falsified",
+                "complete",
+                "n/a",
+            }
+        ):
             return None
-        if milestone_index is not None and milestone_index < 1:
+        if (
+            not isinstance(checkpoint_result, str)
+            or checkpoint_result
+            not in {
+                "advanced",
+                "satisfied",
+                "unchanged",
+                "falsified",
+                "n/a",
+            }
+        ):
             return None
-        if not markers["ADJUDICATION_REASON"] or not markers["VERIFIED_SCOPE_DELTA"]:
+        if claim_mismatch and alignment not in {"drifted", "falsified"}:
             return None
+        if progress == "complete" and alignment != "complete":
+            return None
+        if alignment == "complete" and progress != "complete":
+            return None
+        checkpoint_id = raw["checkpoint_id"]
+        expected = AutoRunRunner._earliest_admissible_checkpoint(strategy)
+        if checkpoint_result == "n/a":
+            if checkpoint_id is not None:
+                return None
+        elif (
+            not isinstance(checkpoint_id, str)
+            or not isinstance(expected, dict)
+            or checkpoint_id != expected.get("id")
+        ):
+            return None
+        if checkpoint_result == "falsified" and alignment != "falsified":
+            return None
+        stop_id = raw["triggered_stop_condition_id"]
+        known_stop_ids = {
+            item["id"]
+            for item in strategy.get("stop_conditions", [])
+            if isinstance(item, dict)
+        }
+        if stop_id is not None and (
+            not isinstance(stop_id, str)
+            or stop_id not in known_stop_ids
+            or alignment != "falsified"
+        ):
+            return None
+        if alignment == "falsified" and (
+            checkpoint_result != "falsified" and stop_id is None
+        ):
+            return None
+        for name in ("reason", "verified_scope_delta"):
+            value = raw[name]
+            if (
+                not isinstance(value, str)
+                or not value
+                or value != value.strip()
+                or len(value) > _TEXT_LIMIT
+            ):
+                return None
         return _ProgressAdjudication(
-            progress_class=progress,
-            strategy_alignment=alignment,
-            milestone_result=milestone_result,
-            milestone_index=milestone_index,
-            reason=markers["ADJUDICATION_REASON"],
-            verified_scope_delta=markers["VERIFIED_SCOPE_DELTA"],
+            strategy_id=str(raw["strategy_id"]),
+            strategy_revision=int(raw["strategy_revision"]),
+            progress_class=str(progress),
+            alignment=str(alignment),
+            checkpoint_id=checkpoint_id,
+            checkpoint_result=str(checkpoint_result),
+            triggered_stop_condition_id=stop_id,
+            reason=str(raw["reason"]),
+            verified_scope_delta=str(raw["verified_scope_delta"]),
         )
 
     @staticmethod
     def _apply_adjudication_to_strategy(
-        state: dict[str, Any], adjudication: _ProgressAdjudication
+        state: dict[str, Any],
+        adjudication: _ProgressAdjudication,
+        *,
+        attempt: int,
+        execution: int,
+        artifact: str,
     ) -> None:
         strategy = state.get("active_strategy")
         if not isinstance(strategy, dict):
             return
-        strategy = dict(strategy)
-        strategy["last_alignment"] = adjudication.strategy_alignment
-        strategy["last_milestone_result"] = adjudication.milestone_result
-        if adjudication.strategy_alignment in {"drifted", "falsified"}:
-            strategy["status"] = adjudication.strategy_alignment
+        if (
+            adjudication.strategy_id != strategy.get("strategy_id")
+            or adjudication.strategy_revision != strategy.get("revision")
+        ):
+            return
+        retained = {
+            "attempt": attempt,
+            "execution": execution,
+            "strategy_id": adjudication.strategy_id,
+            "strategy_revision": adjudication.strategy_revision,
+            "progress_class": adjudication.progress_class,
+            "alignment": adjudication.alignment,
+            "checkpoint_id": adjudication.checkpoint_id,
+            "checkpoint_result": adjudication.checkpoint_result,
+            "triggered_stop_condition_id": (
+                adjudication.triggered_stop_condition_id
+            ),
+            "reason": adjudication.reason,
+            "verified_scope_delta": adjudication.verified_scope_delta,
+            "artifact": artifact,
+        }
+        state["adjudication_history"] = [
+            *state.get("adjudication_history", []),
+            retained,
+        ]
+        strategy = json.loads(json.dumps(strategy))
+        strategy["last_alignment"] = adjudication.alignment
+        strategy["last_checkpoint_result"] = adjudication.checkpoint_result
+        if adjudication.checkpoint_id is not None and adjudication.alignment in {
+            "aligned",
+            "falsified",
+        }:
+            checkpoint = next(
+                (
+                    item
+                    for item in strategy["checkpoints"]
+                    if item["id"] == adjudication.checkpoint_id
+                ),
+                None,
+            )
+            if checkpoint is not None:
+                checkpoint["last_result"] = adjudication.checkpoint_result
+                checkpoint["last_adjudication_execution"] = execution
+                if adjudication.checkpoint_result == "advanced":
+                    checkpoint["status"] = "advanced"
+                elif adjudication.checkpoint_result == "satisfied":
+                    checkpoint["status"] = "satisfied"
+                elif adjudication.checkpoint_result == "falsified":
+                    checkpoint["status"] = "falsified"
+        if adjudication.triggered_stop_condition_id is not None:
+            stop = next(
+                (
+                    item
+                    for item in strategy["stop_conditions"]
+                    if item["id"] == adjudication.triggered_stop_condition_id
+                ),
+                None,
+            )
+            if stop is not None:
+                stop["triggered"] = True
+                stop["last_adjudication_execution"] = execution
+        if (
+            adjudication.alignment in {"drifted", "falsified"}
+            or adjudication.checkpoint_result == "falsified"
+            or adjudication.triggered_stop_condition_id is not None
+        ):
+            strategy["status"] = (
+                "drifted"
+                if adjudication.alignment == "drifted"
+                else "falsified"
+            )
             state["strategy_change_required"] = True
             state["next_reflection_at"] = utc_now()
-        elif adjudication.strategy_alignment == "complete":
+        elif adjudication.alignment == "complete":
             strategy["status"] = "complete"
-        if adjudication.milestone_result in {"advanced", "complete"}:
-            strategy["first_evidence_observed"] = True
-        milestones = strategy.get("milestones")
-        if (
-            adjudication.milestone_index is not None
-            and isinstance(milestones, list)
-            and adjudication.milestone_index <= len(milestones)
-        ):
-            milestone = milestones[adjudication.milestone_index - 1]
-            if isinstance(milestone, dict):
-                milestone["status"] = adjudication.milestone_result
+            state["status"] = "stopped"
+            state["pid"] = None
         state["active_strategy"] = strategy
-
 
 def discover_project(start: Path | None = None) -> Path:
     """Find the nearest project.toml from the current directory upward."""
@@ -1743,19 +2364,11 @@ def _round_receipt(
     session: Path,
     active_round: object,
     active_route: object,
-    strategy_pass: object = None,
 ) -> dict[str, Any]:
     if not isinstance(active_round, int) or isinstance(active_round, bool):
         return {}
     if active_route == "strategy_reflection":
-        suffix = (
-            f"-pass-{strategy_pass:02d}"
-            if isinstance(strategy_pass, int)
-            and not isinstance(strategy_pass, bool)
-            and strategy_pass > 1
-            else ""
-        )
-        name = f"strategy-reflection{suffix}-receipt.json"
+        name = "strategy-reflection-receipt.json"
     elif active_route == "progress_adjudication":
         name = "progress-adjudication-receipt.json"
     else:
@@ -1846,21 +2459,15 @@ def _master_prompt_progress(
     return immediate, evidence, milestones
 
 
-def _last_round_markers(state: dict[str, Any]) -> dict[str, str]:
+def _last_round_claim(state: dict[str, Any]) -> dict[str, Any]:
     value = state.get("last_output")
     if not isinstance(value, str):
         return {}
     try:
-        lines = Path(value).read_text(encoding="utf-8").splitlines()
+        text = Path(value).read_text(encoding="utf-8")
     except OSError:
         return {}
-    markers: dict[str, str] = {}
-    for line in lines:
-        for name in ("AUTORUN_RESULT", "AUTORUN_SUMMARY", "AUTORUN_NEXT"):
-            prefix = f"{name}:"
-            if line.startswith(prefix):
-                markers[name] = line.removeprefix(prefix).strip()
-    return markers
+    return AutoRunRunner._parse_conductor_claim(text) or {}
 
 
 def _compact_strategy_field(value: str, *, limit: int = 150) -> str:
@@ -1872,57 +2479,47 @@ def _compact_strategy_field(value: str, *, limit: int = 150) -> str:
 
 
 def _strategy_report_sections(state: dict[str, Any]) -> list[str]:
-    value = state.get("last_strategy_review")
-    if state.get("last_strategy_decision") != "change_course" or not isinstance(
-        value, str
-    ):
+    strategy = state.get("active_strategy")
+    if not isinstance(strategy, dict):
         return []
-    markers = AutoRunRunner._marker_values(
-        Path(value),
-        {
-            "ABANDON_CURRENT_COURSE",
-            "ALTERNATIVE_METHOD",
-            "STRATEGY_MILESTONES",
-            "FIRST_FALSIFIABLE_CHECK",
-            "STRATEGY_KILL_CRITERIA",
-            "REFLECTION_NEXT",
-        },
-    )
-    required = (
-        "ABANDON_CURRENT_COURSE",
-        "ALTERNATIVE_METHOD",
-        "STRATEGY_MILESTONES",
-        "FIRST_FALSIFIABLE_CHECK",
-        "STRATEGY_KILL_CRITERIA",
-        "REFLECTION_NEXT",
-    )
-    if any(markers.get(name) in {None, "", "n/a"} for name in required):
-        return []
-    return [
-        "ASTRA STRATEGY REPORT",
+    checkpoints = strategy.get("checkpoints")
+    current_checkpoint = next(
         (
-            "Astra changed course after estimating meaningful-progress likelihood "
-            f"at {state.get('last_strategy_likelihood')}% against a "
-            f"{state.get('last_strategy_threshold')}% worthwhile threshold. "
-            f"Plan status: {state.get('last_strategy_plan_status', 'unknown')}. "
-            "Retained adjudicated executions: "
-            f"{state.get('meaningful_round_count', 0)} meaningful, "
-            f"{state.get('incremental_round_count', 0)} incremental, "
-            f"{state.get('blocked_round_count', 0)} blocked, "
-            f"{state.get('complete_round_count', 0)} complete."
+            item
+            for item in checkpoints
+            if isinstance(item, dict)
+            and item.get("status") in {"pending", "advanced"}
         ),
-        "REJECTED COURSE",
-        _compact_strategy_field(markers["ABANDON_CURRENT_COURSE"]),
-        "REPLACEMENT METHOD",
-        _compact_strategy_field(markers["ALTERNATIVE_METHOD"]),
-        "STRATEGY MILESTONES",
-        _compact_strategy_field(markers["STRATEGY_MILESTONES"]),
-        "FIRST FALSIFIABLE CHECK",
-        _compact_strategy_field(markers["FIRST_FALSIFIABLE_CHECK"]),
-        "KILL CRITERIA",
-        _compact_strategy_field(markers["STRATEGY_KILL_CRITERIA"]),
-        "STRATEGY NEXT ACTION",
-        _compact_strategy_field(markers["REFLECTION_NEXT"]),
+        None,
+    ) if isinstance(checkpoints, list) else None
+    checkpoint_text = (
+        (
+            f"{current_checkpoint.get('id')} at execution "
+            f"{current_checkpoint.get('due_execution')}: "
+            f"{_compact_strategy_field(str(current_checkpoint.get('observable', '')))} "
+            f"({current_checkpoint.get('status')})"
+        )
+        if isinstance(current_checkpoint, dict)
+        else "No pending checkpoint."
+    )
+    return [
+        "ACTIVE STRATEGY CONTRACT",
+        (
+            f"{strategy.get('strategy_id')} revision {strategy.get('revision')} "
+            f"is {strategy.get('status')}. "
+            f"Method: {_compact_strategy_field(str(strategy.get('selected_method', '')))}"
+        ),
+        "NEXT ACTION",
+        _compact_strategy_field(str(strategy.get("next_action", ""))),
+        "NEXT CHECKPOINT",
+        checkpoint_text,
+        "ADAPTIVE REVIEW",
+        f"Due at successful execution {strategy.get('review_due_execution')}.",
+        "IMMUTABLE LINEAGE CEILING",
+        (
+            f"Started at execution {strategy.get('lineage_started_execution')}; "
+            f"hard deadline {strategy.get('hard_deadline_execution')}."
+        ),
     ]
 
 
@@ -1936,8 +2533,9 @@ def _progress_recap(
 ) -> str:
     status = str(state.get("status", "unknown"))
     active_round = state.get("active_round")
-    controller_alive = _pid_is_alive(state.get("pid"))
-    process_state = "responding" if controller_alive else "not responding"
+    process_state = (
+        "responding" if _pid_is_alive(state.get("pid")) else "not responding"
+    )
     sections = [
         "PROGRESS UPDATE",
         (
@@ -1953,7 +2551,7 @@ def _progress_recap(
             f"execution failures, {state.get('controller_failure_count', 0)} "
             f"controller failures, {state.get('verification_failure_count', 0)} "
             f"verification failures, and {state.get('reflection_count', 0)} "
-            "meaningful-progress reviews."
+            "strategy reviews."
         ),
     ]
     if isinstance(active_round, int) and not isinstance(active_round, bool):
@@ -1965,12 +2563,15 @@ def _progress_recap(
             else ""
         )
         route = str(state.get("active_model_route") or "primary")
-        stage = "strategy reflection" if route == "strategy_reflection" else "conductor"
-        log_name = (
-            "strategy-reflection-stdout.log"
-            if route == "strategy_reflection"
-            else "stdout.log"
-        )
+        if route == "strategy_reflection":
+            stage = "strategy reflection"
+            log_name = "strategy-reflection-stdout.log"
+        elif route == "progress_adjudication":
+            stage = "progress adjudication"
+            log_name = "progress-adjudication-stdout.log"
+        else:
+            stage = "conductor"
+            log_name = "stdout.log"
         output_path = session / "rounds" / f"round-{active_round:05d}" / log_name
         output_size = output_path.stat().st_size if output_path.is_file() else 0
         model = state.get("active_model") or "default"
@@ -1980,30 +2581,20 @@ def _progress_recap(
         )
     else:
         sections.append("No conductor round is currently active.")
-    strategy_report = _strategy_report_sections(state)
-    decision = state.get("last_strategy_decision")
-    if strategy_report:
-        sections.extend(strategy_report)
-    elif isinstance(decision, str):
-        sections.extend(
-            [
-                "MEANINGFUL-PROGRESS GATE",
-                (
-                    f"Latest decision: {decision}; estimated likelihood "
-                    f"{state.get('last_strategy_likelihood')}% against a "
-                    f"{state.get('last_strategy_threshold')}% worthwhile threshold. "
-                    f"Plan status: {state.get('last_strategy_plan_status', 'unknown')}."
-                ),
-                (
-                    "Retained adjudicated executions: "
-                    f"{state.get('meaningful_round_count', 0)} meaningful, "
-                    f"{state.get('incremental_round_count', 0)} incremental, "
-                    f"{state.get('blocked_round_count', 0)} blocked, "
-                    f"{state.get('complete_round_count', 0)} complete, "
-                    f"{state.get('unclassified_round_count', 0)} unclassified."
-                ),
-            ]
-        )
+    sections.extend(_strategy_report_sections(state))
+    sections.extend(
+        [
+            "INDEPENDENT PROGRESS",
+            (
+                "Retained adjudicated executions: "
+                f"{state.get('meaningful_round_count', 0)} meaningful, "
+                f"{state.get('incremental_round_count', 0)} incremental, "
+                f"{state.get('blocked_round_count', 0)} blocked, "
+                f"{state.get('complete_round_count', 0)} complete, "
+                f"{state.get('unclassified_round_count', 0)} unclassified."
+            ),
+        ]
+    )
     immediate, evidence, milestones = _master_prompt_progress(state)
     if immediate:
         sections.extend(["IMMEDIATE MILESTONE", immediate])
@@ -2032,23 +2623,21 @@ def _progress_recap(
         )
         if audit_finding:
             sections.extend(["CURRENT AUDIT BLOCKER", audit_finding])
+        sections.extend(["VERIFIED BASELINE", evidence[0]])
+    claim = _last_round_claim(state)
+    if claim:
         sections.extend(
             [
-                "VERIFIED BASELINE",
-                evidence[0],
+                "LATEST COMPLETED EXECUTION",
+                (
+                    f"Conductor claim: {claim.get('progress_class', 'unclassified')}. "
+                    f"{claim.get('summary', 'No retained summary.')}"
+                ),
             ]
         )
-    markers = _last_round_markers(state)
-    if markers:
-        sections.append("LATEST COMPLETED EXECUTION")
-        sections.append(
-            "Progress classification: "
-            f"{markers.get('AUTORUN_RESULT', 'unclassified')}. "
-            f"{markers.get('AUTORUN_SUMMARY', 'No retained summary.')}"
-        )
-        next_action = markers.get("AUTORUN_NEXT")
-        if next_action:
-            sections.extend(["NEXT CONDUCTOR ACTION", next_action])
+        claimed_evidence = claim.get("evidence")
+        if isinstance(claimed_evidence, str) and claimed_evidence:
+            sections.extend(["CLAIMED EVIDENCE", claimed_evidence])
     else:
         sections.extend(
             [
@@ -2061,18 +2650,18 @@ def _progress_recap(
         [
             "CONTROLLER EXCEPTIONS",
             (
-                f"The latest controller error is: {error}"
+                str(error)
                 if isinstance(error, str) and error
-                else "No controller error is currently recorded."
+                else "No controller exception is currently retained."
             ),
         ]
     )
     latest_event = _latest_autorun_event(session)
     event_name = latest_event.get("event")
-    event_at = latest_event.get("at")
-    event_detail = latest_event.get("detail")
     if isinstance(event_name, str):
         event_text = f"The latest retained event is {event_name}"
+        event_at = latest_event.get("at")
+        event_detail = latest_event.get("detail")
         if isinstance(event_at, str):
             event_text += f" at {event_at}"
         if isinstance(event_detail, str) and len(event_detail) <= 160:
@@ -2082,7 +2671,7 @@ def _progress_recap(
         [
             "STRATEGY SCHEDULE",
             (
-                f"The next formal strategy reflection is scheduled for "
+                "The next wall-clock strategy health review is scheduled for "
                 f"{state.get('next_reflection_at', 'an unspecified time')}."
             ),
         ]
@@ -2109,6 +2698,7 @@ def follow_autorun_status(
     display = LiveStatusDisplay(stream=stream)
     recap = ""
     next_recap_deadline = 0.0
+    recap_signature: tuple[object, ...] | None = None
     try:
         while True:
             try:
@@ -2128,7 +2718,6 @@ def follow_autorun_status(
                 session,
                 active_round,
                 state.get("active_model_route"),
-                state.get("active_strategy_pass"),
             )
             receipt_status = receipt.get(
                 "status",
@@ -2169,10 +2758,44 @@ def follow_autorun_status(
             retry_at = state.get("next_retry_at")
             if status == "recovering" and isinstance(retry_at, str):
                 detail += f" · retry at {retry_at}"
+            strategy = state.get("active_strategy")
+            strategy_signature = (
+                json.dumps(strategy, sort_keys=True)
+                if isinstance(strategy, dict)
+                else None
+            )
+            current_recap_signature = (
+                status,
+                active_round,
+                route,
+                state.get("active_model"),
+                receipt_status,
+                state.get("round_count"),
+                state.get("attempt_count"),
+                state.get("reflection_count"),
+                state.get("meaningful_round_count"),
+                state.get("incremental_round_count"),
+                state.get("blocked_round_count"),
+                state.get("complete_round_count"),
+                state.get("unclassified_round_count"),
+                state.get("consecutive_execution_failures"),
+                state.get("controller_failure_count"),
+                state.get("verification_failure_count"),
+                state.get("last_error"),
+                state.get("next_retry_at"),
+                state.get("last_output"),
+                state.get("master_prompt_sha256"),
+                strategy_signature,
+            )
             now = time.monotonic()
-            if now >= next_recap_deadline:
+            if (
+                now >= next_recap_deadline
+                or current_recap_signature != recap_signature
+            ):
                 updated_at = datetime.now(UTC)
-                next_update_at = updated_at + timedelta(seconds=recap_interval_seconds)
+                next_update_at = updated_at + timedelta(
+                    seconds=recap_interval_seconds
+                )
                 recap = _progress_recap(
                     session,
                     state,
@@ -2180,6 +2803,7 @@ def follow_autorun_status(
                     updated_at=updated_at,
                     next_update_at=next_update_at,
                 )
+                recap_signature = current_recap_signature
                 next_recap_deadline = now + recap_interval_seconds
             display.render(status=status, detail=detail, recap=recap)
             if (
@@ -2242,19 +2866,11 @@ def _round_stdout_path(
     session: Path,
     active_round: object,
     route: object,
-    strategy_pass: object = None,
 ) -> Path | None:
     if not isinstance(active_round, int) or isinstance(active_round, bool):
         return None
     if route == "strategy_reflection":
-        suffix = (
-            f"-pass-{strategy_pass:02d}"
-            if isinstance(strategy_pass, int)
-            and not isinstance(strategy_pass, bool)
-            and strategy_pass > 1
-            else ""
-        )
-        name = f"strategy-reflection{suffix}-stdout.log"
+        name = "strategy-reflection-stdout.log"
     elif route == "progress_adjudication":
         name = "progress-adjudication-stdout.log"
     else:
@@ -2289,12 +2905,8 @@ def follow_autorun_output(
             active_round = state.get("active_round")
             route = state.get("active_model_route")
             _set_terminal_title(stream, f"Round {active_round or '-'} Output")
-            receipt = _round_receipt(
-                session, active_round, route, state.get("active_strategy_pass")
-            )
-            path = _round_stdout_path(
-                session, active_round, route, state.get("active_strategy_pass")
-            )
+            receipt = _round_receipt(session, active_round, route)
+            path = _round_stdout_path(session, active_round, route)
             lines = _tail_lines(path, 5) if path is not None else []
             if lines:
                 body = "\n".join(line[:120] for line in lines)
@@ -2348,9 +2960,7 @@ def follow_autorun_events(
             active_round = state.get("active_round")
             route = state.get("active_model_route")
             _set_terminal_title(stream, f"Round {active_round or '-'} Raw events")
-            receipt = _round_receipt(
-                session, active_round, route, state.get("active_strategy_pass")
-            )
+            receipt = _round_receipt(session, active_round, route)
             lines = _tail_lines(session / "events.jsonl", 5)
             body = (
                 "\n".join(lines) if lines else "No controller events are retained yet."

@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "4460c56c0ee5ec0e05715531973f3b18bc92486aa6f779d283d89010c71e85df",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/produce_exact_answer/attempt-01.md",
+    "agents/analytic/produce_exact_answer/attempt-01.json",
+    "agents/verification/audit_exact_answer/attempt-01.md",
+    "agents/verification/audit_exact_answer/attempt-01.json"
+  ],
+  "limitations": [
+    "Assumes the retained source inventory is complete and x,y are real.",
+    "The b-a != 0 criterion is restricted to an added linear equation.",
+    "No machine-check artifact was retained; the claim is supported by exact derivation and independent exact audit."
+  ],
+  "report": {
+    "path": "analytic/20260823T011347Z-32bf4e-produce_exact_answer.md",
+    "sha256": "dbbecb20f18ac964a353467eaa996cae303b1ca34239e0d02951a801773eed84",
+    "size": 1120
+  },
+  "run_id": "20260823T011347Z-32bf4e",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "exact_linear_algebra",
+  "summary": "For the retained complete real system, the rows are dependent, all solutions are (t,4-t), x-y=2t-4 is nonunique with witness values -4 and -2, and uniqueness requires an added restriction removing the free parameter; an added linear equation ax+by=c must satisfy b-a != 0.",
+  "task_id": "produce_exact_answer",
+  "verified_by": [
+    "audit_exact_answer"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "e04cc66993917d03a460f22c3c5435e7a51877c5d0daf5c1a1f2701fcb5d855e",
+  "category": "computational",
+  "evidence": [
+    "agents/computational/check_residue_classes/attempt-01.md",
+    "workspace/agents/computational/check_residue_classes/certificate.md",
+    "agents/computational/check_residue_classes/attempt-01.json",
+    "workspace/agents/verification/audit_complete_argument/attempt-01.md",
+    "agents/verification/audit_complete_argument/attempt-01.json"
+  ],
+  "limitations": [
+    "Scope is modulus 6 and the polynomial x^3-x over integer inputs.",
+    "The six arithmetic computations require the retained Euclidean-division coverage and congruence-transfer proof to establish the universal claim; finite signed spot checks alone are only corroboration."
+  ],
+  "report": {
+    "path": "computational/20260822T234941Z-5c8f19-check_residue_classes.md",
+    "sha256": "60879851d42b24b4818414fcc736958b706cf5d0726f1381e71b010551a0bfc8",
+    "size": 1571
+  },
+  "run_id": "20260822T234941Z-5c8f19",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "residue_enumeration",
+  "summary": "For r=0,1,2,3,4,5 the exact values r^3-r are 0,0,6,24,60,120, all zero modulo 6; unique canonical residues and congruence transfer extend this certificate to every integer n.",
+  "task_id": "check_residue_classes",
+  "verified_by": [
+    "audit_complete_argument"
+  ]
+}

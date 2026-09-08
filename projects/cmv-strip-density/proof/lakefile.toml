@@ -25,6 +25,16 @@ srcDir = "."
 roots = ["MorgansArcFunction", "GFunction", "Minimiser", "MinimumValue", "Certificate", "CMVGeometry", "FrontierPerimeter", "FourArcCandidate", "CapReplacement", "GeometricBridge", "CandidateExclusion", "TypeThreeAssembly", "LeanSuffixAnalytic", "SameCurvatureArea", "LeanSuffixReflective", "EqualAreaEnvelope", "CMVSuffixModel", "ScalarSuffixCertificate", "MiddleFaceAssembly", "RightPrototypeCell", "MiddleFaceCell0", "MiddleFaceCell1", "MiddleFaceCell2", "MiddleFaceCell3", "MiddleFaceCell4", "MiddleFaceCell5", "MiddleFaceCell6", "MiddleFaceCell7", "MiddleFaceCell8", "MiddleFaceCell9", "MiddleFaceCell10", "MiddleFaceCell11", "MiddleFaceCell12", "MiddleFaceCell13", "MiddleFaceCell14", "MiddleFaceCell15", "MiddleFaceCell16", "MiddleFaceCell17", "MiddleFaceCell18", "MiddleFaceCell19", "MiddleFaceCell20", "MiddleFaceCell21", "MiddleFaceCell22", "MiddleFaceCell23", "MiddleFaceCell24", "MiddleFaceCell25", "MiddleFaceCell26", "MiddleFaceCell27", "MiddleFaceCell28", "MiddleFaceCell29", "MiddleFaceCell30", "MiddleFaceCell31", "MiddleFaceCell32", "MiddleFaceCell33", "MiddleFaceCell34", "MiddleFaceCell35", "MiddleFaceCell36", "MiddleFaceCell37", "MiddleFaceCell38", "MiddleFaceCell39", "MiddleFaceCell40", "MiddleFaceCell41", "MiddleFaceCell42", "MiddleFaceCell43", "MiddleFaceCell44", "MiddleFaceCell45", "MiddleFaceCell46", "MiddleFaceCell47", "MiddleFaceCell48", "MiddleFaceCell49", "MiddleFaceCell50", "MiddleFaceCell51", "MiddleFaceCell52", "MiddleFaceCell53", "MiddleFaceCell54", "MiddleFaceCell55", "MiddleFaceCell56", "MiddleFaceCell57", "MiddleFaceCell58", "MiddleFaceCell59", "MiddleFaceCell60", "MiddleFaceCell61", "MiddleFaceCell62", "MiddleFaceCell63", "MiddleFaceCell64", "MiddleFaceCell65", "MiddleFaceCell66", "MiddleFaceCell67", "MiddleFaceCell68", "MiddleFaceCell69", "MiddleFaceCell70", "MiddleFaceCell71", "MiddleFaceCell72", "MiddleFaceCell73", "MiddleFaceCell74", "MiddleFaceCell75", "MiddleFaceCell76", "MiddleFaceCell77", "MiddleFaceCell78", "MiddleFaceCell79", "MiddleFaceCell80", "MiddleFaceCell81", "MiddleFaceCell82", "MiddleFaceCell83", "MiddleFaceCell84", "MiddleFaceCell85", "MiddleFaceCell86", "MiddleFaceCell87", "MiddleFaceCell88", "MiddleFaceCell89", "MiddleFaceCell90", "MiddleFaceCell91", "MiddleFaceCell92", "MiddleFaceCell93", "MiddleFaceCell94", "MiddleFaceCell95", "MiddleFaceCell96", "MiddleFaceCell97", "MiddleFaceCell98", "MiddleFaceCell99", "MiddleFaceCell100", "MiddleFaceCell101", "MiddleFaceCell102", "MiddleFaceCell103", "MiddleFaceCell104", "MiddleFaceCell105", "MiddleFaceCell106", "MiddleFaceCell107", "MiddleFaceCell108", "MiddleFaceCell109", "MiddleFaceCell110", "MiddleFaceCell111", "MiddleFaceCell112", "MiddleFaceCells0To19", "MiddleFaceCells20To31", "MiddleFaceCells32To43", "MiddleFaceCells44To55", "MiddleFaceCells56To67", "MiddleFaceCells68To79", "MiddleFaceCells80To91", "MiddleFaceCells92To103", "MiddleFaceCells104To112", "MiddleFaceCells", "CMVSourceBridge", "MiddleFaceSourceBridge", "CompactCellAssembly", "CompactCellCertificate", "CompactFirstCell", "CompactFirstCellSourceBridge", "CompactSecondCell", "CompactCells2To10", "CompactCells11To42", "TransitionCell", "TransitionSourceBridge", "EndpointClosureCell", "EndpointClosureSourceBridge", "CompactCells43To74", "CompactCells75To106", "CompactCells107To138", "CompactCells139To170", "CompactCells171To202", "CompactCells203To234", "CompactCells235To266", "CompactCells267To298", "CompactCells299To330", "CompactCells331To362", "CompactCells363To394", "CompactCells395To426", "CompactCells427To458", "CompactCells459To490", "CompactCells491To522", "CompactCells523To554", "CompactCells555To586", "CompactCells587To618", "CompactCells619To650", "CompactCells651To682", "CompactCells683To714", "CompactCells715To746", "CompactCells747To778", "CompactCells779To810", "CompactCells811To842", "CompactCells843To874", "CompactCells875To906", "CompactCells907To938", "CompactCells939To970", "CompactCells971To1002", "CompactCells1003To1023", "CMVModeledCutoff", "NearOneNormalizedFlow", "NearOneAnalyticSystem", "NearOneRegularizedThirdRow", "NearOneCuspTangent", "NearOneShearCoordinates", "NearOneRescaledOrientedMap"]
 
 [[lean_lib]]
+name = "CMVRelaxationTransport"
+srcDir = "."
+roots = ["CMVRelaxation"]
+
+[[lean_lib]]
+name = "CMVSourceClassificationSupport"
+srcDir = "."
+roots = ["CMVSourceClassification", "CMVSourceSectionClassification"]
+
+[[lean_lib]]
 name = "NearOneTwoJetSupport"
 srcDir = "."
 roots = ["NearOneTwoJet", "NearOneThirdRowTwoJet"]
@@ -32,4 +42,153 @@ roots = ["NearOneTwoJet", "NearOneThirdRowTwoJet"]
 [[lean_lib]]
 name = "NearOneFirstCell"
 srcDir = "."
-roots = ["BoxPoincareMiranda", "NearOneRescaledSecondRowContinuity", "NearOneRescaledFirstCell", "NearOneFirstCellSource", "NearOneFirstCellGap", "NearOneFirstFaceBounds", "NearOnePrescribedDensity"]
+roots = ["BoxPoincareMiranda", "NearOneRescaledSecondRowContinuity", "NearOneRescaledFirstCell", "NearOneFirstCellSource", "NearOneFirstCellGap", "NearOneFirstFaceBounds", "NearOneSecondFaceBounds", "NearOneThirdFaceBounds", "NearOneGapBounds", "NearOnePrescribedDensity"]
+
+[[lean_lib]]
+name = "NearOneThirdFrozenCubicSupport"
+srcDir = "."
+roots = ["NearOneThirdFrozenBase", "NearOneThirdFrozenH3Numerator", "NearOneThirdFrozenH3Jets", "NearOneThirdFrozenCommonZero", "NearOneThirdFrozenLinear", "NearOneThirdFrozenQuadratic", "NearOneThirdFrozenCubic", "NearOneThirdFrozenH3Cubic"]
+
+[[lean_lib]]
+name = "NearOneThirdFrozenMajorantSupport"
+srcDir = "."
+roots = ["NearOnePolynomialMajorant", "NearOneThirdFrozenCoefficient", "NearOneThirdFrozenCoefficientBound", "NearOneThirdFrozenEstimate", "NearOneThirdFrozenMajorantCore", "NearOneThirdFrozenMajorantTailDefs", "NearOneThirdFrozenMajorantTenthBounds"]
+
+[[lean_lib]]
+name = "NearOneLocalAtlas"
+srcDir = "."
+roots = ["NearOneLocalHeightOrder", "NearOneLocalSource", "NearOneAtanRemainder", "NearOneLocalInterval", "NearOneLocalPredictor", "NearOneLocalTranscription", "NearOneLocalJet", "NearOneLocalCoordinates", "NearOneLocalGeneratedThird", "NearOneLocalCentered", "NearOneLocalThirdSource", "NearOneLocalFirstSourceGate", "NearOneLocalFourRemainder", "NearOneLocalRemainderGate"]
+
+[[lean_lib]]
+name = "NearOneScalarSupport"
+srcDir = "."
+roots = ["NearOneScalarNormalization", "NearOneScalarGrid", "NearOneScalarInterval", "NearOneScalarCell"]
+
+[[lean_lib]]
+name = "NearOneScalarIntegerTrace"
+srcDir = "."
+roots = ["NearOneScalarInteger", "NearOneScalarIntegerProgram"]
+
+[[lean_lib]]
+name = "TypeFourStationaryRootSupport"
+srcDir = "."
+roots = ["TypeFourStationaryRoot", "UniversalStationaryPair"]
+
+[[lean_lib]]
+name = "CMVProjectionDefectSupport"
+srcDir = "."
+roots = ["CMVProjectionDefect", "CMVProjectionDefectAssumptions"]
+
+[[lean_lib]]
+name = "CMVRigidProjectionSupport"
+srcDir = "."
+roots = ["CMVRigidProjection", "CMVRigidProjectionAssumptions"]
+
+[[lean_lib]]
+name = "CMVUpperCapExhaustionSupport"
+srcDir = "."
+roots = ["CMVUpperCapExhaustion", "CMVUpperCapExhaustionAssumptions"]
+
+[[lean_lib]]
+name = "CMVRightSideExhaustionSupport"
+srcDir = "."
+roots = ["CMVRightSideExhaustion", "CMVRightSideExhaustionAssumptions"]
+
+[[lean_lib]]
+name = "CMVEndpointPatchGateSupport"
+srcDir = "."
+roots = ["CMVEndpointPatchGate", "CMVEndpointPatchGateAssumptions"]
+
+[[lean_lib]]
+name = "CMVFourArcExhaustionSupport"
+srcDir = "."
+roots = ["CMVFourArcExhaustion", "CMVFourArcExhaustionAssumptions"]
+
+[[lean_lib]]
+name = "CMVCanonicalLowerBoundSupport"
+srcDir = "."
+roots = ["CMVCanonicalLowerBound", "CMVCanonicalLowerBoundAssumptions"]
+
+[[lean_lib]]
+name = "CMVSquaredWidthRecoverySupport"
+srcDir = "."
+roots = ["CMVSquaredWidthRecovery", "CMVSquaredWidthRecoveryAssumptions", "CMVSharpRecovery", "CMVSharpRecoveryAssumptions", "CMVProfileSquaredWidth", "CMVProfileSharpRecovery", "CMVProfileSquaredWidthAssumptions", "CMVProfileSourceSemantics", "CMVProfileSourceSemanticsAssumptions"]
+
+[[lean_lib]]
+name = "CMVTypeThreeLowerRecoverySupport"
+srcDir = "."
+roots = ["CMVTypeThreeLowerRecovery", "CMVTypeThreeLowerRecoveryAssumptions", "CMVTypeThreeUpperRecovery", "CMVTypeThreeUpperRecoveryAssumptions", "CMVTypeThreeSmoothRecovery", "CMVTypeThreeSmoothRecoveryAssumptions", "CMVTypeThreeSharpRecovery", "CMVTypeThreeSharpRecoveryAssumptions", "CMVTypeThreeSourceExclusion", "CMVTypeThreeSourceExclusionAssumptions"]
+
+[[lean_lib]]
+name = "CMVFigureThreeNonfitSupport"
+srcDir = "."
+roots = ["CMVCurvatureIntegration", "CMVCurvatureIntegrationAssumptions", "CMVFigureThreeNonfit", "CMVFigureThreeIncidence", "CMVFigureThreeNormalization", "CMVFigureThreeContainment", "CMVFigureThreeBoundaryRealization", "CMVFigureThreeSourceExtraction", "CMVFigureThreeNonfitAssumptions", "CMVFigureThreeNormalizationAssumptions", "CMVFigureThreeContainmentAssumptions", "CMVFigureThreeSourceExtractionAssumptions"]
+
+[[lean_lib]]
+name = "CMVFigureFourSourceSupport"
+srcDir = "."
+roots = ["CMVFigureFourSourceGeometry", "CMVFigureFourBilateralIncidence", "CMVFigureFourBilateralIncidenceAssumptions", "CMVFigureFourBilateralExamples", "CMVFigureFourBilateralExamplesAssumptions", "CMVFigureFourScalarReduction", "CMVFiniteJunctionDisagreement", "CMVFigureFourTargetGeometry", "CMVFigureFourSourceAssumptions"]
+
+[[lean_lib]]
+name = "CMVFigureFiveSourceSupport"
+srcDir = "."
+roots = ["CMVFigureFiveSourceGeometry", "CMVFigureFiveAngular", "CMVFigureFiveScalarComparison", "CMVFigureFiveSourceAssumptions"]
+
+[[lean_lib]]
+name = "CMVTypeThreePhaseThresholdSupport"
+srcDir = "."
+roots = ["CMVTypeThreePhaseThreshold", "CMVTypeThreePhaseThresholdAssumptions"]
+
+[[lean_lib]]
+name = "CMVStadiumRecoverySupport"
+srcDir = "."
+roots = ["CMVStadiumRecovery", "CMVStadiumRecoveryAssumptions"]
+
+[[lean_lib]]
+name = "CMVHorizontalDilationSupport"
+srcDir = "."
+roots = ["CMVHorizontalDilation", "CMVHorizontalDilationAssumptions"]
+
+[[lean_lib]]
+name = "CMVPatchStabilitySupport"
+srcDir = "."
+roots = ["CMVPatchStability", "CMVPatchStabilityAssumptions"]
+
+[[lean_lib]]
+name = "CMVRelaxationSelectorSupport"
+srcDir = "."
+roots = ["CMVRelaxationSelector", "CMVRelaxationSelectorAssumptions"]
+
+[[lean_lib]]
+name = "CMVStrictPackingSupport"
+srcDir = "."
+roots = ["CMVStrictPacking", "CMVStrictPackingAssumptions"]
+
+[[lean_lib]]
+name = "CMVSquareProjectionPhaseSupport"
+srcDir = "."
+roots = ["CMVSquareProjectionPhase", "CMVSquareProjectionPhaseAssumptions"]
+
+[[lean_lib]]
+name = "CMVFourArcChordVariationSupport"
+srcDir = "."
+roots = ["CMVFourArcChordVariation", "CMVFourArcChordVariationAssumptions"]
+
+[[lean_lib]]
+name = "CMVFourArcRecoverySupport"
+srcDir = "."
+roots = ["CMVFourArcSquaredWidth", "CMVFourArcSharpRecovery",
+  "CMVFourArcRecoveryAssumptions"]
+
+[[lean_lib]]
+name = "CMVFourArcSourceCompetitorSupport"
+srcDir = "."
+roots = ["CMVFourArcEndpointPerturbation", "CMVFourArcSourceCompetitor",
+  "CMVFourArcSourceCompetitorAssumptions"]
+
+[[lean_lib]]
+name = "CMVContactLawFreeSourceExclusionSupport"
+srcDir = "."
+roots = ["CMVSourceClassification", "CMVFigureFourBilateralExamples",
+  "CMVFourArcSourceCompetitor", "CMVTypeThreeSourceExclusion",
+  "CMVTypeThreeSourceExclusionAssumptions"]

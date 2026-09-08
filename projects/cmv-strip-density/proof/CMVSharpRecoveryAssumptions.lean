@@ -1,0 +1,26 @@
+import CMVSharpRecovery
+
+#print axioms CMVRelaxation.FrozenSquaredRecovery.dist_sqrt_le_abs_sub_of_one_le
+#print axioms CMVRelaxation.FrozenSquaredRecovery.normalizedJunctionQ_ge_fifteen_four
+#print axioms CMVRelaxation.FrozenSquaredRecovery.exists_scaled_normalizedJunctionQ_lipschitz
+#print axioms CMVRelaxation.FrozenSquaredRecovery.dist_planeEuclideanHomeomorph_le
+#print axioms CMVRelaxation.FrozenSquaredRecovery.exists_scaled_junction_lipschitz
+#print axioms CMVRelaxation.FrozenSquaredRecovery.exists_scaled_actual_junction_lipschitz
+#print axioms CMVRelaxation.FrozenSquaredRecovery.exists_scaled_actual_junction_hausdorffMeasure
+#print axioms
+  CMVRelaxation.FrozenSquaredRecovery.exists_scaled_actual_junction_union_hausdorffMeasure
+#print axioms CMVRelaxation.FrozenCanonicalCap.sq_eq_targetQ_mem_frontier
+#print axioms
+  CMVRelaxation.FrozenCanonicalCap.realized_frontier_subset_profile_union_actualJunctionTrace
+#print axioms
+  CMVRelaxation.FrozenCanonicalCap.smoothCost_eq_euclidean_lintegral
+#print axioms
+  CMVRelaxation.FrozenCanonicalCap.extended_frontierCost_eq_smoothCost_profile
+#print axioms
+  CMVRelaxation.FrozenCanonicalCap.exists_sharp_smoothCost_domain_bound
+#print axioms
+  CMVRelaxation.FrozenCanonicalCap.recoverySequence_cost_le_frontierCost
+#print axioms
+  CMVRelaxation.FrozenCanonicalCap.relaxedPerimeter_le_frontierCost_profile
+#print axioms
+  CMVRelaxation.FrozenCanonicalCap.relaxedPerimeter_eq_frontierCost_profile

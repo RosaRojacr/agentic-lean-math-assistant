@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "cab52303d890797d66827fea04114e2cef3fb7ed8d9f02276885c84eb1fed869",
+  "category": "source_extraction",
+  "evidence": [
+    "agents/source_extraction/extract_allowed_evidence/attempt-01.md",
+    "agents/adversarial_audit/audit_recoverability/attempt-01.md",
+    "input-snapshot/problem.md",
+    "input-snapshot/references/source.md"
+  ],
+  "limitations": [
+    "Valid only under the supplied-transcription evidence boundary.",
+    "Does not determine the actual value of c₇.",
+    "Must be reconsidered if a legible row-7 cell or explicit governing rule becomes admissible."
+  ],
+  "report": {
+    "path": "source_extraction/20260823T014302Z-6eea4b-extract_allowed_evidence.md",
+    "sha256": "82972870b4f3b0721208138f0aad1a0f8dc302026ce7b64fc64421b3fdb47274",
+    "size": 2485
+  },
+  "run_id": "20260823T014302Z-6eea4b",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "bounded_source_extraction",
+  "summary": "Within the supplied corpus, Table 2 row j = 7 retains only an illegibility marker, no recurrence, interpolation rule, closed formula, or other determining constraint is supplied, and direct recovery requires the legible c₇ coefficient cell from that row on the unavailable original page.",
+  "task_id": "extract_allowed_evidence",
+  "verified_by": [
+    "audit_recoverability"
+  ]
+}

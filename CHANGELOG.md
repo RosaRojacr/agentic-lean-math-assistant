@@ -20,38 +20,39 @@
 ### Unattended operation
 
 - Added the persistent `autorun` mode and direct command. It reloads a
-  user-editable project `MASTER_PROMPT.md` before every self-directed conductor
-  round, retains prompts and receipts, resumes after controller interruption,
-  recovers from agent failures with bounded backoff, and forces periodic
-  strategy and ALMA-improvement reflection.
-- Added a pane-bounded graphical autorun readout with ten-minute, milestone-rich
+  user-editable project `MASTER_PROMPT.md` before every round, retains prompts
+  and receipts, resumes after controller interruption, and recovers from agent
+  failures with bounded backoff.
+- Replaced the fixed-likelihood, fixed-horizon, multi-pass strategy gate with an
+  adaptive strategy-contract governor. The governor owns method selection,
+  successful-execution review cadence, observable checkpoints, stop conditions,
+  and course revisions; due soft gates request review rather than imply
+  falsification.
+- Added an immutable operator ceiling of 1–100 successful executions per
+  strategy lineage. Continuations preserve the strategy ID, lineage start, and
+  hard deadline, while course changes archive the prior contract and allocate a
+  new lineage.
+- Restricted every execution round to the configured primary conductor. The
+  strategy governor remains read-only, repeated failures no longer route
+  execution to it, and independent progress adjudication always uses the
+  configured analysis route.
+- Added strict single-line JSON protocols for strategy proposals and progress
+  adjudications, deep active-contract validation, append-only contract and
+  adjudication history, aligned indexed checkpoint evidence, sticky replacement
+  requirements, and fail-closed handling of malformed or stale output.
+- Upgraded autorun retained state to schema 3 and strategy contracts to schema 2.
+  Schema-1 and schema-2 sessions preserve counters and artifact paths, archive
+  legacy strategy data, and require a fresh governor selection before resumed
+  execution.
+- Removed project-specific vocabulary and acceptance shortcuts from generic
+  governor, conductor, adjudicator, and status prompts.
+- Separated successful process execution from incremental, meaningful, blocked,
+  and complete independently adjudicated progress classifications in retained
+  state and live status.
+- Added a pane-bounded graphical autorun readout with ten-minute, contract-aware
   verbal progress recaps, plus incrementally followable round output logs.
   Interactive followers use a fully repainted alternate screen, eliminating
   stale status, output, and raw-event frames from pane scrollback.
-- Added Astra's detailed replacement-strategy report to the left status pane
-  whenever the meaningful-progress gate changes course.
-- Added reasoning-class model routing, a separately bounded read-only strategy
-  reflection model, and controller-enforced limits for explicit targeted-model
-  escalations.
-- Replaced advisory autorun reflections with a fail-closed meaningful-progress
-  gate: Astra evaluates likelihood versus compute value, must develop and
-  adversarially recheck a concrete replacement plan before changing course, and
-  prevents another conductor round until the strategy is ready.
-- Made the worthwhile likelihood threshold and strategy horizon project-owned.
-  Astra now compares at least two candidates, and every accepted decision is
-  atomically retained as an active contract with observable milestones,
-  deadlines, compute cost, a first falsification check, and kill criteria.
-- Added independent read-only progress adjudication and manifest-owned JSON
-  progress metrics. Conductor classifications are retained as claims; only the
-  adjudicated result updates progress counters or strategy milestone state.
-- Added validated schema-v2 autorun state with automatic v1 migration, distinct
-  attempt and completed-execution counts, separate controller, execution,
-  verification, gate, and mathematical-blocker failures, live heartbeats during
-  agent calls, and pass-aware reflection/adjudication monitor paths.
-- Separated successful process execution from incremental, meaningful, blocked,
-  and complete progress classifications in retained state and live status.
-- Added bounded targeted-model recovery routing after repeated autorun conductor
-  failures; successful rounds restore the primary route.
 - Made all autorun pane followers survive controller stop/resume cycles and
   transient state-read failures. Current-output and raw-event views now follow
   `active_round` and update their Herdr pane labels on every round change.

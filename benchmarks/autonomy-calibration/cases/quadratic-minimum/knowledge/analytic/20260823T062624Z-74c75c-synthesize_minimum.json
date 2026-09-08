@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "e2978a01315060d95eb143f5891b50e5e3245dc7636605a8144c295e4075dc92",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/synthesize_minimum/attempt-01.md",
+    "agents/verification/audit_minimum/attempt-01.md"
+  ],
+  "limitations": [
+    "Restricted to the specified polynomial over the real numbers.",
+    "Verified by exact algebra and an independent prose audit, not proof-assistant formalization or a computer-algebra certificate."
+  ],
+  "report": {
+    "path": "analytic/20260823T062624Z-74c75c-synthesize_minimum.md",
+    "sha256": "312a6c713f6968af4552f584671ef676da36f6ac8e10731d7e8370496f145b38",
+    "size": 1297
+  },
+  "run_id": "20260823T062624Z-74c75c",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "complete_square_reuse",
+  "summary": "For f(x)=x^2-6x+13 on the real numbers, f(x)=(x-3)^2+4, so the exact global minimum is 4 and the complete attaining set is {3}.",
+  "task_id": "synthesize_minimum",
+  "verified_by": [
+    "audit_minimum"
+  ]
+}

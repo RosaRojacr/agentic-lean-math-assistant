@@ -1,0 +1,96 @@
+{
+  "module": "NearOneLocalPredictor.lean",
+  "support_module": "NearOneLocalInterval.lean",
+  "transport_module": "NearOneLocalHeightOrder.lean",
+  "scope": "Reusable outward-rounded multiplication soundness and the Machin-certified exact 160-bit dyadic pi interval used by the atlas checker, plus kernel replay of the retained s_pos, s_lt_one, y_pos, y_lt_one, w_pos, w_lt_one, v_pos, v_lt_one, y_gt_s, v_gt_w, density_den, angle_den_four, angle_den_three, atan_guard_four, atan_guard_three, height_order, and A_pos guards for the seam-adjoining pilot subslab, including strict positivity and transport of the positive polynomial height margin to the strict source height order.",
+  "source_sha256": {
+    "NearOneLocalHeightOrder.lean": "b57c6bd53e33b0f850da9dade2fcf6747a35c8e04165ac31801c002254e7da4b",
+    "NearOneLocalInterval.lean": "db72fcc968b701b9b9671b900f1bb215f344e261119d42ab255ef029021c07d6",
+    "NearOneLocalPredictor.lean": "a9e619eb89befc785acee4ce9bf393d4fc0d524da49eb9ad05dde1431fcaabf4"
+  },
+  "pi_interval_bits": 160,
+  "saved_cell": {
+    "band": 0,
+    "cell": 0,
+    "mu": [
+      "251/20",
+      "17821/1280"
+    ],
+    "scale": "1/126334",
+    "replayed_guards": [
+      "s_pos",
+      "s_lt_one",
+      "y_pos",
+      "y_lt_one",
+      "w_pos",
+      "w_lt_one",
+      "v_pos",
+      "v_lt_one",
+      "y_gt_s",
+      "v_gt_w",
+      "density_den",
+      "angle_den_four",
+      "angle_den_three",
+      "atan_guard_four",
+      "atan_guard_three",
+      "height_order",
+      "A_pos"
+    ]
+  },
+  "commands": [
+    {
+      "command": "/home/rosa/.elan/bin/lake build NearOneLocalAtlas",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 12.55
+    },
+    {
+      "command": "/home/rosa/.elan/bin/lake env lean _Assumptions.lean",
+      "cwd": "proof",
+      "exit": 0,
+      "seconds": 9.03
+    }
+  ],
+  "audited_declarations": [
+    "NearOneLocalInterval.realContains_of_subset",
+    "NearOneLocalInterval.outwardMul_sound",
+    "NearOneLocalInterval.abs_arctan_sub_atanSeries36_le",
+    "NearOneLocalInterval.piInterval_sound",
+    "NearOneLocalPredictor.affineEnclosure_sound",
+    "NearOneLocalPredictor.scaledEnclosure_sound",
+    "NearOneLocalPredictor.first_s_pos_enclosure",
+    "NearOneLocalPredictor.first_s_lt_one_enclosure",
+    "NearOneLocalPredictor.first_scale_principal",
+    "NearOneLocalPredictor.first_y_pos_enclosure",
+    "NearOneLocalPredictor.first_y_lt_one_enclosure",
+    "NearOneLocalPredictor.first_y_principal",
+    "NearOneLocalPredictor.first_w_pos_enclosure",
+    "NearOneLocalPredictor.first_w_lt_one_enclosure",
+    "NearOneLocalPredictor.first_w_principal",
+    "NearOneLocalPredictor.first_v_pos_enclosure",
+    "NearOneLocalPredictor.first_v_lt_one_enclosure",
+    "NearOneLocalPredictor.first_v_principal",
+    "NearOneLocalPredictor.first_y_gt_s_enclosure",
+    "NearOneLocalPredictor.first_v_gt_w_enclosure",
+    "NearOneLocalPredictor.first_density_den_enclosure",
+    "NearOneLocalPredictor.first_angle_den_four_enclosure",
+    "NearOneLocalPredictor.first_angle_den_three_enclosure",
+    "NearOneLocalPredictor.first_atan_guard_four_enclosure",
+    "NearOneLocalPredictor.first_atan_guard_four_positive",
+    "NearOneLocalPredictor.first_atan_guard_three_enclosure",
+    "NearOneLocalPredictor.first_atan_guard_three_positive",
+    "NearOneLocalPredictor.first_s_lt_y",
+    "NearOneLocalPredictor.first_w_lt_v",
+    "NearOneLocalPredictor.first_height_order_enclosure",
+    "NearOneLocalPredictor.first_height_order_positive",
+    "NearOneLocalPredictor.first_strict_height_order",
+    "NearOneLocalPredictor.first_A_pos_enclosure",
+    "NearOneLocalPredictor.first_A_positive"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "new_kernel_checked_density_coverage": "none"
+}

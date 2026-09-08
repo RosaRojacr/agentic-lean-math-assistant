@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "e76977831fc4b2fdf7ef0713b4db7f786c6db32fd9f58303f71a0e87f6d7de7a",
+  "category": "computational",
+  "evidence": [
+    "agents/computational/construct_counterexample/attempt-01.md",
+    "workspace/agents/computational/construct_counterexample/certificate.json",
+    "agents/analytic/audit_sign_and_counterexample/attempt-01-request.json",
+    "agents/analytic/audit_sign_and_counterexample/attempt-01.md",
+    "workspace/agents/analytic/audit_sign_and_counterexample/certificate.json",
+    "agents/analytic/audit_sign_and_counterexample/attempt-01.json"
+  ],
+  "limitations": [
+    "The promoted claim is the exact counterexample and its refutation of the universal statement; it does not promote the audit task's broader signed identity as independently downstream-audited.",
+    "Verification used exact Python fractions.Fraction arithmetic and an independent analytic audit, not a theorem-prover artifact."
+  ],
+  "report": {
+    "path": "computational/20260823T005350Z-d78df8-construct_counterexample.md",
+    "sha256": "fed82895c370597451de7d290348860afaf0b5185c7b557b9aa871fa042566d5",
+    "size": 873
+  },
+  "run_id": "20260823T005350Z-d78df8",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "exact_counterexample",
+  "summary": "For (a,b,c,d)=(0,1,1,-1), b and d are nonzero and a/b>c/d, while ad>bc fails; therefore the stated universal implication is false.",
+  "task_id": "construct_counterexample",
+  "verified_by": [
+    "audit_sign_and_counterexample"
+  ]
+}

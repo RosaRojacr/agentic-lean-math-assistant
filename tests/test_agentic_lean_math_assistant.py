@@ -23,7 +23,11 @@ import agentic_lean_math_assistant.publication as campaign_publish_module
 import agentic_lean_math_assistant.runtime as campaign_runtime
 from agentic_lean_math_assistant import process_registry
 from agentic_lean_math_assistant.agent_runner import _invoke, _StreamingRedactor
-from agentic_lean_math_assistant.artifacts import digest_file, verify_evidence_index
+from agentic_lean_math_assistant.artifacts import (
+    digest_file,
+    digest_tree,
+    verify_evidence_index,
+)
 from agentic_lean_math_assistant.cli import main as campaign_main
 from agentic_lean_math_assistant.command import run_captured_command
 from agentic_lean_math_assistant.config import (
@@ -74,7 +78,11 @@ from agentic_lean_math_assistant.runtime import (
     replay_verifier_command,
     verify_campaign_bundle,
 )
-from agentic_lean_math_assistant.sandbox import SandboxError, prepare_sandbox
+from agentic_lean_math_assistant.sandbox import (
+    SandboxError,
+    prepare_sandbox,
+    workspace_size_exceeds,
+)
 from agentic_lean_math_assistant.terminal_status import PaneHeartbeat
 
 ROOT = Path(__file__).parents[1]
@@ -664,6 +672,129 @@ max_time = 60
             partial.relative_to(run_dir).as_posix()
             in state["stages"]["analyst"]["artifacts"]
         )
+
+
+def test_agent_stage_retry_continues_from_partial_workspace(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _base_files(tmp_path)
+    manifest = tmp_path / "campaign.toml"
+    manifest.write_text(
+        """schema_version = 1
+[campaign]
+id = "partial-retry"
+title = "Partial Retry"
+instructions = "campaign.md"
+runs_dir = "runs"
+[[inputs]]
+source = "input.txt"
+target = "input.txt"
+[[stages]]
+id = "formalizer"
+title = "Formalizer"
+mode = "research"
+feature = "agent"
+depends_on = []
+max_attempts = 2
+[stages.config]
+instructions = "role.md"
+tools = ["read", "write"]
+max_time = 60
+empty_output_retries = 0
+""",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("FAKE_CAMPAIGN_OMP_COUNTER", ".stage-invocations")
+    monkeypatch.setenv("FAKE_CAMPAIGN_BLANK_INVOCATIONS", "1")
+    monkeypatch.setenv(
+        "FAKE_CAMPAIGN_PARTIAL_OUTPUT",
+        "proof/PartialCheckpoint.lean",
+    )
+
+    run_dir = CampaignBuilder(
+        CampaignSpec.load(manifest),
+        options=_options(tmp_path, monkeypatch),
+    ).run()
+
+    state = json.loads((run_dir / "state.json").read_text(encoding="utf-8"))
+    stage = state["stages"]["formalizer"]
+    assert state["status"] == "complete"
+    assert stage["status"] == "succeeded"
+    assert stage["attempts"] == 2
+    assert (run_dir / "workspace/proof/PartialCheckpoint.lean").read_text(
+        encoding="utf-8"
+    ) == "useful partial output\n"
+    assert (run_dir / "workspace/.stage-invocations").read_text(encoding="utf-8") == "2"
+    assert any(
+        event["stage"] == "formalizer"
+        and event["status"] == "retrying"
+        and "continuing from partial workspace" in event["summary"]
+        for event in state["events"]
+    )
+    assert not any((run_dir / "recovery").iterdir())
+
+
+def test_failed_agent_retains_changed_workspace_before_rollback(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _base_files(tmp_path)
+    manifest = tmp_path / "campaign.toml"
+    manifest.write_text(
+        """schema_version = 1
+[campaign]
+id = "partial-failure"
+title = "Partial Failure"
+instructions = "campaign.md"
+runs_dir = "runs"
+[[inputs]]
+source = "input.txt"
+target = "input.txt"
+[[stages]]
+id = "formalizer"
+title = "Formalizer"
+mode = "research"
+feature = "agent"
+depends_on = []
+[stages.config]
+instructions = "role.md"
+tools = ["read", "write"]
+max_time = 60
+empty_output_retries = 0
+""",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("FAKE_CAMPAIGN_OMP_COUNTER", ".stage-invocations")
+    monkeypatch.setenv("FAKE_CAMPAIGN_BLANK_INVOCATIONS", "1")
+    monkeypatch.setenv(
+        "FAKE_CAMPAIGN_PARTIAL_OUTPUT",
+        "proof/PartialFailure.lean",
+    )
+
+    run_dir = CampaignBuilder(
+        CampaignSpec.load(manifest),
+        options=_options(tmp_path, monkeypatch),
+    ).run()
+
+    state = json.loads((run_dir / "state.json").read_text(encoding="utf-8"))
+    assert state["status"] == "incomplete"
+    assert not (run_dir / "workspace/proof/PartialFailure.lean").exists()
+    retained = (
+        run_dir
+        / "agents/research/formalizer/attempt-01-workspace-partial/proof"
+        / "PartialFailure.lean"
+    )
+    assert retained.read_text(encoding="utf-8") == "useful partial output\n"
+    receipt = json.loads(
+        (
+            run_dir / "agents/research/formalizer/attempt-01-workspace-partial.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert receipt["status"] == "partial-workspace"
+    assert "proof/PartialFailure.lean" in receipt["changed"]
+    assert (
+        retained.relative_to(run_dir).as_posix()
+        in state["stages"]["formalizer"]["artifacts"]
+    )
 
 
 def test_workspace_checkpoint_excludes_regenerable_caches(tmp_path: Path) -> None:
@@ -1824,6 +1955,37 @@ def test_sandbox_uses_cgroup_memory_without_virtual_address_limit(
     assert not any("LimitAS=" in argument for argument in invocation.argv)
 
 
+def test_resource_controls_apply_when_namespace_sandbox_is_disabled(
+    tmp_path: Path,
+) -> None:
+    policy = ExecutionSpec.from_table(
+        {"sandbox": False, "memory_max_mb": 64},
+        tmp_path,
+    )
+    invocation = prepare_sandbox(
+        (sys.executable, "-c", "bytearray(256 * 1024 * 1024)"),
+        cwd=tmp_path,
+        workspace=tmp_path,
+        environment={"HOME": str(tmp_path), "PATH": "/usr/bin"},
+        policy=policy,
+        runtime_max_seconds=30,
+    )
+
+    result = subprocess.run(
+        invocation.argv,
+        cwd=tmp_path,
+        env=invocation.environment,
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=False,
+    )
+
+    assert result.returncode != 0
+    assert invocation.metadata["enabled"] is False
+    assert invocation.metadata["backend"] == "systemd-cgroup"
+
+
 @pytest.mark.parametrize("allow_workspace_executables", (False, True))
 def test_sandbox_enforces_workspace_executable_policy(
     tmp_path: Path,
@@ -1927,6 +2089,20 @@ def test_sandbox_exposes_virtual_environment_and_external_runtime_prefix(
     assert str(external_prefix) in allowed
 
 
+def test_workspace_quota_ignores_regenerable_caches(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
+    cache = workspace / ".lake" / "build"
+    cache.mkdir(parents=True)
+    (cache / "dependency.olean").write_bytes(b"x" * (2 * 1024 * 1024))
+    exceeded, observed = workspace_size_exceeds(workspace, 1024 * 1024)
+    assert not exceeded
+    assert observed < 1024 * 1024
+    (workspace / "durable.bin").write_bytes(b"x" * (2 * 1024 * 1024))
+    exceeded, observed = workspace_size_exceeds(workspace, 1024 * 1024)
+    assert exceeded
+    assert observed > 1024 * 1024
+
+
 def test_sandbox_enforces_workspace_quota(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -1967,30 +2143,6 @@ def test_sandbox_enforces_memory_limit(
 
     assert state["stages"]["check"]["status"] == "failed"
     assert receipt["exit_code"] != 0
-    assert receipt["sandbox"]["memory_max_mb"] == 64
-    assert receipt["sandbox"]["memory_swap_max_mb"] == 0
-
-
-def test_memory_limit_survives_explicit_namespace_opt_out(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    manifest = _command_manifest(
-        tmp_path,
-        "import time; value=bytearray(256 * 1024 * 1024); time.sleep(1)",
-        execution="[execution]\nsandbox = false\nmemory_max_mb = 64",
-    )
-
-    run_dir = CampaignBuilder(
-        CampaignSpec.load(manifest), options=_options(tmp_path, monkeypatch)
-    ).run()
-    state = json.loads((run_dir / "state.json").read_text(encoding="utf-8"))
-    receipt_path = next((run_dir / "stages" / "check").glob("attempt-*.json"))
-    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
-
-    assert state["stages"]["check"]["status"] == "failed"
-    assert receipt["exit_code"] != 0
-    assert receipt["sandbox"]["enabled"] is False
-    assert receipt["sandbox"]["backend"] == "systemd-cgroup"
     assert receipt["sandbox"]["memory_max_mb"] == 64
     assert receipt["sandbox"]["memory_swap_max_mb"] == 0
 
@@ -3682,6 +3834,18 @@ def _verified_source_run(
         encoding="utf-8",
     )
     return path
+
+
+def test_digest_tree_excludes_complete_subtrees(tmp_path: Path) -> None:
+    (tmp_path / "retained").mkdir()
+    (tmp_path / "retained/result.txt").write_text("result\n", encoding="utf-8")
+    (tmp_path / "workspace/cache").mkdir(parents=True)
+    (tmp_path / "workspace/proof.lean").write_text("proof\n", encoding="utf-8")
+    (tmp_path / "workspace/cache/dependency.olean").write_bytes(b"cache")
+
+    artifacts = digest_tree(tmp_path, exclude={"workspace"})
+
+    assert [artifact.path for artifact in artifacts] == ["retained/result.txt"]
 
 
 def test_evidence_verification_rejects_unindexed_retained_files(

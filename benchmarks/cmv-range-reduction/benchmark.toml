@@ -1,0 +1,13 @@
+schema_version = 1
+
+[suite]
+id = "cmv-range-reduction"
+runs_dir = "benchmark-runs"
+
+[[cases]]
+id = "cold-cmv-range-reduction"
+project = "case/project.toml"
+expected_outcome = "solved"
+missing_source_policy = "checkpoint"
+validator = "validation/validate_result.py"
+validator_timeout = 1800

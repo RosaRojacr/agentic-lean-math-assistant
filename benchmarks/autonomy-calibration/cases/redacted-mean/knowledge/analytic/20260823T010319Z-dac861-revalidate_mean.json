@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "465e5cf8dfaf352fe3b51b4009dd985f9e7933c5777aaa97bb1dc9f8531b8b25",
+  "category": "analytic",
+  "evidence": [
+    "input-snapshot/references/source.md",
+    "agents/analytic/revalidate_mean/attempt-01.md",
+    "agents/audit/audit_mean/attempt-01.md",
+    "agents/audit/audit_mean/attempt-01.json"
+  ],
+  "limitations": [
+    "Applies only to the frozen supplied version of record R-17, whose third value has no retained constraint.",
+    "Does not identify the actual redacted value or produce a single numerical mean.",
+    "Independently checked by audit reasoning, not by a formal theorem prover."
+  ],
+  "report": {
+    "path": "analytic/20260823T010319Z-dac861-revalidate_mean.md",
+    "sha256": "ac0b283c4a8facecfe1e000e380fde3d6fa5f2157140faf3238434f4e56ac382",
+    "size": 2478
+  },
+  "run_id": "20260823T010319Z-dac861",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_evidence_reuse",
+  "summary": "For the frozen supplied record R-17, the complete retained-evidence mean family is (22+x)/4; compatible completions x=0 and x=4 yield 11/2 and 13/2 and prove that the numerical mean is not unique; uniqueness requires information fixing x.",
+  "task_id": "revalidate_mean",
+  "verified_by": [
+    "audit_mean"
+  ]
+}

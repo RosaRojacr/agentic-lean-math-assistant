@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "6189f6a0db324c1409dfaef14a803a8d9682589b8e53555a11d354a430ad8a84",
+  "category": "source_analysis",
+  "evidence": [
+    "workspace/agents/source_analysis/source_carrier_producer/source_carrier.json",
+    "workspace/agents/audit/source_row_audit/audit_contract.json",
+    "workspace/agents/audit/source_row_audit/validator_receipt.json",
+    "workspace/agents/audit/source_row_audit/report.md"
+  ],
+  "limitations": [
+    "The producer's 18-row table is not exhaustive on its own: SRC-SNELL-02 needs the conormal correction and four supplemental source rows are mandatory.",
+    "The result is documentary and coordinate-level only; it proves no universal source normalization, type-(iii) Lean carrier, reduced-boundary equality, minimizer transfer, or exclusion theorem.",
+    "Regular source profiles require 0 < h < 1; h = 1 is only a scalar/model closure."
+  ],
+  "report": {
+    "path": "source_analysis/20260824T205221Z-b63aa6-source_carrier_producer.md",
+    "sha256": "21765889ef8f3afa4a4812242d58b04127b8b0f3981d16286c05afe933bbcc3f",
+    "size": 5040
+  },
+  "run_id": "20260824T205221Z-b63aa6",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "finite_source_carrier",
+  "summary": "After applying the source_row_audit overlay, the explicit regular E3/E4 coordinate carriers, strict 0 < h < 1 domain, E3 branch partition, E4 minor-arc structure, and corrected finite CMV documentary ledger are safe inputs for formalization.",
+  "task_id": "source_carrier_producer",
+  "verified_by": [
+    "source_row_audit"
+  ]
+}

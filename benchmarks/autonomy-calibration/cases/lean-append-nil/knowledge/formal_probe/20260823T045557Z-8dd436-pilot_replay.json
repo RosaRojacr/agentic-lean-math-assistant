@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "bde3774e5d7d8e6bc0d2473f09c8e6d2e1c9a6da76d29899049a502b28c6d6e7",
+  "category": "formal_probe",
+  "evidence": [
+    "workspace/agents/formal_probe/pilot_replay/append_nil_candidate.lean",
+    "workspace/agents/formal_probe/pilot_replay/replay-evidence.md",
+    "workspace/agents/certificate_audit/gate_evidence/report.md"
+  ],
+  "limitations": [
+    "Scoped to the exact import-free declaration and leanprover/lean4:v4.33.1 environment retained in this run."
+  ],
+  "report": {
+    "path": "formal_probe/20260823T045557Z-8dd436-pilot_replay.md",
+    "sha256": "b46cf09509040b7dcca3145c0aa3290825d4e9adc549252bb3f5c9274955ea0c",
+    "size": 1046
+  },
+  "run_id": "20260823T045557Z-8dd436",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "structural_induction",
+  "summary": "The exact polymorphic append_nil_calibration declaration with the retained structural-induction proof is kernel-accepted by the pinned Lean 4.33.1 environment and reports no axiom dependencies.",
+  "task_id": "pilot_replay",
+  "verified_by": [
+    "gate_evidence"
+  ]
+}

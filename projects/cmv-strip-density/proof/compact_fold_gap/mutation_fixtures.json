@@ -1,0 +1,31 @@
+{
+  "schema": "cmv-compact-rational-mutations-v1",
+  "mutations": [
+    {
+      "id": "serialized_sign",
+      "kind": "sign",
+      "operation": "add_first_box_gap_sign",
+      "expected_error": "box[0]: fields"
+    },
+    {
+      "id": "fold_root_bound",
+      "kind": "bound",
+      "operation": "replace_first_h4_root",
+      "value": ["1/2", "3/4"],
+      "expected_error": "box[0]: fold upper sign unresolved"
+    },
+    {
+      "id": "lambda_coverage",
+      "kind": "coverage",
+      "operation": "replace_first_lambda_lower",
+      "value": "1",
+      "expected_error": "box[0]: coverage gap or overlap"
+    },
+    {
+      "id": "missing_root_payload",
+      "kind": "payload",
+      "operation": "delete_first_h3_root",
+      "expected_error": "box[0]: fields"
+    }
+  ]
+}

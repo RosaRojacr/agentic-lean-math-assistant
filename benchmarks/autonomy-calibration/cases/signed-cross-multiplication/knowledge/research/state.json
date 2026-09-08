@@ -1,0 +1,32 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "problem.md states the exact universal claim, prohibits adding positivity hypotheses, and explicitly requires testing mixed-sign denominators.",
+      "references/source.md states that multiplication by a positive real preserves inequality direction, multiplication by a negative real reverses it, and nonzero denominators do not imply bd > 0.",
+      "knowledge/analytic/20260823T020407Z-7b964d-derive_signed_refutation.json retains an accepted signed refutation and the exact counterexample.",
+      "knowledge/analytic/20260823T024453Z-130e0f-reconstruct_signed_resolution.json and knowledge/analytic/20260823T055608Z-bc382f-reconstruct_signed_resolution.json retain accepted sign classifications: bd > 0 implies ad > bc, whereas bd < 0 implies ad < bc.",
+      "knowledge/computational/20260823T005350Z-d78df8-construct_counterexample.json retains accepted exact-arithmetic verification of (0,1,1,-1).",
+      "knowledge/research/state.json records a prior skip for the unchanged problem and source inventory."
+    ],
+    "reason": "The problem and retained reference inventory are unchanged, and the local materials already determine the strategy, verification, and trust boundary. references/source.md supplies the ordered-field sign rules. Three accepted analytic records classify the result by the sign of bd: bd > 0 yields ad > bc, while bd < 0 yields ad < bc. The accepted computational record verifies the exact mixed-sign counterexample (a,b,c,d) = (0,1,1,-1), which satisfies a/b > c/d but not ad > bc. The prior research state also records skip for this same assignment. New publication research would not materially alter the conclusion or task decomposition.",
+    "reconsider_if": [
+      "The statement or hypotheses change, especially by adding or altering a sign condition on b, d, or bd.",
+      "A formal proof in a specified theorem prover becomes required and retained materials lack the necessary library theorem locators.",
+      "Publication-backed attribution, historical context, or external citations become explicit deliverables.",
+      "The retained ordered-field source, accepted sign classification, exact counterexample, or source inventory is removed, changed, or invalidated."
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "247505124cb823a37345b1bff4d58e19bdefe2d33973e506169906bbbbd87af4",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "d418d1e3107b8ae85dcc2df5b4a0dee4b62b52b6fc1a15c8fb376b69e17bf19f",
+      "size": 260
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T08:56:02Z"
+}

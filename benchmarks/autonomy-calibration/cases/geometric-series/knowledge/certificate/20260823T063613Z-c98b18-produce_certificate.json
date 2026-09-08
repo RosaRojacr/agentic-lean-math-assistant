@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "293d1cb41f08073440d7bbe7be10bbee3c7d3966a2d7c227767b94bf8289aa6a",
+  "category": "certificate",
+  "evidence": [
+    "workspace/agents/certificate/produce_certificate/certificate.md",
+    "workspace/agents/verification/audit_certificate/audit-report.md",
+    "workspace/agents/verification/audit_certificate/exact-recomputation.txt"
+  ],
+  "limitations": [
+    "The general quotient claim is restricted to positive integer m and field-valued r != 1.",
+    "The executable corroboration uses exact Python integers, not a proof-assistant kernel.",
+    "The direct enumeration claim concerns only k=0 through 7 for the fixed summands 3*2^k."
+  ],
+  "report": {
+    "path": "certificate/20260823T063613Z-c98b18-produce_certificate.md",
+    "sha256": "afb969e962672af6e5df2550dea6e2a24e222ad91d1ab2389189d04f006edb05",
+    "size": 826
+  },
+  "run_id": "20260823T063613Z-c98b18",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": null,
+  "summary": "For positive integer m and field-valued r != 1, multiplication and endpoint-preserving subtraction derive the finite geometric-series identity; at m=8 and r=2 with coefficient 3 it yields 765, independently confirmed by exact termwise addition.",
+  "task_id": "produce_certificate",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

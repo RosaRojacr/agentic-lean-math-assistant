@@ -1,0 +1,71 @@
+{
+  "artifacts": [
+    {
+      "path": "analytic/20260823T001852Z-296d3e-derive_induction.json",
+      "sha256": "b72a35040c7561523bfaaa9caa8f70d3aaf3db9b77d404e3af049d6fd5205f10",
+      "size": 1112
+    },
+    {
+      "path": "analytic/20260823T001852Z-296d3e-derive_induction.md",
+      "sha256": "e4e608073018711edef18b08641686387f41cef2473aa7cd5738998d6adf5d50",
+      "size": 1732
+    },
+    {
+      "path": "formal_probe/20260823T045557Z-8dd436-pilot_replay.json",
+      "sha256": "a735bff6e1fc283d10b6062e6e94348cfa54098b438de3af1102514565779b8a",
+      "size": 1088
+    },
+    {
+      "path": "formal_probe/20260823T045557Z-8dd436-pilot_replay.md",
+      "sha256": "b46cf09509040b7dcca3145c0aa3290825d4e9adc549252bb3f5c9274955ea0c",
+      "size": 1046
+    },
+    {
+      "path": "formal_probe/20260823T075116Z-05bddd-pilot_replay.json",
+      "sha256": "491165a33b562b6e607d4eb0ae1888d18ecdae5c006b59fb950f9616bd925a6f",
+      "size": 1082
+    },
+    {
+      "path": "formal_probe/20260823T075116Z-05bddd-pilot_replay.md",
+      "sha256": "4dbdba8c232128b5197e08f66eedad8c4c6feadc64bbaba3b3dc47d75ed4b58e",
+      "size": 948
+    },
+    {
+      "path": "formalization/20260823T001852Z-296d3e-formalize_proof.json",
+      "sha256": "57816f7832756103ad53be51cd9566fb60a604c8eb486e950851758666e78adf",
+      "size": 1122
+    },
+    {
+      "path": "formalization/20260823T001852Z-296d3e-formalize_proof.md",
+      "sha256": "bc38f1b9902b51947881d40ff388b68a90c3ed6ddc133a6380c8ec049306ee20",
+      "size": 1002
+    },
+    {
+      "path": "lean_formalization/20260823T045557Z-8dd436-formalize_proof.json",
+      "sha256": "4b7ee725bfabc5f93e0b751dd3593cfe5a7a888b5dad9eebdc8acb4ac55a7328",
+      "size": 1088
+    },
+    {
+      "path": "lean_formalization/20260823T045557Z-8dd436-formalize_proof.md",
+      "sha256": "88402a5524b0e256bdd809b5399c274c570aa0d61184deaefcadb88c07f57023",
+      "size": 572
+    },
+    {
+      "path": "lean_formalization/20260823T075116Z-05bddd-formalize_proof.json",
+      "sha256": "f5a1ca31c6d288b7e56dcfa9e140e1bea192636e46c992b9cf4614fe502fb436",
+      "size": 1196
+    },
+    {
+      "path": "lean_formalization/20260823T075116Z-05bddd-formalize_proof.md",
+      "sha256": "aeebc608ed37136fc1e2c5ede89938b820ec7e986383105bdf1326ed84fe672e",
+      "size": 928
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "53a29d08f53166c501e0b8d36d95b2854276c4c76b45e62d10869d236073e4ea",
+      "size": 2004
+    }
+  ],
+  "generated_at": "2026-08-23T08:05:19Z",
+  "schema_version": 1
+}

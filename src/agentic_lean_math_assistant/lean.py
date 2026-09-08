@@ -18,7 +18,9 @@ from types import MappingProxyType
 from .command import CapturedCommand, run_captured_command
 from .config import ExecutionSpec
 
-_BANNED = re.compile(r"\b(sorry|admit)\b|\baxiom\s+|\bunsafe\s+(?:def|theorem)")
+_BANNED = re.compile(
+    r"\b(sorry|admit|native_decide)\b|\baxiom\s+|\bunsafe\s+(?:def|theorem)"
+)
 _PLACEHOLDER = re.compile(r"\{\{\s*(?P<name>[a-z][a-z0-9_]*)\s*\}\}")
 _IDENTIFIER_COMPONENT = r"(?!\d)\w[\w']*"
 _IDENTIFIER_TEXT = rf"{_IDENTIFIER_COMPONENT}(?:\.{_IDENTIFIER_COMPONENT})*"
@@ -158,6 +160,9 @@ class ProofGateResult:
     source_issues: tuple[str, ...]
     command_receipts: tuple[GateCommandReceipt, ...]
     errors: tuple[str, ...]
+    timeout_seconds: float | None = None
+    duration_seconds: float | None = None
+    deadline_expired: bool = False
 
     @property
     def passed(self) -> bool:
@@ -175,6 +180,9 @@ class ProofGateResult:
             "source_issues": list(self.source_issues),
             "commands": [receipt.to_dict() for receipt in self.command_receipts],
             "errors": list(self.errors),
+            "timeout_seconds": self.timeout_seconds,
+            "duration_seconds": self.duration_seconds,
+            "deadline_expired": self.deadline_expired,
         }
 
 
@@ -319,7 +327,15 @@ def _run(
     run_dir: Path | None,
     *,
     read_paths: tuple[Path, ...] = (),
+    deadline: float | None = None,
+    shutdown_reserve: float = 0.0,
+    stage: str = "command",
 ) -> tuple[GateCommandReceipt | None, str | None]:
+    if deadline is not None:
+        remaining = deadline - time.monotonic() - shutdown_reserve
+        if remaining <= 0:
+            return None, f"aggregate verifier deadline expired before {stage}"
+        timeout = min(timeout, remaining)
     started = time.monotonic()
     completed = run_captured_command(
         argv,
@@ -331,13 +347,19 @@ def _run(
         run_dir=run_dir or project,
         read_paths=read_paths,
     )
+    receipt = (
+        _receipt(argv, completed, time.monotonic() - started)
+        if completed.exit_code is not None
+        else None
+    )
     if completed.error is not None:
-        return None, f"cannot execute {argv!r}: {completed.error}"
-    receipt = _receipt(argv, completed, time.monotonic() - started)
+        return receipt, f"cannot execute {argv!r}: {completed.error}"
     if completed.exit_code != 0:
         return receipt, f"command exited with {completed.exit_code}: {argv!r}"
     if "sorryAx" in completed.stdout or "sorryAx" in completed.stderr:
         return receipt, f"command reported sorryAx: {argv!r}"
+    if deadline is not None and time.monotonic() >= deadline:
+        return receipt, f"aggregate verifier deadline expired during {stage}"
     return receipt, None
 
 
@@ -411,6 +433,11 @@ def run_proof_gate(
     run_dir: Path | None = None,
 ) -> ProofGateResult:
     """Build the project and compile an immutable external acceptance contract."""
+    if timeout <= 0:
+        raise ValueError("proof gate timeout must be positive")
+    gate_started = time.monotonic()
+    deadline = gate_started + timeout
+    shutdown_reserve = min(5.0, timeout / 10.0)
     contract_source = contract_path.read_text(encoding="utf-8")
     effective_substitutions = dict(substitutions or {})
     rendered = render_contract(contract_source, effective_substitutions)
@@ -439,13 +466,24 @@ def run_proof_gate(
         )
     errors = [*source_issues, *contract_issues]
     receipts: list[GateCommandReceipt] = []
-    build_receipt, build_error = _run(
-        (lake, "build"), project, timeout, execution, run_dir
+    build_error: str | None = (
+        "proof gate preflight rejected the inputs" if errors else None
     )
-    if build_receipt is not None:
-        receipts.append(build_receipt)
-    if build_error is not None:
-        errors.append(build_error)
+    if build_error is None:
+        build_receipt, build_error = _run(
+            (lake, "build"),
+            project,
+            timeout,
+            execution,
+            run_dir,
+            deadline=deadline,
+            shutdown_reserve=shutdown_reserve,
+            stage="project build",
+        )
+        if build_receipt is not None:
+            receipts.append(build_receipt)
+        if build_error is not None:
+            errors.append(build_error)
 
     lean_path: Path | None = None
     if build_error is None:
@@ -455,6 +493,9 @@ def run_proof_gate(
             timeout,
             execution,
             run_dir,
+            deadline=deadline,
+            shutdown_reserve=shutdown_reserve,
+            stage="Lean executable discovery",
         )
         if which_receipt is not None:
             receipts.append(which_receipt)
@@ -509,6 +550,9 @@ def run_proof_gate(
                     execution,
                     run_dir,
                     read_paths=(trusted_root,),
+                    deadline=deadline,
+                    shutdown_reserve=shutdown_reserve,
+                    stage="trusted contract compilation",
                 )
                 if compile_receipt is not None:
                     receipts.append(compile_receipt)
@@ -538,6 +582,9 @@ def run_proof_gate(
                         execution,
                         run_dir,
                         read_paths=(trusted_root,),
+                        deadline=deadline,
+                        shutdown_reserve=shutdown_reserve,
+                        stage="trusted axiom certificate",
                     )
                     if reader_receipt is not None:
                         receipts.append(reader_receipt)
@@ -569,6 +616,11 @@ def run_proof_gate(
     )
     if unexpected:
         errors.append(f"contract declarations use unapproved axioms: {unexpected}")
+    deadline_expired = time.monotonic() >= deadline
+    if deadline_expired and not any(
+        "aggregate verifier deadline expired" in error for error in errors
+    ):
+        errors.append("aggregate verifier deadline expired before acceptance")
 
     return ProofGateResult(
         status="failed" if errors else "passed",
@@ -580,6 +632,9 @@ def run_proof_gate(
         source_issues=tuple(source_issues),
         command_receipts=tuple(receipts),
         errors=tuple(errors),
+        timeout_seconds=timeout,
+        duration_seconds=round(time.monotonic() - gate_started, 3),
+        deadline_expired=deadline_expired,
     )
 
 

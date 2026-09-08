@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Rosa Pavlak" />
+  <meta name="dcterms.date" content="2026-09-07" />
+  <meta name="keywords" content="weighted isoperimetry, strip
+density, formal verification, Lean 4, interval certificates, geometric
+measure theory" />
+  <title>Lean-verified CMV
+frontier – A Lean-Verified 51/50 Cutoff and the Remaining-Range Frontier</title>
+  <style>
+
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging-indent div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+} </style>
+  <style type="text/css">@page {
+size: Letter;
+margin: 0.68in 0.72in 0.74in;
+@bottom-left {
+content: "Lean-verified CMV cutoff";
+color: #64748b;
+font: 8.5pt "Source Sans 3", "DejaVu Sans", sans-serif;
+}
+@bottom-right {
+content: counter(page);
+color: #64748b;
+font: 8.5pt "Source Sans 3", "DejaVu Sans", sans-serif;
+}
+}
+:root {
+--ink: #172033;
+--muted: #526078;
+--navy: #123652;
+--blue: #0b6483;
+--cyan: #dff4f7;
+--line: #c8d5df;
+--soft: #f4f7fa;
+--gold: #a76d13;
+--gold-soft: #fff8e8;
+--green: #17634a;
+--green-soft: #eaf8f1;
+}
+html {
+background: white;
+color: var(--ink);
+font-family: "Source Serif 4", "Charis SIL", "DejaVu Serif", serif;
+font-size: 10.35pt;
+line-height: 1.46;
+text-rendering: optimizeLegibility;
+}
+body {
+margin: 0 auto;
+max-width: 7.1in;
+padding: 0;
+}
+header#title-block-header {
+background: linear-gradient(135deg, #0e304b 0%, #155e75 100%);
+border-bottom: 5px solid #6fc2cf;
+color: white;
+margin: 0 0 1.4rem;
+padding: 1.05rem 1.15rem 1.15rem;
+}
+header#title-block-header h1.title {
+border: 0;
+color: white;
+font-family: "Source Sans 3", "DejaVu Sans", sans-serif;
+font-size: 24pt;
+font-weight: 720;
+letter-spacing: -0.025em;
+line-height: 1.06;
+margin: 0 0 0.45rem;
+padding: 0;
+}
+header#title-block-header .subtitle {
+color: #d9f2f5;
+font-family: "Source Sans 3", "DejaVu Sans", sans-serif;
+font-size: 12pt;
+font-weight: 520;
+margin: 0.15rem 0 0.8rem;
+}
+header#title-block-header .author,
+header#title-block-header .date {
+color: #edf8fa;
+display: inline-block;
+font-family: "Source Sans 3", "DejaVu Sans", sans-serif;
+font-size: 9.6pt;
+margin: 0 1rem 0 0;
+}
+.abstract {
+background: var(--soft);
+color: var(--ink);
+border-left: 4px solid var(--blue);
+margin: 0 0 1.25rem;
+padding: 0.72rem 0.85rem;
+}
+.abstract-title {
+color: var(--navy);
+font-family: "Source Sans 3", "DejaVu Sans", sans-serif;
+font-size: 9.5pt;
+font-weight: 700;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+}
+.abstract p:last-child { margin-bottom: 0; }
+h1, h2, h3 {
+break-after: avoid-page;
+color: var(--navy);
+font-family: "Source Sans 3", "DejaVu Sans", sans-serif;
+font-weight: 690;
+line-height: 1.18;
+}
+h1 {
+border-bottom: 1px solid var(--line);
+font-size: 17pt;
+margin: 1.7rem 0 0.66rem;
+padding-bottom: 0.2rem;
+}
+h2 {
+color: #174d66;
+font-size: 13.2pt;
+margin: 1.3rem 0 0.48rem;
+}
+h3 {
+font-size: 11.1pt;
+margin: 1.05rem 0 0.4rem;
+}
+p { margin: 0.45rem 0 0.72rem; }
+.result-card {
+background: linear-gradient(90deg, var(--green-soft), #f7fcfa);
+border: 1px solid #add8c6;
+border-left: 6px solid var(--green);
+break-inside: avoid-page;
+margin: 0.9rem 0 1.4rem;
+padding: 0.78rem 0.95rem;
+}
+.result-card p { margin: 0.22rem 0 0.56rem; }
+.result-card p:last-child { margin-bottom: 0; }
+.theorem {
+background: #eef6fb;
+border: 1px solid #b9d6e4;
+border-left: 5px solid var(--blue);
+break-inside: avoid-page;
+margin: 0.85rem 0 1rem;
+padding: 0.65rem 0.82rem;
+}
+.theorem p { margin: 0; }
+.scope-note {
+background: var(--gold-soft);
+border: 1px solid #ead29b;
+border-left: 5px solid var(--gold);
+break-inside: avoid-page;
+margin: 0.9rem 0;
+padding: 0.65rem 0.82rem;
+}
+.scope-note p { margin: 0; }
+blockquote {
+border-left: 3px solid var(--line);
+color: #36465b;
+margin: 0.7rem 0;
+padding: 0.05rem 0 0.05rem 0.8rem;
+}
+ol, ul {
+margin: 0.45rem 0 0.8rem;
+padding-left: 1.35rem;
+}
+li { margin: 0.16rem 0; }
+li > p { margin: 0.2rem 0; }
+table {
+border-collapse: collapse;
+break-inside: avoid-page;
+font-family: "Source Sans 3", "DejaVu Sans", sans-serif;
+font-size: 8.6pt;
+line-height: 1.32;
+margin: 0.8rem auto 1.05rem;
+width: 100%;
+}
+th, td {
+border: 1px solid var(--line);
+padding: 0.38rem 0.44rem;
+text-align: left;
+vertical-align: top;
+}
+th {
+background: #e4f0f5;
+color: var(--navy);
+font-weight: 700;
+}
+tbody tr:nth-child(even) { background: #f8fafc; }
+tr { break-inside: avoid-page; }
+code {
+background: #eef2f6;
+border-radius: 2px;
+color: #23324a;
+font-family: "Iosevka", "JetBrains Mono", "DejaVu Sans Mono", monospace;
+font-size: 0.84em;
+overflow-wrap: anywhere;
+padding: 0.05rem 0.2rem;
+}
+pre {
+background: #111c2e;
+border-left: 4px solid #4aa6bc;
+border-radius: 3px;
+break-inside: avoid-page;
+color: #e8eef5;
+font-size: 7.45pt;
+line-height: 1.36;
+margin: 0.72rem 0 0.95rem;
+overflow-wrap: anywhere;
+padding: 0.62rem 0.72rem;
+white-space: pre-wrap;
+}
+pre code {
+background: transparent;
+color: inherit;
+padding: 0;
+}
+a {
+color: #075d7c;
+text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+math[display="block"] {
+display: block;
+margin: 0.7rem auto;
+overflow: visible;
+text-align: center;
+}
+#refs {
+font-size: 9pt;
+line-height: 1.35;
+}
+#refs .csl-entry {
+margin: 0 0 0.55rem 1.25rem;
+text-indent: -1.25rem;
+}
+hr {
+border: 0;
+border-top: 1px solid var(--line);
+margin: 1.35rem 0;
+}
+@media print {
+body { max-width: none; }
+a { color: #174d66; }
+h1 { break-before: auto; }
+pre, table, .result-card, .theorem, .scope-note { break-inside: avoid-page; }
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">A Lean-Verified 51/50 Cutoff and the Remaining-Range
+Frontier</h1>
+<p class="subtitle">From exact rational cells to an all-density
+classified-carrier exclusion</p>
+<p class="author">Rosa Pavlak</p>
+<p class="date">7 September 2026</p>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>For the planar strip density equal to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{|y|\le 1\}</annotation></semantics></math>
+and to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;1</annotation></semantics></math>
+outside, Cañete, Miranda Jr., and Vittone reduced the unresolved part of
+their classification to the possible optimality of a symmetric four-arc
+candidate. This paper gives a reproducible Lean 4 proof of the exact
+cutoff
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≥</mo><mn>51</mn><mi>/</mi><mn>50</mn></mrow><annotation encoding="application/x-tex">\lambda\ge 51/50</annotation></semantics></math>.
+On
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>51</mn><mi>/</mi><mn>50</mn><mo>,</mo><mn>9</mn><mi>/</mi><mn>7</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[51/50,9/7]</annotation></semantics></math>,
+1,139 exact-rational cells are composed without a seam gap; above
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>/</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">9/7</annotation></semantics></math>,
+the proof uses a formally realized cap replacement. We then report the
+stronger development obtained on the old remaining range
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>λ</mi><mo>&lt;</mo><mn>51</mn><mi>/</mi><mn>50</mn></mrow><annotation encoding="application/x-tex">1&lt;\lambda&lt;51/50</annotation></semantics></math>:
+every modeled type-(iv) candidate, every literal source-incidence
+four-arc carrier, and every exact or almost-everywhere horizontal
+representative of the checked closed-Snell coordinate family is now
+excluded for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;1</annotation></semantics></math>.
+A separate near-one construction kernel-checks an explicit density
+prefix, while an independently replayed interval atlas supplies
+nonformal exploration farther into the interval. The scalar and
+classified-carrier problems are therefore closed throughout the
+admissible density range. The full CMV conjecture is not claimed: the
+remaining obligation is universal geometric and GMT classification of
+arbitrary source minimizers into the checked carrier interfaces,
+including the residual configurations in CMV Lemma 3.8. Every theorem
+level, computational certificate, and unresolved interface is
+distinguished explicitly.</p>
+</div>
+</header>
+<div class="result-card">
+<p><strong>Certified conclusions.</strong></p>
+<ol type="1">
+<li>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≥</mo><mn>51</mn><mi>/</mi><mn>50</mn></mrow><annotation encoding="application/x-tex">\lambda\ge 51/50</annotation></semantics></math>,
+every modeled CMV type-(iv) candidate satisfying the density jump and
+Snell incidence law has a genuine equal-area competitor of smaller
+weighted perimeter.</li>
+<li>In fact, the modeled exclusion now holds for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;1</annotation></semantics></math>.</li>
+<li>The all-density comparison has been lifted to literal coordinate
+carriers for the relaxed source perimeter, including
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h=1</annotation></semantics></math>,
+horizontal translation, almost-everywhere replacement, and independent
+closed-Snell coordinates with source radius
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R\ge1</annotation></semantics></math>.</li>
+<li>The unconditional CMV conjecture remains open because universal
+source classification into those carriers has not been formalized.</li>
+</ol>
+<p><strong>Exact cutoff declaration:</strong> <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVModeledCutoff.lean"><code>CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer_from_51_50</code></a>.</p>
+<p><strong>Stronger all-density declaration:</strong> <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVModeledCutoff.lean"><code>CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer</code></a>.</p>
+</div>
+<h1 id="statement-and-logical-scope">1. Statement and logical scope</h1>
+<p>Consider the lower-semicontinuous density</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>λ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>1</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>λ</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">|</mo><mi>y</mi><mo stretchy="false" form="prefix">|</mo><mo>&gt;</mo><mn>1</mn><mo>,</mo></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mi>λ</mi><mo>&gt;</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f_\lambda(x,y)=
+\begin{cases}
+1,&amp; |y|\le1,\\
+\lambda,&amp; |y|&gt;1,
+\end{cases}
+\qquad \lambda&gt;1.
+</annotation></semantics></math></p>
+<p>For a sufficiently regular set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>⊂</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E\subset\mathbb R^2</annotation></semantics></math>,
+write</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>λ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∫</mo><mi>E</mi></msub><msub><mi>f</mi><mi>λ</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>ℒ</mi><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>P</mi><mi>λ</mi></msub><mo stretchy="false" form="prefix">(</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mo>∫</mo><mrow><mi>∂</mi><mi>E</mi></mrow></msub><msub><mi>f</mi><mi>λ</mi></msub><mspace width="0.167em"></mspace><mi>d</mi><msup><mi>ℋ</mi><mn>1</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A_\lambda(E)=\int_E f_\lambda\,d\mathcal L^2,
+\qquad
+P_\lambda(E)=\int_{\partial E}f_\lambda\,d\mathcal H^1.
+</annotation></semantics></math></p>
+<p>The source variational problem is posed for finite-perimeter sets and
+reduced boundaries. CMV prove existence, symmetrization, and a geometric
+classification of candidate shapes <span class="citation" data-cites="CaneteMirandaVittone2010">(<a href="#ref-CaneteMirandaVittone2010" role="doc-biblioref">Cañete et al.
+2010</a>, Proposition 3.6, Lemma 3.8, Proposition 3.9)</span>. Their
+Conjecture 3.12 says that type (iv), the symmetric four-arc family, is
+never minimizing. Their Theorem 3.16 establishes this for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≥</mo><mn>4</mn><mi>/</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">\lambda\ge4/\pi</annotation></semantics></math>
+by a cap replacement and Remark 3.17 notes that this threshold is not
+optimal.</p>
+<p>The formal development separates three statements that must not be
+conflated.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Quantified object</th>
+<th>Current status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modeled candidate</td>
+<td><code>FourArcCandidate λ</code> satisfying the exact CMV incidence
+hypotheses</td>
+<td><strong>Proved for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;1</annotation></semantics></math></strong></td>
+</tr>
+<tr>
+<td>Classified source carrier</td>
+<td>Literal, canonical, translated, a.e.-translated, or raw closed-Snell
+coordinate carrier</td>
+<td><strong>Proved for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;1</annotation></semantics></math></strong></td>
+</tr>
+<tr>
+<td>Arbitrary source minimizer</td>
+<td>Any source-admissible minimizer covered by the full CMV/GMT
+classification</td>
+<td><strong>Open: universal classification is not
+formalized</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Thus “all-density” below always means the first or second row unless
+the source classification hypothesis is stated. No result in this paper
+silently assumes that every arbitrary minimizer is already a
+<code>FourArcCandidate</code>.</p>
+<h2 id="the-exact-5150-theorem">1.1 The exact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>51</mn><mi>/</mi><mn>50</mn></mrow><annotation encoding="application/x-tex">51/50</annotation></semantics></math>
+theorem</h2>
+<p>The original cutoff remains as an independent theorem with an
+independent certificate path.</p>
+<div class="theorem">
+<p><strong>Theorem 1 (exact Lean-verified cutoff).</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≥</mo><mn>51</mn><mi>/</mi><mn>50</mn></mrow><annotation encoding="application/x-tex">\lambda\ge51/50</annotation></semantics></math>
+and let <code>candidate : FourArcCandidate λ</code> satisfy
+<code>candidate.SatisfiesCMVTypeIVHypotheses</code>. Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>¬</mo><mspace width="0.167em"></mspace><mtext mathvariant="monospace">𝚌𝚊𝚗𝚍𝚒𝚍𝚊𝚝𝚎.𝙸𝚜𝚆𝚎𝚒𝚐𝚑𝚝𝚎𝚍𝙿𝚎𝚛𝚒𝚖𝚎𝚝𝚎𝚛𝙼𝚒𝚗𝚒𝚖𝚒𝚣𝚎𝚛</mtext><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\neg\,\texttt{candidate.IsWeightedPerimeterMinimizer}.
+</annotation></semantics></math></p>
+</div>
+<p>The exported Lean statement is:</p>
+<pre class="lean"><code>theorem candidate_not_isWeightedPerimeterMinimizer_from_51_50
+    {lam : ℝ}
+    (hlower : (51 / 50 : ℝ) ≤ lam)
+    (candidate : FourArcCandidate lam)
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) :
+    ¬ candidate.IsWeightedPerimeterMinimizer</code></pre>
+<p>The conclusion is universal in candidate curvature. It includes the
+limiting curvature
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h=1</annotation></semantics></math>
+and refutes minimality by constructing an admissible competitor at
+exactly equal weighted area. The proof is neither a plot nor a finite
+sample of candidates.</p>
+<p>The logically equivalent retained corollaries are:</p>
+<pre class="lean"><code>theorem type_four_minimizer_implies_lambda_lt_51_50 ... :
+    lam &lt; (51 / 50 : ℝ)
+
+theorem type_four_minimizer_open_range_51_50 ... :
+    1 &lt; lam ∧ lam &lt; (51 / 50 : ℝ)</code></pre>
+<p>These corollaries describe the frontier established by the <em>cutoff
+proof alone</em>. Section 4 explains why the stronger subsequent theorem
+closes that modeled near-one interval.</p>
+<h2 id="the-stronger-theorem">1.2 The stronger theorem</h2>
+<div class="theorem">
+<p><strong>Theorem 2 (all-density modeled exclusion).</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;1</annotation></semantics></math>
+and let <code>candidate : FourArcCandidate λ</code> satisfy the CMV
+type-(iv) hypotheses. Then the candidate is not a weighted-perimeter
+minimizer.</p>
+</div>
+<p>Its exact Lean declaration is:</p>
+<pre class="lean"><code>theorem candidate_not_isWeightedPerimeterMinimizer
+    {lam : ℝ}
+    (candidate : FourArcCandidate lam)
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) :
+    ¬ candidate.IsWeightedPerimeterMinimizer</code></pre>
+<p>The hypothesis <code>hcandidate.density_jump</code> supplies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>λ</mi></mrow><annotation encoding="application/x-tex">1&lt;\lambda</annotation></semantics></math>.
+Source classification and reduced-boundary compatibility are
+deliberately absent from this theorem because its quantified object is
+already the formal coordinate candidate.</p>
+<h1 id="the-geometric-meaning-of-the-model">2. The geometric meaning of
+the model</h1>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/FourArcCandidate.lean"><code>FourArcCandidate.lean</code></a>
+defines a common curvature parameter
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>h</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;h\le1</annotation></semantics></math>,
+a principal exterior angle, two strip-side circular arcs, two exterior
+caps, interface segments, the coordinate carrier, weighted area, and
+complete-frontier weighted perimeter. The source-facing hypothesis is
+small:</p>
+<pre class="lean"><code>structure SatisfiesCMVTypeIVHypotheses : Prop where
+  density_jump : 1 &lt; lam
+  snell_incidence : lam * cos candidate.alpha = candidate.h</code></pre>
+<p>Area and perimeter formulas are derived from the coordinate pieces
+rather than inserted into this predicate. Minimality quantifies over
+every formal <code>AdmissibleCompetitor</code> of equal weighted
+area:</p>
+<pre class="lean"><code>def IsWeightedPerimeterMinimizer : Prop :=
+  ∀ competitor : AdmissibleCompetitor lam,
+    competitor.WeightedArea = candidate.WeightedArea →
+      candidate.WeightedPerimeter ≤ competitor.WeightedPerimeter</code></pre>
+<p>Consequently, one constructed equal-area region with smaller
+perimeter is a complete refutation of modeled minimality.</p>
+<p>The competitor is a genuine <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/TypeThreeAssembly.lean"><code>TypeThreeAssembly</code></a>,
+not merely a scalar tuple. It includes the major, semicircular, and
+minor exterior-cap branches, the two strip-side arcs, and the possibly
+degenerate interface segment. Its weighted area and perimeter are
+connected to literal coordinate geometry. <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/FrontierPerimeter.lean"><code>FrontierPerimeter.lean</code></a>
+proves that the displayed sums equal weighted Hausdorff integrals over
+the complete topological frontier; finite join sets have zero
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℋ</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\mathcal H^1</annotation></semantics></math>
+mass.</p>
+<h1 id="independent-hard-proof-of-the-5150-cutoff">3. Independent hard
+proof of the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>51</mn><mi>/</mi><mn>50</mn></mrow><annotation encoding="application/x-tex">51/50</annotation></semantics></math>
+cutoff</h1>
+<p>The exact cutoff uses a proof-producing interval decomposition on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>51</mn><mi>/</mi><mn>50</mn><mo>,</mo><mn>9</mn><mi>/</mi><mn>7</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[51/50,9/7]</annotation></semantics></math>
+and a geometric cap replacement above it. Keeping this route is valuable
+even after Theorem 2: it is an independently structured certificate with
+explicit rational coverage and a different high-density splice.</p>
+<h2 id="scalar-reduction">3.1 Scalar reduction</h2>
+<p>Use</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mn>4</mn></msub><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>q</mi><mn>3</mn></msub><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>w</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>h</mi><mn>3</mn></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>w</mi></mrow><mn>2</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+h_4=\cos x,\qquad q_3=\cos w,\qquad h_3=\frac{1+\cos w}{2}.
+</annotation></semantics></math></p>
+<p>For type (iv), define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>4</mn></msub><mo>=</mo><mi>λ</mi><mi>y</mi><mo>+</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>−</mo><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>d</mi><mn>4</mn></msub><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>y</mi><mo>−</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>x</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>N</mi><mn>4</mn></msub><mo>=</mo><msub><mi>B</mi><mn>4</mn></msub><mo>+</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>x</mi><mspace width="0.167em"></mspace><msub><mi>d</mi><mn>4</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+B_4=\lambda y+\frac\pi2-x,
+\qquad d_4=\sin y-\sin x,
+\qquad N_4=B_4+\cos x\,d_4.
+</annotation></semantics></math></p>
+<p>For type (iii), define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>3</mn></msub><mo>=</mo><mi>λ</mi><mi>v</mi><mo>+</mo><mi>π</mi><mo>−</mo><mi>w</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>d</mi><mn>3</mn></msub><mo>=</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>v</mi><mo>−</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>w</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>N</mi><mn>3</mn></msub><mo>=</mo><msub><mi>B</mi><mn>3</mn></msub><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>w</mi><mo>+</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><msub><mi>d</mi><mn>3</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+B_3=\lambda v+\pi-w,
+\qquad d_3=\sin v-\sin w,
+\qquad N_3=B_3+(\cos w+2)d_3.
+</annotation></semantics></math></p>
+<p>The four equations checked in the retained cells are</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>C</mi><mn>4</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>x</mi><mo>−</mo><mi>λ</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>y</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>F</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>y</mi><mo>−</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>x</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mi>y</mi><mo>+</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>−</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mi>C</mi><mn>3</mn></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>w</mi><mo>−</mo><mi>λ</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>v</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mi>E</mi></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>=</mo><mn>2</mn><msup><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>x</mi><mspace width="0.167em"></mspace><msub><mi>N</mi><mn>3</mn></msub><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>w</mi><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup><msub><mi>N</mi><mn>4</mn></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+C_4&amp;=\cos x-\lambda\cos y,\\
+F&amp;=\cos x(\sin y-\sin x)
+  -\sin x\sin y\left(\lambda y+\frac\pi2-x\right),\\
+C_3&amp;=\cos w-\lambda\cos v,\\
+E&amp;=2\cos^2x\,N_3-(1+\cos w)^2N_4.
+\end{aligned}
+</annotation></semantics></math></p>
+<p>Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>4</mn></msub><mo>=</mo><mi>F</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C_4=F=0</annotation></semantics></math>
+is the type-(iv) incidence/stationarity system and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>3</mn></msub><mo>=</mo><mi>E</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C_3=E=0</annotation></semantics></math>
+is the type-(iii) incidence/equal-area system. The sign-transfer
+quantity is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>B</mi><mn>3</mn></msub><mo>+</mo><msub><mi>d</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>+</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>w</mi><mo stretchy="false" form="postfix">)</mo><msub><mi>B</mi><mn>4</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+G=\cos x(B_3+d_3)-(1+\cos w)B_4.
+</annotation></semantics></math></p>
+<p>Under the proved domain and denominator guards,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G&lt;0</annotation></semantics></math>
+implies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>3</mn></msub><mo>&lt;</mo><msub><mi>P</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">P_3&lt;P_4</annotation></semantics></math>.
+The analytic formulas and their derivatives are formalized in <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/LeanSuffixAnalytic.lean"><code>LeanSuffixAnalytic.lean</code></a>.
+The envelope argument in <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/SameCurvatureArea.lean"><code>SameCurvatureArea.lean</code></a>
+and <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/EqualAreaEnvelope.lean"><code>EqualAreaEnvelope.lean</code></a>
+promotes one certified stationary pair to every admissible type-(iv)
+curvature.</p>
+<h2 id="exact-coverage-with-no-seam-gap">3.2 Exact coverage with no seam
+gap</h2>
+<p>Floating-point computations proposed the cells, but Lean accepts only
+exact rational endpoints and proof terms. Rational Taylor bounds enclose
+the transcendental functions. The kernel checks interval inclusion, face
+signs, derivative signs, denominator positivity, branch selection, and
+every seam.</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Component</th>
+<th style="text-align: right;">Closed density interval</th>
+<th style="text-align: right;">Cells</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left prototype</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>51</mn><mi>/</mi><mn>50</mn><mo>,</mo><mn>102001</mn><mi>/</mi><mn>100000</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[51/50,102001/100000]</annotation></semantics></math></td>
+<td style="text-align: right;">1</td>
+<td>Establishes the cutoff endpoint and first seam</td>
+</tr>
+<tr>
+<td>Middle-face tiling</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>102001</mn><mi>/</mi><mn>100000</mn><mo>,</mo><mn>25781</mn><mi>/</mi><mn>25000</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[102001/100000,25781/25000]</annotation></semantics></math></td>
+<td style="text-align: right;">113</td>
+<td>Covers the source-to-compact transition</td>
+</tr>
+<tr>
+<td>Right prototype</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>25781</mn><mi>/</mi><mn>25000</mn><mo>,</mo><mn>33</mn><mi>/</mi><mn>32</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[25781/25000,33/32]</annotation></semantics></math></td>
+<td style="text-align: right;">1</td>
+<td>Reaches the compact certificate</td>
+</tr>
+<tr>
+<td>Compact certificate</td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>33</mn><mi>/</mi><mn>32</mn><mo>,</mo><mn>9</mn><mi>/</mi><mn>7</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[33/32,9/7]</annotation></semantics></math></td>
+<td style="text-align: right;">1,024</td>
+<td>Covers the remaining scalar suffix</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>51</mn><mi>/</mi><mn>50</mn><mo>,</mo><mn>9</mn><mi>/</mi><mn>7</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[51/50,9/7]</annotation></semantics></math></strong></td>
+<td style="text-align: right;"><strong>1,139</strong></td>
+<td><strong>Exact contiguous union</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Each cell proves physical domains, existence and selected uniqueness
+of the stationary type-(iv) root, existence and selected-branch
+uniqueness of the equal-area type-(iii) root, negativity of the
+type-(iii) fold, negativity of the perimeter gap, and compatibility with
+adjacent density intervals.</p>
+<p>The first 115 cells compose in <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/MiddleFaceCells.lean"><code>MiddleFaceCells.candidate_not_isWeightedPerimeterMinimizer_from_51_50</code></a>.
+The 1,024 compact cells compose in <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CompactCells1003To1023.lean"><code>CompactCells1003To1023.boxes0To1023_candidate_not_isWeightedPerimeterMinimizer</code></a>.
+The terminal endpoint is the exact rational
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>/</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">9/7</annotation></semantics></math>,
+not a rounded decimal.</p>
+<h2 id="high-density-splice">3.3 High-density splice</h2>
+<p>Above the interval certificate, Lean uses the CMV two-cap-to-one-cap
+replacement. <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CapReplacement.lean"><code>CapReplacement.lean</code></a>
+constructs the replacement carrier and proves exact area preservation
+for all minor, semicircular, and major branches. <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/GeometricBridge.lean"><code>GeometricBridge.lean</code></a>
+transfers the certified arc inequality to strict weighted-perimeter
+improvement. The formal threshold for this branch is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.2581840884</mn><mo>=</mo><mfrac><mn>3145460221</mn><mn>2500000000</mn></mfrac><mo>&lt;</mo><mfrac><mn>9</mn><mn>7</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+1.2581840884=\frac{3145460221}{2500000000}&lt;\frac97.
+</annotation></semantics></math></p>
+<p>Therefore every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>9</mn><mi>/</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;9/7</annotation></semantics></math>
+lies in the cap-replacement range. The public cutoff theorem performs an
+exact three-way split at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>33</mn><mi>/</mi><mn>32</mn></mrow><annotation encoding="application/x-tex">33/32</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>/</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">9/7</annotation></semantics></math>;
+neither seam is omitted.</p>
+<h1 id="how-the-old-remaining-range-was-closed-in-the-model">4. How the
+old remaining range was closed in the model</h1>
+<p>The interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>λ</mi><mo>&lt;</mo><mn>51</mn><mi>/</mi><mn>50</mn></mrow><annotation encoding="application/x-tex">1&lt;\lambda&lt;51/50</annotation></semantics></math>
+was difficult numerically because the stationary system becomes singular
+at the cusp
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda=1</annotation></semantics></math>.
+The decisive later proof does not continue shrinking interval cells
+toward that cusp. It replaces the quantitative continuation problem with
+a qualitative existence argument valid for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;1</annotation></semantics></math>.</p>
+<h2 id="a-stationary-type-iv-root-at-every-density">4.1 A stationary
+type-(iv) root at every density</h2>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/TypeFourStationaryRoot.lean"><code>TypeFourStationaryRoot.lean</code></a>
+defines a denominator-free continuous extension of the type-(iv) fold on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>9</mn><mi>/</mi><mn>10</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[9/10,1]</annotation></semantics></math>.
+It proves opposite endpoint signs without evaluating a totalized
+singular quotient at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h=1</annotation></semantics></math>.
+The intermediate value theorem gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∀</mo><mi>λ</mi><mo>&gt;</mo><mn>1</mn><mspace width="0.278em"></mspace><mo>∃</mo><msub><mi>h</mi><mn>4</mn></msub><mo>∈</mo><mo stretchy="false" form="prefix">(</mo><mn>9</mn><mi>/</mi><mn>10</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>F</mi><mn>4</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><msub><mi>h</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\forall\lambda&gt;1\;\exists h_4\in(9/10,1),
+\qquad F_4(\lambda,h_4)=0.
+</annotation></semantics></math></p>
+<p>This is a theorem over real parameters, not a numerical root
+finder.</p>
+<h2 id="the-ordered-equal-area-type-iii-root">4.2 The ordered equal-area
+type-(iii) root</h2>
+<p>At a stationary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mn>4</mn></msub><annotation encoding="application/x-tex">h_4</annotation></semantics></math>,
+the type-(iv) area is bounded above by its finite endpoint value. The
+exact endpoint comparison is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>4</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><msub><mi>A</mi><mn>3</mn></msub><mspace width="-0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>&gt;</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A_4(\lambda,1)&lt;A_3\!\left(\lambda,\frac12\right)
+\qquad(\lambda&gt;1).
+</annotation></semantics></math></p>
+<p>At the same curvature,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><msub><mi>h</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><msub><mi>A</mi><mn>4</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><msub><mi>h</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A_3(\lambda,h_4)&lt;A_4(\lambda,h_4).
+</annotation></semantics></math></p>
+<p>Continuity of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mn>3</mn></msub><annotation encoding="application/x-tex">A_3</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><msub><mi>h</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1/2,h_4]</annotation></semantics></math>
+therefore yields
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mn>3</mn></msub><mo>∈</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo>,</mo><msub><mi>h</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h_3\in(1/2,h_4)</annotation></semantics></math>
+with</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><msub><mi>h</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>A</mi><mn>4</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><msub><mi>h</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A_3(\lambda,h_3)=A_4(\lambda,h_4).
+</annotation></semantics></math></p>
+<p>The exact Lean witness is exported by <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/UniversalStationaryPair.lean"><code>LeanSuffixAnalytic.stationaryEqualAreaPair_exists</code></a>.
+The same-curvature variational identities then prove</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><msub><mi>h</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>P</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><msub><mi>h</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><msub><mi>P</mi><mn>4</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><msub><mi>h</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>G</mi><mi>λ</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>h</mi><mn>3</mn></msub><mo>,</mo><msub><mi>h</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+F_3(\lambda,h_3)&lt;0,
+\qquad P_3(\lambda,h_3)&lt;P_4(\lambda,h_4),
+\qquad G_\lambda(h_3,h_4)&lt;0.
+</annotation></semantics></math></p>
+<p>The combined declaration is:</p>
+<pre class="lean"><code>theorem stationaryEqualAreaPair_strictImprovement_exists
+    {lam : ℝ} (hlam : 1 &lt; lam) :
+    ∃ pair : StationaryEqualAreaPair lam,
+      typeThreeFold lam pair.h₃ &lt; 0 ∧
+      typeThreePerimeter lam pair.h₃ &lt;
+        typeFourPerimeter lam pair.h₄ ∧
+      reducedFoldGap lam pair.h₃ pair.h₄ &lt; 0</code></pre>
+<p>Finally, the all-curvature envelope transports this stationary strict
+comparison to an arbitrary modeled candidate curvature, producing
+Theorem 2. Thus the old “remaining range” is now empty at the modeled
+level:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mrow><mtext mathvariant="normal">No modeled type-(iv) minimizer exists for any </mtext><mspace width="0.333em"></mspace></mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn><mi>.</mi></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{\text{No modeled type-(iv) minimizer exists for any }\lambda&gt;1.}
+</annotation></semantics></math></p>
+<h1 id="direct-source-realization-of-the-all-density-comparison">5.
+Direct source realization of the all-density comparison</h1>
+<p>A scalar inequality is not yet a source variational theorem. The
+later formalization establishes both sides of the relaxed-perimeter
+comparison for literal coordinate carriers.</p>
+<h2 id="the-relaxed-functional">5.1 The relaxed functional</h2>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVRelaxation.lean"><code>CMVRelaxation.lean</code></a>
+defines an extended-valued lower-semicontinuous relaxation through
+smooth open approximants. It proves:</p>
+<ul>
+<li>equivalence between symmetric-difference volume and extended
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>1</mn></msup><annotation encoding="application/x-tex">L^1</annotation></semantics></math>
+distance of characteristic functions;</li>
+<li>exact horizontal-translation invariance of area and relaxed
+perimeter;</li>
+<li>almost-everywhere invariance, including at value
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">+\infty</annotation></semantics></math>;</li>
+<li>a real-valued source semantics only after finiteness is established;
+and</li>
+<li>weighted-area integrability as part of source admissibility.</li>
+</ul>
+<p>This prevents the real integral’s non-integrable fallback from
+entering an equal-area argument.</p>
+<h2 id="lower-bound-for-every-literal-four-arc-carrier">5.2 Lower bound
+for every literal four-arc carrier</h2>
+<p>The lower bound cannot be obtained by naming a formal frontier sum.
+It must be charged to every approximating smooth domain. <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVRigidProjection.lean"><code>CMVRigidProjection.lean</code></a>
+constructs localized projection patches and transports them under
+Euclidean isometries. Four pairwise-disjoint patch families cover the
+upper cap, lower cap, right side, and left side. One finite-summation
+theorem charges all four families to one global smooth cost plus a
+characteristic-distance error.</p>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVFourArcExhaustion.lean"><code>CMVFourArcExhaustion.lean</code></a>
+identifies the four target contributions with the actual
+complete-frontier weighted perimeter. Letting the patch deficit and
+characteristic-distance error vanish gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi>λ</mi><mo>,</mo><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi></mrow></mrow></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>C</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msub><mover><mi>P</mi><mo accent="true">¯</mo></mover><mi>λ</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>C</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+P_{\lambda,\mathrm{frontier}}(C_4)
+\le \overline P_\lambda(C_4)
+</annotation></semantics></math></p>
+<p>for every literal <code>FourArcCandidate</code>, including
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">h=1</annotation></semantics></math>.</p>
+<h2 id="upper-recovery-for-the-type-iii-competitor">5.3 Upper recovery
+for the type-(iii) competitor</h2>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVTypeThreeLowerRecovery.lean"><code>CMVTypeThreeLowerRecovery.lean</code></a>,
+<a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVTypeThreeUpperRecovery.lean"><code>CMVTypeThreeUpperRecovery.lean</code></a>,
+and <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVTypeThreeSharpRecovery.lean"><code>CMVTypeThreeSharpRecovery.lean</code></a>
+construct branch-complete smooth recovery sequences for every actual
+<code>TypeThreeAssembly</code>. The lower-contact, upper-contact, and
+radius-two disk branches are treated separately. The resulting source
+carrier is admissible and satisfies</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>P</mi><mo accent="true">¯</mo></mover><mi>λ</mi></msub><mo stretchy="false" form="prefix">(</mo><msub><mi>C</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msub><mi>P</mi><mrow><mn>3</mn><mo>,</mo><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi></mrow></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\overline P_\lambda(C_3)\le P_{3,\mathrm{frontier}}.
+</annotation></semantics></math></p>
+<p>Combined with equal weighted area and the strict scalar inequality,
+this gives an actual source-admissible competitor of smaller extended
+relaxed perimeter.</p>
+<p>The central source theorem is:</p>
+<pre class="lean"><code>theorem candidateCarrier_not_isMinimizer
+    {lam : ℝ} (candidate : FourArcCandidate lam)
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) :
+    ¬ (relaxedSourceSemantics lam).IsMinimizer
+      candidate.assembly.carrier</code></pre>
+<p>It is in <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVTypeThreeSourceExclusion.lean"><code>CMVTypeThreeSourceExclusion.lean</code></a>.
+No <code>model_covered</code>, <code>CompatibleWithModel</code>,
+caller-supplied recovery theorem, or caller-supplied finiteness
+assumption occurs in this declaration.</p>
+<h2 id="closed-snell-coordinates-and-the-endpoint">5.4 Closed-Snell
+coordinates and the endpoint</h2>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVSourceClassification.lean"><code>CMVSourceClassification.lean</code></a>
+introduces independent raw data: a source radius
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R\ge1</annotation></semantics></math>,
+principal exterior angle, horizontal placement, density jump, and closed
+Snell law. Lean identifies its literal carrier with a
+<code>FourArcCandidate</code>. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R&gt;1</annotation></semantics></math>,
+it agrees with the canonical regular profile; if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R=1</annotation></semantics></math>,
+it agrees exactly with the explicit endpoint carrier.</p>
+<p>The source-facing result is:</p>
+<pre class="lean"><code>theorem rawFourArcCarrier_not_isMinimizer_of_closedSnell
+    {lam : ℝ} (raw : RawFourArcCoordinates)
+    (hclosed : raw.SatisfiesClosedSnell lam) :
+    ¬ (relaxedSourceSemantics lam).IsMinimizer raw.carrier</code></pre>
+<p>Exact horizontal translations and almost-everywhere horizontal
+representatives inherit the same exclusion. The radius-one endpoint is
+not treated by an informal limiting argument.</p>
+<h1 id="the-explicit-near-one-certificate-program">6. The explicit
+near-one certificate program</h1>
+<p>The qualitative proof in Section 4 supersedes interval continuation
+for the modeled theorem. The earlier near-one program remains important
+independent evidence: it regularizes the singular endpoint, produces
+actual roots at prescribed densities, and records exactly where
+numerical evidence stops being a Lean proof.</p>
+<h2 id="regularization-at-the-cusp">6.1 Regularization at the cusp</h2>
+<p>With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+the near-one scale, the corrected normalized system removes explicit
+angle singularities using an integral representation of the second
+remainder of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">arctan</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\arctan(x)/x</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s=0</annotation></semantics></math>,
+the exact cusp is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>z</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>π</mi><mo>,</mo><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>12</mn></mfrac><mo>,</mo><mi>−</mi><mn>44</mn><mo>+</mo><mfrac><mrow><mn>19</mn><msup><mi>π</mi><mn>2</mn></msup></mrow><mn>24</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+(z,a,b)=\left(\pi,\frac{5\pi}{12},-44+\frac{19\pi^2}{24}\right).
+</annotation></semantics></math></p>
+<p>The Jacobian in the physical coordinates is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>40</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>96</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mn>8</mn><mo stretchy="false" form="prefix">(</mo><mn>3</mn><msup><mi>π</mi><mn>2</mn></msup><mo>−</mo><mn>412</mn><mo stretchy="false" form="postfix">)</mo></mrow><mn>3</mn></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mfrac><mrow><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mn>7</mn><msup><mi>π</mi><mn>2</mn></msup><mo>−</mo><mn>2880</mn><mo stretchy="false" form="postfix">)</mo></mrow><mn>3</mn></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>4</mn><mi>π</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">det</mi><mo>⁡</mo></mrow><mi>J</mi><mo>=</mo><mi>−</mi><mn>768</mn><mi>π</mi><mo>&lt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+J=
+\begin{pmatrix}
+2&amp;0&amp;0\\
+-40&amp;96&amp;0\\
+\frac{8(3\pi^2-412)}3&amp;-\frac{2(7\pi^2-2880)}3&amp;-4\pi
+\end{pmatrix},
+\qquad \det J=-768\pi&lt;0.
+</annotation></semantics></math></p>
+<p>Lean computes the unique tangent forced by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>v</mi><mo>+</mo><msub><mi>∂</mi><mi>s</mi></msub><mi>F</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Jv+\partial_sF=0</annotation></semantics></math>
+and then applies a determinant-one shear
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+satisfying</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>S</mi><mo>=</mo><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>96</mn><mo>,</mo><mi>−</mi><mn>4</mn><mi>π</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+JS=\operatorname{diag}(2,96,-4\pi).
+</annotation></semantics></math></p>
+<p>After reversing the third residual, the transformed coordinate
+Jacobian is positive diagonal. The complete oriented map is divided by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>s</mi><mn>2</mn></msup><annotation encoding="application/x-tex">s^2</annotation></semantics></math>
+away from the cusp and extended continuously to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s=0</annotation></semantics></math>
+by exact two-jet identities.</p>
+<h2 id="poincarémiranda-and-prescribed-density">6.2 Poincaré–Miranda and
+prescribed density</h2>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/BoxPoincareMiranda.lean"><code>BoxPoincareMiranda.lean</code></a>
+derives the finite-dimensional opposite-face zero theorem from the
+pinned Brouwer fixed-point dependency. A three-dimensional endpoint box
+provides a simultaneous zero of the rescaled fold, incidence, and
+equal-area equations. Adding a fourth scale coordinate and the
+cancellation-free density equation produces a prescribed-density
+prism.</p>
+<p>Thirty-four exact adjacent prisms compose in <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/NearOnePrescribedDensity.lean"><code>prescribedDensity_lambda_explicit_combined</code></a>:</p>
+<pre class="lean"><code>theorem prescribedDensity_lambda_explicit_combined :
+  ∀ (lam : ℝ), 1 &lt; lam →
+    lam ≤ 1 + (251 / 20 : ℝ) * (1 / 126334 : ℝ) ^ 3 →
+    ∃ s q, ... ∧
+      typeThreeFold lam pair.h₃ &lt; 0 ∧
+      reducedFoldGap lam pair.h₃ pair.h₄ &lt; 0 ∧
+      typeThreePerimeter lam pair.h₃ &lt;
+        typeFourPerimeter lam pair.h₄</code></pre>
+<p>The exact density increment is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>δ</mi><mn>0</mn></msub><mo>=</mo><mfrac><mn>251</mn><mn>20</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mn>126334</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>3</mn></msup><mo>=</mo><mfrac><mn>251</mn><mn>40326519148554080</mn></mfrac><mo>≈</mo><mn>6.22419205276237</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>15</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\delta_0=\frac{251}{20}\left(\frac1{126334}\right)^3
+       =\frac{251}{40326519148554080}
+       \approx 6.22419205276237\times10^{-15}.
+</annotation></semantics></math></p>
+<p>This small numerical width should not obscure the theorem’s role: it
+is a direct, kernel-checked construction through the singular endpoint,
+with exact prescribed density and strict perimeter improvement.</p>
+<h2 id="the-scale-local-atlas-retained-numerical-evidence">6.3 The
+scale-local atlas: retained numerical evidence</h2>
+<p>A separate 160-bit directed-dyadic preflight checks 13 bands with 64
+rational subslabs each, for 832 cells from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>δ</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\delta_0</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mi>−</mi><mn>3</mn></mrow></msup><annotation encoding="application/x-tex">10^{-3}</annotation></semantics></math>,
+plus a remote stress slab. Each saved cell satisfies the proposed face
+signs, source and denominator guards, height order, and negative
+normalized gap. Independent replay validates the stored arithmetic and
+mutation tests.</p>
+<div class="scope-note">
+<p><strong>Status of the atlas.</strong> The 832-cell preflight is
+numerical certificate evidence, not kernel-checked density coverage.
+Shared interval primitives, Machin’s
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>
+enclosure, analytic arctangent remainder bounds, and part of a seam cell
+are formalized. Generated whole-cell replay exceeded or violated the
+accepted resource gates, so those generated stress modules are not
+counted as Lean proofs. The public kernel-checked density endpoint
+remains
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><msub><mi>δ</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">1+\delta_0</annotation></semantics></math>.</p>
+</div>
+<p>This distinction is intentional. The later universal theorem closes
+the modeled range without promoting unverified atlas cells.</p>
+<h1 id="progress-on-universal-source-classification">7. Progress on
+universal source classification</h1>
+<p>The remaining theorem is no longer a scalar sign problem. It is the
+source classification statement that every relevant source minimizer
+supplies an exact or almost-everywhere horizontal representative in one
+of the checked carrier families.</p>
+<h2 id="measure-theoretic-reconstruction-already-checked">7.1
+Measure-theoretic reconstruction already checked</h2>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVSourceSectionClassification.lean"><code>CMVSourceSectionClassification.lean</code></a>
+proves that the raw five-piece carrier is closed and Borel measurable.
+Its non-interface horizontal slices are explicitly empty or centered
+intervals. If a source representative has centered interval slices of
+the same one-dimensional measure almost everywhere, interval-volume
+uniqueness and a Fubini argument yield planar almost-everywhere
+equality. Thus the final passage from verified slices to the raw carrier
+is formalized.</p>
+<p>What is not yet formalized is the source theorem producing those
+slice hypotheses for every minimizer from Schwarz symmetrization, its
+equality case, regularity, circular continuation, and Snell
+incidence.</p>
+<h2 id="figure-3-strict-radius-branch-excluded-under-explicit-source-data">7.2
+Figure 3: strict-radius branch excluded under explicit source data</h2>
+<p>The Figure-3 development deliberately starts from an independent
+source signature rather than a preselected canonical profile. <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVFigureThreeSourceExtraction.lean"><code>CMVFigureThreeSourceExtraction.lean</code></a>
+records one actual closed boundary curve, a branch selection into six
+ordered pieces, regular Snell data, reflection symmetry, circular
+continuation, and endpoint incidence. From those inputs Lean derives the
+literal six-piece frontier and the existing
+<code>ActualBoundaryRealization</code>.</p>
+<p>The geometry then constructs the branch-complete type-(iii) assembly
+and identifies its actual lower-interface section. The added exterior
+chord cannot fit inside that section when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R&gt;1</annotation></semantics></math>.
+Hence:</p>
+<pre class="lean"><code>theorem strictRadius_false (hR : 1 &lt; c.sourceRadius) : False
+
+theorem sourceRadius_eq_one : c.sourceRadius = 1</code></pre>
+<p>Both vertical orientations, degenerate interface segments, arbitrary
+horizontal placement, and the radius-two semicircular transition are
+represented. The result retains—not discards—the separate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R=1</annotation></semantics></math>
+configuration.</p>
+<p>The open input is extraction of the pre-selection boundary curve,
+branch cuts, regular Snell law, symmetry, and continuation from every
+relevant arbitrary source minimizer.</p>
+<h2 id="figure-4-source-native-scalar-reduction-retained">7.3 Figure 4:
+source-native scalar reduction retained</h2>
+<p><a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVFigureFourSourceGeometry.lean"><code>CMVFigureFourSourceGeometry.lean</code></a>
+freezes an actual source set, a bounded open almost-everywhere
+representative, generic interval sections, four common-radius circle
+traces with actual junctions, signed Snell laws, reflection, complete
+frontier, and local one-sided circle equations. It does not assume
+normalized widths, target sections, carrier equality, area formulas, or
+comparison data.</p>
+<p>From those primitives, <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVFigureFourScalarReduction.lean"><code>CMVFigureFourScalarReduction.lean</code></a>
+derives the scalar reduction, horizontal center symmetry,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R\ge1</annotation></semantics></math>,
+the principal closed-Snell angle, and generic-section endpoints by
+transverse intersection arguments. Explicit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\lambda=2</annotation></semantics></math>
+examples exercise both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">R=2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R=1</annotation></semantics></math>
+parameter branches.</p>
+<div class="scope-note">
+<p><strong>Current Figure-4 boundary.</strong> Full source-geometry
+instances for the strict and endpoint branches, actual-to-raw
+almost-everywhere reconstruction, and extraction of the frozen
+primitives from arbitrary minimizers are not proved. The latest
+completed Figure-4 strategy retained compiling mathematics but was
+terminated after exceeding its precommitted wall-time limit. It adds no
+unconditional source classification.</p>
+</div>
+<h2 id="figure-5-the-endpoint-support-competitor-is-proved">7.4 Figure
+5: the endpoint-support competitor is proved</h2>
+<p>The radius-one Figure-3 residual is a segmented Figure-5
+configuration; it is not the literal four-arc endpoint and is not
+eliminated by renaming it. Its source boundary may contain one or two
+exterior caps, unit-radius strip semicircles, and possibly degenerate
+interface segments.</p>
+<p>One substantial comparison component is now kernel-checked. <a href="https://github.com/RosaRojacr/agentic-lean-math-assistant/blob/main/projects/cmv-strip-density/proof/CMVFigureFiveAngular.lean"><code>CMVFigureFiveAngular.lean</code></a>
+uses the regular one-sided chart</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>u</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mi>u</mi></mrow><mn>2</mn></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mn>0</mn><mo>≤</mo><mi>u</mi><mo>&lt;</mo><mi>π</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+h(u)=\frac{1+\cos u}{2},\qquad 0\le u&lt;\pi,
+</annotation></semantics></math></p>
+<p>and proves that its pole-free area extension has derivative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">-4</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u=0</annotation></semantics></math>.
+No source identity is asserted on the invalid negative-angle branch.
+With</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mi>λ</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">arccos</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mi>/</mi><mi>λ</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="normal">Γ</mi><mi>λ</mi></msub><mo>=</mo><mi>λ</mi><msub><mi>θ</mi><mi>λ</mi></msub><mo>−</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><msub><mi>θ</mi><mi>λ</mi></msub><mo>&gt;</mo><mn>0</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\theta_\lambda=\arccos(1/\lambda),\qquad
+\Gamma_\lambda=\lambda\theta_\lambda-\sin\theta_\lambda&gt;0,
+</annotation></semantics></math></p>
+<p>the endpoint support intercept is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mi>A</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>π</mi><mo>+</mo><msub><mi mathvariant="normal">Γ</mi><mi>λ</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+P_3(\lambda,1)-A_3(\lambda,1)=\pi+\Gamma_\lambda.
+</annotation></semantics></math></p>
+<p>Endpoint continuity, area coercivity toward
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h=0</annotation></semantics></math>,
+an endpoint-maximum theorem, and one positive support slope then give,
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>≥</mo><msub><mi>A</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">V\ge A_3(\lambda,1)</annotation></semantics></math>,
+a regular
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>h</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;h&lt;1</annotation></semantics></math>
+with</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mi>h</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>V</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>P</mi><mn>3</mn></msub><mo stretchy="false" form="prefix">(</mo><mi>λ</mi><mo>,</mo><mi>h</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mi>V</mi><mo>+</mo><mi>π</mi><mo>+</mo><msub><mi mathvariant="normal">Γ</mi><mi>λ</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+A_3(\lambda,h)=V,\qquad
+P_3(\lambda,h)&lt;V+\pi+\Gamma_\lambda.
+</annotation></semantics></math></p>
+<p>The existing branch-complete recovery realizes this as an actual
+source-admissible <code>TypeThreeAssembly</code>:</p>
+<pre class="lean"><code>theorem exists_admissible_typeThree_below_endpoint_support
+    {lam V : ℝ} (hlam : 1 &lt; lam)
+    (hV : LeanSuffixAnalytic.typeThreeArea lam 1 ≤ V) :
+    ∃ a : TypeThreeAssembly lam,
+      a.h ∈ Set.Ioo (0 : ℝ) 1 ∧
+      (relaxedSourceSemantics lam).IsAdmissible a.carrier ∧
+      WeightedArea lam a.carrier = V ∧
+      a.WeightedPerimeter &lt; V + π + endpointGap lam</code></pre>
+<div class="scope-note">
+<p><strong>Current Figure-5 boundary.</strong> This theorem supplies the
+regular equal-area competitor required at and above the singular
+endpoint area. It does not yet exclude a Figure-5 source carrier. Full
+threshold-width and off-center source instances, literal area
+identities, and the complete one-charge relaxed lower-perimeter barrier
+over every permitted cap and degenerate segment remain unproved.
+Subsequent resource-admission rounds added no mathematical coverage.</p>
+</div>
+<p>The exact remaining source obligations are:</p>
+<ol type="1">
+<li>derive the source regularity, Snell, symmetry, continuation, and
+pre-selection boundary data from every relevant minimizer;</li>
+<li>construct the complete Figure-5 source instances and lower barrier,
+then combine them with the proved endpoint-support competitor;</li>
+<li>close the incomplete Figure-4 reconstruction or show that the source
+classification bypasses it;</li>
+<li>compose all Lemma 3.8 branches with the existing all-density direct
+source exclusion; and</li>
+<li>audit the resulting theorem against CMV’s existence, symmetrization,
+and reduced-boundary hypotheses.</li>
+</ol>
+<p>Only after these steps may one claim an unconditional proof of CMV
+Conjecture 3.12.</p>
+<h1 id="trust-boundary-and-audit">8. Trust boundary and audit</h1>
+<p>The development uses Lean 4 <span class="citation" data-cites="deMouraUllrich2021">(<a href="#ref-deMouraUllrich2021" role="doc-biblioref">Moura and Ullrich 2021</a>)</span> and mathlib
+<span class="citation" data-cites="mathlib2020">(<a href="#ref-mathlib2020" role="doc-biblioref">The mathlib Community
+2020</a>)</span>. The compiler is pinned by
+<code>proof/lean-toolchain</code>; dependencies are pinned by
+<code>proof/lake-manifest.json</code>.</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Component</th>
+<th>Function</th>
+<th style="text-align: right;">Trusted for Lean theorems?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lean kernel</td>
+<td>Checks elaborated proof terms</td>
+<td style="text-align: right;">Yes</td>
+</tr>
+<tr>
+<td>Pinned mathlib and Brouwer dependency</td>
+<td>Imported definitions and theorems</td>
+<td style="text-align: right;">Yes, as imported theory</td>
+</tr>
+<tr>
+<td>Rational certificate generators</td>
+<td>Propose exact cells and source text</td>
+<td style="text-align: right;">No</td>
+</tr>
+<tr>
+<td>Floating-point or MPFR searches</td>
+<td>Locate boxes and diagnostic roots</td>
+<td style="text-align: right;">No</td>
+</tr>
+<tr>
+<td>Generated <code>.lean</code> files</td>
+<td>Exact propositions and proof terms</td>
+<td style="text-align: right;">Only after kernel checking</td>
+</tr>
+<tr>
+<td>Python replay and mutation scripts</td>
+<td>Independent diagnostics</td>
+<td style="text-align: right;">No</td>
+</tr>
+<tr>
+<td>Markdown, Pandoc, HTML, and PDF</td>
+<td>Presentation</td>
+<td style="text-align: right;">No</td>
+</tr>
+</tbody>
+</table>
+<p>The cutoff proof is proof-producing: an incorrect numerical proposal
+can fail to elaborate, but it cannot make the kernel accept a false real
+inequality. Coverage is theorem-level composition, so a missing cell
+creates a missing interval rather than an unnoticed loop omission.</p>
+<p>The permanent assumption ledgers invoke <code>#print axioms</code> on
+the public cutoff, universal stationary-pair, source-relaxation, direct
+source-exclusion, Figure-5 endpoint-support, and source-classification
+declarations. The expected output is a subset of:</p>
+<pre class="text"><code>propext
+Classical.choice
+Quot.sound</code></pre>
+<p>No theorem claimed here may depend on <code>sorry</code>,
+<code>admit</code>, a project-local <code>axiom</code>,
+<code>native_decide</code>, or an unchecked numerical oracle. Resource
+receipts and agent adjudications are evidence about the construction
+process; they are not proof objects and are never substituted for a
+successful Lean check.</p>
+<h2 id="evidence-snapshot">8.1 Evidence snapshot</h2>
+<p>This manuscript describes completed, adjudicated results through
+autorun round 269 of session <code>20260902T064759Z-62a799</code>, plus
+direct verification commands run for publication. Round 267 supplied the
+Figure-5 endpoint-support theorem; rounds 268 and 269 added no
+mathematical coverage. Work left active after that boundary is not
+silently counted.</p>
+<h1 id="reproduction">9. Reproduction</h1>
+<p>From the repository root, check the exact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>51</mn><mi>/</mi><mn>50</mn></mrow><annotation encoding="application/x-tex">51/50</annotation></semantics></math>
+theorem and its public axiom ledger:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> projects/cmv-strip-density/proof</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> build CMVModeledCutoff</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> env lean CMVCutoffAssumptions.lean</span></code></pre></div>
+<p>Check the stronger all-density scalar and direct source path:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> build TypeFourStationaryRootSupport <span class="dt">\</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  CMVFourArcExhaustionSupport CMVTypeThreeLowerRecoverySupport <span class="dt">\</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  CMVSourceClassificationSupport</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> env lean CMVTypeThreeSourceExclusionAssumptions.lean</span></code></pre></div>
+<p>Check the explicit near-one prefix and current source-classification
+modules:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> build NearOneFirstCell CMVFigureThreeNonfitSupport <span class="dt">\</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  CMVFigureFourSourceSupport CMVFigureFiveSourceSupport</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> env lean NearOnePrescribedDensity.lean</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> env lean CMVFigureThreeSourceExtractionAssumptions.lean</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> env lean CMVFigureFourSourceAssumptions.lean</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> env lean CMVFigureFiveSourceAssumptions.lean</span></code></pre></div>
+<p>The full retained development can be checked with:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> build</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">lake</span> env lean _Assumptions.lean</span></code></pre></div>
+<p>Independent certificate checkers are retained beside their
+inputs:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python verify_certificate.py</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python verify_full_domain.py</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python verify_calculus.py</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> compact_fold_gap/check_compact_certificate.py <span class="dt">\</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  compact_fold_gap/compact_certificate.json</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> compact_fold_gap/run_mutations.py</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> middle_face_tiling/check_tiling.py <span class="dt">\</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  middle_face_tiling/manifest.json <span class="dt">\</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--output</span> middle_face_tiling/independent-check.json</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> middle_face_tiling/run_mutations.py</span></code></pre></div>
+<p>Rebuild this paper with:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../reports</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./build-lean-verified-cmv-frontier.sh</span></span></code></pre></div>
+<p>The renderer produces <code>lean-verified-cmv-frontier.html</code>
+and <code>lean-verified-cmv-frontier.pdf</code>. Neither rendered file
+participates in the mathematical trust boundary.</p>
+<h1 id="conclusion">10. Conclusion</h1>
+<p>The exact-rational certificate gives a hard, independently
+reproducible cutoff:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mi>λ</mi><mo>≥</mo><mfrac><mn>51</mn><mn>50</mn></mfrac><mo>⇒</mo><mtext mathvariant="normal">modeled type (iv) is not minimizing</mtext><mi>.</mi></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{\lambda\ge\frac{51}{50}\Longrightarrow
+\text{modeled type (iv) is not minimizing}.}
+</annotation></semantics></math></p>
+<p>The later analytic argument is stronger. It proves existence of an
+ordered stationary equal-area type-(iii) comparison and strict perimeter
+improvement at every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda&gt;1</annotation></semantics></math>,
+then transfers that comparison to arbitrary modeled curvature. The
+relaxed-perimeter development realizes the comparison by actual
+source-admissible carriers and excludes literal, translated,
+almost-everywhere-translated, and raw closed-Snell four-arc carriers,
+including the radius-one endpoint.</p>
+<p>The old remaining density interval has therefore been closed at the
+scalar, modeled-candidate, and classified-carrier levels. The surviving
+frontier is not a thin numerical interval. It is a precise geometric/GMT
+interface: derive the checked carrier classifications from every
+arbitrary source minimizer and eliminate the remaining Lemma 3.8
+configurations. The explicit near-one cells, scale-local atlas,
+relaxation theory, recovery constructions, and Figure-3/4 source
+extraction modules document substantial progress toward that interface
+without representing it as a completed proof.</p>
+<h1 class="unnumbered" id="references">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-CaneteMirandaVittone2010" class="csl-entry" role="listitem">
+Cañete, Antonio, Michele Miranda Jr., and Davide Vittone. 2010.
+<span>“Some Isoperimetric Problems in Planes with Density.”</span>
+<em>The Journal of Geometric Analysis</em> 20: 243–90. <a href="https://arxiv.org/abs/0906.1256">https://arxiv.org/abs/0906.1256</a>.
+</div>
+<div id="ref-deMouraUllrich2021" class="csl-entry" role="listitem">
+Moura, Leonardo de, and Sebastian Ullrich. 2021. <span>“The
+<span>Lean</span> 4 Theorem Prover and Programming Language.”</span>
+<em>Automated Deduction—CADE 28</em>, Lecture notes in computer science,
+vol. 12699: 625–35. <a href="https://doi.org/10.1007/978-3-030-79876-5_37">https://doi.org/10.1007/978-3-030-79876-5_37</a>.
+</div>
+<div id="ref-mathlib2020" class="csl-entry" role="listitem">
+The mathlib Community. 2020. <span>“The <span>Lean</span> Mathematical
+Library.”</span> <em>Proceedings of the 9th ACM SIGPLAN International
+Conference on Certified Programs and Proofs</em>, 367–81. <a href="https://doi.org/10.1145/3372885.3373824">https://doi.org/10.1145/3372885.3373824</a>.
+</div>
+</div>
+</body>
+</html>

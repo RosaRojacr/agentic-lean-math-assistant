@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "bde3774e5d7d8e6bc0d2473f09c8e6d2e1c9a6da76d29899049a502b28c6d6e7",
+  "category": "lean_formalization",
+  "evidence": [
+    "workspace/proof/Calibration.lean",
+    "workspace/agents/lean_formalization/formalize_proof/build-evidence.txt",
+    "workspace/agents/formal_audit/audit_delivery/audit-evidence.md"
+  ],
+  "limitations": [
+    "Scoped to the retained import-free proof project and leanprover/lean4:v4.33.1; the recorded absolute Lake executable path is host-specific."
+  ],
+  "report": {
+    "path": "lean_formalization/20260823T045557Z-8dd436-formalize_proof.md",
+    "sha256": "88402a5524b0e256bdd809b5399c274c570aa0d61184deaefcadb88c07f57023",
+    "size": 572
+  },
+  "run_id": "20260823T045557Z-8dd436",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": null,
+  "summary": "The repaired retained project preserves the theorem contract, builds successfully under the pinned Lean 4.33.1 toolchain, and reports that append_nil_calibration depends on no axioms.",
+  "task_id": "formalize_proof",
+  "verified_by": [
+    "audit_delivery"
+  ]
+}

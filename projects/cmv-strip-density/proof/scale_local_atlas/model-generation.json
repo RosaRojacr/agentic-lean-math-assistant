@@ -1,0 +1,7 @@
+{
+  "command": "python3 proof/scale_local_atlas/model.py",
+  "exit": 0,
+  "seconds": 1.9838779120036634,
+  "stdout": "{\"status\": \"GENERATED_NOT_PROVED\", \"expressions\": 23, \"assignments\": 566, \"bytes\": 25955}\n",
+  "stderr": ""
+}

@@ -1,0 +1,61 @@
+{
+  "artifacts": [
+    {
+      "path": "analytic/20260822T233912Z-7e3d4c-derive_certificate.json",
+      "sha256": "ec13d0fe87c616a15bc18405f815c88e25dcb0417d2fcfed731a8aaa3eeec213",
+      "size": 1311
+    },
+    {
+      "path": "analytic/20260822T233912Z-7e3d4c-derive_certificate.md",
+      "sha256": "a3c3dd3ec1e2372def0990d1537a0906c9b596582c8ed2ea0aa3d25adc13bd15",
+      "size": 2528
+    },
+    {
+      "path": "analytic/20260823T030622Z-f26548-compose_certificate.json",
+      "sha256": "91ecfb385d38b0f6036b57d0c683db324fbef49e921ddc086e16eebe9f143442",
+      "size": 1244
+    },
+    {
+      "path": "analytic/20260823T030622Z-f26548-compose_certificate.md",
+      "sha256": "bb7e3e40231baf6d3ed444e6e6261bde75a2f4676d2feae657a8a10b1a8bd1c4",
+      "size": 2187
+    },
+    {
+      "path": "analytic/20260823T032529Z-fa6c18-compose_certificate.json",
+      "sha256": "9b5f8e99eb2ce208b60385a4e37f8f1fdb80e6a56fa1302ea69ed8cd1145ffa3",
+      "size": 1224
+    },
+    {
+      "path": "analytic/20260823T032529Z-fa6c18-compose_certificate.md",
+      "sha256": "317eb5bbd11f2ad63dfb56f4927dadae69ae87598da727696871a9081460a890",
+      "size": 2212
+    },
+    {
+      "path": "analytic/20260823T040411Z-4ce263-compose_certificate.json",
+      "sha256": "afcaab9d57df18ca8165bf2fff6251023cd5eeef377a94f62ed253cc3eb0bd93",
+      "size": 1220
+    },
+    {
+      "path": "analytic/20260823T040411Z-4ce263-compose_certificate.md",
+      "sha256": "1e09f45ad44825d7dff5fa3270a27b5a811f44af9e0d0ebcde74ccf88646ac92",
+      "size": 2280
+    },
+    {
+      "path": "certificate/20260823T065250Z-9467dc-compose_certificate.json",
+      "sha256": "2e9b2c94ed2d57de4cf4bd336cc32cc36586e5b4c8df2da403bbdfd8b51a3d84",
+      "size": 1323
+    },
+    {
+      "path": "certificate/20260823T065250Z-9467dc-compose_certificate.md",
+      "sha256": "282ba3a97899db44d204867be93b41c96caa1a0f01b3577a30a58f441bad6576",
+      "size": 2055
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "8e72e5607164298513da1b1c153304a0be48a9d982c9b6f2071669131cc5e74b",
+      "size": 2050
+    }
+  ],
+  "generated_at": "2026-08-23T07:00:49Z",
+  "schema_version": 1
+}

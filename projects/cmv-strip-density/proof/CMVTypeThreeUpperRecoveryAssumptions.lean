@@ -1,0 +1,33 @@
+import CMVTypeThreeUpperRecovery
+
+#print axioms CMVRelaxation.TypeThreeRecovery.upperSideSquare_one
+#print axioms CMVRelaxation.TypeThreeRecovery.upperCapSquare_one
+#print axioms CMVRelaxation.TypeThreeRecovery.upperSafeScale_spec
+#print axioms CMVRelaxation.TypeThreeRecovery.contDiffOn_upperBlendQ
+#print axioms CMVRelaxation.TypeThreeRecovery.upperBlendQ_eq_side
+#print axioms CMVRelaxation.TypeThreeRecovery.upperBlendQ_eq_cap
+#print axioms CMVRelaxation.TypeThreeRecovery.upperNormalizedQ_lower
+#print axioms CMVRelaxation.TypeThreeRecovery.signedUpperContactTrace_regular_at
+#print axioms CMVRelaxation.TypeThreeRecovery.signedUpperContactTrace_start
+#print axioms CMVRelaxation.TypeThreeRecovery.signedUpperContactTrace_end
+#print axioms CMVRelaxation.TypeThreeRecovery.isOpen_upperSurgeryDomain
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.characteristicDistance_upperSurgeryDomain_carrier_le
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.tendsto_characteristicDistance_upperSurgeryDomain_carrier
+#print axioms CMVRelaxation.TypeThreeRecovery.mem_carrier_iff_sq_le_upperSideSquare
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.mem_interior_carrier_iff_sq_lt_upperSideSquare
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.mem_interior_carrier_iff_sq_lt_upperCapSquare
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.upperBlendDomain_eq_interior_on_lowerBuffer
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.upperBlendDomain_eq_interior_on_upperBuffer
+#print axioms CMVRelaxation.TypeThreeRecovery.isOpen_combinedSurgeryDomain
+#print axioms CMVRelaxation.TypeThreeRecovery.combinedSafeScale_pos
+#print axioms CMVRelaxation.TypeThreeRecovery.combinedSurgeryDomain_symmDiff_interior_subset
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.characteristicDistance_combinedSurgeryDomain_carrier_le
+#print axioms
+  CMVRelaxation.TypeThreeRecovery.tendsto_characteristicDistance_combinedSurgeryDomain_carrier

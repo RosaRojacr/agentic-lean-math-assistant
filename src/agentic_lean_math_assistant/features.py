@@ -557,16 +557,15 @@ class AgentFeature:
         source_inventory: Path | None = None
         source_digests: frozenset[str] | None = None
         if handoff is not None:
-            source_inventory = context.stage_dir / f"{attempt_name}-sources.json"
-            source_digests = _write_source_inventory(context, handoff, source_inventory)
             try:
                 _remove_prior_handoff(handoff)
             except ConfigurationError as exc:
                 return FeatureResult(
                     "failed",
                     str(exc),
-                    (source_inventory,),
                 )
+            source_inventory = context.stage_dir / f"{attempt_name}-sources.json"
+            source_digests = _write_source_inventory(context, handoff, source_inventory)
         atomic_write_text(
             prompt,
             _render_agent_prompt(

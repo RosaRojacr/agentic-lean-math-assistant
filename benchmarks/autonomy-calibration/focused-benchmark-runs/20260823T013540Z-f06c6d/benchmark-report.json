@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "case_id": "redacted-mean",
+      "compute_ledger": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/redacted-mean/runs/20260823T013540Z-191c33/compute-ledger.json",
+      "error": null,
+      "expected_outcome": "blocked",
+      "false_closure": false,
+      "matched": true,
+      "observed_outcome": "blocked",
+      "project_manifest": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/redacted-mean/project.toml",
+      "project_manifest_sha256": "cda54007e2bfb2bb3f585f0eb34769b6c80f7ab80ce5ff9a7186533d4c3256e9",
+      "run_dir": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/redacted-mean/runs/20260823T013540Z-191c33"
+    },
+    {
+      "case_id": "missing-table-entry",
+      "compute_ledger": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/missing-table-entry/runs/20260823T014302Z-6eea4b/compute-ledger.json",
+      "error": null,
+      "expected_outcome": "blocked",
+      "false_closure": false,
+      "matched": true,
+      "observed_outcome": "blocked",
+      "project_manifest": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/missing-table-entry/project.toml",
+      "project_manifest_sha256": "15c489a910ae92827c5e49e4a6e58af166e4df1298c0acb7d1641bdc43da410f",
+      "run_dir": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/missing-table-entry/runs/20260823T014302Z-6eea4b"
+    },
+    {
+      "case_id": "dependent-system",
+      "compute_ledger": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/dependent-system/runs/20260823T015022Z-31c929/compute-ledger.json",
+      "error": null,
+      "expected_outcome": "blocked",
+      "false_closure": false,
+      "matched": false,
+      "observed_outcome": "unsolved",
+      "project_manifest": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/dependent-system/project.toml",
+      "project_manifest_sha256": "79d7ff598c708cc796cb87d357bec29913f62d28aaf98000ddf174434cb8fb34",
+      "run_dir": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/dependent-system/runs/20260823T015022Z-31c929"
+    },
+    {
+      "case_id": "odd-prime-conjecture",
+      "compute_ledger": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/odd-prime-conjecture/runs/20260823T015635Z-1e574b/compute-ledger.json",
+      "error": null,
+      "expected_outcome": "unsolved",
+      "false_closure": false,
+      "matched": true,
+      "observed_outcome": "unsolved",
+      "project_manifest": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/odd-prime-conjecture/project.toml",
+      "project_manifest_sha256": "9eea977183d2762df37a41a58f72a0d78c9fdfd2f51ce1d56def273dd9288d10",
+      "run_dir": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/odd-prime-conjecture/runs/20260823T015635Z-1e574b"
+    },
+    {
+      "case_id": "signed-cross-multiplication",
+      "compute_ledger": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/signed-cross-multiplication/runs/20260823T020407Z-7b964d/compute-ledger.json",
+      "error": null,
+      "expected_outcome": "unsolved",
+      "false_closure": false,
+      "matched": true,
+      "observed_outcome": "unsolved",
+      "project_manifest": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/signed-cross-multiplication/project.toml",
+      "project_manifest_sha256": "8bcf55995c41fe3aa5034a0f95ffbbd4eaada78be17104a940ae6da0e4410376",
+      "run_dir": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/cases/signed-cross-multiplication/runs/20260823T020407Z-7b964d"
+    }
+  ],
+  "completed_at": "2026-08-23T02:13:01Z",
+  "run_id": "20260823T013540Z-f06c6d",
+  "schema_version": 2,
+  "started_at": "2026-08-23T01:35:40Z",
+  "status": "complete",
+  "suite_id": "autonomy-classification-regression",
+  "suite_manifest": "/mnt/games/Math_Project/LeanExperiment/benchmarks/autonomy-calibration/focused-benchmark.toml",
+  "suite_manifest_sha256": "49bc6865bea6e7e553db6a06724af3df2eafada9f7fb3e6342c526c573f238e5",
+  "suite_manifest_snapshot": "suite.toml",
+  "summary": {
+    "accepted": false,
+    "cases": 5,
+    "completed": 5,
+    "errors": 0,
+    "failed": 1,
+    "false_closures": 0,
+    "passed": 4
+  }
+}

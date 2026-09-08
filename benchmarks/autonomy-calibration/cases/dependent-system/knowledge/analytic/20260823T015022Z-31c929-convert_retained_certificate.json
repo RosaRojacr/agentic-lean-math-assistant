@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "50ddb6b1223c11ace16ca5bf6641bb29df2c99171ec30eb492c375d1ea7cd895",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/convert_retained_certificate/attempt-01.md",
+    "agents/analytic/convert_retained_certificate/attempt-01.json",
+    "agents/audit/audit_identifiability/attempt-01.md",
+    "agents/audit/audit_identifiability/attempt-01.json"
+  ],
+  "limitations": [
+    "Applies only while the retained source inventory is complete and x,y are real.",
+    "Establishes non-identifiability rather than a numerical value.",
+    "Supported by exact derivation and downstream exact audit, not by a retained machine-check artifact."
+  ],
+  "report": {
+    "path": "analytic/20260823T015022Z-31c929-convert_retained_certificate.md",
+    "sha256": "648bcf9fd5e8ed56044fa7b4932d5a9c96b10bdf195fb7ccf20648d68964abd9",
+    "size": 1524
+  },
+  "run_id": "20260823T015022Z-31c929",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_certificate",
+  "summary": "For the complete retained system over the reals, (2,2|8)=2(1,1|4), so only x+y=4 is independent; valid solutions attain unequal x-y values, and therefore no exact numerical value of x-y is entailed without an added condition.",
+  "task_id": "convert_retained_certificate",
+  "verified_by": [
+    "audit_identifiability"
+  ]
+}

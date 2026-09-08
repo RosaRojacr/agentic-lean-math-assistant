@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "f3700c6361c431da1751c0fdf7bfe670e4cdb5e45840b26c16f4f5f49aa82cb0",
+  "category": "geometric",
+  "evidence": [
+    "workspace/agents/geometric/geometric_variation_pilot/report.md",
+    "workspace/agents/audit/continuation_gate/gate_audit.json"
+  ],
+  "limitations": [
+    "This is an obstruction, not a type-(iv) exclusion.",
+    "Moving-junction/core variations and topology changes other than cap extinction were not covered.",
+    "Cap extinction recovers the frozen threshold cap-replacement method."
+  ],
+  "report": {
+    "path": "geometric/20260824T091317Z-1cbb51-geometric_variation_pilot.md",
+    "sha256": "cf2c50c03401b31a3c553fd33f8ad3d945164857b659700097c501a31968f9fe",
+    "size": 1952
+  },
+  "run_id": "20260824T091317Z-1cbb51",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "geometric_variation",
+  "summary": "For the fixed-core, fixed-junction two-cap redistribution class, the symmetric type-(iv) cap pair is the unique nondegenerate perimeter minimum at fixed total cap area, including major-cap redistributions.",
+  "task_id": "geometric_variation_pilot",
+  "verified_by": [
+    "continuation_gate"
+  ]
+}

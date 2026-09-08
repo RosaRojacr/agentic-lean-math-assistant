@@ -1,0 +1,30 @@
+{
+  "assessment_sha256": "9eef6a9457f12ec8c1225e6b2cfac8c65ad5ff8b328f09447aedca2529390eac",
+  "category": "proof_probe",
+  "evidence": [
+    "workspace/agents/proof_probe/pilot_library_candidate/CalibrationScratch.lean",
+    "workspace/agents/proof_probe/pilot_library_candidate/compile-command.txt",
+    "workspace/agents/proof_probe/pilot_library_candidate/compile-output.txt",
+    "workspace/agents/proof_probe/pilot_library_candidate/compile-exit-status.txt",
+    "workspace/agents/continuation_audit/certify_continuation/audit-certificate.txt",
+    "agents/continuation_audit/certify_continuation/attempt-01.json"
+  ],
+  "limitations": [
+    "The claim is scoped to the exact retained theorem statement and pinned leanprover/lean4:v4.33.1 configuration.",
+    "The installed Elan binary directory must be exposed when lake is absent from the inherited PATH."
+  ],
+  "report": {
+    "path": "proof_probe/20260823T042201Z-835c69-pilot_library_candidate.md",
+    "sha256": "ad7314cda06b05204477c532c8dfada995d4b0acb18bfdf14162f2ed3fbd4ba4",
+    "size": 1238
+  },
+  "run_id": "20260823T042201Z-835c69",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "library_lemma_reuse",
+  "summary": "For the exact live succ_add_calibration declaration under the retained Lean 4.33.1 project, `by exact Nat.succ_add m n` compiles with exit status 0 and the resulting theorem does not depend on any axioms.",
+  "task_id": "pilot_library_candidate",
+  "verified_by": [
+    "certify_continuation"
+  ]
+}

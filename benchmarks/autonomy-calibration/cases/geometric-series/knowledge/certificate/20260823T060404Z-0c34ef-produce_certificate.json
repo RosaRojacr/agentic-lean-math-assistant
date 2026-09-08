@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "b338e836271c2014ed54d42158f558184325c32944fbcd4a9f253d4d4edf7ea5",
+  "category": "certificate",
+  "evidence": [
+    "workspace/agents/certificate/produce_certificate/certificate.md",
+    "workspace/agents/audit/audit_certificate/audit.md",
+    "workspace/agents/audit/audit_certificate/audit.json",
+    "workspace/agents/audit/audit_certificate/exact-integer-transcript.txt"
+  ],
+  "limitations": [
+    "The executable arithmetic component was checked with Python exact integers rather than a proof-assistant kernel; the algebra was independently audited line by line."
+  ],
+  "report": {
+    "path": "certificate/20260823T060404Z-0c34ef-produce_certificate.md",
+    "sha256": "7c8a69ac5ccf8a85a77f9497ce6fabf088a54c5f106ba7a0fed567636db5cc26",
+    "size": 1141
+  },
+  "run_id": "20260823T060404Z-0c34ef",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": null,
+  "summary": "The integrated certificate is a self-contained proof of sum_{k=0}^{7} 3*2^k = 765 containing the required finite geometric-series derivation, exact specialization, and independent eight-term integer check.",
+  "task_id": "produce_certificate",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

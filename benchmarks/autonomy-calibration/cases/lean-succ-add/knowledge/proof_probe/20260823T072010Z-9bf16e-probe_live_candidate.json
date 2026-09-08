@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "4399db0c9dc11339af2c1e6da8ed8b7aed699d699205999e8aff9dbd616395bb",
+  "category": "proof_probe",
+  "evidence": [
+    "workspace/agents/proof_probe/probe_live_candidate/live-target.txt",
+    "workspace/agents/proof_probe/probe_live_candidate/CalibrationProbe.lean",
+    "workspace/agents/proof_probe/probe_live_candidate/compile-command.txt",
+    "workspace/agents/proof_probe/probe_live_candidate/compile-output.txt",
+    "workspace/agents/proof_probe/probe_live_candidate/compile-exit-status.txt",
+    "agents/evidence_audit/audit_continuation/attempt-01-continuation.json"
+  ],
+  "limitations": [
+    "This result certifies the exact temporary probe under Lean 4.33.1; retained-source repair and full project build are separate obligations."
+  ],
+  "report": {
+    "path": "proof_probe/20260823T072010Z-9bf16e-probe_live_candidate.md",
+    "sha256": "15d3cec4bca57ffdfbb2783e2c924ff2cba79fe6aa20b723d935cd8fec4b3a9f",
+    "size": 1511
+  },
+  "run_id": "20260823T072010Z-9bf16e",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "library_theorem_reuse",
+  "summary": "Under the retained project's pinned Lean 4.33.1 toolchain, `Nat.succ_add m n` elaborates as a complete proof of the exact `succ_add_calibration` declaration and the probed theorem has no axiom dependencies.",
+  "task_id": "probe_live_candidate",
+  "verified_by": [
+    "audit_continuation"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "8845b57b00c19eeb356ad96d531e8e3194c10889b3be0eb9a643106918adb8af",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/produce_exact_solution/attempt-01.md",
+    "agents/verification/audit_exact_solution/attempt-01.md",
+    "agents/analytic/produce_exact_solution/attempt-01.json",
+    "agents/verification/audit_exact_solution/attempt-01.json"
+  ],
+  "limitations": [
+    "Restricted to the specified polynomial over the real numbers.",
+    "Verified by exact algebra and an independent prose audit, not proof-assistant formalization or a computer-algebra certificate."
+  ],
+  "report": {
+    "path": "analytic/20260823T070049Z-b80c66-produce_exact_solution.md",
+    "sha256": "5c777ebdfa9adfcec756c9e1e7e2b760572149e0312b442ccbbfdec9c9bfd80c",
+    "size": 1215
+  },
+  "run_id": "20260823T070049Z-b80c66",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_complete_square",
+  "summary": "For f(x)=x^2-6x+13 over the real numbers, the exact identity f(x)=(x-3)^2+4 proves that the global minimum is 4 and the complete attaining set is {3}.",
+  "task_id": "produce_exact_solution",
+  "verified_by": [
+    "audit_exact_solution"
+  ]
+}

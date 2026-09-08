@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "1f0a60850af70854e9ead7e7e4aa3e2b8e3d603f66447d5c0ca534accbd4af1c",
+  "category": "analytic",
+  "evidence": [
+    "input-snapshot/references/source.md",
+    "agents/analytic/derive_ambiguity/attempt-01.md",
+    "agents/audit/audit_ambiguity/attempt-01.md",
+    "agents/audit/audit_ambiguity/attempt-01.json"
+  ],
+  "limitations": [
+    "Applies only to the supplied retained version of record R-17, whose third value has no retained constraint.",
+    "Does not identify the actual redacted value or produce a single numerical mean.",
+    "Verified by independent audit reasoning, not by a formal theorem prover."
+  ],
+  "report": {
+    "path": "analytic/20260823T003155Z-77cbe0-derive_ambiguity.md",
+    "sha256": "43e1ecce95c430ed2639fb81be9aeae2c2e23ae6798961107e72ce814ec4879c",
+    "size": 1906
+  },
+  "run_id": "20260823T003155Z-77cbe0",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "parameterized_mean",
+  "summary": "For retained record R-17, denoting the unconstrained unavailable third measurement by x gives the complete mean family (22+x)/4; x=0 and x=4 yield 11/2 and 13/2 and prove nonuniqueness; a unique mean requires information uniquely fixing x.",
+  "task_id": "derive_ambiguity",
+  "verified_by": [
+    "audit_ambiguity"
+  ]
+}

@@ -1,0 +1,105 @@
+import CMVFigureFourScalarReduction
+import CMVFiniteJunctionDisagreement
+import CMVFigureFourTargetGeometry
+
+
+#print axioms CMVSourceClassification.isOpen_horizontalSection
+#print axioms CMVSourceClassification.isBounded_horizontalSection
+#print axioms CMVSourceClassification.frontier_horizontalSection_subset
+#print axioms CMVSourceClassification.IsOpen.eq_Ioo_of_isBounded_frontier_eq_pair
+
+namespace CMVFigureFour
+
+#print axioms circlePoint_mem_frontier_horizontalSection_of_localOneSided
+#print axioms circle_horizontal_transverse_of_height_ne_extrema
+#print axioms openInterval_endpoints_of_ordered_frontier
+#print axioms FiniteCrossingExample.isOpen_openUnitDisk
+#print axioms FiniteCrossingExample.isBounded_openUnitDisk
+#print axioms FiniteCrossingExample.openUnitDisk_locallyOneSided
+#print axioms FiniteCrossingExample.frontier_horizontalSection_openUnitDisk_zero
+#print axioms FiniteCrossingExample.horizontalSection_openUnitDisk_zero
+
+
+namespace SourceGeometry
+
+#print axioms measure_exceptionalHeights
+#print axioms sourceCarrier_nullMeasurableSet
+#print axioms upperTrace_abscissa_mem_frontier_horizontalSection
+#print axioms lowerTrace_abscissa_mem_frontier_horizontalSection
+#print axioms leftTrace_abscissa_mem_frontier_horizontalSection
+#print axioms rightTrace_abscissa_mem_frontier_horizontalSection
+#print axioms scalar_component_bounds
+#print axioms scalar_height
+#print axioms scalar_radical_alignment
+#print axioms scalar_reduction
+#print axioms horizontal_center_symmetry
+#print axioms sourceRadius_ge_one
+#print axioms upperExteriorComponent_eq_curvature_div_density
+#print axioms leftStripCenter_lt_axis
+#print axioms toRawFourArcCoordinates_satisfiesClosedSnell
+#print axioms leftStripTrace_abscissa_eq
+#print axioms rightStripTrace_abscissa_eq
+#print axioms frontier_actual_stripSection_eq_pair
+#print axioms actual_stripSection
+#print axioms actual_upperSection_endpoints
+#print axioms actual_lowerSection_endpoints
+
+
+end SourceGeometry
+namespace BilateralSourceIncidence
+
+#print axioms derived_scalar_reduction
+#print axioms derived_sourceRadius_ge_one
+#print axioms toRawFourArcCoordinates_satisfiesClosedSnell
+#print axioms actual_stripSection
+
+end BilateralSourceIncidence
+
+#print axioms Examples.strictRaw_satisfiesClosedSnell
+#print axioms Examples.strictRaw_satisfiesRegularSnell
+#print axioms Examples.endpointRaw_satisfiesClosedSnell
+
+end CMVFigureFour
+
+namespace CMVFiniteJunctionDisagreement
+
+#print axioms isOpen_localPhaseSet
+#print axioms localPhase_label_unique
+#print axioms finite_plane_compl_isConnected
+#print axioms localPhaseSet_false_disjoint_true
+#print axioms exists_mem_localPhaseSet_false_of_bounded
+#print axioms ae_eq_of_finite_junction_localPhase_cover
+#print axioms locallyOneSided_iff_exists_locallyOnCircleSide
+#print axioms localPhase_of_same_circle_side
+#print axioms localPhase_of_opposite_circle_sides
+
+end CMVFiniteJunctionDisagreement
+
+namespace CMVFigureFourTargetGeometry
+
+namespace SourceAlignment
+
+#print axioms upperExteriorComponent_eq_cos_exteriorHalfAngle
+#print axioms upperCenter_eq_placedUpperCenter
+#print axioms lowerCenter_eq_placedLowerCenter
+#print axioms upperLeft_eq_upperLeftJunction
+#print axioms lowerLeft_eq_lowerLeftJunction
+#print axioms upperRight_eq_upperRightJunction
+#print axioms lowerRight_eq_lowerRightJunction
+#print axioms leftStripCenter_eq_placedLeftCenter
+#print axioms rightStripCenter_eq_placedRightCenter
+#print axioms centers_and_junctions_align
+
+end SourceAlignment
+
+namespace EndpointApplication
+
+#print axioms endpointRaw_carrier_eq_centeredCarrier
+#print axioms endpointRegularLeftPoint_circle
+#print axioms endpointRegularLeftPoint_locallyInside
+#print axioms endpointUpperPole_circle
+#print axioms endpointUpperPole_locallyInside
+
+end EndpointApplication
+
+end CMVFigureFourTargetGeometry

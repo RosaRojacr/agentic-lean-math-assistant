@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "34f0436aa7c860d117a0dca93e6208e98566d7625de5e1cb30b263b332313736",
+  "category": "source_extraction",
+  "evidence": [
+    "agents/source_extraction/revalidate_source/attempt-01.md",
+    "agents/analytic_audit/audit_recoverability/attempt-01.md",
+    "input-snapshot/problem.md",
+    "input-snapshot/references/source.md"
+  ],
+  "limitations": [
+    "This is a literal source-bounded claim and does not identify the actual numerical coefficient.",
+    "It remains valid only for the supplied snapshot unless a legible cell or uniquely determining source statement is added."
+  ],
+  "report": {
+    "path": "source_extraction/20260823T022122Z-0c0ccb-revalidate_source.md",
+    "sha256": "5228a4709de8f467adc25f9976aba5f0af2464688e4640fb9714eaf98862130b",
+    "size": 2983
+  },
+  "run_id": "20260823T022122Z-0c0ccb",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "literal_source_check",
+  "summary": "Within the supplied snapshot, Table 2 row j=7 retains only an illegibility marker; no supplied recurrence, interpolation rule, closed formula, or other relation uniquely determines c₇; and the legible original row-7 coefficient cell is unavailable.",
+  "task_id": "revalidate_source",
+  "verified_by": [
+    "audit_recoverability"
+  ]
+}

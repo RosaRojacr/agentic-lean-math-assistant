@@ -1,0 +1,29 @@
+{
+  "assessment_sha256": "2db62d9732cd9bfb7033eb2c91b179928601fd34d934772c97074074f20efcc4",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_system_result/attempt-01.md",
+    "agents/analytic/derive_system_result/attempt-01.json",
+    "agents/audit/audit_system_result/attempt-01.md",
+    "agents/audit/audit_system_result/attempt-01.json"
+  ],
+  "limitations": [
+    "The claim assumes the retained source inventory is complete and x,y are real.",
+    "The nonproportional-row sufficiency criterion is restricted to an added linear equation.",
+    "No retained machine-check artifact supports the claim; promotion rests on exact retained derivations and the successful downstream audit."
+  ],
+  "report": {
+    "path": "analytic/20260823T004123Z-703163-derive_system_result.md",
+    "sha256": "88610a3e474cef666d4f493f029bdebfc06358cebf1fbc6efe7f5f49d1b7b501",
+    "size": 1444
+  },
+  "run_id": "20260823T004123Z-703163",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "coefficient_comparison",
+  "summary": "For the retained real system, the equations are dependent, all solutions are (t,4-t), x-y is nonunique with witness values -4 and -2, and uniqueness requires another scalar restriction that removes the free parameter; one nonproportional equation suffices in the linear setting.",
+  "task_id": "derive_system_result",
+  "verified_by": [
+    "audit_system_result"
+  ]
+}

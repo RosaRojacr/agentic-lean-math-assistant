@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "24a3b0caef611740ac0dd764bd0427dfbf68f7719f600a499dde671fce14f997",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/compose_certificate/attempt-01.md",
+    "agents/analytic/compose_certificate/attempt-01.json",
+    "agents/verification/audit_certificate/attempt-01.md",
+    "agents/verification/audit_certificate/attempt-01.json"
+  ],
+  "limitations": [
+    "This promotion is restricted to the concrete inputs 84 and 30 and does not establish a new general Euclidean-algorithm theorem.",
+    "No proof-assistant formalization was produced or required."
+  ],
+  "report": {
+    "path": "analytic/20260823T030622Z-f26548-compose_certificate.md",
+    "sha256": "bb7e3e40231baf6d3ed444e6e6261bde75a2f4676d2feae657a8a10b1a8bd1c4",
+    "size": 2187
+  },
+  "run_id": "20260823T030622Z-f26548",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_reconstruction",
+  "summary": "For the concrete pair (84,30), the complete Euclidean chain has last nonzero remainder 6; back-substitution yields Bezout coefficients (-1,3); 6 divides both inputs; and every integer common divisor of both inputs divides 6.",
+  "task_id": "compose_certificate",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

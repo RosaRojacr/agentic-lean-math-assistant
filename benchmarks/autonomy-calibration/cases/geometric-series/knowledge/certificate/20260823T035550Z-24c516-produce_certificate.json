@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "46043839a6b85ad1a859d8662d9cfd55d7f381b07f60e305fa22058a29648bdc",
+  "category": "certificate",
+  "evidence": [
+    "workspace/agents/certificate/produce_certificate/certificate.md",
+    "workspace/agents/audit/audit_certificate/audit.md",
+    "workspace/agents/audit/audit_certificate/integer-command-output.txt",
+    "agents/audit/audit_certificate/attempt-01.json"
+  ],
+  "limitations": [
+    "The general identity is established for positive integer m and real r with r != 1.",
+    "The independent machine execution checks exact arithmetic, not the algebraic proof in a proof-assistant kernel."
+  ],
+  "report": {
+    "path": "certificate/20260823T035550Z-24c516-produce_certificate.md",
+    "sha256": "ff17795c09b52c6527fc6d7fd53f61309f09f7695361db9846d6cb89db1371ce",
+    "size": 804
+  },
+  "run_id": "20260823T035550Z-24c516",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "dual_exact_certificate",
+  "summary": "The campaign-local certificate proves from first principles that sum_{k=0}^{7} 3*2^k = 765 via a valid finite geometric-series derivation and an independent direct exact-integer sum.",
+  "task_id": "produce_certificate",
+  "verified_by": [
+    "audit_certificate"
+  ]
+}

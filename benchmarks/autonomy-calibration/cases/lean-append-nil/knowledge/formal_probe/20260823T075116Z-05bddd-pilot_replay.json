@@ -1,0 +1,26 @@
+{
+  "assessment_sha256": "3857d0b7b32a76feb14166cf426ecfded8ebf4ad92edd2272dfaf100d53cd254",
+  "category": "formal_probe",
+  "evidence": [
+    "workspace/agents/formal_probe/pilot_replay/append_nil_candidate.lean",
+    "workspace/agents/formal_probe/pilot_replay/replay-evidence.md",
+    "workspace/agents/audit/continuation_gate/audit-evidence.md"
+  ],
+  "limitations": [
+    "This promotion concerns the disposable candidate only; the pilot did not modify or certify the then-unresolved project source."
+  ],
+  "report": {
+    "path": "formal_probe/20260823T075116Z-05bddd-pilot_replay.md",
+    "sha256": "4dbdba8c232128b5197e08f66eedad8c4c6feadc64bbaba3b3dc47d75ed4b58e",
+    "size": 948
+  },
+  "run_id": "20260823T075116Z-05bddd",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "structural_induction",
+  "summary": "The unchanged disposable structural-induction candidate compiles in the current pinned Lean 4.33.1 project environment with exit status 0 and no axiom dependencies.",
+  "task_id": "pilot_replay",
+  "verified_by": [
+    "continuation_gate"
+  ]
+}

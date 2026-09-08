@@ -1,0 +1,32 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "problem.md specifies the unchanged theorem statement, conjunction-symmetry obligation, prohibited placeholders and axioms, required `lake build`, and axiom report",
+      "references/source.md specifies use of the pinned `proof/lean-toolchain` and compilation of the unchanged theorem as the accepted certificate",
+      "knowledge/analytic/20260823T000834Z-cda0c6-inspect_and_derive.md locates the unresolved theorem, derives `And.intro hQ hP`, and records a successful pinned-environment probe",
+      "knowledge/formalization/20260823T000834Z-cda0c6-repair_and_build.md records the corrected source, successful build, placeholder scan, and axiom-free report",
+      "knowledge/analytic/20260823T043622Z-af1239-inspect_and_probe.md and knowledge/formalization/20260823T043622Z-af1239-repair_and_certify.md provide a second accepted inspection and certification result",
+      "knowledge/research/state.json records a prior `skip` for the same problem hash and unchanged retained source inventory"
+    ],
+    "reason": "The task and retained reference inventory are unchanged, and the prior accepted research state already records a skip for this exact problem. Retained analytic and formalization artifacts identify the theorem as conjunction symmetry, derive the constructor proof `And.intro hQ hP`, and record successful verification with the pinned Lean 4.33.1 toolchain, including `lake build`, placeholder checks, and an axiom-free report. New publication research would not change the decomposition, proof strategy, verification procedure, or trust boundary.",
+    "reconsider_if": [
+      "The theorem statement or surrounding Lean source changes beyond the retained conjunction-symmetry obligation",
+      "The pinned toolchain, project dependencies, or retained reference inventory changes",
+      "A fresh `lake build`, placeholder scan, or axiom report contradicts the retained successful evidence",
+      "A failure exposes external-library or toolchain semantics not covered by the retained project and accepted knowledge"
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "afecb9b021e3dc79368555fa07ee0911e8a348bc0310ea151039d5b51e9ad653",
+  "references": [
+    {
+      "path": "source.md",
+      "sha256": "e348f113361b0f66788296c3b8d828b808f184978432437817b14359f8e40821",
+      "size": 214
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-08-23T07:51:16Z"
+}

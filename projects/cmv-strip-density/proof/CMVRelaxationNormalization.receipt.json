@@ -1,0 +1,82 @@
+{
+  "schema": 2,
+  "strategy_id": "strategy-00035",
+  "milestone_indices": [3, 4, 5],
+  "milestone_name": "source-admissible classified-representative normalization and normalization-free cutoff integration",
+  "result": "complete",
+  "files": {
+    "proof/CMVSourceBridge.lean": "b7eb7f959856d2a4e0dca45bf525f74bd1af7e34dd308f3627f234ebcf3ccdec",
+    "proof/CMVRelaxation.lean": "e3ea2e4cc08d13c06c16839031c186ea982fdf885c30dadfc20a1a3fb339be3c",
+    "proof/CMVModeledCutoff.lean": "e6b277b39154fe2c69e31bd01474ec653e95aaacf214b5186b9aaa2a05e162a6",
+    "proof/_Assumptions.lean": "47f4d7fe0957c15baeb3899943b76e12f9b26cc6859c05cfd56c90c6f4463f07",
+    "MASTER_PROMPT.md": "e3cfe5fb1c839c2a4a838aaa4c2a75f062525499f22e66c3a9232ed5b623f155",
+    "README.md": "eaf1f64de7d58505bb00c360f71b7dc23306cc2fcb82d09ce0c42794bedf5570",
+    "proof/lakefile.toml": "f39502dabd668a568394b0f5413bb52d22f728065a820447f90d8bf78792955f"
+  },
+  "source": {
+    "path": "references/Canete2010.pdf",
+    "sha256": "0ee9b4787aa3c09f9a4ed05fb66563a820cd13596af401b76e7900e597711230",
+    "locator": "Section 2, printed pages 2--3: weighted volume is the density integral over a measurable set; weighted perimeter is the smooth-set L1 relaxation; finite perimeter means the relaxed value is finite; the reduced-boundary representation is then stated. Extracted text lines 35--61."
+  },
+  "checked_contract": {
+    "source_admissibility": "SourcePerimeterSemantics.IsAdmissible requires both the selected finite-perimeter predicate and IntegrableOn (StripDensity lam) carrier; IsMinimizer quantifies exactly over source-admissible equal-area competitors",
+    "finite_area_model_coverage": "CompatibleWithModel.model_covered now requires source admissibility, and canonicalFrontierSemantics proves it for every AdmissibleCompetitor from toFinitePerimeterRegion.finite_weighted_area",
+    "finite_area_canonical_profile": "CanonicalTypeIVProfile.integrableOn_carrier proves every regular canonical profile has finite weighted area via its value-preserving finite-perimeter realization",
+    "representative_classification": "AlmostEverywhereHorizontallyCongruent records equality almost everywhere to an arbitrary horizontal translate; exact HorizontallyCongruent implies it",
+    "almost_everywhere_normalization": "CMVRelaxation.relaxedSourceSemantics_normalizationWitness_of_almostEverywhereHorizontalCongruence accepts a source-admissible representative and constructs SourcePerimeterSemantics.NormalizationWitness with a source-admissible canonical carrier",
+    "exact_normalization": "CMVRelaxation.relaxedSourceSemantics_normalizationWitness_of_horizontalCongruence specializes the representative theorem to exact classification",
+    "perimeter_finiteness_transport": "canonical carrier null measurability and relaxed-perimeter finiteness are derived through representative and translation invariance before converting perimeter values to Real",
+    "area_transport": "the witness weightedArea_eq field composes weightedArea_congr_ae with weightedArea_horizontalTranslation, while source and canonical integrability remain explicit",
+    "normalization_free_candidate_transfer": "the exact and almost-everywhere relaxedSourceSemantics candidate-transfer declarations construct normalization internally from the source-admissibility supplied by IsMinimizer",
+    "normalization_free_cutoff": "the exact and almost-everywhere CMVModeledCutoff cutoff declarations exercise the modeled cutoff without a caller-supplied normalization witness"
+  },
+  "excluded_hypotheses": [
+    "CompatibleWithModel from normalization constructors",
+    "source/frontier perimeter equality from normalization constructors",
+    "caller-supplied NormalizationWitness",
+    "caller-supplied SmoothSequence"
+  ],
+  "retained_explicit_hypotheses": [
+    "source admissibility: finite weighted area, null measurability, and finite relaxed perimeter",
+    "exact or almost-everywhere horizontal classification",
+    "CompatibleWithModel for candidate transfer and cutoff"
+  ],
+  "verification": [
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake build CMVRelaxationTransport",
+      "exit_code": 0,
+      "wall_seconds": 27.17,
+      "result": "Build completed successfully (8703 jobs)."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake build",
+      "exit_code": 0,
+      "wall_seconds": 18.69,
+      "result": "Build completed successfully (8893 jobs), including all source bridges and CMVModeledCutoff."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean _Assumptions.lean",
+      "exit_code": 0,
+      "wall_seconds": 6.88,
+      "result": "Repository assumption audit completed."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean _NormalizationAudit.lean",
+      "exit_code": 0,
+      "wall_seconds": 4.22,
+      "result": "Focused temporary audit reported only propext, Classical.choice, and Quot.sound for ten source-admissibility, normalization, transfer, and cutoff declarations; the temporary file was removed afterward."
+    },
+    {
+      "tool": "functions.grep",
+      "path": "proof/CMVSourceBridge.lean;proof/CMVRelaxation.lean;proof/CMVModeledCutoff.lean",
+      "pattern": "\\b(sorry|admit|native_decide)\\b|^\\s*axiom\\b",
+      "result": "No matches found"
+    }
+  ],
+  "scope_boundary": "Universal source classification and CompatibleWithModel remain unresolved, so these theorems add no unconditional density coverage. The source minimizer and normalization interfaces now account for finite weighted area and do not admit the real integral's non-integrable fallback.",
+  "next_action": "Formalize the first non-tautological universal classification reduction: derive regular type-(iv) curvature data and almost-everywhere horizontal congruence from explicit source geometric hypotheses, then isolate the still-missing GMT theorem needed to show every admissible minimizer satisfies those hypotheses."
+}

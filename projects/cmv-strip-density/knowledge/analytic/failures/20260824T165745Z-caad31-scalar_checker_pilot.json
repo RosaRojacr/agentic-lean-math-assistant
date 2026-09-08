@@ -1,0 +1,8 @@
+{
+  "attempt": 1,
+  "category": "analytic",
+  "error": "OMP deadline exceeded after 3600 seconds",
+  "receipt": "attempt-01.json",
+  "schema_version": 1,
+  "stage": "scalar_checker_pilot"
+}

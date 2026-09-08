@@ -1,0 +1,28 @@
+{
+  "assessment_sha256": "9eef6a9457f12ec8c1225e6b2cfac8c65ad5ff8b328f09447aedca2529390eac",
+  "category": "lean_formalization",
+  "evidence": [
+    "workspace/proof/Calibration.lean",
+    "workspace/agents/lean_formalization/apply_proof_and_build/execution-evidence.txt",
+    "workspace/agents/certificate_audit/audit_final_certificate/report.md",
+    "agents/certificate_audit/audit_final_certificate/attempt-01.json"
+  ],
+  "limitations": [
+    "Certification covers the retained workspace/proof/Calibration.lean and pinned Lean 4.33.1 project state; modified sources or toolchains require re-verification.",
+    "The successful build environment explicitly included /home/rosa/.elan/bin in PATH."
+  ],
+  "report": {
+    "path": "lean_formalization/20260823T042201Z-835c69-apply_proof_and_build.md",
+    "sha256": "a55cc296a2cfb87a4cbfaf1b35536de2d09c318122abed7640aa53be9b7067dd",
+    "size": 901
+  },
+  "run_id": "20260823T042201Z-835c69",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "library_lemma_reuse",
+  "summary": "The retained corrected Calibration.lean preserves the theorem statement, contains a complete proof with no forbidden trust-boundary constructs, passes `lake build`, and reports that succ_add_calibration depends on no axioms.",
+  "task_id": "apply_proof_and_build",
+  "verified_by": [
+    "audit_final_certificate"
+  ]
+}

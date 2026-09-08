@@ -1,0 +1,71 @@
+{
+  "artifacts": [
+    {
+      "path": "analytic/20260822T235747Z-dc37e6-derive_structural_proof.json",
+      "sha256": "bd736b2fed499754aa6af2f6d373a565034eacc30d34857baa3ae88c499f6dcc",
+      "size": 1157
+    },
+    {
+      "path": "analytic/20260822T235747Z-dc37e6-derive_structural_proof.md",
+      "sha256": "69b3a57124fed84f12927c50ef75aea203865836a9b265c18b7476eff0ff42bd",
+      "size": 1897
+    },
+    {
+      "path": "analytic/20260822T235747Z-dc37e6-find_library_proof.json",
+      "sha256": "1f504285b542a69916e92b50f6c9f8609362b0a49be06a04dc875c7974ab55e6",
+      "size": 1051
+    },
+    {
+      "path": "analytic/20260822T235747Z-dc37e6-find_library_proof.md",
+      "sha256": "f98ce70ae63f3c9fd188918429e51225cd57948d231a89dc1ee68692302c6de7",
+      "size": 1454
+    },
+    {
+      "path": "lean_formalization/20260823T042201Z-835c69-apply_proof_and_build.json",
+      "sha256": "fdddcfcf2170d63079de4b34b3b3094a421834d7b9a9f477f6dfdec71fd2b601",
+      "size": 1366
+    },
+    {
+      "path": "lean_formalization/20260823T042201Z-835c69-apply_proof_and_build.md",
+      "sha256": "a55cc296a2cfb87a4cbfaf1b35536de2d09c318122abed7640aa53be9b7067dd",
+      "size": 901
+    },
+    {
+      "path": "lean_formalization/20260823T072010Z-9bf16e-apply_and_build.json",
+      "sha256": "5a0e755180f7012d42e467d3463aa5cee698c2fccce04f24c8b3876d8b15ce95",
+      "size": 1156
+    },
+    {
+      "path": "lean_formalization/20260823T072010Z-9bf16e-apply_and_build.md",
+      "sha256": "653a1170b7a971dba266097bdc37963cd00e0383f611532838efbb8845fe93cc",
+      "size": 1359
+    },
+    {
+      "path": "proof_probe/20260823T042201Z-835c69-pilot_library_candidate.json",
+      "sha256": "4c29a35a9729d0ba39552795e477551ed8a3a420539a370e117f28bed29170e1",
+      "size": 1505
+    },
+    {
+      "path": "proof_probe/20260823T042201Z-835c69-pilot_library_candidate.md",
+      "sha256": "ad7314cda06b05204477c532c8dfada995d4b0acb18bfdf14162f2ed3fbd4ba4",
+      "size": 1238
+    },
+    {
+      "path": "proof_probe/20260823T072010Z-9bf16e-probe_live_candidate.json",
+      "sha256": "8fa7f14fe20c3e126b380fade911b025617f02dee138766b5af70719a6bca3d2",
+      "size": 1405
+    },
+    {
+      "path": "proof_probe/20260823T072010Z-9bf16e-probe_live_candidate.md",
+      "sha256": "15d3cec4bca57ffdfbb2783e2c924ff2cba79fe6aa20b723d935cd8fec4b3a9f",
+      "size": 1511
+    },
+    {
+      "path": "research/state.json",
+      "sha256": "8a1fed76631adda34c90186606ecc87f693af1d09456c74a16446627bbb204f3",
+      "size": 2760
+    }
+  ],
+  "generated_at": "2026-08-23T07:32:44Z",
+  "schema_version": 1
+}

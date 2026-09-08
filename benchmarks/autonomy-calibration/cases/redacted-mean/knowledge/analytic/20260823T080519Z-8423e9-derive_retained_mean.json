@@ -1,0 +1,25 @@
+{
+  "assessment_sha256": "3b6e67bb42e2051a4652cc9bcb2bc5ccba68918a5ffeea3b6f114ed70a8eb27f",
+  "category": "analytic",
+  "evidence": [
+    "agents/analytic/derive_retained_mean/attempt-01.md",
+    "agents/analytic_audit/audit_nonidentifiability/attempt-01.md"
+  ],
+  "limitations": [
+    "The claim is bounded to the retained inventory and does not recover the historical third measurement or exclude authoritative evidence outside that inventory."
+  ],
+  "report": {
+    "path": "analytic/20260823T080519Z-8423e9-derive_retained_mean.md",
+    "sha256": "21ffd11f00e9c2d5e1f81bf734ae123f542189e56f7b0ee788b1dba3cc46050c",
+    "size": 2185
+  },
+  "run_id": "20260823T080519Z-8423e9",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": "retained_record_derivation",
+  "summary": "Within the retained R-17 inventory, the ordered slots are 4, 8, x, and 10; the exact supported mean is (22+x)/4; x=0 and x=4 are compatible completions with distinct means 11/2 and 13/2; and evidence uniquely fixing x is necessary and sufficient for a numerical mean.",
+  "task_id": "derive_retained_mean",
+  "verified_by": [
+    "audit_nonidentifiability"
+  ]
+}

@@ -1,0 +1,6 @@
+name = "lean_succ_add_calibration"
+version = "0.1.0"
+defaultTargets = ["Calibration"]
+
+[[lean_lib]]
+name = "Calibration"

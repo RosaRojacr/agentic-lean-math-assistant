@@ -1,0 +1,16 @@
+import CMVTypeThreeSharpRecovery
+
+namespace CMVRelaxation.TypeThreeRecovery
+
+#print axioms exists_scaled_signedUpperContactTrace_lipschitz
+#print axioms realized_frontier_combinedSurgeryDomain_subset
+#print axioms exists_sharp_smoothCost_combinedSurgeryDomain_bound
+#print axioms nondegenerateRecoverySequence_cost_le_frontierCost
+#print axioms frontier_semicircularOpenDisk_euclidean_eq_closed
+#print axioms typeThreeRecoverySequence_cost_le_frontierCost
+#print axioms relaxedPerimeter_le_frontierCost_typeThree
+#print axioms relaxedPerimeter_lt_top_typeThree
+#print axioms isAdmissible_typeThree
+#print axioms typeThree_perimeter_le_frontier
+
+end CMVRelaxation.TypeThreeRecovery

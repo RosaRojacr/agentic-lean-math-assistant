@@ -1,0 +1,20 @@
+import CMVPatchStability
+
+namespace CMVRelaxation
+
+#print axioms characteristicDistance_triangle
+#print axioms lowerBound_le_relaxedPerimeter_add_mismatch
+
+namespace CandidateFourArc
+
+#print axioms exists_frontierCost_le_relaxedPerimeter_add_mismatch_add_deficit
+#print axioms endpoint_exists_frontierCost_le_relaxedPerimeter_add_mismatch_add_deficit
+
+end CandidateFourArc
+
+namespace CanonicalFourArc
+
+#print axioms exists_frontierCost_le_relaxedPerimeter_add_mismatch_add_deficit
+
+end CanonicalFourArc
+end CMVRelaxation

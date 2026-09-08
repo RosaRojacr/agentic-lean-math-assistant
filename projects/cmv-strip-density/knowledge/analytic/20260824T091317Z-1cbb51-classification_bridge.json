@@ -1,0 +1,27 @@
+{
+  "assessment_sha256": "f3700c6361c431da1751c0fdf7bfe670e4cdb5e45840b26c16f4f5f49aa82cb0",
+  "category": "analytic",
+  "evidence": [
+    "workspace/agents/analytic/classification_bridge/report.md",
+    "workspace/agents/audit/bridge_audit/audit.md"
+  ],
+  "limitations": [
+    "The antecedent source-level exclusion is unresolved.",
+    "Universal normalization, reduced-boundary/minimality transfer, and a formal type-(iii) carrier are absent.",
+    "The retained classification_bridge report did not itself prove the claimed universal bridge; only the conditional implication is promoted."
+  ],
+  "report": {
+    "path": "analytic/20260824T091317Z-1cbb51-classification_bridge.md",
+    "sha256": "a1eca2fafa5829148bfa4cbe2b7078ef7624706da6b92b28aa2b0ed6b6bd86b2",
+    "size": 1531
+  },
+  "run_id": "20260824T091317Z-1cbb51",
+  "schema_version": 2,
+  "status": "accepted",
+  "strategy_id": null,
+  "summary": "Conditional on a valid all-domain source-level type-(iv) exclusion and the precisely located CMV existence/classification inputs, Theorem 3.16 yields the endpoint-corrected classification: the common unit-disk degeneration at v=pi, type (ii) below v*, distinct type-(ii)/type-(iii) minimizers at v*, and type (iii) above v*.",
+  "task_id": "classification_bridge",
+  "verified_by": [
+    "bridge_audit"
+  ]
+}

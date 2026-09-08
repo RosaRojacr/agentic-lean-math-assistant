@@ -2,17 +2,22 @@ name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  test:
-    name: Python ${{ matrix.python-version }}
+  python:
+    name: Python ${{ matrix.python-version }} engine and release
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.12", "3.13", "3.14"]
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -23,7 +28,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           enable-cache: true
 
-      - name: Enable sandbox runtime
+      - name: Install sandbox runtime
         run: |
           sudo apt-get update
           sudo apt-get install --yes bubblewrap
@@ -37,22 +42,72 @@ jobs:
         run: uv lock --check
 
       - name: Check formatting
-        run: uv run ruff format --check src tests
+        run: uv run ruff format --check src tests scripts benchmarks/cmv-range-reduction/validation
 
       - name: Lint
-        run: uv run ruff check src tests
+        run: uv run ruff check src tests scripts benchmarks/cmv-range-reduction/validation
 
       - name: Type-check
-        run: uv run mypy src
+        run: uv run mypy src scripts benchmarks/cmv-range-reduction/validation/validate_result.py
 
       - name: Test
-        run: uv run pytest
+        run: uv run pytest --ignore=tests/test_benchmark_calibration.py
 
-      - name: Build distributions
+      - name: Retain failing test diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-diagnostics-${{ matrix.python-version }}
+          path: /tmp/pytest-of-runner
+          if-no-files-found: ignore
+          retention-days: 3
+
+      - name: Build source and wheel distributions
         run: uv build
 
-      - name: Smoke-test wheel
+      - name: Smoke-test installed wheel
         run: |
           uv venv --python "${{ matrix.python-version }}" .release-smoke
           uv pip install --python .release-smoke/bin/python dist/*.whl
           .release-smoke/bin/agentic-lean-math-assistant --version
+
+  lean:
+    name: Retained CMV certificate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build retained Lean project
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: projects/cmv-strip-density/proof
+          build: true
+          test: false
+          use-mathlib-cache: auto
+
+      - name: Set up locked Python environment
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.14"
+          enable-cache: true
+
+      - name: Install locked Python dependencies
+        run: uv sync --locked
+
+      - name: Run Lean-backed benchmark checks
+        run: uv run pytest -q tests/test_benchmark_calibration.py
+
+      - name: Run independent certificate checker
+        working-directory: projects/cmv-strip-density/proof
+        run: uv run python verify_certificate.py
+
+      - name: Run exact scalar certificates
+        working-directory: projects/cmv-strip-density/proof
+        run: |
+          uv run python verify_full_domain.py
+          uv run python verify_calculus.py
+          uv run python exact_germ/exact_germ_checker.py --output exact_germ/independent-check.json
+          uv run python face_bridge_pilot/check_bridge.py --output face_bridge_pilot/independent-check.json
+          uv run python middle_face_tiling/check_tiling.py middle_face_tiling/manifest.json --output middle_face_tiling/independent-check.json
+          uv run python compact_fold_gap/check_compact_certificate.py compact_fold_gap/compact_certificate.json

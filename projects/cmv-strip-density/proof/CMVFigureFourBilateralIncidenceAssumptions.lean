@@ -1,0 +1,55 @@
+import CMVFigureFourBilateralIncidence
+
+namespace CMVFigureFour.CircleRigidity
+
+#print axioms chord_abscissae_add_eq_two_mul_center
+#print axioms opposite_horizontal_offsets_eq
+
+end CMVFigureFour.CircleRigidity
+namespace CMVFigureFour
+
+#print axioms circleValue_horizontalTranslation
+#print axioms volume_circleValue_eq_zero
+#print axioms isBounded_fourArcAssembly_carrier
+#print axioms volume_frontier_fourArcAssembly
+#print axioms interior_fourArcAssembly_ae_eq_carrier
+#print axioms fourArcSourceRepresentative
+#print axioms locallyOneSided_interior_of_local_closedDisk
+#print axioms FourArcAssembly.left_locallyOneSided
+#print axioms FourArcAssembly.right_locallyOneSided
+#print axioms FourArcAssembly.upper_locallyOneSided
+#print axioms FourArcAssembly.lower_locallyOneSided
+#print axioms FourArcAssembly.leftArcTrace_eq_stripCircleTrace
+#print axioms FourArcAssembly.rightArcTrace_eq_stripCircleTrace
+#print axioms FourArcAssembly.upperArcTrace_eq_exteriorCircleTrace
+#print axioms FourArcAssembly.lowerArcTrace_eq_exteriorCircleTrace
+#print axioms FourArcAssembly.closure_interior_carrier
+#print axioms FourArcAssembly.frontier_interior_carrier
+#print axioms isometry_horizontalTranslation
+#print axioms horizontalTranslation_image_stripCircleTrace
+#print axioms horizontalTranslation_image_exteriorCircleTrace
+#print axioms locallyOneSided_horizontalTranslation
+
+end CMVFigureFour
+
+
+namespace CMVFigureFour.BilateralSourceIncidence
+#print axioms horizontalTranslate
+#print axioms ofFourArcCandidate
+#print axioms horizontalTranslate_symmetryAxisX
+
+#print axioms stripCenter_heights_eq
+#print axioms lower_right_signed_snell
+#print axioms upper_horizontal_offsets_eq
+#print axioms lower_horizontal_offsets_eq
+#print axioms upperCenter_on_axis
+#print axioms lowerCenter_on_axis
+#print axioms rightStripCenter_reflection
+#print axioms upperRight_reflection
+#print axioms lowerRight_reflection
+#print axioms upperLeft_strictly_left_of_axis
+#print axioms lowerLeft_strictly_left_of_axis
+#print axioms toSourceGeometry
+
+end CMVFigureFour.BilateralSourceIncidence
+

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-o",
+    ".lake/build/lib/lean/NearOneLocalSource.olean",
+    "NearOneLocalSource.lean"
+  ],
+  "cwd": "proof",
+  "exit": 0,
+  "seconds": 4.575773828997626,
+  "stdout": "",
+  "stderr": "warning: Gametheory: repository '/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/proof/.lake/packages/Gametheory' has local changes\n"
+}

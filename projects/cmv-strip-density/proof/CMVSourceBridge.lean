@@ -146,6 +146,24 @@ def HorizontallyCongruent
     (sourceCarrier canonicalCarrier : Set PlanePoint) : Prop :=
   ∃ t : ℝ, sourceCarrier = horizontalTranslation t '' canonicalCarrier
 
+/-- Two carriers agree almost everywhere after a horizontal placement.  This
+is the representative-level form of the source classification appropriate for
+the relaxed perimeter. -/
+def AlmostEverywhereHorizontallyCongruent
+    (sourceCarrier canonicalCarrier : Set PlanePoint) : Prop :=
+  ∃ t : ℝ,
+    sourceCarrier =ᵐ[volume] horizontalTranslation t '' canonicalCarrier
+
+/-- Exact horizontal classification implies its almost-everywhere form. -/
+theorem almostEverywhereHorizontallyCongruent_of_horizontallyCongruent
+    {sourceCarrier canonicalCarrier : Set PlanePoint}
+    (hcongruent :
+      HorizontallyCongruent sourceCarrier canonicalCarrier) :
+    AlmostEverywhereHorizontallyCongruent
+      sourceCarrier canonicalCarrier := by
+  rcases hcongruent with ⟨t, rfl⟩
+  exact ⟨t, Filter.EventuallyEq.rfl⟩
+
 theorem weightedArea_eq_of_horizontallyCongruent
     {lam : ℝ} {sourceCarrier canonicalCarrier : Set PlanePoint}
     (hcongruent :
@@ -524,6 +542,15 @@ def asFinitePerimeterRegion : FinitePerimeterRegion lam :=
     AdmissibleCompetitor.toFinitePerimeterRegion_carrier]
   exact profile.carrier_eq_candidate_assembly.symm
 
+/-- Every canonical regular type-(iv) carrier has finite weighted area.  This
+is inherited from its value-preserving realization in the modeled finite-area
+comparison class. -/
+theorem integrableOn_carrier :
+    IntegrableOn (StripDensity lam) profile.carrier := by
+  simpa only [profile.asFinitePerimeterRegion_carrier] using
+    profile.asFinitePerimeterRegion.finite_weighted_area
+
+
 end CanonicalTypeIVProfile
 
 
@@ -538,14 +565,37 @@ namespace SourcePerimeterSemantics
 
 variable {lam : ℝ} (source : SourcePerimeterSemantics lam)
 
-/-- Source minimization among every source-finite equal-area carrier. -/
-def IsMinimizer (carrier : Set PlanePoint) : Prop :=
+/-- Source admissibility from Cañete--Miranda--Vittone, Section 2 (printed
+pages 2--3): finite weighted area together with the selected source perimeter
+domain.  For `relaxedSourceSemantics`, that domain also requires null
+measurability and genuinely finite extended perimeter.  Keeping area
+integrability explicit prevents the real-valued `WeightedArea` integral from
+silently representing a non-integrable carrier by its fallback value. -/
+def IsAdmissible (carrier : Set PlanePoint) : Prop :=
   source.IsFinitePerimeter carrier ∧
+    IntegrableOn (StripDensity lam) carrier
+
+/-- Source minimization among every source-admissible equal-area carrier. -/
+def IsMinimizer (carrier : Set PlanePoint) : Prop :=
+  source.IsAdmissible carrier ∧
     ∀ competitor : Set PlanePoint,
-      source.IsFinitePerimeter competitor →
+      source.IsAdmissible competitor →
       _root_.WeightedArea lam competitor =
         _root_.WeightedArea lam carrier →
       source.perimeter carrier ≤ source.perimeter competitor
+
+/-- Source perimeter finiteness is part of source admissibility. -/
+theorem isFinitePerimeter_of_isAdmissible {carrier : Set PlanePoint}
+    (hcarrier : source.IsAdmissible carrier) :
+    source.IsFinitePerimeter carrier :=
+  hcarrier.1
+
+/-- Weighted-area finiteness is part of source admissibility. -/
+theorem integrableOn_of_isAdmissible {carrier : Set PlanePoint}
+    (hcarrier : source.IsAdmissible carrier) :
+    IntegrableOn (StripDensity lam) carrier :=
+  hcarrier.2
+
 
 /-- Compatibility needed between source reduced-boundary semantics and the
 modeled complete-frontier comparison class. -/
@@ -554,25 +604,27 @@ structure CompatibleWithModel (profile : CanonicalTypeIVProfile lam) : Prop wher
     source.perimeter profile.carrier =
       _root_.WeightedPerimeter lam (FrontierMeasure profile.carrier)
   model_covered : ∀ competitor : AdmissibleCompetitor lam,
-    source.IsFinitePerimeter competitor.carrier ∧
+    source.IsAdmissible competitor.carrier ∧
       source.perimeter competitor.carrier ≤ competitor.WeightedPerimeter
 
 /-- A witness that an arbitrary source representative has been normalized to
-the canonical closed `E₄` carrier without changing source area or perimeter. -/
+the canonical closed `E₄` carrier without changing source area or perimeter.
+The normalized carrier is source-admissible, including finite weighted area. -/
 structure NormalizationWitness (sourceCarrier : Set PlanePoint)
     (profile : CanonicalTypeIVProfile lam) : Prop where
-  normalized_finite : source.IsFinitePerimeter profile.carrier
+  normalized_admissible : source.IsAdmissible profile.carrier
   weightedArea_eq :
     _root_.WeightedArea lam sourceCarrier =
       _root_.WeightedArea lam profile.carrier
   perimeter_eq :
     source.perimeter sourceCarrier = source.perimeter profile.carrier
 
+
 /-- Horizontal congruence supplies area and complete-frontier perimeter
 invariance.  The only remaining source-side premise is local agreement between
 the source perimeter and complete-frontier perimeter on the arbitrary
-representative; compatibility supplies that agreement on the canonical
-profile and its source-finiteness. -/
+representative; compatibility supplies that agreement and full source
+admissibility on the canonical profile. -/
 theorem normalizationWitness_of_horizontalCongruence
     {sourceCarrier : Set PlanePoint}
     (profile : CanonicalTypeIVProfile lam)
@@ -610,10 +662,10 @@ theorem isMinimizer_of_normalizationWitness
     (hsource : source.IsMinimizer sourceCarrier)
     (normalization : source.NormalizationWitness sourceCarrier profile) :
     source.IsMinimizer profile.carrier := by
-  refine ⟨normalization.normalized_finite, ?_⟩
-  intro competitor hfinite harea
+  refine ⟨normalization.normalized_admissible, ?_⟩
+  intro competitor hadmissible harea
   rw [← normalization.perimeter_eq]
-  exact hsource.2 competitor hfinite
+  exact hsource.2 competitor hadmissible
     (harea.trans normalization.weightedArea_eq.symm)
 
 /-- A normalized source minimizer becomes a minimizer in the modeled
@@ -704,8 +756,11 @@ theorem compatibleWithModel :
   · rfl
   · intro competitor
     constructor
-    · exact ⟨competitor.toFinitePerimeterRegion,
-        competitor.toFinitePerimeterRegion_carrier⟩
+    · exact ⟨⟨competitor.toFinitePerimeterRegion,
+          competitor.toFinitePerimeterRegion_carrier⟩,
+        by
+          simpa only [competitor.toFinitePerimeterRegion_carrier] using
+            competitor.toFinitePerimeterRegion.finite_weighted_area⟩
     · rfl
 
 /-- In canonical complete-frontier semantics, horizontal congruence alone

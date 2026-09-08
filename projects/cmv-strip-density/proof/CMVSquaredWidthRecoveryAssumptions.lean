@@ -1,0 +1,25 @@
+import CMVSquaredWidthRecovery
+
+#print axioms CMVRelaxation.isSmoothDomain_squaredWidth
+#print axioms CMVRelaxation.FrozenSquaredRecovery.contDiff_q
+#print axioms CMVRelaxation.FrozenSquaredRecovery.q_eq_side
+#print axioms CMVRelaxation.FrozenSquaredRecovery.q_eq_cap
+#print axioms CMVRelaxation.FrozenSquaredRecovery.q_eq_zero_iff
+#print axioms CMVRelaxation.FrozenSquaredRecovery.isSmoothDomain_domain
+#print axioms CMVRelaxation.FrozenSquaredRecovery.q_pos_iff_abs_lt_five_halves
+#print axioms CMVRelaxation.FrozenSquaredRecovery.domain_has_point_at_height_iff
+#print axioms CMVRelaxation.FrozenSquaredRecovery.sideSquare_one
+#print axioms CMVRelaxation.FrozenSquaredRecovery.sideSquare_neg_one
+#print axioms CMVRelaxation.FrozenSquaredRecovery.capSquare_one
+#print axioms CMVRelaxation.FrozenSquaredRecovery.capSquare_neg_one
+#print axioms CMVRelaxation.FrozenSquaredRecovery.junction_value_cancellation
+#print axioms CMVRelaxation.FrozenSquaredRecovery.frontier_domain_subset_boundaryParams
+#print axioms CMVRelaxation.FrozenSquaredRecovery.exists_uniform_junction_gap_quotient_bound
+#print axioms CMVRelaxation.FrozenSquaredRecovery.exists_uniform_junction_lipschitz
+#print axioms CMVRelaxation.FrozenSquaredRecovery.realized_frontier_subset_recoveryCover
+#print axioms CMVRelaxation.FrozenSquaredRecovery.smoothCost_domain_uniformly_bounded
+#print axioms CMVRelaxation.FrozenCanonicalCap.mem_profile_iff_sq_le_targetQ
+#print axioms CMVRelaxation.FrozenCanonicalCap.continuous_targetQ
+#print axioms CMVRelaxation.FrozenCanonicalCap.carrier_ae_eq_openTarget
+#print axioms CMVRelaxation.FrozenCanonicalCap.characteristicDistance_domain_profile_le
+#print axioms CMVRelaxation.FrozenCanonicalCap.recoverySequence_converges

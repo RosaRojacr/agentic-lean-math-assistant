@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "strategy_id": "strategy-00035",
+  "milestone_index": 1,
+  "milestone_name": "offset-2 semantic transport gate",
+  "result": "complete",
+  "module": "proof/CMVRelaxation.lean",
+  "module_sha256": "f4620367f1030101723cdd3a5dbdd2617e3f5c3d052fbfe957a23ca678ddacf5",
+  "lakefile_sha256": "f39502dabd668a568394b0f5413bb52d22f728065a820447f90d8bf78792955f",
+  "assumption_audit_sha256": "8bd8bd971e3f1b40aabeb30179f308859ae48c57bcaab100d82bce5e33e77de9",
+  "source_definition": {
+    "path": "references/Canete2010.pdf",
+    "locator": "Section 2, printed pages 2-3; extracted lines 35-45",
+    "claim": "weighted perimeter is the liminf envelope of smooth-set boundary costs under global characteristic-function L1 convergence"
+  },
+  "checked_contract": {
+    "smooth_domain": "CMVRelaxation.IsSmoothDomain: open domains with local one-sided C-infinity defining functions and a nonzero derivative at every frontier point",
+    "extended_distance": "CMVRelaxation.characteristicDistance_eq_eLpNorm: exact ENNReal symmetric-difference/characteristic-L1 identity",
+    "transport": "CMVRelaxation.SmoothSequence.translationEquiv with translate_neg_translate and translate_translate_neg",
+    "global_convergence": "CMVRelaxation.SmoothSequence.convergesTo_translate_iff",
+    "termwise_extended_cost": "CMVRelaxation.smoothCost_horizontalTranslation and CMVRelaxation.SmoothSequence.cost_translate",
+    "relaxation": "CMVRelaxation.relaxedPerimeter: ENNReal sInf of ENNReal liminf costs",
+    "empty_family": "CMVRelaxation.relaxedPerimeter_eq_top_of_no_admissible",
+    "nontrivial_witness": "CMVRelaxation.volume_unitDisk_pos, smoothCost_unitDisk_lt_top, unitDiskConstantSequence_converges, and relaxedPerimeter_unitDisk_lt_top"
+  },
+  "verification": [
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake build CMVRelaxationTransport",
+      "exit_code": 0,
+      "wall_seconds": 6.76,
+      "result": "Build completed successfully (8703 jobs)."
+    },
+    {
+      "cwd": "proof",
+      "command": "/home/rosa/.elan/bin/lake env lean _Assumptions.lean",
+      "exit_code": 0,
+      "wall_seconds": 5.70,
+      "result": "All audited CMVRelaxation declarations use only propext, Classical.choice, and Quot.sound."
+    },
+    {
+      "tool": "functions.grep",
+      "path": "proof/CMVRelaxation.lean",
+      "pattern": "\\b(sorry|admit|native_decide)\\b|^\\s*axiom\\b",
+      "result": "No matches found"
+    }
+  ],
+  "audited_declarations": [
+    "CMVRelaxation.IsSmoothDomain.horizontalTranslation_image",
+    "CMVRelaxation.characteristicDistance_eq_eLpNorm",
+    "CMVRelaxation.characteristicDistance_horizontalTranslation",
+    "CMVRelaxation.smoothCost_horizontalTranslation",
+    "CMVRelaxation.SmoothSequence.translate_neg_translate",
+    "CMVRelaxation.SmoothSequence.translate_translate_neg",
+    "CMVRelaxation.SmoothSequence.cost_translate",
+    "CMVRelaxation.SmoothSequence.convergesTo_translate_iff",
+    "CMVRelaxation.relaxedPerimeter_eq_top_of_no_admissible",
+    "CMVRelaxation.isSmoothDomain_unitDisk",
+    "CMVRelaxation.volume_unitDisk_pos",
+    "CMVRelaxation.unitDisk_frontier_h1_ne_top",
+    "CMVRelaxation.smoothCost_unitDisk_lt_top",
+    "CMVRelaxation.unitDiskConstantSequence_converges",
+    "CMVRelaxation.relaxedPerimeter_unitDisk_lt_top"
+  ],
+  "scope_boundary": "No theorem yet asserts horizontal-translation or almost-everywhere representative invariance of relaxedPerimeter, and no SourcePerimeterSemantics adapter is defined.",
+  "next_action": "Prove exact relaxedPerimeter horizontal-translation invariance, including infinite values, then almost-everywhere representative invariance and the finite real-valued source adapter."
+}

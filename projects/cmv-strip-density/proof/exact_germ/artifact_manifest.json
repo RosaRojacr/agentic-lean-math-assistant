@@ -1,0 +1,53 @@
+{
+  "schema": "cmv-exact-height-germ-artifact-manifest-v1",
+  "stage": "exact_germ_pilot",
+  "strategy_lane": "exact_height_germ",
+  "source_sha256": "0ee9b4787aa3c09f9a4ed05fb66563a820cd13596af401b76e7900e597711230",
+  "retained_calculus_sha256": "61f8ca964996b090b62b61cebd070339448103860d1637962ce3940aa954d150",
+  "commands": [
+    {
+      "command": "cd agents/analytic/exact_germ_pilot && python3 exact_germ_checker.py --output checker_receipt.json",
+      "result": "PASS",
+      "python": "3.14.5",
+      "proof_decisions": "fractions.Fraction Laurent polynomials"
+    },
+    {
+      "command": "cd agents/analytic/exact_germ_pilot && python3 semantic_audit.py",
+      "result": "PASS",
+      "python": "3.14.5",
+      "mpmath": "1.4.1",
+      "role": "observational semantic cross-check only"
+    },
+    {
+      "command": "python3 proof/verify_calculus.py",
+      "result": "PASS"
+    }
+  ],
+  "claims": {
+    "fold_jacobian": "1",
+    "equal_area_jacobian_determinant": "3*pi",
+    "selected_base_root": "r=2",
+    "descending_guard": "K3 -> -3*pi/2",
+    "gap_coefficients_x0_through_x5": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "-3*pi/4",
+      "-7*pi^2/8"
+    ],
+    "height_normalized_limit": "Gamma/u^2 -> -3*pi"
+  },
+  "artifacts": {
+    "exact_germ_checker.py": "6a3ad148ae367e47db2b068090c11ec2c18b5fca521760dae73a12b23118ce42",
+    "mutation_fixtures.json": "559ee37196beaa9de1adc820bf64cc3d26533d6188f485335c6c8c892b5d544c",
+    "checker_receipt.json": "706d07c8523f6aa2f9c69ec23cd5ed6d5ef0e4f81fb637452269d3dff3b8799a",
+    "semantic_audit.py": "b65215dc1df69bc00837bb554905b8a647fae0c4a3e3436d1be6b25ee9f1c3d6",
+    "report.md": "b2f99101eaeea96a7dce5292957e7b916988e1ae07c40a159d28c50ee5441b87"
+  },
+  "limitations": [
+    "No explicit rational epsilon is certified.",
+    "No interval-Newton branch-isolation certificate is produced.",
+    "No rational overlap, global scalar composition, Lean declaration, or geometric source-profile bridge is claimed."
+  ]
+}

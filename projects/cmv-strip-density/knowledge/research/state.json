@@ -1,0 +1,37 @@
+{
+  "decision": {
+    "decision": "skip",
+    "existing_coverage": [
+      "references/Canete2010.pdf and references/references.bib retain the primary CMV publication; the prior research state records precise locators through Conjecture 3.12, equations (26)–(27), Theorem 3.16, and Remark 3.17.",
+      "knowledge/source_analysis/20260824T205221Z-b63aa6-source_carrier_producer.json retains the audited regular type-(iii)/(iv) coordinate carriers, strict 0<h<1 domain, branch partition, minor-arc structure, orientation conventions, and explicit documentary and source-to-model limitations.",
+      "knowledge/analytic/20260824T205221Z-b63aa6-scalar_formula_producer.json retains audited branch-explicit weighted-area and perimeter formulas, principal inverse-trigonometric branches, signs, transitions, and the corrected h=1/2 degeneration interpretation.",
+      "knowledge/analytic/20260824T091317Z-1cbb51-classification_bridge.json retains the endpoint-corrected conditional classification implication and identifies universal normalization, reduced-boundary/minimality transfer, and the formal type-(iii) carrier as unresolved proof obligations rather than missing-publication questions.",
+      "knowledge/research/state.json records a prior skip for the unchanged retained publication inventory and identifies the current remaining work as formalization, certificate composition, and source-to-model verification.",
+      "The current problem statement identifies retained exact-rational coverage on [51/50,9/7], overlapping compact coverage, and an existing modeled exclusion above 1.2581840884; the requested cutoff therefore depends on sound Lean reconstruction and interval splicing, not new publication discovery."
+    ],
+    "reason": "No concrete publication gap could materially change the current decomposition or proof strategy. The retained CMV paper, bibliography, and accepted audited analyses already provide the definitions, source locators, classification inputs, regular type-(iii)/(iv) coordinate models, parameter domains, branch and orientation conventions, formulas, equality and degeneration cases, and known source-to-model limitations. The new milestone is narrower than the full conjecture: formalize the retained exact-rational certificates and compose them with the existing Lean exclusion theorem to obtain the modeled cutoff at 51/50. That is a proof-engineering and verification obligation, not a literature-research obligation. The prior skip remains applicable despite the changed tactic directive because neither the publication inventory nor the mathematical source prerequisites changed.",
+    "reconsider_if": [
+      "An independent audit of references/Canete2010.pdf reveals an unrecorded branch, endpoint, equality case, orientation convention, parameter restriction, or classification hypothesis relevant to the 51/50 theorem.",
+      "Formalizing the rational-certificate contract or constructing the equal-area type-(iii) competitor requires an external theorem cited by CMV that cannot be reconstructed from retained material.",
+      "The campaign expands to require the post-2010 publication status of Conjecture 3.12 or comparison with later literature.",
+      "The problem, retained references, accepted source analyses, or source-to-model obligations materially change."
+    ],
+    "required_queries": []
+  },
+  "problem_sha256": "6c438ed178d7b20b8ec98f76d5817a02d8b5bc525f7551facc53e97f764e5a0e",
+  "references": [
+    {
+      "path": "Canete2010.pdf",
+      "sha256": "0ee9b4787aa3c09f9a4ed05fb66563a820cd13596af401b76e7900e597711230",
+      "size": 495757
+    },
+    {
+      "path": "references.bib",
+      "sha256": "ddba04c40ee7bdafc8db56e52f8823eb9e76573cb072656caf4e5ca35234643a",
+      "size": 416
+    }
+  ],
+  "result": null,
+  "schema_version": 1,
+  "updated_at": "2026-09-01T22:48:33Z"
+}

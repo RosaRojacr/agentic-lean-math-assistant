@@ -498,8 +498,7 @@ class ProgressMetricSpec:
 
 @dataclass(frozen=True, slots=True)
 class AutorunSpec:
-    worthwhile_likelihood_threshold: int
-    strategy_horizon_rounds: int
+    max_strategy_executions: int
     adjudication_minutes: int
     progress_metrics: tuple[ProgressMetricSpec, ...]
 
@@ -510,12 +509,26 @@ class AutorunSpec:
             "autorun",
             set(),
             {
-                "worthwhile_likelihood_threshold",
+                "max_strategy_executions",
                 "strategy_horizon_rounds",
+                "worthwhile_likelihood_threshold",
                 "adjudication_minutes",
                 "progress_metrics",
             },
         )
+        if "worthwhile_likelihood_threshold" in table:
+            raise ConfigurationError(
+                "autorun.worthwhile_likelihood_threshold is no longer supported; "
+                "delete it because strategy selection belongs to the strategy governor"
+            )
+        if (
+            "max_strategy_executions" in table
+            and "strategy_horizon_rounds" in table
+        ):
+            raise ConfigurationError(
+                "autorun.max_strategy_executions and legacy "
+                "autorun.strategy_horizon_rounds cannot both be specified"
+            )
         raw_metrics = table.get("progress_metrics", [])
         if not isinstance(raw_metrics, list):
             raise ConfigurationError("autorun.progress_metrics must be an array")
@@ -526,17 +539,15 @@ class AutorunSpec:
         metric_ids = [metric.metric_id for metric in metrics]
         if len(metric_ids) != len(set(metric_ids)):
             raise ConfigurationError("autorun progress metric IDs must be unique")
+        max_strategy_executions = table.get(
+            "max_strategy_executions",
+            table.get("strategy_horizon_rounds", 100),
+        )
         return cls(
-            worthwhile_likelihood_threshold=_integer(
-                table.get("worthwhile_likelihood_threshold", 30),
-                "autorun.worthwhile_likelihood_threshold",
+            max_strategy_executions=_integer(
+                max_strategy_executions,
+                "autorun.max_strategy_executions",
                 1,
-                99,
-            ),
-            strategy_horizon_rounds=_integer(
-                table.get("strategy_horizon_rounds", 12),
-                "autorun.strategy_horizon_rounds",
-                2,
                 100,
             ),
             adjudication_minutes=_integer(

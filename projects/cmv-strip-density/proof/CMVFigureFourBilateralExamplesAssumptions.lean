@@ -1,0 +1,21 @@
+import CMVFigureFourBilateralExamples
+
+namespace CMVFigureFour.Examples
+
+#print axioms strictBilateralSource
+#print axioms endpointBilateralSource
+#print axioms strictBilateralSource_sourceRadius
+#print axioms endpointBilateralSource_sourceRadius
+#print axioms strictBilateralSource_derivedRadius
+#print axioms endpointBilateralSource_derivedRadius
+#print axioms endpointBilateralSource_satisfiesClosedSnell
+#print axioms strictBilateralSourceAt
+#print axioms endpointBilateralSourceAt
+#print axioms strictBilateralSourceAt_sourceRadius
+#print axioms endpointBilateralSourceAt_sourceRadius
+#print axioms strictBilateralSourceAt_symmetryAxisX
+#print axioms endpointBilateralSourceAt_symmetryAxisX
+#print axioms strictBilateralSourceAt_rightStripCenter_reflection
+#print axioms endpointBilateralSourceAt_rightStripCenter_reflection
+
+end CMVFigureFour.Examples
