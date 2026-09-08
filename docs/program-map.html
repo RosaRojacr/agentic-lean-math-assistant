@@ -57,7 +57,6 @@
     }
 
     .panel-kicker,
-    .eyebrow,
     .tag,
     .flow-label,
     .legend-label,
@@ -70,7 +69,6 @@
       text-transform: uppercase;
     }
 
-    .eyebrow { font-size: 16px; fill: var(--sol); }
     .hero-title { font: 600 40px/1.08 "Source Serif 4", "Charis SIL", serif; fill: var(--controller); }
     .hero-deck { font-size: 16px; fill: var(--terra); }
     .panel-kicker { font-size: 12px; fill: var(--operator); }
@@ -116,11 +114,12 @@
     .connector.astra { stroke: var(--astra); }
     .connector.terra { stroke: var(--terra); }
     .connector.dashed { stroke: var(--operator); stroke-width: 1.8; stroke-dasharray: 8 7; }
+    .bridge-mask { fill: none; stroke: var(--paper); stroke-width: 16; stroke-linecap: round; }
 
     .label-mask { fill: var(--paper); }
-    .flow-label { font-size: 12px; fill: var(--terra); }
-    .flow-label.compact { font-size: 10px; letter-spacing: .06em; }
-    .flow-label.micro { font-size: 8px; letter-spacing: .03em; }
+    .flow-label { font-size: 10px; fill: var(--terra); }
+    .flow-label.compact { font-size: 8px; letter-spacing: .06em; }
+    .flow-label.micro { font-size: 8px; letter-spacing: .02em; }
     .flow-label.controller { fill: var(--controller); }
     .flow-label.sol { fill: var(--sol); }
     .flow-label.astra { fill: var(--astra); }
@@ -129,7 +128,7 @@
     .role-copy { font-size: 14px; fill: var(--terra); }
     .band-label { font-size: 11px; fill: var(--controller); }
     .band-copy { font-size: 13px; fill: var(--terra); }
-    .segment-label { font-size: 11px; fill: var(--controller); letter-spacing: .05em; }
+    .segment-label { font-size: 10px; fill: var(--controller); letter-spacing: .03em; }
 
     .callout-box { fill: none; stroke: var(--rule); stroke-width: 1.2; }
     .callout-accent { stroke: var(--astra); stroke-width: 3; }
@@ -184,13 +183,12 @@
       <rect width="1280" height="2660" fill="#ffffff"/>
 
       <!-- README front matter -->
-      <text class="eyebrow" x="64" y="56">PROGRAM MAP: EVIDENCE-FIRST FORMAL RESEARCH</text>
-      <text class="hero-title" x="64" y="112">Agentic Lean Math Assistant Map</text>
-      <text class="hero-deck" x="64" y="156">
+      <text class="hero-title" x="64" y="64">Agentic Lean Math Assistant Map</text>
+      <text class="hero-deck" x="64" y="108">
         <tspan x="64" dy="0">Agentic Lean Math Assistant routes model work through deterministic, replayable gates.</tspan>
-        <tspan x="64" dy="28">Models propose, execute, and review; the controller owns state transitions, resource policy, evidence integrity, and target closure.</tspan>
+        <tspan x="64" dy="28">Models propose, execute, and review; the controller is in charge of state transitions, resource policy, evidence integrity, and target closure.</tspan>
       </text>
-      <line x1="40" y1="208" x2="1240" y2="208" stroke="#c8d5df" stroke-width="1.2"/>
+      <line x1="40" y1="184" x2="1240" y2="184" stroke="#c8d5df" stroke-width="1.2"/>
 
       <!-- Panel boundaries -->
       <rect class="panel" x="40" y="232" width="1200" height="1100" rx="8"/>
@@ -201,66 +199,93 @@
       <text class="panel-title" x="64" y="308">A. Governed research lifecycle</text>
       <text class="panel-subtitle" x="64" y="340">A fixed project contract becomes a bounded campaign with retained evidence, then ends in a verified or explicitly unresolved outcome.</text>
 
-      <!-- PANEL A CONNECTORS: arrows and labels precede nodes -->
+      <!-- PANEL A CONNECTOR PATHS: dedicated corridors paint before labels and nodes -->
       <g role="group" aria-label="Operator Contract to Sol Research and Portfolio Planning: freeze inputs after the manifest and project inputs parse; hashes and snapshots then become authoritative.">
-        <path class="connector" d="M316 448 H360" marker-end="url(#arrow-default)"/>
-        <rect class="label-mask" x="320" y="400" width="36" height="32" rx="4"/>
-        <text class="flow-label micro" x="338" y="411" text-anchor="middle"><tspan x="338">FREEZE</tspan><tspan x="338" dy="10">INPUTS</tspan></text>
+        <path class="connector" d="M316 448 H368" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Sol Planning to Operator Source Checkpoint: publication research found a critical unavailable source under checkpoint policy.">
-        <path class="connector dashed" d="M480 540 V580" marker-end="url(#arrow-muted)"/>
-        <rect class="label-mask" x="320" y="548" width="144" height="20" rx="4"/>
-        <text class="flow-label" x="392" y="563" text-anchor="middle">SOURCE CHECKPOINT</text>
+        <path class="connector dashed" d="M480 548 V572" marker-end="url(#arrow-muted)"/>
       </g>
       <g role="group" aria-label="Operator Source Checkpoint to Sol Planning: resume only when the operator supplies the source or explicitly records a waiver.">
-        <path class="connector dashed" d="M668 580 V540" marker-end="url(#arrow-muted)"/>
-        <rect class="label-mask" x="684" y="548" width="132" height="20" rx="4"/>
-        <text class="flow-label" x="750" y="563" text-anchor="middle">RESUME / WAIVE</text>
+        <path class="connector dashed" d="M668 572 V548" marker-end="url(#arrow-muted)"/>
       </g>
       <g role="group" aria-label="Sol Planning to Controller Plan and Policy Gate: emit plan JSON after retained research completes or research is skipped.">
-        <path class="connector" d="M788 420 H840" marker-end="url(#arrow-default)"/>
-        <rect class="label-mask" x="792" y="384" width="44" height="20" rx="4"/>
-        <text class="flow-label micro" x="814" y="397" text-anchor="middle">PLAN JSON</text>
+        <path class="connector" d="M788 420 H856" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Controller Plan and Policy Gate to Sol Planning: bounded repair after malformed plan or policy violation.">
-        <path class="connector dashed" d="M840 496 H788" marker-end="url(#arrow-muted)"/>
-        <rect class="label-mask" x="796" y="460" width="36" height="20" rx="4"/>
-        <text class="flow-label compact" x="814" y="475" text-anchor="middle">REPAIR</text>
+        <path class="connector dashed" d="M856 496 H788" marker-end="url(#arrow-muted)"/>
       </g>
       <g role="group" aria-label="Controller Plan and Policy Gate to Controller Campaign Runtime: approve the DAG only after every controller policy check passes.">
-        <path class="connector controller" d="M1000 540 V720 Q1000 736 984 736 H244 Q228 736 228 752 V760" marker-end="url(#arrow-controller)"/>
-        <rect class="label-mask" x="852" y="688" width="124" height="20" rx="4"/>
-        <text class="flow-label controller" x="914" y="703" text-anchor="middle">APPROVED DAG</text>
+        <path class="connector controller" d="M1000 540 V716 Q1000 732 984 732 H352 Q336 732 336 748 V760" marker-end="url(#arrow-controller)"/>
       </g>
       <g role="group" aria-label="Controller Campaign Runtime to Reasoning-Class Role Router: dispatch by reasoning class only when dependencies and invocation budgets permit.">
-        <path class="connector" d="M392 820 H432" marker-end="url(#arrow-default)"/>
-        <rect class="label-mask" x="394" y="772" width="36" height="36" rx="4"/>
-        <text class="flow-label micro" x="412" y="783" text-anchor="middle"><tspan x="412">DISPATCH</tspan><tspan x="412" dy="12">BY CLASS</tspan></text>
+        <path class="connector" d="M392 820 H464" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Reasoning-Class Role Router to Controller Evidence and Truth Gates: retain handoffs and receipts; agent claims enter as evidence, never truth.">
-        <path class="connector" d="M844 820 H884" marker-end="url(#arrow-default)"/>
-        <rect class="label-mask" x="846" y="764" width="36" height="44" rx="4"/>
-        <text class="flow-label micro" x="864" y="775" text-anchor="middle"><tspan x="864">HANDOFF</tspan><tspan x="864" dy="12">+</tspan><tspan x="864" dy="12">RECEIPTS</tspan></text>
+        <path class="connector" d="M828 820 H904" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Controller Evidence and Truth Gates to Controller Campaign Runtime: retry, replan, or block under configured failure policy and hard bounds.">
-        <path class="connector dashed" d="M960 744 V732 Q960 716 944 716 H172 Q156 716 156 732 V760" marker-end="url(#arrow-muted)"/>
-        <rect class="label-mask" x="160" y="680" width="180" height="20" rx="4"/>
-        <text class="flow-label" x="250" y="695" text-anchor="middle">RETRY / REPLAN / BLOCK</text>
+        <path class="bridge-mask" d="M960 740 V724"/>
+        <path class="connector dashed" d="M960 744 V736 Q960 720 944 720 H172 Q156 720 156 736 V760" marker-end="url(#arrow-muted)"/>
       </g>
       <g role="group" aria-label="Controller Evidence and Truth Gates to Assessment and Autonomous Success Gate: forward an auditable retained gate record when the campaign is assessable.">
-        <path class="connector controller" d="M1036 956 V972 Q1036 988 1020 988 H636 Q620 988 620 1004 V1024" marker-end="url(#arrow-controller)"/>
-        <rect class="label-mask" x="720" y="960" width="200" height="20" rx="4"/>
-        <text class="flow-label controller" x="820" y="975" text-anchor="middle">RETAINED GATE RECORD</text>
+        <path class="connector controller" d="M1036 956 V964 Q1036 980 1020 980 H636 Q620 980 620 996 V1024" marker-end="url(#arrow-controller)"/>
       </g>
       <g role="group" aria-label="Assessment and Autonomous Success Gate to Verified Outcome or Controlled Exit: route only after controller validation; a model-written solved claim is insufficient.">
-        <path class="connector" d="M788 1104 H836" marker-end="url(#arrow-default)"/>
-        <rect class="label-mask" x="792" y="1048" width="40" height="44" rx="4"/>
-        <text class="flow-label micro" x="812" y="1059" text-anchor="middle"><tspan x="812">ROUTE BY</tspan><tspan x="812" dy="12">VERIFIED</tspan><tspan x="812" dy="12">STATUS</tspan></text>
+        <path class="connector" d="M772 1104 H844" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Verified Outcome or Controlled Exit to Sol Planning: create a successor contract only for an unresolved result with a valid optimizer directive, unchanged problem and success hash, remaining budgets, and operator selection or configured AFK timeout.">
-        <path class="connector dashed" d="M1208 1128 H1224 V360 H712 V376" marker-end="url(#arrow-muted)"/>
-        <rect class="label-mask" x="1040" y="612" width="164" height="20" rx="4"/>
-        <text class="flow-label" x="1122" y="627" text-anchor="middle">SUCCESSOR CONTRACT</text>
+        <path class="connector dashed" d="M1208 1128 H1216 Q1224 1128 1224 1120 V368 Q1224 360 1216 360 H720 Q712 360 712 368 V376" marker-end="url(#arrow-muted)"/>
+      </g>
+
+      <!-- PANEL A CONNECTOR LABELS: opaque masks paint after every route -->
+      <g aria-hidden="true">
+<rect class="label-mask" x="316" y="396" width="44" height="36" rx="4"/>
+        <text class="flow-label micro" x="338" y="411" text-anchor="middle"><tspan x="338">FREEZE</tspan><tspan x="338" dy="10">INPUTS</tspan></text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="280" y="548" width="168" height="24" rx="4"/>
+        <text class="flow-label" x="364" y="564" text-anchor="middle">SOURCE CHECKPOINT</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="700" y="548" width="128" height="24" rx="4"/>
+        <text class="flow-label" x="764" y="564" text-anchor="middle">RESUME / WAIVE</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="792" y="380" width="60" height="24" rx="4"/>
+        <text class="flow-label micro" x="822" y="396" text-anchor="middle">PLAN JSON</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="796" y="456" width="48" height="24" rx="4"/>
+        <text class="flow-label compact" x="820" y="472" text-anchor="middle">REPAIR</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="1024" y="648" width="132" height="24" rx="4"/>
+        <text class="flow-label controller" x="1092" y="664" text-anchor="middle">APPROVED DAG</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="400" y="756" width="56" height="44" rx="4"/>
+        <text class="flow-label micro" x="428" y="775" text-anchor="middle"><tspan x="428">DISPATCH</tspan><tspan x="428" dy="12">BY CLASS</tspan></text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="836" y="748" width="60" height="52" rx="4"/>
+        <text class="flow-label micro" x="866" y="767" text-anchor="middle"><tspan x="866">HANDOFF</tspan><tspan x="866" dy="12">+</tspan><tspan x="866" dy="12">RECEIPTS</tspan></text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="800" y="684" width="176" height="24" rx="4"/>
+        <text class="flow-label" x="888" y="700" text-anchor="middle">RETRY / REPLAN / BLOCK</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="664" y="992" width="240" height="24" rx="4"/>
+        <text class="flow-label controller" x="784" y="1008" text-anchor="middle">RETAINED GATE RECORD</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="780" y="1036" width="56" height="52" rx="4"/>
+        <text class="flow-label micro" x="808" y="1052" text-anchor="middle"><tspan x="808">ROUTE BY</tspan><tspan x="808" dy="12">VERIFIED</tspan><tspan x="808" dy="12">STATUS</tspan></text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="992" y="604" width="200" height="24" rx="4"/>
+        <text class="flow-label" x="1092" y="620" text-anchor="middle">SUCCESSOR CONTRACT</text>
       </g>
 
       <!-- PANEL A NODES -->
@@ -278,8 +303,8 @@
       </g>
 
       <g role="group" aria-label="A2 Sol Research and Portfolio Planning">
-        <rect class="node-mask" x="360" y="376" width="428" height="164" rx="8"/>
-        <rect class="node-box sol-stroke" x="360" y="376" width="428" height="164" rx="8"/>
+        <rect class="node-mask" x="368" y="376" width="420" height="164" rx="8"/>
+        <rect class="node-box sol-stroke" x="368" y="376" width="420" height="164" rx="8"/>
         <rect class="tag-box sol-stroke" x="376" y="392" width="44" height="20" rx="4"/>
         <text class="tag" x="398" y="406" text-anchor="middle" fill="#0b6483">SOL</text>
         <text class="node-title" x="376" y="444">Sol: Research &amp; Portfolio Planning</text>
@@ -298,24 +323,24 @@
         <text class="tag" x="428" y="610" text-anchor="middle" fill="#64748b">CHECKPOINT</text>
         <text class="node-title" x="376" y="640">Operator Source Checkpoint</text>
         <text class="node-copy" x="376" y="664">
-          <tspan x="376" dy="0">supply an inaccessible critical source,</tspan>
-          <tspan x="376" dy="20">explicitly waive it, or stop; resume remains durable</tspan>
-          <tspan x="376" dy="20">waiver is never implicit</tspan>
+          <tspan x="376" dy="0">Pauses when a required source cannot be accessed.</tspan>
+          <tspan x="376" dy="20">The operator may supply it, explicitly waive it,</tspan>
+          <tspan x="376" dy="20">or stop; the decision remains durable after resume.</tspan>
         </text>
       </g>
 
       <g role="group" aria-label="A4 Controller Plan and Policy Gate">
-        <rect class="node-mask" x="840" y="376" width="368" height="164" rx="8"/>
-        <rect class="node-box controller-stroke" x="840" y="376" width="368" height="164" rx="8"/>
-        <rect class="gate-inner controller-stroke" x="848" y="384" width="352" height="148" rx="6"/>
-        <rect class="tag-box controller-stroke" x="856" y="392" width="52" height="20" rx="4"/>
-        <text class="tag" x="882" y="406" text-anchor="middle" fill="#123652">GATE</text>
-        <text class="node-title" x="856" y="444">Controller Plan &amp; Policy Gate</text>
-        <text class="node-copy" x="856" y="468">
-          <tspan x="856" dy="0">Checks the plan's schema and dependencies.</tspan>
-          <tspan x="856" dy="20">Enforces budgets and capability limits.</tspan>
-          <tspan x="856" dy="20">Admits only plans that satisfy policy.</tspan>
-          <tspan x="856" dy="20">Returns rejected plans for bounded repair.</tspan>
+        <rect class="node-mask" x="856" y="376" width="352" height="164" rx="8"/>
+        <rect class="node-box controller-stroke" x="856" y="376" width="352" height="164" rx="8"/>
+        <rect class="gate-inner controller-stroke" x="864" y="384" width="336" height="148" rx="6"/>
+        <rect class="tag-box controller-stroke" x="872" y="392" width="52" height="20" rx="4"/>
+        <text class="tag" x="898" y="406" text-anchor="middle" fill="#123652">GATE</text>
+        <text class="node-title" x="872" y="444">Controller Plan &amp; Policy Gate</text>
+        <text class="node-copy" x="872" y="468">
+          <tspan x="872" dy="0">Checks the plan's schema and dependencies.</tspan>
+          <tspan x="872" dy="20">Enforces budgets and capability limits.</tspan>
+          <tspan x="872" dy="20">Admits only plans that satisfy policy.</tspan>
+          <tspan x="872" dy="20">Returns rejected plans for bounded repair.</tspan>
         </text>
       </g>
 
@@ -332,49 +357,49 @@
         </text>
       </g>
 
-      <g role="group" aria-label="A6 Reasoning-Class Role Router. Luna, Sol, Terra, and quota-bound, retained-failure-backed targeted Astra escalation are alternative routes, not a sequence.">
-        <rect class="node-mask" x="432" y="744" width="412" height="212" rx="8"/>
-        <rect class="node-box controller-stroke" x="432" y="744" width="412" height="212" rx="8"/>
-        <rect class="tag-box controller-stroke" x="448" y="760" width="68" height="20" rx="4"/>
-        <text class="tag" x="482" y="774" text-anchor="middle" fill="#123652">ROUTER</text>
-        <text class="node-title" x="448" y="812">Reasoning-Class Role Router</text>
-        <text class="node-copy" x="828" y="776" text-anchor="end">routes are alternatives, not a sequence</text>
-        <line class="divider" x1="448" y1="828" x2="828" y2="828"/>
-        <text class="role-name" x="448" y="852" fill="#17634a">LUNA</text>
-        <text class="role-copy" x="532" y="852">mechanical execution</text>
-        <text class="role-name" x="448" y="880" fill="#0b6483">SOL</text>
-        <text class="role-copy" x="532" y="880">invention</text>
-        <text class="role-name" x="448" y="908" fill="#526078">TERRA</text>
-        <text class="role-copy" x="532" y="908">analysis and audit</text>
-        <text class="role-name" x="448" y="928" fill="#98600f">ASTRA</text>
-        <text class="role-copy" x="532" y="928" font-size="12">may escalate within the manifest quota</text>
-        <text class="role-copy" x="532" y="944" font-size="12">only after retained evidence of failure</text>
+      <g role="group" aria-label="A6 Reasoning-Class Role Router. Luna, Sol, Terra, and Astra may take over tasks done by lower agents; these routes are alternatives, not a sequence.">
+        <rect class="node-mask" x="464" y="744" width="364" height="212" rx="8"/>
+        <rect class="node-box controller-stroke" x="464" y="744" width="364" height="212" rx="8"/>
+        <rect class="tag-box controller-stroke" x="480" y="760" width="68" height="20" rx="4"/>
+        <text class="tag" x="514" y="774" text-anchor="middle" fill="#123652">ROUTER</text>
+        <text class="node-title" x="480" y="812">Reasoning-Class Role Router</text>
+        <text class="node-copy" x="812" y="776" text-anchor="end">routes are alternatives, not a sequence</text>
+        <line class="divider" x1="480" y1="828" x2="812" y2="828"/>
+        <text class="role-name" x="480" y="852" fill="#17634a">LUNA</text>
+        <text class="role-copy" x="564" y="852">mechanical execution</text>
+        <text class="role-name" x="480" y="880" fill="#0b6483">SOL</text>
+        <text class="role-copy" x="564" y="880">invention</text>
+        <text class="role-name" x="480" y="908" fill="#526078">TERRA</text>
+        <text class="role-copy" x="564" y="908">analysis and audit</text>
+        <text class="role-name" x="480" y="928" fill="#98600f">ASTRA</text>
+        <text class="role-copy" x="564" y="928" font-size="12">may take over tasks done</text>
+        <text class="role-copy" x="564" y="944" font-size="12">by lower agents</text>
       </g>
 
       <g role="group" aria-label="A7 Controller Evidence and Truth Gates. Execution, evidence, and truth are separate retained bands.">
-        <rect class="node-mask" x="884" y="744" width="324" height="212" rx="8"/>
-        <rect class="node-box controller-stroke" x="884" y="744" width="324" height="212" rx="8"/>
-        <rect class="gate-inner controller-stroke" x="892" y="752" width="308" height="196" rx="6"/>
-        <rect class="tag-box controller-stroke" x="900" y="760" width="52" height="20" rx="4"/>
-        <text class="tag" x="926" y="774" text-anchor="middle" fill="#123652">GATE</text>
-        <text class="node-title" x="900" y="804">Evidence &amp; Truth Gates</text>
-        <line class="divider" x1="900" y1="816" x2="1192" y2="816"/>
-        <text class="band-label" x="900" y="836">EXECUTION</text>
-        <text class="band-copy" x="984" y="836" font-size="11">Tracks stage transitions and retries.</text>
-        <line class="divider" x1="900" y1="848" x2="1192" y2="848"/>
-        <text class="band-label" x="900" y="864">EVIDENCE</text>
-        <text class="band-copy" x="980" y="864" font-size="11">Keeps immutable inputs and artifacts.</text>
-        <text class="band-copy" x="900" y="880" font-size="11">Retains receipts, digests, and replay data.</text>
-        <line class="divider" x1="900" y1="892" x2="1192" y2="892"/>
-        <text class="band-label" x="900" y="908">TRUTH</text>
-        <text class="band-copy" x="952" y="908" font-size="11">Records claims, dependencies, and verdicts.</text>
-        <text class="band-copy" x="900" y="924" font-size="11">Lean and semantic gates control target closure.</text>
+        <rect class="node-mask" x="904" y="744" width="304" height="212" rx="8"/>
+        <rect class="node-box controller-stroke" x="904" y="744" width="304" height="212" rx="8"/>
+        <rect class="gate-inner controller-stroke" x="912" y="752" width="288" height="196" rx="6"/>
+        <rect class="tag-box controller-stroke" x="920" y="760" width="52" height="20" rx="4"/>
+        <text class="tag" x="946" y="774" text-anchor="middle" fill="#123652">GATE</text>
+        <text class="node-title" x="920" y="804">Evidence &amp; Truth Gates</text>
+        <line class="divider" x1="920" y1="816" x2="1192" y2="816"/>
+        <text class="band-label" x="920" y="836">EXECUTION</text>
+        <text class="band-copy" x="1004" y="836" font-size="11">Tracks stage transitions and retries.</text>
+        <line class="divider" x1="920" y1="848" x2="1192" y2="848"/>
+        <text class="band-label" x="920" y="864">EVIDENCE</text>
+        <text class="band-copy" x="1000" y="864" font-size="11">Keeps immutable inputs and artifacts.</text>
+        <text class="band-copy" x="920" y="880" font-size="11">Retains receipts, digests, and replay data.</text>
+        <line class="divider" x1="920" y1="892" x2="1192" y2="892"/>
+        <text class="band-label" x="920" y="908">TRUTH</text>
+        <text class="band-copy" x="972" y="908" font-size="9"><tspan x="972">Records claims, dependencies,</tspan><tspan x="972" dy="12">and verdicts.</tspan></text>
+        <text class="band-copy" x="920" y="940" font-size="11">Lean and semantic gates control target closure.</text>
       </g>
 
       <g role="group" aria-label="A8 Assessment and Autonomous Success Gate">
-        <rect class="node-mask" x="360" y="1024" width="428" height="164" rx="8"/>
-        <rect class="node-box controller-stroke" x="360" y="1024" width="428" height="164" rx="8"/>
-        <rect class="gate-inner controller-stroke" x="368" y="1032" width="412" height="148" rx="6"/>
+        <rect class="node-mask" x="360" y="1024" width="412" height="164" rx="8"/>
+        <rect class="node-box controller-stroke" x="360" y="1024" width="412" height="164" rx="8"/>
+        <rect class="gate-inner controller-stroke" x="368" y="1032" width="396" height="148" rx="6"/>
         <rect class="tag-box controller-stroke" x="376" y="1040" width="52" height="20" rx="4"/>
         <text class="tag" x="402" y="1054" text-anchor="middle" fill="#123652">GATE</text>
         <text class="node-title" x="376" y="1092">Assessment &amp; Autonomous Success</text>
@@ -386,8 +411,8 @@
       </g>
 
       <g role="group" aria-label="A9 Verified Outcome or Controlled Exit">
-        <rect class="node-mask" x="836" y="1024" width="372" height="164" rx="8"/>
-        <rect class="node-box controller-stroke" x="836" y="1024" width="372" height="164" rx="8"/>
+        <rect class="node-mask" x="844" y="1024" width="364" height="164" rx="8"/>
+        <rect class="node-box controller-stroke" x="844" y="1024" width="364" height="164" rx="8"/>
         <rect class="tag-box controller-stroke" x="852" y="1040" width="84" height="20" rx="4"/>
         <text class="tag" x="894" y="1054" text-anchor="middle" fill="#123652">OUTCOME</text>
         <text class="node-title" x="852" y="1092">Verified Outcome &amp; Controlled Exit</text>
@@ -402,41 +427,35 @@
       </g>
 
       <!-- Panel A trust-boundary callout -->
-      <g role="note" aria-label="Agents never self-verify, and process success does not equal mathematical truth. Lean proof and semantic equivalence are separate gates.">
+      <g role="note" aria-label="Agents propose and execute tasks, and conduct independent reviews of other agents' work, but never self-verify. The success of a process, how polished a report seems, and retained evidence are not automatically treated as proof. Lean verifies the derivation and its permitted axioms; semantic review confirms that the formal statement matches the intended claim.">
         <rect class="node-mask" x="64" y="1212" width="1144" height="104" rx="8"/>
         <rect class="callout-box" x="64" y="1212" width="1144" height="104" rx="8"/>
         <line class="callout-accent" x1="80" y1="1228" x2="80" y2="1300"/>
         <text class="boundary-label" x="100" y="1236">TRUTH BOUNDARY</text>
         <text class="callout-copy" x="100" y="1256">
-          <tspan x="100" dy="0">Agents propose, execute, or independently review; they never self-verify.</tspan>
-          <tspan x="100" dy="20">Process success, polished reports, and retained evidence do not confer truth.</tspan>
-          <tspan x="100" dy="20">Lean proof and allowed-axiom checks remain separate from semantic review; neither alone closes the exact target.</tspan>
+          <tspan x="100" dy="0">Agents propose and execute tasks, and conduct independent reviews of other agents' work, but never self-verify.</tspan>
+          <tspan x="100" dy="20">The success of a process, how polished a report seems, and retained evidence are not automatically treated as proof.</tspan>
+          <tspan x="100" dy="20">Lean verifies the derivation and its permitted axioms; semantic review confirms that the formal statement matches the intended claim.</tspan>
         </text>
       </g>
 
       <!-- Panel B headings -->
       <text class="panel-kicker" x="64" y="1400">PANEL B: AUTONOMOUS FAIL-CLOSED DECISION LOOP</text>
       <text class="panel-title" x="64" y="1440">B. Adaptive Autorun</text>
-      <text class="panel-subtitle" x="64" y="1472">Astra governs the method, Sol executes it, Terra independently adjudicates it, and only controller validation changes retained truth state.</text>
+      <text class="panel-subtitle" x="64" y="1472">Astra decides what to try next, Sol does the work, Terra checks the results independently, and the controller decides what progress is recorded.</text>
 
-      <!-- PANEL B CONNECTORS: arrows and labels precede nodes -->
+      <!-- PANEL B CONNECTOR PATHS: dedicated corridors paint before labels and nodes -->
       <g role="group" aria-label="Living Contract and Operator Bounds to Astra Strategy Governor: select or review when no strategy is active, a soft review is due, or replacement is required.">
-        <path class="connector" d="M384 1592 H432" marker-end="url(#arrow-default)"/>
-        <rect class="label-mask" x="388" y="1532" width="40" height="32" rx="4"/>
-        <text class="flow-label micro" x="408" y="1543" text-anchor="middle"><tspan x="408">SELECT /</tspan><tspan x="408" dy="10">REVIEW</tspan></text>
+        <path class="connector" d="M384 1592 H448" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Astra Strategy Governor to Controller Strategy Gate: submit one strict final strategy proposal marker from the read-only governor.">
-        <path class="connector astra" d="M832 1560 H880" marker-end="url(#arrow-astra)"/>
-        <rect class="label-mask" x="836" y="1520" width="40" height="32" rx="4"/>
-        <text class="flow-label micro astra" x="856" y="1531" text-anchor="middle"><tspan x="856">STRATEGY</tspan><tspan x="856" dy="10">PROPOSAL</tspan></text>
+        <path class="connector astra" d="M816 1592 H888" marker-end="url(#arrow-astra)"/>
       </g>
       <g role="group" aria-label="Controller Strategy Gate to Route or Terminal State: reject without invoking Sol when a proposal is malformed, stale, forbidden, unsupported, or beyond deadline.">
-        <path class="connector dashed" d="M1208 1560 H1224 V2284 H960" marker-end="url(#arrow-muted)"/>
+        <path class="connector dashed" d="M1208 1560 H1216 Q1224 1560 1224 1568 V2276 Q1224 2284 1216 2284 H960" marker-end="url(#arrow-muted)"/>
       </g>
       <g role="group" aria-label="Controller Strategy Gate to Sol Autorun Conductor: activate the contract only after policy and lineage validation.">
         <path class="connector controller" d="M1044 1672 V1740" marker-end="url(#arrow-controller)"/>
-        <rect class="label-mask" x="1060" y="1688" width="140" height="20" rx="4"/>
-        <text class="flow-label controller" x="1130" y="1703" text-anchor="middle">ACTIVE CONTRACT</text>
       </g>
       <g role="group" aria-label="Sol Autorun Conductor to Controller Execution Boundary: retain the exact active identity with Sol's claim and artifacts.">
         <path class="connector sol" d="M864 1820 H812" marker-end="url(#arrow-sol)"/>
@@ -445,28 +464,49 @@
         <path class="connector" d="M468 1820 H416" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Controller Execution Boundary to Route or Terminal State: bounded recovery with backoff follows timeout, nonzero exit, or missing output; repeated failure triggers review, never Astra execution.">
-        <path class="connector dashed" d="M748 1916 V1924 Q748 1940 764 1940 H1152 Q1168 1940 1168 1956 V2252 H960" marker-end="url(#arrow-muted)"/>
+        <path class="connector dashed" d="M748 1916 V1944 Q748 1960 764 1960 H1128 Q1144 1960 1144 1976 V2252 H960" marker-end="url(#arrow-muted)"/>
       </g>
       <g role="group" aria-label="Terra Independent Adjudicator to Controller Transition Gate and Ledger: return exact strategy identity and earliest admissible checkpoint, or a valid not-applicable result.">
-        <path class="connector terra" d="M240 1912 V1928 Q240 1944 256 1944 H504 Q520 1944 520 1960 V1972" marker-end="url(#arrow-default)"/>
-        <rect class="label-mask" x="264" y="1912" width="140" height="20" rx="4"/>
-        <text class="flow-label" x="334" y="1927" text-anchor="middle">ADJUDICATION</text>
+        <path class="connector terra" d="M240 1912 V1936 Q240 1952 256 1952 H504 Q520 1952 520 1968 V1972" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Controller Transition Gate and Ledger to Route or Terminal State: accept and append only when strict parsing and aligned evidence validate; complete means the full Living Contract.">
         <path class="connector controller" d="M560 2152 V2220" marker-end="url(#arrow-controller)"/>
-        <rect class="label-mask" x="400" y="2172" width="144" height="20" rx="4"/>
-        <text class="flow-label controller" x="472" y="2187" text-anchor="middle">ACCEPT + APPEND</text>
       </g>
       <g role="group" aria-label="Controller Transition Gate and Ledger to Route or Terminal State: invalid, stale, or wrong-order adjudication fails closed; evidence remains retained but truth state receives no credit.">
         <path class="connector dashed" d="M720 2152 V2220" marker-end="url(#arrow-muted)"/>
-        <rect class="label-mask" x="736" y="2172" width="192" height="20" rx="4"/>
-        <text class="flow-label" x="832" y="2187" text-anchor="middle">FAIL CLOSED: NO CREDIT</text>
       </g>
       <g role="group" aria-label="Route or Terminal State to Sol Autorun Conductor: continue only while the active contract remains valid, no review or stop is due, and the unchanged hard deadline remains.">
-        <path class="connector" d="M960 2328 H1112 Q1128 2328 1128 2312 V1964 Q1128 1948 1120 1948 V1912" marker-end="url(#arrow-default)"/>
+        <path class="bridge-mask" d="M1200 2296 V2272"/>
+        <path class="connector" d="M960 2328 H1184 Q1200 2328 1200 2312 V1952 Q1200 1936 1184 1936 H1176 Q1160 1936 1160 1920 V1912" marker-end="url(#arrow-default)"/>
       </g>
       <g role="group" aria-label="Route or Terminal State to Astra Strategy Governor: govern when a soft review is due, or replace course after absent accepted progress, drift, falsification, or hard expiry; replacement creates a new lineage.">
         <path class="connector dashed" d="M320 2348 H68 Q52 2348 52 2332 V1508 Q52 1492 68 1492 H576 Q592 1492 592 1504 V1508" marker-end="url(#arrow-muted)"/>
+      </g>
+
+      <!-- PANEL B CONNECTOR LABELS: opaque masks paint after every route -->
+      <g aria-hidden="true">
+<rect class="label-mask" x="388" y="1528" width="56" height="36" rx="4"/>
+        <text class="flow-label micro" x="416" y="1541" text-anchor="middle"><tspan x="416">SELECT /</tspan><tspan x="416" dy="10">REVIEW</tspan></text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="824" y="1536" width="56" height="36" rx="4"/>
+        <text class="flow-label micro astra" x="852" y="1551" text-anchor="middle"><tspan x="852">STRATEGY</tspan><tspan x="852" dy="10">PROPOSAL</tspan></text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="1064" y="1680" width="144" height="24" rx="4"/>
+        <text class="flow-label controller" x="1136" y="1696" text-anchor="middle">ACTIVE CONTRACT</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="264" y="1916" width="168" height="24" rx="4"/>
+        <text class="flow-label" x="348" y="1932" text-anchor="middle">ADJUDICATION</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="360" y="2164" width="176" height="28" rx="4"/>
+        <text class="flow-label controller" x="448" y="2180" text-anchor="middle">ACCEPT + APPEND</text>
+      </g>
+      <g aria-hidden="true">
+<rect class="label-mask" x="744" y="2164" width="224" height="28" rx="4"/>
+        <text class="flow-label" x="856" y="2180" text-anchor="middle">FAIL CLOSED: NO CREDIT</text>
       </g>
 
       <!-- PANEL B NODES -->
@@ -486,29 +526,29 @@
       </g>
 
       <g role="group" aria-label="B2 Astra Strategy Governor">
-        <rect class="node-mask" x="432" y="1508" width="400" height="164" rx="8"/>
-        <rect class="node-box astra-stroke" x="432" y="1508" width="400" height="164" rx="8"/>
-        <rect class="tag-box astra-stroke" x="448" y="1524" width="60" height="20" rx="4"/>
-        <text class="tag" x="478" y="1538" text-anchor="middle" fill="#98600f">ASTRA</text>
-        <text class="node-title" x="448" y="1576">Astra: Strategy Governor</text>
-        <text class="node-copy" x="448" y="1604">
-          <tspan x="448" dy="0">Chooses whether to continue or change course.</tspan>
-          <tspan x="448" dy="20">Sets soft reviews, checkpoints, and stop conditions.</tspan>
-          <tspan x="448" dy="20">Governs read-only; never executes or self-verifies.</tspan>
+        <rect class="node-mask" x="448" y="1508" width="368" height="164" rx="8"/>
+        <rect class="node-box astra-stroke" x="448" y="1508" width="368" height="164" rx="8"/>
+        <rect class="tag-box astra-stroke" x="464" y="1524" width="60" height="20" rx="4"/>
+        <text class="tag" x="494" y="1538" text-anchor="middle" fill="#98600f">ASTRA</text>
+        <text class="node-title" x="464" y="1576">Astra: Strategy Governor</text>
+        <text class="node-copy" x="464" y="1604">
+          <tspan x="464" dy="0">Chooses whether to continue or change course.</tspan>
+          <tspan x="464" dy="20">Sets soft reviews, checkpoints, and stop conditions.</tspan>
+          <tspan x="464" dy="20">Governs read-only; never executes or self-verifies.</tspan>
         </text>
       </g>
 
       <g role="group" aria-label="B3 Controller Strategy Gate">
-        <rect class="node-mask" x="880" y="1508" width="328" height="164" rx="8"/>
-        <rect class="node-box controller-stroke" x="880" y="1508" width="328" height="164" rx="8"/>
-        <rect class="gate-inner controller-stroke" x="888" y="1516" width="312" height="148" rx="6"/>
-        <rect class="tag-box controller-stroke" x="896" y="1524" width="52" height="20" rx="4"/>
-        <text class="tag" x="922" y="1538" text-anchor="middle" fill="#123652">GATE</text>
-        <text class="node-title" x="896" y="1576">Controller Strategy Gate</text>
-        <text class="node-copy" x="896" y="1604">
-          <tspan x="896" dy="0">Requires strict JSON and exact strategy identity.</tspan>
-          <tspan x="896" dy="20">Checks current evidence and gate order.</tspan>
-          <tspan x="896" dy="20">Keeps the original hard deadline.</tspan>
+        <rect class="node-mask" x="888" y="1508" width="320" height="164" rx="8"/>
+        <rect class="node-box controller-stroke" x="888" y="1508" width="320" height="164" rx="8"/>
+        <rect class="gate-inner controller-stroke" x="896" y="1516" width="304" height="148" rx="6"/>
+        <rect class="tag-box controller-stroke" x="904" y="1524" width="52" height="20" rx="4"/>
+        <text class="tag" x="930" y="1538" text-anchor="middle" fill="#123652">GATE</text>
+        <text class="node-title" x="904" y="1576">Controller Strategy Gate</text>
+        <text class="node-copy" x="904" y="1604">
+          <tspan x="904" dy="0">Requires strict JSON and exact strategy identity.</tspan>
+          <tspan x="904" dy="20">Checks current evidence and gate order.</tspan>
+          <tspan x="904" dy="20">Keeps the original hard deadline.</tspan>
         </text>
       </g>
 
@@ -527,8 +567,8 @@
 
       <g role="group" aria-label="B5 Controller Execution Boundary">
         <rect class="security-boundary" x="456" y="1724" width="368" height="204" rx="8"/>
-        <rect class="label-mask" x="472" y="1712" width="148" height="20" rx="4"/>
-        <text class="boundary-label" x="546" y="1727" text-anchor="middle" fill="#64748b">SECURITY BOUNDARY</text>
+        <rect class="label-mask" x="456" y="1680" width="176" height="28" rx="4"/>
+        <text class="boundary-label" x="544" y="1700" text-anchor="middle" fill="#64748b">SECURITY BOUNDARY</text>
         <rect class="node-mask" x="468" y="1736" width="344" height="180" rx="8"/>
         <rect class="node-box controller-stroke" x="468" y="1736" width="344" height="180" rx="8"/>
         <rect class="tag-box controller-stroke" x="484" y="1752" width="92" height="20" rx="4"/>
@@ -556,21 +596,19 @@
         </text>
       </g>
 
-      <g role="group" aria-label="B7 Controller Transition Gate and Ledger">
+      <g role="group" aria-label="B7 Controller Transition Gate">
         <rect class="node-mask" x="440" y="1972" width="400" height="180" rx="8"/>
         <rect class="node-box controller-stroke" x="440" y="1972" width="400" height="180" rx="8"/>
         <rect class="gate-inner controller-stroke" x="448" y="1980" width="384" height="164" rx="6"/>
         <rect class="tag-box controller-stroke" x="456" y="1988" width="52" height="20" rx="4"/>
         <text class="tag" x="482" y="2002" text-anchor="middle" fill="#123652">GATE</text>
-        <text class="node-title" x="456" y="2040">Controller Transition Gate + Ledger</text>
+        <text class="node-title" x="456" y="2040">Controller Transition Gate</text>
         <text class="node-copy" x="456" y="2064">
           <tspan x="456" dy="0">Checks identity, order, and completion semantics.</tspan>
           <tspan x="456" dy="16">Only accepted Terra output may credit progress,</tspan>
           <tspan x="456" dy="16">advance checkpoints, or complete the contract.</tspan>
           <tspan x="456" dy="16">Rejected evidence remains retained.</tspan>
         </text>
-        <line class="divider" x1="456" y1="2120" x2="824" y2="2120"/>
-        <text class="band-label" x="456" y="2138">LEDGER: THE CONTROLLER OWNS TRUTH TRANSITIONS</text>
       </g>
 
       <g role="group" aria-label="B8 Route or Terminal State">
@@ -592,16 +630,16 @@
       </g>
 
       <!-- Panel B policy-boundary callout -->
-      <g role="note" aria-label="Each agent has a separate job. Astra reviews strategy without editing, and Sol runs autorun work. The project manifest defines success, and soft review gates do not reset hard ceilings. Operator controls remain in force. Sandbox-off keeps cgroup limits. Failed runs enter bounded recovery, with repeated failures sent back for strategy review.">
+      <g role="note" aria-label="Each agent has a separate role: Astra reviews strategy without editing, while Sol performs the autorun work. The project manifest defines success, and soft review gates never reset the original hard ceilings. Operator stop and resource controls, including cgroup limits, remain in force even when sandboxing is disabled. Failed runs enter bounded recovery, and repeated failures return the strategy to Astra for another independent review.">
         <rect class="node-mask" x="64" y="2400" width="1144" height="116" rx="8"/>
         <rect class="callout-box" x="64" y="2400" width="1144" height="116" rx="8"/>
         <line class="callout-accent" x1="80" y1="2416" x2="80" y2="2500"/>
         <text class="boundary-label" x="100" y="2424">POLICY BOUNDARY</text>
         <text class="callout-copy" x="100" y="2444">
-          <tspan x="100" dy="0">Each agent has a separate job. Astra reviews strategy without editing. Sol runs autorun work.</tspan>
-          <tspan x="100" dy="20">The project manifest defines success. Soft review gates do not reset hard ceilings.</tspan>
-          <tspan x="100" dy="20">Operator stop and resource controls remain in force. Sandbox-off still keeps cgroup limits.</tspan>
-          <tspan x="100" dy="20">A failed run enters bounded recovery. Repeated failures send the strategy back for review.</tspan>
+          <tspan x="100" dy="0">Each agent has a separate role: Astra reviews strategy without editing, while Sol performs the autorun work.</tspan>
+          <tspan x="100" dy="20">The project manifest defines success, and soft review gates never reset the original hard ceilings.</tspan>
+          <tspan x="100" dy="20">Operator stop and resource controls, including cgroup limits, remain in force even when sandboxing is disabled.</tspan>
+          <tspan x="100" dy="20">Failed runs enter bounded recovery, and repeated failures return the strategy to Astra for another independent review.</tspan>
         </text>
       </g>
 

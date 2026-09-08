@@ -3,7 +3,7 @@
 Agentic Lean Math Assistant is a Python 3.12 to 3.14 controller for bounded multi-agent mathematical research and Lean 4 formalization. It freezes each project contract, records execution and evidence, and closes a configured target only after every declared command, claim, formal, and semantic check passes.
 
 <p align="center">
-  <img src="docs/program-map.svg" width="100%" alt="Agentic Lean Math Assistant program map showing the governed research lifecycle and fail-closed autorun loop, with separate roles for strategy review, planning, execution, independent adjudication, and controller-owned truth transitions.">
+  <img src="docs/program-map.svg" width="100%" alt="Agentic Lean Math Assistant program map showing the governed research lifecycle and fail-closed autorun loop, with separate roles for strategy review, planning, execution, independent adjudication, and the controller in charge of progress and truth-state decisions.">
 </p>
 
 <p align="center"><a href="docs/program-map.html"><strong>Open the standalone HTML Program Map</strong></a></p>
