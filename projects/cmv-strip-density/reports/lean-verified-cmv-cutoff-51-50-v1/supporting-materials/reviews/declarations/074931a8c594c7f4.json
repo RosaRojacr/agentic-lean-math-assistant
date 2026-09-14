@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.typeThreeArea_deriv_eq_K3",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's K3 divided by the curvature cube equals the analytic area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:728-798, the source contract is `theorem typeThreeArea_deriv_eq_K3 (p : Point) (hlam : 1 < lam p) (hbranches : 0 < w p ∧ w p < π / 4 ∧ 0 < v p ∧ v p < π / 4) (hC3 : C3 p = 0) : deriv (LeanSuffixAnalytic.typeThreeArea (lam p)) ((1 + cos (w p)) / 2) = K3 p / ((1 + cos (w p)) / 2) ^ 3`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8a9cde70bef0dfad1eb697f78cb39f5a363eb9e41679d7d14dd8c12231f3ec28",
+  "symbol_mismatches": []
+}

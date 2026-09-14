@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pi_div_two_le_θOf",
+  "domain_issues": [],
+  "informal_statement": "Normalized area at least pi/8 has inverse angle at least pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:103-114, the source contract is `lemma pi_div_two_le_θOf {x : ℝ} (h : π / 8 ≤ x) : π / 2 ≤ θOf x`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "00f928404b32c84bb29cfcfab41ea9d1b3d396a41398ba66120f2ba22a120cbe",
+  "symbol_mismatches": []
+}

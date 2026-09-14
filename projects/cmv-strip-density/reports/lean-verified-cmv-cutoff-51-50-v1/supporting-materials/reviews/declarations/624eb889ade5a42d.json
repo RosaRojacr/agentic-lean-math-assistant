@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_upper_circular_segment",
+  "domain_issues": [],
+  "informal_statement": "Lebesgue volume of an upper circular segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1820-1944, the source contract is `lemma volume_upper_circular_segment (mx cy r θ : ℝ) (hr : 0 < r) (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) : volume {p : ℝ × ℝ | (p.1 - mx) ^ 2 + (p.2 - cy) ^ 2 ≤ r ^ 2 ∧ cy + r * cos θ ≤ p.2} = ENNReal.ofReal (r ^ 2 * (θ - sin θ * cos θ))`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d23f6efcc432aaa58959c64bfa3f6f589362c33546093657b1717ec5dbfb1b34",
+  "symbol_mismatches": []
+}

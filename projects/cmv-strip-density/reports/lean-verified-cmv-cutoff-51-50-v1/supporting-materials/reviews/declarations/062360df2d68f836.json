@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_upper_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "The upper cap boundary integral is lambda times arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1353-1372, the source contract is `theorem cap_upper_weightedIntegral (lam : ℝ) (c : OneSidedCircularCap) (hside : c.side = .upper) (hbase : c.baseY = 1) : ∫ p, StripDensity lam p ∂capBoundaryMeasure c = lam * c.arcLength`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "45644ff66dcb2be9e3cb6c626527848bf909f532df9be34ffa1977e24d25b8f4",
+  "symbol_mismatches": []
+}

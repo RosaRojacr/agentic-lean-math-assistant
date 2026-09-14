@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Conditions.RootProjection",
+  "domain_issues": [],
+  "informal_statement": "A checker zero together with its branch, box, and strict-sign information.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1993-2008, the source contract is `structure RootProjection (b : Brick) (t : ℝ) (z : Vec4) : Prop where mem_box : InSymmetricBox (radiiReal b) z equations : ∀ j, rootMap b t z j = 0 branches : let p := pointOf t z 0 < x b p ∧ x b p < π / 4 ∧ 0 < y b p ∧ y b p < π / 4 ∧ 0 < w b p ∧ w b p < π / 4 ∧ 0 < v b p ∧ v b p < π / 4 K3_neg : K3 b (pointOf t z) < 0 G_neg : G b (pointOf t z) < 0 typeThreeHeight_regular : (1 + cos (w b (pointOf t z))) / 2 ∈ Ioo (0 : ℝ) 1 typeFourHeight_regular : cos (x b (pointOf t z)) ∈ Ioo (0 : ℝ) 1`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2f76fbe7f8dbd852f7dc66c768c04d395e099b30fab88a0cc5ace08e7978fcf4",
+  "symbol_mismatches": []
+}

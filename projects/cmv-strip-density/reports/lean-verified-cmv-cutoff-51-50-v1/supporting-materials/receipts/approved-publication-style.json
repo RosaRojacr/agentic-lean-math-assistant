@@ -1,0 +1,25 @@
+{
+  "completed_at": "2026-09-13T07:23:08Z",
+  "event": "approved_publication_style_promotion",
+  "outputs": {
+    "LemmaSupplement.pdf": {
+      "bytes": 12275621,
+      "sha256": "d4bf23a5941aabe0040c2f72e7cf2a23f92e3a27a96b59a75c0915b0d0088abf"
+    },
+    "MainProof.pdf": {
+      "bytes": 571135,
+      "sha256": "e60115941a991e3ecd121d9de68e7f40d5cdc65aed0332332f6593bde39c5908"
+    },
+    "SemanticAudit.pdf": {
+      "bytes": 9270658,
+      "sha256": "031c48e6ac5e9b7c8fbaf6fcc1afeeb965c9fadf0fef8b66edc65755cf998ae2"
+    }
+  },
+  "rendering_intermediates_retained": false,
+  "schema_version": 1,
+  "visual_checks": [
+    "MainProof title and formula pages",
+    "LemmaSupplement title and representative declaration-ledger page",
+    "SemanticAudit title and representative declaration-ledger page"
+  ]
+}

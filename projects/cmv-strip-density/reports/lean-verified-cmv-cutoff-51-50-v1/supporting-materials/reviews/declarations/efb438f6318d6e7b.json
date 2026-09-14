@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.Conditions.typeFourFold_existsUnique_in_slab",
+  "domain_issues": [],
+  "informal_statement": "A compact certificate brackets a unique stationary type-(iv) curvature.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellAssembly.lean:76-106, the source contract is `theorem typeFourFold_existsUnique_in_slab (conditions : Conditions lambdaInterval h3Interval h4Interval) {lam : ℝ} (hlam : lambdaInterval.RealContains lam) : ∃! h₄ : ℝ, h4Interval.RealContains h₄ ∧ LeanSuffixAnalytic.typeFourFold lam h₄ = 0`. The Conditions record contains regular root slabs, opposite stationary-fold and area-face signs, negative type-(iii) fold, and a strict perimeter sign. The generic assembly derives a stationary pair and then uses the all-curvature envelope; candidate curvature is not confined to the certificate slab.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c2359e743fc358937d19c1ac3887ef019ddb92c97b2b12e00651546f5b742979",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rectangleCarrier",
+  "domain_issues": [],
+  "informal_statement": "The closed type-(iii) central rectangle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:80-84, the source contract is `def rectangleCarrier : Set PlanePoint := ({p | -a.sideHalfWidth ≤ p.1} ∩ {p | p.1 ≤ a.sideHalfWidth}) ∩ ({p | (-1 : ℝ) ≤ p.2} ∩ {p | p.2 ≤ 1})`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d451775e4018b5bae444c6a8ed6911c5adcc23db4a0efc68ab71c655f2933477",
+  "symbol_mismatches": []
+}

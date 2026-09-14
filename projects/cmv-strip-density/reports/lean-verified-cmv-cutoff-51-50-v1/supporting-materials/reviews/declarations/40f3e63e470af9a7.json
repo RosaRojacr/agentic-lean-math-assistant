@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_area",
+  "domain_issues": [],
+  "informal_statement": "Applying the inverse to the area of a valid angle recovers that angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:259-266, the source contract is `lemma θOf_area {θ : ℝ} (hθ : θ ∈ Ioo 0 π) : θOf (area θ) = θ`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f8dabe04d85804b4ae48d760060d4f14fcddf7d4245871a8f753f3695333c49b",
+  "symbol_mismatches": []
+}

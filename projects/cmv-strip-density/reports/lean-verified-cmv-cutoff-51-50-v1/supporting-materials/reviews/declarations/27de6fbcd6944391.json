@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.volume_rectangleCarrier",
+  "domain_issues": [],
+  "informal_statement": "The rectangle has area twice the chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2060-2075, the source contract is `lemma volume_rectangleCarrier (c : StripCore) : volume c.rectangleCarrier = ENNReal.ofReal (2 * c.chord)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b2c1d8716422a2e0169b6aacae489790c14b0594bc75f1e77b6bbec1349d5110",
+  "symbol_mismatches": []
+}

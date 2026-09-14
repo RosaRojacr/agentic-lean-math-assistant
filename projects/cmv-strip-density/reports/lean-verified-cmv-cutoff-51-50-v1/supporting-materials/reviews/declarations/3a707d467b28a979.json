@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_inner_le_sin_outer",
+  "domain_issues": [],
+  "informal_statement": "The inner-angle sine is no greater than the exterior-angle sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:303-311, the source contract is `theorem sin_inner_le_sin_outer : sin a.innerAngle ≤ sin a.outerAngle`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "def468198882d033570072298a83ae1d41fc003f0ecb9d0b4ee3a6b94e6a1d10",
+  "symbol_mismatches": []
+}

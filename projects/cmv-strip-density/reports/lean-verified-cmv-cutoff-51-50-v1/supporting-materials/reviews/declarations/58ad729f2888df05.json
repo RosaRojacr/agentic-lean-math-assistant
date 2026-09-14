@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "xstar",
+  "domain_issues": [],
+  "informal_statement": "The normalized cap area at the selected root angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:154-155, the source contract is `noncomputable def xstar : ℝ := area θstar`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4590a64da97090d3af07ee66b4ba81cd8d175d4ce5739ecba3f1415fc4cba3d8",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.volume_coreCarrier",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) core volume equals rectangle area plus reference side-cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:1481-1529, the source contract is `theorem volume_coreCarrier : volume a.coreCarrier = ENNReal.ofReal (a.rectangleArea + a.sideCap.euclideanArea)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e422839d8a82e578aa8619bf8a6d240c5dc840fd4d4e1880ecc09a0307558380",
+  "symbol_mismatches": []
+}

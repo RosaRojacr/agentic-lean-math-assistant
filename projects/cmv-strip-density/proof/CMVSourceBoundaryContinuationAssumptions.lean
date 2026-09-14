@@ -1,0 +1,57 @@
+import CMVSourceBoundaryContinuation
+
+namespace CMVSourceBoundaryContinuation
+
+#print axioms supportingCenter_eq_of_reversedContact
+
+namespace ActualRegularGraphChart
+
+#print axioms graphTrace_mem_frontier
+#print axioms graphTrace_mem_neighborhood
+#print axioms eventuallyEq_graph_of_overlap
+#print axioms deriv_eq_of_overlap
+#print axioms normalizedTangent_eq_of_overlap
+#print axioms supportingCenter_eq_of_overlap
+#print axioms unique_supportingCircle_of_overlap
+#print axioms deriv_eq_of_orientedGraphCurvature_eq_zero
+#print axioms closedTrace_subset_supportingLineAt
+#print axioms unique_supportingLine_of_overlap
+#print axioms supportingCircle_eq_of_anchors
+#print axioms supportingLineAt_eq_of_anchors
+
+end ActualRegularGraphChart
+
+namespace BranchNeutralGraphAtlas
+
+#print axioms chartTrace_image_subset_locus
+#print axioms overlapAt_chart_of_mem_neighborhood
+#print axioms supportAt_eq_of_mem_neighborhood
+#print axioms supportAt_isLocallyConstant
+#print axioms supportAt_eq_of_mem_connectedComponent
+#print axioms base_mem_supportAt
+#print axioms connectedComponent_subset_supportAt
+#print axioms maximalComponentTraceImage_eq
+#print axioms maximalComponentTraceImage_subset_supportAt
+#print axioms exists_finite_maximalComponentTraceImage_cover
+
+end BranchNeutralGraphAtlas
+
+#print axioms connectedComponentIn_eq_closedTraceImage
+#print axioms endpointContinuation_partition
+
+namespace CurvedCarrierExample
+
+#print axioms carrier_open
+#print axioms speed_eq_one
+#print axioms reversedSpeed_eq_one
+#print axioms regular
+#print axioms reversedRegular
+#print axioms trace_mem_frontier
+#print axioms reversed_image_eq
+#print axioms overlappingReversedCharts
+#print axioms reversal_supportingCenter_eq
+#print axioms tangentEndpoint_actualInterfaceTangency
+#print axioms tangentEndpoint_is_regular_frontier_support
+
+end CurvedCarrierExample
+end CMVSourceBoundaryContinuation

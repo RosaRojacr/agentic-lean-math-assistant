@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.PointEquationSemantics",
+  "domain_issues": [],
+  "informal_statement": "The analytic meaning of checker equations on the recorded angle branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1537-1551, the source contract is `structure PointEquationSemantics (b : Brick) (p : Point) : Prop where typeThreeHeight_gt_half : 1 / 2 < (1 + cos (w b p)) / 2 typeThreeHeight_lt_one : (1 + cos (w b p)) / 2 < 1 typeFourHeight_pos : 0 < cos (x b p) typeFourHeight_lt_one : cos (x b p) < 1 equalArea_of_E_zero : E b p = 0 → LeanSuffixAnalytic.typeThreeArea (lam b p) ((1 + cos (w b p)) / 2) = LeanSuffixAnalytic.typeFourArea (lam b p) (cos (x b p)) stationary_of_F_zero : F b p = 0 → LeanSuffixAnalytic.typeFourFold (lam b p) (cos (x b p)) = 0 perimeter_lt_of_G_neg : G b p < 0 → LeanSuffixAnalytic.typeThreePerimeter (lam b p) ((1 + cos (w b p)) / 2) < LeanSuffixAnalytic.typeFourPerimeter (lam b p) (cos (x b p))`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "478344dbc781da1c2b9f6b07701b41f4488a93fff689eda8b3059bdb2ad9f499",
+  "symbol_mismatches": []
+}

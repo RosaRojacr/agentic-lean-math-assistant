@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.cap_replacement_preserves_area",
+  "domain_issues": [],
+  "informal_statement": "The cap replacement has exactly the candidate's weighted area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GeometricBridge.lean:90-97, the source contract is `theorem cap_replacement_preserves_area : candidate.capReplacementRegion.WeightedArea = candidate.WeightedArea`. The bridge uses the actual cap area, chord length and canonical perimeter formulas. The geometric improvement has a strict sign and equal weighted area; an arbitrary scalar record is not accepted as a competitor.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "40dbfacc980c0caa8be7bb02e41318ad70f3b454256d042f4cd60d664125314b",
+  "symbol_mismatches": []
+}

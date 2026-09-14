@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreParam",
+  "domain_issues": [],
+  "informal_statement": "Unit-speed parametrization of the left core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1477-1481, the source contract is `def leftCoreParam (c : StripCore) (s : ℝ) : PlanePoint := (c.leftCenterX - c.radius * cos (s / c.radius), c.radius * sin (s / c.radius))`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80f940fe52c510e69a283605275f10b49a7ca369836a80a40ece896dbbf606db",
+  "symbol_mismatches": []
+}

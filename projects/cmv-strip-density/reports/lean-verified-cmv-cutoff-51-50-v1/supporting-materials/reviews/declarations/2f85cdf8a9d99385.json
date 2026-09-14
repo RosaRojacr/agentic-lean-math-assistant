@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.C3",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's type-(iii) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:128-128, the source contract is `def C3 (p : Point) : ℝ := cos (w p) - lam p * cos (v p)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb334eb31664c80305d156013a66d4b3847b5f60bc740d68b3db43dd6612439b",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hasDerivAt_arc_two_mul",
+  "domain_issues": [],
+  "informal_statement": "Derivative of the doubled-area arc function.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:119-129, the source contract is `lemma hasDerivAt_arc_two_mul {x : ℝ} (hx : 0 < x) : HasDerivAt (fun t => arc (2 * t)) (4 * sin (θOf (2 * x))) x`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "68db7ce1cccfa8d83346e37f43b7e16bbcad82e0649185eda0b8b1c7290d5df1",
+  "symbol_mismatches": []
+}

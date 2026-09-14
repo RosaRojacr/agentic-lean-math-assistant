@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanStripDensity",
+  "domain_issues": [],
+  "informal_statement": "The strip density expressed on the Euclidean realization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1389-1391, the source contract is `def euclideanStripDensity (lam : ℝ) (z : EuclideanPlane) : ℝ := StripDensity lam (planeEuclideanHomeomorph.symm z)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3d074997fd7c2f4c47fc25c7e8a9a39259d6fd4628b103b9b3e4da77e1679848",
+  "symbol_mismatches": []
+}

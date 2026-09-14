@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_lt_pi_div_two_of_mem",
+  "domain_issues": [],
+  "informal_statement": "In the mixed-area interval, the original inverse angle is below pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:61-64, the source contract is `lemma θOf_lt_pi_div_two_of_mem {x : ℝ} (hx : x ∈ Ioo (π / 16) (π / 8)) : θOf x < π / 2`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80218f0a09a02137efcf79005b6fbcec3641c36ec9134e0575885f8ad1c23afb",
+  "symbol_mismatches": []
+}

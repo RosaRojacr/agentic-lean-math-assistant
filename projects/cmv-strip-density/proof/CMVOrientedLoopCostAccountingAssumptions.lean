@@ -1,0 +1,14 @@
+import CMVOrientedLoopCostAccounting
+
+open CMVBoundaryLocalAtlas.BoundaryHalfSpaceAtlas.FiniteChartCutSystem
+
+#print axioms isCompact_range_finiteArcPathLR
+#print axioms measurableSet_range_finiteArcPathLR
+#print axioms finite_range_finiteArcPathLR_inter
+#print axioms isCompact_range_boundaryGeometricWalkLoop
+#print axioms measurableSet_range_boundaryGeometricWalkLoop
+#print axioms hausdorffMeasure_one_euclidean_loop_inter_eq_zero
+#print axioms weightedTraceCost_boundaryGeometricWalkLoop_eq_sum_arcs
+#print axioms smoothCost_eq_sum_finiteArcPathLR
+#print axioms smoothCost_eq_sum_boundaryLoopArcs
+#print axioms smoothCost_eq_sum_boundaryGeometricWalkLoops

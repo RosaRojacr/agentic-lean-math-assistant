@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.lam",
+  "domain_issues": [],
+  "informal_statement": "Density reconstructed from a centered brick point.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:62-62, the source contract is `def lam (p : Point) : ℝ := (lamMid b : ℝ) + p.t`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "09c8d628c82b18ad9565a08f3c76eeb7195571504223cb2dac220bc1b4b12c5a",
+  "symbol_mismatches": []
+}

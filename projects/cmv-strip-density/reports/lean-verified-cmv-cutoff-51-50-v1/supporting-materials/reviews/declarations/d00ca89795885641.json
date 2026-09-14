@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeThreePerimeter_centered_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Centered type-(iii) perimeter enclosure for box zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:477-495, the source contract is `theorem typeThreePerimeter_centered_enclosure {lam h : ℝ} (hlam : lambdaInterval.RealContains lam) (hh : h3Interval.RealContains h) (base slope displacement : QInterval) (hbase : base.RealContains (LeanSuffixAnalytic.typeThreePerimeter lam (h3Center : ℝ))) (hslope : ∀ x, h3Interval.RealContains x → slope.RealContains (LeanSuffixAnalytic.typeThreeFold lam x / x ^ 2)) (hdisplacement : displacement.RealContains (h - (h3Center : ℝ))) : (base.add (slope.mul displacement)).RealContains (LeanSuffixAnalytic.typeThreePerimeter lam h)`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0acb33ec361f95f1dd6ecbaa5f29b078d12d8e006095b8006b41890c9e85efd5",
+  "symbol_mismatches": []
+}

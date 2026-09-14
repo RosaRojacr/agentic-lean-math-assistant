@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.tRadius",
+  "domain_issues": [],
+  "informal_statement": "The right brick's centered density radius.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:76-77, the source contract is `abbrev tRadius : ℚ := (brick.lamHi - brick.lamLo) / 2`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ec2e049acded7f92cfecfef90c8523058c254046f34ddfc61af74c906f331c0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.sub",
+  "domain_issues": [],
+  "informal_statement": "Interval subtraction as addition of the negated interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixReflective.lean:45-47, the source contract is `def sub (i j : QInterval) : QInterval := i.add j.neg`. Intervals have rational ordered endpoints and closed containment. Arithmetic enclosure statements concern the real-valued operations after rational casting; exact checks do not stand for floating-point evidence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "edd84d3089fe87cd8f669b75895897b3124604659a9914bc80d5d6266ee85fd2",
+  "symbol_mismatches": []
+}

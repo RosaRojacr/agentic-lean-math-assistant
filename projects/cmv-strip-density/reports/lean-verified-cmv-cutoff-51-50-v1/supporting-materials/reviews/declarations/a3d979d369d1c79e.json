@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.E_rho_low_face_margin",
+  "domain_issues": [],
+  "informal_statement": "E is strictly negative on the low rho face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:2028-2055, the source contract is `theorem E_rho_low_face_margin : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → z 2 = -radiiReal 2 → E (pointOf t z) < -(14 / 1000000000 : ℝ)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6272cbb2e67c611a239abd88e60ef57c905b209d0a231e982ffd7c0dc0e89972",
+  "symbol_mismatches": []
+}

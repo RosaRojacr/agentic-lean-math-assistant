@@ -13,13 +13,13 @@ htmlcov/
 dist/
 build/
 *.egg-info/
-
-# Jupyter
-.ipynb_checkpoints/
-
 # Local README render
 README.html
 README_files/
+
+
+# Jupyter
+.ipynb_checkpoints/
 
 # Lean build output
 .lake/

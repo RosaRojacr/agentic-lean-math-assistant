@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.sinTaylor27Interval",
+  "domain_issues": [],
+  "informal_statement": "A rational sine enclosure built from the degree-27 polynomial and a remainder bound.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:224-229, the source contract is `def sinTaylor27Interval (x : ℚ) : QInterval := let p := sinTaylor27 x let r := |x| ^ 28 / (Nat.factorial 28 : ℚ) ⟨p - r, p + r, by linarith [show 0 ≤ r by positivity]⟩`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9588051f8a2ff67152b4c9b894d6f120c8732ea5b8195eebd297f8f7e92a5437",
+  "symbol_mismatches": []
+}

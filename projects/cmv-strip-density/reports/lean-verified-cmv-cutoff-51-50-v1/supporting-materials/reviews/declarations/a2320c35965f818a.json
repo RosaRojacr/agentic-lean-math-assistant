@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.pairwiseOverlap_subset_boundaryJoinSet",
+  "domain_issues": [],
+  "informal_statement": "Intersections of distinct type-(iii) boundary pieces occur only at junctions.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:1142-1257, the source contract is `theorem pairwiseOverlap_subset_boundaryJoinSet : pairwiseOverlap a.leftArcTrace a.rightArcTrace (OneSidedCircularCap.arcTrace a.outerCap) a.bottomSegmentCarrier ⊆ a.boundaryJoinSet`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f8736f4dd5a67fc4149e15b1ed3e3f21030a49e12643cd517b41158566d4664f",
+  "symbol_mismatches": []
+}

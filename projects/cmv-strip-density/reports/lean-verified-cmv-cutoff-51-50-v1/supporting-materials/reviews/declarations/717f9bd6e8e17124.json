@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.shapeParameter_mem",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) shape parameter lies in (-1,1).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:153-155, the source contract is `theorem shapeParameter_mem : -1 < a.shapeParameter ∧ a.shapeParameter < 1`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "018fe2d07fb99b9420ec19a75327dc616f0119968b1c22fb83265de47b1261df",
+  "symbol_mismatches": []
+}

@@ -114,6 +114,11 @@ def campaign_run_lock(run_dir: Path) -> Iterator[None]:
                     "another controller holds the campaign run lock"
                 ) from exc
             raise CampaignRunError(f"cannot acquire campaign run lock: {exc}") from exc
+        owner = f"{os.getpid()}\n".encode("ascii")
+        os.ftruncate(descriptor, 0)
+        os.lseek(descriptor, 0, os.SEEK_SET)
+        if os.write(descriptor, owner) != len(owner):
+            raise CampaignRunError("cannot record campaign run lock owner")
         yield
     finally:
         if locked:
@@ -123,6 +128,40 @@ def campaign_run_lock(run_dir: Path) -> Iterator[None]:
                 os.close(descriptor)
         else:
             os.close(descriptor)
+
+
+def campaign_run_lock_is_held(run_dir: Path, *, owner_pid: object = None) -> bool:
+    """Return whether the expected process owns the controller lock."""
+
+    lock_path = run_dir.expanduser().resolve() / ".campaign.lock"
+    flags = os.O_RDWR | os.O_CLOEXEC | os.O_NOFOLLOW
+    try:
+        descriptor = os.open(lock_path, flags)
+    except FileNotFoundError:
+        return False
+    except OSError as exc:
+        raise CampaignRunError(f"cannot open campaign run lock: {exc}") from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise CampaignRunError("campaign run lock is not a regular file")
+        try:
+            fcntl.flock(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as exc:
+            if exc.errno in (errno.EACCES, errno.EAGAIN):
+                owner = os.pread(descriptor, 64, 0)
+                if (
+                    owner_pid is None
+                    or isinstance(owner_pid, bool)
+                    or not isinstance(owner_pid, int)
+                    or owner_pid <= 0
+                ):
+                    return owner_pid is None
+                return owner == f"{owner_pid}\n".encode("ascii")
+            raise CampaignRunError(f"cannot inspect campaign run lock: {exc}") from exc
+        fcntl.flock(descriptor, fcntl.LOCK_UN)
+        return False
+    finally:
+        os.close(descriptor)
 
 
 def _retained_state_error(detail: str) -> CampaignRunError:

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeFourDeltaBox",
+  "domain_issues": [],
+  "informal_statement": "Interval expression for D4.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:585-588, the source contract is `def typeFourDeltaBox (lambdaInterval uI dI : QInterval) (hlambda : 0 < lambdaInterval.lo) : QInterval := (dI.divPos lambdaInterval hlambda).sub uI`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ab7d789a19d88d75ee1647ab012fc735ddecd9dc900020900794197c4a8a7372",
+  "symbol_mismatches": []
+}

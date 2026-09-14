@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeThreeArea_upperFace_minus_stationaryTypeFour_neg",
+  "domain_issues": [],
+  "informal_statement": "At the upper type-(iii) face, A3 is below stationary type-(iv) area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:1551-1574, the source contract is `theorem typeThreeArea_upperFace_minus_stationaryTypeFour_neg {lam h₄ : ℝ} (hlam : lambdaInterval.RealContains lam) (hh₄ : h4Interval.RealContains h₄) (_hstationary : LeanSuffixAnalytic.typeFourFold lam h₄ = 0) : LeanSuffixAnalytic.typeThreeArea lam (h3Interval.hi : ℝ) - LeanSuffixAnalytic.typeFourArea lam h₄ < 0`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ae9709ef08dafd6acf18487ff86ef2f78b6f5204c9d53ab45605c720440adb8",
+  "symbol_mismatches": []
+}

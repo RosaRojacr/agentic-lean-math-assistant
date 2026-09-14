@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_eq",
+  "domain_issues": [],
+  "informal_statement": "For all real r,s, the complex circle point is r(cos(s/r) + i sin(s/r)).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:409-415, the source contract is `lemma unitCircleArc_eq (r s : ℝ) : unitCircleArc r s = (r : ℂ) * ((Real.cos (s / r) : ℂ) + (Real.sin (s / r) : ℂ) * Complex.I)`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9342d6a8ed8b7dcd1fbce36251ddf6b271aeea6ec0298f5d467e178c8fbf9cec",
+  "symbol_mismatches": []
+}

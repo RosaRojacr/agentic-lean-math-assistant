@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.CellCertificate",
+  "domain_issues": [],
+  "informal_statement": "Primitive strict face signs, branch bounds, density jump, negative K3, and negative G for a brick.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1444-1484, the source contract is `structure CellCertificate (b : Brick) : Prop where lambda_one_lt : ∀ t, (tInterval b).RealContains t → 1 < lam b (pointOf t 0) branches : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → let p := pointOf t z 0 < x b p ∧ x b p < π / 4 ∧ 0 < y b p ∧ y b p < π / 4 ∧ 0 < w b p ∧ w b p < π / 4 ∧ 0 < v b p ∧ v b p < π / 4 F_xi_low_pos : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → z 0 = -radiiReal b 0 → 0 < F b (pointOf t z) F_xi_high_neg : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → z 0 = radiiReal b 0 → F b (pointOf t z) < 0 C4_eta_low_neg : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → z 1 = -radiiReal b 1 → C4 b (pointOf t z) < 0 C4_eta_high_pos : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → z 1 = radiiReal b 1 → 0 < C4 b (pointOf t z) E_rho_low_neg : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → z 2 = -radiiReal b 2 → E b (pointOf t z) < 0 E_rho_high_pos : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → z 2 = radiiReal b 2 → 0 < E b (pointOf t z) C3_sigma_low_neg : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → z 3 = -radiiReal b 3 → C3 b (pointOf t z) < 0 C3_sigma_high_pos : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → z 3 = radiiReal b 3 → 0 < C3 b (pointOf t z) K3_neg : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → K3 b (pointOf t z) < 0 G_neg : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → G b (pointOf t z) < 0`. The record contains exact branch bounds, four pairs of strict opposite-face signs for the specified residuals, K3 negativity and G negativity throughout the brick. These are sufficient analytic certificate obligations, not assumed roots or preexisting nonminimality.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c5e1550765346522815e726fec39295f689896e3151daad7810df51dd4df337f",
+  "symbol_mismatches": []
+}

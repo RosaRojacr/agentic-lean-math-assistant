@@ -1,0 +1,28 @@
+import CMVFiniteBandGraphProjectionExample
+
+namespace CMVRelaxation
+namespace FiniteBandRearrangement
+namespace HeightGraphProjection
+
+#print axioms Zone.stripDensity_eq_weight
+#print axioms Patch.exists_uniform_tangent_remainder_on_Icc_C1
+#print axioms Region.exists_uniform_indexedGraphValue_clearance
+#print axioms Region.exists_leftGraph_horizontalTube
+#print axioms Region.exists_rightGraph_horizontalTube
+#print axioms Region.exists_heightGraphPatch
+#print axioms Patch.tangentProjectionBox_subset_tube_div_speed
+#print axioms Patch.tangentPatch
+#print axioms Patch.exists_pairwiseDisjoint_tangentPatches_payoff_ge
+#print axioms Patch.exists_pairwiseDisjoint_tangentPatches_payoff_ge_in_open
+#print axioms Region.exists_pairwiseDisjoint_heightGraphPatches_payoff_ge
+#print axioms Region.exists_pairwiseDisjoint_heightGraphPatches_payoff_ge_in_open
+
+end HeightGraphProjection
+
+namespace CurvedGraphProjectionExample
+
+#print axioms exists_nonempty_curved_tangent_family
+
+end CurvedGraphProjectionExample
+end FiniteBandRearrangement
+end CMVRelaxation

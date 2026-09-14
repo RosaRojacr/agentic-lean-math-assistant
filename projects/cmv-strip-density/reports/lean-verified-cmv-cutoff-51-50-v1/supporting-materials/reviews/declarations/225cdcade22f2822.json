@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_four_union",
+  "domain_issues": [],
+  "informal_statement": "A real function integrable on each of four pairwise Hausdorff-almost-disjoint Euclidean sets has additive integral over their union, provided the last three sets are measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1562-1590, the source contract is `theorem integral_four_union {f : EuclideanPlane → ℝ} {A B C D : Set EuclideanPlane} (hAB : AEDisjoint (μH[1] : Measure EuclideanPlane) A B) (hAC : AEDisjoint (μH[1] : Measure EuclideanPlane) A C) (hAD : AEDisjoint (μH[1] : Measure EuclideanPlane) A D) (hBC : AEDisjoint (μH[1] : Measure EuclideanPlane) B C) (hBD : AEDisjoint (μH[1] : Measure EuclideanPlane) B D) (hCD : AEDisjoint (μH[1] : Measure EuclideanPlane) C D) (hB : MeasurableSet B) (hC : MeasurableSet C) (hD : MeasurableSet D) (hfA : IntegrableOn f A (μH[1] : Measure EuclideanPlane)) (hfB : IntegrableOn f B (μH[1] : Measure EuclideanPlane)) (hfC : IntegrableOn f C (μH[1] : Measure EuclideanPlane)) (hfD : IntegrableOn f D (μH[1] : Measure EuclideanPlane)) : (∫ z in A ∪ (B ∪ (C ∪ D)), f z ∂(μH[1] : Measure EuclideanPlane)) = (∫ z in A, f z ∂(μH[1] : Measure EuclideanPlane)) + ((∫ z in B, f z ∂(μH[1] : Measure EuclideanPlane)) + ((∫ z in C, f z ∂(μH[1] : Measure EuclideanPlane)) + ∫ z in D, f z ∂(μH[1] : Measure EuclideanPlane)))`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8b3fbc02eae74d84636263a1b0bedcffb91c58bcc3410ac92807b51d54cc9ea4",
+  "symbol_mismatches": []
+}

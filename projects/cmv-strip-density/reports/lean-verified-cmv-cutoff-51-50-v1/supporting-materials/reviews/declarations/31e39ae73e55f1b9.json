@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArcRotation",
+  "domain_issues": [],
+  "informal_statement": "The complex rotation z maps to z exp(i m/r), defined for all real r,m and complex z.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:312-314, the source contract is `noncomputable def unitCircleArcRotation (r m : ℝ) (z : ℂ) : ℂ := z * Complex.exp (Complex.I * (m / r : ℝ))`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cfdc45400ed0d08a69b42a215854d1f81999a500771f48a7f18476aafefe48ef",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_two_mul_xstar",
+  "domain_issues": [],
+  "informal_statement": "The inverse angle at twice Xstar is pi minus the root angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:165-172, the source contract is `lemma θOf_two_mul_xstar : θOf (2 * xstar) = π - θstar`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9e384c7c73738ac8b54bf413e27f2a7a3ad3afa8254d6f30bca551f7d7a2b751",
+  "symbol_mismatches": []
+}

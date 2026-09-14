@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_horizontalLine",
+  "domain_issues": [],
+  "informal_statement": "A horizontal line has zero planar Lebesgue measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2029-2036, the source contract is `lemma volume_horizontalLine (b : ℝ) : volume {p : PlanePoint | p.2 = b} = 0`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ea745db5e4b12e1d05fe0934ca3c81eb24b84ea87dd522e3aa6824c86d1a2dce",
+  "symbol_mismatches": []
+}

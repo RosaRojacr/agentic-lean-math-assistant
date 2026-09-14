@@ -1,0 +1,18 @@
+import CMVSmoothAmbientTransport
+
+#print axioms CMVRelaxation.exists_smoothCompactCutoff
+#print axioms CMVRelaxation.SmoothAmbientEquiv.movedSet_isCompact
+#print axioms CMVRelaxation.SmoothAmbientEquiv.hasCompactSupport_inverseDisplacement
+#print axioms CMVRelaxation.SmoothAmbientEquiv.exists_lipschitzWith
+#print axioms CMVRelaxation.SmoothAmbientEquiv.exists_lipschitzWith_symm
+#print axioms CMVRelaxation.SmoothAmbientEquiv.volume_image_le
+#print axioms CMVRelaxation.SmoothAmbientEquiv.nullMeasurableSet_image
+#print axioms CMVRelaxation.SmoothAmbientEquiv.IsSmoothDomain.image
+#print axioms CMVRelaxation.SmoothAmbientEquiv.ambientImage
+#print axioms CMVRelaxation.SmoothAmbientEquiv.characteristicDistance_image_le
+#print axioms CMVRelaxation.SmoothAmbientEquiv.convergesTo_ambientImage
+#print axioms CMVRelaxation.SmoothAmbientEquiv.mem_image_iff_of_not_mem_movedSet
+#print axioms CMVRelaxation.SmoothAmbientEquiv.ofSmallPerturbation
+#print axioms CMVRelaxation.SmoothAmbientEquiv.ofSmallPerturbation_apply
+#print axioms CMVRelaxation.SmoothAmbientEquiv.movedSet_ofSmallPerturbation_subset
+#print axioms CMVRelaxation.SmoothAmbientEquiv.ofSmallPerturbation_fiber_strictMono

@@ -1,0 +1,11 @@
+import CMVFigureFiveUpperOnlySource
+
+#print axioms CMVFigureFive.UpperOnlySource.upperOnlyAssembly
+#print axioms CMVFigureFive.UpperOnlySource.source
+#print axioms CMVFigureFive.UpperOnlySource.source_upper_threshold
+#print axioms CMVFigureFive.UpperOnlySource.source_lowerBoundary_positiveLength
+#print axioms CMVFigureFive.UpperOnlySource.source_strictStripSection
+#print axioms CMVFigureFive.UpperOnlySource.source_lowerExterior_empty
+#print axioms CMVFigureFive.UpperOnlySource.source_lowerExposed_eventually_mem_iff_above
+#print axioms CMVFigureFive.UpperOnlySource.source_lowerExposed_sharp_limitDensity
+#print axioms CMVFigureFive.UpperOnlySource.source_lowerExposed_euclideanH1_inter_closedBall_eq

@@ -1,0 +1,28 @@
+import CMVRegularGermScaledSplice
+
+namespace CMVRelaxation.RegularTraceCornerComparison
+
+#print axioms RegularEndpointTrace.positiveReparam_euclideanSpeed
+#print axioms RegularEndpointTrace.positiveReparam_speed
+#print axioms RegularEndpointTrace.positiveReparam_arcLength
+#print axioms RegularEndpointTrace.unitScale_pos
+#print axioms RegularEndpointTrace.unitScale_reparam_euclideanSpeed
+#print axioms RegularEndpointTrace.positiveReparam_unitTangent
+#print axioms RegularEndpointTrace.positiveReparam_endpointConormal
+#print axioms euclideanSpeed_sq_eq_planeInner_self
+#print axioms complexVector_scaled_sub_norm_sq
+#print axioms planeInner_initialConormal_eq_unitTangent
+#print axioms euclideanSpeeds_mul_planeInner_unitTangents
+#print axioms positiveReparam_velocityDifference_norm_sq
+#print axioms conormal_gt_neg_inv_of_positiveReparam_tangentGain_pos
+#print axioms positiveReparam_tangentGain_nonpos_of_conormal_le
+
+namespace RegularCornerChartApplicability
+
+#print axioms positiveDiagonalReparam
+#print axioms positiveDiagonalReparam_incident_endpoint
+#print axioms positiveDiagonalReparam_interface_endpoint
+#print axioms PhysicalPhaseApplicability.positiveDiagonalReparam
+
+end RegularCornerChartApplicability
+end CMVRelaxation.RegularTraceCornerComparison

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacementAngle",
+  "domain_issues": [],
+  "informal_statement": "The cap angle whose normalized area is twice that of one candidate cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CapReplacement.lean:27-28, the source contract is `def replacementAngle : ℝ := θOf (2 * candidate.capX)`. The replacement retains the strip core, doubles the upper cap area, and exposes the lower chord. Its new half-angle is in (0,pi), so a major cap is not silently discarded; the statement uses the candidate constructor inequalities.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e82e3e1d3191a88d1c944b28e4f02eaa8d736356029ed2fa74ba08f57ef344d7",
+  "symbol_mismatches": []
+}

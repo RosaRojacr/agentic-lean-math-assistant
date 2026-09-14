@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.abs_image_sub_le_of_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "Let R >= 0 and u belong to [-R,R]. If f has derivative D(q) at every q in [-R,R] and |D(q)| <= M throughout that interval, then |f(u)-f(0)| <= M|u|.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:435-447, the source contract is `theorem abs_image_sub_le_of_hasDerivAt {f f' : ℝ → ℝ} {R M u : ℝ} (hR : 0 ≤ R) (hu : u ∈ Icc (-R) R) (hderiv : ∀ q ∈ Icc (-R) R, HasDerivAt f (f' q) q) (hbound : ∀ q ∈ Icc (-R) R, |f' q| ≤ M) : |f u - f 0| ≤ M * |u|`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b7f0e88d7d03b44d4326633ce2286459e2f413f783621bf0b54b9742012c3366",
+  "symbol_mismatches": []
+}

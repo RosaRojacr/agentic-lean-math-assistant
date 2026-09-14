@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeFold_strictMonoOn",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) fold is strictly increasing on (0,1).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:872-893, the source contract is `theorem typeThreeFold_strictMonoOn {lam : ℝ} (hlam : 1 < lam) : StrictMonoOn (typeThreeFold lam) (Set.Ioo 0 1)`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "548db5145f9bcf2011e54d3648e735633b97c51f2514a21b4368c3304bb06a32",
+  "symbol_mismatches": []
+}

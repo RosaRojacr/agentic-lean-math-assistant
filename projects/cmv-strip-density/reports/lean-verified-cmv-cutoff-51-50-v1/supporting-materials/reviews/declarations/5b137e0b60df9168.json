@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "core_integrableOn",
+  "domain_issues": [],
+  "informal_statement": "The density is integrable over a strip core.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2309-2314, the source contract is `lemma core_integrableOn (lam : ℝ) (c : StripCore) : IntegrableOn (StripDensity lam) c.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ebecbc727d05931a9afed5e77aa787703ada65169aa70e3f372bec6e04bddcac",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreePerimeter",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) perimeter derivative is K3/h squared.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:725-732, the source contract is `theorem hasDerivAt_typeThreePerimeter {lam h : ℝ} (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) : HasDerivAt (typeThreePerimeter lam) (typeThreeFold lam h / h ^ 2) h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bd5364506b45967c0ea0097c8997e2b79343b02b6ddca131541b965a63dfb88f",
+  "symbol_mismatches": []
+}

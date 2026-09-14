@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacement_weightedArea_components",
+  "domain_issues": [],
+  "informal_statement": "Replacement weighted area is core area plus the doubled weighted cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GeometricBridge.lean:79-89, the source contract is `theorem replacement_weightedArea_components : candidate.capReplacementRegion.WeightedArea = candidate.stripCore.euclideanArea + lam * (2 * candidate.capArea)`. The bridge uses the actual cap area, chord length and canonical perimeter formulas. The geometric improvement has a strict sign and equal weighted area; an arbitrary scalar record is not accepted as a competitor.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f60c2f169a3606748cb65977bfe0e42bbb44dc76480dad9bc42ac52ed335dcbb",
+  "symbol_mismatches": []
+}

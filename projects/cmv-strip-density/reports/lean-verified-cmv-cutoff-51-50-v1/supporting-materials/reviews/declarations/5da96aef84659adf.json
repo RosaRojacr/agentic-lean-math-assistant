@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_image_Ico_eq_Icc",
+  "domain_issues": [],
+  "informal_statement": "Removing one arc endpoint does not change one-dimensional Hausdorff measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:142-153, the source contract is `lemma hausdorffMeasure_image_Ico_eq_Icc {E : Type*} [EMetricSpace E] [MeasurableSpace E] [BorelSpace E] {f : ℝ → E} {S : Set ℝ} (hf : Set.InjOn f S) {u v : ℝ} (huv : u ≤ v) (hsub : Icc u v ⊆ S) : (μH[1] : Measure E) (f '' Ico u v) = (μH[1] : Measure E) (f '' Icc u v)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1c850c9b7ca6e169808ebfb87cac4902c44102258f4c3ba0c9b6433987f2a5de",
+  "symbol_mismatches": []
+}

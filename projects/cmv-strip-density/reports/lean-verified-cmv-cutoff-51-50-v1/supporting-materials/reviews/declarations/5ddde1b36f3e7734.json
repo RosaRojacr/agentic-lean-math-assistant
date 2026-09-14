@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capX",
+  "domain_issues": [],
+  "informal_statement": "Scale-free area of an original cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:50-52, the source contract is `def capX : ℝ := candidate.capArea / candidate.capChord ^ 2`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a20fa39233b648b55a696be0bec2aeffc6c5d3bf3467f9a8163b812924a00e64",
+  "symbol_mismatches": []
+}

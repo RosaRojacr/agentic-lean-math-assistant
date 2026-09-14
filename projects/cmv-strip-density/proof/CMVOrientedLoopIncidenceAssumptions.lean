@@ -1,0 +1,27 @@
+import CMVOrientedLoopIncidence
+
+open CMVBoundaryLocalAtlas.BoundaryHalfSpaceAtlas
+open CMVBoundaryLocalAtlas.BoundaryHalfSpaceAtlas.FiniteChartCutSystem
+open CMVBoundaryLocalAtlas.BoundaryHalfSpaceAtlas.FiniteChartCutSystem.CutPointCoreNeighborhood
+
+#print axioms CutPointCoreNeighborhood
+#print axioms exists_cutPointCoreNeighborhood
+#print axioms cutPointCoreNeighborhood
+#print axioms corePoint_zero
+#print axioms isConnected_negativeParameters
+#print axioms isConnected_positiveParameters
+#print axioms mem_finiteArcInterior_iff_componentClass
+#print axioms negativePoint_mem_finiteArcInterior
+#print axioms positivePoint_mem_finiteArcInterior
+#print axioms cutPoint_mem_negativeArcClosure
+#print axioms cutPoint_mem_positiveArcClosure
+#print axioms isOpen_localNeighborhood
+#print axioms eq_cutPoint_of_mem_localNeighborhood
+#print axioms incidentArc_eq_negativeArcIndex_or_positiveArcIndex
+#print axioms cutPoint_mem_finiteArcClosure_iff_localGermArc
+#print axioms negativeArcIndex_ne_positiveArcIndex
+#print axioms incidentArcOfBool_surjective
+#print axioms incidentArc_natCard_le_two
+#print axioms incidentArcOfBool_injective
+#print axioms incidentArcEquivBool
+#print axioms incidentArc_natCard_eq_two

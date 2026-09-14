@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Conditions",
+  "domain_issues": [],
+  "informal_statement": "Root-map face conditions and strict branch/comparison conditions for a brick.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1485-1509, the source contract is `structure Conditions (b : Brick) : Prop where lambda_one_lt : ∀ t, (tInterval b).RealContains t → 1 < lam b (pointOf t 0) branches : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → let p := pointOf t z 0 < x b p ∧ x b p < π / 4 ∧ 0 < y b p ∧ y b p < π / 4 ∧ 0 < w b p ∧ w b p < π / 4 ∧ 0 < v b p ∧ v b p < π / 4 lowFaces : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → ∀ j, z j = -radiiReal b j → rootMap b t z j < 0 highFaces : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → ∀ j, z j = radiiReal b j → 0 < rootMap b t z j K3_neg : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → K3 b (pointOf t z) < 0 G_neg : ∀ t z, (tInterval b).RealContains t → InSymmetricBox (radiiReal b) z → G b (pointOf t z) < 0`. The Conditions interface has the same brick and residual geometry as the certificate soundness theorem. Its face-sign and branch requirements lead to actual common zeros via the incidence-root projections and two one-dimensional IVTs; a general multivariate existence principle is not silently postulated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c36f9057f1d62e8c0bcb35e1c262b414fda26bcb9bf4a32565a3c1e70dc5568",
+  "symbol_mismatches": []
+}

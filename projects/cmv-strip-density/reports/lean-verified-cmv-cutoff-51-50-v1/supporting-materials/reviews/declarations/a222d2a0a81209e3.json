@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.continuous_realizedLeftArcParam",
+  "domain_issues": [],
+  "informal_statement": "The realized type-(iii) left parameter is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:690-699, the source contract is `lemma continuous_realizedLeftArcParam : Continuous a.realizedLeftArcParam`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5aa13a8e0a54ece98427e269f77eefa81d89485ad9d1f32dde5c0e6f344ef9b4",
+  "symbol_mismatches": []
+}

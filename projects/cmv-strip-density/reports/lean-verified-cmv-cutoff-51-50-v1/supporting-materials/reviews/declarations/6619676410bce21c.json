@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.realConclusion",
+  "domain_issues": [],
+  "informal_statement": "The first prototype provides a real equation solution with its recorded strict branch and sign bounds.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:3950-3975, the source contract is `theorem realConclusion {lam0 : ℝ} (hlam : lamInterval.RealContains lam0) : ∃ p : Point, lam p = lam0 ∧ InSymmetricBox radiiReal (vars p) ∧ C4 p = 0 ∧ F p = 0 ∧ C3 p = 0 ∧ E p = 0 ∧ G p < 0`. For each lambda in the prototype interval, the theorem constructs one point at that same lambda, with its vars in the closed error box, C4=F=C3=E=0 and G<0. The proof obtains it as pointOf at the triangular-root witness and uses the uniform gap bound. It neither assumes the common zero nor claims root uniqueness or a K3 sign as part of this conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dc3fbce7b832643e59d10760d43a70cfab194d45c7293f0a25257849be954285",
+  "symbol_mismatches": []
+}

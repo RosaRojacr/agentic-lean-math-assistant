@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.lambda_in_retainedSuffix",
+  "domain_issues": [],
+  "informal_statement": "Every first-prototype density lies in the retained suffix interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:473-479, the source contract is `theorem lambda_in_retainedSuffix {lam : ℝ} (h : lamInterval.RealContains lam) : LeanSuffixAnalytic.InRetainedSuffix lam`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7d841cce60699559819b45f6ee022939aef986b15a3732746d752fc33d94e2fa",
+  "symbol_mismatches": []
+}

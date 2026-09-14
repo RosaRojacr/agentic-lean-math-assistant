@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "lintegral_semicircle_translated",
+  "domain_issues": [],
+  "informal_statement": "Nonnegative-integral form of the translated circular cross-section formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1801-1819, the source contract is `lemma lintegral_semicircle_translated {a r θ : ℝ} (hr : 0 < r) (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) : (∫⁻ y in Icc (a + r * cos θ) (a + r), ENNReal.ofReal (2 * √(r ^ 2 - (y - a) ^ 2))) = ENNReal.ofReal (r ^ 2 * (θ - sin θ * cos θ))`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3c8e90cd635d133e832b64fe2731d46db4f68d0a1a341d292df3904cf66e67e8",
+  "symbol_mismatches": []
+}

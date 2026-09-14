@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment.rightEndpoint",
+  "domain_issues": [],
+  "informal_statement": "The segment's right endpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:403-405, the source contract is `def rightEndpoint (s : HorizontalSegment) : PlanePoint := (s.midpointX + s.chord / 2, s.baseY)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a14791633639531ab0cb8801c8e0e16383dd7712b7d5730aa7f0d9178c83e5da",
+  "symbol_mismatches": []
+}

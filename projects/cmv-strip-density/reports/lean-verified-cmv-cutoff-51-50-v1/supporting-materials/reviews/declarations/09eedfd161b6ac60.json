@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sideAngle_pos",
+  "domain_issues": [],
+  "informal_statement": "The core side angle is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:463-465, the source contract is `theorem sideAngle_pos (c : StripCore) : 0 < c.sideAngle`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "20886da5ba412dbc0666239218b14d32a1bad68cf7a0f4837b3f6216a46aefbd",
+  "symbol_mismatches": []
+}

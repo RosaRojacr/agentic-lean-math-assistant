@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.realContains_cos_interval",
+  "domain_issues": [],
+  "informal_statement": "Cosine endpoint enclosures extend to the recorded interval of arguments.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:339-352, the source contract is `theorem realContains_cos_interval {input output : QInterval} {x : ℝ} (hx : input.RealContains x) (hbranch : 0 ≤ (input.lo : ℝ) ∧ (input.hi : ℝ) ≤ π) (hlo : (output.lo : ℝ) ≤ cos (input.hi : ℝ)) (hhi : cos (input.lo : ℝ) ≤ (output.hi : ℝ)) : output.RealContains (cos x)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eedd5e166794798d683fb5483e2b9b97111a653338c01d010cd7592bb93d98f1",
+  "symbol_mismatches": []
+}

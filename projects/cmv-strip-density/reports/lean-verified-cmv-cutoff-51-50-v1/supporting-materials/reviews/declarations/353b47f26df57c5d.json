@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.not_isWeightedPerimeterMinimizer_of_typeThree",
+  "domain_issues": [],
+  "informal_statement": "A realized equal-area type-(iii) competitor with smaller perimeter disproves candidate minimality.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:3101-3118, the source contract is `theorem not_isWeightedPerimeterMinimizer_of_typeThree (a : TypeThreeAssembly lam) (realization : TypeThreeAssembly.ModeledCompetitorRealization a) (equalArea : a.scalarWeightedArea = candidate.WeightedArea) (strictPerimeter : a.scalarWeightedPerimeter < candidate.WeightedPerimeter) : ¬ candidate.IsWeightedPerimeterMinimizer`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6807359794d5b2629c85ed715f93a0b06f1e0f5dc3b504c99a54401226562f55",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_upper_weightedArea",
+  "domain_issues": [],
+  "informal_statement": "An exterior upper cap has weighted area lambda times Euclidean area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2334-2359, the source contract is `lemma cap_upper_weightedArea (lam : ℝ) (c : OneSidedCircularCap) (hside : c.side = .upper) (hbase : c.baseY = 1) : WeightedArea lam c.carrier = lam * c.euclideanArea`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2f2165b544886739ec40b854c29666e67f06c7a423bd046c04eb224a5c6ee0ce",
+  "symbol_mismatches": []
+}

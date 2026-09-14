@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.stationaryEqualArea_gap_identity",
+  "domain_issues": [],
+  "informal_statement": "At a stationary equal-area pair the perimeter gap is four times the reduced radical gap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:1221-1238, the source contract is `theorem stationaryEqualArea_gap_identity {lam h₃ h₄ : ℝ} (hh₃ : h₃ ≠ 0) (hh₄ : h₄ ≠ 0) (harea : typeThreeArea lam h₃ = typeFourArea lam h₄) (hfold : typeFourFold lam h₄ = 0) : typeThreePerimeter lam h₃ - typeFourPerimeter lam h₄ = 4 * reducedFoldGap lam h₃ h₄`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ca190ef8d3e84eb702882d4666162a0576db626556bb2591b0ba437f522132f",
+  "symbol_mismatches": []
+}

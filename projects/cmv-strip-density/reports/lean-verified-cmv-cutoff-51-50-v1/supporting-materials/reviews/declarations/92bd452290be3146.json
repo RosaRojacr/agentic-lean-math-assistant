@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeFourFold_lowerFace_neg",
+  "domain_issues": [],
+  "informal_statement": "K4 is negative on the first box's lower curvature face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:182-300, the source contract is `theorem typeFourFold_lowerFace_neg {lam : ℝ} (hlam : lambdaInterval.RealContains lam) : LeanSuffixAnalytic.typeFourFold lam (h4Interval.lo : ℝ) < 0`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dcdb660b276bba4f208c5ded09cca5851f937ad4f80478890332c45cce47b8a0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.checkedConditions",
+  "domain_issues": [],
+  "informal_statement": "All generic compact-cell conditions hold for box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactSecondCell.lean:639-659, the source contract is `theorem checkedConditions : CompactCellAssembly.Conditions lambdaInterval h3Interval h4Interval where lambda_one_lt`. The theorem supplies every field of CompactCellAssembly.Conditions for the concrete second box with no certificate premise. In particular the perimeter sign is on the whole h3/h4 slab; the equal-area face hypotheses remain restricted to stationary h4 as specified by the generic record.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c9b3f9f7a265a22f128e05df51ad2c73f46eedace1983e930b75a5ccef6ea3ba",
+  "symbol_mismatches": []
+}

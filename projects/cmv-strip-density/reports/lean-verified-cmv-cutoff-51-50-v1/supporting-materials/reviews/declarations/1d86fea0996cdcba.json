@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The left core parameter interval traces exactly the left core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:517-596, the source contract is `theorem leftCoreParam_image_Icc (c : StripCore) : leftCoreParam c '' Icc (coreArcStart c) (coreArcEnd c) = c.leftArcTrace`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "01c2af95d70e04d0bac530bc681fda34196e33e841f34e26466b4a3a9c6ecd18",
+  "symbol_mismatches": []
+}

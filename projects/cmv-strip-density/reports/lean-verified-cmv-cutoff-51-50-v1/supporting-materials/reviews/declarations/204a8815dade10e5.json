@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerAngle_pos",
+  "domain_issues": [],
+  "informal_statement": "The inner type-(iii) angle is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:165-167, the source contract is `theorem innerAngle_pos : 0 < a.innerAngle`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e78599ffc8793999ca239c142df39a815df5b9220a19bd2bd882d169b85658b5",
+  "symbol_mismatches": []
+}

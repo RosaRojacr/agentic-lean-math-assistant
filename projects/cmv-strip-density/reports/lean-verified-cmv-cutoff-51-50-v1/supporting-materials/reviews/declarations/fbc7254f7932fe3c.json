@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.lambdaInterval",
+  "domain_issues": [],
+  "informal_statement": "Density interval of compact box zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:53-56, the source contract is `def lambdaInterval : QInterval := ⟨33 / 32, 236601 / 229376, by norm_num⟩`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "33288724289e17e6b58f251168fcac1ba8bb868b76aed0ce4b2d7a7825c0065c",
+  "symbol_mismatches": []
+}

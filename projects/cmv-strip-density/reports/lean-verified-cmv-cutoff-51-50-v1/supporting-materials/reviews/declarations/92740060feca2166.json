@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVPublishedCutoff51_50.candidate_not_isWeightedPerimeterMinimizer_from_51_50",
+  "domain_issues": [],
+  "informal_statement": "Every modeled four-arc candidate satisfying the formal CMV hypotheses is nonminimal for lambda at least 51/50.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVPublishedCutoff51_50.lean:22-39, the source contract is `theorem candidate_not_isWeightedPerimeterMinimizer_from_51_50 {lam : ℝ} (hlower : (51 / 50 : ℝ) ≤ lam) (candidate : _root_.FourArcCandidate lam) (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : ¬ candidate.IsWeightedPerimeterMinimizer`. The only external inputs are lambda >= 51/50, a FourArcCandidate lambda, and its SatisfiesCMVTypeIVHypotheses. The proof splits at 33/32 and 9/7, using the lower and compact closed cover and then the cap-replacement theorem. Candidate curvature remains 0 < h <= 1, including h = 1; no sharpness assertion or conclusion below 51/50 is added.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe8c3d4297822263e0764fc31d2cba27c4c202e21a8868a614e1c8b94789b37f",
+  "symbol_mismatches": []
+}

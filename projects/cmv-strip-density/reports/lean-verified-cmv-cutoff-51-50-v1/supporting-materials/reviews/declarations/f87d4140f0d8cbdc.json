@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.mem_chordCarrier_of_mem_carrier_of_eq_base",
+  "domain_issues": [],
+  "informal_statement": "A cap point at base height belongs to its chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:291-310, the source contract is `theorem mem_chordCarrier_of_mem_carrier_of_eq_base (c : OneSidedCircularCap) {p : PlanePoint} (hp : p ∈ c.carrier) (hy : p.2 = c.baseY) : p ∈ c.chordCarrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "424261710f758c71ebe7e57dd13ebd11ffc59cb51b840ff8fc86319890ddae19",
+  "symbol_mismatches": []
+}

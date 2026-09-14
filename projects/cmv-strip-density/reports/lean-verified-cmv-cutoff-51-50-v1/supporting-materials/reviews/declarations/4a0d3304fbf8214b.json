@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pi_div_eight_pos",
+  "domain_issues": [],
+  "informal_statement": "Pi/8 is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:64-65, the source contract is `lemma pi_div_eight_pos : (0:ℝ) < π / 8`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "69407ed5917d0d3fc3922aeeb807cf1b44f3f653f3ebf198c99ff7ac4ce4eba5",
+  "symbol_mismatches": []
+}

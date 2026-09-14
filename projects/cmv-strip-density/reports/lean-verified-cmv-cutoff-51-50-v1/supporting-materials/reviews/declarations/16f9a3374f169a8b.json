@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.B4",
+  "domain_issues": [],
+  "informal_statement": "First-prototype type-(iv) angle expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:503-503, the source contract is `def B4 (p : Point) : ℝ := lam p * y p + π / 2 - x p`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "30e079ec002735e04de6acf4de75c1ef255bd47fc8db540544074fad80b3a6bc",
+  "symbol_mismatches": []
+}

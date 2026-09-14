@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.lam",
+  "domain_issues": [],
+  "informal_statement": "The reconstructed first-prototype density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:495-495, the source contract is `def lam (p : Point) : ℝ := (lamMid : ℝ) + p.t`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80d4ea0b007cc38c9cef09318804f92bb1d2031dffde45077e78cad062961da3",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pi_sub_θstar_mem",
+  "domain_issues": [],
+  "informal_statement": "The supplementary root angle lies in the valid cap domain.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:161-164, the source contract is `lemma pi_sub_θstar_mem : π - θstar ∈ Ioo 0 π`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2bfa7c68cdb66f6586eaf8c23f7f915842c521244d8070de93397cda7a77e466",
+  "symbol_mismatches": []
+}

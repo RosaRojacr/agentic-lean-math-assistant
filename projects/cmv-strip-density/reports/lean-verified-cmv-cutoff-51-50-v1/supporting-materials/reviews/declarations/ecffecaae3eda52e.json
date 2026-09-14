@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.cos_outerAngle",
+  "domain_issues": [],
+  "informal_statement": "The cosine of the exterior angle is (2h-1)/lambda.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:184-188, the source contract is `theorem cos_outerAngle : cos a.outerAngle = a.outerArgument`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3eb066bbadef1d5d0722d2c322b7cfe8bce8e1eb62204f2872b1f8f1bbb41a24",
+  "symbol_mismatches": []
+}

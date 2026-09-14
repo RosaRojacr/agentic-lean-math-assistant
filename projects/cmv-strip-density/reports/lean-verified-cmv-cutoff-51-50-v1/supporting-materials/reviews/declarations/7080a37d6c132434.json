@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.Conditions",
+  "domain_issues": [],
+  "informal_statement": "Primitive branch, fold-face, equal-area-face, and perimeter-sign obligations for a compact cell.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellAssembly.lean:25-62, the source contract is `structure Conditions (lambdaInterval h3Interval h4Interval : QInterval) : Prop where lambda_one_lt : ∀ {lam : ℝ}, lambdaInterval.RealContains lam → 1 < lam h3_slab_regular : ∀ {h : ℝ}, h3Interval.RealContains h → h ∈ Ioo (0 : ℝ) 1 h3_slab_above_half : ∀ {h : ℝ}, h3Interval.RealContains h → 1 / 2 < h h4_slab_regular : ∀ {h : ℝ}, h4Interval.RealContains h → h ∈ Ioo (0 : ℝ) 1 typeFourFold_lowerFace_neg : ∀ {lam : ℝ}, lambdaInterval.RealContains lam → LeanSuffixAnalytic.typeFourFold lam (h4Interval.lo : ℝ) < 0 typeFourFold_upperFace_pos : ∀ {lam : ℝ}, lambdaInterval.RealContains lam → 0 < LeanSuffixAnalytic.typeFourFold lam (h4Interval.hi : ℝ) typeThreeFold_neg_on_slab : ∀ {lam h : ℝ}, lambdaInterval.RealContains lam → h3Interval.RealContains h → LeanSuffixAnalytic.typeThreeFold lam h < 0 typeThreeArea_lowerFace_gap_pos : ∀ {lam h₄ : ℝ}, lambdaInterval.RealContains lam → h4Interval.RealContains h₄ → LeanSuffixAnalytic.typeFourFold lam h₄ = 0 → 0 < LeanSuffixAnalytic.typeThreeArea lam (h3Interval.lo : ℝ) - LeanSuffixAnalytic.typeFourArea lam h₄ typeThreeArea_upperFace_gap_neg : ∀ {lam h₄ : ℝ}, lambdaInterval.RealContains lam → h4Interval.RealContains h₄ → LeanSuffixAnalytic.typeFourFold lam h₄ = 0 → LeanSuffixAnalytic.typeThreeArea lam (h3Interval.hi : ℝ) - LeanSuffixAnalytic.typeFourArea lam h₄ < 0 typeThreePerimeter_gap_neg : ∀ {lam h₃ h₄ : ℝ}, lambdaInterval.RealContains lam → h3Interval.RealContains h₃ → h4Interval.RealContains h₄ → LeanSuffixAnalytic.typeThreePerimeter lam h₃ - LeanSuffixAnalytic.typeFourPerimeter lam h₄ < 0`. The condition record is analytic data, not the conclusion in disguise: density jump, regular h3/h4 slabs with h3 above one half, K4 opposite signs, K3 negativity, conditional equal-area face signs at a K4 zero, and a strict perimeter sign on the entire Cartesian slab. The author preserves that last unconditional slab quantifier.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c3b2aa26c0b8b3d8801158e0abfe33b06aca94b7f9fdd276d46c23ec0373f44",
+  "symbol_mismatches": []
+}

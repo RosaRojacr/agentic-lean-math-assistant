@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor.WeightedArea",
+  "domain_issues": [],
+  "informal_statement": "Weighted area evaluated according to the competitor constructor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3968-3975, the source contract is `def WeightedArea {lam : ℝ} : AdmissibleCompetitor lam → ℝ | .empty => 0 | .general region => region.weightedArea | .fourArc a => a.weightedArea lam | .replacement a => a.weightedArea lam`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d58b51a28690771d1b404e9048905bb6eae43f08f6798b27166b1234f3251f5e",
+  "symbol_mismatches": []
+}

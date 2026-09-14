@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_unitCircleArc_image_le",
+  "domain_issues": [],
+  "informal_statement": "For r > 0 and arbitrary real a,b, the Hausdorff length of u_r([a,b]) is at most max(b-a,0).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:93-104, the source contract is `lemma hausdorffMeasure_unitCircleArc_image_le {r a b : ℝ} (hr : 0 < r) : (μH[1] : Measure ℂ) (unitCircleArc r '' Icc a b) ≤ ENNReal.ofReal (b - a)`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "07ee598762aa4a7964c4db549c22833ebf32ee2d325dcc190dd9a72212015319",
+  "symbol_mismatches": []
+}

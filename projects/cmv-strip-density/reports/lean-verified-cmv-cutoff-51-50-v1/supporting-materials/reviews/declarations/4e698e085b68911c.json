@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanStripDensity_integrableOn_of_measure_ne_top",
+  "domain_issues": [],
+  "informal_statement": "For every real lambda and every set of finite Euclidean Hausdorff one-measure, the transported strip density is integrable on that set.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1404-1411, the source contract is `lemma euclideanStripDensity_integrableOn_of_measure_ne_top (lam : ℝ) {s : Set EuclideanPlane} (hs : (μH[1] : Measure EuclideanPlane) s ≠ ∞) : IntegrableOn (euclideanStripDensity lam) s (μH[1] : Measure EuclideanPlane)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "509b7e5c9b45ab61b5e958fce825f92bda813640616ddf5c7591ac420818c5d2",
+  "symbol_mismatches": []
+}

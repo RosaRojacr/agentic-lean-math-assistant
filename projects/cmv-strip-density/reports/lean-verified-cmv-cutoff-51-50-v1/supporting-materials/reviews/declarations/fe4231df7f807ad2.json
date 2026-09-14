@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "The geometric component area sum equals the source scalar type-(iii) area formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:885-895, the source contract is `theorem modeledWeightedArea_formula : a.modeledWeightedArea = a.scalarWeightedArea`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b0e70e8aeaefad1e18dbaff1d3d6364f544c6042f48ce97bebd3fa5c6cc8e74e",
+  "symbol_mismatches": []
+}

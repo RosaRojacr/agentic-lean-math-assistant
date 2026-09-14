@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeFourPerimeter_centered_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Centered enclosure for type-(iv) perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:106-134, the source contract is `theorem typeFourPerimeter_centered_enclosure (lambdaInterval hInterval : QInterval) (center : ℚ) {lam h : ℝ} (_hlam : lambdaInterval.RealContains lam) (hh : hInterval.RealContains h) (hcenter : hInterval.RealContains (center : ℝ)) (hlambda : 1 < lam) (hregular : ∀ {x : ℝ}, hInterval.RealContains x → x ∈ Ioo (0 : ℝ) 1) (base slope displacement : QInterval) (hbase : base.RealContains (LeanSuffixAnalytic.typeFourPerimeter lam (center : ℝ))) (hslope : ∀ x, hInterval.RealContains x → slope.RealContains (LeanSuffixAnalytic.typeFourFold lam x / x ^ 2)) (hdisplacement : displacement.RealContains (h - (center : ℝ))) : (base.add (slope.mul displacement)).RealContains (LeanSuffixAnalytic.typeFourPerimeter lam h)`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6de403709bd1fd67e6a59e747fa0828b9b2000aa26dc332ce4736414ad4a315",
+  "symbol_mismatches": []
+}

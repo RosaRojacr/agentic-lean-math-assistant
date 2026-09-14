@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.side_caps_area_formula",
+  "domain_issues": [],
+  "informal_statement": "The two core side segments have the standard arcsine area expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:351-363, the source contract is `theorem side_caps_area_formula : 8 * area candidate.stripCore.sideAngle = 2 * (arcsin candidate.h - candidate.h * √(1 - candidate.h ^ 2)) / candidate.h ^ 2`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a639bd8c9eef40f2c4f87fdb62b671cf7db0ce41013e7d923721f6f472bc8cf1",
+  "symbol_mismatches": []
+}

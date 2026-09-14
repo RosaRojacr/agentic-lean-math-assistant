@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C3Residual.derivRho",
+  "domain_issues": [],
+  "informal_statement": "Explicit rho derivative of the type-(iii) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1190-1197, the source contract is `def derivRho (t rho sigma : ℝ) : ℝ := let ww := (b.centers 2 : ℝ) + b.slopes 2 * t + rho let vv := (b.centers 3 : ℝ) + b.slopes 3 * t + b.vRhoSlope * rho + sigma let ll := (lamMid b : ℝ) + t (-sin ww + (b.vRhoSlope : ℝ) * (ll * sin vv))`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c1e483238adef1a69bda282637a3ed4325a085039bf7cd8b957f9f3fdb1c5e6e",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.angleTerm",
+  "domain_issues": [],
+  "informal_statement": "The source angle term lambda a3 plus pi minus b3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:289-291, the source contract is `def angleTerm : ℝ := lam * a.outerAngle + π - a.innerAngle`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8089feb5fd033f48e23e1ab4579cce22afbbbfde128400123f3b8b2b2a245332",
+  "symbol_mismatches": []
+}

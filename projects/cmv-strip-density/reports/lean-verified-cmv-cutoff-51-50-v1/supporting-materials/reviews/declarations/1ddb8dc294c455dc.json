@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.candidate_perimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "The candidate satisfies the type-(iv) source perimeter formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:391-409, the source contract is `theorem candidate_perimeter_formula (_h : candidate.SatisfiesCMVTypeIVHypotheses) : candidate.WeightedPerimeter = 4 * lam * candidate.alpha / candidate.h + 4 * arcsin candidate.h / candidate.h`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b4949bdc7019f429151f2faf734db8466461943a33be006f4c104caebb493fe0",
+  "symbol_mismatches": []
+}

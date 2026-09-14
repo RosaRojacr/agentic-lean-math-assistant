@@ -1,0 +1,13 @@
+import CMVTwoPatchAmbientVariation
+
+#print axioms CMVTwoPatchGraphVariation.GraphPatch.isOpen_openGraphTube
+#print axioms CMVTwoPatchGraphVariation.GraphPatch.exists_ambientField
+#print axioms CMVTwoPatchGraphVariation.GraphPatch.AmbientField.image_graphTrace
+#print axioms CMVTwoPatchGraphVariation.GraphPatch.AmbientField.image_carrier
+#print axioms CMVTwoPatchGraphVariation.velocityTwo_contDiff_top
+#print axioms CMVTwoPatchGraphVariation.TwoPatchData.exists_ambientField
+#print axioms CMVTwoPatchGraphVariation.TwoPatchData.AmbientField.image_patchCarriers
+#print axioms CMVTwoPatchGraphVariation.ActualTwoPatchData.image_actualCarrier
+#print axioms
+  CMVTwoPatchGraphVariation.ActualTwoPatchData.exists_compensatedSmoothAmbientRealization
+#print axioms CMVTwoPatchGraphVariation.ActualTwoPatchData.actualTwoPatch_smoothAmbient_checkpoint

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_strictAntiOn",
+  "domain_issues": [],
+  "informal_statement": "The cap-saving function strictly decreases up to Xstar.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:110-119, the source contract is `lemma g_strictAntiOn : StrictAntiOn g (Ioc 0 xstar)`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9a778ff550b85fbf2a285e9d241dc6696a5778402499a6962e2ebab67dde9834",
+  "symbol_mismatches": []
+}

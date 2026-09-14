@@ -1,0 +1,1 @@
+Created `supporting-materials/reviews/author-04.json`. Corrected both remaining prose mismatches; preserved the main proof and existing operator corrections. Validated strict JSON, all 850 classifications, both generated families, and all 117 Lean citations.

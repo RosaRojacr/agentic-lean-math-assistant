@@ -83,9 +83,7 @@ def test_autorun_policy_defaults(tmp_path: Path) -> None:
 
 
 @pytest.mark.parametrize("value", [1, 100])
-def test_autorun_max_strategy_executions_boundaries(
-    tmp_path: Path, value: int
-) -> None:
+def test_autorun_max_strategy_executions_boundaries(tmp_path: Path, value: int) -> None:
     project = ProjectSpec.load(
         write_project(
             tmp_path,

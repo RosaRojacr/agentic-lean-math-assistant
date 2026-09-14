@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.lambdaInterval",
+  "domain_issues": [],
+  "informal_statement": "Density interval of compact box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactSecondCell.lean:22-25, the source contract is `def lambdaInterval : QInterval := ⟨236601 / 229376, 118329 / 114688, by norm_num⟩`. This is the explicit second compact box and its splice to the first. Closed interval membership retains the common rational endpoint; local root-slab conditions do not become extra hypotheses on an arbitrary candidate.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "69be0395e97b77b018ac7b8ae43d4c795e095c167e0e517d474ad3537fb6b8ec",
+  "symbol_mismatches": []
+}

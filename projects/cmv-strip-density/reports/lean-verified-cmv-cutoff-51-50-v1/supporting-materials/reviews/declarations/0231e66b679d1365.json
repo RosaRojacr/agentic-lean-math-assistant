@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.weightedPerimeter_components",
+  "domain_issues": [],
+  "informal_statement": "Candidate perimeter is core arc length plus 2 lambda c ell(alpha).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:374-390, the source contract is `theorem weightedPerimeter_components : candidate.WeightedPerimeter = candidate.stripCore.boundaryArcLength + 2 * lam * candidate.capChord * ell candidate.alpha`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d02953cec6a51d470b1b940fa2318bbd5c86354d0e420d179322c86356c9434a",
+  "symbol_mismatches": []
+}

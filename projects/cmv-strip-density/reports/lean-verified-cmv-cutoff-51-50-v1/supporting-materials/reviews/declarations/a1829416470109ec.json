@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The density integral against a given boundary measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:67-73, the source contract is `def WeightedPerimeter (lam : ℝ) (boundaryMeasure : Measure PlanePoint) : ℝ := ∫ p, StripDensity lam p ∂boundaryMeasure`. This is the low-level weighted integral against the explicitly supplied boundary measure, as the author says. The canonical choice is imposed at the admissible-competitor perimeter definition, so this auxiliary measure parameter is not a freedom in the minimization problem.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8d1f1a60a6d4c5ce03ccda31c1bc34ec4f837b6ce55275e4b0c06fe04e566dba",
+  "symbol_mismatches": []
+}

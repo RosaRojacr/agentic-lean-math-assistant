@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.CertificateExpr.sound",
+  "domain_issues": [],
+  "informal_statement": "Every certificate expression's real value belongs to its computed enclosure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:191-200, the source contract is `theorem sound (e : CertificateExpr) : e.enclosure.RealContains e.value`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7903a28236dd3b57076df8e33c74ea38e4b9e0dfa4dd8e31c52c47cb44f7b8cc",
+  "symbol_mismatches": []
+}

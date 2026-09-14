@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.E",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's cleared equal-area residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:129-130, the source contract is `def E (p : Point) : ℝ := 2 * cos (x p) ^ 2 * N3 p - (1 + cos (w p)) ^ 2 * N4 p`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "473eec5a0b00f868ac4f7ad090edf435fe47f07ca5bd2b59758512636541fbfa",
+  "symbol_mismatches": []
+}

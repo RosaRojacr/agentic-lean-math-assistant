@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.leftCapCarrier",
+  "domain_issues": [],
+  "informal_statement": "The left circular segment attached to the core rectangle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:440-443, the source contract is `def leftCapCarrier (c : StripCore) : Set PlanePoint := {p | (p.1 - c.leftCenterX) ^ 2 + p.2 ^ 2 ≤ c.radius ^ 2 ∧ p.1 ≤ -c.chord / 2 ∧ |p.2| ≤ 1}`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2ca301cf56be587995c60fad814a6021c666b20d0f45e1fa3f2964b23f678cbc",
+  "symbol_mismatches": []
+}

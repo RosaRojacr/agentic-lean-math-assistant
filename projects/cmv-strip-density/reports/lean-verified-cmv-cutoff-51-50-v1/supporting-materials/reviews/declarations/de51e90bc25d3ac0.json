@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedLeftCoreParam",
+  "domain_issues": [],
+  "informal_statement": "Left core arc parametrization in Euclidean L2 coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:705-708, the source contract is `noncomputable def realizedLeftCoreParam (c : StripCore) (s : ℝ) : EuclideanPlane := planeEuclideanHomeomorph (leftCoreParam c s)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "854e6d1ea17e2b2d6576f273610fd43051ac61c0bb7e75c185b3d3aa821f7da4",
+  "symbol_mismatches": []
+}

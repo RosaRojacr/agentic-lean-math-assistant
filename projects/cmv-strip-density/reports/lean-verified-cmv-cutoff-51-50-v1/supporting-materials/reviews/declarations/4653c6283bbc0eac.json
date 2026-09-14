@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.K3",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) fold numerator in checker angles.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:84-89, the source contract is `def K3 (p : Point) : ℝ := let h3 := (1 + cos (w b p)) / 2 4 * h3 * ((1 + cos (w b p)) / sin (w b p) - (lam b p ^ 2 + cos (w b p)) / (lam b p * (lam b p * sin (v b p)))) - 2 * (B3 b p + D3 b p)`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ced932efb916edd340f60f22ba0266b2b91a924f0bdc75b35e1b476fed409a5e",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeFourArea_centered_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Centered type-(iv) area enclosure used by box zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:422-439, the source contract is `theorem typeFourArea_centered_enclosure {lam h : ℝ} (hlam : lambdaInterval.RealContains lam) (hh : h4Interval.RealContains h) (base slope displacement : QInterval) (hbase : base.RealContains (LeanSuffixAnalytic.typeFourArea lam (h4Center : ℝ))) (hslope : ∀ x, h4Interval.RealContains x → slope.RealContains (LeanSuffixAnalytic.typeFourFold lam x / x ^ 3)) (hdisplacement : displacement.RealContains (h - (h4Center : ℝ))) : (base.add (slope.mul displacement)).RealContains (LeanSuffixAnalytic.typeFourArea lam h)`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "23fd914cbcc4badfdce7ba2492c48ade47c8348ae2e3255286932df9b5b0b656",
+  "symbol_mismatches": []
+}

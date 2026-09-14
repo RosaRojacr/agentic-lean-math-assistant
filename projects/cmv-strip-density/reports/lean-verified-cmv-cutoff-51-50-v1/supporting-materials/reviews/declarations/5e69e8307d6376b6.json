@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "monotone_capPartitionPoint",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, theta > 0 and a positive natural N, the partition formula is monotone in the natural index.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:167-174, the source contract is `lemma monotone_capPartitionPoint {r theta : ℝ} (hr : 0 < r) (htheta : 0 < theta) {N : ℕ} (hN : 0 < N) : Monotone (capPartitionPoint r theta N)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "62e77199a2eb7f24e5f93307536675c49f368eab2d84be96574f544f2152a857",
+  "symbol_mismatches": []
+}

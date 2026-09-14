@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.center",
+  "domain_issues": [],
+  "informal_statement": "The circle center for the chosen cap placement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:117-123, the source contract is `def center (c : OneSidedCircularCap) : PlanePoint := match c.side with | .upper => (c.midpointX, c.baseY - c.radius * cos c.theta) | .lower => (c.midpointX, c.baseY + c.radius * cos c.theta)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "58a018a3af71f1eb6c5aebb7ee395b60aab79f7b55a9d384d43694baace0d346",
+  "symbol_mismatches": []
+}

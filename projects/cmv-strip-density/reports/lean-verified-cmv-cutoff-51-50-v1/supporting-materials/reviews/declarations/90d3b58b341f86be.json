@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) component area sum.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:278-284, the source contract is `def modeledWeightedArea : ℝ := a.rectangleArea + a.sideCap.euclideanArea + lam * a.outerCap.euclideanArea`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "35499fdca0a3bbed11909d6dec0bbb1c83123d6ea5cb0599717ee289f567e87e",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.divPos",
+  "domain_issues": [],
+  "informal_statement": "Interval division by a strictly positive denominator interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:50-53, the source contract is `def divPos (i j : QInterval) (hj : 0 < j.lo) : QInterval := i.mul (j.recipPos hj)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2642acecc562d12111d17e260928f80af5d34794a1e8e1d3abc20a33a085768a",
+  "symbol_mismatches": []
+}

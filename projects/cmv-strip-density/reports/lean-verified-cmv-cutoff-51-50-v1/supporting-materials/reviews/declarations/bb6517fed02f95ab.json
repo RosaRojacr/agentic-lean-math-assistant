@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly",
+  "domain_issues": [],
+  "informal_statement": "A strip core with congruent reflected exterior caps of angle in (0,pi/2).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2491-2498, the source contract is `structure FourArcAssembly where core : StripCore outerAngle : ℝ outerAngle_pos : 0 < outerAngle outerAngle_lt_pi_div_two : outerAngle < π / 2`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1ac9185bddaf1e6a0074fb39d1e29417262cc431ccce861d3c65ec2e5216fdb1",
+  "symbol_mismatches": []
+}

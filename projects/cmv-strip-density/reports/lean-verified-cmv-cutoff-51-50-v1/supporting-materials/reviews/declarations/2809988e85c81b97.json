@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.N3",
+  "domain_issues": [],
+  "informal_statement": "The right brick's type-(iii) area numerator.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:124-125, the source contract is `def N3 (p : Point) : ℝ := B3 p + (cos (w p) + 2) * D3 p`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "79fd22b0e88fadf424caa5c32cd0621ba146426141946780c13923b4adb4108c",
+  "symbol_mismatches": []
+}

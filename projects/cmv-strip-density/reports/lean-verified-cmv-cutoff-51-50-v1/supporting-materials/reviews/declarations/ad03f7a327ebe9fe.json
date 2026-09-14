@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.reduced_hasDerivAt_sigma",
+  "domain_issues": [],
+  "informal_statement": "The recorded sigma derivative is exact.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:398-418, the source contract is `theorem reduced_hasDerivAt_sigma (t xi eta rho sigma : ℝ) : HasDerivAt (fun u => reduced b t xi eta rho u) (derivSigma b t xi eta rho sigma) sigma`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bd919b6d5eb11263919e208acc2f1dc4dcb2acf50a28cc2e3a87fcc770f90e3b",
+  "symbol_mismatches": []
+}

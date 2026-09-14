@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor",
+  "domain_issues": [],
+  "informal_statement": "The admissible competitor already stored in a type-(iii) realization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:3053-3054, the source contract is `def asCompetitor : AdmissibleCompetitor lam := realization.competitor`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6c62dc13fbd8bcc95bc9815a8c9dace231a72bb0614d3ccc231b26790b97baab",
+  "symbol_mismatches": []
+}

@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import os
+from contextlib import nullcontext
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -18,8 +21,13 @@ from agentic_lean_math_assistant.autorun import (
     follow_autorun_events,
     follow_autorun_output,
     follow_autorun_status,
+    request_autorun_stop,
+    restore_autorun_workspace,
 )
+from agentic_lean_math_assistant.cli import main as cli_main
+from agentic_lean_math_assistant.herdr import HerdrWorkspace, HerdrWorkspaceRecord
 from agentic_lean_math_assistant.project import ProjectSpec
+from agentic_lean_math_assistant.runtime import campaign_run_lock
 from agentic_lean_math_assistant.terminal_status import LiveStatusDisplay
 
 
@@ -116,7 +124,13 @@ def successful_agent(request_path: Path) -> int:
     if request["role_id"] == "autorun_strategy_reflection":
         output = _proposal()
     elif request["role_id"] == "autorun_conductor":
-        output = _claim()
+        output = autorun_module.conductor_claim_marker(
+            request_path,
+            checkpoint_id="first_check",
+            progress_class="meaningful",
+            summary="The bounded acceptance obligation was verified.",
+            evidence="proof/verified-artifact",
+        )
     elif request["role_id"] == "autorun_progress_adjudicator":
         output = _adjudication()
     else:
@@ -206,6 +220,830 @@ def _runner(tmp_path: Path) -> AutoRunRunner:
     )
 
 
+def _stopped_autorun_fixture(
+    tmp_path: Path,
+) -> tuple[ProjectSpec, Path, Path, str]:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    project = ProjectSpec.load(manifest)
+    initializer = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+        ),
+    )
+    session = initializer._select_session()
+    (session / "controller").mkdir()
+    retained_artifact = session / "rounds" / "round-00004" / "receipt.json"
+    retained_artifact.parent.mkdir(parents=True)
+    retained_artifact.write_text('{"status":"retained"}\n', encoding="utf-8")
+    state = autorun_status(session)
+    state.update(
+        {
+            "status": "stopped",
+            "pid": None,
+            "round_count": 3,
+            "attempt_count": 4,
+            "active_round": None,
+            "active_prompt": None,
+            "active_model": None,
+            "active_model_route": None,
+            "active_strategy": _contract(
+                accepted_execution=3,
+                review_due=5,
+                checkpoint_due=4,
+            ),
+            "strategy_history": [{"retained": "strategy history"}],
+            "last_receipt": str(retained_artifact),
+            "stop_requested": False,
+        }
+    )
+    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
+    response = request_autorun_stop(session)
+    token = response.rsplit(" ", 1)[-1]
+    assert len(token) == 32
+    int(token, 16)
+    return project, master, session, token
+
+
+def test_stop_request_preserves_controller_state_projection(
+    tmp_path: Path,
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    initializer = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+        ),
+    )
+    session = initializer._select_session()
+    (session / "controller").mkdir()
+    state_path = session / "state.json"
+    before = state_path.read_bytes()
+
+    response = request_autorun_stop(session)
+    token = response.rsplit(" ", 1)[-1]
+
+    assert state_path.read_bytes() == before
+    marker = session / "controller" / "stop-requests" / token
+    ledger = session / "controller" / "stop-token-ledger" / token
+    assert marker.is_file()
+    assert ledger.is_file()
+    assert os.path.samefile(marker, ledger)
+    assert not (session / "STOP").exists()
+
+
+def test_first_stop_publication_fsyncs_its_controller_namespace(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    initializer = AutoRunRunner(
+        ProjectSpec.load(manifest),
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+        ),
+    )
+    session = initializer._select_session()
+    controller = session / "controller"
+    controller.mkdir()
+    fsynced: list[Path] = []
+    original_fsync = AutoRunRunner._fsync_directory
+
+    def record_fsync(path: Path) -> None:
+        fsynced.append(path)
+        original_fsync(path)
+
+    monkeypatch.setattr(AutoRunRunner, "_fsync_directory", staticmethod(record_fsync))
+    request_autorun_stop(session)
+
+    ledger = controller / "stop-token-ledger"
+    pending = controller / "stop-requests"
+    assert controller in fsynced
+    assert ledger in fsynced
+    assert pending in fsynced
+    assert fsynced.index(controller) < fsynced.index(ledger)
+    assert fsynced.index(controller) < fsynced.index(pending)
+
+
+def test_new_controller_directory_is_durably_published(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    project = ProjectSpec.load(manifest)
+    initializer = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+        ),
+    )
+    session = initializer._select_session()
+    fsynced: list[Path] = []
+    original_fsync = AutoRunRunner._fsync_directory
+
+    def record_fsync(path: Path) -> None:
+        fsynced.append(path)
+        original_fsync(path)
+
+    runner = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            session=session,
+            reflection_minutes=120,
+            round_minutes=1,
+            output=io.StringIO(),
+        ),
+    )
+    monkeypatch.setattr(AutoRunRunner, "_fsync_directory", staticmethod(record_fsync))
+    monkeypatch.setattr(runner, "_drive", lambda: session)
+
+    assert runner.run() == session
+    assert session in fsynced
+    assert (session / "controller").is_dir()
+
+
+def test_ordinary_startup_honors_legacy_stop_sentinel(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    master = write_master_prompt(manifest)
+    project = ProjectSpec.load(manifest)
+    initializer = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            reflection_minutes=120,
+            round_minutes=1,
+        ),
+    )
+    session = initializer._select_session()
+    state = autorun_status(session)
+    state.update({"status": "stopped", "pid": None, "stop_requested": False})
+    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
+    (session / "STOP").write_text("legacy stop requested\n", encoding="utf-8")
+    monkeypatch.setattr(
+        autorun_module,
+        "execute_agent_request",
+        lambda _path: pytest.fail("legacy STOP dispatched a model"),
+    )
+
+    runner = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            session=session,
+            reflection_minutes=120,
+            round_minutes=1,
+            max_rounds=1,
+            output=io.StringIO(),
+        ),
+    )
+    assert runner.run() == session
+    stopped = autorun_status(session)
+    assert stopped["status"] == "stopped"
+    assert stopped["pid"] is None
+    assert stopped["stop_requested"] is True
+    assert (session / "STOP").read_text(encoding="utf-8") == ("legacy stop requested\n")
+
+
+def test_resume_cli_requires_explicit_session(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    manifest = write_autonomy_project(tmp_path)
+    write_master_prompt(manifest)
+
+    with pytest.raises(SystemExit) as raised:
+        cli_main(
+            [
+                "autorun",
+                "--project",
+                str(manifest),
+                "--resume-stopped",
+                "a" * 32,
+            ]
+        )
+
+    assert raised.value.code == 2
+    assert "--resume-stopped requires an explicit --session" in capsys.readouterr().err
+
+
+def _explicit_resume_runner(
+    project: ProjectSpec,
+    master: Path,
+    session: Path,
+    token: str,
+) -> AutoRunRunner:
+    return AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            session=session,
+            resume_stopped=token,
+            reflection_minutes=120,
+            round_minutes=1,
+            max_rounds=4,
+            output=io.StringIO(),
+        ),
+    )
+
+
+def test_durable_stop_requires_one_use_explicit_same_session_resume(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project, master, session, token = _stopped_autorun_fixture(tmp_path)
+    stop_marker = session / "controller" / "stop-requests" / token
+    stopped = autorun_status(session)
+    protected = {
+        name: value
+        for name, value in stopped.items()
+        if name
+        not in {
+            "status",
+            "pid",
+            "stop_requested",
+            "heartbeat_at",
+            "updated_at",
+            "next_retry_at",
+            "last_error",
+        }
+    }
+    monkeypatch.setattr(
+        autorun_module,
+        "execute_agent_request",
+        lambda _path: pytest.fail("durable-stop lifecycle dispatched a model"),
+    )
+
+    ordinary = AutoRunRunner(
+        project,
+        AutoRunOptions(
+            master_prompt=master,
+            session=session,
+            reflection_minutes=120,
+            round_minutes=1,
+            max_rounds=4,
+            output=io.StringIO(),
+        ),
+    )
+    assert ordinary.run() == session
+    still_stopped = autorun_status(session)
+    assert still_stopped["status"] == "stopped"
+    assert still_stopped["pid"] is None
+    assert still_stopped["stop_requested"] is True
+    assert not (session / "STOP").exists()
+    assert stop_marker.is_file()
+
+    explicit = _explicit_resume_runner(project, master, session, token)
+    assert explicit.run() == session
+    resumed = autorun_status(session)
+    assert resumed["status"] == "paused"
+    assert resumed["pid"] is None
+    assert resumed["stop_requested"] is False
+    assert not (session / "STOP").exists()
+    assert not stop_marker.exists()
+    assert {
+        name: value for name, value in resumed.items() if name in protected
+    } == protected
+    assert json.loads(Path(resumed["last_receipt"]).read_text(encoding="utf-8")) == {
+        "status": "retained"
+    }
+    events = (session / "events.jsonl").read_text(encoding="utf-8")
+    assert "autorun controller explicitly resumed stopped session" in events
+
+    later_response = request_autorun_stop(session)
+    later_token = later_response.rsplit(" ", 1)[-1]
+    later_state = autorun_status(session)
+    later_state["status"] = "stopped"
+    (session / "state.json").write_text(json.dumps(later_state), encoding="utf-8")
+    before_replay = (session / "state.json").read_bytes()
+    with pytest.raises(AutoRunError, match="does not identify"):
+        _explicit_resume_runner(project, master, session, token).run()
+    assert (session / "state.json").read_bytes() == before_replay
+    assert (session / "controller" / "stop-requests" / later_token).is_file()
+    assert not (session / "STOP").exists()
+
+
+def test_interrupted_resume_transaction_reuses_only_its_original_token(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project, master, session, token = _stopped_autorun_fixture(tmp_path)
+    stop_marker = session / "controller" / "stop-requests" / token
+    resume_dir = session / "controller" / "resume-in-progress"
+    resume_marker = resume_dir / token
+    os.replace(stop_marker, resume_marker)
+    (session / "STOP").unlink(missing_ok=True)
+    state = autorun_status(session)
+    state["stop_requested"] = True
+    (session / "state.json").write_text(json.dumps(state), encoding="utf-8")
+    monkeypatch.setattr(
+        autorun_module,
+        "execute_agent_request",
+        lambda _path: pytest.fail("transaction recovery dispatched a model"),
+    )
+
+    assert _explicit_resume_runner(project, master, session, token).run() == session
+    resumed = autorun_status(session)
+    consumed = session / "controller" / "consumed-stop-requests" / token
+    ledger = session / "controller" / "stop-token-ledger" / token
+    assert resumed["status"] == "paused"
+    assert resumed["stop_requested"] is False
+    assert not resume_marker.exists()
+    assert consumed.is_file()
+    assert os.path.samefile(consumed, ledger)
+
+
+def test_stop_arriving_during_explicit_resume_remains_pending(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project, master, session, token = _stopped_autorun_fixture(tmp_path)
+    runner = _explicit_resume_runner(project, master, session, token)
+    original_mark_running = runner._mark_running
+    later_token: str | None = None
+
+    def stop_before_running(*, explicit_stopped_resume: bool = False) -> bool:
+        nonlocal later_token
+        response = request_autorun_stop(session)
+        later_token = response.rsplit(" ", 1)[-1]
+        return original_mark_running(explicit_stopped_resume=explicit_stopped_resume)
+
+    monkeypatch.setattr(runner, "_mark_running", stop_before_running)
+    monkeypatch.setattr(
+        autorun_module,
+        "execute_agent_request",
+        lambda _path: pytest.fail("pending stop dispatched a model"),
+    )
+
+    assert runner.run() == session
+    state = autorun_status(session)
+    assert state["status"] == "stopped"
+    assert state["pid"] is None
+    assert state["stop_requested"] is True
+    assert later_token is not None
+    assert (session / "controller" / "stop-requests" / later_token).is_file()
+    assert not (session / "STOP").exists()
+    assert not (session / "controller" / "stop-requests" / token).exists()
+    events = (session / "events.jsonl").read_text(encoding="utf-8")
+    assert "autorun controller explicitly resumed stopped session" not in events
+
+
+def test_multiple_stop_tokens_are_consumed_one_at_a_time(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project, master, session, first_token = _stopped_autorun_fixture(tmp_path)
+    second_token = request_autorun_stop(session).rsplit(" ", 1)[-1]
+    monkeypatch.setattr(
+        autorun_module,
+        "execute_agent_request",
+        lambda _path: pytest.fail("multiple pending stops dispatched a model"),
+    )
+
+    assert (
+        _explicit_resume_runner(project, master, session, first_token).run() == session
+    )
+    after_first = autorun_status(session)
+    assert after_first["status"] == "stopped"
+    assert after_first["stop_requested"] is True
+    assert not (session / "controller" / "stop-requests" / first_token).exists()
+    assert (session / "controller" / "consumed-stop-requests" / first_token).is_file()
+    assert (session / "controller" / "stop-requests" / second_token).is_file()
+
+    assert (
+        _explicit_resume_runner(project, master, session, second_token).run() == session
+    )
+    after_second = autorun_status(session)
+    assert after_second["status"] == "paused"
+    assert after_second["stop_requested"] is False
+    assert (session / "controller" / "consumed-stop-requests" / second_token).is_file()
+
+
+def test_interrupted_resume_preserves_a_later_pending_token(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project, master, session, first_token = _stopped_autorun_fixture(tmp_path)
+    first_pending = session / "controller" / "stop-requests" / first_token
+    first_transaction = session / "controller" / "resume-in-progress" / first_token
+    os.replace(first_pending, first_transaction)
+    second_token = request_autorun_stop(session).rsplit(" ", 1)[-1]
+    monkeypatch.setattr(
+        autorun_module,
+        "execute_agent_request",
+        lambda _path: pytest.fail("interrupted resume dispatched a model"),
+    )
+
+    assert (
+        _explicit_resume_runner(project, master, session, first_token).run() == session
+    )
+    after_first = autorun_status(session)
+    assert after_first["status"] == "stopped"
+    assert not first_transaction.exists()
+    assert (session / "controller" / "stop-requests" / second_token).is_file()
+
+    assert (
+        _explicit_resume_runner(project, master, session, second_token).run() == session
+    )
+    assert autorun_status(session)["status"] == "paused"
+
+
+@pytest.mark.parametrize(
+    ("invalid_state", "message"),
+    [
+        ("running", "requires a stopped session"),
+        ("recovering", "requires a stopped session"),
+        ("paused", "requires a stopped session"),
+        ("retained_owner", "requires no retained owner"),
+        ("active_work", "requires no active retained work"),
+        ("foreign_project", "different project"),
+        ("foreign_prompt", "different Master Prompt"),
+        ("complete", "completed autorun session cannot be resumed"),
+    ],
+)
+def test_explicit_resume_rejects_ineligible_session_without_mutation(
+    tmp_path: Path,
+    invalid_state: str,
+    message: str,
+) -> None:
+    project, master, session, token = _stopped_autorun_fixture(tmp_path)
+    state_path = session / "state.json"
+    state = autorun_status(session)
+    if invalid_state in {"running", "recovering", "paused"}:
+        state["status"] = invalid_state
+    elif invalid_state == "retained_owner":
+        state["pid"] = os.getpid()
+    elif invalid_state == "active_work":
+        state["active_round"] = 4
+    elif invalid_state == "foreign_project":
+        state["project_manifest"] = "/foreign/project.toml"
+    elif invalid_state == "foreign_prompt":
+        state["master_prompt"] = "/foreign/MASTER_PROMPT.md"
+    else:
+        state["active_strategy"]["status"] = "complete"
+    state_path.write_text(json.dumps(state), encoding="utf-8")
+    state_before = state_path.read_bytes()
+    stop_before = os.path.lexists(session / "STOP")
+    marker = session / "controller" / "stop-requests" / token
+    marker_before = marker.read_bytes()
+
+    with pytest.raises(AutoRunError, match=message):
+        _explicit_resume_runner(project, master, session, token).run()
+
+    assert state_path.read_bytes() == state_before
+    assert os.path.lexists(session / "STOP") is stop_before
+    assert marker.read_bytes() == marker_before
+
+
+def test_explicit_resume_lock_contention_preserves_stop(
+    tmp_path: Path,
+) -> None:
+    project, master, session, token = _stopped_autorun_fixture(tmp_path)
+    state_path = session / "state.json"
+    state_before = state_path.read_bytes()
+    stop_before = os.path.lexists(session / "STOP")
+    marker = session / "controller" / "stop-requests" / token
+
+    with (
+        campaign_run_lock(session / "controller"),
+        pytest.raises(AutoRunError, match="another autorun controller owns"),
+    ):
+        _explicit_resume_runner(project, master, session, token).run()
+
+    assert state_path.read_bytes() == state_before
+    assert os.path.lexists(session / "STOP") is stop_before
+    assert marker.is_file()
+
+
+def _write_active_conductor_request(
+    tmp_path: Path,
+    *,
+    attempt: int = 7,
+) -> Path:
+    session = tmp_path / "autorun-runs" / "session-fixture"
+    (session / "controller").mkdir(parents=True)
+    round_dir = session / "rounds" / f"round-{attempt:05d}"
+    round_dir.mkdir(parents=True)
+    prompt = round_dir / "prompt.md"
+    prompt.write_text("Frozen conductor prompt.\n", encoding="utf-8")
+    strategy = _contract()
+    now = datetime.now(UTC).isoformat()
+    (session / "state.json").write_text(
+        json.dumps(
+            {
+                "schema_version": 3,
+                "session_id": "session-fixture",
+                "status": "running",
+                "created_at": now,
+                "updated_at": now,
+                "heartbeat_at": now,
+                "next_reflection_at": now,
+                "pid": os.getpid(),
+                "round_count": 0,
+                "attempt_count": attempt,
+                "active_round": attempt,
+                "active_prompt": str(prompt),
+                "active_strategy": strategy,
+            }
+        ),
+        encoding="utf-8",
+    )
+    request = round_dir / "request.json"
+    request.write_text(
+        json.dumps(
+            {
+                "role_id": "autorun_conductor",
+                "attempt": attempt,
+                "run_dir": str(session),
+                "prompt": str(prompt),
+                "omp": "omp",
+                "workspace": str(tmp_path),
+                "output": str(round_dir / "output.md"),
+                "stdout_log": str(round_dir / "stdout.log"),
+                "stderr_log": str(round_dir / "stderr.log"),
+                "receipt": str(round_dir / "receipt.json"),
+                "tools": [],
+                "model": None,
+                "thinking": None,
+                "max_time": 60,
+                "conductor_claim_context": {
+                    "schema_version": 1,
+                    "session_id": "session-fixture",
+                    "attempt": attempt,
+                    "strategy_id": strategy["strategy_id"],
+                    "strategy_revision": strategy["revision"],
+                    "prompt_sha256": hashlib.sha256(prompt.read_bytes()).hexdigest(),
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    return request
+
+
+def test_autorun_report_cli_emits_one_strict_bound_marker(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    request = _write_active_conductor_request(tmp_path)
+    state_path = request.parents[2] / "state.json"
+    request_before = request.read_bytes()
+    state_before = state_path.read_bytes()
+
+    with campaign_run_lock(request.parents[2] / "controller"):
+        assert (
+            cli_main(
+                [
+                    "autorun-report",
+                    "--request",
+                    str(request),
+                    "--checkpoint-id",
+                    "first_check",
+                    "--progress-class",
+                    "meaningful",
+                    "--summary",
+                    "The retained consumer was verified.",
+                    "--evidence",
+                    "proof/retained-consumer",
+                ]
+            )
+            == 0
+        )
+
+    lines = capsys.readouterr().out.splitlines()
+    assert len(lines) == 1
+    claim = AutoRunRunner._parse_conductor_claim(lines[0])
+    assert claim == {
+        "schema_version": 1,
+        "strategy_id": "strategy-00001",
+        "strategy_revision": 1,
+        "checkpoint_id": "first_check",
+        "progress_class": "meaningful",
+        "summary": "The retained consumer was verified.",
+        "evidence": "proof/retained-consumer",
+    }
+    receipt = json.loads(
+        (request.parent / "conductor-claim-emission.json").read_text(encoding="utf-8")
+    )
+    assert receipt["claim"] == claim
+    assert set(claim) == {
+        "schema_version",
+        "strategy_id",
+        "strategy_revision",
+        "checkpoint_id",
+        "progress_class",
+        "summary",
+        "evidence",
+    }
+    assert request.read_bytes() == request_before
+    assert state_path.read_bytes() == state_before
+
+
+def test_controller_accepts_strict_claim_without_emission_receipt(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runner = _runner(tmp_path)
+    adjudication_prompts: list[str] = []
+
+    def execute(request_path: Path) -> int:
+        request = json.loads(request_path.read_text(encoding="utf-8"))
+        role = request["role_id"]
+        if role == "autorun_strategy_reflection":
+            output = _proposal()
+        elif role == "autorun_conductor":
+            output = _claim()
+        elif role == "autorun_progress_adjudicator":
+            adjudication_prompts.append(
+                Path(request["prompt"]).read_text(encoding="utf-8")
+            )
+            output = _adjudication()
+        else:
+            raise AssertionError(f"unexpected role {role}")
+        Path(request["output"]).write_text(output + "\n", encoding="utf-8")
+        return 0
+
+    monkeypatch.setattr(autorun_module, "execute_agent_request", execute)
+    session = runner.run()
+    state = autorun_status(session)
+
+    assert not (session / "rounds/round-00001/conductor-claim-emission.json").exists()
+    assert state["last_progress_claim"] == "meaningful"
+    assert state["active_strategy"]["checkpoints"][0]["status"] == "satisfied"
+    assert len(adjudication_prompts) == 1
+    assert "Identity mismatch: false" in adjudication_prompts[0]
+
+
+def test_last_round_claim_reads_strict_output_without_emission_receipt(
+    tmp_path: Path,
+) -> None:
+    output = tmp_path / "round-00001/output.md"
+    output.parent.mkdir()
+    output.write_text(_claim() + "\n", encoding="utf-8")
+
+    assert autorun_module._last_round_claim({"last_output": str(output)}) == (
+        AutoRunRunner._parse_conductor_claim(output.read_text(encoding="utf-8"))
+    )
+
+
+def test_identity_mismatched_report_retains_drift_adjudication(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runner = _runner(tmp_path)
+    adjudication_prompts: list[str] = []
+
+    def execute(request_path: Path) -> int:
+        request = json.loads(request_path.read_text(encoding="utf-8"))
+        role = request["role_id"]
+        if role == "autorun_strategy_reflection":
+            output = _proposal()
+        elif role == "autorun_conductor":
+            output = _claim(strategy_id="strategy-99999")
+        elif role == "autorun_progress_adjudicator":
+            adjudication_prompts.append(
+                Path(request["prompt"]).read_text(encoding="utf-8")
+            )
+            output = _adjudication(
+                alignment="drifted",
+                checkpoint_id=None,
+                checkpoint_result="n/a",
+            )
+        else:
+            raise AssertionError(f"unexpected role {role}")
+        Path(request["output"]).write_text(output + "\n", encoding="utf-8")
+        return 0
+
+    monkeypatch.setattr(autorun_module, "execute_agent_request", execute)
+    state = autorun_status(runner.run())
+
+    assert state["last_progress_claim"] == "meaningful"
+    assert state["active_strategy"]["status"] == "drifted"
+    assert state["strategy_change_required"] is True
+    assert len(adjudication_prompts) == 1
+    assert "Identity mismatch: true" in adjudication_prompts[0]
+
+
+@pytest.mark.parametrize(
+    "mismatch",
+    [
+        "stale_revision",
+        "foreign_strategy",
+        "foreign_round",
+        "modified_prompt",
+        "dead_controller",
+        "stale_heartbeat",
+        "missing_controller_lock",
+        "future_heartbeat",
+        "foreign_lock_owner",
+    ],
+)
+def test_autorun_report_rejects_noncurrent_frozen_invocation(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    mismatch: str,
+) -> None:
+    request_path = _write_active_conductor_request(tmp_path)
+    request = json.loads(request_path.read_text(encoding="utf-8"))
+    session = Path(request["run_dir"])
+    state_path = session / "state.json"
+    state = json.loads(state_path.read_text(encoding="utf-8"))
+    if mismatch == "stale_revision":
+        state["active_strategy"]["revision"] = 2
+    elif mismatch == "foreign_strategy":
+        request["conductor_claim_context"]["strategy_id"] = "strategy-99999"
+    elif mismatch == "foreign_round":
+        request["conductor_claim_context"]["attempt"] += 1
+    elif mismatch == "modified_prompt":
+        Path(request["prompt"]).write_text(
+            "Changed after the invocation was frozen.\n", encoding="utf-8"
+        )
+    elif mismatch == "dead_controller":
+        state["pid"] = 2**31 - 1
+    elif mismatch == "stale_heartbeat":
+        state["heartbeat_at"] = "2020-01-01T00:00:00Z"
+    elif mismatch == "future_heartbeat":
+        state["heartbeat_at"] = (datetime.now(UTC) + timedelta(days=1)).isoformat()
+    elif mismatch == "foreign_lock_owner":
+        state["pid"] = os.getppid()
+    state_path.write_text(json.dumps(state), encoding="utf-8")
+    request_path.write_text(json.dumps(request), encoding="utf-8")
+
+    lock_scope = (
+        nullcontext()
+        if mismatch == "missing_controller_lock"
+        else campaign_run_lock(session / "controller")
+    )
+    with lock_scope, pytest.raises(SystemExit) as raised:
+        cli_main(
+            [
+                "autorun-report",
+                "--request",
+                str(request_path),
+                "--no-checkpoint",
+                "--progress-class",
+                "incremental",
+                "--summary",
+                "Verified work.",
+                "--evidence",
+                "retained evidence",
+            ]
+        )
+
+    assert raised.value.code == 2
+    captured = capsys.readouterr()
+    assert "CONDUCTOR_RESULT_JSON:" not in captured.out
+    assert "CONDUCTOR_RESULT_JSON:" not in captured.err
+    if mismatch == "missing_controller_lock":
+        assert not (session / "controller/.campaign.lock").exists()
+
+
+def test_autorun_report_rejects_invalid_claim_content_without_marker(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    request = _write_active_conductor_request(tmp_path)
+
+    with (
+        campaign_run_lock(request.parents[2] / "controller"),
+        pytest.raises(SystemExit) as raised,
+    ):
+        cli_main(
+            [
+                "autorun-report",
+                "--request",
+                str(request),
+                "--checkpoint-id",
+                "unknown_checkpoint",
+                "--progress-class",
+                "meaningful",
+                "--summary",
+                "Verified work.",
+                "--evidence",
+                "retained evidence",
+            ]
+        )
+
+    assert raised.value.code == 2
+    assert "CONDUCTOR_RESULT_JSON:" not in capsys.readouterr().out
+
+
+def test_round_435_malformed_report_remains_rejected() -> None:
+    malformed = (
+        Path(__file__).resolve().parents[1]
+        / "projects/cmv-strip-density/autorun-runs"
+        / "20260902T064759Z-62a799/rounds/round-00435/output.md"
+    )
+
+    assert (
+        AutoRunRunner._parse_conductor_claim(malformed.read_text(encoding="utf-8"))
+        is None
+    )
+
+
 def test_first_round_selects_strategy_before_sol_and_adjudicates_afterward(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -229,6 +1067,15 @@ def test_first_round_selects_strategy_before_sol_and_adjudicates_afterward(
     assert requests[0]["tools"] == ["read"]
     assert requests[1]["model"] == "openai-codex/gpt-5.6-sol"
     assert requests[1]["tools"] == ["read", "write"]
+    claim_context = requests[1]["conductor_claim_context"]
+    assert claim_context["session_id"] == state["session_id"]
+    assert claim_context["attempt"] == 1
+    assert claim_context["strategy_id"] == "strategy-00001"
+    assert claim_context["strategy_revision"] == 1
+    assert (
+        claim_context["prompt_sha256"]
+        == hashlib.sha256(Path(requests[1]["prompt"]).read_bytes()).hexdigest()
+    )
     assert requests[2]["model"] == "openai-codex/gpt-5.6-terra"
     assert requests[2]["tools"] == ["read"]
     assert state["schema_version"] == 3
@@ -253,9 +1100,7 @@ def test_invalid_strategy_json_fails_closed_without_launching_sol(
 
     monkeypatch.setattr(autorun_module, "execute_agent_request", execute)
     state = autorun_status(runner.run())
-    assert [item["role_id"] for item in requests] == [
-        "autorun_strategy_reflection"
-    ]
+    assert [item["role_id"] for item in requests] == ["autorun_strategy_reflection"]
     assert state["active_strategy"] is None
     assert state["active_prompt"] is None
     assert state["active_model"] is None
@@ -281,7 +1126,9 @@ def test_governor_selects_review_and_checkpoint_offsets_below_operator_ceiling(
     assert not runner._strategy_requires_review(state)
 
 
-def test_checkpoint_or_adaptive_review_due_triggers_reflection_not_falsification() -> None:
+def test_checkpoint_or_adaptive_review_due_triggers_reflection_not_falsification() -> (
+    None
+):
     strategy = _contract(review_due=2, checkpoint_due=3)
     state = _strategy_state(strategy, execution=2)
     assert AutoRunRunner._strategy_requires_review(state)
@@ -329,14 +1176,13 @@ def test_continued_strategy_keeps_deadline_and_prompt_identity(
     assert state["strategy_history"][-1]["checkpoints"][0]["status"] == "revised"
     state["active_strategy"] = revised
     prompt = runner._round_prompt(3, state, "Prove the exact target.")
-    marker = next(
-        line.removeprefix("CONDUCTOR_RESULT_JSON: ")
-        for line in prompt.splitlines()
-        if line.startswith("CONDUCTOR_RESULT_JSON: ")
-    )
-    claim = json.loads(marker)
-    assert claim["strategy_id"] == revised["strategy_id"]
-    assert claim["strategy_revision"] == revised["revision"]
+    assert "uv run agentic-lean-math-assistant autorun-report" in prompt
+    assert f'--request "{tmp_path / "rounds/round-00003/request.json"}"' in prompt
+    assert '--checkpoint-id "first_check"' in prompt
+    assert "Never construct the\nmarker manually." in prompt
+    assert f'"strategy_id": "{revised["strategy_id"]}"' in prompt
+    assert f'"revision": {revised["revision"]}' in prompt
+    assert "CONDUCTOR_RESULT_JSON: {" not in prompt
 
 
 @pytest.mark.parametrize("checkpoint_result", ["advanced", "satisfied"])
@@ -551,9 +1397,7 @@ def test_invalid_or_wrong_strategy_adjudication_cannot_advance_checkpoint(
             "last_adjudication_execution": None,
         }
     )
-    assert (
-        AutoRunRunner._parse_progress_adjudication(text, strategy=strategy) is None
-    )
+    assert AutoRunRunner._parse_progress_adjudication(text, strategy=strategy) is None
     assert strategy["checkpoints"][0]["status"] == "pending"
 
 
@@ -594,14 +1438,18 @@ def test_round_adjudication_prompt_matches_earliest_checkpoint_parser_order(
 
     monkeypatch.setattr(runner, "_execute_with_heartbeat", execute)
     adjudication, _, _ = runner._run_progress_adjudication(
-        302, round_dir, conductor_output, []
+        302,
+        round_dir,
+        conductor_output,
+        [],
+        AutoRunRunner._parse_conductor_claim(
+            conductor_output.read_text(encoding="utf-8")
+        ),
     )
 
     assert adjudication is not None
     assert adjudication.checkpoint_id == "first_check"
-    prompt = (round_dir / "progress-adjudication-prompt.md").read_text(
-        encoding="utf-8"
-    )
+    prompt = (round_dir / "progress-adjudication-prompt.md").read_text(encoding="utf-8")
     assert "Active strategy ID: `strategy-00001`" in prompt
     assert "Active strategy revision: `2`" in prompt
     assert "Earliest admissible checkpoint ID: `first_check`" in prompt
@@ -617,7 +1465,7 @@ def test_round_adjudication_prompt_matches_earliest_checkpoint_parser_order(
     ) in normalized_prompt
     assert (
         "If all strategy checkpoints are complete but any global obligation in "
-        "the Living Master Prompt remains, use `progress_class=\"meaningful\"`, "
+        'the Living Master Prompt remains, use `progress_class="meaningful"`, '
         'not `"complete"`'
     ) in normalized_prompt
     assert (
@@ -885,6 +1733,7 @@ def test_generic_governor_conductor_and_adjudicator_prompts_have_no_project_voca
             "native_decide",
         ):
             assert forbidden not in prompt
+
 
 def test_follow_monitor_renders_graphical_status_and_verbal_recap(
     tmp_path: Path,
@@ -1193,6 +2042,101 @@ def test_raw_event_monitor_tracks_the_active_round(
     assert "\x1b]0;Round 4 Raw events\x07" in rendered
     assert '"detail": "round 3"' in rendered
     assert '"detail": "round 4"' in rendered
+
+
+def test_restore_autorun_workspace_replaces_stale_layout_after_live_panes_render(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = ProjectSpec.load(write_autonomy_project(tmp_path))
+    session = project.root / "autorun-runs" / "retained-session"
+    session.mkdir(parents=True)
+    (session.parent / "active.json").write_text(
+        json.dumps({"schema_version": 1, "session": str(session)}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        AutoRunRunner,
+        "_read_state_from",
+        staticmethod(lambda path: {"status": "running"}),
+    )
+    actions: list[tuple[object, ...]] = []
+
+    class RecordingHerdr:
+        def __init__(self, executable: str) -> None:
+            actions.append(("client", executable))
+
+        def list_workspaces(self) -> tuple[HerdrWorkspaceRecord, ...]:
+            return (
+                HerdrWorkspaceRecord("old", "CMV Autorun Overnight"),
+                HerdrWorkspaceRecord("other", "Other"),
+            )
+
+        def create_workspace(
+            self,
+            *,
+            cwd: Path,
+            label: str,
+            focus: bool,
+        ) -> HerdrWorkspace:
+            actions.append(("create", cwd, label, focus))
+            return HerdrWorkspace("new", "new:p1")
+
+        def split_pane(
+            self,
+            pane_id: str,
+            *,
+            cwd: Path,
+            direction: str,
+            ratio: float,
+        ) -> str:
+            actions.append(("split", pane_id, cwd, direction, ratio))
+            return "new:p2" if pane_id == "new:p1" else "new:p3"
+
+        def run_in_pane(self, pane_id: str, command: tuple[str, ...]) -> None:
+            actions.append(("run", pane_id, command))
+
+        def wait_for_output(self, pane_id: str, text: str) -> None:
+            actions.append(("wait", pane_id, text))
+
+        def close_workspace(self, workspace_id: str) -> None:
+            actions.append(("close", workspace_id))
+
+        def focus_workspace(self, workspace_id: str) -> None:
+            actions.append(("focus", workspace_id))
+
+    monkeypatch.setattr(autorun_module, "HerdrClient", RecordingHerdr)
+
+    workspace = restore_autorun_workspace(
+        project,
+        label="CMV Autorun Overnight",
+        herdr_executable="/opt/herdr",
+        python_executable="/opt/venv/bin/python",
+    )
+
+    assert workspace == HerdrWorkspace("new", "new:p1")
+    assert ("create", project.root, "CMV Autorun Overnight", False) in actions
+    assert (
+        "split",
+        "new:p1",
+        project.root,
+        "right",
+        0.5,
+    ) in actions
+    assert ("split", "new:p2", project.root, "down", 0.5) in actions
+    pane_commands = {
+        action[1]: action[2][3] for action in actions if action[0] == "run"
+    }
+    assert pane_commands == {
+        "new:p1": "autorun-status",
+        "new:p2": "autorun-output",
+        "new:p3": "autorun-events",
+    }
+    assert actions.index(("close", "old")) > actions.index(
+        ("wait", "new:p3", "RAW EVENTS")
+    )
+    assert ("close", "other") not in actions
+    assert actions[-1] == ("focus", "new")
 
 
 def test_herdr_pane_label_updates_once_per_round(

@@ -19,7 +19,7 @@ strategy_reflection_model = "openai-codex/gpt-6-astra"
 targeted_task_model = "openai-codex/gpt-6-astra"
 planner_thinking = "xhigh"
 max_tasks = 16
-max_parallel = 8
+max_parallel = 1
 max_restarts = 1
 default_agent_time = 2400
 allowed_tools = ["read", "grep", "glob", "bash", "eval", "write", "edit", "web_search"]
@@ -42,7 +42,7 @@ execution_thinking = "medium"
 analysis_thinking = "high"
 invention_thinking = "high"
 audit_thinking = "high"
-max_parallel = 8
+max_parallel = 1
 default_agent_time = 2400
 pilot_agent_seconds = 28800
 research_agent_seconds = 72000
@@ -53,8 +53,8 @@ max_invention_tasks = 4
 [execution]
 sandbox = false
 workspace_max_mb = 32768
-memory_max_mb = 10240
-tasks_max = 256
+memory_max_mb = 6144
+tasks_max = 128
 
 [autonomy]
 enabled = true

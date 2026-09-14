@@ -16,6 +16,7 @@ open CMVSourceClassification.RawFourArcCoordinates
 #print axioms endpointSourceCarrier_not_isMinimizer_of_horizontalCongruence
 #print axioms rawFourArcCarrier_not_isMinimizer
 #print axioms sourceCarrier_not_isMinimizer_of_ae_rawFourArcCoordinates
+#print axioms sourceCarrier_not_isMinimizer_of_ae_rawFourArcClassification
 #print axioms sourceCarrier_not_isMinimizer_of_horizontalSections
 #print axioms sourceCarrier_not_isMinimizer_of_centeredIntervals_of_measure_eq
 #print axioms
@@ -142,6 +143,17 @@ example (raw : CMVSourceClassification.RawFourArcCoordinates)
     ¬ (relaxedSourceSemantics 2).IsMinimizer sourceCarrier :=
   sourceCarrier_not_isMinimizer_of_ae_rawFourArcCoordinates
     raw (by norm_num) hgeometry hsource
+
+/-- A GMT classifier may return the raw witness existentially; no choice,
+normalization, contact law, or source finiteness is added at the consumer. -/
+example {sourceCarrier : Set PlanePoint}
+    (hclassification :
+      ∃ raw : CMVSourceClassification.RawFourArcCoordinates,
+        raw.SatisfiesClosedGeometry ∧
+          sourceCarrier =ᵐ[MeasureTheory.volume] raw.carrier) :
+    ¬ (relaxedSourceSemantics 2).IsMinimizer sourceCarrier :=
+  sourceCarrier_not_isMinimizer_of_ae_rawFourArcClassification
+    (by norm_num) hclassification
 
 /-- Sectionwise classification exposes only closed geometry and slice equality
 at the direct all-density consumer. -/

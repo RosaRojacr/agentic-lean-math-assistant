@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_inner_lt_sin_outer",
+  "domain_issues": [],
+  "informal_statement": "The sine inequality is strict unless h=1/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:312-337, the source contract is `theorem sin_inner_lt_sin_outer (hh : a.h ≠ 1 / 2) : sin a.innerAngle < sin a.outerAngle`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b3a6348544f17baf0cf9a8d51663f5b8b6187359294117163fc5d2afba78dd58",
+  "symbol_mismatches": []
+}

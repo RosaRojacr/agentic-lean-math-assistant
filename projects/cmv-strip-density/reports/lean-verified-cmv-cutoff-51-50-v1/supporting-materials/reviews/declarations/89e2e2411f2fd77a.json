@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.QInterval",
+  "domain_issues": [],
+  "informal_statement": "The shared rational interval type in middle-face assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:22-22, the source contract is `abbrev QInterval := ScalarSuffixCertificate.QInterval`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ab557efab6ff5d67c61f860d37b3645b971e70e7a32bfb18825874961bbbc432",
+  "symbol_mismatches": []
+}

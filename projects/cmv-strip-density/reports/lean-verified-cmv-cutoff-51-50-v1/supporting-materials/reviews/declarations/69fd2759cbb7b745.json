@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.weightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "The actual type-(iii) weighted area equals its scalar source formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:1584-1588, the source contract is `theorem weightedArea_formula : a.WeightedArea = a.scalarWeightedArea`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "53616c2c25615a95257aa4773c87d4c69464dc905650e6ed5b53696dc5f08570",
+  "symbol_mismatches": []
+}

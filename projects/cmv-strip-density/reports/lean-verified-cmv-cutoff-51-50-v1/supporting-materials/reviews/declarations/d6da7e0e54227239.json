@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeThreeFold_neg_on_slab",
+  "domain_issues": [],
+  "informal_statement": "K3 is strictly negative throughout the first type-(iii) slab.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:1123-1130, the source contract is `theorem typeThreeFold_neg_on_slab {lam h : ℝ} (hlam : lambdaInterval.RealContains lam) (hh : h3Interval.RealContains h) : LeanSuffixAnalytic.typeThreeFold lam h < 0`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "708577dd88ded1a5fe8468072b9f381b014a4ba74d97e65eac8e88ea179dff0e",
+  "symbol_mismatches": []
+}

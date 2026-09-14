@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.brick",
+  "domain_issues": [],
+  "informal_statement": "The exact right-prototype rational brick.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:23-39, the source contract is `def brick : Brick where lamLo := 25781 / 25000 lamHi := 33 / 32 centers := ![2048263294902610889 / 10000000000000000000, 3193765780936307979 / 10000000000000000000, 4769698287901120439 / 10000000000000000000, 2663161348942592843 / 5000000000000000000] slopes := ![140927032410729353 / 100000000000000000, 954393643324404653 / 250000000000000000, 4401546318656929969 / 1000000000000000000, 5503812760533025527 / 1000000000000000000] yXiSlope := 13 / 20 vRhoSlope := 219 / 250 radii := ![1 / 10000000, 1 / 100000000, 1 / 10000000, 1 / 100000000] lamOrdered := by norm_num radiiPos := by intro j; fin_cases j <;> norm_num`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "46529d69eb028da84cb1e1cd48a1286b5a20bbf7043954e20190c659fde37b2d",
+  "symbol_mismatches": []
+}

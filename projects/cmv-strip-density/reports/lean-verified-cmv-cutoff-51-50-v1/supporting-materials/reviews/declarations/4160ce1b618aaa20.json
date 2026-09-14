@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_pi_div_two",
+  "domain_issues": [],
+  "informal_statement": "A unit-chord semicircle has normalized area pi/8.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:66-69, the source contract is `lemma area_pi_div_two : area (π / 2) = π / 8`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "038ce6e93459592481f7a2c059cf51404c3244d96fa3828e4004b771a35871c4",
+  "symbol_mismatches": []
+}

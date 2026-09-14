@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.QInterval",
+  "domain_issues": [],
+  "informal_statement": "Shared rational interval type in the first compact cell.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:19-23, the source contract is `abbrev QInterval := ScalarSuffixCertificate.QInterval`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c522fb7a23b8535f69b64bd9659ad4aed8fc8dc5b89426617a6ca4e04ee665a3",
+  "symbol_mismatches": []
+}

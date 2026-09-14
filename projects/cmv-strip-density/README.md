@@ -58,6 +58,22 @@ The canonical project verifies:
   and \(R=1\) use bounded open interiors with exact four-arc frontiers, full
   regular-point local one-sidedness, almost-everywhere agreement, and arbitrary
   horizontal placement;
+- explicit complementary-region topology for every closed-geometric raw
+  four-arc carrier: all-height centered sections drive horizontal/vertical
+  escape paths, strict pole bounds drive an interior symmetry-axis spine, and
+  the complete-frontier complement is the disjoint union of nonempty
+  path-connected interior and exterior. Both \(R=1\) and \(R=2\) actual
+  specimens are applied after arbitrary horizontal translation;
+- boundary-only reconstruction for every frozen Figure-4 `SourceGeometry`:
+  equality of the complete representative and raw-target frontiers, together
+  with the proved two complementary regions, forces the bounded open
+  representative to equal the raw carrier interior. The complete placed raw
+  frontier is planar-null, so the possibly unbounded actual source agrees
+  almost everywhere with the closed raw carrier and is excluded directly at
+  every \(\lambda>1\). The same theorem applies through
+  `BilateralSourceIncidence`, including \(R=1\), with no added normalization,
+  recovery, finiteness, compatibility, model-coverage, section, or
+  frontier-alignment premise;
 - a source-independent Figure-3 incidence signature covering both vertical
   orientations, degenerate interface segments, and the unresolved radius-one
   boundary, plus a literal model-side obstruction proving that an equal-radius
@@ -186,6 +202,30 @@ translation.
 The raw carrier is closed and Borel measurable; almost-everywhere agreement of
 almost every horizontal slice implies planar almost-everywhere equality by a
 checked Fubini argument.
+`CMVFigureFourComplementTopology` turns the all-height centered-section law
+into explicit exterior escape paths. `CMVFigureFourRawComplementTopology`
+constructs the interior horizontal contraction and vertical symmetry-axis
+spine, proves both complementary regions nonempty and path-connected, and
+partitions the complement of the complete frontier. The argument includes the
+four interface junctions and both poles and uses only `sourceRadius ≥ 1`.
+`CMVFigureFourBoundaryRigidity` then uses those two literal complementary
+regions to prove that the bounded open source representative is exactly the raw
+carrier interior from complete-frontier equality. It transports the existing
+four-arc assembly nullity through the exact horizontal placement, retaining all
+four arcs, four junctions, and two poles, and proves that the raw interior and
+closed carrier agree almost everywhere. Composing with the stored actual-source
+relation gives
+`CMVFigureFour.SourceGeometry.sourceCarrier_ae_raw_carrier`. The
+classifier-facing theorem
+`sourceCarrier_not_isMinimizer_of_ae_rawFourArcClassification` accepts the
+existential output “some closed-geometric raw carrier agrees almost everywhere”
+without requiring the caller to choose that witness first. Boundary rigidity
+feeds this theorem to obtain `sourceCarrier_not_isMinimizer` for both
+`SourceGeometry` and `BilateralSourceIncidence`. These public theorems add no
+premises and include the radius-one branch and arbitrary horizontal placement.
+A compiled \(\lambda=2\) contract also adds an entire unbounded planar-null
+horizontal line to a strict-radius actual source while keeping the same bounded
+open representative, confirming that actual-source boundedness is not used.
 
 Source locators and separation of arguments:
 
@@ -193,6 +233,12 @@ Source locators and separation of arguments:
   continuing on page 10), derives Snell refraction only for an isoperimetric
   boundary crossing a density interface transversally with regular traces and
   the stated tangent spaces.
+- Immediately before Lemma 3.8 on printed page 15, the source states that
+  Snell law (13) and the constant-geodesic-curvature condition already hold,
+  and therefore describes regular boundary pieces as circular arcs with the
+  same curvature or interface line segments. Common curvature is thus an
+  upstream requirement of the source classification, not a conclusion proved
+  by Lemma 3.8.
 - Lemma 3.8, printed pages 15--18, classifies vertically symmetric strip
   candidates after invoking Snell's law and common-curvature continuation.
   Its Step 2 and equations (24)--(25), printed pages 16--17, contain the
@@ -208,15 +254,48 @@ its reflection proof uses only the endpoint/circle incidences, endpoint order,
 branch signs, common radius, and three independent signed local Snell equations
 stored in `BilateralSourceIncidence`; the lower-right equation is a theorem.
 
-Universal geometric/GMT classification remains unresolved. In particular, no
-theorem yet derives bilateral local Snell laws, common-circle geometry,
-configuration enumeration, or exact/almost-everywhere representative
-identification from every source-admissible regular type-(iv) minimizer.
-Bilateral symmetry inputs and minimizer-to-common-circle extraction remain open.
+Universal geometric/GMT classification remains unresolved. The two-patch Lean
+variation derives common occupied-side curvature, supporting circles, or
+supporting lines only from explicit bidirectional graph-functional local
+minimality. The finite-family consumer now derives the same zero/nonzero
+supporting geometry for every actual graph member and one common anchor,
+including independent increasing or decreasing regular parameter changes and
+literal open-trace frontier membership. No theorem yet transfers relaxed source
+minimality to that graph
+hypothesis, derives the required boundary regularity and local graph charts,
+derives bilateral interface Snell laws, exhausts the source configurations, or
+formalizes the Figure-5 relaxed-perimeter comparison. Universal representative
+identification and classification therefore remain open.
 The frozen Figure-5 geometry forces both strip-circle centers onto \(y=0\) and
-then forces \(R=1\) from its four literal strip
-tangencies, but its one- and two-cap segmented carriers still lack the
-source-connected area/perimeter comparison needed for exclusion.
+then forces \(R=1\) from its four literal strip tangencies. Bounded openness,
+the complete segmented frontier, and local one-sidedness derive every
+strict-strip representative section exactly as
+\[
+\left(x_L-\sqrt{1-y^2},\,x_R+\sqrt{1-y^2}\right),\qquad |y|<1.
+\]
+They now also reconstruct every nonexceptional exterior section. A capped
+upper interface with center \(c\) gives the open interval
+\((c_x-\sqrt{1-(y-c_y)^2},c_x+\sqrt{1-(y-c_y)^2})\) for
+\(1<y<c_y+1\); a capped lower interface has the analogous interval for
+\(c_y-1<y<-1\). Exposed exterior sides and heights strictly beyond each cap
+pole have empty sections. The only omitted heights are the two interfaces and
+the finitely many exterior-circle tangencies, a checked null set. Upper and
+lower caps retain independent horizontal placement, and exposed segments may
+degenerate. Planar almost-everywhere source agreement transports the bounded
+representative integration to the actual source carrier. Direct Fubini
+integration of the strict-strip and exterior sections proves integrability and
+the exact identity
+\[
+\operatorname{WeightedArea}_\lambda(E)
+=\pi+2w+N_{\mathrm{cap}}\,\operatorname{endpointGap}(\lambda),
+\qquad N_{\mathrm{cap}}\in\{1,2\},
+\]
+without a normalized target-carrier premise. The recovered type-(iii)
+competitor now has the actual Figure-5 source area and extended relaxed
+perimeter strictly below the explicit component boundary cost. The remaining
+source-connected obligation is the lower bound from that component cost to the
+actual relaxed perimeter; no such bound or unconditional Figure-5 exclusion is
+claimed.
 Arbitrary-competitor `model_covered` and general reduced-boundary/model compatibility remain
 auxiliary open routes, but neither is a premise of the direct source
 comparison. The project therefore does not claim an unconditional proof of
@@ -633,13 +712,59 @@ near-one, middle-cell, compact-cell, and \(51/50\) cutoff certificates remain
 independent reproducible evidence, but they are no longer needed for this
 classified-source exclusion.
 
+The conditional finite-band Schwarz layer is separate from those classified
+geometric carriers. `FiniteBandRearrangement.Region` records finitely many
+closed height bands, globally continuous endpoint representatives, interior
+\(C^1\) graph regularity, finite graph-speed integrals, and positive separated
+interior components; endpoint slopes may diverge. It proves exact weighted area
+preservation and literal complete-frontier cost comparison, including both
+outer traces and every density-weighted seam symmetric difference. Equality of
+the two literal costs forces one component and a constant center in each band.
+Positive matching one-sided widths at every internal cut then force a single
+global axis and export the AE interval and centered-section interfaces for a
+source carrier AE equal to the literal region. The two-band width-jump specimen
+shows that equality of costs alone does not identify centers across a cut.
+
+The source dependencies are distinct. Proposition 3.6 and equations (20)--(22),
+printed page 14, define Schwarz symmetrization, compare weighted perimeter, and
+state the almost-everywhere slice equality consequence. Proposition 3.9,
+printed page 18, is the later vertical-reflection result; Remark 3.11 on the
+same page separately states continuity and positivity of slice lengths.
+
+The Lean source-facing bridge now accepts the two missing frontier directions
+in constructive form. Finite pairwise-disjoint projection families whose
+payoffs approach the original literal frontier produce its relaxed lower bound
+through one global smooth-cost charge and a vanishing characteristic-distance
+error. One concrete smooth sequence converging to the centered carrier and
+bounded by its literal frontier produces the centered relaxed upper bound.
+Together with an AE source minimizer these imply literal cost equality and the
+existing centered-section interfaces; finite-band boundedness constructs
+centered admissibility internally. Compact \(C^1\) restrictions of every actual
+finite-band endpoint now construct these projection patches directly on the
+literal `Region.carrier`: compact endpoint separation gives a uniform one-sided
+carrier tube, tangent meshes are pairwise disjoint, have finite total projection
+error coefficient, lie in any prescribed open graph neighborhood, and recover
+the density-weighted graph-speed integral up to an arbitrary positive deficit.
+A quadratic one-band specimen checks the curved, non-axis-aligned case. The
+development does not yet assemble all endpoint restrictions and horizontal
+seam/outer traces into an exhaustion of the complete frontier, construct the
+centered recovery for an arbitrary `Region`, extract such a `Region` from an
+arbitrary source minimizer, or derive positive matching cross-cut widths.
+
 Universal source classification remains open. The current Lean development
-does not derive bilateral symmetry, the minimizer's common-circle geometry,
-configuration enumeration, or representative identification from every
-source-admissible regular type-(iv) minimizer, and it does not eliminate every
-distinct Figure-5 configuration in CMV Lemma 3.8. The project therefore does
-not identify arbitrary source minimizers with the checked carrier interface or
-claim CMV Conjecture 3.12.
+excludes every source already packaged as frozen Figure-4 `SourceGeometry` or
+`BilateralSourceIncidence`. It also exports two GMT-facing interfaces: any
+carrier almost everywhere equal to either frozen source is excluded, and an
+existentially returned closed-geometric raw carrier with almost-everywhere
+source agreement is sufficient directly. A classifier therefore need not
+rebuild the geometric signature around its chosen representative or expose a
+preselected raw witness at the call site. This still does not derive bilateral
+symmetry, common-circle geometry, regular Snell data, exhaustive configuration
+enumeration, or one of those source signatures from every source-admissible
+regular type-(iv) minimizer. It also does not eliminate every distinct Figure-5
+configuration in CMV Lemma 3.8. The project therefore does not classify
+arbitrary source minimizers into the checked carrier interface or claim CMV
+Conjecture 3.12.
 
 The publication-ready theorem statement, proof architecture, direct links to
 the cited Lean declarations, exact trust boundary, and reproduction record are
@@ -680,6 +805,33 @@ lake env lean CMVFourArcChordVariationAssumptions.lean
 lake env lean CMVFourArcRecoveryAssumptions.lean
 lake env lean CMVFourArcSourceCompetitorAssumptions.lean
 lake env lean CMVTypeThreeSourceExclusionAssumptions.lean
+```
+
+Compile the current Figure-5 source reductions, strict-strip and exterior
+section reconstruction, exact actual weighted-area integration, scalar
+component comparison, concrete endpoint specimen, and their axiom ledger:
+
+```bash
+lake build CMVFigureFiveSourceSupport
+lake env lean CMVFigureFiveSourceAssumptions.lean
+```
+
+Compile and audit the conditional finite-band rearrangement and equality
+rigidity layer:
+
+```bash
+lake build CMVFiniteBandRearrangementSupport
+lake env lean CMVFiniteBandRearrangementAssumptions.lean
+```
+
+Compile and audit the conditional \(\lambda=2\) literal corner-shortening
+comparison.  The target contains independently defined bounded exterior/interface
+and density-one nontangential specimens, complete topological-frontier costs,
+strict shortcut gains, and exact \(O(r^2)\) weighted-area defects:
+
+```bash
+lake build CMVLiteralCornerShorteningSupport
+lake env lean CMVLiteralCornerShorteningAssumptions.lean
 ```
 
 For full certificate regeneration, independent checkers, and the complete

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideArcComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean placement map for the complex type-(iii) side arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:649-652, the source contract is `noncomputable def sideArcComplexIsometryMap (center : PlanePoint) (z : ℂ) : EuclideanPlane := WithLp.toLp 2 (center.1 + z.im, center.2 - z.re)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2d2b0ae6442b1aeb7779e0e2c761b53071a3b1948418645b546ba443dcc3b322",
+  "symbol_mismatches": []
+}

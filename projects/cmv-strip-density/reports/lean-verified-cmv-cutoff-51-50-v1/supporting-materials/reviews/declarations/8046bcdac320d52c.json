@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.weightedPerimeter_eq_typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "Every such candidate has canonical weighted perimeter P4(h).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVSuffixModel.lean:187-200, the source contract is `theorem weightedPerimeter_eq_typeFourPerimeter (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : candidate.WeightedPerimeter = LeanSuffixAnalytic.typeFourPerimeter lam candidate.h`. This bridge identifies actual carrier integrals with the scalar profiles. In particular the geometric type-(iii) angle term is typeThreeAngle + pi/2; regular-only wrappers are not substituted for the separate endpoint-inclusive candidate bridge.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c47649486a6e39478b2697659276a1423a248517e94449da31be1eb9b63be5ce",
+  "symbol_mismatches": []
+}

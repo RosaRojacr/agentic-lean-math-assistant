@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.CertificateExpr.enclosure",
+  "domain_issues": [],
+  "informal_statement": "The rational interval interpretation of a certificate expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:183-190, the source contract is `def enclosure : CertificateExpr → QInterval | rational q => LeanSuffixReflective.QInterval.point q | atom _ i _ => i | add a b => a.enclosure.add b.enclosure | neg a => a.enclosure.neg | mul a b => a.enclosure.mul b.enclosure`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "93def124f5286c57b1f3cae76f5c9b5b01ebe4c4e710fe712c5ca0db00b71550",
+  "symbol_mismatches": []
+}

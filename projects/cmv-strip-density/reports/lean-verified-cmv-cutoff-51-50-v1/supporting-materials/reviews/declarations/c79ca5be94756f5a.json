@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.v",
+  "domain_issues": [],
+  "informal_statement": "The first type-(iii) exterior-angle predictor with rho coupling.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:500-502, the source contract is `def v (p : Point) : ℝ := brick.centers 3 + brick.slopes 3 * p.t + brick.vRhoSlope * p.rho + p.sigma`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7b17efff67b8a9b22200a9061ba58fb57a901753e3d49bff62bf8ea7f6d2a8ea",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.isClosed_carrier",
+  "domain_issues": [],
+  "informal_statement": "The cap carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:364-391, the source contract is `theorem isClosed_carrier (c : OneSidedCircularCap) : IsClosed c.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d757ff8cbf988a97323a1f1c27dc667eab9b6475f2eb7d1c16beffa82e3009a4",
+  "symbol_mismatches": []
+}

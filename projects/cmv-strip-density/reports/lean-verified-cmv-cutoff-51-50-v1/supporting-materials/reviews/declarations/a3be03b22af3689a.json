@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "The complete component perimeter sum equals the source scalar type-(iii) perimeter formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:896-903, the source contract is `theorem modeledWeightedPerimeter_formula : a.modeledWeightedPerimeter = a.scalarWeightedPerimeter`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb4c05a2ca2fd9d5b63be1b6ad16da716cc43497abcad228054765e6eaa2e39e",
+  "symbol_mismatches": []
+}

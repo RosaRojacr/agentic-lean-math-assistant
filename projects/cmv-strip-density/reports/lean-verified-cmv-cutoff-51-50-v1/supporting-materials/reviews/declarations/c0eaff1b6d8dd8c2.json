@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_upper_external_density",
+  "domain_issues": [],
+  "informal_statement": "The upper exterior cap has density lambda along its open arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1329-1340, the source contract is `theorem cap_upper_external_density (lam : ℝ) (c : OneSidedCircularCap) (hside : c.side = .upper) (hbase : c.baseY = 1) {s : ℝ} (hs : s ∈ Ioo (capStart c) (capEnd c)) : StripDensity lam (capParam c s) = lam`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d4d779bde08a636e8536f594b78dfa9705a31925f9d2e9248d0d62fdf5aa11a",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capReplacementRegion",
+  "domain_issues": [],
+  "informal_statement": "The cap replacement as an admissible competitor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CapReplacement.lean:69-78, the source contract is `def capReplacementRegion : AdmissibleCompetitor lam := .replacement candidate.CapReplacement @[simp] theorem capReplacement_core : candidate.CapReplacement.core = candidate.stripCore := rfl @[simp] theorem capReplacement_angle : candidate.CapReplacement.replacementAngle = candidate.replacementAngle := rfl`. The replacement retains the strip core, doubles the upper cap area, and exposes the lower chord. Its new half-angle is in (0,pi), so a major cap is not silently discarded; the statement uses the candidate constructor inequalities.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c2d6906ef5b69db6b314e7ac4d82d54432092c90cdf06b81f1a87bed1432f7c3",
+  "symbol_mismatches": []
+}

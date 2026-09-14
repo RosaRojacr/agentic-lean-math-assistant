@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.euclidean_frontier",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean type-(iii) frontier is the union of its four realized boundary pieces.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:2937-2949, the source contract is `theorem euclidean_frontier : frontier (planeEuclideanHomeomorph '' a.carrier) = (planeEuclideanHomeomorph '' a.leftArcTrace) ∪ ((planeEuclideanHomeomorph '' a.rightArcTrace) ∪ ((planeEuclideanHomeomorph '' OneSidedCircularCap.arcTrace a.outerCap) ∪ (planeEuclideanHomeomorph '' a.bottomSegmentCarrier)))`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5e03c2ded7f93ebce1b77460290c9d90f4e5be41990287351d94b69c624d60ea",
+  "symbol_mismatches": []
+}

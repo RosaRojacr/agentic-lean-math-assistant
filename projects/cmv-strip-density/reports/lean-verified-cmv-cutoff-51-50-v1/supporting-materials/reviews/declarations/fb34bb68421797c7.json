@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.candidate_perimeter_cap_components",
+  "domain_issues": [],
+  "informal_statement": "Candidate perimeter equals core arc length plus 2 lambda c L(X).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GeometricBridge.lean:98-105, the source contract is `theorem candidate_perimeter_cap_components : candidate.WeightedPerimeter = candidate.stripCore.boundaryArcLength + 2 * lam * candidate.capChord * arc candidate.capX`. The bridge uses the actual cap area, chord length and canonical perimeter formulas. The geometric improvement has a strict sign and equal weighted area; an arbitrary scalar record is not accepted as a competitor.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5aef3e70645e6bc7cb387847d94c3bc5e794e60aba832cf7143171cce0f52718",
+  "symbol_mismatches": []
+}

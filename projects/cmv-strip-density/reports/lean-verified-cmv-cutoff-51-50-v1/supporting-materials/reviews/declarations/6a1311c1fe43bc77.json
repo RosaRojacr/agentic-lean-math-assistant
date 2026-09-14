@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.C3_sigma_high_face_margin",
+  "domain_issues": [],
+  "informal_statement": "C3 is strictly positive on the high sigma face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:2949-2970, the source contract is `theorem C3_sigma_high_face_margin : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → z 3 = radiiReal 3 → (1 / 1000000000 : ℝ) < C3 (pointOf t z)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d14003647889eccbbfb10aaee4768200f899b458693a4ef6f074530360518a08",
+  "symbol_mismatches": []
+}

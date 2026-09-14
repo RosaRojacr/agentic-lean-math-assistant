@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.exposedLowerChord_subset_carrier",
+  "domain_issues": [],
+  "informal_statement": "The exposed lower chord belongs to the replacement carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3429-3441, the source contract is `theorem exposedLowerChord_subset_carrier (a : ReplacementAssembly) : a.exposedLowerChord.carrier ⊆ a.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4d73b08bb97103964040bbdf24b1dbc10e728893bf174f22b32f933c62dcef7f",
+  "symbol_mismatches": []
+}

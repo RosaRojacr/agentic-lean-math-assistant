@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.brick",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's fixed exact rational brick.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:437-453, the source contract is `def brick : Brick where lamLo := 51 / 50 lamHi := 102001 / 100000 centers := ![925629104183851933 / 5000000000000000000, 2705068892345424047 / 10000000000000000000, 1046818865074353649 / 2500000000000000000, 4608185511215091997 / 10000000000000000000] slopes := ![439944824343995293 / 200000000000000000, 2510476247114540243 / 500000000000000000, 6186129361874951931 / 1000000000000000000, 3760062975752449919 / 500000000000000000] yXiSlope := 67 / 100 vRhoSlope := 112 / 125 radii := ![1 / 10000000, 1 / 100000000, 1 / 10000000, 1 / 100000000] lamOrdered := by norm_num radiiPos := by intro j; fin_cases j <;> norm_num`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "688841e317d3df26432b03f8a47b552ed700304ce27b849b8c43cf708ddb321b",
+  "symbol_mismatches": []
+}

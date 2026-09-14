@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.piInterval",
+  "domain_issues": [],
+  "informal_statement": "A fixed rational enclosure of pi.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:206-208, the source contract is `def piInterval : QInterval := ⟨3.141592, 3.141593, by norm_num⟩`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "da867cd8e471ad99a2b0bc5bbf7e433df88cee3a9989f797f883fa79eab1b795",
+  "symbol_mismatches": []
+}

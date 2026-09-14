@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.isClosed_carrier",
+  "domain_issues": [],
+  "informal_statement": "The full type-(iii) carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:1307-1309, the source contract is `theorem isClosed_carrier : IsClosed a.carrier`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "86d49c14fed38ff9d123ec7002dc853d7ab13d112817308f4d1ef5ac7d463980",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.Conditions.typeThreeEqualArea_existsUnique_in_slab",
+  "domain_issues": [],
+  "informal_statement": "At the stationary type-(iv) area, the type-(iii) slab contains a unique equal-area root.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellAssembly.lean:107-177, the source contract is `theorem typeThreeEqualArea_existsUnique_in_slab (conditions : Conditions lambdaInterval h3Interval h4Interval) {lam h₄ : ℝ} (hlam : lambdaInterval.RealContains lam) (hh₄ : h4Interval.RealContains h₄) (hstationary : LeanSuffixAnalytic.typeFourFold lam h₄ = 0) : ∃! h₃ : ℝ, h3Interval.RealContains h₃ ∧ LeanSuffixAnalytic.typeThreeArea lam h₃ = LeanSuffixAnalytic.typeFourArea lam h₄`. The Conditions record contains regular root slabs, opposite stationary-fold and area-face signs, negative type-(iii) fold, and a strict perimeter sign. The generic assembly derives a stationary pair and then uses the all-curvature envelope; candidate curvature is not confined to the certificate slab.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "79c92a7e4df192f65dc043cccd8bea4a018e8826ba49c09591fd046f371a56f7",
+  "symbol_mismatches": []
+}

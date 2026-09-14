@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_strictMonoOn_Ici",
+  "domain_issues": [],
+  "informal_statement": "The cap-saving function strictly increases from Xstar onward.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:120-131, the source contract is `lemma g_strictMonoOn_Ici : StrictMonoOn g (Ici xstar)`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bbc00bca790c91cdaec1fe6d2fa43a3abe6e68cd5e0920d9ebd378f169cf5602",
+  "symbol_mismatches": []
+}

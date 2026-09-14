@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourAngle",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) angle contribution B4.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:53-56, the source contract is `def typeFourAngle (lam h : ℝ) : ℝ := lam * arccos (h / lam) + arcsin h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "94e6a9f5b491cb7ca4802d89fba1fa7ccb864bbe777d6e41d89b1d6bf892bdd0",
+  "symbol_mismatches": []
+}

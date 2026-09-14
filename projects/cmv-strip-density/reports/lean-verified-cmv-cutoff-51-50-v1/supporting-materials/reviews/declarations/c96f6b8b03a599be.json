@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.exposed_lower_chord_length",
+  "domain_issues": [],
+  "informal_statement": "The exposed lower chord has the candidate's chord length c.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CapReplacement.lean:95-99, the source contract is `theorem exposed_lower_chord_length : candidate.CapReplacement.exposedLowerChord.euclideanLength = candidate.capChord`. The replacement retains the strip core, doubles the upper cap area, and exposes the lower chord. Its new half-angle is in (0,pi), so a major cap is not silently discarded; the statement uses the candidate constructor inequalities.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f04f252743e50cee8e8705384217c84f1c347cf4e87d10a166f74cf59b5b7fd6",
+  "symbol_mismatches": []
+}

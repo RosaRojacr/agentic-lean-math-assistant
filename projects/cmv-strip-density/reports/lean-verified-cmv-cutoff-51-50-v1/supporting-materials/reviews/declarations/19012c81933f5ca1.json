@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "continuous_realizedRightCoreParam",
+  "domain_issues": [],
+  "informal_statement": "The realized right core parameter is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:736-744, the source contract is `lemma continuous_realizedRightCoreParam (c : StripCore) : Continuous (realizedRightCoreParam c)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "db06971d2e0a6e54b3ce1b2cb1ffe296cb5ed7ac07495118f10c8f5f82bfe132",
+  "symbol_mismatches": []
+}

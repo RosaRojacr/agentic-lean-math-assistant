@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.tRadius",
+  "domain_issues": [],
+  "informal_statement": "Half the first prototype's density width.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:455-456, the source contract is `abbrev tRadius : ℚ := (brick.lamHi - brick.lamLo) / 2`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ec2e049acded7f92cfecfef90c8523058c254046f34ddfc61af74c906f331c0",
+  "symbol_mismatches": []
+}

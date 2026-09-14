@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.CertificateExpr.value_neg_of_hi_neg",
+  "domain_issues": [],
+  "informal_statement": "A negative computed upper endpoint certifies a negative real expression value.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:201-205, the source contract is `theorem value_neg_of_hi_neg (e : CertificateExpr) (h : e.enclosure.hi < 0) : e.value < 0`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "db3beb0c3287dfb56bc535077265688e9bbbd719c9e044e825c88f873d5dd3ed",
+  "symbol_mismatches": []
+}

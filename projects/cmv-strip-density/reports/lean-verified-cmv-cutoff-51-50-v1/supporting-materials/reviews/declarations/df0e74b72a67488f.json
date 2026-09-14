@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightArcParam",
+  "domain_issues": [],
+  "informal_statement": "Signed-arclength parametrization of the right side arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:127-131, the source contract is `def rightArcParam (s : ℝ) : PlanePoint := (a.rightCenter.1 + a.radius * sin (s / a.radius), a.rightCenter.2 - a.radius * cos (s / a.radius))`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "74515bd4fc474dfa2c52a14662b8cc34aa0f40ef9d8185819e05d1de94ccf588",
+  "symbol_mismatches": []
+}

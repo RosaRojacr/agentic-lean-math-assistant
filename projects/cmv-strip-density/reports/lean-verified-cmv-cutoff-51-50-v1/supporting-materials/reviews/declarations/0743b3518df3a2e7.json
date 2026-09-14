@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.CellCertificate.sound",
+  "domain_issues": [],
+  "informal_statement": "The primitive certificate implies the correctly oriented root conditions.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1510-1536, the source contract is `theorem sound {b : Brick} (certificate : CellCertificate b) : Conditions b where lambda_one_lt`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3fff65f4ffa94f40ec377aeb7e5b713831d3e0a0f69889bb8c84ffd5cf5fd19a",
+  "symbol_mismatches": []
+}

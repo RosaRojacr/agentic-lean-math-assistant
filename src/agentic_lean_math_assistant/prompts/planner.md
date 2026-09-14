@@ -48,7 +48,7 @@ Return exactly one JSON object, with no Markdown fence:
   "schema_version": 3,
   "goal": "observable campaign goal",
   "rationale": "why this portfolio, gates, and DAG are sufficient",
-  "max_parallel": 4,
+  "max_parallel": 1,
   "capability_decisions": [
     {
       "capability": "regression_assess",

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.point",
+  "domain_issues": [],
+  "informal_statement": "The singleton interval at a rational number.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixReflective.lean:34-36, the source contract is `def point (x : ℚ) : QInterval := ⟨x, x, le_rfl⟩`. Intervals have rational ordered endpoints and closed containment. Arithmetic enclosure statements concern the real-valued operations after rational casting; exact checks do not stand for floating-point evidence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "35a71df9981ec16d7188d1e717bf2773425dff09af794e6cabfae2678adb7fb9",
+  "symbol_mismatches": []
+}

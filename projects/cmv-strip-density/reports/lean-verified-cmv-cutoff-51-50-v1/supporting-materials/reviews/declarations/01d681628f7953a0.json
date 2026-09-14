@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.stripCore",
+  "domain_issues": [],
+  "informal_statement": "The candidate's central strip core.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:53-65, the source contract is `def stripCore : StripCore where chord := candidate.capChord curvature := candidate.h chord_pos := by exact div_pos (mul_pos (by norm_num) (sin_pos_of_pos_of_lt_pi candidate.alpha_pos (lt_trans candidate.alpha_lt_pi_div_two (by linarith [Real.pi_pos])))) candidate.h_pos curvature_pos := candidate.h_pos curvature_le_one := candidate.h_le_one`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "66aff9e1eb934bbbeeb8dd09a1a68a4c23aef3ee09735d3ba9bc12eadb4664ee",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_pi_div_eight",
+  "domain_issues": [],
+  "informal_statement": "The inverse area angle at pi/8 is pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:73-78, the source contract is `lemma θOf_pi_div_eight : θOf (π / 8) = π / 2`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "787022501b978041cc5dda7d507ec1898466d85828bc2384ff3ced42461fa420",
+  "symbol_mismatches": []
+}

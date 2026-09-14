@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.below_exposedLowerChord_not_mem",
+  "domain_issues": [],
+  "informal_statement": "Points immediately below the lower chord are outside the replacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3442-3459, the source contract is `theorem below_exposedLowerChord_not_mem (a : ReplacementAssembly) {p : PlanePoint} (hp : p ∈ a.exposedLowerChord.carrier) {epsilon : ℝ} (hepsilon : 0 < epsilon) : (p.1, p.2 - epsilon) ∉ a.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3316f6365842786c2f5614825bd4efdba288774b79cdd05c569f08a4717428cd",
+  "symbol_mismatches": []
+}

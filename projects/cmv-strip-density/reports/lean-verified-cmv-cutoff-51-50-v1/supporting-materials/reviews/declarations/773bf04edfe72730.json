@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_lt_fold",
+  "domain_issues": [],
+  "informal_statement": "The stationary fold is the strict maximum of the equal-area perimeter gap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At EqualAreaEnvelope.lean:582-631, the source contract is `theorem equalAreaPerimeterGap_lt_fold {lam : ℝ} (env : DescendingEqualAreaEnvelope lam) {h₄ : ℝ} (hh₄ : 0 < h₄) (hh₄_one : h₄ ≤ 1) (hne : h₄ ≠ env.fold) : equalAreaPerimeterGap lam env.root h₄ < equalAreaPerimeterGap lam env.root env.fold`. Equal area and the negative-fold branch are distinct requirements. Interior differentiation requires a simple root; the closure endpoint uses one-sided continuity. The main proof derives these properties rather than assuming the all-curvature perimeter comparison.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1a0b26ad0e4af7fdd933118930486f792fc517471c75bd1495b190e7f97f3420",
+  "symbol_mismatches": []
+}

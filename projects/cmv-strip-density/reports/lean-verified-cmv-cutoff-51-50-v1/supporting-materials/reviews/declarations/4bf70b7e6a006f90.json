@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.carrier",
+  "domain_issues": [],
+  "informal_statement": "The closed disk intersected with the selected chord half-plane.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:146-152, the source contract is `def carrier (c : OneSidedCircularCap) : Set PlanePoint := {p | c.radiusSquaredAt p ≤ c.radius ^ 2 ∧ match c.side with | .upper => c.baseY ≤ p.2 | .lower => p.2 ≤ c.baseY}`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0644dd0b5f330958b79efbb3810eb1cc2f4356e5db251a95736b532b75bfcf1",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.regularStationaryFold_scalarImprovement",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's stationary fold admits a regular equal-area type-(iii) strict improvement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:4124-4157, the source contract is `theorem regularStationaryFold_scalarImprovement {lam0 h₄ : ℝ} (hlam : lamInterval.RealContains lam0) (hh₄ : h₄ ∈ Ioo (0 : ℝ) 1) (hstationary : LeanSuffixAnalytic.typeFourFold lam0 h₄ = 0) : ∃ h₃ : ℝ, 1 / 2 < h₃ ∧ h₃ < 1 ∧ LeanSuffixAnalytic.typeThreeArea lam0 h₃ = LeanSuffixAnalytic.typeFourArea lam0 h₄ ∧ LeanSuffixAnalytic.typeThreePerimeter lam0 h₃ < LeanSuffixAnalytic.typeFourPerimeter lam0 h₄ ∧ LeanSuffixAnalytic.reducedFoldGap lam0 h₃ h₄ < 0 ∧ deriv (LeanSuffixAnalytic.typeThreeArea lam0) h₃ < 0`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7fefcab04ab1793e87d3e44914f4cea3510747aca02a4b68cef1c2b92278828d",
+  "symbol_mismatches": []
+}

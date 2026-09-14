@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap",
+  "domain_issues": [],
+  "informal_statement": "A circular segment specified by a positive chord, angle in (0,pi), placement, and side.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:100-112, the source contract is `structure OneSidedCircularCap where chord : ℝ theta : ℝ midpointX : ℝ baseY : ℝ side : CapSide chord_pos : 0 < chord theta_pos : 0 < theta theta_lt_pi : theta < π`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a9dd2ba7ee653be367b6a2072de1384c3362b0214117e3aecceae763bc6f8403",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,26 @@
+import CMVRegularGermExtension
+
+namespace CMVRelaxation.RegularTraceCornerComparison
+
+#print axioms extensionEndpointRatio_pos
+#print axioms extensionEndpointRatio_lt_weight
+#print axioms extensionEndpointRatio_square_margin
+#print axioms extensionTangentGain_pos_at_endpointRatio
+#print axioms planeInner_ge_neg_one_of_unit
+#print axioms ActualRegularTraceCorner.conormal_inner_ge_neg_one
+#print axioms ActualRegularTraceCorner.extensionTangentGain_pos_of_conormal_lt
+#print axioms positiveReparam_velocitySum_norm_sq
+#print axioms endpointConormal_initial_neg
+#print axioms interfaceContinuationDisplacement_eq_neg_smul
+#print axioms extension_gain_bookkeeping
+
+#print axioms frontier_openCorner_eq_axes
+#print axioms frontier_interfaceExtendedOpenCorner
+#print axioms extendedInterfaceRay_eq_positive_union_negative
+#print axioms frontier_interfaceExtendedOpenCorner_four_pieces
+
+#print axioms LambdaTwoExtension.endpointConormals
+#print axioms LambdaTwoExtension.conormal_inner_eq
+#print axioms LambdaTwoExtension.extension_gain_pos
+
+end CMVRelaxation.RegularTraceCornerComparison

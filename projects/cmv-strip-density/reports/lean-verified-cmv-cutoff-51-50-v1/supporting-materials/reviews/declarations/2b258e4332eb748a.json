@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capEnd",
+  "domain_issues": [],
+  "informal_statement": "Final arclength parameter for the cap arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1246-1248, the source contract is `def capEnd (c : OneSidedCircularCap) : ℝ := c.radius * c.theta`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a140ca726638df619aef507f8019eb9f7ca9503d3231f8bfa8f0a64feb377161",
+  "symbol_mismatches": []
+}

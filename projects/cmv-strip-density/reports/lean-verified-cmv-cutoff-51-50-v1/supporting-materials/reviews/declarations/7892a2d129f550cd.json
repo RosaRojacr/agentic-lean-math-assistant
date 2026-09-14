@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "PlanePoint",
+  "domain_issues": [],
+  "informal_statement": "The coordinate plane is the product of two real lines.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:30-33, the source contract is `abbrev PlanePoint := ℝ × ℝ`. The abbreviation is exactly the Cartesian product of two real lines. Euclidean length is deliberately introduced separately; this declaration alone does not endow the product norm with Euclidean length semantics.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6c33ab7d9e6652b4833188977c0694ee665f31ebd07e572ea7a67ee7a8a0183",
+  "symbol_mismatches": []
+}

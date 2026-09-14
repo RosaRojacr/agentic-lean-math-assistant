@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "replacement_euclidean_frontier",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean replacement frontier is the two side arcs, upper cap, and bottom segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1349-1358, the source contract is `theorem replacement_euclidean_frontier (a : ReplacementAssembly) : frontier (planeEuclideanHomeomorph '' a.carrier) = (planeEuclideanHomeomorph '' StripCore.leftArcTrace a.core) ∪ ((planeEuclideanHomeomorph '' StripCore.rightArcTrace a.core) ∪ ((planeEuclideanHomeomorph '' OneSidedCircularCap.arcTrace a.upperCap) ∪ (planeEuclideanHomeomorph '' a.exposedLowerChord.carrier)))`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e7e5168c04a70cc7a8c8b17e4b2ad4201ee6c71706067d29f52984410e3fd5d4",
+  "symbol_mismatches": []
+}

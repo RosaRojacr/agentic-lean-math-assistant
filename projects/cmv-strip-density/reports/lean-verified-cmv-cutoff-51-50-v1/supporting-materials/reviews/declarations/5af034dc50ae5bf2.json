@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.boundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "Sum of the four parametrized arc measures.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2525-2529, the source contract is `def boundaryMeasure (a : FourArcAssembly) : Measure PlanePoint := leftCoreBoundaryMeasure a.core + rightCoreBoundaryMeasure a.core + capBoundaryMeasure a.upperCap + capBoundaryMeasure a.lowerCap`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a07e8d5b98aab97a737c50d9ee9eae871142e1adb2b58a3132be8c4b6a093cce",
+  "symbol_mismatches": []
+}

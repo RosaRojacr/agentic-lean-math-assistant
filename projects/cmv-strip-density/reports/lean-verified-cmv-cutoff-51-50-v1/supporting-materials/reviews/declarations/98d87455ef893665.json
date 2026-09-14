@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftArcParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The left side parameter interval traces exactly the left side boundary.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:446-546, the source contract is `theorem leftArcParam_image_Icc : a.leftArcParam '' Icc (-a.radius * a.sideArcAngle) 0 = a.leftArcTrace`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a53d3bd58a5cf0ca117ca4045079faea921dc67e709030e1bc93b3bc04963479",
+  "symbol_mismatches": []
+}

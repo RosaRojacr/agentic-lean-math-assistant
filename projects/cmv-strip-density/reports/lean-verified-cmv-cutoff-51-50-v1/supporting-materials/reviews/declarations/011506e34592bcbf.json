@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.gap_upper",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's perimeter residual G has a negative upper bound.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:1815-1930, the source contract is `theorem gap_upper : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → G (pointOf t z) < -(437 / 1000000 : ℝ)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bfd0e938dc561a18e65fa20cc38b1be820b9d6c633f0485b08fc114b41463547",
+  "symbol_mismatches": []
+}

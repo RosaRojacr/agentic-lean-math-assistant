@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_im",
+  "domain_issues": [],
+  "informal_statement": "For all real r,s, the imaginary coordinate of u_r(s) is r sin(s/r).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:423-429, the source contract is `lemma unitCircleArc_im (r s : ℝ) : (unitCircleArc r s).im = r * Real.sin (s / r)`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0666e8d860656cd1bc24ade42af99acdafd9034497a0ba0f27acf44cddcd77e5",
+  "symbol_mismatches": []
+}

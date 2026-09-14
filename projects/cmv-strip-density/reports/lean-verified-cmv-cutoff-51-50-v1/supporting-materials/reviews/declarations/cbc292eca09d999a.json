@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The candidate region's canonical weighted frontier perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:79-83, the source contract is `def WeightedPerimeter : ℝ := candidate.region.WeightedPerimeter`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d649676f2fd717389a6e9a17a385fe854bc399e17ecfdad24bd8a7bcc9a36521",
+  "symbol_mismatches": []
+}

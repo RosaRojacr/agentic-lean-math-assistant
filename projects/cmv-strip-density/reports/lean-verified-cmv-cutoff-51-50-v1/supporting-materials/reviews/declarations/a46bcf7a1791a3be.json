@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.interiorCarrier",
+  "domain_issues": [],
+  "informal_statement": "The corresponding strict disk and strict half-plane intersection.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:153-159, the source contract is `def interiorCarrier (c : OneSidedCircularCap) : Set PlanePoint := {p | c.radiusSquaredAt p < c.radius ^ 2 ∧ match c.side with | .upper => c.baseY < p.2 | .lower => p.2 < c.baseY}`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d9986ab2dd520dfd41d6ccb99ca9878df085185d6c10c136685b43549b4c4dc1",
+  "symbol_mismatches": []
+}

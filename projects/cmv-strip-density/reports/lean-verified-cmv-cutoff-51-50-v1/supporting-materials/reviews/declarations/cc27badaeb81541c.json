@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerAngle",
+  "domain_issues": [],
+  "informal_statement": "The source inner angle b3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:53-55, the source contract is `def innerAngle : ℝ := arccos a.shapeParameter`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb9acabc2bc9f5427d7041305c401b4e2793720759dd063e3153448db0793dd9",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.candidate_not_isWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "Every modeled candidate is nonminimal on [25781/25000,33/32].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:2222-2240, the source contract is `theorem candidate_not_isWeightedPerimeterMinimizer {lam0 : ℝ} (hlam : lamInterval.RealContains lam0) (candidate : _root_.FourArcCandidate lam0) (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : ¬ candidate.IsWeightedPerimeterMinimizer`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c6a266d071e9cf7ce0214b6d5870976fd096dbfbf585b5acb5f6cd350590871",
+  "symbol_mismatches": []
+}

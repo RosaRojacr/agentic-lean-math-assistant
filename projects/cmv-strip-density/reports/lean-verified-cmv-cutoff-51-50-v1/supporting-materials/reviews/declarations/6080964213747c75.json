@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThreeFoldBox",
+  "domain_issues": [],
+  "informal_statement": "Interval expression for K3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:458-472, the source contract is `def typeThreeFoldBox (lambdaInterval hI uI dI asinQI asinRatioI : QInterval) (hlambda : 0 < lambdaInterval.lo) (hu : 0 < uI.lo) (hlambdaD : 0 < (lambdaInterval.mul dI).lo) : QInterval := let qI := typeThreeQBox hI let angleI := typeThreeAngleBox lambdaInterval asinQI asinRatioI let deltaI := typeThreeDeltaBox lambdaInterval uI dI hlambda let first := ScalarSuffixCertificate.QInterval.divPos ((LeanSuffixReflective.QInterval.point 1).add qI) uI hu let second := ScalarSuffixCertificate.QInterval.divPos ((lambdaInterval.mul lambdaInterval).add qI) (lambdaInterval.mul dI) hlambdaD ((hI.mul (first.sub second)).nsmul 4 (by norm_num)).sub (((angleI.add halfPiBox).add deltaI).nsmul 2 (by norm_num))`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "134abfc2384eaab1be42cb464447703ca4b8c8946a097fc0f4846639ef17f9e4",
+  "symbol_mismatches": []
+}

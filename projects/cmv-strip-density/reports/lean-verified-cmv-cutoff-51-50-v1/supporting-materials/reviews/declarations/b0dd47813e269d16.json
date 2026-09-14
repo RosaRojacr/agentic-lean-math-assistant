@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerSin_pos",
+  "domain_issues": [],
+  "informal_statement": "The inner angle has positive sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:216-218, the source contract is `theorem innerSin_pos : 0 < sin a.innerAngle`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "88694b992a38f1dff3c67f32d082f4eb742c98f01874e62941887bfa3c13f04d",
+  "symbol_mismatches": []
+}

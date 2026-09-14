@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcLength_pos",
+  "domain_issues": [],
+  "informal_statement": "The cap arc has positive length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:220-222, the source contract is `theorem arcLength_pos (c : OneSidedCircularCap) : 0 < c.arcLength`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "615464c0ac73967d872be72b9e5d931fb0644d2db70b6e9168ad1dd7c81aa184",
+  "symbol_mismatches": []
+}

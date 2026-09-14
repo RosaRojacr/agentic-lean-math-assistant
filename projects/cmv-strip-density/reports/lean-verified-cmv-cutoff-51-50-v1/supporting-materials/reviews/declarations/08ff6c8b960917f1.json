@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capX_eq_area",
+  "domain_issues": [],
+  "informal_statement": "The normalized candidate cap area is a(alpha).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:116-119, the source contract is `theorem capX_eq_area : candidate.capX = area candidate.alpha`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ef35b1cb5934a4532e1255f444a69fb5e100682afde4a7e8de56f9cb84bae537",
+  "symbol_mismatches": []
+}

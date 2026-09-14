@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc_of_fold_neg_right",
+  "domain_issues": [],
+  "informal_statement": "A negative fold at a slab's right endpoint suffices for strict area decrease throughout it.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At EqualAreaEnvelope.lean:124-138, the source contract is `theorem typeThreeArea_strictAntiOn_Icc_of_fold_neg_right {lam a b : ℝ} (hlam : 1 < lam) (ha : 0 < a) (hb : b < 1) (hb_pos : 0 < b) (hfoldb : typeThreeFold lam b < 0) : StrictAntiOn (typeThreeArea lam) (Icc a b)`. Equal area and the negative-fold branch are distinct requirements. Interior differentiation requires a simple root; the closure endpoint uses one-sided continuity. The main proof derives these properties rather than assuming the all-curvature perimeter comparison.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1b1d7870499bdaf74cbcd036814fc1cce139b4cf2463cce4ba39b71ae55024b7",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_analytic_typeThree",
+  "domain_issues": [],
+  "informal_statement": "A scalar equal-area type-(iii) strict improvement with 0<s<1 disproves candidate minimality.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVSuffixModel.lean:201-224, the source contract is `theorem not_isWeightedPerimeterMinimizer_of_analytic_typeThree (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) {h₃ : ℝ} (hh₃ : 0 < h₃) (hh₃_one : h₃ < 1) (equalArea : LeanSuffixAnalytic.typeThreeArea lam h₃ = LeanSuffixAnalytic.typeFourArea lam candidate.h) (strictPerimeter : LeanSuffixAnalytic.typeThreePerimeter lam h₃ < LeanSuffixAnalytic.typeFourPerimeter lam candidate.h) : ¬ candidate.IsWeightedPerimeterMinimizer`. This bridge identifies actual carrier integrals with the scalar profiles. In particular the geometric type-(iii) angle term is typeThreeAngle + pi/2; regular-only wrappers are not substituted for the separate endpoint-inclusive candidate bridge.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "99c923b45cbc09e9ba012e383efbf5a498fe0a194180526cbe54c89d50a0f151",
+  "symbol_mismatches": []
+}

@@ -4,6 +4,7 @@ Copyright (c) 2026. Released under Apache 2.0 license.
 import CMVProjectionDefect
 import Mathlib.Analysis.Normed.Affine.MazurUlam
 import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
+import Mathlib.Analysis.Complex.Isometry
 
 /-!
 # Rigid-coordinate projection defects
@@ -20,6 +21,43 @@ open scoped ENNReal MeasureTheory Topology NNReal symmDiff
 noncomputable section
 
 namespace CMVRelaxation
+
+/-- The Euclidean coordinate plane identified isometrically with `ℂ`, with the
+real part representing the second source coordinate and the imaginary part the
+first. -/
+def tangentComplexEquiv : EuclideanPlane ≃ᵢ ℂ where
+  toEquiv :=
+    { toFun := fun p => ⟨(WithLp.ofLp p).2, (WithLp.ofLp p).1⟩
+      invFun := fun z => WithLp.toLp 2 (z.im, z.re)
+      left_inv := by
+        intro p
+        rfl
+      right_inv := by
+        intro z
+        rfl }
+  isometry_toFun := by
+    apply Isometry.of_dist_eq
+    intro p q
+    rw [WithLp.prod_dist_eq_add (by norm_num)]
+    norm_num [Real.dist_eq, sq_abs]
+    rw [← Real.sqrt_eq_rpow]
+    congr 1
+    ring
+
+@[simp] theorem tangentComplexEquiv_apply (p : EuclideanPlane) :
+    tangentComplexEquiv p =
+      ⟨(WithLp.ofLp p).2, (WithLp.ofLp p).1⟩ := rfl
+
+@[simp] theorem tangentComplexEquiv_symm_apply (z : ℂ) :
+    tangentComplexEquiv.symm z = WithLp.toLp 2 (z.im, z.re) := rfl
+
+@[simp] theorem planeEuclideanHomeomorph_symm_tangentComplexEquiv_symm
+    (z : ℂ) :
+    planeEuclideanHomeomorph.symm (tangentComplexEquiv.symm z) =
+      (z.im, z.re) := rfl
+
+@[simp] theorem planeEuclideanHomeomorph_symm_toLp (p : PlanePoint) :
+    planeEuclideanHomeomorph.symm (WithLp.toLp 2 p) = p := rfl
 
 /-- An arbitrary Euclidean rigid motion, transported back to the coordinate
 plane used by the CMV carriers. -/
@@ -303,6 +341,56 @@ lemma isCompact_window (P : RigidProjectionPatch lam E) :
 lemma measurableSet_window (P : RigidProjectionPatch lam E) :
     MeasurableSet P.window :=
   P.isCompact_window.measurableSet
+
+lemma lowerCollar_subset_window
+    (P : RigidProjectionPatch lam E) :
+    euclideanRigidMap P.frame ''
+        (Icc P.a P.b ×ˢ Icc (P.y₀ - 2 * P.rho) (P.y₀ - P.rho)) ⊆
+      P.window := by
+  rintro _ ⟨p, hp, rfl⟩
+  refine ⟨p, ?_, rfl⟩
+  change p.1 ∈ Icc P.a P.b ∧
+    p.2 ∈ Icc (P.y₀ - 2 * P.rho) (P.y₀ - P.rho) at hp
+  change p.1 ∈ Icc P.a P.b ∧
+    p.2 ∈ Icc (P.y₀ - 2 * P.rho) (P.y₀ + 2 * P.rho)
+  exact ⟨hp.1, ⟨hp.2.1, by linarith [hp.2.2, P.rho_pos]⟩⟩
+
+lemma upperCollar_subset_window
+    (P : RigidProjectionPatch lam E) :
+    euclideanRigidMap P.frame ''
+        (Icc P.a P.b ×ˢ Icc (P.y₀ + P.rho) (P.y₀ + 2 * P.rho)) ⊆
+      P.window := by
+  rintro _ ⟨p, hp, rfl⟩
+  refine ⟨p, ?_, rfl⟩
+  change p.1 ∈ Icc P.a P.b ∧
+    p.2 ∈ Icc (P.y₀ + P.rho) (P.y₀ + 2 * P.rho) at hp
+  change p.1 ∈ Icc P.a P.b ∧
+    p.2 ∈ Icc (P.y₀ - 2 * P.rho) (P.y₀ + 2 * P.rho)
+  exact ⟨hp.1, ⟨by linarith [hp.2.1, P.rho_pos], hp.2.2⟩⟩
+
+/-- A patch can be transported to a carrier agreeing with it throughout the
+full rigid window. -/
+noncomputable def changeCarrierOnWindow
+    (P : RigidProjectionPatch lam E) {F : Set PlanePoint}
+    (hEF : ∀ q ∈ P.window, q ∈ E ↔ q ∈ F) :
+    RigidProjectionPatch lam F where
+  frame := P.frame
+  a := P.a
+  b := P.b
+  y₀ := P.y₀
+  rho := P.rho
+  weight := P.weight
+  rho_pos := P.rho_pos
+  lower_collar := by
+    intro q hq
+    exact (hEF q (P.lowerCollar_subset_window hq)).mp
+      (P.lower_collar hq)
+  upper_collar := by
+    rw [Set.disjoint_left]
+    intro q hq hqF
+    have hqE := (hEF q (P.upperCollar_subset_window hq)).mpr hqF
+    exact Set.disjoint_left.mp P.upper_collar hq hqE
+  density_lower := P.density_lower
 
 /-- Weighted projected width recovered from this patch. -/
 def payoff (P : RigidProjectionPatch lam E) : ℝ≥0∞ :=

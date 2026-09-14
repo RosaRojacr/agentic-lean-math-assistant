@@ -1,0 +1,18 @@
+import CMVInterfaceExtensionGenericSpecimen
+
+namespace CMVRelaxation.InterfaceExtensionGenericSpecimen
+
+#print axioms affineChart_apply
+#print axioms affineApplicability
+#print axioms metricApplicability
+#print axioms signedInterfaceApplicability
+#print axioms signedIncidentPhaseApplicability
+#print axioms normalizedIncidentScale_eq_one
+#print axioms normalizedInterfaceScale_two_eq
+#print axioms normalizedApplicability
+#print axioms eventually_normalizedExtension_local_inside_cost_lt
+#print axioms actualCorner_smoothCost_eq
+#print axioms eventually_normalizedExtension_complete_cost_lt
+#print axioms eventually_normalizedExtension_complete_cost_add_linear_le
+
+end CMVRelaxation.InterfaceExtensionGenericSpecimen

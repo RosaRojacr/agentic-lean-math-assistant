@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.derivRho",
+  "domain_issues": [],
+  "informal_statement": "The explicit rho derivative of the equal-area residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:247-254, the source contract is `def derivRho (t xi eta rho sigma : ℝ) : ℝ := formulaDeriv ((lamMid b : ℝ) + t) ((b.centers 0 : ℝ) + b.slopes 0 * t + xi) ((b.centers 1 : ℝ) + b.slopes 1 * t + b.yXiSlope * xi + eta) ((b.centers 2 : ℝ) + b.slopes 2 * t + rho) ((b.centers 3 : ℝ) + b.slopes 3 * t + b.vRhoSlope * rho + sigma) 0 0 0 1 b.vRhoSlope`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3de77d285680f5b628dc186984128f3143ab98fcad154680680ec2be723c01a7",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.one_lt_radius",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) radius exceeds one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:148-152, the source contract is `theorem one_lt_radius : 1 < a.radius`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4e892eef63bc8252d5a243e2b5495e748b55fa956d516b3510c9e5289ec264d9",
+  "symbol_mismatches": []
+}

@@ -1,6 +1,6 @@
 """Public API for the deterministic Agentic Lean Math Assistant."""
 
-__version__ = "1.1.1"
+__version__ = "1.2.0"
 
 from .autonomy import (
     AutonomyError,
@@ -25,6 +25,15 @@ from .project import (
     ComputeProfile,
     LeanTheoremSpec,
     ProjectSpec,
+)
+from .proof_builder import (
+    ProofBuilderError,
+    ProofPackageResult,
+    ProofPackageSpec,
+    build_proof_package,
+    initialize_proof_manifest,
+    resume_proof_package,
+    verify_proof_package,
 )
 from .regime import RegimeError, RegimeOptions, RegimeRunner, choose_strategy
 from .regression import (
@@ -62,6 +71,9 @@ __all__ = [
     "LeanTheoremSpec",
     "ObligationSpec",
     "ProjectSpec",
+    "ProofBuilderError",
+    "ProofPackageResult",
+    "ProofPackageSpec",
     "RegimeError",
     "RegimeOptions",
     "RegimeRunner",
@@ -74,15 +86,19 @@ __all__ = [
     "assess_regression",
     "autonomy_status",
     "build_claim_ledger",
+    "build_proof_package",
     "choose_strategy",
     "collect_compute_metrics",
     "fit_regression",
+    "initialize_proof_manifest",
     "inspect_assurance",
     "inspect_claim_ledgers",
     "load_array",
     "record_autonomy_decision",
     "replay_verifier_command",
     "resume_benchmark_suite",
+    "resume_proof_package",
     "run_benchmark_suite",
+    "verify_proof_package",
     "write_compute_ledger",
 ]

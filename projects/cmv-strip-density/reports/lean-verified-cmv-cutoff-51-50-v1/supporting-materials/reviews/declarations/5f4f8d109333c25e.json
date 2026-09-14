@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.pointEquationSemantics",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's checker equations have the claimed scalar meaning.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:538-687, the source contract is `theorem pointEquationSemantics (p : Point) (hlam : 1 < lam p) (hbranches : 0 < x p ∧ x p < π / 4 ∧ 0 < y p ∧ y p < π / 4 ∧ 0 < w p ∧ w p < π / 4 ∧ 0 < v p ∧ v p < π / 4) (hC4 : C4 p = 0) (hC3 : C3 p = 0) : PointEquationSemantics p`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "55d2eea611fa72c52ef509b0c8b4a1aa98765b6f9627ee1108103f1668f29bc9",
+  "symbol_mismatches": []
+}

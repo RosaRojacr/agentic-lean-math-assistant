@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import shlex
 import subprocess
 import sys
 from pathlib import Path
@@ -68,9 +69,7 @@ def main() -> int:
         emit({"type": "ok"})
         return 0
     if arguments[:2] == ["pane", "run"]:
-        command = arguments[3:]
-        if command and command[0] == " env":
-            command[0] = "env"
+        command = shlex.split(arguments[3]) if len(arguments) == 4 else arguments[3:]
         subprocess.Popen(
             command,
             stdin=subprocess.DEVNULL,

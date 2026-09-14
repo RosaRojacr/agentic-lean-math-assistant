@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_tendsto_atRight_zero",
+  "domain_issues": [],
+  "informal_statement": "Type-(iii) area tends to positive infinity as curvature decreases to zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:828-871, the source contract is `theorem typeThreeArea_tendsto_atRight_zero {lam : ℝ} (hlam : 1 < lam) : Tendsto (typeThreeArea lam) (𝓝[>] 0) atTop`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e82ffa97f750ea7c64d3d22eebba58e03fe2fc0f731297b9787ae711ded5a49a",
+  "symbol_mismatches": []
+}

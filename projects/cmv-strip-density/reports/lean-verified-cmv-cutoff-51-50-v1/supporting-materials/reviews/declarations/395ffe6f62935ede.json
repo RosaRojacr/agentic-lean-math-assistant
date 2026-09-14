@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.weightedArea_eq_modeledWeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The actual carrier area equals the type-(iii) component area expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:1562-1583, the source contract is `theorem weightedArea_eq_modeledWeightedArea : a.WeightedArea = a.modeledWeightedArea`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5f7913f0171c133683a735330062b186a060d0e518987c5488549de7bfd06347",
+  "symbol_mismatches": []
+}

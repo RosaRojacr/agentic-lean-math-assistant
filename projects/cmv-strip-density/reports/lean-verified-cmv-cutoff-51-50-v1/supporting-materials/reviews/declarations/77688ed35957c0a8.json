@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.h4Interval",
+  "domain_issues": [],
+  "informal_statement": "Stationary type-(iv) slab for compact box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactSecondCell.lean:26-30, the source contract is `def h4Interval : QInterval := ⟨275542293618597 / 281474976710656, 275579321170665 / 281474976710656, by norm_num⟩`. This is the explicit second compact box and its splice to the first. Closed interval membership retains the common rational endpoint; local root-slab conditions do not become extra hypotheses on an arbitrary candidate.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "af804f12d01723b2d7a86305f48af3d27bbb99fca40d12171d80e480fb2a6639",
+  "symbol_mismatches": []
+}

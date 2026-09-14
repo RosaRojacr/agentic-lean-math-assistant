@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_θstar",
+  "domain_issues": [],
+  "informal_statement": "The saving at Xstar equals three times cosine of the root angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:183-206, the source contract is `theorem g_θstar : g xstar = 3 * cos θstar`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b7fb48fb7e90dd4fccd7f3be6e957eefae58ef3ae08e86762f2e1b503b38585a",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_integrableOn",
+  "domain_issues": [],
+  "informal_statement": "The density is integrable over a cap carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2303-2308, the source contract is `lemma cap_integrableOn (lam : ℝ) (c : OneSidedCircularCap) : IntegrableOn (StripDensity lam) c.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bbc4a1a9af0d45bee6aa1c1152d956e0e945a869f3550ca289ef7022556292ef",
+  "symbol_mismatches": []
+}

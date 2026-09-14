@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.isClosed_carrier",
+  "domain_issues": [],
+  "informal_statement": "The core carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:805-843, the source contract is `theorem isClosed_carrier (c : StripCore) : IsClosed c.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d28fca8c993d5d2b9aa0b2ebe7f3f0372ebdd951a5cda90d26adf748bface0e4",
+  "symbol_mismatches": []
+}

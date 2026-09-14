@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.endpoint_weightedArea_eq_typeFourArea",
+  "domain_issues": [],
+  "informal_statement": "The area identification also holds when h=1.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVSuffixModel.lean:159-166, the source contract is `theorem endpoint_weightedArea_eq_typeFourArea (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) (_hendpoint : candidate.h = 1) : candidate.WeightedArea = LeanSuffixAnalytic.typeFourArea lam candidate.h`. This bridge identifies actual carrier integrals with the scalar profiles. In particular the geometric type-(iii) angle term is typeThreeAngle + pi/2; regular-only wrappers are not substituted for the separate endpoint-inclusive candidate bridge.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1d3c440482f713868366732790a87ef12add8058ecc71af2e6fb07df04bb3b83",
+  "symbol_mismatches": []
+}

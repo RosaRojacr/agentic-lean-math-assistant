@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "Weighted area of the four-arc carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2541-2545, the source contract is `def weightedArea (lam : ℝ) (a : FourArcAssembly) : ℝ := WeightedArea lam a.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad43970e4ac79b935baed41701092f4d901053e35bb88583dcbd5a9003db13a3",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.FResidual.reduced",
+  "domain_issues": [],
+  "informal_statement": "The stationary-fold residual after centered affine substitution.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:946-952, the source contract is `def reduced (t xi eta : ℝ) : ℝ := let xx := (b.centers 0 : ℝ) + b.slopes 0 * t + xi let yy := (b.centers 1 : ℝ) + b.slopes 1 * t + b.yXiSlope * xi + eta let ll := (lamMid b : ℝ) + t cos xx * (sin yy - sin xx) - sin xx * sin yy * (ll * yy + π / 2 - xx)`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e2d8d4b1eb446b26168d3d1be2a5c6a59a042bb296a5fe1b9a5da048c481863",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.radiiReal",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's rational error radii cast to reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:800-800, the source contract is `def radiiReal : Vec4 := fun j => (brick.radii j : ℝ)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ffbda00bb8ae49e94f67d9ad5dd16012ff60af58d9c1760a6abfb99b1bb96909",
+  "symbol_mismatches": []
+}

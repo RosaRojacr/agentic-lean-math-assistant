@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.sinTaylor27",
+  "domain_issues": [],
+  "informal_statement": "The degree-27 Taylor polynomial for sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:214-218, the source contract is `def sinTaylor27 (x : ℚ) : ℚ := ∑ k ∈ Finset.range 14, (-1 : ℚ) ^ k * x ^ (2 * k + 1) / (2 * k + 1).factorial`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cad29fad0ca5f0f5a021df9a703aaac6f17eda67757816193f0541445c680252",
+  "symbol_mismatches": []
+}

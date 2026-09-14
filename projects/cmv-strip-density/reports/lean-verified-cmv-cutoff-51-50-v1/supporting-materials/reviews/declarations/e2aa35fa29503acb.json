@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.F",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's stationary-fold residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:511-511, the source contract is `def F (p : Point) : ℝ := cos (x p) * D4 p - sin (x p) * sin (y p) * B4 p`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ff764cf036982bdc0d990c94070c7ae41de884ec397b4b250e1096fedd89ff34",
+  "symbol_mismatches": []
+}

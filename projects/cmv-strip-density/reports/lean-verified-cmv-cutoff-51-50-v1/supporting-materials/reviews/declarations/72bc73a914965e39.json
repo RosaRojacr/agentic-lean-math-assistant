@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedCapParam",
+  "domain_issues": [],
+  "informal_statement": "The cap parametrization realized in Euclidean L2 coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:430-433, the source contract is `noncomputable def realizedCapParam (c : OneSidedCircularCap) (s : ℝ) : EuclideanPlane := planeEuclideanHomeomorph (capParam c s)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "95b1661a30d7b5d3f17854c6eabbe1a4da9d944d9ad542e596607c6cb4fd12b0",
+  "symbol_mismatches": []
+}

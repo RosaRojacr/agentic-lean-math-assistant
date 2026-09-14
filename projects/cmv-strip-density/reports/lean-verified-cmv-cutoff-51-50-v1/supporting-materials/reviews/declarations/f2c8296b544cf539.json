@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.realContains_centered_meanValue",
+  "domain_issues": [],
+  "informal_statement": "Center and derivative intervals yield a sound enclosure by the mean value theorem.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:131-145, the source contract is `theorem realContains_centered_meanValue (f f' : ℝ → ℝ) {c h : ℝ} (base slope displacement : QInterval) (hderiv : ∀ x ∈ Set.uIcc c h, HasDerivAt f (f' x) x) (hbase : base.RealContains (f c)) (hslope : ∀ x ∈ Set.uIcc c h, slope.RealContains (f' x)) (hdisplacement : displacement.RealContains (h - c)) : (base.add (slope.mul displacement)).RealContains (f h)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0ed29af5eec0bee2a0714dc6eef9fd9127d30190d983af8320b3b10560c11496",
+  "symbol_mismatches": []
+}

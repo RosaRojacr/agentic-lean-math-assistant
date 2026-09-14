@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedRightArcParam_eq",
+  "domain_issues": [],
+  "informal_statement": "The realized right parameter equals its complex-circle form.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:681-689, the source contract is `lemma realizedRightArcParam_eq (s : ℝ) : a.realizedRightArcParam s = sideArcComplexIsometryMap a.rightCenter (unitCircleArc a.radius s)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3339fa9296e8c62289cd021c3334658bb86b73401d06cffbaa790d7423ffd93e",
+  "symbol_mismatches": []
+}

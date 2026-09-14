@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+import fcntl
 import hashlib
 import json
 import os
 import re
 import tempfile
 import time
-from collections.abc import Callable
+from collections.abc import Callable, Iterator
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -44,6 +46,25 @@ def _directory() -> Path:
         root = Path(os.environ.get("XDG_RUNTIME_DIR", tempfile.gettempdir()))
         root = root / f"agentic-lean-math-assistant-{os.getuid()}"
     return root / "processes"
+
+
+@contextmanager
+def host_resource_lease() -> Iterator[float]:
+    """Serialize resource-heavy agent invocations across local campaigns."""
+    lock_path = _directory().parent / "resource.lock"
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    descriptor = os.open(
+        lock_path,
+        os.O_CREAT | os.O_RDWR | getattr(os, "O_CLOEXEC", 0),
+        0o600,
+    )
+    started = time.monotonic()
+    try:
+        fcntl.flock(descriptor, fcntl.LOCK_EX)
+        yield time.monotonic() - started
+    finally:
+        fcntl.flock(descriptor, fcntl.LOCK_UN)
+        os.close(descriptor)
 
 
 def _unit_directory() -> Path:

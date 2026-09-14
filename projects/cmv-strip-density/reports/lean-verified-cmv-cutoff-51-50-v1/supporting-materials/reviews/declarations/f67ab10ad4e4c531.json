@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "F",
+  "domain_issues": [],
+  "informal_statement": "The scalar equation determining the minimum of the cap-saving function.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:43-45, the source contract is `noncomputable def F (θ : ℝ) : ℝ := 3 * θ - 3 * (sin θ * cos θ) - π`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5b2bb966fff4872f29347307b668a0e2d316ac47616a7d86bd1b9925aa189c42",
+  "symbol_mismatches": []
+}

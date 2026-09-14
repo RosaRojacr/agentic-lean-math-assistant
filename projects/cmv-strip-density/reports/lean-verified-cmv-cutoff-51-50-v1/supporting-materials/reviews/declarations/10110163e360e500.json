@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.G",
+  "domain_issues": [],
+  "informal_statement": "The positively scaled perimeter-gap residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:81-83, the source contract is `def G (p : Point) : ℝ := cos (x b p) * (B3 b p + D3 b p) - (1 + cos (w b p)) * B4 b p`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cd83bee785b1a55d445030d234df204752ee92464928a982e6215564d1ecad3b",
+  "symbol_mismatches": []
+}

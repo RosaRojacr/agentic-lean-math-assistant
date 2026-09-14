@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.descendingK3",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's K3 is uniformly strictly negative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:1646-1814, the source contract is `theorem descendingK3 : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → K3 (pointOf t z) < 0`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "77707dff8f9a285fbbcbe0fee4560bb9495981e335a6a037b5c4be7daa5c9da3",
+  "symbol_mismatches": []
+}

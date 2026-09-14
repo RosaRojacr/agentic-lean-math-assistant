@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerAngle_semicircular",
+  "domain_issues": [],
+  "informal_statement": "At h=1/2 the inner angle is pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:370-373, the source contract is `theorem innerAngle_semicircular (hh : a.h = 1 / 2) : a.innerAngle = π / 2`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "136b95db3cfbe6ffba49a9d377637e6fd44e92cfd37653b368ff453e7d5af642",
+  "symbol_mismatches": []
+}

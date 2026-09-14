@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "image_Ico_eq_image_Icc_diff_endpoint",
+  "domain_issues": [],
+  "informal_statement": "For an injective map, the half-open interval image removes exactly the final endpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:124-141, the source contract is `lemma image_Ico_eq_image_Icc_diff_endpoint {α : Type*} {f : ℝ → α} {S : Set ℝ} (hf : Set.InjOn f S) {u v : ℝ} (huv : u ≤ v) (hsub : Icc u v ⊆ S) : f '' Ico u v = f '' Icc u v \\ {f v}`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c4fb0e64c0405d8f9fa3cb2429d9a9bc01ac95be8aba1e08560d1aeae3f939e9",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.original_arc_eq_ell",
+  "domain_issues": [],
+  "informal_statement": "The normalized arc function at the candidate cap area equals ell(alpha).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GeometricBridge.lean:27-33, the source contract is `theorem original_arc_eq_ell : arc candidate.capX = ell candidate.alpha`. The bridge uses the actual cap area, chord length and canonical perimeter formulas. The geometric improvement has a strict sign and equal weighted area; an arbitrary scalar record is not accepted as a competitor.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b932d1e6553b24d46c1b0161df0040ebd64f34413f6c447a3da4b2b0f95c234a",
+  "symbol_mismatches": []
+}

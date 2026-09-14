@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.AnalyticFaceBounds",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's analytic opposite-face sign interface.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:3244-3249, the source contract is `structure AnalyticFaceBounds : Prop where lowFaces : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → ∀ j, z j = -radiiReal j → rootMap t z j ≤ 0 highFaces : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → ∀ j, z j = radiiReal j → 0 ≤ rootMap t z j`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "55d57a38a3bc2fde4dddd82f77d73cfb2e9ed05adcef3d85713a2b783119493f",
+  "symbol_mismatches": []
+}

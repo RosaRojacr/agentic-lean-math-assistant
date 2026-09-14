@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.negative_of_realContains",
+  "domain_issues": [],
+  "informal_statement": "A negative interval upper endpoint forces every enclosed value to be negative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:153-158, the source contract is `theorem negative_of_realContains {i : QInterval} {x : ℝ} (hx : i.RealContains x) (hi : i.hi < 0) : x < 0`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dd92d9ea0b74bda9075f7d8e3782bf5b435ea264bc0d9f911316c7d07b50aa26",
+  "symbol_mismatches": []
+}

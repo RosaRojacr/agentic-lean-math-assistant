@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.stationaryEqualAreaPair_exists",
+  "domain_issues": [],
+  "informal_statement": "Each first-prototype density has a stationary equal-area pair with negative K3 and strict improvement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:4158-4189, the source contract is `theorem stationaryEqualAreaPair_exists {lam0 : ℝ} (hlam : lamInterval.RealContains lam0) : ∃ pair : LeanSuffixAnalytic.StationaryEqualAreaPair lam0, LeanSuffixAnalytic.typeThreeFold lam0 pair.h₃ < 0 ∧ LeanSuffixAnalytic.typeThreePerimeter lam0 pair.h₃ < LeanSuffixAnalytic.typeFourPerimeter lam0 pair.h₄`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "48939925c6e8499402fbc852be5c65cf7f2c3959981d591edde1fff923f7115e",
+  "symbol_mismatches": []
+}

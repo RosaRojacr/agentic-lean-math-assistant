@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.exact_euclidean_rightArcTrace_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The actual Euclidean right side trace has length R gamma.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:825-832, the source contract is `theorem exact_euclidean_rightArcTrace_hausdorffMeasure : (μH[1] : Measure EuclideanPlane) (planeEuclideanHomeomorph '' a.rightArcTrace) = ENNReal.ofReal (a.radius * a.sideArcAngle)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "82deac992e3b3149a73b5a9867d35c880f6af8171bd8434cc5a883788eaac184",
+  "symbol_mismatches": []
+}

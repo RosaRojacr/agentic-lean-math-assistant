@@ -521,10 +521,7 @@ class AutorunSpec:
                 "autorun.worthwhile_likelihood_threshold is no longer supported; "
                 "delete it because strategy selection belongs to the strategy governor"
             )
-        if (
-            "max_strategy_executions" in table
-            and "strategy_horizon_rounds" in table
-        ):
+        if "max_strategy_executions" in table and "strategy_horizon_rounds" in table:
             raise ConfigurationError(
                 "autorun.max_strategy_executions and legacy "
                 "autorun.strategy_horizon_rounds cannot both be specified"
@@ -847,7 +844,7 @@ class ProjectSpec:
             ),
             max_tasks=_integer(regime.get("max_tasks", 16), "regime.max_tasks", 1, 32),
             max_parallel=_integer(
-                regime.get("max_parallel", 8), "regime.max_parallel", 1, 32
+                regime.get("max_parallel", 1), "regime.max_parallel", 1, 32
             ),
             max_restarts=_integer(
                 regime.get("max_restarts", 1), "regime.max_restarts", 0, 3

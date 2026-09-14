@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap",
+  "domain_issues": [],
+  "informal_statement": "The actual upper exterior type-(iii) cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:251-261, the source contract is `def outerCap : OneSidedCircularCap where chord := 2 * a.radius * sin a.outerAngle theta := a.outerAngle midpointX := 0 baseY := 1 side := .upper chord_pos := mul_pos (mul_pos (by norm_num) a.radius_pos) a.outerSin_pos theta_pos := a.outerAngle_pos theta_lt_pi := a.outerAngle_lt_pi`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5482055613f2ec0454ddd9c71d722bea04494543bc659e447732870c662eb86f",
+  "symbol_mismatches": []
+}

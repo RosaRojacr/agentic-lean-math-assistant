@@ -23,6 +23,7 @@ from .command import (
 from .config import ExecutionSpec
 from .process_registry import (
     RegisteredRunProcess,
+    host_resource_lease,
     register_run_process,
     register_run_unit,
     unregister_run_process,
@@ -41,6 +42,38 @@ from .sandbox import (
 from .terminal_status import PaneHeartbeat
 
 _MAX_CAPTURE = 1024 * 1024
+
+_RESOURCE_FAILURE_MARKERS = (
+    "out of memory",
+    "oom-kill",
+    "memory limit",
+    "memory pressure",
+    "workspace exceeded sandbox limit",
+)
+_PROCESS_CRASH_MARKERS = (
+    "abort() called",
+    "code=dumped",
+    "core-dump",
+    "bun has crashed",
+    "panic(main thread)",
+    "segfault",
+    "segmentation fault",
+)
+
+
+def _failure_class(exit_code: int, stderr: str, error: str | None) -> str | None:
+    detail = f"{stderr}\n{error or ''}".casefold()
+    if exit_code == 137 or any(
+        marker in detail for marker in _RESOURCE_FAILURE_MARKERS
+    ):
+        return "resource_exhausted"
+    if (
+        exit_code == 134
+        or exit_code < 0
+        or any(marker in detail for marker in _PROCESS_CRASH_MARKERS)
+    ):
+        return "crashed"
+    return None
 
 
 class RunnerInterrupted(RuntimeError):
@@ -76,7 +109,7 @@ def _atomic_json(path: Path, value: object) -> None:
     )
 
 
-def _request(path: Path) -> dict[str, Any]:
+def read_agent_request(path: Path) -> dict[str, Any]:
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -101,6 +134,7 @@ def _request(path: Path) -> dict[str, Any]:
     }
     optional = {
         "execution",
+        "conductor_claim_context",
         "handoff",
         "empty_output_retries",
         "sandbox_read_paths",
@@ -282,6 +316,7 @@ def _invoke(
                 policy=execution,
                 read_paths=read_paths,
                 allow_workspace_executables=allow_workspace_executables,
+                report_resource_failures=True,
                 runtime_max_seconds=max_time + 60,
             )
             if invocation.unit is not None and run_dir is not None:
@@ -476,7 +511,7 @@ def _bounded_capture(chunks: list[str]) -> tuple[str, bool]:
 
 
 def execute(request_path: Path) -> int:
-    request = _request(request_path)
+    request = read_agent_request(request_path)
     role_id = request["role_id"]
     attempt = request["attempt"]
     if not isinstance(role_id, str) or not role_id:
@@ -583,28 +618,31 @@ def execute(request_path: Path) -> int:
     status = "failed"
     error: str | None = None
     interrupted_signal: int | None = None
+    failure_class: str | None = None
     for ordinal in range(1, empty_output_retries + 2):
         invocation_started = time.monotonic()
-        (
-            exit_code,
-            invocation_stdout,
-            invocation_stderr,
-            invocation_stdout_truncated,
-            invocation_stderr_truncated,
-            error,
-            sandbox,
-        ) = _invoke(
-            command,
-            workspace,
-            heartbeat,
-            max_time,
-            execution,
-            sandbox_read_paths,
-            workspace_executables,
-            run_dir,
-            stdout_destination=live_stdout,
-            stderr_destination=live_stderr,
-        )
+        with host_resource_lease() as resource_wait_seconds:
+            (
+                exit_code,
+                invocation_stdout,
+                invocation_stderr,
+                invocation_stdout_truncated,
+                invocation_stderr_truncated,
+                error,
+                sandbox,
+            ) = _invoke(
+                command,
+                workspace,
+                heartbeat,
+                max_time,
+                execution,
+                sandbox_read_paths,
+                workspace_executables,
+                run_dir,
+                stdout_destination=live_stdout,
+                stderr_destination=live_stderr,
+            )
+        failure_class = _failure_class(exit_code, invocation_stderr, error)
         signal_value = sandbox.get("interrupted_signal")
         if isinstance(signal_value, int) and not isinstance(signal_value, bool):
             interrupted_signal = signal_value
@@ -620,6 +658,18 @@ def execute(request_path: Path) -> int:
         elif deadline_exceeded:
             status = "timed_out"
             error = f"OMP deadline exceeded after {max_time} seconds"
+        elif failure_class is not None:
+            status = failure_class
+            if error is None:
+                if failure_class == "resource_exhausted":
+                    error = (
+                        f"OMP exited with {exit_code} after exhausting a resource; "
+                        "automatic retry suppressed"
+                    )
+                else:
+                    error = (
+                        f"OMP crashed with exit {exit_code}; automatic retry suppressed"
+                    )
         else:
             status = "failed"
             if error is None:
@@ -635,6 +685,8 @@ def execute(request_path: Path) -> int:
                 "status": status,
                 "error": error,
                 "duration_seconds": round(time.monotonic() - invocation_started, 3),
+                "failure_class": failure_class,
+                "resource_wait_seconds": round(resource_wait_seconds, 3),
                 "stdout_truncated": invocation_stdout_truncated,
                 "stderr_truncated": invocation_stderr_truncated,
                 "sandbox": sandbox,
@@ -645,6 +697,7 @@ def execute(request_path: Path) -> int:
             and not invocation_stdout.strip()
             and not deadline_exceeded
             and interrupted_signal is None
+            and failure_class is None
         )
         if blank_output and ordinal <= empty_output_retries:
             _atomic_json(
@@ -693,6 +746,7 @@ def execute(request_path: Path) -> int:
             "stdout_truncated": stdout_truncated,
             "stderr_truncated": stderr_truncated,
             "error": error,
+            "failure_class": failure_class,
             "invocations": invocations,
         },
     )

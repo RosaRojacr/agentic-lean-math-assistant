@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.radiiReal",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's error radii as a real four-vector.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:267-267, the source contract is `def radiiReal : Vec4 := fun j => (brick.radii j : ℝ)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ffbda00bb8ae49e94f67d9ad5dd16012ff60af58d9c1760a6abfb99b1bb96909",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capArea_eq_chord_sq_mul_area",
+  "domain_issues": [],
+  "informal_statement": "Candidate cap area is chord squared times normalized cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:104-109, the source contract is `theorem capArea_eq_chord_sq_mul_area : candidate.capArea = candidate.capChord ^ 2 * area candidate.alpha`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e9545ae1662d69d55500dc9264e42c4c5b03b78571f6473a85822aca53c6073",
+  "symbol_mismatches": []
+}

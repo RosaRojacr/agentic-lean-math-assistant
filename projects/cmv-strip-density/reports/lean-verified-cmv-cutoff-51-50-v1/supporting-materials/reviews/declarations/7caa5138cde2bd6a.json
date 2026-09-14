@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.QInterval.realContains_arcsin_of_taylor_interval",
+  "domain_issues": [],
+  "informal_statement": "The same inverse-sine enclosure for an interval of inputs.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:45-68, the source contract is `theorem realContains_arcsin_of_taylor_interval (a xInterval : QInterval) (x : ℝ) (hx : xInterval.RealContains x) (hxUnit : (-1 : ℝ) ≤ x ∧ x ≤ 1) (hbranch : (a.lo : ℝ) ∈ Icc (-(π / 2)) (π / 2) ∧ (a.hi : ℝ) ∈ Icc (-(π / 2)) (π / 2)) (hlo : (ScalarSuffixCertificate.sinTaylor27Interval a.lo).hi ≤ xInterval.lo) (hhi : xInterval.hi ≤ (ScalarSuffixCertificate.sinTaylor27Interval a.hi).lo) : a.RealContains (arcsin x)`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "72d1f4184baa0c96534f19a83e2653ab69774d487022002946ed89c5dcb4c89d",
+  "symbol_mismatches": []
+}

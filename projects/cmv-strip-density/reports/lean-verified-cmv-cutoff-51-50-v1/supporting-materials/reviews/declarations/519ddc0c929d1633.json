@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.CertificateExpr.value",
+  "domain_issues": [],
+  "informal_statement": "The real-valued interpretation of a certificate expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:176-182, the source contract is `def value : CertificateExpr → ℝ | rational q => q | atom x _ _ => x | add a b => a.value + b.value | neg a => -a.value | mul a b => a.value * b.value`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a0149812d66bc28eb03b0052f9694933e7c6247aec19b155763c96f72897c502",
+  "symbol_mismatches": []
+}

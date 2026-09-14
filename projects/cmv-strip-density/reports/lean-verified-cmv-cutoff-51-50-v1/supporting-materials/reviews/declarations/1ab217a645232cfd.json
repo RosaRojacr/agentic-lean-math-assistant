@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "The replacement's two side arcs, upper arc, and lower chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3487-3492, the source contract is `def boundaryTrace (a : ReplacementAssembly) : Set PlanePoint := StripCore.leftArcTrace a.core ∪ (StripCore.rightArcTrace a.core ∪ (OneSidedCircularCap.arcTrace a.upperCap ∪ a.exposedLowerChord.carrier))`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c14f256441519af3907ade461995fd9aa134a8b3a94b950059f337d7edd4be97",
+  "symbol_mismatches": []
+}

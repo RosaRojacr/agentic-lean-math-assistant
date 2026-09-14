@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_lt_θOf_two_mul",
+  "domain_issues": [],
+  "informal_statement": "Doubling a positive cap area strictly increases its inverse angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:151-155, the source contract is `lemma θOf_lt_θOf_two_mul {x : ℝ} (hx : 0 < x) : θOf x < θOf (2 * x)`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "095143100fd32388bdf4e1d180bcb0168b99a36a86a64f445ac9b5b1dadd6573",
+  "symbol_mismatches": []
+}

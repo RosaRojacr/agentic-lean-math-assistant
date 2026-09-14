@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.realContains_add",
+  "domain_issues": [],
+  "informal_statement": "Interval addition encloses the sum of enclosed reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixReflective.lean:65-71, the source contract is `theorem realContains_add {i j : QInterval} {x y : ℝ} (hx : i.RealContains x) (hy : j.RealContains y) : (i.add j).RealContains (x + y)`. Intervals have rational ordered endpoints and closed containment. Arithmetic enclosure statements concern the real-valued operations after rational casting; exact checks do not stand for floating-point evidence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "29bd8dc11237ddddd13e05a341310e25a85723026439683a6ff469efc9539f38",
+  "symbol_mismatches": []
+}

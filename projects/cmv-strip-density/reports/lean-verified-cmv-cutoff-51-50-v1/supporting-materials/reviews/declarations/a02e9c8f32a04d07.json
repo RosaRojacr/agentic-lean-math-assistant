@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.affine_branches",
+  "domain_issues": [],
+  "informal_statement": "All four right-prototype angle predictors stay on the checked principal branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:707-741, the source contract is `theorem affine_branches : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → let p := pointOf t z 0 < x p ∧ x p < π / 4 ∧ 0 < y p ∧ y p < π / 4 ∧ 0 < w p ∧ w p < π / 4 ∧ 0 < v p ∧ v p < π / 4`. After the let-bound pointOf substitution, all eight inequalities are present: x,y,w,v are each strictly between zero and pi/4. The universal quantifiers range over the prototype's closed density interval and error box, not just over a face or a selected zero.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9a77fd11c6c2c0e0a916f823adc4aea4c608cadccacf0dbe2100c6ac6d1bce78",
+  "symbol_mismatches": []
+}

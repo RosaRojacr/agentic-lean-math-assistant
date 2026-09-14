@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.piInterval_sound",
+  "domain_issues": [],
+  "informal_statement": "Pi belongs to the fixed rational enclosure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:209-213, the source contract is `theorem piInterval_sound : piInterval.RealContains π`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e2096e4d4fa24f53f2ff61998135a39f6cbe4314d1809b974cfbb5eccd9fe5b",
+  "symbol_mismatches": []
+}

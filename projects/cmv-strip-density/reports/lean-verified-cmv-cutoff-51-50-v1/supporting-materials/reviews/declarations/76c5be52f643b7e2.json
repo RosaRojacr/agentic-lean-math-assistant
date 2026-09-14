@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_semicircle_scaled",
+  "domain_issues": [],
+  "informal_statement": "The corresponding integral for a circle of arbitrary positive radius.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1759-1791, the source contract is `lemma integral_semicircle_scaled {r θ : ℝ} (hr : 0 < r) (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) : (∫ y in r * cos θ..r, 2 * √(r ^ 2 - y ^ 2)) = r ^ 2 * (θ - sin θ * cos θ)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe66bbeed922271b7cf0e4043f58e6b4f6651310c0d02aa776383ac42b18240d",
+  "symbol_mismatches": []
+}

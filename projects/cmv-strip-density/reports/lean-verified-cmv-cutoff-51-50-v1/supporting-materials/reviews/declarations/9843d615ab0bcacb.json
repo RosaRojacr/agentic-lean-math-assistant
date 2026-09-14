@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.frontier_carrier_subset_boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "Every frontier point lies on one of the four arcs.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2795-2819, the source contract is `theorem frontier_carrier_subset_boundaryTrace (a : FourArcAssembly) : frontier a.carrier ⊆ a.boundaryTrace`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d72e7b21e3528564863313aa2366a2e4806e01c00a4772872911d424abf3cc5",
+  "symbol_mismatches": []
+}

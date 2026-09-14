@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.N4",
+  "domain_issues": [],
+  "informal_statement": "First-prototype type-(iv) area numerator.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:505-505, the source contract is `def N4 (p : Point) : ℝ := B4 p + cos (x p) * D4 p`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8317292c5d87208707548fa6a07d20553105db710dba94daee68266201ce16ef",
+  "symbol_mismatches": []
+}

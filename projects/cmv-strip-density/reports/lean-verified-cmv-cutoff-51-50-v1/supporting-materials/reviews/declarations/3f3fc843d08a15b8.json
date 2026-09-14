@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "Union of the two side arcs, upper exterior arc, and bottom segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:1595-1599, the source contract is `def boundaryTrace : Set PlanePoint := a.leftArcTrace ∪ (a.rightArcTrace ∪ (OneSidedCircularCap.arcTrace a.outerCap ∪ a.bottomSegmentCarrier))`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "77ded3af26dffe034b843162e20202cd8e868c69330a0cb95819f9e3b2a0bbf5",
+  "symbol_mismatches": []
+}

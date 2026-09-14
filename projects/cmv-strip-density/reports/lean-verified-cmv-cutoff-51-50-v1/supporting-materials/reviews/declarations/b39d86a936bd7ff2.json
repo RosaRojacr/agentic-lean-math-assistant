@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.w",
+  "domain_issues": [],
+  "informal_statement": "Its type-(iii) inner-angle predictor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:115-115, the source contract is `def w (p : Point) : ℝ := brick.centers 2 + brick.slopes 2 * p.t + p.rho`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "52d839481355b169feb0cd07c321cec9f11b8bdc2b69f116735e48df02da7c3d",
+  "symbol_mismatches": []
+}

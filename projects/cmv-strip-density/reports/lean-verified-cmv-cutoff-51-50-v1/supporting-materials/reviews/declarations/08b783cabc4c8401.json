@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourAngle_eq_checker",
+  "domain_issues": [],
+  "informal_statement": "The analytic type-(iv) angle term agrees with the checker form.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:139-145, the source contract is `theorem typeFourAngle_eq_checker (lam h : ℝ) : typeFourAngle lam h = lam * arccos (h / lam) + π / 2 - arccos h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6ea741d7af136e9d0263d84561c8171caafa7b1249aceaa9a355bce3a415957",
+  "symbol_mismatches": []
+}

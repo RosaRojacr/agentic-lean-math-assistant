@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import re
+import secrets
 import sys
 import threading
 import time
@@ -17,14 +18,18 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, NoReturn, TextIO, TypedDict
 
-from .agent_runner import RunnerInterrupted
+from .agent_runner import RunnerInterrupted, read_agent_request
 from .agent_runner import execute as execute_agent_request
 from .artifacts import atomic_write_json, atomic_write_text, utc_now
 from .command import run_captured_command
 from .config import ConfigurationError
-from .herdr import HerdrClient, HerdrError
+from .herdr import HerdrClient, HerdrError, HerdrWorkspace
 from .project import ProjectSpec
-from .runtime import CampaignRunError, campaign_run_lock
+from .runtime import (
+    CampaignRunError,
+    campaign_run_lock,
+    campaign_run_lock_is_held,
+)
 from .terminal_status import LiveStatusDisplay
 
 _HERDR_PANE_LABELS: dict[str, str] = {}
@@ -32,6 +37,7 @@ _HERDR_LABEL_ATTEMPTS: dict[str, tuple[str, float]] = {}
 _TERMINAL_TITLES: dict[int, tuple[TextIO, str]] = {}
 _PROGRESS_CLASSES = {"incremental", "meaningful", "blocked", "complete"}
 _ID_PATTERN = re.compile(r"^[a-z][a-z0-9_-]{0,63}$")
+_STOP_TOKEN_PATTERN = re.compile(r"^[0-9a-f]{32}$")
 _TEXT_LIMIT = 2_000
 _STRATEGY_HISTORY_LIMIT = 128
 
@@ -169,6 +175,7 @@ class AutoRunOptions:
 
     master_prompt: Path | None = None
     session: Path | None = None
+    resume_stopped: str | None = None
     reflection_minutes: int = 150
     reflection_round_minutes: int = 15
     round_minutes: int = 90
@@ -204,6 +211,11 @@ class AutoRunRunner:
             raise ValueError("autorun retry delay must not be negative")
         if self.options.max_rounds is not None and self.options.max_rounds < 1:
             raise ValueError("autorun max rounds must be positive")
+        if self.options.resume_stopped is not None:
+            if self.options.session is None:
+                raise ValueError("--resume-stopped requires an explicit --session")
+            if _STOP_TOKEN_PATTERN.fullmatch(self.options.resume_stopped) is None:
+                raise ValueError("--resume-stopped requires a 32-character stop token")
         prompt = self.options.master_prompt or project.root / "MASTER_PROMPT.md"
         self.master_prompt = prompt.expanduser().resolve()
         if not self.master_prompt.is_file() or self.master_prompt.is_symlink():
@@ -218,10 +230,18 @@ class AutoRunRunner:
 
         self.session_dir = self._select_session()
         controller = self.session_dir / "controller"
-        controller.mkdir(exist_ok=True)
+        if os.path.lexists(controller):
+            if controller.is_symlink() or not controller.is_dir():
+                raise AutoRunError("autorun controller path is not a real directory")
+        else:
+            controller.mkdir()
+            self._fsync_directory(self.session_dir)
         try:
             with campaign_run_lock(controller):
-                self._mark_running()
+                explicit_resume = self.options.resume_stopped is not None
+                if self.options.resume_stopped is not None:
+                    self._consume_stopped_resume(self.options.resume_stopped)
+                self._mark_running(explicit_stopped_resume=explicit_resume)
                 return self._drive()
         except CampaignRunError as exc:
             raise AutoRunError(
@@ -325,30 +345,189 @@ class AutoRunRunner:
         self._event(session, "initialized", "autorun session created")
         return session
 
-    def _mark_running(self) -> None:
-        state = self._state()
+    @staticmethod
+    def _stop_requests_dir(session: Path) -> Path:
+        return session / "controller" / "stop-requests"
+
+    @staticmethod
+    def _resume_in_progress_dir(session: Path) -> Path:
+        return session / "controller" / "resume-in-progress"
+
+    @staticmethod
+    def _consumed_stop_requests_dir(session: Path) -> Path:
+        return session / "controller" / "consumed-stop-requests"
+
+    @staticmethod
+    def _stop_token_ledger_dir(session: Path) -> Path:
+        return session / "controller" / "stop-token-ledger"
+
+    @staticmethod
+    def _marker_names(path: Path, label: str) -> tuple[str, ...]:
+        if path.is_symlink():
+            raise AutoRunError(f"autorun {label} directory must not be a symlink")
+        try:
+            if not path.exists():
+                return ()
+            if not path.is_dir():
+                raise AutoRunError(f"autorun {label} path is not a directory")
+            return tuple(sorted(item.name for item in path.iterdir()))
+        except OSError as exc:
+            raise AutoRunError(f"cannot inspect autorun {label}: {exc}") from exc
+
+    @classmethod
+    def _stop_request_markers(cls, session: Path) -> tuple[str, ...]:
+        return cls._marker_names(cls._stop_requests_dir(session), "stop requests")
+
+    @classmethod
+    def _resume_in_progress_markers(cls, session: Path) -> tuple[str, ...]:
+        return cls._marker_names(
+            cls._resume_in_progress_dir(session), "resume transactions"
+        )
+
+    def _stop_is_pending(self, state: dict[str, Any]) -> bool:
+        return (
+            bool(state.get("stop_requested"))
+            or os.path.lexists(self._session() / "STOP")
+            or bool(self._stop_request_markers(self._session()))
+            or bool(self._resume_in_progress_markers(self._session()))
+        )
+
+    def _validate_session_identity(self, state: dict[str, Any]) -> None:
         if state.get("project_manifest") != str(self.base_project.manifest_path):
             raise AutoRunError("autorun session belongs to a different project")
-        retained_prompt = state.get("master_prompt")
-        if retained_prompt != str(self.master_prompt):
+        if state.get("master_prompt") != str(self.master_prompt):
             raise AutoRunError("autorun session uses a different Master Prompt")
+
+    @staticmethod
+    def _fsync_directory(path: Path) -> None:
+        descriptor = os.open(path, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+
+    @classmethod
+    def _create_exclusive_marker(cls, path: Path, content: bytes) -> bool:
+        flags = os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_CLOEXEC | os.O_NOFOLLOW
+        try:
+            descriptor = os.open(path, flags, 0o600)
+        except FileExistsError:
+            return False
+        try:
+            if os.write(descriptor, content) != len(content):
+                raise AutoRunError("cannot write complete autorun stop marker")
+            os.fsync(descriptor)
+        except BaseException:
+            os.close(descriptor)
+            path.unlink(missing_ok=True)
+            cls._fsync_directory(path.parent)
+            raise
+        os.close(descriptor)
+        cls._fsync_directory(path.parent)
+        return True
+
+    def _consume_stopped_resume(self, token: str) -> None:
+        state = self._state()
+        self._validate_session_identity(state)
+        if state.get("status") != "stopped":
+            raise AutoRunError("explicit autorun resume requires a stopped session")
+        if state.get("pid") is not None:
+            raise AutoRunError("explicit autorun resume requires no retained owner")
+        if any(
+            state.get(name) is not None
+            for name in (
+                "active_round",
+                "active_prompt",
+                "active_model",
+                "active_model_route",
+            )
+        ):
+            raise AutoRunError(
+                "explicit autorun resume requires no active retained work"
+            )
+        active_strategy = state.get("active_strategy")
+        if (
+            isinstance(active_strategy, dict)
+            and active_strategy.get("status") == "complete"
+        ):
+            raise AutoRunError("a completed autorun session cannot be resumed")
+
+        stop_markers = self._stop_request_markers(self._session())
+        resume_markers = self._resume_in_progress_markers(self._session())
+        stop_marker = self._stop_requests_dir(self._session()) / token
+        resume_marker = self._resume_in_progress_dir(self._session()) / token
+        if token in stop_markers and not resume_markers:
+            source_marker = stop_marker
+        elif resume_markers == (token,):
+            source_marker = resume_marker
+        else:
+            raise AutoRunError(
+                "resume token does not identify a consumable pending stop"
+            )
+        if source_marker.is_symlink() or not source_marker.is_file():
+            raise AutoRunError("resume token does not name a regular stop request")
+        ledger_dir = self._stop_token_ledger_dir(self._session())
+        self._marker_names(ledger_dir, "stop token ledger")
+        ledger_marker = ledger_dir / token
+        if (
+            ledger_marker.is_symlink()
+            or not ledger_marker.is_file()
+            or not os.path.samefile(ledger_marker, source_marker)
+        ):
+            raise AutoRunError("resume token is not bound to this autorun session")
+
+        stop_path = self._session() / "STOP"
+        if os.path.lexists(stop_path) and (
+            stop_path.is_symlink() or not stop_path.is_file()
+        ):
+            raise AutoRunError("autorun STOP must be a regular file")
+        consumed_dir = self._consumed_stop_requests_dir(self._session())
+        self._marker_names(consumed_dir, "consumed stop requests")
+        consumed_marker = consumed_dir / token
+        if os.path.lexists(consumed_marker):
+            raise AutoRunError("resume token was already consumed")
+
+        resume_dir = self._resume_in_progress_dir(self._session())
+        resume_dir.mkdir(parents=True, exist_ok=True)
+        consumed_dir.mkdir(parents=True, exist_ok=True)
+        if source_marker == stop_marker:
+            os.replace(stop_marker, resume_marker)
+            self._fsync_directory(stop_marker.parent)
+            self._fsync_directory(resume_marker.parent)
+        stop_path.unlink(missing_ok=True)
+        self._fsync_directory(stop_path.parent)
+        state["stop_requested"] = False
+        self._save(state)
+        os.replace(resume_marker, consumed_marker)
+        self._fsync_directory(resume_marker.parent)
+        self._fsync_directory(consumed_marker.parent)
+
+    def _mark_running(self, *, explicit_stopped_resume: bool = False) -> bool:
+        state = self._state()
+        self._validate_session_identity(state)
         active_strategy = state.get("active_strategy")
         if (
             state.get("status") == "stopped"
             and isinstance(active_strategy, dict)
             and active_strategy.get("status") == "complete"
         ):
-            state["pid"] = None
-            self._save(state)
-            return
+            return False
+        if self._stop_is_pending(state):
+            return False
         state["status"] = "running"
         state["pid"] = os.getpid()
-        state["stop_requested"] = False
+        state["heartbeat_at"] = utc_now()
         state["next_retry_at"] = None
         state["last_error"] = None
         self._save(state)
-        self._event(self._session(), "resumed", "autorun controller running")
+        detail = (
+            "autorun controller explicitly resumed stopped session"
+            if explicit_stopped_resume
+            else "autorun controller running"
+        )
+        self._event(self._session(), "resumed", detail)
         self._emit(f"AUTORUN_READY session={self._session()}")
+        return True
 
     def _drive(self) -> Path:
         while True:
@@ -362,9 +541,10 @@ class AutoRunRunner:
                 state["pid"] = None
                 self._save(state)
                 return self._session()
-            if state.get("stop_requested") or (self._session() / "STOP").exists():
+            if self._stop_is_pending(state):
                 state["status"] = "stopped"
                 state["pid"] = None
+                state["stop_requested"] = True
                 self._save(state)
                 self._event(self._session(), "stopped", "stop requested")
                 self._emit("AUTORUN_STOPPED")
@@ -459,6 +639,7 @@ class AutoRunRunner:
             completed_execution=int(state.get("round_count", 0)),
             require_active=True,
         )
+        assert isinstance(strategy, dict)
         prompt = self._round_prompt(index, state, master_text)
         prompt_path = round_dir / "prompt.md"
         output_path = round_dir / "output.md"
@@ -485,6 +666,14 @@ class AutoRunRunner:
                 "max_time": self.options.round_minutes * 60,
                 "empty_output_retries": 1,
                 "execution": self.project.execution.to_dict(),
+                "conductor_claim_context": {
+                    "schema_version": 1,
+                    "session_id": state["session_id"],
+                    "attempt": index,
+                    "strategy_id": strategy["strategy_id"],
+                    "strategy_revision": strategy["revision"],
+                    "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+                },
                 "sandbox_read_paths": [
                     str(self.project.root),
                     str(self._session()),
@@ -528,7 +717,9 @@ class AutoRunRunner:
 
             metrics, metric_failures = self._run_progress_metrics(round_dir)
             adjudication, adjudication_path, adjudication_model = (
-                self._run_progress_adjudication(index, round_dir, output_path, metrics)
+                self._run_progress_adjudication(
+                    index, round_dir, output_path, metrics, claim
+                )
             )
             latest = self._state()
             latest["active_round"] = None
@@ -735,8 +926,7 @@ class AutoRunRunner:
         approved["strategy_change_required"] = False
         approved["reflection_count"] = int(approved["reflection_count"]) + 1
         approved["next_reflection_at"] = self._format_time(
-            datetime.now(UTC)
-            + timedelta(minutes=int(approved["reflection_minutes"]))
+            datetime.now(UTC) + timedelta(minutes=int(approved["reflection_minutes"]))
         )
         approved["last_failure_class"] = None
         approved["last_error"] = None
@@ -825,10 +1015,10 @@ new lineage.
                 archived["status"] = "superseded"
             if proposal.decision == "continue":
                 for checkpoint in archived.get("checkpoints", []):
-                    if (
-                        isinstance(checkpoint, dict)
-                        and checkpoint.get("status") in {"pending", "advanced"}
-                    ):
+                    if isinstance(checkpoint, dict) and checkpoint.get("status") in {
+                        "pending",
+                        "advanced",
+                    }:
                         checkpoint["status"] = "revised"
             history.append(archived)
         state["strategy_history"] = history[-_STRATEGY_HISTORY_LIMIT:]
@@ -849,15 +1039,11 @@ new lineage.
                         and identifier.startswith("strategy-")
                         and identifier.removeprefix("strategy-").isdigit()
                     ):
-                        used_numbers.append(
-                            int(identifier.removeprefix("strategy-"))
-                        )
+                        used_numbers.append(int(identifier.removeprefix("strategy-")))
             strategy_id = f"strategy-{max(used_numbers, default=0) + 1:05d}"
             revision = 1
             lineage_started = completed
-            hard_deadline = (
-                completed + self.project.autorun.max_strategy_executions
-            )
+            hard_deadline = completed + self.project.autorun.max_strategy_executions
         return StrategyContract(
             schema_version=2,
             strategy_id=strategy_id,
@@ -919,13 +1105,10 @@ new lineage.
         if not isinstance(strategy, dict) or strategy.get("status") != "active":
             return True
         completed = int(state.get("round_count", 0))
-        return completed >= int(
-            strategy.get("hard_deadline_execution", completed)
-        ) or (
+        return completed >= int(strategy.get("hard_deadline_execution", completed)) or (
             AutoRunRunner._soft_gate_due(state)
             and not AutoRunRunner._has_aligned_revision_progress(state)
         )
-
 
     @staticmethod
     def _strategy_requires_review(state: dict[str, Any]) -> bool:
@@ -1005,9 +1188,7 @@ new lineage.
         state: dict[str, Any],
         max_strategy_executions: int,
     ) -> tuple[_StrategyProposal | None, list[str]]:
-        raw, errors = AutoRunRunner._strict_json_marker(
-            text, "STRATEGY_PROPOSAL_JSON"
-        )
+        raw, errors = AutoRunRunner._strict_json_marker(text, "STRATEGY_PROPOSAL_JSON")
         if errors:
             return None, errors
         if not isinstance(raw, dict):
@@ -1033,10 +1214,11 @@ new lineage.
         if type(raw["schema_version"]) is not int or raw["schema_version"] != 1:
             errors.append("strategy proposal schema_version must be integer 1")
         decision = raw["decision"]
-        if (
-            not isinstance(decision, str)
-            or decision not in {"select", "continue", "change_course"}
-        ):
+        if not isinstance(decision, str) or decision not in {
+            "select",
+            "continue",
+            "change_course",
+        }:
             errors.append("strategy proposal decision is invalid")
         for name in ("selected_method", "decision_reason", "next_action"):
             item = raw[name]
@@ -1058,10 +1240,7 @@ new lineage.
             )
         else:
             offset_limit = max_strategy_executions
-        if (
-            type(review_after) is not int
-            or not 1 <= review_after <= offset_limit
-        ):
+        if type(review_after) is not int or not 1 <= review_after <= offset_limit:
             errors.append(
                 "review_after_executions exceeds the available lineage executions"
             )
@@ -1081,11 +1260,12 @@ new lineage.
                 errors.append(f"{decision} base strategy ID and revision are stale")
         if decision == "change_course" and active is None:
             errors.append("change_course is invalid without a prior active strategy")
-        if (
-            decision == "continue"
-            and AutoRunRunner._strategy_replacement_required(state)
+        if decision == "continue" and AutoRunRunner._strategy_replacement_required(
+            state
         ):
-            errors.append("continue is forbidden because course replacement is required")
+            errors.append(
+                "continue is forbidden because course replacement is required"
+            )
 
         def validate_items(
             name: str, required_keys: set[str], with_offset: bool
@@ -1103,7 +1283,10 @@ new lineage.
                     continue
                 item_id = item.get("id")
                 observable = item.get("observable")
-                if not isinstance(item_id, str) or _ID_PATTERN.fullmatch(item_id) is None:
+                if (
+                    not isinstance(item_id, str)
+                    or _ID_PATTERN.fullmatch(item_id) is None
+                ):
                     errors.append(f"{name}[{index}].id is invalid")
                 else:
                     ids.append(item_id)
@@ -1136,9 +1319,7 @@ new lineage.
         checkpoints = validate_items(
             "checkpoints", {"id", "after_executions", "observable"}, True
         )
-        stop_conditions = validate_items(
-            "stop_conditions", {"id", "observable"}, False
-        )
+        stop_conditions = validate_items("stop_conditions", {"id", "observable"}, False)
         if errors:
             return None, errors
         return (
@@ -1198,6 +1379,15 @@ new lineage.
         strategy = state.get("active_strategy")
         assert isinstance(strategy, dict)
         active_strategy = json.dumps(strategy, indent=2, sort_keys=True)
+        checkpoint = self._earliest_admissible_checkpoint(strategy)
+        checkpoint_argument = (
+            f"--checkpoint-id {json.dumps(checkpoint['id'])}"
+            if checkpoint is not None
+            else "--no-checkpoint"
+        )
+        request_path = (
+            self._session() / "rounds" / f"round-{index:05d}" / "request.json"
+        )
         return f"""# Autorun conductor round {index}
 
 You are the configured primary conductor for an unattended project session. Work
@@ -1234,10 +1424,28 @@ the method, checkpoint, stop conditions, or acceptance criteria, report that
 conflict rather than substituting a nearby task. Keep commands inside the inherited
 resource controls and save all useful work before returning.
 
-End with exactly one final single-line claim. This report is evidence supplied to
-the independent adjudicator and cannot mutate governance state:
+Use the canonical invocation-bound reporting command below after completing and
+verifying the work. Choose either the shown checkpoint argument or
+`--no-checkpoint` according to the evidence; the command does not infer a
+checkpoint or adjudicate progress. Replace the summary and evidence values with
+factual content, run the command, and return its single stdout line verbatim.
+Never construct the
+marker manually. The producer preserves the explicitly
+seven-field strict-parser schema. Its round-local emission receipt is diagnostic
+only; independent adjudication remains authoritative.
 
-CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_id']}","strategy_revision":{strategy['revision']},"checkpoint_id":null,"progress_class":"incremental|meaningful|blocked|complete","summary":"factual result","evidence":"retained artifact or verified observable"}}
+```bash
+uv run agentic-lean-math-assistant autorun-report \\
+  --request {json.dumps(str(request_path))} \\
+  {checkpoint_argument} \\
+  --progress-class meaningful \\
+  --summary "replace with the factual result" \\
+  --evidence "replace with retained artifacts or verified observables"
+```
+
+Your response must end with exactly that one emitted `CONDUCTOR_RESULT_JSON`
+line. The report remains evidence supplied to the independent adjudicator and
+cannot mutate governance state.
 """
 
     def _conductor_model(self, state: dict[str, Any]) -> tuple[str | None, str]:
@@ -1344,11 +1552,7 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
                 "last_strategy_review",
                 "last_strategy_round",
             }
-            legacy = {
-                name: value.get(name)
-                for name in legacy_names
-                if name in value
-            }
+            legacy = {name: value.get(name) for name in legacy_names if name in value}
             history = list(value.get("strategy_history", []))
             old_active = value.get("active_strategy")
             if isinstance(old_active, dict):
@@ -1489,7 +1693,9 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
                 require_active=False,
             )
             if int(strategy["accepted_attempt"]) > int(value["attempt_count"]):
-                raise AutoRunError("active strategy acceptance attempt is in the future")
+                raise AutoRunError(
+                    "active strategy acceptance attempt is in the future"
+                )
             if strategy["status"] in {"drifted", "falsified", "expired"} and not bool(
                 value["strategy_change_required"]
             ):
@@ -1498,9 +1704,9 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
                 )
             if strategy["status"] == "complete" and value["status"] != "stopped":
                 raise AutoRunError("a complete strategy requires a stopped session")
-        history = value.get("strategy_history")
-        if not isinstance(history, list) or not all(
-            isinstance(item, dict) for item in history
+        retained_history = value.get("strategy_history")
+        if not isinstance(retained_history, list) or not all(
+            isinstance(item, dict) for item in retained_history
         ):
             raise AutoRunError("strategy history must be an array of objects")
         adjudications = value.get("adjudication_history")
@@ -1513,7 +1719,7 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
         if isinstance(strategy, dict):
             prior_revisions = [
                 int(item["revision"])
-                for item in history
+                for item in retained_history
                 if item.get("schema_version") == 2
                 and item.get("strategy_id") == strategy["strategy_id"]
                 and isinstance(item.get("revision"), int)
@@ -1615,8 +1821,7 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
         ):
             raise AutoRunError("active strategy soft deadline ordering is invalid")
         lineage_budget = (
-            counters["hard_deadline_execution"]
-            - counters["lineage_started_execution"]
+            counters["hard_deadline_execution"] - counters["lineage_started_execution"]
         )
         if not 1 <= lineage_budget <= 100:
             raise AutoRunError("active strategy hard lineage deadline is inconsistent")
@@ -1660,32 +1865,27 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
                 or len(observable) > _TEXT_LIMIT
             ):
                 raise AutoRunError("active strategy checkpoint observable is invalid")
-            if (
-                not isinstance(checkpoint["status"], str)
-                or checkpoint["status"]
-                not in {
-                    "pending",
-                    "advanced",
-                    "satisfied",
-                    "revised",
-                    "falsified",
-                }
-            ):
+            if not isinstance(checkpoint["status"], str) or checkpoint[
+                "status"
+            ] not in {
+                "pending",
+                "advanced",
+                "satisfied",
+                "revised",
+                "falsified",
+            }:
                 raise AutoRunError("active strategy checkpoint status is invalid")
             result = checkpoint["last_result"]
-            if (
-                result is not None
-                and (
-                    not isinstance(result, str)
-                    or result
-                    not in {
-                        "advanced",
-                        "satisfied",
-                        "unchanged",
-                        "falsified",
-                        "n/a",
-                    }
-                )
+            if result is not None and (
+                not isinstance(result, str)
+                or result
+                not in {
+                    "advanced",
+                    "satisfied",
+                    "unchanged",
+                    "falsified",
+                    "n/a",
+                }
             ):
                 raise AutoRunError("active strategy checkpoint result is invalid")
             adjudicated_at = checkpoint["last_adjudication_execution"]
@@ -1695,10 +1895,9 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
                 or not 0 <= adjudicated_at <= completed_execution
             ):
                 raise AutoRunError("active strategy checkpoint adjudication is invalid")
-        if (
-            len(checkpoint_ids) != len(set(checkpoint_ids))
-            or checkpoint_deadlines != sorted(set(checkpoint_deadlines))
-        ):
+        if len(checkpoint_ids) != len(
+            set(checkpoint_ids)
+        ) or checkpoint_deadlines != sorted(set(checkpoint_deadlines)):
             raise AutoRunError("active strategy checkpoints are not unique and ordered")
         stop_conditions = strategy["stop_conditions"]
         if not isinstance(stop_conditions, list) or not 1 <= len(stop_conditions) <= 8:
@@ -1725,7 +1924,9 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
                 or observable != observable.strip()
                 or len(observable) > _TEXT_LIMIT
             ):
-                raise AutoRunError("active strategy stop condition observable is invalid")
+                raise AutoRunError(
+                    "active strategy stop condition observable is invalid"
+                )
             if not isinstance(stop["triggered"], bool):
                 raise AutoRunError("active strategy stop trigger must be boolean")
             adjudicated_at = stop["last_adjudication_execution"]
@@ -1738,29 +1939,23 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
         if len(stop_ids) != len(set(stop_ids)):
             raise AutoRunError("active strategy stop condition IDs must be unique")
         last_alignment = strategy["last_alignment"]
-        if (
-            last_alignment is not None
-            and (
-                not isinstance(last_alignment, str)
-                or last_alignment
-                not in {"aligned", "drifted", "falsified", "complete", "n/a"}
-            )
+        if last_alignment is not None and (
+            not isinstance(last_alignment, str)
+            or last_alignment
+            not in {"aligned", "drifted", "falsified", "complete", "n/a"}
         ):
             raise AutoRunError("active strategy last alignment is invalid")
         last_result = strategy["last_checkpoint_result"]
-        if (
-            last_result is not None
-            and (
-                not isinstance(last_result, str)
-                or last_result
-                not in {
-                    "advanced",
-                    "satisfied",
-                    "unchanged",
-                    "falsified",
-                    "n/a",
-                }
-            )
+        if last_result is not None and (
+            not isinstance(last_result, str)
+            or last_result
+            not in {
+                "advanced",
+                "satisfied",
+                "unchanged",
+                "falsified",
+                "n/a",
+            }
         ):
             raise AutoRunError("active strategy last checkpoint result is invalid")
 
@@ -1785,7 +1980,9 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
             "artifact",
         }
         if set(entry) != required:
-            raise AutoRunError("adjudication history entry has unknown or missing fields")
+            raise AutoRunError(
+                "adjudication history entry has unknown or missing fields"
+            )
         for name, maximum in (
             ("attempt", attempt_count),
             ("execution", completed_execution),
@@ -1956,6 +2153,7 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
         round_dir: Path,
         conductor_output: Path,
         metrics: list[dict[str, Any]],
+        conductor_claim: dict[str, Any] | None,
     ) -> tuple[_ProgressAdjudication | None, Path, str | None]:
         prompt_path = round_dir / "progress-adjudication-prompt.md"
         output_path = round_dir / "progress-adjudication.md"
@@ -1975,13 +2173,12 @@ CONDUCTOR_RESULT_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_i
             or self.project.planner_model
         )
         conductor_text = conductor_output.read_text(encoding="utf-8").strip()
-        claim = self._parse_conductor_claim(conductor_text)
-        claim_mismatch = claim is None or (
-            claim.get("strategy_id") != strategy["strategy_id"]
-            or claim.get("strategy_revision") != strategy["revision"]
+        claim_mismatch = conductor_claim is None or (
+            conductor_claim.get("strategy_id") != strategy["strategy_id"]
+            or conductor_claim.get("strategy_revision") != strategy["revision"]
             or (
-                claim.get("checkpoint_id") is not None
-                and claim.get("checkpoint_id")
+                conductor_claim.get("checkpoint_id") is not None
+                and conductor_claim.get("checkpoint_id")
                 not in {
                     item["id"]
                     for item in strategy["checkpoints"]
@@ -2050,7 +2247,7 @@ Identity mismatch: {str(claim_mismatch).lower()}
 
 End with exactly one final single-line marker:
 
-PROGRESS_ADJUDICATION_JSON: {{"schema_version":1,"strategy_id":"{strategy['strategy_id']}","strategy_revision":{strategy['revision']},"progress_class":"incremental|meaningful|blocked|complete","alignment":"aligned|drifted|falsified|complete|n/a","checkpoint_id":null,"checkpoint_result":"advanced|satisfied|unchanged|falsified|n/a","triggered_stop_condition_id":null,"reason":"evidence-based reason","verified_scope_delta":"verified change in contract coverage"}}
+PROGRESS_ADJUDICATION_JSON: {{"schema_version":1,"strategy_id":"{strategy["strategy_id"]}","strategy_revision":{strategy["revision"]},"progress_class":"incremental|meaningful|blocked|complete","alignment":"aligned|drifted|falsified|complete|n/a","checkpoint_id":null,"checkpoint_result":"advanced|satisfied|unchanged|falsified|n/a","triggered_stop_condition_id":null,"reason":"evidence-based reason","verified_scope_delta":"verified change in contract coverage"}}
 """
         atomic_write_text(prompt_path, prompt)
         read_only_tools = [
@@ -2150,29 +2347,21 @@ PROGRESS_ADJUDICATION_JSON: {{"schema_version":1,"strategy_id":"{strategy['strat
         checkpoint_result = raw["checkpoint_result"]
         if not isinstance(progress, str) or progress not in _PROGRESS_CLASSES:
             return None
-        if (
-            not isinstance(alignment, str)
-            or alignment
-            not in {
-                "aligned",
-                "drifted",
-                "falsified",
-                "complete",
-                "n/a",
-            }
-        ):
+        if not isinstance(alignment, str) or alignment not in {
+            "aligned",
+            "drifted",
+            "falsified",
+            "complete",
+            "n/a",
+        }:
             return None
-        if (
-            not isinstance(checkpoint_result, str)
-            or checkpoint_result
-            not in {
-                "advanced",
-                "satisfied",
-                "unchanged",
-                "falsified",
-                "n/a",
-            }
-        ):
+        if not isinstance(checkpoint_result, str) or checkpoint_result not in {
+            "advanced",
+            "satisfied",
+            "unchanged",
+            "falsified",
+            "n/a",
+        }:
             return None
         if claim_mismatch and alignment not in {"drifted", "falsified"}:
             return None
@@ -2242,10 +2431,9 @@ PROGRESS_ADJUDICATION_JSON: {{"schema_version":1,"strategy_id":"{strategy['strat
         strategy = state.get("active_strategy")
         if not isinstance(strategy, dict):
             return
-        if (
-            adjudication.strategy_id != strategy.get("strategy_id")
-            or adjudication.strategy_revision != strategy.get("revision")
-        ):
+        if adjudication.strategy_id != strategy.get(
+            "strategy_id"
+        ) or adjudication.strategy_revision != strategy.get("revision"):
             return
         retained = {
             "attempt": attempt,
@@ -2256,9 +2444,7 @@ PROGRESS_ADJUDICATION_JSON: {{"schema_version":1,"strategy_id":"{strategy['strat
             "alignment": adjudication.alignment,
             "checkpoint_id": adjudication.checkpoint_id,
             "checkpoint_result": adjudication.checkpoint_result,
-            "triggered_stop_condition_id": (
-                adjudication.triggered_stop_condition_id
-            ),
+            "triggered_stop_condition_id": (adjudication.triggered_stop_condition_id),
             "reason": adjudication.reason,
             "verified_scope_delta": adjudication.verified_scope_delta,
             "artifact": artifact,
@@ -2309,9 +2495,7 @@ PROGRESS_ADJUDICATION_JSON: {{"schema_version":1,"strategy_id":"{strategy['strat
             or adjudication.triggered_stop_condition_id is not None
         ):
             strategy["status"] = (
-                "drifted"
-                if adjudication.alignment == "drifted"
-                else "falsified"
+                "drifted" if adjudication.alignment == "drifted" else "falsified"
             )
             state["strategy_change_required"] = True
             state["next_reflection_at"] = utc_now()
@@ -2320,6 +2504,155 @@ PROGRESS_ADJUDICATION_JSON: {{"schema_version":1,"strategy_id":"{strategy['strat
             state["status"] = "stopped"
             state["pid"] = None
         state["active_strategy"] = strategy
+
+
+def conductor_claim_marker(
+    request_path: Path,
+    *,
+    checkpoint_id: str | None,
+    progress_class: str,
+    summary: str,
+    evidence: str,
+) -> str:
+    """Build a claim marker bound to one currently active conductor request."""
+
+    request_path = request_path.expanduser().resolve()
+    if not request_path.is_file() or request_path.is_symlink():
+        raise AutoRunError(f"conductor request must be a regular file: {request_path}")
+    try:
+        request = read_agent_request(request_path)
+    except (TypeError, ValueError) as exc:
+        raise AutoRunError(f"cannot read conductor request: {exc}") from exc
+    context = request.get("conductor_claim_context")
+    required_context = {
+        "schema_version",
+        "session_id",
+        "attempt",
+        "strategy_id",
+        "strategy_revision",
+        "prompt_sha256",
+    }
+    if not isinstance(context, dict) or set(context) != required_context:
+        raise AutoRunError("conductor request has no valid frozen claim context")
+
+    session_id = context["session_id"]
+    attempt = context["attempt"]
+    strategy_id = context["strategy_id"]
+    strategy_revision = context["strategy_revision"]
+    prompt_sha256 = context["prompt_sha256"]
+    if (
+        type(context["schema_version"]) is not int
+        or context["schema_version"] != 1
+        or not isinstance(session_id, str)
+        or not session_id
+        or session_id != session_id.strip()
+        or type(attempt) is not int
+        or attempt < 1
+        or not isinstance(strategy_id, str)
+        or _ID_PATTERN.fullmatch(strategy_id) is None
+        or type(strategy_revision) is not int
+        or strategy_revision < 1
+        or not isinstance(prompt_sha256, str)
+        or re.fullmatch(r"[0-9a-f]{64}", prompt_sha256) is None
+    ):
+        raise AutoRunError("conductor request has malformed frozen claim identity")
+    if request.get("role_id") != "autorun_conductor":
+        raise AutoRunError("claim emission requires an autorun conductor request")
+    if request.get("attempt") != attempt:
+        raise AutoRunError("conductor request and frozen round identity disagree")
+
+    run_dir_value = request.get("run_dir")
+    prompt_value = request.get("prompt")
+    if not isinstance(run_dir_value, str) or not run_dir_value:
+        raise AutoRunError("conductor request has no run directory")
+    if not isinstance(prompt_value, str) or not prompt_value:
+        raise AutoRunError("conductor request has no prompt path")
+    run_dir = Path(run_dir_value).expanduser().resolve()
+    round_dir = run_dir / "rounds" / f"round-{attempt:05d}"
+    if request_path != (round_dir / "request.json").resolve():
+        raise AutoRunError("conductor request path disagrees with its frozen round")
+    prompt_path = Path(prompt_value).expanduser().resolve()
+    if prompt_path != (round_dir / "prompt.md").resolve():
+        raise AutoRunError("conductor prompt path disagrees with its frozen round")
+    if not prompt_path.is_file() or prompt_path.is_symlink():
+        raise AutoRunError(f"conductor prompt must be a regular file: {prompt_path}")
+    if hashlib.sha256(prompt_path.read_bytes()).hexdigest() != prompt_sha256:
+        raise AutoRunError("conductor prompt differs from its frozen invocation")
+
+    state = AutoRunRunner._read_state_from(run_dir)
+    strategy = state.get("active_strategy")
+    if (
+        state.get("session_id") != session_id
+        or state.get("status") != "running"
+        or state.get("active_round") != attempt
+        or state.get("attempt_count") != attempt
+        or state.get("active_prompt") != str(prompt_path)
+        or not campaign_run_lock_is_held(
+            run_dir / "controller", owner_pid=state.get("pid")
+        )
+        or not _pid_is_alive(state.get("pid"))
+        or not _heartbeat_is_fresh(state.get("heartbeat_at"))
+        or not isinstance(strategy, dict)
+        or strategy.get("status") != "active"
+        or strategy.get("strategy_id") != strategy_id
+        or strategy.get("revision") != strategy_revision
+    ):
+        raise AutoRunError(
+            "frozen conductor identity does not match the current invocation"
+        )
+
+    checkpoint_ids = {
+        item["id"]
+        for item in strategy["checkpoints"]
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+    if checkpoint_id is not None and (
+        not isinstance(checkpoint_id, str)
+        or _ID_PATTERN.fullmatch(checkpoint_id) is None
+        or checkpoint_id not in checkpoint_ids
+    ):
+        raise AutoRunError("checkpoint_id is not present in the frozen strategy")
+    if progress_class not in _PROGRESS_CLASSES:
+        raise AutoRunError(f"invalid progress_class: {progress_class!r}")
+    for name, value in (("summary", summary), ("evidence", evidence)):
+        if (
+            not isinstance(value, str)
+            or not value
+            or value != value.strip()
+            or len(value) > _TEXT_LIMIT
+        ):
+            raise AutoRunError(f"{name} must be nonempty trimmed text")
+
+    claim: dict[str, Any] = {
+        "schema_version": 1,
+        "strategy_id": strategy_id,
+        "strategy_revision": strategy_revision,
+        "checkpoint_id": checkpoint_id,
+        "progress_class": progress_class,
+        "summary": summary,
+        "evidence": evidence,
+    }
+    marker = "CONDUCTOR_RESULT_JSON: " + json.dumps(
+        claim, separators=(",", ":"), ensure_ascii=False
+    )
+    if AutoRunRunner._parse_conductor_claim(marker) != claim:
+        raise AutoRunError("internal conductor claim serialization failure")
+    atomic_write_json(
+        round_dir / "conductor-claim-emission.json",
+        {
+            "schema_version": 1,
+            "session_id": session_id,
+            "attempt": attempt,
+            "strategy_id": strategy_id,
+            "strategy_revision": strategy_revision,
+            "prompt_sha256": prompt_sha256,
+            "request_sha256": hashlib.sha256(request_path.read_bytes()).hexdigest(),
+            "marker_sha256": hashlib.sha256(marker.encode("utf-8")).hexdigest(),
+            "claim": claim,
+        },
+    )
+    return marker
+
 
 def discover_project(start: Path | None = None) -> Path:
     """Find the nearest project.toml from the current directory upward."""
@@ -2355,9 +2688,8 @@ def _heartbeat_is_fresh(value: object, *, maximum_age_seconds: int = 90) -> bool
         heartbeat = datetime.fromisoformat(value)
     except ValueError:
         return False
-    return (datetime.now(UTC) - heartbeat.astimezone(UTC)).total_seconds() <= (
-        maximum_age_seconds
-    )
+    age = (datetime.now(UTC) - heartbeat.astimezone(UTC)).total_seconds()
+    return 0 <= age <= maximum_age_seconds
 
 
 def _round_receipt(
@@ -2483,15 +2815,19 @@ def _strategy_report_sections(state: dict[str, Any]) -> list[str]:
     if not isinstance(strategy, dict):
         return []
     checkpoints = strategy.get("checkpoints")
-    current_checkpoint = next(
-        (
-            item
-            for item in checkpoints
-            if isinstance(item, dict)
-            and item.get("status") in {"pending", "advanced"}
-        ),
-        None,
-    ) if isinstance(checkpoints, list) else None
+    current_checkpoint = (
+        next(
+            (
+                item
+                for item in checkpoints
+                if isinstance(item, dict)
+                and item.get("status") in {"pending", "advanced"}
+            ),
+            None,
+        )
+        if isinstance(checkpoints, list)
+        else None
+    )
     checkpoint_text = (
         (
             f"{current_checkpoint.get('id')} at execution "
@@ -2788,14 +3124,9 @@ def follow_autorun_status(
                 strategy_signature,
             )
             now = time.monotonic()
-            if (
-                now >= next_recap_deadline
-                or current_recap_signature != recap_signature
-            ):
+            if now >= next_recap_deadline or current_recap_signature != recap_signature:
                 updated_at = datetime.now(UTC)
-                next_update_at = updated_at + timedelta(
-                    seconds=recap_interval_seconds
-                )
+                next_update_at = updated_at + timedelta(seconds=recap_interval_seconds)
                 recap = _progress_recap(
                     session,
                     state,
@@ -2983,22 +3314,194 @@ def follow_autorun_events(
         display.finish()
 
 
+def restore_autorun_workspace(
+    project: ProjectSpec,
+    *,
+    label: str,
+    session_dir: Path | None = None,
+    herdr_executable: str = "herdr",
+    python_executable: str | None = None,
+    focus: bool = True,
+) -> HerdrWorkspace:
+    """Replace a named Herdr workspace with live autorun observer panes."""
+
+    workspace_label = label.strip()
+    if not workspace_label:
+        raise ValueError("autorun workspace label must not be empty")
+    if session_dir is None:
+        active_path = project.root / "autorun-runs" / "active.json"
+        try:
+            active = json.loads(active_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise AutoRunError(
+                f"cannot read the active autorun session: {active_path}"
+            ) from exc
+        session_value = active.get("session") if isinstance(active, dict) else None
+        if not isinstance(session_value, str) or not session_value:
+            raise AutoRunError(f"active autorun session is invalid: {active_path}")
+        session = Path(session_value).expanduser()
+        if not session.is_absolute():
+            session = project.root / session
+    else:
+        session = session_dir.expanduser()
+    session = session.resolve()
+    AutoRunRunner._read_state_from(session)
+
+    executable = python_executable or sys.executable
+    if not executable:
+        raise ValueError("Python executable must not be empty")
+    herdr = HerdrClient(herdr_executable)
+    stale_workspace_ids = tuple(
+        workspace.workspace_id
+        for workspace in herdr.list_workspaces()
+        if workspace.label == workspace_label
+    )
+    workspace = herdr.create_workspace(
+        cwd=project.root,
+        label=workspace_label,
+        focus=False,
+    )
+    try:
+        output_pane = herdr.split_pane(
+            workspace.root_pane_id,
+            cwd=project.root,
+            direction="right",
+            ratio=0.5,
+        )
+        events_pane = herdr.split_pane(
+            output_pane,
+            cwd=project.root,
+            direction="down",
+            ratio=0.5,
+        )
+        command = (
+            executable,
+            "-m",
+            "agentic_lean_math_assistant",
+        )
+        session_argument = str(session)
+        herdr.run_in_pane(
+            workspace.root_pane_id,
+            (
+                *command,
+                "autorun-status",
+                "--session",
+                session_argument,
+                "--follow",
+                "--interval",
+                "1",
+                "--recap-minutes",
+                "10",
+            ),
+        )
+        herdr.run_in_pane(
+            output_pane,
+            (
+                *command,
+                "autorun-output",
+                "--session",
+                session_argument,
+                "--interval",
+                "1",
+            ),
+        )
+        herdr.run_in_pane(
+            events_pane,
+            (
+                *command,
+                "autorun-events",
+                "--session",
+                session_argument,
+                "--interval",
+                "1",
+            ),
+        )
+        herdr.wait_for_output(workspace.root_pane_id, "PROGRESS UPDATE")
+        herdr.wait_for_output(output_pane, "CURRENT ROUND OUTPUT")
+        herdr.wait_for_output(events_pane, "RAW EVENTS")
+    except BaseException:
+        try:
+            herdr.close_workspace(workspace.workspace_id)
+        except HerdrError:
+            pass
+        raise
+
+    for workspace_id in stale_workspace_ids:
+        try:
+            herdr.close_workspace(workspace_id)
+        except HerdrError as exc:
+            if exc.code != "workspace_not_found":
+                raise
+    if focus:
+        herdr.focus_workspace(workspace.workspace_id)
+    return workspace
+
+
 def request_autorun_stop(session_dir: Path) -> str:
     """Durably request a running controller to stop between agent rounds."""
 
     session = session_dir.expanduser().resolve()
     state = AutoRunRunner._read_state_from(session)
-    state["stop_requested"] = True
-    state["updated_at"] = utc_now()
-    atomic_write_json(session / "state.json", state)
-    atomic_write_text(session / "STOP", "stop requested\n")
-    return f"autorun stop requested: {session}"
+    controller = session / "controller"
+    if (
+        not os.path.lexists(controller)
+        or controller.is_symlink()
+        or not controller.is_dir()
+    ):
+        raise AutoRunError("autorun controller path is not a real directory")
+    stop_requests = AutoRunRunner._stop_requests_dir(session)
+    resume_in_progress = AutoRunRunner._resume_in_progress_dir(session)
+    consumed_requests = AutoRunRunner._consumed_stop_requests_dir(session)
+    token_ledger = AutoRunRunner._stop_token_ledger_dir(session)
+    for path, label in (
+        (stop_requests, "stop requests"),
+        (resume_in_progress, "resume transactions"),
+        (consumed_requests, "consumed stop requests"),
+        (token_ledger, "stop token ledger"),
+    ):
+        AutoRunRunner._marker_names(path, label)
+        path.mkdir(exist_ok=True)
+    AutoRunRunner._fsync_directory(controller)
+
+    token: str | None = None
+    for _ in range(32):
+        candidate = secrets.token_hex(16)
+        marker_content = (
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "session_id": state["session_id"],
+                    "token": candidate,
+                },
+                sort_keys=True,
+            )
+            + "\n"
+        ).encode("utf-8")
+        ledger_marker = token_ledger / candidate
+        if not AutoRunRunner._create_exclusive_marker(ledger_marker, marker_content):
+            continue
+        os.link(
+            ledger_marker,
+            stop_requests / candidate,
+            follow_symlinks=False,
+        )
+        AutoRunRunner._fsync_directory(stop_requests)
+        token = candidate
+        break
+    if token is None:
+        raise AutoRunError("cannot allocate a unique autorun stop token")
+    return f"autorun stop requested: {session}\nresume with --resume-stopped {token}"
 
 
 def add_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--project", type=Path)
     parser.add_argument("--master-prompt", type=Path)
     parser.add_argument("--session", type=Path)
+    parser.add_argument(
+        "--resume-stopped",
+        metavar="STOP_TOKEN",
+        help="consume one stopped session's matching one-use stop token",
+    )
     parser.add_argument("--reflection-minutes", type=int, default=150)
     parser.add_argument("--reflection-round-minutes", type=int, default=15)
     parser.add_argument("--round-minutes", type=int, default=90)
@@ -3014,6 +3517,7 @@ def options_from_args(args: argparse.Namespace) -> AutoRunOptions:
     return AutoRunOptions(
         master_prompt=args.master_prompt,
         session=args.session,
+        resume_stopped=args.resume_stopped,
         reflection_minutes=args.reflection_minutes,
         reflection_round_minutes=args.reflection_round_minutes,
         round_minutes=args.round_minutes,

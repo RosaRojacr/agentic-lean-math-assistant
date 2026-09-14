@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceCells.candidate_not_isWeightedPerimeterMinimizer_from_51_50",
+  "domain_issues": [],
+  "informal_statement": "The two prototypes and middle-face cells exclude candidates on [51/50,33/32].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceCells.lean:75-102, the source contract is `theorem candidate_not_isWeightedPerimeterMinimizer_from_51_50 {lam : ℝ} (hlower : (51 / 50 : ℝ) ≤ lam) (hupper : lam ≤ (33 / 32 : ℝ)) (candidate : _root_.FourArcCandidate lam) (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : ¬ candidate.IsWeightedPerimeterMinimizer`. The density intervals are closed and joined at their exact rational endpoints. The exported theorem takes only density bounds, a candidate, and its CMV hypotheses; neither stationary curvature nor externally supplied analytic data is added.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4e139d2067a97ded95a1f47d09a5d5b68e8fd03114a4a32d5431bb047f26e9f1",
+  "symbol_mismatches": []
+}

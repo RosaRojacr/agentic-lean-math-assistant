@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.lowerCap_euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The constructed lower cap has the same cap-area expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:159-166, the source contract is `theorem lowerCap_euclideanArea : candidate.assembly.lowerCap.euclideanArea = candidate.capArea`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "14a860cf99daaf759c3fa7838aed86edfb2879de1a5a3f6f7d84f9996c7da155",
+  "symbol_mismatches": []
+}

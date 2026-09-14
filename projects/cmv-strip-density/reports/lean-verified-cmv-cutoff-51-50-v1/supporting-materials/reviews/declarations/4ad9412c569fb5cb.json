@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeAngle_add_halfPi",
+  "domain_issues": [],
+  "informal_statement": "The analytic type-(iii) angle term plus pi/2 equals the source arccosine expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:130-138, the source contract is `theorem typeThreeAngle_add_halfPi (lam h : ℝ) : typeThreeAngle lam h + π / 2 = lam * arccos (typeThreeShape h / lam) + π - arccos (typeThreeShape h)`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "309f9c361ad038b7eae75200b2b081130c71a155a43f2f07c9ad2ae282ce68ff",
+  "symbol_mismatches": []
+}

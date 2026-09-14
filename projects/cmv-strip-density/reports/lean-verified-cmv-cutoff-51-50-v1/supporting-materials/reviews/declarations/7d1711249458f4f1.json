@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.boundaryArcLength",
+  "domain_issues": [],
+  "informal_statement": "Combined length of the two curved core sides.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:457-459, the source contract is `def boundaryArcLength (c : StripCore) : ℝ := 4 * ell c.sideAngle`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "74e634700740d7651d4ed773b1cb3cb71b11c7eedacd0c71b6a84a0e6ec43665",
+  "symbol_mismatches": []
+}

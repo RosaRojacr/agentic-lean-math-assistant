@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.lowerCap",
+  "domain_issues": [],
+  "informal_statement": "The reflected lower exterior cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2509-2518, the source contract is `def lowerCap (a : FourArcAssembly) : OneSidedCircularCap where chord := a.core.chord theta := a.outerAngle midpointX := 0 baseY := -1 side := .lower chord_pos := a.core.chord_pos theta_pos := a.outerAngle_pos theta_lt_pi := lt_trans a.outerAngle_lt_pi_div_two (by linarith [Real.pi_pos])`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a60a9393b363872f08f12dbab41380b51afefa746b9504c5841f28d389091bfe",
+  "symbol_mismatches": []
+}

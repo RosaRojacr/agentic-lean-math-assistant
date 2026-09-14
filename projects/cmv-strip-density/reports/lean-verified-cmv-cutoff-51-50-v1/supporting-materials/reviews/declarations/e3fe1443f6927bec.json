@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.h3Center",
+  "domain_issues": [],
+  "informal_statement": "Exact type-(iii) center for compact box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactSecondCell.lean:39-40, the source contract is `def h3Center : ℚ := 8301881813483 / 8796093022208`. This is the explicit second compact box and its splice to the first. Closed interval membership retains the common rational endpoint; local root-slab conditions do not become extra hypotheses on an arbitrary candidate.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "571f803f2356f6d9d1aef243b2c46e837820a4eb7a7aa3d5322e7d084660f89b",
+  "symbol_mismatches": []
+}

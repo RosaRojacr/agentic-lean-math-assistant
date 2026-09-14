@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.isClosed_carrier",
+  "domain_issues": [],
+  "informal_statement": "The replacement carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3579-3580, the source contract is `theorem isClosed_carrier (a : ReplacementAssembly) : IsClosed a.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7d390bd6162828599bf858ab60165e80e65e5c04a4677e586ff23aba97d10394",
+  "symbol_mismatches": []
+}

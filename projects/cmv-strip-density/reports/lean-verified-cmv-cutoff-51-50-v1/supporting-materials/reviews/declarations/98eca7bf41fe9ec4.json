@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.sinTaylor27Interval_sound",
+  "domain_issues": [],
+  "informal_statement": "For every rational x, the degree-27 Taylor sine interval contains sin(x), with no size or sign restriction on x.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:296-310, the source contract is `theorem sinTaylor27Interval_sound (x : ℚ) : (sinTaylor27Interval x).RealContains (sin (x : ℝ))`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cccc0e43a547af36c7ebd29335f5601a5c6d0913d8691b65f34e008faa2bf0e0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Conditions.stationaryEqualAreaPair_exists",
+  "domain_issues": [],
+  "informal_statement": "Each checked density slice supplies a stationary equal-area pair with negative K3 and strict perimeter improvement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:2349-2423, the source contract is `theorem stationaryEqualAreaPair_exists (conditions : Conditions b) {t : ℝ} (ht : (tInterval b).RealContains t) : ∃ pair : LeanSuffixAnalytic.StationaryEqualAreaPair ((lamMid b : ℝ) + t), LeanSuffixAnalytic.typeThreeFold ((lamMid b : ℝ) + t) pair.h₃ < 0 ∧ LeanSuffixAnalytic.typeThreePerimeter ((lamMid b : ℝ) + t) pair.h₃ < LeanSuffixAnalytic.typeFourPerimeter ((lamMid b : ℝ) + t) pair.h₄`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c9edc4aa9422891e0d25fbd6875c005c42dad37c4605fbf65a3d8fdd6fa0a683",
+  "symbol_mismatches": []
+}

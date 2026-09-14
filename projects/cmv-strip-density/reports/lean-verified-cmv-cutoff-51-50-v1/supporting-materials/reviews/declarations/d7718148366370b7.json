@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sineGap",
+  "domain_issues": [],
+  "informal_statement": "The exterior-minus-inner sine displacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:292-294, the source contract is `def sineGap : ℝ := sin a.outerAngle - sin a.innerAngle`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e9d7a7074e27fe28a23aa0db9c4cf9b0ef4e5f2181f1cfab6098f7cc2e240ecb",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.firstTwoBoxes_candidate_not_isWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "The first two compact boxes exclude candidates on [33/32,118329/114688].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactSecondCell.lean:682-702, the source contract is `theorem firstTwoBoxes_candidate_not_isWeightedPerimeterMinimizer {lam : ℝ} (hlower : (33 / 32 : ℝ) ≤ lam) (hupper : lam ≤ (118329 / 114688 : ℝ)) (candidate : _root_.FourArcCandidate lam) (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : ¬ candidate.IsWeightedPerimeterMinimizer`. This is the explicit second compact box and its splice to the first. Closed interval membership retains the common rational endpoint; local root-slab conditions do not become extra hypotheses on an arbitrary candidate.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1f54334812872c86ebe3794a932ab059b0b9f0ae3518130a266bed3d7f94e321",
+  "symbol_mismatches": []
+}

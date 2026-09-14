@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.pointOf",
+  "domain_issues": [],
+  "informal_statement": "Build a first-prototype point from centered density and an error vector.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:801-802, the source contract is `def pointOf (t : ℝ) (z : Vec4) : Point := ⟨t, z 0, z 1, z 2, z 3⟩`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "123eaac2727784b857a8a1d07babc6e08557c023e8c73b6b961970da83630664",
+  "symbol_mismatches": []
+}

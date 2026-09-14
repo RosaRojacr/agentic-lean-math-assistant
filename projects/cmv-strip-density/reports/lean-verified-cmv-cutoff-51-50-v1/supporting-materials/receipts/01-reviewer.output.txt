@@ -1,0 +1,10 @@
+Review incomplete; `reviewer-01.json` was not written. I cannot certify the required exhaustive coverage.
+
+Confirmed discrepancies:
+- `ScalarSuffixCertificate.oppositeFace_zero`: prose promises an **interior** zero; Lean concludes a zero in `[a,b]` and permits endpoint zeros and `a=b`.
+- `CompactCellCertificate.typeFourShiftedInterval`: prose describes an angle complement; Lean implements the **curvature transformation** `h ↦ (h+1)/2`.
+- `LeanSuffixReflective.QInterval.nsmul` and `ScalarSuffixCertificate.QInterval.realContains_nsmul`: prose restricts scaling to natural numbers; Lean accepts **nonnegative rationals**, including `1/2` used downstream.
+
+The CMV versioned citation and stated theorem/equation locators were checked against the reference.
+
+A command runner is needed for my inventory-matching and JSON coverage-validation workflow; the exposed tools provide only reading, searching, listing, and writing.

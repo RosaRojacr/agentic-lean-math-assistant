@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.sin_alpha_pos",
+  "domain_issues": [],
+  "informal_statement": "The candidate's exterior angle has positive sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:95-98, the source contract is `theorem sin_alpha_pos : 0 < sin candidate.alpha`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b92e14d3743fcaa1d6c447d96c6334ba3f5f129152aa26ff47b97d6fd8de2e28",
+  "symbol_mismatches": []
+}

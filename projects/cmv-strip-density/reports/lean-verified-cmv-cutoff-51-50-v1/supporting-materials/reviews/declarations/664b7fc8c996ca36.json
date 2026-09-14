@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.B4",
+  "domain_issues": [],
+  "informal_statement": "The right brick's type-(iv) angular term.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:119-119, the source contract is `def B4 (p : Point) : ℝ := lam p * y p + π / 2 - x p`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "30e079ec002735e04de6acf4de75c1ef255bd47fc8db540544074fad80b3a6bc",
+  "symbol_mismatches": []
+}

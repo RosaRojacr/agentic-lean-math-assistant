@@ -1,0 +1,66 @@
+schema_version = 1
+
+[package]
+id = "lean-verified-cmv-cutoff-51-50"
+version = "v1"
+title = "A Lean-Verified 51/50 Cutoff for Four-Arc Minimizers"
+author = "Rosa Pavlak"
+audience = "A mathematics professor or researcher who may have no prior Lean experience."
+informal_claim = "For the planar strip density equal to 1 on |y| ≤ 1 and to λ > 1 outside, every modeled regular type-(iv) four-arc candidate satisfying the formal CMV type-(iv) hypotheses fails to minimize weighted perimeter whenever λ ≥ 51/50."
+closing_scope = "Include a brief final section explaining why 51/50 is the limit of this published certificate argument and which difficult geometric, measure-theoretic, and source-to-model tasks remain before the full CMV conjecture can be published. Do not mention, cite, or imply any stronger unpublished intermediate theorem."
+project = "../project.toml"
+output = "lean-verified-cmv-cutoff-51-50-v1"
+canonical_pdf = "lean-verified-cmv-cutoff.pdf"
+references = [
+  "lean-verified-cmv-cutoff.md",
+  "../references/references.bib",
+  "../references/Canete2010.pdf",
+]
+
+[lean]
+workspace = "../proof"
+lakefile = "lakefile.toml"
+support_files = ["lean-toolchain", "lake-manifest.json"]
+generated_globs = [
+  "CompactCells*.lean",
+  "MiddleFaceCell[0-9]*.lean",
+]
+forbidden_declarations = [
+  "CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer",
+  "CMVModeledCutoff.candidate_not_isWeightedPerimeterMinimizer_through_1001_1000",
+]
+build_command = ["lake", "build"]
+verification_commands = []
+allowed_axioms = ["propext", "Quot.sound", "Classical.choice"]
+timeout_seconds = 21600
+
+[[lean.generated_boundaries]]
+glob = "CompactCells*.lean"
+declaration_suffixes = [
+  "compactCandidate_not_isWeightedPerimeterMinimizer",
+]
+
+[[lean.generated_boundaries]]
+glob = "MiddleFaceCell[0-9]*.lean"
+declaration_suffixes = [
+  "candidate_not_isWeightedPerimeterMinimizer",
+]
+
+[[roots]]
+module = "CMVPublishedCutoff51_50"
+declaration = "CMVPublishedCutoff51_50.candidate_not_isWeightedPerimeterMinimizer_from_51_50"
+role = "primary"
+type = "∀ {lam : ℝ}, (51 / 50 : ℝ) ≤ lam → ∀ candidate : FourArcCandidate lam, candidate.SatisfiesCMVTypeIVHypotheses → ¬ candidate.IsWeightedPerimeterMinimizer"
+informal_statement = "For every real density λ ≥ 51/50 and every modeled four-arc candidate satisfying the formal CMV type-(iv) hypotheses, the candidate is not a weighted-perimeter minimizer."
+
+[models]
+author = "openai-codex/gpt-6-astra"
+reviewer = "openai-codex/gpt-6-astra"
+thinking = "xhigh"
+timeout_seconds = 21600
+max_revisions = 3
+
+[render]
+pandoc = "pandoc"
+chromium = "chromium-browser"
+timeout_seconds = 1800

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.boundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "Sum of side-arc, upper-cap, and lower-segment parameter measures.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3310-3314, the source contract is `def boundaryMeasure (a : ReplacementAssembly) : Measure PlanePoint := leftCoreBoundaryMeasure a.core + rightCoreBoundaryMeasure a.core + capBoundaryMeasure a.upperCap + segmentBoundaryMeasure a.exposedLowerChord`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "75dfabe9f5e9f8aa75724a2e5f410dd1e358abaf0454833ef91226757c6630cb",
+  "symbol_mismatches": []
+}

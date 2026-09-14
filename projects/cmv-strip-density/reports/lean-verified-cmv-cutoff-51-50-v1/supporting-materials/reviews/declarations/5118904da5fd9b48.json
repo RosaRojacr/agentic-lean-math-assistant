@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_image",
+  "domain_issues": [],
+  "informal_statement": "Every angle in (0,pi) is the inverse-area angle of some positive normalized area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:279-282, the source contract is `lemma θOf_image : Ioo 0 π ⊆ θOf '' (Ioi 0)`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d81b765da2f8cf7cb10a3e3b057fc5bc93f2a0c62b4ee7c5334eaaf98f1bd323",
+  "symbol_mismatches": []
+}

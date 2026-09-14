@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.add",
+  "domain_issues": [],
+  "informal_statement": "Endpoint interval addition.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixReflective.lean:37-40, the source contract is `def add (i j : QInterval) : QInterval := ⟨i.lo + j.lo, i.hi + j.hi, add_le_add i.ordered j.ordered⟩`. Intervals have rational ordered endpoints and closed containment. Arithmetic enclosure statements concern the real-valued operations after rational casting; exact checks do not stand for floating-point evidence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bdc18247a80ffa4a9b050a8d17f0cc87f5a29f49311d73038324983c96603c22",
+  "symbol_mismatches": []
+}

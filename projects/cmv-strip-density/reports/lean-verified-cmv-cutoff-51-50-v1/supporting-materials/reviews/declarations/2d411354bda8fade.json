@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.C4_eta_low_face_margin",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's C4 residual is strictly negative on the low eta face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:1188-1214, the source contract is `theorem C4_eta_low_face_margin : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → z 1 = -radiiReal 1 → C4 (pointOf t z) < -(11 / 10000000000 : ℝ)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b33b3e4037ad423afeac36d4ddac306b90781f3f172e1644c7e6268fd9b3e55b",
+  "symbol_mismatches": []
+}

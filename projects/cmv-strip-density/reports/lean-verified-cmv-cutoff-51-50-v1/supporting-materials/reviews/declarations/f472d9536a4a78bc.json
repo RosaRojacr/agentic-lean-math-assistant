@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Vec4",
+  "domain_issues": [],
+  "informal_statement": "A real vector indexed by four coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:23-23, the source contract is `abbrev Vec4 := ScalarSuffixCertificate.Vec4`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "26b6384e4234f00c2040b7fed071a12c3e6f967500dfcaee15eb69b43a2cf5e3",
+  "symbol_mismatches": []
+}

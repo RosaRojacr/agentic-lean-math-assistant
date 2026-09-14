@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.realContains_neg",
+  "domain_issues": [],
+  "informal_statement": "Interval negation encloses the negative of every enclosed real.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixReflective.lean:72-77, the source contract is `theorem realContains_neg {i : QInterval} {x : ℝ} (hx : i.RealContains x) : i.neg.RealContains (-x)`. Intervals have rational ordered endpoints and closed containment. Arithmetic enclosure statements concern the real-valued operations after rational casting; exact checks do not stand for floating-point evidence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c819be23ad835c80289fa7a60e6d94935c325c424a832a1d3dc0780c7f34f5fd",
+  "symbol_mismatches": []
+}

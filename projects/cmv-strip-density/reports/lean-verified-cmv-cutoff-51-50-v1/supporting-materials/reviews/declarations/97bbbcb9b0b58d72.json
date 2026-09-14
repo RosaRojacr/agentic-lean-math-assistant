@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThree_atoms_of_exact_bounds",
+  "domain_issues": [],
+  "informal_statement": "Exact elementary bounds enclose the type-(iii) angular and radical atoms.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:224-360, the source contract is `theorem typeThree_atoms_of_exact_bounds (lambdaInterval hI uI dI asinQI asinRatioI : QInterval) {lam h : ℝ} (hlam : lambdaInterval.RealContains lam) (hh : hI.RealContains h) (hlambdaLoPos : 0 < lambdaInterval.lo) (hlambdaOne : 1 < lam) (hqNonneg : 0 ≤ ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)).lo) (hqLeOne : ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)).hi ≤ 1) (huNonneg : 0 ≤ uI.lo) (huLower : uI.lo ^ 2 ≤ 1 - ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)).hi ^ 2) (huUpper : 1 - ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)).lo ^ 2 ≤ uI.hi ^ 2) (hdNonneg : 0 ≤ dI.lo) (hdLower : dI.lo ^ 2 ≤ lambdaInterval.lo ^ 2 - ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)).hi ^ 2) (hdUpper : lambdaInterval.hi ^ 2 - ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)).lo ^ 2 ≤ dI.hi ^ 2) (hasinQBranch : 0 ≤ asinQI.lo ∧ asinQI.hi ≤ halfPiBox.lo) (hasinQLower : (ScalarSuffixCertificate.sinTaylor27Interval asinQI.lo).hi ≤ ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)).lo) (hasinQUpper : ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)).hi ≤ (ScalarSuffixCertificate.sinTaylor27Interval asinQI.hi).lo) (hasinRatioBranch : 0 ≤ asinRatioI.lo ∧ asinRatioI.hi ≤ halfPiBox.lo) (hasinRatioLower : (ScalarSuffixCertificate.sinTaylor27Interval asinRatioI.lo).hi ≤ (ScalarSuffixCertificate.QInterval.divPos ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)) lambdaInterval hlambdaLoPos).lo) (hasinRatioUpper : (ScalarSuffixCertificate.QInterval.divPos ((hI.nsmul 2 (by norm_num)).sub (LeanSuffixReflective.QInterval.point 1)) lambdaInterval hlambdaLoPos).hi ≤ (ScalarSuffixCertificate.sinTaylor27Interval asinRatioI.hi).lo) : uI.RealContains (sqrt (1 - LeanSuffixAnalytic.typeThreeShape h ^ 2)) ∧ dI.RealContains (sqrt (lam ^ 2 - LeanSuffixAnalytic.typeThreeShape h ^ 2)) ∧ asinQI.RealContains (arcsin (LeanSuffixAnalytic.typeThreeShape h)) ∧ asinRatioI.RealContains (arcsin (LeanSuffixAnalytic.typeThreeShape h / lam))`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c51a322c3566880879bc58cb2483ec639ff97dddc9cd3e9ac9a18afac5600b84",
+  "symbol_mismatches": []
+}

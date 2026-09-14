@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeShape",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) shape parameter q=2h-1.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:32-34, the source contract is `def typeThreeShape (h : ℝ) : ℝ := 2 * h - 1`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9ef91461acc972465b98decfe31d601788f1354eb0ffbb8d094be6f5c46ca593",
+  "symbol_mismatches": []
+}

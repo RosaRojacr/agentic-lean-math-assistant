@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_rightCoreParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The right core parameter image has the same exact arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:773-800, the source contract is `theorem exact_euclidean_rightCoreParam_hausdorffMeasure (c : StripCore) : (μH[1] : Measure EuclideanPlane) (realizedRightCoreParam c '' Icc (coreArcStart c) (coreArcEnd c)) = ENNReal.ofReal (coreArcEnd c - coreArcStart c)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5b9d17b9e5921b7fba027be4ebfa3845e68c3c43a92a67ce9d4854bf1b244db0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_injOn",
+  "domain_issues": [],
+  "informal_statement": "If r > 0 and 0 < theta < pi, u_r is injective on the closed signed-arclength interval [-r theta,r theta].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:67-92, the source contract is `lemma unitCircleArc_injOn {r theta : ℝ} (hr : 0 < r) (htheta : theta ∈ Ioo 0 Real.pi) : Set.InjOn (unitCircleArc r) (Icc (-r * theta) (r * theta))`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ceabbb1bd00ed7b3d5a248b0d9d8b4d41f8f1fc0af8194bd56a8092deed637e9",
+  "symbol_mismatches": []
+}

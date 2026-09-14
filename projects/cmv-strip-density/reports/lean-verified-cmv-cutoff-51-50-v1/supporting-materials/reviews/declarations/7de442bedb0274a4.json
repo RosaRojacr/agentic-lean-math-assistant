@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.F",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's stationary type-(iv) residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:127-127, the source contract is `def F (p : Point) : ℝ := cos (x p) * D4 p - sin (x p) * sin (y p) * B4 p`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ff764cf036982bdc0d990c94070c7ae41de884ec397b4b250e1096fedd89ff34",
+  "symbol_mismatches": []
+}

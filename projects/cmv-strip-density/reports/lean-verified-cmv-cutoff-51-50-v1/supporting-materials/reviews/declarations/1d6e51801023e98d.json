@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "measurableSet_euclidean_rightArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean right core trace is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1094-1098, the source contract is `theorem measurableSet_euclidean_rightArcTrace (c : StripCore) : MeasurableSet (planeEuclideanHomeomorph '' c.rightArcTrace)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "771198ca90f5054f065ccd16a46e41b5fce0886173f7b3c654e6b61824be845e",
+  "symbol_mismatches": []
+}

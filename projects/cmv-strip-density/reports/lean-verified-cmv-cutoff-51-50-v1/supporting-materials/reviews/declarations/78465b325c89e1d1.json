@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.WeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The weighted area of the candidate region.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:76-78, the source contract is `def WeightedArea : ℝ := candidate.region.WeightedArea`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8256dd516e32d853aaed6a85d09fdb0b62411bd0bf67f1df7ffd123e47baed99",
+  "symbol_mismatches": []
+}

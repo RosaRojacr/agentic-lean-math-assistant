@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C3Residual.reduced",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) incidence residual in centered coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1170-1175, the source contract is `def reduced (t rho sigma : ℝ) : ℝ := cos ((b.centers 2 : ℝ) + b.slopes 2 * t + rho) - ((lamMid b : ℝ) + t) * cos ((b.centers 3 : ℝ) + b.slopes 3 * t + b.vRhoSlope * rho + sigma)`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4b58f212985cabd9417414d5466594d9a780e38a8e0c1797d384042e1674c68b",
+  "symbol_mismatches": []
+}

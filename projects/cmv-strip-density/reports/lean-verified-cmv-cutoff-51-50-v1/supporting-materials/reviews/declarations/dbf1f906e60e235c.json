@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeThreeFold_cell_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Exact enclosure of K3 over the first compact box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:1018-1122, the source contract is `theorem typeThreeFold_cell_enclosure {lam h : ℝ} (hlam : lambdaInterval.RealContains lam) (hh : h3Interval.RealContains h) : typeThreeFoldCellInterval.RealContains (LeanSuffixAnalytic.typeThreeFold lam h)`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c9da53af261130db3061bf11c0e74ee8196fae038a2277ad282922335d64dc0a",
+  "symbol_mismatches": []
+}

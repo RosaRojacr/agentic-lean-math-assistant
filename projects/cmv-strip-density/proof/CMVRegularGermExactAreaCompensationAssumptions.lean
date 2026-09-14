@@ -1,0 +1,12 @@
+import CMVRegularGermExactAreaCompensation
+
+namespace CMVRelaxation.RegularTraceCornerComparison
+
+#print axioms weightedArea_replaceBySymmDiff_sub
+#print axioms RemoteCompensationPatch.exists_disjoint_window_radius
+#print axioms RemoteCompensationPatch.exactAreaExtension_weightedArea
+#print axioms RemoteCompensationPatch.abs_correctionScale_le
+#print axioms RemoteCompensationPatch.eventually_exactAreaExtension_feasible
+#print axioms RemoteCompensationPatch.eventually_compensationWeightedGraphLength_sub_le_quadratic
+
+end CMVRelaxation.RegularTraceCornerComparison

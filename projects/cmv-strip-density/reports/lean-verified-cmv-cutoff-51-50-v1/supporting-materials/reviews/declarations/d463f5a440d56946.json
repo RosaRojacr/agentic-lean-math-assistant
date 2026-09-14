@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.D3",
+  "domain_issues": [],
+  "informal_statement": "Angular checker expression for type-(iii) displacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:72-72, the source contract is `def D3 (p : Point) : ℝ := sin (v b p) - sin (w b p)`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "68fc1a2e05e1a65f1772f92a4660582f4e3c321b287cc3594448b912c6e7c624",
+  "symbol_mismatches": []
+}

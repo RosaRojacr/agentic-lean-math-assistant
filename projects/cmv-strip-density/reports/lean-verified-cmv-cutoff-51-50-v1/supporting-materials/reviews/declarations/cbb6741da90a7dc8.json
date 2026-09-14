@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.realContains_sin_interval",
+  "domain_issues": [],
+  "informal_statement": "Sine endpoint enclosures extend to an interval of arguments on the checked monotone branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:326-338, the source contract is `theorem realContains_sin_interval {input output : QInterval} {x : ℝ} (hx : input.RealContains x) (hbranch : -(π / 2) ≤ (input.lo : ℝ) ∧ (input.hi : ℝ) ≤ π / 2) (hlo : (output.lo : ℝ) ≤ sin (input.lo : ℝ)) (hhi : sin (input.hi : ℝ) ≤ (output.hi : ℝ)) : output.RealContains (sin x)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "21959c159381deb1e01f48cd4776b6a292e590b4e5bd4cd351519ff872a0aa25",
+  "symbol_mismatches": []
+}

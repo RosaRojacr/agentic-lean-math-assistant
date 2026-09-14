@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "The component perimeter is core arc length plus lambda times both exterior arc lengths.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2603-2624, the source contract is `theorem weightedPerimeter_formula (lam : ℝ) (a : FourArcAssembly) : a.weightedPerimeter lam = a.core.boundaryArcLength + lam * (a.upperCap.arcLength + a.lowerCap.arcLength)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "43ff4cdbd6774032399c0e7d7f5767a18500986a522e0ace1e470e2035290acd",
+  "symbol_mismatches": []
+}

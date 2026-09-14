@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hasDerivAt_F",
+  "domain_issues": [],
+  "informal_statement": "For every real theta, F has derivative 6 sin(theta) squared.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:46-56, the source contract is `lemma hasDerivAt_F (θ : ℝ) : HasDerivAt F (6 * sin θ ^ 2) θ`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dcdd81a18d4f4a1ae529be33b11aab6304bb984338d093081cc21b62e19958fa",
+  "symbol_mismatches": []
+}

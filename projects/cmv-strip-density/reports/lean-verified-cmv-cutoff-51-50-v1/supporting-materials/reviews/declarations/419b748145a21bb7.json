@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.E",
+  "domain_issues": [],
+  "informal_statement": "The denominator-cleared equal-area residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:79-80, the source contract is `def E (p : Point) : ℝ := 2 * cos (x b p) ^ 2 * N3 b p - (1 + cos (w b p)) ^ 2 * N4 b p`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7b79ccc631128297b34feba1be2bb747e1b7da7d54a858df51a0cb1a25f13437",
+  "symbol_mismatches": []
+}

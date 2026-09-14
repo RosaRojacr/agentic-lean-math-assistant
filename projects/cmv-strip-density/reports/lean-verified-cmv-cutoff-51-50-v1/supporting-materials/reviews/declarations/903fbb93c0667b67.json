@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique_of_stationary_pair",
+  "domain_issues": [],
+  "informal_statement": "A negative-fold stationary equal-area anchor supplies a unique descending root at every modeled type-(iv) area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:1130-1149, the source contract is `theorem typeThreeArea_descending_root_existsUnique_of_stationary_pair {lam h₃fold h₄fold h₄ : ℝ} (hlam : 1 < lam) (hh₃fold : h₃fold ∈ Set.Ioo (0 : ℝ) 1) (hh₄fold : h₄fold ∈ Set.Ioo (0 : ℝ) 1) (hh₄ : h₄ ∈ Set.Ioc (0 : ℝ) 1) (hfoldThree : typeThreeFold lam h₃fold < 0) (hfoldFour : typeFourFold lam h₄fold = 0) (hequalFold : typeThreeArea lam h₃fold = typeFourArea lam h₄fold) : ∃! root : ℝ, root ∈ Set.Ioo (0 : ℝ) 1 ∧ typeThreeArea lam root = typeFourArea lam h₄ ∧ typeThreeFold lam root < 0`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f368bc947db4d0b119fefc4c63c0de6d0d14cb14db7e5a28faa26c535eb880b8",
+  "symbol_mismatches": []
+}

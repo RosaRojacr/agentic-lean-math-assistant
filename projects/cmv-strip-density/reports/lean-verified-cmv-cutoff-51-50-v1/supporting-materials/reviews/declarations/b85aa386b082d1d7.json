@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacementAngle_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "The replacement angle is strictly below pi.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CapReplacement.lean:35-38, the source contract is `theorem replacementAngle_lt_pi : candidate.replacementAngle < π`. The replacement retains the strip core, doubles the upper cap area, and exposes the lower chord. Its new half-angle is in (0,pi), so a major cap is not silently discarded; the statement uses the candidate constructor inequalities.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c7cddce688eec8cbb1b3197a2fe6a78bfdc4de573e3f9b6cf8479b677800d6f",
+  "symbol_mismatches": []
+}

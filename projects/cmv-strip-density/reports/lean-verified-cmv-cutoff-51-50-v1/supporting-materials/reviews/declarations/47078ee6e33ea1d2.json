@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.realContains_nsmul",
+  "domain_issues": [],
+  "informal_statement": "Scaling an enclosing rational interval by a nonnegative rational q encloses the real product qx, including q = 0 and q = 1/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:98-108, the source contract is `theorem realContains_nsmul {i : QInterval} {x : ℝ} {q : ℚ} (hq : 0 ≤ q) (hx : i.RealContains x) : (i.nsmul q hq).RealContains ((q : ℝ) * x)`. The enclosure theorem applies to every nonnegative rational scaling factor, including zero and fractions, and transports the interval endpoints through the rational-to-real cast. This matches the deliberately broader meaning of nsmul used in the author's explanation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "230f7166aba334e53ba446c86429b3ff8b9f0576ec86363de14a61caa8a2624d",
+  "symbol_mismatches": []
+}

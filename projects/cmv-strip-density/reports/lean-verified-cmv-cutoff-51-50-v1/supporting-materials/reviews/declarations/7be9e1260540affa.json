@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.C3_sigma_high_face_margin",
+  "domain_issues": [],
+  "informal_statement": "C3 is strictly positive on the high sigma face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:1818-1844, the source contract is `theorem C3_sigma_high_face_margin : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → z 3 = radiiReal 3 → (1 / 1000000000 : ℝ) < C3 (pointOf t z)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5b3bf1ce51b69bccdd8bfe9c8c7de37ad57b8cb9ed698111103e6ab5d416bdcb",
+  "symbol_mismatches": []
+}

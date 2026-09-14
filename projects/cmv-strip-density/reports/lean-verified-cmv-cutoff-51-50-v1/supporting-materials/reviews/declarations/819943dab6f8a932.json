@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The circular-segment area expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:164-166, the source contract is `def euclideanArea (c : OneSidedCircularCap) : ℝ := c.chord ^ 2 * area c.theta`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c476b88f35c9e9f6afcf55ed7ed9ef6be1395a7b5a3003452ff8691443c49da",
+  "symbol_mismatches": []
+}

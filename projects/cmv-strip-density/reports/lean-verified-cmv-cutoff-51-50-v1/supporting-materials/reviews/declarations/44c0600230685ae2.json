@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_sub_factor",
+  "domain_issues": [],
+  "informal_statement": "For r nonzero and arbitrary real s,t, the difference of radius-scaled circle points factors into a rotated exponential difference.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:18-32, the source contract is `lemma unitCircleArc_sub_factor {r s t : ℝ} (_hr : r ≠ 0) : unitCircleArc r s - unitCircleArc r t = (r : ℂ) * Complex.exp (Complex.I * (t / r : ℝ)) * (Complex.exp (Complex.I * ((s - t) / r : ℝ)) - 1)`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6c59e7f498e1352e21969a1c8084fa6600038a792db1172f4e5bd3b2836eece",
+  "symbol_mismatches": []
+}

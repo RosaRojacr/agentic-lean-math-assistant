@@ -21,11 +21,13 @@ from .autonomy import (
 from .autorun import (
     AutoRunError,
     AutoRunRunner,
+    conductor_claim_marker,
     discover_project,
     follow_autorun_events,
     follow_autorun_output,
     follow_autorun_status,
     request_autorun_stop,
+    restore_autorun_workspace,
 )
 from .autorun import (
     add_arguments as add_autorun_arguments,
@@ -44,10 +46,18 @@ from .benchmark import (
 )
 from .config import CampaignSpec, ConfigurationError
 from .features import FeatureRegistry
+from .herdr import HerdrError
 from .inspection import inspect_assurance, inspect_claim_ledgers
 from .processes import stop_all_campaigns
 from .project import ProjectSpec
 from .proof_attempt import run_candidate_proof_gate
+from .proof_builder import (
+    ProofBuilderError,
+    build_proof_package,
+    initialize_proof_manifest,
+    resume_proof_package,
+    verify_proof_package,
+)
 from .publication import plan_publication, publish_campaign
 from .regime import (
     RegimeError,
@@ -116,6 +126,21 @@ def _parser() -> argparse.ArgumentParser:
         "autorun", help="run a persistent self-prompting project conductor"
     )
     add_autorun_arguments(autorun)
+    autorun_report = subparsers.add_parser(
+        "autorun-report",
+        help="emit a claim bound to the active frozen conductor invocation",
+    )
+    autorun_report.add_argument("--request", type=Path, required=True)
+    checkpoint = autorun_report.add_mutually_exclusive_group(required=True)
+    checkpoint.add_argument("--checkpoint-id")
+    checkpoint.add_argument("--no-checkpoint", action="store_true")
+    autorun_report.add_argument(
+        "--progress-class",
+        choices=sorted({"incremental", "meaningful", "blocked", "complete"}),
+        required=True,
+    )
+    autorun_report.add_argument("--summary", required=True)
+    autorun_report.add_argument("--evidence", required=True)
     autorun_show = subparsers.add_parser(
         "autorun-status", help="show retained autorun controller state"
     )
@@ -133,8 +158,18 @@ def _parser() -> argparse.ArgumentParser:
     )
     autorun_events.add_argument("--session", type=Path, required=True)
     autorun_events.add_argument("--interval", type=float, default=1.0)
+    autorun_workspace = subparsers.add_parser(
+        "autorun-workspace",
+        help="create or refresh a live Herdr workspace for an autorun session",
+    )
+    autorun_workspace.add_argument("--project", type=Path)
+    autorun_workspace.add_argument("--session", type=Path)
+    autorun_workspace.add_argument("--label", required=True)
+    autorun_workspace.add_argument("--herdr", default="herdr")
+    autorun_workspace.add_argument("--no-focus", action="store_true")
     autorun_stop = subparsers.add_parser(
-        "autorun-stop", help="request a running autorun controller to stop"
+        "autorun-stop",
+        help="request a durable stop and return its one-use resume token",
     )
     autorun_stop.add_argument("--session", type=Path, required=True)
     autonomy_run = subparsers.add_parser(
@@ -254,6 +289,41 @@ def _parser() -> argparse.ArgumentParser:
         help="resume a running schema-v2 report",
     )
     _runtime_arguments(benchmark, include_runs=False)
+    proof_builder = subparsers.add_parser(
+        "proof-builder",
+        help="build, resume, and independently verify professor-facing Lean proof packages",
+    )
+    proof_commands = proof_builder.add_subparsers(
+        dest="proof_builder_command", required=True
+    )
+    proof_init = proof_commands.add_parser(
+        "init", help="create a reusable proof-package manifest template"
+    )
+    proof_init.add_argument("--manifest", type=Path, required=True)
+    proof_build = proof_commands.add_parser(
+        "build", help="build a new immutable proof package"
+    )
+    proof_build.add_argument("--manifest", type=Path, required=True)
+    proof_build.add_argument("--omp")
+    proof_build.add_argument("--lake", default="lake")
+    proof_resume = proof_commands.add_parser(
+        "resume", help="repair a failed retained proof package"
+    )
+    proof_resume.add_argument("--package", type=Path, required=True)
+    proof_resume.add_argument("--feedback", action="append", default=[])
+    proof_resume.add_argument("--omp")
+    proof_resume.add_argument("--lake", default="lake")
+    proof_verify = proof_commands.add_parser(
+        "verify", help="verify package checksums and rerun its pinned Lean build"
+    )
+    proof_verify.add_argument("--package", type=Path, required=True)
+    proof_verify.add_argument("--lake", default="lake")
+    proof_verify.add_argument(
+        "--checksums-only",
+        action="store_true",
+        help="verify retained bytes without rerunning Lean",
+    )
+
     proof_attempt = subparsers.add_parser(
         "proof-attempt",
         help="verify one retained Lean candidate against a trusted typed contract",
@@ -468,6 +538,41 @@ def main(argv: list[str] | None = None) -> int:
     parser = _parser()
     args = parser.parse_args(argv)
     try:
+        if args.command == "proof-builder":
+            if args.proof_builder_command == "init":
+                manifest = initialize_proof_manifest(args.manifest)
+                print(f"proof-builder manifest: {manifest}")
+                return 0
+            if args.proof_builder_command == "build":
+                result = build_proof_package(
+                    args.manifest,
+                    omp=args.omp,
+                    lake=args.lake,
+                )
+                print(f"proof package status: {result.status}")
+                print(f"proof package: {result.package_dir}")
+                return 0 if result.accepted else 1
+            if args.proof_builder_command == "resume":
+                result = resume_proof_package(
+                    args.package,
+                    omp=args.omp,
+                    lake=args.lake,
+                    feedback=tuple(args.feedback),
+                )
+                print(f"proof package status: {result.status}")
+                print(f"proof package: {result.package_dir}")
+                return 0 if result.accepted else 1
+            if args.proof_builder_command == "verify":
+                count = verify_proof_package(
+                    args.package,
+                    lake=args.lake,
+                    rerun_lean=not args.checksums_only,
+                )
+                print(f"proof package verified: {count} retained files")
+                return 0
+            raise AssertionError(
+                f"unhandled proof-builder command: {args.proof_builder_command}"
+            )
         if args.command in {"regression-assess", "regression-fit"}:
             features = load_array(
                 args.features,
@@ -497,7 +602,7 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "proof-attempt":
             receipt = args.receipt.expanduser().resolve()
-            result = run_candidate_proof_gate(
+            proof_result = run_candidate_proof_gate(
                 args.project,
                 candidate_path=args.candidate,
                 contract_path=args.contract,
@@ -507,10 +612,10 @@ def main(argv: list[str] | None = None) -> int:
                 timeout=args.timeout,
                 run_dir=receipt.parent,
             )
-            atomic_write_json(receipt, result.to_dict())
-            print(f"proof attempt: {result.status}")
+            atomic_write_json(receipt, proof_result.to_dict())
+            print(f"proof attempt: {proof_result.status}")
             print(f"receipt: {receipt}")
-            return 0 if result.passed else 1
+            return 0 if proof_result.passed else 1
         if args.command == "features":
             for feature_id in FeatureRegistry().feature_ids:
                 print(feature_id)
@@ -544,6 +649,27 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(f"report: {report_path}")
             return 0 if summary["accepted"] else 1
+        if args.command == "autorun-report":
+            marker = conductor_claim_marker(
+                args.request,
+                checkpoint_id=None if args.no_checkpoint else args.checkpoint_id,
+                progress_class=args.progress_class,
+                summary=args.summary,
+                evidence=args.evidence,
+            )
+            print(marker)
+            return 0
+        if args.command == "autorun-workspace":
+            project = ProjectSpec.load(args.project or discover_project())
+            workspace = restore_autorun_workspace(
+                project,
+                label=args.label,
+                session_dir=args.session,
+                herdr_executable=args.herdr,
+                focus=not args.no_focus,
+            )
+            print(f"autorun workspace: {workspace.workspace_id}")
+            return 0
         if args.command == "autorun-output":
             follow_autorun_output(args.session, interval_seconds=args.interval)
             return 0
@@ -736,6 +862,8 @@ def main(argv: list[str] | None = None) -> int:
         ConfigurationError,
         CampaignRunError,
         RegimeError,
+        HerdrError,
+        ProofBuilderError,
         OSError,
         ValueError,
     ) as exc:

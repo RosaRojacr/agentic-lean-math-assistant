@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.y",
+  "domain_issues": [],
+  "informal_statement": "The first type-(iv) exterior-angle predictor with xi coupling.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:497-498, the source contract is `def y (p : Point) : ℝ := brick.centers 1 + brick.slopes 1 * p.t + brick.yXiSlope * p.xi + p.eta`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9e7642719b786de830ac8e4bdac8c25ca9f746737432d174122c9b0d847d92b9",
+  "symbol_mismatches": []
+}

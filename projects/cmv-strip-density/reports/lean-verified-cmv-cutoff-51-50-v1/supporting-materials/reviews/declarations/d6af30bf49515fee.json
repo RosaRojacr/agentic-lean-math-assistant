@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.lambda_iff_centered",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's density bounds are equivalent to its centered parameter bounds.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:460-472, the source contract is `theorem lambda_iff_centered {lam : ℝ} : lamInterval.RealContains lam ↔ tInterval.RealContains (lam - (lamMid : ℝ))`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80585faf74c765a727b4d57aad40e1258e6fc487898dae74ceaba8d89c1df2a3",
+  "symbol_mismatches": []
+}

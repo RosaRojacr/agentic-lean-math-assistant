@@ -1,0 +1,51 @@
+import CMVOrientedLoopSmoothTrace
+
+open CMVBoundaryLocalAtlas
+open CMVRelaxation
+open CMVRelaxation.FiniteJunctionRepair
+
+#print axioms orientedGraphDomain
+#print axioms occupiedLeftGraphTrace
+#print axioms occupiedLeftGraphVelocity
+#print axioms occupiedGraphProbe
+#print axioms planarDet
+#print axioms cutNormalCoordinate
+#print axioms occupiedLeftCutTrace
+#print axioms occupiedLeftCutVelocity
+#print axioms occupiedCutProbe
+#print axioms occupiedLeftCutTrace_zero
+#print axioms cutNormalCoordinate_occupiedLeftCutTrace
+#print axioms occupiedLeftCutTrace_contDiff
+#print axioms occupiedLeftCutTrace_hasDerivAt
+#print axioms occupiedLeftCutVelocity_ne_zero
+#print axioms occupiedLeftCutTrace_injective
+#print axioms planarDet_occupiedLeftCutVelocity_probe
+#print axioms signedCoordinateOccupied_cutProbe
+#print axioms exists_occupiedCutSides_at_closedCutRectangle_corner
+#print axioms OccupiedLeftRegularTrace
+#print axioms OccupiedLeftRegularTrace.trace_contDiff
+#print axioms OccupiedLeftRegularTrace.trace_hasDerivAt
+#print axioms OccupiedLeftRegularTrace.velocity_ne_zero
+#print axioms OccupiedLeftRegularTrace.planarDet_velocity_probe
+#print axioms OccupiedLeftRegularTrace.trace_injective
+#print axioms OccupiedLeftRegularTrace.trace_regular
+#print axioms OccupiedLeftRegularTrace.trace_contDiffOn_Icc
+#print axioms OccupiedLeftRegularTrace.exists_lipschitzOnWith_Icc
+#print axioms
+  HasOrientedSmoothBoundaryGraphGermOnSide.toOccupiedLeftRegularTrace
+#print axioms OccupiedLeftTransverseEndpointTraces
+#print axioms OccupiedLeftTransverseEndpointTraces.source_contDiff
+#print axioms OccupiedLeftTransverseEndpointTraces.source_injective
+#print axioms OccupiedLeftTransverseEndpointTraces.cut_contDiff
+#print axioms OccupiedLeftTransverseEndpointTraces.cut_injective
+#print axioms
+  OccupiedLeftTransverseEndpointTraces.crop_eventually_eq_oriented_domains
+#print axioms OccupiedLeftTransverseEndpointTraces.source_regular
+#print axioms OccupiedLeftTransverseEndpointTraces.cut_regular
+#print axioms OccupiedLeftTransverseEndpointTraces.oriented_determinants
+#print axioms
+  CMVRelaxation.exists_occupiedLeftTransverseEndpointTraces_of_noncornerJunction
+#print axioms
+  FinitePiecewiseRegularBoundaryTopology.exists_regularTrace_away_exceptionalPoints
+#print axioms
+  FinitePiecewiseRegularBoundaryTopology.exists_occupiedLeftRegularTrace

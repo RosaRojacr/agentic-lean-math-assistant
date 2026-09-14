@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap_leftEndpoint",
+  "domain_issues": [],
+  "informal_statement": "The upper cap's left endpoint is its intended upper junction.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:934-938, the source contract is `theorem outerCap_leftEndpoint : a.outerCap.leftEndpoint = (-a.radius * sin a.outerAngle, 1)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "369e532ae6bbe742ee13471a1a8cc638a185e8c74c4f29cdde432417763b0fdb",
+  "symbol_mismatches": []
+}

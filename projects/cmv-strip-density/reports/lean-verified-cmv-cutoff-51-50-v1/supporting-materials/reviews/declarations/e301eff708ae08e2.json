@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeAngle",
+  "domain_issues": [],
+  "informal_statement": "Derivative of the type-(iii) analytic angle contribution.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:154-205, the source contract is `theorem hasDerivAt_typeThreeAngle {lam h : ℝ} (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) : HasDerivAt (typeThreeAngle lam) (2 * (1 / sqrt (1 - typeThreeShape h ^ 2) - lam / sqrt (lam ^ 2 - typeThreeShape h ^ 2))) h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6ec918819525fbc766cbbf40969985e480000f0bcbcf23d536b033e9e80b6380",
+  "symbol_mismatches": []
+}

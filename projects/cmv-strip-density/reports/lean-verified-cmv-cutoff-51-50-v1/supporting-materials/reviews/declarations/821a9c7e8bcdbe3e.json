@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedLeftArcParam",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) left arc parameter in Euclidean L2 coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:665-668, the source contract is `noncomputable def realizedLeftArcParam (s : ℝ) : EuclideanPlane := planeEuclideanHomeomorph (a.leftArcParam s)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "51fbf9517aa10415de53dc106db635c5f70b9c39860ba75778e696cdebf2d6c3",
+  "symbol_mismatches": []
+}

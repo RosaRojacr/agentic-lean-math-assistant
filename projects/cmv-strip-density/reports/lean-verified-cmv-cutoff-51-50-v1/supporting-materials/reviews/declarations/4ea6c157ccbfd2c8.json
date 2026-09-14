@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Point",
+  "domain_issues": [],
+  "informal_statement": "A centered density parameter and four real error coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:50-61, the source contract is `structure Point where t : ℝ xi : ℝ eta : ℝ rho : ℝ sigma : ℝ`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f6b6070cff3d67fea5f3a1bb07944579342b7bc314fcbc32fbf625a57ff72fc6",
+  "symbol_mismatches": []
+}

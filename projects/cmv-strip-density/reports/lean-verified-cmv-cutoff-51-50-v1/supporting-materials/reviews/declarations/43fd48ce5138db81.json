@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hasDerivAt_area",
+  "domain_issues": [],
+  "informal_statement": "Derivative of normalized cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:104-124, the source contract is `lemma hasDerivAt_area {θ : ℝ} (h0 : 0 < θ) (hπ : θ < π) : HasDerivAt area ((sin θ - θ * cos θ) / (2 * sin θ ^ 3)) θ`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "77cb2c9579c9e12eb25a7bd63dc9a791629029d7c8ad37f065713a7afa870b98",
+  "symbol_mismatches": []
+}

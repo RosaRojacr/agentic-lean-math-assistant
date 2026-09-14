@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The exposed left circle trace restricted to the strip.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:104-110, the source contract is `def leftArcTrace : Set PlanePoint := {p | (p.1 - a.leftCenter.1) ^ 2 + (p.2 - a.leftCenter.2) ^ 2 = a.radius ^ 2 ∧ p.1 ≤ a.leftCenter.1 ∧ (-1 : ℝ) ≤ p.2 ∧ p.2 ≤ 1}`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cfb74d8a54830ee4e695b37318a8d8c8a086063cc569f3e8d4fa167da3d5d0b9",
+  "symbol_mismatches": []
+}

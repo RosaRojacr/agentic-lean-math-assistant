@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FinitePerimeterRegion.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "Weighted area of the record's carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:83-85, the source contract is `def weightedArea {lam : ℝ} (r : FinitePerimeterRegion lam) : ℝ := WeightedArea lam r.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3892310b68bd795c4ddff8f1d276f58be0efcb96c1e8c4fad96ec7d73deea20a",
+  "symbol_mismatches": []
+}

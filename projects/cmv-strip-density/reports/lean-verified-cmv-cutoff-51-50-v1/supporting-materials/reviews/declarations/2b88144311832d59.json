@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "gd",
+  "domain_issues": [],
+  "informal_statement": "The explicit derivative function for g.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:33-34, the source contract is `noncomputable def gd (x : ℝ) : ℝ := 4 * sin (θOf x) - 4 * sin (θOf (2 * x))`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b105248ee05b475037dd209f9b23e6a5119f0585d6ae1093bea44c7ceded4050",
+  "symbol_mismatches": []
+}

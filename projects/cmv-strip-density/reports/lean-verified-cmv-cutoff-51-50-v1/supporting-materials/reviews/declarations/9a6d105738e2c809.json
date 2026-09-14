@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.QInterval",
+  "domain_issues": [],
+  "informal_statement": "Shared rational interval type in compact box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactSecondCell.lean:19-21, the source contract is `abbrev QInterval := ScalarSuffixCertificate.QInterval`. This is the explicit second compact box and its splice to the first. Closed interval membership retains the common rational endpoint; local root-slab conditions do not become extra hypotheses on an arbitrary candidate.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1a69616e446623c478186f47d8f25ae8cb966c1989db56c2e34bb70bf61b9a3c",
+  "symbol_mismatches": []
+}

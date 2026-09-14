@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_lt",
+  "domain_issues": [],
+  "informal_statement": "A regular negative-fold type-(iii) root at a modeled type-(iv) area lies below that type-(iv) curvature.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At SameCurvatureArea.lean:586-622, the source contract is `theorem typeThreeArea_descending_root_lt {lam root h : ℝ} (hlam : 1 < lam) (hroot : root ∈ Set.Ioo (0 : ℝ) 1) (hh : 0 < h) (hh1 : h ≤ 1) (hfold : typeThreeFold lam root < 0) (harea : typeThreeArea lam root = typeFourArea lam h) : root < h`. The strict same-curvature area inequality is proved for lambda > 1 and 0 < h <= 1. Combining it with monotonicity of the negative-fold branch gives a descending equal-area root strictly below the four-arc curvature, not above it.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f0218743e3c66d2b3ba1e5bdde4d44d6f7c58ed79dc9416fb8fb18d852a14824",
+  "symbol_mismatches": []
+}

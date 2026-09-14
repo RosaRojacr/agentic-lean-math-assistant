@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerAngle",
+  "domain_issues": [],
+  "informal_statement": "The exterior upper-cap half-angle a3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:59-63, the source contract is `def outerAngle : ℝ := arccos a.outerArgument`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e2ff2070394fdda5b4ec09824f47ed543dabdfe101c076ad378e0c92be2ff47",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hasDerivAt_g'",
+  "domain_issues": [],
+  "informal_statement": "The function gd is the derivative of g at every positive X.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:35-39, the source contract is `lemma hasDerivAt_g' {x : ℝ} (hx : 0 < x) : HasDerivAt g (gd x) x`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8f0141bd9b2ca2ed0af5052050d85c875e33a71481490dd5e2250b9a2886c5ba",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capParam",
+  "domain_issues": [],
+  "informal_statement": "Arclength-scaled parametrization of a circular cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1241-1243, the source contract is `def capParam (c : OneSidedCircularCap) (s : ℝ) : PlanePoint := c.arcPoint (s / c.radius)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d80d6cd5283176fe8b29770f039d1135a8892539144575a4bc1d9962ad427168",
+  "symbol_mismatches": []
+}

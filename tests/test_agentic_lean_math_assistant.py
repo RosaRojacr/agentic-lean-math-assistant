@@ -8,6 +8,7 @@ import os
 import signal
 import subprocess
 import sys
+import threading
 import time
 from dataclasses import replace
 from pathlib import Path
@@ -16,6 +17,7 @@ from types import SimpleNamespace
 
 import pytest
 
+import agentic_lean_math_assistant.agent_runner as campaign_agent_runner
 import agentic_lean_math_assistant.config as campaign_config
 import agentic_lean_math_assistant.features as campaign_features
 import agentic_lean_math_assistant.processes as campaign_processes
@@ -554,6 +556,8 @@ depends_on = []
         (2, 1, 0, "complete", ("failed", "succeeded"), (0, 0)),
         (2, 99, 0, "incomplete", ("failed", "failed", "failed"), (0, 0, 0)),
         (2, 1, 1, "complete", ("failed", "succeeded"), (1, 0)),
+        (2, 99, 134, "incomplete", ("crashed",), (134,)),
+        (2, 99, 137, "incomplete", ("resource_exhausted",), (137,)),
     ),
 )
 def test_agent_empty_output_retries_are_bounded_and_durable(
@@ -623,6 +627,19 @@ max_time = 60
         )
     )
     assert request["workspace_executables"] is True
+    expected_failure_classes = tuple(
+        status if status in {"crashed", "resource_exhausted"} else None
+        for status in statuses
+    )
+    assert (
+        tuple(invocation["failure_class"] for invocation in receipt["invocations"])
+        == expected_failure_classes
+    )
+    assert all(
+        invocation["resource_wait_seconds"] >= 0
+        for invocation in receipt["invocations"]
+    )
+    assert receipt["failure_class"] == expected_failure_classes[-1]
     configured_retries = empty_output_retries or 0
     assert state["status"] == run_status
     counter = run_dir / "workspace/.omp-invocations"
@@ -647,14 +664,15 @@ max_time = 60
     if run_status == "complete":
         assert receipt["status"] == "succeeded"
         assert receipt["error"] is None
-        assert (
-            (run_dir / "agents/research/analyst/attempt-01.md")
-            .read_text(encoding="utf-8")
-            .startswith("# analyst")
-        )
+        assert (run_dir / "agents/research/analyst/attempt-01.md").read_text(
+            encoding="utf-8"
+        ) == "# analyst\n\nCompleted attempt 1.\n"
     else:
-        assert receipt["status"] == "failed"
-        assert receipt["error"] == "OMP exited with 0 and produced no output"
+        assert receipt["status"] == statuses[-1]
+        if statuses[-1] == "failed":
+            assert receipt["error"] == "OMP exited with 0 and produced no output"
+        elif statuses[-1] in {"crashed", "resource_exhausted"}:
+            assert "automatic retry suppressed" in receipt["error"]
         partial = run_dir / "agents/research/analyst/attempt-01-partial/checkpoint.txt"
         assert partial.read_text(encoding="utf-8") == "useful partial output\n"
         partial_receipt = json.loads(
@@ -1950,6 +1968,7 @@ def test_sandbox_uses_cgroup_memory_without_virtual_address_limit(
         policy=ExecutionSpec.from_table(None, tmp_path),
         runtime_max_seconds=30,
     )
+    assert "OOMPolicy=kill" in invocation.argv
 
     assert any("MemoryMax=" in argument for argument in invocation.argv)
     assert not any("LimitAS=" in argument for argument in invocation.argv)
@@ -1968,6 +1987,7 @@ def test_resource_controls_apply_when_namespace_sandbox_is_disabled(
         workspace=tmp_path,
         environment={"HOME": str(tmp_path), "PATH": "/usr/bin"},
         policy=policy,
+        report_resource_failures=True,
         runtime_max_seconds=30,
     )
 
@@ -1984,6 +2004,75 @@ def test_resource_controls_apply_when_namespace_sandbox_is_disabled(
     assert result.returncode != 0
     assert invocation.metadata["enabled"] is False
     assert invocation.metadata["backend"] == "systemd-cgroup"
+
+    assert "oom-kill" in result.stderr
+
+
+@pytest.mark.parametrize(
+    ("program", "expected_status", "failure_evidence"),
+    (
+        (
+            "bytearray(256 * 1024 * 1024)",
+            "resource_exhausted",
+            "oom-kill",
+        ),
+        (
+            "import os, signal; os.kill(os.getpid(), signal.SIGSEGV)",
+            "crashed",
+            "core-dump",
+        ),
+    ),
+)
+def test_runner_suppresses_retry_after_cgroup_failure(
+    tmp_path: Path,
+    program: str,
+    expected_status: str,
+    failure_evidence: str,
+) -> None:
+    workspace = tmp_path / "workspace"
+    run_dir = tmp_path / "run"
+    workspace.mkdir()
+    run_dir.mkdir()
+    omp = _executable(
+        tmp_path / "failing-omp",
+        f"#!{sys.executable}\n{program}\n",
+    )
+    prompt = tmp_path / "prompt.md"
+    prompt.write_text("Exercise the resource failure path.\n", encoding="utf-8")
+    receipt_path = run_dir / "receipt.json"
+    request_path = tmp_path / "request.json"
+    request_path.write_text(
+        json.dumps(
+            {
+                "role_id": "memory_pressure",
+                "attempt": 1,
+                "omp": str(omp),
+                "workspace": str(workspace),
+                "run_dir": str(run_dir),
+                "prompt": str(prompt),
+                "output": str(run_dir / "output.md"),
+                "stdout_log": str(run_dir / "stdout.log"),
+                "stderr_log": str(run_dir / "stderr.log"),
+                "receipt": str(receipt_path),
+                "tools": [],
+                "model": None,
+                "thinking": None,
+                "max_time": 30,
+                "empty_output_retries": 3,
+                "execution": {"sandbox": False, "memory_max_mb": 64},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert campaign_agent_runner.execute(request_path) == 1
+
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    assert receipt["status"] == expected_status
+    assert receipt["failure_class"] == expected_status
+    assert len(receipt["invocations"]) == 1
+    assert "automatic retry suppressed" in receipt["error"]
+    assert failure_evidence in (run_dir / "stderr.log").read_text(encoding="utf-8")
 
 
 @pytest.mark.parametrize("allow_workspace_executables", (False, True))
@@ -2790,10 +2879,7 @@ def test_herdr_pane_run_preserves_absolute_program(
             "pane",
             "run",
             "w1:p1",
-            " env",
-            "/opt/campaign/bin/python",
-            "-m",
-            "runner",
+            "/opt/campaign/bin/python -m runner",
         )
     ]
 
@@ -4963,6 +5049,48 @@ def test_terminate_rechecks_start_time_after_pidfd_open_and_before_signal(
 
     assert opened == [4242]
     assert signaled == []
+
+
+def test_host_resource_lease_serializes_local_campaigns(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv(
+        "AGENTIC_LEAN_MATH_ASSISTANT_RUNTIME_DIR", str(tmp_path / "runtime")
+    )
+    first_entered = threading.Event()
+    release_first = threading.Event()
+    second_attempting = threading.Event()
+    second_entered = threading.Event()
+    waits: list[float] = []
+
+    def hold_first() -> None:
+        with process_registry.host_resource_lease() as waited:
+            waits.append(waited)
+            first_entered.set()
+            release_first.wait(2)
+
+    def hold_second() -> None:
+        second_attempting.set()
+        with process_registry.host_resource_lease() as waited:
+            waits.append(waited)
+            second_entered.set()
+
+    first = threading.Thread(target=hold_first)
+    second = threading.Thread(target=hold_second)
+    first.start()
+    assert first_entered.wait(1)
+    second.start()
+    assert second_attempting.wait(1)
+    assert not second_entered.wait(0.1)
+    release_first.set()
+    first.join(1)
+    second.join(1)
+
+    assert not first.is_alive()
+    assert not second.is_alive()
+    assert second_entered.is_set()
+    assert len(waits) == 2
+    assert all(waited >= 0 for waited in waits)
 
 
 def test_unregister_run_process_discards_reused_leader_identity(

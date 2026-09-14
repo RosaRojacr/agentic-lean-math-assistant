@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.InSymmetricBox",
+  "domain_issues": [],
+  "informal_statement": "Coordinatewise membership in a symmetric four-dimensional box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:24-26, the source contract is `abbrev InSymmetricBox := ScalarSuffixCertificate.InSymmetricBox`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7113db679549bacbee758495cf87555b49cdbe440060902d1105828bd48ba194",
+  "symbol_mismatches": []
+}

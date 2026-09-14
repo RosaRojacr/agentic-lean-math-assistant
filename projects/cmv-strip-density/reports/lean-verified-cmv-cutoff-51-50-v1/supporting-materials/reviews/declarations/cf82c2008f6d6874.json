@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pairwiseOverlap",
+  "domain_issues": [],
+  "informal_statement": "The union of pairwise intersections among four boundary pieces.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1110-1114, the source contract is `def pairwiseOverlap (A B C D : Set PlanePoint) : Set PlanePoint := (A ∩ B) ∪ ((A ∩ C) ∪ ((A ∩ D) ∪ ((B ∩ C) ∪ ((B ∩ D) ∪ (C ∩ D)))))`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f2051dcd764bb55c1f4c980a58c56ba3f51d928d6141df3262dbdd919f1b5fbd",
+  "symbol_mismatches": []
+}

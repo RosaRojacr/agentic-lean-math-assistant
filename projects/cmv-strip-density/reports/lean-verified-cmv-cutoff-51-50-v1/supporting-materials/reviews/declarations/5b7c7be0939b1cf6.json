@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.QInterval.realContains_arcsin_of_taylor",
+  "domain_issues": [],
+  "informal_statement": "A first-cell inverse-sine enclosure justified by Taylor bounds.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:24-38, the source contract is `theorem realContains_arcsin_of_taylor (a : QInterval) (x : ℚ) (hx : (-1 : ℚ) ≤ x ∧ x ≤ 1) (hbranch : (a.lo : ℝ) ∈ Icc (-(π / 2)) (π / 2) ∧ (a.hi : ℝ) ∈ Icc (-(π / 2)) (π / 2)) (hlo : (ScalarSuffixCertificate.sinTaylor27Interval a.lo).hi ≤ x) (hhi : x ≤ (ScalarSuffixCertificate.sinTaylor27Interval a.hi).lo) : a.RealContains (arcsin (x : ℝ))`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "89a8b20d50a5cd5fff8193c5fcee59fcf1459ec24caa265aff4f074622f22d58",
+  "symbol_mismatches": []
+}

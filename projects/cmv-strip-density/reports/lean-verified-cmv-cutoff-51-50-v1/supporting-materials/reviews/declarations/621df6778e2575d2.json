@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.lamMid",
+  "domain_issues": [],
+  "informal_statement": "The rational midpoint of a brick's density interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:38-38, the source contract is `abbrev lamMid (b : Brick) : ℚ := (b.lamLo + b.lamHi) / 2`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2d4db33efad481c4328c1c7dfb050b5a976c6575fe3896f4791861bbf4743632",
+  "symbol_mismatches": []
+}

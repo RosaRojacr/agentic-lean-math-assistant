@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf",
+  "domain_issues": [],
+  "informal_statement": "A total real function equal to the inverse normalized-area angle for positive input and to pi/2 for nonpositive input.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:247-249, the source contract is `noncomputable def θOf (x : ℝ) : ℝ := if h : 0 < x then (area_surjOn (mem_Ioi.mpr h)).choose else π / 2`. For X > 0 the definition chooses the unique theta in (0,pi) with normalized area X; for X <= 0 it returns pi/2. The author explicitly records that fallback, so total Lean division/inverse conventions do not create an unstated positive-area extension.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ae683fbf0fd357d5b8a59395fa6c08ffe184192942daf192789541eb610f89e3",
+  "symbol_mismatches": []
+}

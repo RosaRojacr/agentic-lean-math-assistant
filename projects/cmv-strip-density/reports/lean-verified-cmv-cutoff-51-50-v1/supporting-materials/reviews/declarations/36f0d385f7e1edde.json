@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capArea",
+  "domain_issues": [],
+  "informal_statement": "Euclidean area of either original exterior cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:45-49, the source contract is `def capArea : ℝ := (candidate.alpha - sin candidate.alpha * cos candidate.alpha) / candidate.h ^ 2`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eb6c25ab8d5e1e4d2ce589b98fc3af2d04e58bd682ad273d1b07834426ee23d0",
+  "symbol_mismatches": []
+}

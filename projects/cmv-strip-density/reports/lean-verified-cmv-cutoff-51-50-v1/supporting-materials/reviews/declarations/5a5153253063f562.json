@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sin_sideAngle",
+  "domain_issues": [],
+  "informal_statement": "The sine of the core side angle is h.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:474-477, the source contract is `theorem sin_sideAngle (c : StripCore) : sin c.sideAngle = c.curvature`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e85f9cb3c0c2b22c1ce74fdc60660033205e7a0821e76cfdd7248571352ea184",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_semicircle_translated",
+  "domain_issues": [],
+  "informal_statement": "The circular cross-section integral after translation.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1792-1800, the source contract is `lemma integral_semicircle_translated {a r θ : ℝ} (hr : 0 < r) (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) : (∫ y in a + r * cos θ..a + r, 2 * √(r ^ 2 - (y - a) ^ 2)) = r ^ 2 * (θ - sin θ * cos θ)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "06721e5dc911d180205234ff69b820e369a8d82b66f142e17c0a1377b9b27f8d",
+  "symbol_mismatches": []
+}

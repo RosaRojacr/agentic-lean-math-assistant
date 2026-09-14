@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.scalarWeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The source scalar area expression attached to the assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:295-299, the source contract is `def scalarWeightedArea : ℝ := (a.angleTerm + (a.shapeParameter + 2) * a.sineGap) / a.h ^ 2`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "195fdb382725116907cc721bab689c5c6f6f34b356a442f900ba649d89b62b9c",
+  "symbol_mismatches": []
+}

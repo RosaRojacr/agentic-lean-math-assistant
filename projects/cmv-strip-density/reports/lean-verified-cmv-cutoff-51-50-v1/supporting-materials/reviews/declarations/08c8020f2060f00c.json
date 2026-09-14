@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourAngle",
+  "domain_issues": [],
+  "informal_statement": "Derivative of B4 on the interior curvature domain.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:241-278, the source contract is `theorem hasDerivAt_typeFourAngle {lam h : ℝ} (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) : HasDerivAt (typeFourAngle lam) (1 / sqrt (1 - h ^ 2) - lam / sqrt (lam ^ 2 - h ^ 2)) h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ed3b0f3804a218b0cd68be6333d68c33832835819c8ca12dd83eb68bae07439d",
+  "symbol_mismatches": []
+}

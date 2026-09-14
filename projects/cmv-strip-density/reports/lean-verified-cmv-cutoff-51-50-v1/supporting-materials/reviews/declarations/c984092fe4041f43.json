@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "The cap frontier is exactly its arc trace union its chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:697-761, the source contract is `theorem frontier_carrier (c : OneSidedCircularCap) : frontier c.carrier = arcTrace c ∪ c.chordCarrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d9cb2c749721b51457faae17a95033cf908527d3fdc652ebedacfbb2292d579d",
+  "symbol_mismatches": []
+}

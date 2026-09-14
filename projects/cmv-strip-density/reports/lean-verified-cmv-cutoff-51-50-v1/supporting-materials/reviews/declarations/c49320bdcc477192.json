@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.mul",
+  "domain_issues": [],
+  "informal_statement": "Interval product using the minimum and maximum of four endpoint products.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:30-44, the source contract is `def mul (i j : QInterval) : QInterval where lo := min (min (i.lo * j.lo) (i.lo * j.hi)) (min (i.hi * j.lo) (i.hi * j.hi)) hi := max (max (i.lo * j.lo) (i.lo * j.hi)) (max (i.hi * j.lo) (i.hi * j.hi)) ordered := by calc min (min (i.lo * j.lo) (i.lo * j.hi)) (min (i.hi * j.lo) (i.hi * j.hi)) ≤ i.lo * j.lo := (min_le_left _ _).trans (min_le_left _ _) _ ≤ max (max (i.lo * j.lo) (i.lo * j.hi)) (max (i.hi * j.lo) (i.hi * j.hi)) := (le_max_left _ _).trans (le_max_left _ _)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d7a9188e958ff3c0238d78f3d3a0728ab82af07abbb6a56e4a749efa8520624",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourDelta",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) radical displacement D4.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:57-60, the source contract is `def typeFourDelta (lam h : ℝ) : ℝ := sqrt (lam ^ 2 - h ^ 2) / lam - sqrt (1 - h ^ 2)`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a4c8b30971f59f8f04626dbddf49af92c98dbfa9126bf3766c0be8b6472cbfb3",
+  "symbol_mismatches": []
+}

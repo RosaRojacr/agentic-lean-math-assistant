@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.centered_meanValue_exists",
+  "domain_issues": [],
+  "informal_statement": "The centered mean-value identity with a single intermediate point.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:93-129, the source contract is `theorem centered_meanValue_exists (f f' : ℝ → ℝ) {c h : ℝ} (hderiv : ∀ x ∈ Set.uIcc c h, HasDerivAt f (f' x) x) : ∃ ξ ∈ Set.uIcc c h, f h = f c + f' ξ * (h - c)`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9e16c64246998ba49ad719b4074913f0337c8612efed42e98f32935fcd55a3e5",
+  "symbol_mismatches": []
+}

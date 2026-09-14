@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedLeftCoreParam_eq",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean left core parameter equals its scaled complex-circle representation.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:713-719, the source contract is `lemma realizedLeftCoreParam_eq (c : StripCore) (s : ℝ) : realizedLeftCoreParam c s = leftCoreComplexIsometryMap c (unitCircleArc c.radius s)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e2c0026193d6fa0dd58c252b75c6df1a108616049c60130059ddb93311c0b2a0",
+  "symbol_mismatches": []
+}

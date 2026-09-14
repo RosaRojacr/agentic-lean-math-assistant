@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.cap_replacement_perimeter_difference",
+  "domain_issues": [],
+  "informal_statement": "For every modeled candidate and arbitrary real density parameter, replacement perimeter minus candidate perimeter equals c(1-lambda g(X)).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GeometricBridge.lean:124-133, the source contract is `theorem cap_replacement_perimeter_difference : candidate.capReplacementRegion.WeightedPerimeter - candidate.WeightedPerimeter = candidate.capChord * (1 - lam * g candidate.capX)`. The exact identity is P(replacement)-P(candidate)=c*(1-lambda*g(X)), which is division-free and valid for arbitrary real lambda. The main proof's opposite-sign saving lambda*c*(g(X)-1/lambda) is used only when lambda > 1. Thus there is no illicit division at lambda=0 or reversal of the improvement sign.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cef0cb1c446892a6b4545fed077efd78b2014155506ae9d18d92702507d05712",
+  "symbol_mismatches": []
+}

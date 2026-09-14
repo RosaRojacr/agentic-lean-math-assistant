@@ -1,0 +1,29 @@
+import CMVTransverseContactVariation
+
+#print axioms CMVTransverseContactVariation.volume_horizontalRegionBetween
+#print axioms
+  CMVTransverseContactVariation.HorizontalGraphPatch.weightedArea_variedCarrier
+#print axioms
+  CMVTransverseContactVariation.ContactData.weighted_area_rates_cancel
+#print axioms
+  CMVTransverseContactVariation.ContactData.abs_compensationCoefficient_le
+#print axioms
+  CMVTransverseContactVariation.ContactData.abs_compensationCoefficient_le_lam_add_one_mul_rho
+#print axioms CMVTransverseContactVariation.ContactData.variedGraphs_meet
+#print axioms
+  CMVTransverseContactVariation.ContactData.minus_variedGraph_eq_on_outer
+#print axioms
+  CMVTransverseContactVariation.ContactData.plus_variedGraph_eq_on_outer
+#print axioms
+  CMVTransverseContactVariation.ContactData.weightedArea_variedRibbons_eq
+#print axioms
+  CMVTransverseContactVariation.ContactData.variedRibbons_symmDiff_subset_supportTubes
+#print axioms
+  CMVTransverseContactVariation.ActualContactData.weightedArea_variedCarrier
+#print axioms
+  CMVTransverseContactVariation.ActualContactData.mem_variedCarrier_iff_of_not_mem_supportTubes
+#print axioms
+  CMVTransverseContactVariation.ActualContactData.transverse_contact_exact_area_checkpoint
+#print axioms CMVTransverseContactVariation.Examples.actualCarrier_bounded
+#print axioms CMVTransverseContactVariation.Examples.transmissionDefect_ne_zero
+#print axioms CMVTransverseContactVariation.Examples.exact_area_family

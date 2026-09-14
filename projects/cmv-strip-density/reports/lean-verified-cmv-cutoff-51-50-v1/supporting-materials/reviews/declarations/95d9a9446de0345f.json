@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "gd_pos_of_xstar_lt",
+  "domain_issues": [],
+  "informal_statement": "The derivative of g is positive after Xstar.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:99-109, the source contract is `lemma gd_pos_of_xstar_lt {x : ℝ} (h : xstar < x) : 0 < gd x`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "aa9cc07829ae7f90ff1904fd8a3bd95114f930be277c8de2503c494dfa26a0dc",
+  "symbol_mismatches": []
+}

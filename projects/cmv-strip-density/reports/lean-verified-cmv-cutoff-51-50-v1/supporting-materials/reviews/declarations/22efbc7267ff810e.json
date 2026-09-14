@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.Conditions.candidate_not_isWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "A valid compact cell excludes every modeled candidate at each enclosed density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellAssembly.lean:312-338, the source contract is `theorem candidate_not_isWeightedPerimeterMinimizer (conditions : Conditions lambdaInterval h3Interval h4Interval) {lam : ℝ} (hlam : lambdaInterval.RealContains lam) (candidate : _root_.FourArcCandidate lam) (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : ¬ candidate.IsWeightedPerimeterMinimizer`. The Conditions record contains regular root slabs, opposite stationary-fold and area-face signs, negative type-(iii) fold, and a strict perimeter sign. The generic assembly derives a stationary pair and then uses the all-curvature envelope; candidate curvature is not confined to the certificate slab.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6281e20f4e6b992e95255e50221808300ba4ec7b1c545ab00d1868e256be0776",
+  "symbol_mismatches": []
+}

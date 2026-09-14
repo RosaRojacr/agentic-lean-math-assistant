@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.region",
+  "domain_issues": [],
+  "informal_statement": "The candidate assembly as an admissible four-arc competitor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:73-75, the source contract is `def region : AdmissibleCompetitor lam := .fourArc candidate.assembly`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8ab9f84c197a1a6dbe90236469e9ff5cc2696f04e42133db44cdf34546558b75",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "The equal-area perimeter gap has derivative (r(t)-t)A4'(t).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At EqualAreaEnvelope.lean:184-225, the source contract is `theorem equalAreaPerimeterGap_hasDerivAt {lam h : ℝ} {root : ℝ → ℝ} (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) (hroot_pos : 0 < root h) (hroot_lt_one : root h < 1) (hroot_differentiable : DifferentiableAt ℝ root h) (hequalArea : ∀ ⦃x : ℝ⦄, 0 < x → x ≤ 1 → typeThreeArea lam (root x) = typeFourArea lam x) : HasDerivAt (equalAreaPerimeterGap lam root) ((root h - h) * deriv (typeFourArea lam) h) h`. Equal area and the negative-fold branch are distinct requirements. Interior differentiation requires a simple root; the closure endpoint uses one-sided continuity. The main proof derives these properties rather than assuming the all-curvature perimeter comparison.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "42f42f4f683c9b8ff6e876958c9ae3b87d6bfd1ebf63072c7e612401d7b5ee93",
+  "symbol_mismatches": []
+}

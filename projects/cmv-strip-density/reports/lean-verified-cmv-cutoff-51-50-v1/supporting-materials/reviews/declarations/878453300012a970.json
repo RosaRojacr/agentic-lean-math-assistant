@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.tInterval",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's centered density interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:457-457, the source contract is `def tInterval : QInterval := ⟨-tRadius, tRadius, by norm_num [tRadius, brick]⟩`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4051c1639ae05eb9e136816b4912782037642807485ecc541b8a4729aa41a839",
+  "symbol_mismatches": []
+}

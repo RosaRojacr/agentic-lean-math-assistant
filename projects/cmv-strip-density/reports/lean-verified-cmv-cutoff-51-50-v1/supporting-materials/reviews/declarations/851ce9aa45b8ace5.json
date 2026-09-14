@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_lower_external_density",
+  "domain_issues": [],
+  "informal_statement": "The lower exterior cap has density lambda along its open arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1341-1352, the source contract is `theorem cap_lower_external_density (lam : ℝ) (c : OneSidedCircularCap) (hside : c.side = .lower) (hbase : c.baseY = -1) {s : ℝ} (hs : s ∈ Ioo (capStart c) (capEnd c)) : StripDensity lam (capParam c s) = lam`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "baaf83c56acf8edc18268269454b4946af9c7098831da004f1da856c3f80d9b2",
+  "symbol_mismatches": []
+}

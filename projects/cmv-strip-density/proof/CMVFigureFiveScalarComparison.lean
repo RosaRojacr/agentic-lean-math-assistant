@@ -13,9 +13,10 @@ module computes the resulting cap angle, chord, area, and boundary excess for
 each of its one or two capped interfaces.  It then proves that the component
 model lies above the closed type-(iii) endpoint area and perimeter support line.
 
-These are component identities for the literal traces stored by `SourceGeometry`.
-They do not identify the actual source carrier with a component carrier and do
-not assert a relaxed-perimeter lower bound.
+The scalar area theorem integrates the unchanged actual source through its
+stored planar almost-everywhere representative relation.  It does not identify
+the actual source carrier with a global component carrier and does not assert a
+relaxed-perimeter lower bound.
 -/
 
 open Set Real MeasureTheory
@@ -265,6 +266,72 @@ theorem volume_trace
 
 end InterfaceBoundary
 
+/-- Removing the arc and chord from a closed cap does not change its planar
+volume. -/
+private theorem volume_capInterior (c : OneSidedCircularCap) :
+    volume c.interiorCarrier = ENNReal.ofReal c.euclideanArea := by
+  have hchord : volume c.chordCarrier = 0 := by
+    apply measure_mono_null
+      (t := {p : PlanePoint | p.2 = c.baseY})
+    · intro p hp
+      exact hp.1
+    · exact volume_horizontalLine c.baseY
+  have hboundary :
+      volume (c.arcTrace ∪ c.chordCarrier) = 0 :=
+    measure_union_null (volume_capArcTrace c) hchord
+  have hclosedSubset :
+      c.carrier ⊆ c.interiorCarrier ∪ (c.arcTrace ∪ c.chordCarrier) := by
+    intro p hp
+    by_cases hi : p ∈ c.interiorCarrier
+    · exact Or.inl hi
+    · right
+      by_cases hcircle : c.radiusSquaredAt p = c.radius ^ 2
+      · exact Or.inl ⟨hcircle, hp.2⟩
+      · right
+        apply c.mem_chordCarrier_of_mem_carrier_of_eq_base hp
+        have hcircleLt :
+            c.radiusSquaredAt p < c.radius ^ 2 :=
+          lt_of_le_of_ne hp.1 hcircle
+        cases hside : c.side with
+        | upper =>
+            simp only [OneSidedCircularCap.carrier, hside] at hp
+            simp only [OneSidedCircularCap.interiorCarrier, hside] at hi
+            by_contra hne
+            apply hi
+            exact ⟨hcircleLt, lt_of_le_of_ne hp.2 (Ne.symm hne)⟩
+        | lower =>
+            simp only [OneSidedCircularCap.carrier, hside] at hp
+            simp only [OneSidedCircularCap.interiorCarrier, hside] at hi
+            by_contra hne
+            apply hi
+            exact ⟨hcircleLt, lt_of_le_of_ne hp.2 hne⟩
+  have hinteriorSubset : c.interiorCarrier ⊆ c.carrier := by
+    intro p hp
+    cases hside : c.side with
+    | upper =>
+        simp only [OneSidedCircularCap.interiorCarrier,
+          OneSidedCircularCap.carrier, hside] at hp ⊢
+        exact ⟨hp.1.le, hp.2.le⟩
+    | lower =>
+        simp only [OneSidedCircularCap.interiorCarrier,
+          OneSidedCircularCap.carrier, hside] at hp ⊢
+        exact ⟨hp.1.le, hp.2.le⟩
+  have hleClosed :
+      volume c.carrier ≤ volume c.interiorCarrier := by
+    calc
+      volume c.carrier ≤
+          volume (c.interiorCarrier ∪
+            (c.arcTrace ∪ c.chordCarrier)) :=
+        measure_mono hclosedSubset
+      _ ≤ volume c.interiorCarrier +
+          volume (c.arcTrace ∪ c.chordCarrier) :=
+        measure_union_le _ _
+      _ = volume c.interiorCarrier := by rw [hboundary, add_zero]
+  have hvolume :
+      volume c.interiorCarrier = volume c.carrier :=
+    le_antisymm (measure_mono hinteriorSubset) hleClosed
+  rw [hvolume, c.volume_carrier]
+
 namespace SourceGeometry
 
 variable {lam : ℝ} (g : SourceGeometry lam)
@@ -285,6 +352,653 @@ interface traces. -/
 def modeledWeightedPerimeter : ℝ :=
   2 * Real.pi + g.upperBoundary.weightedBoundaryCost +
     g.lowerBoundary.weightedBoundaryCost
+
+/-- Boundedness of the open representative gives finite weighted area before
+any section integral is evaluated. -/
+theorem integrableOn_representative :
+    IntegrableOn (StripDensity lam) g.representative :=
+  stripDensity_integrableOn_of_volume_ne_top lam
+    g.sourceRepresentative.representative_bounded.measure_lt_top.ne
+
+/-- Weighted-area integrability transports from the bounded representative to
+the possibly unbounded almost-everywhere-modified actual source carrier. -/
+theorem integrableOn_sourceCarrier :
+    IntegrableOn (StripDensity lam) g.sourceCarrier :=
+  g.integrableOn_representative.congr_set_ae
+    g.sourceRepresentative.source_ae_representative
+
+/-- Actual source weighted area is computed on the bounded open representative
+through the stored planar almost-everywhere relation. -/
+theorem weightedArea_sourceCarrier_eq_representative :
+    _root_.WeightedArea lam g.sourceCarrier =
+      _root_.WeightedArea lam g.representative :=
+  CMVRelaxation.weightedArea_congr_ae lam
+    g.sourceRepresentative.source_ae_representative
+
+/-- Portion of the actual bounded representative in the strict density-one
+strip. -/
+def strictStripRegion : Set PlanePoint :=
+  g.representative ∩ {p | |p.2| < 1}
+
+/-- Portion of the actual bounded representative strictly above the strip. -/
+def upperExteriorRegion : Set PlanePoint :=
+  g.representative ∩ {p | 1 < p.2}
+
+/-- Portion of the actual bounded representative strictly below the strip. -/
+def lowerExteriorRegion : Set PlanePoint :=
+  g.representative ∩ {p | p.2 < -1}
+
+
+private theorem measurableSet_strictStripRegion :
+    MeasurableSet g.strictStripRegion :=
+  g.sourceRepresentative.representative_open.measurableSet.inter
+    (isOpen_lt continuous_snd.abs continuous_const).measurableSet
+
+private theorem measurableSet_upperExteriorRegion :
+    MeasurableSet g.upperExteriorRegion :=
+  g.sourceRepresentative.representative_open.measurableSet.inter
+    (isOpen_lt continuous_const continuous_snd).measurableSet
+
+private theorem measurableSet_lowerExteriorRegion :
+    MeasurableSet g.lowerExteriorRegion :=
+  g.sourceRepresentative.representative_open.measurableSet.inter
+    (isOpen_lt continuous_snd continuous_const).measurableSet
+/-- The three open density bands cut from the actual representative. -/
+def sectionRegion : Set PlanePoint :=
+  (g.strictStripRegion ∪ g.upperExteriorRegion) ∪
+    g.lowerExteriorRegion
+
+private theorem measurableSet_sectionRegion :
+    MeasurableSet g.sectionRegion :=
+  (g.measurableSet_strictStripRegion.union
+    g.measurableSet_upperExteriorRegion).union
+      g.measurableSet_lowerExteriorRegion
+
+/-- The actual representative is almost everywhere the disjoint union of its
+strict strip, upper exterior, and lower exterior.  Only the two density
+interfaces are omitted. -/
+theorem representative_ae_sectionRegion :
+    g.representative =ᵐ[volume] g.sectionRegion := by
+  let interfaces : Set PlanePoint :=
+    {p | p.2 = -1} ∪ {p | p.2 = 1}
+  have hinterfaces : volume interfaces = 0 :=
+    measure_union_null (volume_horizontalLine (-1))
+      (volume_horizontalLine 1)
+  have hcover :
+      g.representative ⊆ g.sectionRegion ∪ interfaces := by
+    intro p hp
+    by_cases hlower : p.2 < -1
+    · exact Or.inl (Or.inr ⟨hp, hlower⟩)
+    by_cases hlowerEq : p.2 = -1
+    · exact Or.inr (Or.inl hlowerEq)
+    have hlowerLt : -1 < p.2 :=
+      lt_of_le_of_ne (not_lt.mp hlower) (Ne.symm hlowerEq)
+    by_cases hupper : 1 < p.2
+    · exact Or.inl (Or.inl (Or.inr ⟨hp, hupper⟩))
+    by_cases hupperEq : p.2 = 1
+    · exact Or.inr (Or.inr hupperEq)
+    have hupperLt : p.2 < 1 :=
+      lt_of_le_of_ne (not_lt.mp hupper) hupperEq
+    exact Or.inl
+      (Or.inl (Or.inl ⟨hp, abs_lt.mpr ⟨hlowerLt, hupperLt⟩⟩))
+  have hsubset : g.sectionRegion ⊆ g.representative := by
+    rintro p ((hstrip | hupper) | hlower)
+    · exact hstrip.1
+    · exact hupper.1
+    · exact hlower.1
+  have hle :
+      volume g.representative ≤ volume g.sectionRegion := by
+    calc
+      volume g.representative ≤
+          volume (g.sectionRegion ∪ interfaces) :=
+        measure_mono hcover
+      _ ≤ volume g.sectionRegion + volume interfaces :=
+        measure_union_le _ _
+      _ = volume g.sectionRegion := by
+        rw [hinterfaces, add_zero]
+  exact
+    (ae_eq_of_subset_of_measure_ge hsubset hle
+      g.measurableSet_sectionRegion.nullMeasurableSet
+      g.sourceRepresentative.representative_bounded.measure_lt_top.ne).symm
+
+
+private theorem horizontalSection_upperCapInterior
+    (b : CappedInterface lam g.sourceRadius
+      g.leftStripCenter.1 g.rightStripCenter.1 .upper)
+    {y : ℝ} (hbase : 1 < y)
+    (hpole : y < b.cap.center.2 + g.sourceRadius) :
+    CMVSourceClassification.horizontalSection b.cap.interiorCarrier y =
+      Ioo ((b.exteriorLeftBoundaryPoint y).1)
+        ((b.exteriorRightBoundaryPoint y).1) := by
+  have hcenter := b.upper_center_lt_interface g.density_jump
+  have hdiffLt : y - b.cap.center.2 < g.sourceRadius := by linarith
+  have hdiffPos : 0 < y - b.cap.center.2 := by linarith
+  have hrad :
+      0 < g.sourceRadius ^ 2 - (y - b.cap.center.2) ^ 2 := by
+    nlinarith
+  have hsqrtSq :
+      (√(g.sourceRadius ^ 2 -
+        (y - b.cap.center.2) ^ 2)) ^ 2 =
+          g.sourceRadius ^ 2 - (y - b.cap.center.2) ^ 2 :=
+    Real.sq_sqrt hrad.le
+  have hsqrtNonneg :
+      0 ≤ √(g.sourceRadius ^ 2 -
+        (y - b.cap.center.2) ^ 2) :=
+    Real.sqrt_nonneg _
+  ext x
+  change
+    (b.cap.radiusSquaredAt (x, y) < b.cap.radius ^ 2 ∧
+      (match b.cap.side with
+        | .upper => b.cap.baseY < y
+        | .lower => y < b.cap.baseY)) ↔
+      x ∈ Ioo ((b.exteriorLeftBoundaryPoint y).1)
+        ((b.exteriorRightBoundaryPoint y).1)
+  rw [b.cap_side, b.cap_base, b.cap_radius]
+  simp only [interfaceY]
+  unfold OneSidedCircularCap.radiusSquaredAt
+    CappedInterface.exteriorLeftBoundaryPoint
+    CappedInterface.exteriorRightBoundaryPoint
+  dsimp only
+  constructor
+  · rintro ⟨hcircle, _⟩
+    constructor <;> nlinarith
+  · rintro ⟨hleft, hright⟩
+    constructor
+    · nlinarith
+    · exact hbase
+
+private theorem horizontalSection_lowerCapInterior
+    (b : CappedInterface lam g.sourceRadius
+      g.leftStripCenter.1 g.rightStripCenter.1 .lower)
+    {y : ℝ} (hpole : b.cap.center.2 - g.sourceRadius < y)
+    (hbase : y < -1) :
+    CMVSourceClassification.horizontalSection b.cap.interiorCarrier y =
+      Ioo ((b.exteriorLeftBoundaryPoint y).1)
+        ((b.exteriorRightBoundaryPoint y).1) := by
+  have hcenter := b.lower_interface_lt_center g.density_jump
+  have hdiffNeg : -g.sourceRadius < y - b.cap.center.2 := by linarith
+  have hdiffLt : y - b.cap.center.2 < 0 := by linarith
+  have hrad :
+      0 < g.sourceRadius ^ 2 - (y - b.cap.center.2) ^ 2 := by
+    nlinarith
+  have hsqrtSq :
+      (√(g.sourceRadius ^ 2 -
+        (y - b.cap.center.2) ^ 2)) ^ 2 =
+          g.sourceRadius ^ 2 - (y - b.cap.center.2) ^ 2 :=
+    Real.sq_sqrt hrad.le
+  have hsqrtNonneg :
+      0 ≤ √(g.sourceRadius ^ 2 -
+        (y - b.cap.center.2) ^ 2) :=
+    Real.sqrt_nonneg _
+  ext x
+  change
+    (b.cap.radiusSquaredAt (x, y) < b.cap.radius ^ 2 ∧
+      (match b.cap.side with
+        | .upper => b.cap.baseY < y
+        | .lower => y < b.cap.baseY)) ↔
+      x ∈ Ioo ((b.exteriorLeftBoundaryPoint y).1)
+        ((b.exteriorRightBoundaryPoint y).1)
+  rw [b.cap_side, b.cap_base, b.cap_radius]
+  simp only [interfaceY]
+  unfold OneSidedCircularCap.radiusSquaredAt
+    CappedInterface.exteriorLeftBoundaryPoint
+    CappedInterface.exteriorRightBoundaryPoint
+  dsimp only
+  constructor
+  · rintro ⟨hcircle, _⟩
+    constructor <;> nlinarith
+  · rintro ⟨hleft, hright⟩
+    constructor
+    · nlinarith
+    · exact hbase
+/-- Direct Fubini integration of the already reconstructed strict-strip
+sections.  This computes the actual representative region, not a supplied
+stadium carrier. -/
+theorem volume_strictStripRegion :
+    volume g.strictStripRegion =
+      ENNReal.ofReal (Real.pi + 2 * g.width) := by
+  have hfiber (y : ℝ) :
+      volume ((fun x : ℝ => (x, y)) ⁻¹' g.strictStripRegion) =
+        (Ioo (-1 : ℝ) 1).indicator
+          (fun y => ENNReal.ofReal
+            (g.width + 2 * √(1 - y ^ 2))) y := by
+    by_cases hy : y ∈ Ioo (-1 : ℝ) 1
+    · have hyAbs : |y| < 1 := abs_lt.mpr hy
+      have hsection := g.actual_strictStripSection hyAbs
+      have heq :
+          (fun x : ℝ => (x, y)) ⁻¹' g.strictStripRegion =
+            Ioo ((g.leftStripBoundaryPoint y).1)
+              ((g.rightStripBoundaryPoint y).1) := by
+        ext x
+        change
+          (x ∈ CMVSourceClassification.horizontalSection
+              g.representative y ∧ |y| < 1) ↔
+            x ∈ Ioo ((g.leftStripBoundaryPoint y).1)
+              ((g.rightStripBoundaryPoint y).1)
+        rw [hsection]
+        simp only [hyAbs, and_true]
+      rw [heq, Real.volume_Ioo, Set.indicator_of_mem hy]
+      congr 1
+      simp only [SourceGeometry.width,
+        SourceGeometry.leftStripBoundaryPoint,
+        SourceGeometry.rightStripBoundaryPoint]
+      ring
+    · rw [Set.indicator_of_notMem hy]
+      have heq :
+          (fun x : ℝ => (x, y)) ⁻¹' g.strictStripRegion = ∅ := by
+        ext x
+        change
+          ((x, y) ∈ g.representative ∧ |y| < 1) ↔ False
+        simp only [iff_false]
+        intro h
+        apply hy
+        exact abs_lt.mp h.2
+      rw [heq, measure_empty]
+  rw [Measure.volume_eq_prod]
+  rw [Measure.prod_apply_symm g.measurableSet_strictStripRegion]
+  simp_rw [hfiber]
+  rw [lintegral_indicator measurableSet_Ioo]
+  let f : ℝ → ℝ := fun y => g.width + 2 * √(1 - y ^ 2)
+  have hfContinuous : Continuous f := by
+    dsimp only [f]
+    fun_prop
+  have hfIntegrable : IntegrableOn f (Ioo (-1 : ℝ) 1) :=
+    hfContinuous.integrableOn_Icc.mono_set Ioo_subset_Icc_self
+  have hfNonneg : ∀ y, 0 ≤ f y := by
+    intro y
+    dsimp only [f]
+    nlinarith [g.width_pos, Real.sqrt_nonneg (1 - y ^ 2)]
+  rw [← MeasureTheory.ofReal_integral_eq_lintegral_ofReal hfIntegrable
+    (Filter.Eventually.of_forall hfNonneg)]
+  congr 1
+  change (∫ y in Ioo (-1 : ℝ) 1,
+      g.width + 2 * √(1 - y ^ 2)) =
+    Real.pi + 2 * g.width
+  rw [← integral_Icc_eq_integral_Ioo,
+    integral_Icc_eq_integral_Ioc,
+    ← intervalIntegral.integral_of_le (by norm_num : (-1 : ℝ) ≤ 1)]
+  have hsqrtContinuous :
+      Continuous (fun y : ℝ => √(1 - y ^ 2)) := by
+    fun_prop
+  have hsqrtIntegrable :
+      IntervalIntegrable (fun y : ℝ => √(1 - y ^ 2))
+        volume (-1) 1 :=
+    hsqrtContinuous.intervalIntegrable (-1) 1
+  rw [intervalIntegral.integral_add intervalIntegrable_const
+    (hsqrtIntegrable.const_mul 2)]
+  rw [intervalIntegral.integral_const_mul, integral_sqrt_one_sub_sq]
+  norm_num
+  ring
+
+/-- The actual upper exterior has exactly the area of its optional source cap.
+The proof reconstructs the planar region from the derived horizontal sections;
+no normalized target carrier is an input. -/
+theorem volume_upperExteriorRegion :
+    volume g.upperExteriorRegion =
+      match g.upperBoundary with
+      | .exposed _ => 0
+      | .capped b => ENNReal.ofReal b.cap.euclideanArea := by
+  cases hBoundary : g.upperBoundary with
+  | exposed b =>
+      have hempty : g.upperExteriorRegion = ∅ := by
+        apply Set.eq_empty_iff_forall_notMem.mpr
+        intro p hp
+        have hsection :=
+          g.actual_upperExposedSection_empty b hBoundary hp.2
+        have hmem :
+            p.1 ∈ CMVSourceClassification.horizontalSection
+              g.representative p.2 :=
+          hp.1
+        rw [hsection] at hmem
+        exact hmem
+      rw [hempty, measure_empty]
+  | capped b =>
+      have hsections :
+          ∀ᵐ y ∂(volume : Measure ℝ),
+            CMVSourceClassification.horizontalSection
+                g.upperExteriorRegion y =ᵐ[volume]
+              CMVSourceClassification.horizontalSection
+                b.cap.interiorCarrier y := by
+        filter_upwards
+          [measure_eq_zero_iff_ae_notMem.mp
+            g.measure_exteriorExceptionalHeights] with y hy
+        by_cases hbase : 1 < y
+        · by_cases hpole :
+              y < b.cap.center.2 + g.sourceRadius
+          · have hactual :=
+              g.actual_upperCappedSection b hBoundary hbase hpole
+            have hcap :=
+              g.horizontalSection_upperCapInterior b hbase hpole
+            have hregion :
+                CMVSourceClassification.horizontalSection
+                    g.upperExteriorRegion y =
+                  CMVSourceClassification.horizontalSection
+                    g.representative y := by
+              ext x
+              simp only [CMVSourceClassification.horizontalSection,
+                SourceGeometry.upperExteriorRegion, mem_inter_iff,
+                mem_ofPred_eq, hbase, and_true]
+            rw [hregion, hactual, hcap]
+            exact Filter.Eventually.of_forall (fun _ => rfl)
+          · have hpoleNe :
+                y ≠ b.cap.center.2 + g.sourceRadius := by
+              intro heq
+              apply hy
+              simp [SourceGeometry.exteriorExceptionalHeights,
+                InterfaceBoundary.tangentHeights, hBoundary, heq]
+            have hpoleAbove :
+                b.cap.center.2 + g.sourceRadius < y :=
+              lt_of_le_of_ne (not_lt.mp hpole) (Ne.symm hpoleNe)
+            have hactual :=
+              g.actual_upperCappedSection_empty_above b hBoundary
+                hbase hpoleAbove
+            have hregion :
+                CMVSourceClassification.horizontalSection
+                    g.upperExteriorRegion y = ∅ := by
+              ext x
+              simp only [CMVSourceClassification.horizontalSection,
+                SourceGeometry.upperExteriorRegion, mem_inter_iff,
+                mem_ofPred_eq, hbase, and_true, mem_empty_iff_false,
+                iff_false]
+              intro hx
+              have : x ∈ CMVSourceClassification.horizontalSection
+                  g.representative y := hx
+              rw [hactual] at this
+              exact this
+            have hcap :
+                CMVSourceClassification.horizontalSection
+                    b.cap.interiorCarrier y = ∅ := by
+              ext x
+              simp only [CMVSourceClassification.horizontalSection,
+                OneSidedCircularCap.interiorCarrier, b.cap_side,
+                mem_ofPred_eq, mem_empty_iff_false, iff_false]
+              rintro ⟨hcircle, _⟩
+              unfold OneSidedCircularCap.radiusSquaredAt at hcircle
+              rw [b.cap_radius] at hcircle
+              have hdiff :
+                  g.sourceRadius < y - b.cap.center.2 := by linarith
+              nlinarith [sq_nonneg (x - b.cap.center.1),
+                g.sourceRadius_pos]
+            rw [hregion, hcap]
+            exact Filter.Eventually.of_forall (fun _ => rfl)
+        · have hregion :
+              CMVSourceClassification.horizontalSection
+                  g.upperExteriorRegion y = ∅ := by
+            ext x
+            simp only [CMVSourceClassification.horizontalSection,
+              SourceGeometry.upperExteriorRegion, mem_inter_iff,
+              mem_ofPred_eq, mem_empty_iff_false, iff_false]
+            exact fun hx => hbase hx.2
+          have hcap :
+              CMVSourceClassification.horizontalSection
+                  b.cap.interiorCarrier y = ∅ := by
+            ext x
+            simp only [CMVSourceClassification.horizontalSection,
+              OneSidedCircularCap.interiorCarrier, b.cap_side,
+              b.cap_base, interfaceY, mem_ofPred_eq,
+              mem_empty_iff_false, iff_false]
+            exact fun hx => hbase hx.2
+          rw [hregion, hcap]
+          exact Filter.Eventually.of_forall (fun _ => rfl)
+      have hae :
+          g.upperExteriorRegion =ᵐ[volume] b.cap.interiorCarrier :=
+        CMVSourceClassification.ae_eq_of_ae_horizontalSection_eq
+          g.measurableSet_upperExteriorRegion.nullMeasurableSet
+          b.cap.isOpen_interiorCarrier.measurableSet.nullMeasurableSet
+          hsections
+      calc
+        volume g.upperExteriorRegion =
+            volume b.cap.interiorCarrier :=
+          measure_congr hae
+        _ = ENNReal.ofReal b.cap.euclideanArea :=
+          volume_capInterior b.cap
+
+/-- The actual lower exterior has exactly the area of its optional source cap,
+again by sectionwise Fubini reconstruction. -/
+theorem volume_lowerExteriorRegion :
+    volume g.lowerExteriorRegion =
+      match g.lowerBoundary with
+      | .exposed _ => 0
+      | .capped b => ENNReal.ofReal b.cap.euclideanArea := by
+  cases hBoundary : g.lowerBoundary with
+  | exposed b =>
+      have hempty : g.lowerExteriorRegion = ∅ := by
+        apply Set.eq_empty_iff_forall_notMem.mpr
+        intro p hp
+        have hsection :=
+          g.actual_lowerExposedSection_empty b hBoundary hp.2
+        have hmem :
+            p.1 ∈ CMVSourceClassification.horizontalSection
+              g.representative p.2 :=
+          hp.1
+        rw [hsection] at hmem
+        exact hmem
+      rw [hempty, measure_empty]
+  | capped b =>
+      have hsections :
+          ∀ᵐ y ∂(volume : Measure ℝ),
+            CMVSourceClassification.horizontalSection
+                g.lowerExteriorRegion y =ᵐ[volume]
+              CMVSourceClassification.horizontalSection
+                b.cap.interiorCarrier y := by
+        filter_upwards
+          [measure_eq_zero_iff_ae_notMem.mp
+            g.measure_exteriorExceptionalHeights] with y hy
+        by_cases hbase : y < -1
+        · by_cases hpole :
+              b.cap.center.2 - g.sourceRadius < y
+          · have hactual :=
+              g.actual_lowerCappedSection b hBoundary hpole hbase
+            have hcap :=
+              g.horizontalSection_lowerCapInterior b hpole hbase
+            have hregion :
+                CMVSourceClassification.horizontalSection
+                    g.lowerExteriorRegion y =
+                  CMVSourceClassification.horizontalSection
+                    g.representative y := by
+              ext x
+              simp only [CMVSourceClassification.horizontalSection,
+                SourceGeometry.lowerExteriorRegion, mem_inter_iff,
+                mem_ofPred_eq, hbase, and_true]
+            rw [hregion, hactual, hcap]
+            exact Filter.Eventually.of_forall (fun _ => rfl)
+          · have hpoleNe :
+                y ≠ b.cap.center.2 - g.sourceRadius := by
+              intro heq
+              apply hy
+              simp [SourceGeometry.exteriorExceptionalHeights,
+                InterfaceBoundary.tangentHeights, hBoundary, heq]
+            have hpoleBelow :
+                y < b.cap.center.2 - g.sourceRadius :=
+              lt_of_le_of_ne (not_lt.mp hpole) hpoleNe
+            have hactual :=
+              g.actual_lowerCappedSection_empty_below b hBoundary
+                hpoleBelow hbase
+            have hregion :
+                CMVSourceClassification.horizontalSection
+                    g.lowerExteriorRegion y = ∅ := by
+              ext x
+              simp only [CMVSourceClassification.horizontalSection,
+                SourceGeometry.lowerExteriorRegion, mem_inter_iff,
+                mem_ofPred_eq, hbase, and_true, mem_empty_iff_false,
+                iff_false]
+              intro hx
+              have : x ∈ CMVSourceClassification.horizontalSection
+                  g.representative y := hx
+              rw [hactual] at this
+              exact this
+            have hcap :
+                CMVSourceClassification.horizontalSection
+                    b.cap.interiorCarrier y = ∅ := by
+              ext x
+              simp only [CMVSourceClassification.horizontalSection,
+                OneSidedCircularCap.interiorCarrier, b.cap_side,
+                mem_ofPred_eq, mem_empty_iff_false, iff_false]
+              rintro ⟨hcircle, _⟩
+              unfold OneSidedCircularCap.radiusSquaredAt at hcircle
+              rw [b.cap_radius] at hcircle
+              have hdiff :
+                  y - b.cap.center.2 < -g.sourceRadius := by linarith
+              nlinarith [sq_nonneg (x - b.cap.center.1),
+                g.sourceRadius_pos]
+            rw [hregion, hcap]
+            exact Filter.Eventually.of_forall (fun _ => rfl)
+        · have hregion :
+              CMVSourceClassification.horizontalSection
+                  g.lowerExteriorRegion y = ∅ := by
+            ext x
+            simp only [CMVSourceClassification.horizontalSection,
+              SourceGeometry.lowerExteriorRegion, mem_inter_iff,
+              mem_ofPred_eq, mem_empty_iff_false, iff_false]
+            exact fun hx => hbase hx.2
+          have hcap :
+              CMVSourceClassification.horizontalSection
+                  b.cap.interiorCarrier y = ∅ := by
+            ext x
+            simp only [CMVSourceClassification.horizontalSection,
+              OneSidedCircularCap.interiorCarrier, b.cap_side,
+              b.cap_base, interfaceY, mem_ofPred_eq,
+              mem_empty_iff_false, iff_false]
+            exact fun hx => hbase hx.2
+          rw [hregion, hcap]
+          exact Filter.Eventually.of_forall (fun _ => rfl)
+      have hae :
+          g.lowerExteriorRegion =ᵐ[volume] b.cap.interiorCarrier :=
+        CMVSourceClassification.ae_eq_of_ae_horizontalSection_eq
+          g.measurableSet_lowerExteriorRegion.nullMeasurableSet
+          b.cap.isOpen_interiorCarrier.measurableSet.nullMeasurableSet
+          hsections
+      calc
+        volume g.lowerExteriorRegion =
+            volume b.cap.interiorCarrier :=
+          measure_congr hae
+        _ = ENNReal.ofReal b.cap.euclideanArea :=
+          volume_capInterior b.cap
+
+/-- Direct weighted-area integration of the unchanged source carrier.  The
+stored planar AE relation transports to the representative; Fubini-computed
+band volumes then give exactly the component formula. -/
+theorem weightedArea_sourceCarrier_eq_modeledWeightedArea :
+    _root_.WeightedArea lam g.sourceCarrier = g.modeledWeightedArea := by
+  have hstripUpper : AEDisjoint volume
+      g.strictStripRegion g.upperExteriorRegion := by
+    refine measure_mono_null ?_ (measure_empty : volume (∅ : Set PlanePoint) = 0)
+    rintro p ⟨hstrip, hupper⟩
+    exfalso
+    have hstripY : |p.2| < 1 := hstrip.2
+    have hy := (abs_lt.mp hstripY).2
+    have hupperY : 1 < p.2 := hupper.2
+    linarith [hupperY]
+  have hfirstLower : AEDisjoint volume
+      (g.strictStripRegion ∪ g.upperExteriorRegion)
+      g.lowerExteriorRegion := by
+    refine measure_mono_null ?_ (measure_empty : volume (∅ : Set PlanePoint) = 0)
+    rintro p ⟨hfirst, hlower⟩
+    rcases hfirst with hstrip | hupper
+    · exfalso
+      have hstripY : |p.2| < 1 := hstrip.2
+      have hy := (abs_lt.mp hstripY).1
+      have hlowerY : p.2 < -1 := hlower.2
+      linarith [hlowerY]
+    · exfalso
+      have hupperY : 1 < p.2 := hupper.2
+      have hlowerY : p.2 < -1 := hlower.2
+      linarith [hupperY, hlowerY]
+  have hstripIntegrable :
+      IntegrableOn (StripDensity lam) g.strictStripRegion :=
+    g.integrableOn_representative.mono_set inter_subset_left
+  have hupperIntegrable :
+      IntegrableOn (StripDensity lam) g.upperExteriorRegion :=
+    g.integrableOn_representative.mono_set inter_subset_left
+  have hlowerIntegrable :
+      IntegrableOn (StripDensity lam) g.lowerExteriorRegion :=
+    g.integrableOn_representative.mono_set inter_subset_left
+  have hsectionArea :
+      _root_.WeightedArea lam g.sectionRegion =
+        (∫ p in g.strictStripRegion, StripDensity lam p) +
+          (∫ p in g.upperExteriorRegion, StripDensity lam p) +
+            ∫ p in g.lowerExteriorRegion, StripDensity lam p := by
+    rw [_root_.WeightedArea, SourceGeometry.sectionRegion,
+      setIntegral_union₀ hfirstLower
+        g.measurableSet_lowerExteriorRegion.nullMeasurableSet
+        (hstripIntegrable.union hupperIntegrable) hlowerIntegrable,
+      setIntegral_union₀ hstripUpper
+        g.measurableSet_upperExteriorRegion.nullMeasurableSet
+        hstripIntegrable hupperIntegrable]
+  have hstripIntegral :
+      (∫ p in g.strictStripRegion, StripDensity lam p) =
+        Real.pi + 2 * g.width := by
+    calc
+      (∫ p in g.strictStripRegion, StripDensity lam p) =
+          ∫ _p in g.strictStripRegion, (1 : ℝ) := by
+        apply setIntegral_congr_fun g.measurableSet_strictStripRegion
+        intro p hp
+        rw [StripDensity, if_pos hp.2.le]
+      _ = volume.real g.strictStripRegion := by
+        rw [integral_const, measureReal_restrict_apply_univ]
+        simp
+      _ = Real.pi + 2 * g.width := by
+        rw [Measure.real, g.volume_strictStripRegion,
+          ENNReal.toReal_ofReal]
+        nlinarith [Real.pi_pos, g.width_pos]
+  have hupperIntegral :
+      (∫ p in g.upperExteriorRegion, StripDensity lam p) =
+        g.upperBoundary.weightedAreaContribution := by
+    calc
+      (∫ p in g.upperExteriorRegion, StripDensity lam p) =
+          ∫ _p in g.upperExteriorRegion, lam := by
+        apply setIntegral_congr_fun g.measurableSet_upperExteriorRegion
+        intro p hp
+        have hpY : 1 < p.2 := hp.2
+        rw [StripDensity, if_neg]
+        exact not_le.mpr (hpY.trans_le (le_abs_self p.2))
+      _ = lam * volume.real g.upperExteriorRegion := by
+        rw [integral_const, measureReal_restrict_apply_univ]
+        ring
+      _ = g.upperBoundary.weightedAreaContribution := by
+        cases hBoundary : g.upperBoundary with
+        | exposed b =>
+            rw [Measure.real, g.volume_upperExteriorRegion, hBoundary]
+            simp [InterfaceBoundary.weightedAreaContribution]
+        | capped b =>
+            rw [Measure.real, g.volume_upperExteriorRegion, hBoundary,
+              ENNReal.toReal_ofReal b.cap.euclideanArea_pos.le]
+            rfl
+  have hlowerIntegral :
+      (∫ p in g.lowerExteriorRegion, StripDensity lam p) =
+        g.lowerBoundary.weightedAreaContribution := by
+    calc
+      (∫ p in g.lowerExteriorRegion, StripDensity lam p) =
+          ∫ _p in g.lowerExteriorRegion, lam := by
+        apply setIntegral_congr_fun g.measurableSet_lowerExteriorRegion
+        intro p hp
+        rw [StripDensity, if_neg]
+        apply not_le.mpr
+        have hpY : p.2 < -1 := hp.2
+        exact (show 1 < -p.2 by linarith [hpY]).trans_le
+          (neg_le_abs p.2)
+      _ = lam * volume.real g.lowerExteriorRegion := by
+        rw [integral_const, measureReal_restrict_apply_univ]
+        ring
+      _ = g.lowerBoundary.weightedAreaContribution := by
+        cases hBoundary : g.lowerBoundary with
+        | exposed b =>
+            rw [Measure.real, g.volume_lowerExteriorRegion, hBoundary]
+            simp [InterfaceBoundary.weightedAreaContribution]
+        | capped b =>
+            rw [Measure.real, g.volume_lowerExteriorRegion, hBoundary,
+              ENNReal.toReal_ofReal b.cap.euclideanArea_pos.le]
+            rfl
+  calc
+    _root_.WeightedArea lam g.sourceCarrier =
+        _root_.WeightedArea lam g.representative :=
+      g.weightedArea_sourceCarrier_eq_representative
+    _ = _root_.WeightedArea lam g.sectionRegion :=
+      CMVRelaxation.weightedArea_congr_ae lam
+        g.representative_ae_sectionRegion
+    _ = g.modeledWeightedArea := by
+      rw [hsectionArea, hstripIntegral, hupperIntegral, hlowerIntegral]
+      rfl
 
 /-- The literal complete frontier in every frozen Figure-5 source geometry has
 planar measure zero. -/
@@ -383,6 +1097,13 @@ theorem modeledWeightedArea_eq :
       g.sourceRadius_eq_one]
   ring
 
+/-- Exact weighted area of the unchanged Figure-5 source carrier. -/
+theorem weightedArea_sourceCarrier_eq :
+    _root_.WeightedArea lam g.sourceCarrier =
+      Real.pi + 2 * g.width + g.capCount * endpointGap lam :=
+  g.weightedArea_sourceCarrier_eq_modeledWeightedArea.trans
+    g.modeledWeightedArea_eq
+
 /-- Exact component boundary cost after summing both interface traces. -/
 theorem modeledWeightedPerimeter_eq :
     g.modeledWeightedPerimeter =
@@ -449,6 +1170,56 @@ theorem exists_admissible_typeThree_below_modeledWeightedPerimeter :
     ⟨a, ha, hadmissible, harea, hperimeter⟩
   exact ⟨a, ha, hadmissible, harea,
     hperimeter.trans_le g.modeledWeightedArea_add_support_le_modeledWeightedPerimeter⟩
+
+/-- The same recovered type-(iii) carrier is cheaper in the extended relaxation
+than the Figure-5 component cost, and its weighted area is the actual source
+area.  This closes the competitor side of the source comparison; no lower bound
+for the Figure-5 source perimeter is asserted here. -/
+theorem exists_admissible_typeThree_relaxedPerimeter_lt_modeledWeightedPerimeter :
+    ∃ a : _root_.TypeThreeAssembly lam,
+      a.h ∈ Ioo (0 : ℝ) 1 ∧
+      (CMVRelaxation.relaxedSourceSemantics lam).IsAdmissible a.carrier ∧
+      _root_.WeightedArea lam a.carrier =
+        _root_.WeightedArea lam g.sourceCarrier ∧
+      CMVRelaxation.relaxedPerimeter lam a.carrier <
+        ENNReal.ofReal g.modeledWeightedPerimeter := by
+  rcases g.exists_admissible_typeThree_below_modeledWeightedPerimeter with
+    ⟨a, ha, hadmissible, harea, hperimeter⟩
+  have hmodeledPos : 0 < g.modeledWeightedPerimeter :=
+    lt_of_le_of_lt
+      (CMVRelaxation.TypeThreeRecovery.assemblyWeightedPerimeter_nonneg a)
+      hperimeter
+  refine ⟨a, ha, hadmissible,
+    harea.trans g.weightedArea_sourceCarrier_eq_modeledWeightedArea.symm, ?_⟩
+  calc
+    CMVRelaxation.relaxedPerimeter lam a.carrier ≤
+        ENNReal.ofReal a.WeightedPerimeter :=
+      CMVRelaxation.TypeThreeRecovery.relaxedPerimeter_le_frontierCost_typeThree a
+    _ < ENNReal.ofReal g.modeledWeightedPerimeter :=
+      (ENNReal.ofReal_lt_ofReal_iff hmodeledPos).2 hperimeter
+
+/-- A lower bound by the literal Figure-5 component cost is sufficient for
+source exclusion.  The premise is deliberately the remaining geometric/
+relaxation obligation, rather than an assumed frontier equality or recovery
+identity. -/
+theorem sourceCarrier_not_isMinimizer_of_modeledWeightedPerimeter_le_relaxedPerimeter
+    (hlower :
+      ENNReal.ofReal g.modeledWeightedPerimeter ≤
+        CMVRelaxation.relaxedPerimeter lam g.sourceCarrier) :
+    ¬ (CMVRelaxation.relaxedSourceSemantics lam).IsMinimizer
+      g.sourceCarrier := by
+  intro hmin
+  rcases
+      g.exists_admissible_typeThree_relaxedPerimeter_lt_modeledWeightedPerimeter with
+    ⟨a, -, hadmissible, hequalArea, hstrict⟩
+  have hsourceLeReal :=
+    hmin.2 a.carrier hadmissible hequalArea
+  have hsourceLe :
+      CMVRelaxation.relaxedPerimeter lam g.sourceCarrier ≤
+        CMVRelaxation.relaxedPerimeter lam a.carrier :=
+    (CMVRelaxation.relaxedSourceSemantics_perimeter_le_iff
+      hmin.1.1 hadmissible.1).1 hsourceLeReal
+  exact (not_lt_of_ge hsourceLe) (hstrict.trans_le hlower)
 
 end SourceGeometry
 

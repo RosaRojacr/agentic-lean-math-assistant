@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.principalAsinBranch_of_nonneg_of_hi_le_halfPiBox",
+  "domain_issues": [],
+  "informal_statement": "Nonnegative angle bounds below the certified half-pi limit lie on the principal sine branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:211-223, the source contract is `theorem principalAsinBranch_of_nonneg_of_hi_le_halfPiBox (a : QInterval) (h : 0 ≤ a.lo ∧ a.hi ≤ halfPiBox.lo) : (a.lo : ℝ) ∈ Icc (-(π / 2)) (π / 2) ∧ (a.hi : ℝ) ∈ Icc (-(π / 2)) (π / 2)`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5d213510a122acf90e70e2f5809f269336785657fb7f1298c72b17c1dfca9aca",
+  "symbol_mismatches": []
+}

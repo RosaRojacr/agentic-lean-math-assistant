@@ -106,7 +106,7 @@ uv run agentic-lean-math-assistant validate \
 uv run pytest -q tests/test_release.py
 ```
 
-The package version is `1.1.1`. Current unreleased work is listed at the top of [`CHANGELOG.md`](CHANGELOG.md).
+The package version is `1.2.0`. Current unreleased work is listed at the top of [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Install
 
@@ -227,6 +227,86 @@ These gates answer different questions:
 
 Compilation answers only the first question. A model claim answers neither. Both checks must pass when the project configures both.
 
+## Proof builder
+
+`proof-builder` converts any completed Lean/Lake proof into a professor-facing,
+reproducible publication package. The core contains no problem-specific theorem
+names, paths, or prose. A version-controlled `proof-package.toml` supplies the
+project, publication roots, exact informal claims, generated-code families,
+bibliography, model routes, output version, and publication exclusions.
+
+Create a documented manifest template:
+
+```bash
+uv run agentic-lean-math-assistant proof-builder init \
+  --manifest reports/proof-package.toml
+```
+
+Build a new immutable package:
+
+```bash
+uv run agentic-lean-math-assistant proof-builder build \
+  --manifest reports/proof-package.toml
+```
+
+The builder discovers the project-local import closure, compiles a minimal
+publication-scoped Lake project, checks every configured root at its exact type,
+audits its axioms through `Lean.collectAxioms`, and derives the declaration
+dependency closure from elaborated Lean expressions. One isolated Astra pass
+classifies the mathematics and writes the main proof and lemma explanations. A
+fresh adversarial Astra pass reviews hypotheses, quantifiers, domains, symbols,
+boundaries, generated certificate families, and external citations. A mismatch
+is returned to the author for at most three repair cycles; unresolved findings
+produce a conditional or failed package rather than a proof claim.
+
+An accepted package has only four reader-facing files and one supporting folder:
+
+```text
+proof-package/
+├── README.md
+├── MainProof.pdf
+├── LemmaSupplement.pdf
+├── SemanticAudit.pdf
+└── supporting-materials/
+```
+
+The supporting folder retains the executable Lean source closure, pinned
+toolchain and Lake dependency manifest, editable manuscripts, references, exact
+prompts, model identifiers, machine-readable reviews, build receipts, source
+provenance, and SHA-256 ledger. `README.md` gives a short verification path plus
+separate Linux, macOS, and Windows setup instructions. Generated certificate
+bodies remain complete in the Lean tree; the supplement prints conceptual
+declarations in full and indexes repetitive generated families.
+
+Repair a failed semantic review without rerunning accepted export and kernel
+stages:
+
+```bash
+uv run agentic-lean-math-assistant proof-builder resume \
+  --package reports/example-proof-v1 \
+  --feedback "Correct the stated endpoint convention."
+```
+
+Independently verify an accepted package's complete byte ledger and pinned Lean
+build:
+
+```bash
+uv run agentic-lean-math-assistant proof-builder verify \
+  --package reports/example-proof-v1
+```
+
+Accepted versions are immutable. A revised publication uses a new output path
+and version. A configured canonical PDF may be refreshed as a byte-identical
+convenience copy of `MainProof.pdf`.
+
+The repository includes a complete real-world example: the
+[`proof-package.toml`](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-proof-package.toml)
+manifest and its
+[`VERIFIED AND SEMANTICALLY ACCEPTED`](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/README.md)
+publication package. It demonstrates generated declaration families, an exact
+root contract, independent semantic review, cross-platform verification, and
+the retained SHA-256 ledger.
+
 ## Execution containment
 
 Generic campaigns default to a fail-closed Linux sandbox. Bubblewrap gives each stage private mount, PID, and network namespaces. The retained workspace is the writable host path; home, `/tmp`, and `/run` are private. Outbound networking is disabled by default. A transient user-systemd cgroup enforces time, memory, swap, CPU, task-count, and file-size limits.
@@ -234,6 +314,12 @@ Generic campaigns default to a fail-closed Linux sandbox. Bubblewrap gives each 
 The manifest controls environment names, executable paths, network access, workspace size, and whether generated workspace binaries may run. Secret environment values are forbidden for sandboxed untrusted stages because arbitrary code could encode them into retained artifacts. Receipts fingerprint the effective non-secret environment, executable bytes, dependency manifests, and sandbox policy.
 
 Sandbox creation has no automatic unsandboxed fallback. A manifest may set `sandbox = false` only as an explicit trust decision. Namespace isolation then disappears, but cgroup resource limits still apply and the receipt records the choice. The CMV manifest uses this trusted mode so OMP can access the operator's existing login. Do not use that manifest for untrusted prompts or inputs.
+
+Agent invocations are admitted one at a time across local campaigns through a
+kernel-released host resource lease; receipts record `resource_wait_seconds`.
+Cgroup OOM, exit 137, abort, Bun panic, and segmentation-fault outcomes are
+terminal and bypass blank-output retries. `OOMPolicy=kill` terminates the whole
+transient unit rather than leaving sibling processes alive.
 
 ## Bounded campaign autonomy
 
@@ -270,6 +356,29 @@ uv run agentic-lean-math-assistant autonomy-resume \
 Astra reviews strategy without editing the project. Sol executes each validated round with the project's allowed tools. Terra independently judges observable progress. The controller accepts only strict, current-revision protocol records and is the only component that mutates retained strategy or progress state.
 
 The first execution waits for a valid strategy. Soft reviews and checkpoints request another strategy decision but do not falsify work or reset hard ceilings. Continuation preserves the strategy ID, lineage start, and hard deadline. A course change archives the old contract and starts a new lineage. Invalid, stale, wrong-order, or incomplete output receives no progress credit.
+Conductor reports use one invocation-bound serializer rather than handwritten
+JSON. The generated round prompt supplies the exact active request path and
+requires the conductor to run:
+
+```bash
+uv run agentic-lean-math-assistant autorun-report \
+  --request autorun-runs/<session>/rounds/round-<attempt>/request.json \
+  --checkpoint-id <checkpoint-id> \
+  --progress-class meaningful \
+  --summary "<factual result>" \
+  --evidence "<retained artifact or verified observable>"
+```
+
+Use `--no-checkpoint` instead of `--checkpoint-id` when no checkpoint is
+claimed. The command accepts claim content only when the request's frozen
+session, round, strategy revision, and prompt digest match a live controller
+invocation. It derives only the strategy identity and preserves the explicitly
+supplied checkpoint, progress class, summary, and evidence. Its stdout is the
+existing strict seven-field `CONDUCTOR_RESULT_JSON` marker. The round-local
+emission receipt is diagnostic: controller claim handling still uses the strict
+marker parser, and only independent adjudication can award progress. The command
+does not adjudicate evidence, select a checkpoint, or mutate controller state.
+
 
 The default conductor round limit is 90 minutes. Strategy health reviews occur on the configured 120 to 240 minute interval, repeated output, or repeated execution failure. Failures use bounded backoff and remain on the Sol conductor route. They never reroute execution to Astra. The manifest may cap each lineage at 1 to 100 successful executions and may add trusted progress-metric commands.
 
@@ -284,7 +393,23 @@ uv run agentic-lean-math-assistant autorun \
   --reflection-round-minutes 15
 ```
 
-An interrupted controller resumes the active retained session. Edit `MASTER_PROMPT.md` while it runs; the next round reads the new contents.
+An interrupted active or recovering controller resumes its retained session.
+A stopped controller never resumes implicitly. Edit `MASTER_PROMPT.md` while
+autorun runs or is stopped; the next round reads the new contents.
+
+Create or refresh a focused Herdr workspace with live status, round-output, and
+raw-event panes:
+
+```bash
+uv run agentic-lean-math-assistant autorun-workspace \
+  --project projects/cmv-strip-density/project.toml \
+  --label "CMV Autorun Overnight"
+```
+
+The command resolves the project's active retained session, waits for all three
+new panes to render, then closes prior workspaces with the same label and
+focuses the replacement. Use `--session` to select a specific retained session
+or `--no-focus` to refresh it in the background.
 
 Use the live status, output, and event followers or request a durable stop:
 
@@ -300,7 +425,27 @@ uv run agentic-lean-math-assistant autorun-events \
   --interval 1
 uv run agentic-lean-math-assistant autorun-stop \
   --session projects/cmv-strip-density/autorun-runs/<session-id>
+
+uv run agentic-lean-math-assistant autorun \
+  --project projects/cmv-strip-density/project.toml \
+  --session projects/cmv-strip-density/autorun-runs/<session-id> \
+  --resume-stopped <stop-token>
 ```
+
+`autorun-stop` prints a one-use token for that specific durable stop request.
+Ordinary startup never consumes the stop. Explicit resume requires the named
+retained session to match the selected project and Master Prompt, already be
+stopped with no owner or active work, remain incomplete, and yield its exclusive
+controller lock. Under that lock it moves only the matching marker through a
+recoverable transaction, removes any legacy `STOP`, clears `stop_requested`,
+and enters the existing running path. A second or newly arriving stop marker
+remains authoritative, and replaying a consumed token cannot cancel a later
+stop. Multiple pending requests must be consumed one token and one replacement
+launch at a time. Never retain a token in reusable service-manager arguments.
+Resume changes only those stop controls and
+the usual live `status`, `pid`, heartbeat/update, retry, error, and event fields;
+execution counters, strategy and adjudication history, requests, receipts, and
+project artifacts remain unchanged.
 
 The followers reread `state.json`, follow the active round, and reconnect across stop and resume cycles. Status shows the validated strategy contract, independent progress counts, retry time, current objective, and critical-path recap. Agent stdout is never used as controller state.
 
@@ -475,13 +620,13 @@ CI qualifies Python 3.12, 3.13, and 3.14, smoke-tests the installed wheel, build
 
 ## Release, roadmap, and license
 
-The current package release is `1.1.1`. Build and verify a candidate from a completed one-shot proof campaign with:
+The current package release is `1.2.0`. Build and verify a candidate from a completed one-shot proof campaign with:
 
 ```bash
 uv run python scripts/build_release.py \
   --proof-run projects/cmv-strip-density/one-shot/runs/<run-id>
 uv run python scripts/verify_release.py \
-  --candidate dist/agentic-lean-math-assistant-1.1.1
+  --candidate dist/agentic-lean-math-assistant-1.2.0
 ```
 
 The builder verifies the retained evidence, package metadata, bounded source distribution, proof archive, required PDFs, manifest, and checksums. It does not create a tag, push a branch, or publish externally.

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedCapParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The realized cap image equals the Euclidean cap trace.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1071-1080, the source contract is `theorem realizedCapParam_image_Icc (c : OneSidedCircularCap) : realizedCapParam c '' Icc (capStart c) (capEnd c) = planeEuclideanHomeomorph '' c.arcTrace`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a37b40496e1e5c2ae0b778fe01e7fee7a91557ce9473bf6e0b7755afebbd941b",
+  "symbol_mismatches": []
+}

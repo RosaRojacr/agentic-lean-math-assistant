@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.w",
+  "domain_issues": [],
+  "informal_statement": "The first type-(iii) inner-angle predictor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:499-499, the source contract is `def w (p : Point) : ℝ := brick.centers 2 + brick.slopes 2 * p.t + p.rho`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "52d839481355b169feb0cd07c321cec9f11b8bdc2b69f116735e48df02da7c3d",
+  "symbol_mismatches": []
+}

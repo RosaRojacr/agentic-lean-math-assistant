@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.formulaDerivExpr",
+  "domain_issues": [],
+  "informal_statement": "Certificate-expression representation of the equal-area derivative formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:165-222, the source contract is `def formulaDerivExpr (ell ex ey ew ev esx ecx esy ecy esw ecw esv ecv ep : CertificateExpr) (dl dx dy dw dv : ℚ) : CertificateExpr := let nn4 := .add (.add (.add (.mul ell ey) (.mul (.rational (1 / 2)) ep)) (.neg ex)) (.mul ecx (.add esy (.neg esx))) let nn3 := .add (.add (.add (.mul ell ev) ep) (.neg ew)) (.mul (.add ecw (.rational 2)) (.add esv (.neg esw))) let dn4 := .add (.add (.add (.add (.mul (.rational dl) ey) (.mul ell (.rational dy))) (.neg (.rational dx))) (.mul (.mul (.neg esx) (.rational dx)) (.add esy (.neg esx)))) (.mul ecx (.add (.mul ecy (.rational dy)) (.neg (.mul ecx (.rational dx))))) let dn3 := .add (.add (.add (.add (.mul (.rational dl) ev) (.mul ell (.rational dv))) (.neg (.rational dw))) (.mul (.mul (.neg esw) (.rational dw)) (.add esv (.neg esw)))) (.mul (.add ecw (.rational 2)) (.add (.mul ecv (.rational dv)) (.neg (.mul ecw (.rational dw))))) .add (.add (.mul (.mul (.mul (.mul (.rational (-4)) ecx) esx) (.rational dx)) nn3) (.mul (.mul (.rational 2) (.mul ecx ecx)) dn3)) (.add (.mul (.mul (.mul (.mul (.rational 2) (.add (.rational 1) ecw)) esw) (.rational dw)) nn4) (.neg (.mul (.mul (.add (.rational 1) ecw) (.add (.rational 1) ecw)) dn4)))`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c2d0ab98cf3dfe4dcf08e2029ce80163a7ccf657f84dbd95007f146980c85f86",
+  "symbol_mismatches": []
+}

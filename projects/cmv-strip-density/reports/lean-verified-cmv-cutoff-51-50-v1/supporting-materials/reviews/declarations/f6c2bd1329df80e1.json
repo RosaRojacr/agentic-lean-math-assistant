@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FrontierMeasure",
+  "domain_issues": [],
+  "informal_statement": "Euclidean Hausdorff measure restricted to the complete frontier, transported to coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:61-66, the source contract is `def FrontierMeasure (carrier : Set PlanePoint) : Measure PlanePoint := Measure.map planeEuclideanHomeomorph.symm ((μH[1] : Measure EuclideanPlane).restrict (frontier (planeEuclideanHomeomorph '' carrier)))`. FrontierMeasure is the pullback, through the coordinate-preserving Euclidean homeomorphism, of H^1 restricted to the complete topological frontier. Neither the product sup norm nor an independently chosen boundary measure is used.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7323bb80c0a565daf410d27d199e2143ee33a0ecca0460c52504f2e7e50b48e2",
+  "symbol_mismatches": []
+}

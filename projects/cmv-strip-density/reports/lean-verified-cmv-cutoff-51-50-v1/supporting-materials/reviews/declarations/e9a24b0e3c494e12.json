@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.C4",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:75-75, the source contract is `def C4 (p : Point) : ℝ := cos (x b p) - lam b p * cos (y b p)`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "60b08b58076f301aaff633a26cf94d71e808af4d3ade0beea2f7a2c0dba972c5",
+  "symbol_mismatches": []
+}

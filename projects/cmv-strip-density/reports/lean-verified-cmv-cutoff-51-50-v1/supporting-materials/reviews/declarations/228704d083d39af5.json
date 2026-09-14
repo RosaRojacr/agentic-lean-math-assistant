@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θstar_pos",
+  "domain_issues": [],
+  "informal_statement": "The selected root angle is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:115-116, the source contract is `lemma θstar_pos : 0 < θstar`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1d24d5264a96edc189b17b575a738900ce2888e0222ccbf2e0c850b185522fca",
+  "symbol_mismatches": []
+}

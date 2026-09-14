@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.halfPiBox_sound",
+  "domain_issues": [],
+  "informal_statement": "Pi/2 belongs to the chosen rational interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:202-210, the source contract is `theorem halfPiBox_sound : halfPiBox.RealContains (π / 2)`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "32569ba98b96e5c623e6b4690e061422a54fc3e99bc88a52ad664b5adadcbdf6",
+  "symbol_mismatches": []
+}

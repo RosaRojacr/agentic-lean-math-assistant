@@ -1,0 +1,103 @@
+import CMVFigureFourBoundaryRigidityExamples
+import CMVFigureFourComplementTopologyExamples
+
+-- Frozen primitive source signatures and unchanged direct consumers.
+#print axioms CMVFigureFour.SourceRepresentative
+#print axioms CMVFigureFour.SourceGeometry
+#print axioms CMVFigureFour.BilateralSourceIncidence
+#print axioms CMVFigureFour.BilateralSourceIncidence.toSourceGeometry
+#print axioms
+  CMVFigureFour.SourceGeometry.toRawFourArcCoordinates_satisfiesClosedSnell
+namespace CMVSourceClassification.RawFourArcCoordinates
+#print axioms toFourArcCandidate_eq_endpoint_of_sourceRadius_eq_one
+end CMVSourceClassification.RawFourArcCoordinates
+
+namespace CMVRelaxation.TypeThreeSourceExclusion
+#print axioms endpointCarrier_not_isMinimizer
+#print axioms endpointSourceCarrier_not_isMinimizer_of_aeHorizontalCongruence
+#print axioms endpointSourceCarrier_not_isMinimizer_of_horizontalCongruence
+#print axioms rawFourArcCarrier_not_isMinimizer
+#print axioms sourceCarrier_not_isMinimizer_of_ae_rawFourArcCoordinates
+#print axioms sourceCarrier_not_isMinimizer_of_ae_rawFourArcClassification
+end CMVRelaxation.TypeThreeSourceExclusion
+
+-- Complete literal complementary topology, including the radius-one examples.
+#print axioms CMVSourceClassification.RawFourArcCoordinates.isBounded_carrier
+#print axioms
+  CMVSourceClassification.RawFourArcCoordinates.interior_carrier_nonempty
+#print axioms
+  CMVSourceClassification.RawFourArcCoordinates.isPathConnected_interior_carrier
+#print axioms
+  CMVSourceClassification.RawFourArcCoordinates.isPathConnected_compl_carrier
+#print axioms
+  CMVSourceClassification.RawFourArcCoordinates.isPathConnected_exterior_carrier
+#print axioms
+  CMVSourceClassification.RawFourArcCoordinates.exterior_carrier_nonempty
+#print axioms
+  CMVSourceClassification.RawFourArcCoordinates.compl_frontier_carrier_eq_interior_union_exterior
+#print axioms
+  CMVSourceClassification.RawFourArcCoordinates.disjoint_interior_carrier_compl
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSourceAt_complement_topology
+#print axioms
+  CMVFigureFour.Examples.endpointBilateralSourceAt_complement_topology
+#print axioms CMVFigureFour.Examples.strictTranslated_complement_topology
+#print axioms CMVFigureFour.Examples.endpointTranslated_complement_topology
+
+#print axioms CMVFigureFour.Examples.strictBilateralSource
+#print axioms CMVFigureFour.Examples.endpointBilateralSource
+
+#print axioms CMVFigureFour.volume_frontier_fourArcAssembly
+#print axioms measurePreserving_horizontalTranslation
+#print axioms
+  CMVSourceClassification.RawFourArcCoordinates.carrier_eq_horizontalTranslation_candidate
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSourceAt_sourceRadius
+#print axioms
+  CMVFigureFour.Examples.endpointBilateralSourceAt_sourceRadius
+
+#print axioms
+  CMVFigureFourBoundaryRigidity.boundedOpen_eq_interior_of_frontier_eq_of_two_components
+#print axioms
+  CMVFigureFourTargetGeometry.RawFourArcCoordinates.frontier_carrier_eq_four_circles
+#print axioms
+  CMVFigureFourTargetGeometry.RawFourArcCoordinates.volume_frontier_carrier
+#print axioms
+  CMVFigureFourTargetGeometry.RawFourArcCoordinates.interior_carrier_ae_eq_carrier
+#print axioms CMVFigureFour.SourceGeometry.frontier_representative_eq_raw_carrier
+#print axioms CMVFigureFour.SourceGeometry.representative_eq_interior_raw_carrier
+#print axioms CMVFigureFour.SourceGeometry.sourceCarrier_ae_raw_carrier
+#print axioms CMVFigureFour.SourceGeometry.sourceCarrier_not_isMinimizer
+#print axioms CMVRelaxation.relaxedSourceSemantics_isMinimizer_congr_ae
+#print axioms CMVFigureFour.SourceGeometry.aeEquivalentCarrier_not_isMinimizer
+#print axioms
+  CMVFigureFour.BilateralSourceIncidence.sourceCarrier_ae_raw_carrier
+#print axioms
+  CMVFigureFour.BilateralSourceIncidence.sourceCarrier_not_isMinimizer
+#print axioms
+  CMVFigureFour.BilateralSourceIncidence.aeEquivalentCarrier_not_isMinimizer
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSourceAt_representative_eq_interior
+#print axioms
+  CMVFigureFour.Examples.endpointBilateralSourceAt_representative_eq_interior
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSource_negThree_representative_eq_interior
+#print axioms
+  CMVFigureFour.Examples.endpointBilateralSource_seven_representative_eq_interior
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSourceAt_not_isMinimizer
+#print axioms
+  CMVFigureFour.Examples.endpointBilateralSourceAt_not_isMinimizer
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSource_negThree_not_isMinimizer
+#print axioms
+  CMVFigureFour.Examples.endpointBilateralSource_seven_not_isMinimizer
+#print axioms CMVFigureFour.Examples.volume_horizontalNullLine
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSourceAt_negThree_ae_sourceCarrier
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSourceAt_negThree_union_horizontalNullLine_not_isMinimizer
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSourceUnbounded_sourceCarrier_not_bounded
+#print axioms
+  CMVFigureFour.Examples.strictBilateralSourceUnbounded_compiledContract

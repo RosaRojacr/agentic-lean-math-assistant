@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeDelta",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) radical displacement D3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:39-43, the source contract is `def typeThreeDelta (lam h : ℝ) : ℝ := sqrt (lam ^ 2 - typeThreeShape h ^ 2) / lam - sqrt (1 - typeThreeShape h ^ 2)`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f96722ed089f4e5911c6013a0aa601eb4080090036491702cd0fa78e3e31113f",
+  "symbol_mismatches": []
+}

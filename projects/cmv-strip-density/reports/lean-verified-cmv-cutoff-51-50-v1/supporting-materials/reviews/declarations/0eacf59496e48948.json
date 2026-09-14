@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.lambda_iff_centered",
+  "domain_issues": [],
+  "informal_statement": "Density-interval membership is equivalent to the centered parameter bound.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:81-93, the source contract is `theorem lambda_iff_centered {lam : ℝ} : lamInterval.RealContains lam ↔ tInterval.RealContains (lam - (lamMid : ℝ))`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8f9d4d2567e466a05274e0772e055d5bcc7985aa0cebd52f3a01300950766dca",
+  "symbol_mismatches": []
+}

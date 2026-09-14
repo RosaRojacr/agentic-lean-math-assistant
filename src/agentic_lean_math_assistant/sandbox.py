@@ -59,8 +59,10 @@ def _resource_properties(
         raise SandboxError("resource controls require a positive command deadline")
     return (
         "KillMode=control-group",
+        "MemoryAccounting=yes",
         f"MemoryMax={policy.memory_max_mb * _MIB}",
         "MemorySwapMax=0",
+        "OOMPolicy=kill",
         f"TasksMax={policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
         f"LimitNPROC={_current_user_tasks() + policy.tasks_max + _SANDBOX_TASK_OVERHEAD}",
         f"CPUQuota={policy.cpu_quota_percent}%",
@@ -78,6 +80,7 @@ def prepare_sandbox(
     policy: ExecutionSpec,
     read_paths: tuple[Path, ...] = (),
     allow_workspace_executables: bool = False,
+    report_resource_failures: bool = False,
     runtime_max_seconds: float | None = None,
 ) -> SandboxInvocation:
     """Apply cgroup limits and, when enabled, a Bubblewrap mount namespace."""
@@ -119,11 +122,16 @@ def prepare_sandbox(
             "--user",
             "--wait",
             "--pipe",
-            "--quiet",
-            "--collect",
-            f"--unit={unit}",
-            f"--working-directory={cwd}",
         ]
+        if not report_resource_failures:
+            wrapped.append("--quiet")
+        wrapped.extend(
+            (
+                "--collect",
+                f"--unit={unit}",
+                f"--working-directory={cwd}",
+            )
+        )
         for value in resource_properties:
             wrapped.extend(("--property", value))
         wrapped.extend(
@@ -144,6 +152,7 @@ def prepare_sandbox(
                 "backend": "systemd-cgroup",
                 "unit": unit,
                 "memory_max_mb": policy.memory_max_mb,
+                "resource_failure_reporting": report_resource_failures,
                 "memory_swap_max_mb": 0,
                 "cpu_quota_percent": policy.cpu_quota_percent,
                 "tasks_max": policy.tasks_max,
@@ -250,16 +259,17 @@ def prepare_sandbox(
         "--user",
         "--wait",
         "--pipe",
-        "--quiet",
-        "--collect",
-        f"--unit={unit}",
     ]
+    if not report_resource_failures:
+        wrapped.append("--quiet")
+    wrapped.extend(("--collect", f"--unit={unit}"))
     for value in properties:
         wrapped.extend(("--property", value))
     wrapped.extend(sandbox)
     metadata: dict[str, object] = {
         "enabled": True,
         "backend": "systemd-bwrap",
+        "resource_failure_reporting": report_resource_failures,
         "unit": unit,
         "network": policy.network,
         "memory_max_mb": policy.memory_max_mb,

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_continuousAt",
+  "domain_issues": [],
+  "informal_statement": "The inverse cap-area angle is continuous at each positive input.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:283-291, the source contract is `lemma θOf_continuousAt {x : ℝ} (hx : 0 < x) : ContinuousAt θOf x`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "efcd76351169996ba87c9b4ec14eb080fd4c43d9ee67eed507a1d6cc3182dbda",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,21 @@
+import CMVCompactCoreEnergyLimit
+
+open CMVRelaxation.CompactCoreEnergy
+
+#print axioms smoothEnergyMeasure_apply
+#print axioms smoothEnergyMeasure_univ
+#print axioms smoothEnergyMeasure_restrict_univ
+#print axioms restrictedEnergyFiniteMeasure_toMeasure
+#print axioms restrictedEnergyFiniteMeasure_mass
+#print axioms Limit.energy_mass_eq_smoothCostOn
+#print axioms Limit.energy_apply_eq_smoothCostOn
+#print axioms Limit.limsup_energy_closed_le
+#print axioms exists_limit
+#print axioms le_cost_of_cost_eq_top
+#print axioms target_le_limit_of_closed_with_vanishing_error
+#print axioms rigid_projection_payoff_le_limit
+#print axioms EscapingMassExample.isCompact_core
+#print axioms EscapingMassExample.energy_mass
+#print axioms EscapingMassExample.atomLocation_not_mem_core
+#print axioms EscapingMassExample.energy_restrict_core
+#print axioms EscapingMassExample.restricted_energy_tendsto_zero

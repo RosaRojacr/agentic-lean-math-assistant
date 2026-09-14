@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g",
+  "domain_issues": [],
+  "informal_statement": "The normalized arc saving from combining two equal-area caps.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:115-118, the source contract is `noncomputable def g (x : ℝ) : ℝ := 2 * arc x - arc (2 * x)`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "84e86ef24e01fc8948ba482190efcf999cb2f81449ac1865f6de67d08ad6760b",
+  "symbol_mismatches": []
+}

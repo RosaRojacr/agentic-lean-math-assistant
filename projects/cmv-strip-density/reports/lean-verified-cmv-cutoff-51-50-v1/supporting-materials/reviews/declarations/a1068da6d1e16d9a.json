@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.realContains_arcsin_of_taylor_interval",
+  "domain_issues": [],
+  "informal_statement": "The first-cell arcsine enclosure extends to every enclosed input.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactFirstCell.lean:39-52, the source contract is `theorem realContains_arcsin_of_taylor_interval (a xInterval : QInterval) (x : ℝ) (hx : xInterval.RealContains x) (hxUnit : (-1 : ℝ) ≤ x ∧ x ≤ 1) (hbranch : (a.lo : ℝ) ∈ Icc (-(π / 2)) (π / 2) ∧ (a.hi : ℝ) ∈ Icc (-(π / 2)) (π / 2)) (hlo : (ScalarSuffixCertificate.sinTaylor27Interval a.lo).hi ≤ xInterval.lo) (hhi : xInterval.hi ≤ (ScalarSuffixCertificate.sinTaylor27Interval a.hi).lo) : a.RealContains (arcsin x)`. This is the explicit zero-based first compact box. Its exact density and curvature intervals are certificate domains; the candidate-facing conclusion, where stated, applies to every modeled candidate at that density rather than only the stationary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "04625f4bdbd8d2aa4776f4b5c665d47c58bb244e2be98c92835ce4982a969a1c",
+  "symbol_mismatches": []
+}

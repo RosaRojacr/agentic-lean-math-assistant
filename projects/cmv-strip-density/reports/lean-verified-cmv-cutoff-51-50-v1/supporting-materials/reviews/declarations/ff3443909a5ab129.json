@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.PointEquationSemantics",
+  "domain_issues": [],
+  "informal_statement": "Analytic interpretation of the first prototype's equations and gap sign.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:522-537, the source contract is `structure PointEquationSemantics (p : Point) : Prop where typeThreeHeight_gt_half : 1 / 2 < (1 + cos (w p)) / 2 typeThreeHeight_lt_one : (1 + cos (w p)) / 2 < 1 typeFourHeight_pos : 0 < cos (x p) typeFourHeight_lt_one : cos (x p) < 1 equalArea_of_E_zero : E p = 0 → LeanSuffixAnalytic.typeThreeArea (lam p) ((1 + cos (w p)) / 2) = LeanSuffixAnalytic.typeFourArea (lam p) (cos (x p)) stationary_of_F_zero : F p = 0 → LeanSuffixAnalytic.typeFourFold (lam p) (cos (x p)) = 0 perimeter_lt_of_G_neg : G p < 0 → LeanSuffixAnalytic.typeThreePerimeter (lam p) ((1 + cos (w p)) / 2) < LeanSuffixAnalytic.typeFourPerimeter (lam p) (cos (x p))`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "57c3cf6c23b8d0095e640676ca4732afaae3f1e4c4e649a7f2e21c72d97bbd64",
+  "symbol_mismatches": []
+}

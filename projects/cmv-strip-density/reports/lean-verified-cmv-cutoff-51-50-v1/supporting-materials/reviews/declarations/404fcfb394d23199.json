@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "arc",
+  "domain_issues": [],
+  "informal_statement": "The unit-chord arc length as a function of enclosed area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:267-268, the source contract is `noncomputable def arc (x : ℝ) : ℝ := ell (θOf x)`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d1b33dc05b11585801ca5ae18eed6d15a605f3d852a3120f8561f8ec87bdc3a5",
+  "symbol_mismatches": []
+}

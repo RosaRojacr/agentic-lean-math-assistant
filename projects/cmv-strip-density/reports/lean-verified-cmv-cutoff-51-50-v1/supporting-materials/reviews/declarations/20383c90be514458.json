@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftCenter",
+  "domain_issues": [],
+  "informal_statement": "Center of the left type-(iii) side circle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:70-72, the source contract is `def leftCenter : PlanePoint := (-a.sideHalfWidth, a.radius - 1)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ae634544d50a625f2da0ab83dddef536c2004aefe8a002e19ec3ff792534bdf2",
+  "symbol_mismatches": []
+}

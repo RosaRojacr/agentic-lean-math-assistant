@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideHalfWidth_pos",
+  "domain_issues": [],
+  "informal_statement": "The half-width is positive away from h=1/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:341-343, the source contract is `theorem sideHalfWidth_pos (hh : a.h ≠ 1 / 2) : 0 < a.sideHalfWidth`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a769284707d6bf25198d747cd5846bae22f2f394cc9d09e601cfcab854579d7a",
+  "symbol_mismatches": []
+}

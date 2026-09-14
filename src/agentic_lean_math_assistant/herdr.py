@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import shlex
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -127,16 +128,30 @@ class HerdrClient:
             records.append(HerdrWorkspaceRecord(workspace_id=workspace_id, label=label))
         return tuple(records)
 
-    def split_pane(self, pane_id: str, *, cwd: Path) -> str:
+    def focus_workspace(self, workspace_id: str) -> None:
+        self._json("workspace", "focus", workspace_id)
+
+    def split_pane(
+        self,
+        pane_id: str,
+        *,
+        cwd: Path,
+        direction: str = "right",
+        ratio: float = 0.5,
+    ) -> str:
+        if direction not in {"right", "down"}:
+            raise ValueError("pane split direction must be right or down")
+        if not 0 < ratio < 1:
+            raise ValueError("pane split ratio must be between zero and one")
         result = self._result(
             self._json(
                 "pane",
                 "split",
                 pane_id,
                 "--direction",
-                "right",
+                direction,
                 "--ratio",
-                "0.5",
+                str(ratio),
                 "--cwd",
                 str(cwd),
                 "--no-focus",
@@ -153,7 +168,7 @@ class HerdrClient:
     def run_in_pane(self, pane_id: str, command: tuple[str, ...]) -> None:
         if not command or any(not argument for argument in command):
             raise ValueError("pane command must contain nonempty arguments")
-        completed = self._run("pane", "run", pane_id, " env", *command)
+        completed = self._run("pane", "run", pane_id, shlex.join(command))
         if completed.error is not None:
             raise HerdrError(f"cannot execute Herdr: {completed.error}")
         if completed.exit_code != 0:
@@ -162,6 +177,23 @@ class HerdrClient:
                 f"cannot start command in pane {pane_id}: "
                 f"{detail or completed.exit_code}"
             )
+
+    def wait_for_output(
+        self, pane_id: str, text: str, *, timeout_ms: int = 30_000
+    ) -> None:
+        if not text:
+            raise ValueError("pane output match must not be empty")
+        if timeout_ms <= 0:
+            raise ValueError("pane output timeout must be positive")
+        self._json(
+            "pane",
+            "wait-output",
+            pane_id,
+            "--match",
+            text,
+            "--timeout",
+            str(timeout_ms),
+        )
 
     def close_workspace(self, workspace_id: str) -> None:
         self._json("workspace", "close", workspace_id)

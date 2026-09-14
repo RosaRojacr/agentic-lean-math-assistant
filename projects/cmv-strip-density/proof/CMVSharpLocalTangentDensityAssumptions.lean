@@ -1,0 +1,26 @@
+import CMVSharpLocalTangentDensity
+
+namespace CMVRelaxation.CompactCoreEnergy
+
+#print axioms euclideanClosedBall
+#print axioms rigidProjectionBox_subset_euclideanClosedBall_of_sq
+#print axioms eventually_exists_subgraph_C1_tangent_patch
+#print axioms eventually_exists_supergraph_C1_tangent_patch
+#print axioms sharp_lower_euclideanClosedBallDensity_of_subgraph_C1
+#print axioms sharp_lower_euclideanClosedBallDensity_of_supergraph_C1
+#print axioms eventually_exists_vertical_tangent_patch
+#print axioms sharp_lower_euclideanClosedBallDensity
+#print axioms sharp_lower_density_of_vertical_smooth_germ
+#print axioms hausdorffMeasure_horizontalSegment_inter_closedBall_eq
+
+end CMVRelaxation.CompactCoreEnergy
+
+namespace CMVFigureFive.SourceGeometry
+
+#print axioms upperCapped_exists_verticalOrientedSmoothGraphGerm
+#print axioms lowerExposed_eventually_mem_iff_above
+#print axioms lowerExposed_orientedSmoothGraphGerm
+#print axioms lowerExposed_sharp_limitDensity
+#print axioms lowerExposed_euclideanH1_inter_closedBall_eq
+
+end CMVFigureFive.SourceGeometry

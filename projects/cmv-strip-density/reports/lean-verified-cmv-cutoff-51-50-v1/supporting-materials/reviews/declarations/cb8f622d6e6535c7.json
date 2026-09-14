@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.N4",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) area numerator before its factor two.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:70-70, the source contract is `def N4 (p : Point) : ℝ := B4 b p + cos (x b p) * D4 b p`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "471118e366d83932c15b82b181a3387515c42d96f12d08eec3d20f86b701eec8",
+  "symbol_mismatches": []
+}

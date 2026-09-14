@@ -1,0 +1,30 @@
+import CMVRegularGermMetricSplice
+
+namespace CMVRelaxation.RegularTraceCornerComparison
+namespace RegularCornerChartApplicability
+namespace MetricApplicability
+
+#print axioms connectorParam_contDiff
+#print axioms connectorParam_hasDerivAt
+#print axioms euclideanParametricSpeed_connectorParam
+#print axioms continuous_connectorSpeedAt
+#print axioms fderiv_antiDiagonal_zero
+#print axioms connectorSpeedAt_zero_pos
+#print axioms exists_connectorMetricRadius
+#print axioms connectorParam_injOn_metric
+#print axioms exists_hausdorffMeasure_connectorTrace_eq_connectorArcLength
+#print axioms exists_weightedTraceCost_connector_eq_phase_connectorArcLength
+#print axioms metricTraceGain
+#print axioms tendsto_metricTraceGain_div
+#print axioms eventually_metricTraceGain_pos
+#print axioms local_inside_cost_lt_of_metricTraceGain_pos
+#print axioms competitor_complete_cost_lt_of_local_inside_cost_lt
+#print axioms eventually_local_inside_cost_lt
+#print axioms tendsto_connectorArcLength_div
+#print axioms positiveDiagonalReparam_metric
+#print axioms tendsto_connectorArcLength_div_positiveDiagonal
+#print axioms eventually_positiveDiagonal_local_inside_cost_lt
+
+end MetricApplicability
+end RegularCornerChartApplicability
+end CMVRelaxation.RegularTraceCornerComparison

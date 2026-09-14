@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.QInterval",
+  "domain_issues": [],
+  "informal_statement": "The shared rational interval type in compact-cell assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellAssembly.lean:20-24, the source contract is `abbrev QInterval := ScalarSuffixCertificate.QInterval`. The Conditions record contains regular root slabs, opposite stationary-fold and area-face signs, negative type-(iii) fold, and a strict perimeter sign. The generic assembly derives a stationary pair and then uses the all-curvature envelope; candidate curvature is not confined to the certificate slab.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bf869b1f520d1cedce20479248192ec784229f327d43ecc88c3fd90b71146250",
+  "symbol_mismatches": []
+}

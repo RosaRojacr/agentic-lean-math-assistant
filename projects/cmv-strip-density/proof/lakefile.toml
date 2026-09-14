@@ -127,12 +127,12 @@ roots = ["CMVCurvatureIntegration", "CMVCurvatureIntegrationAssumptions", "CMVFi
 [[lean_lib]]
 name = "CMVFigureFourSourceSupport"
 srcDir = "."
-roots = ["CMVFigureFourSourceGeometry", "CMVFigureFourBilateralIncidence", "CMVFigureFourBilateralIncidenceAssumptions", "CMVFigureFourBilateralExamples", "CMVFigureFourBilateralExamplesAssumptions", "CMVFigureFourScalarReduction", "CMVFiniteJunctionDisagreement", "CMVFigureFourTargetGeometry", "CMVFigureFourSourceAssumptions"]
+roots = ["CMVFigureFourSourceGeometry", "CMVFigureFourBilateralIncidence", "CMVFigureFourBilateralIncidenceAssumptions", "CMVFigureFourBilateralExamples", "CMVFigureFourBilateralExamplesAssumptions", "CMVFigureFourScalarReduction", "CMVFiniteJunctionDisagreement", "CMVFigureFourTargetGeometry", "CMVFigureFourComplementTopology", "CMVFigureFourRawComplementTopology", "CMVFigureFourComplementTopologyExamples", "CMVFigureFourComplementTopologyAssumptions", "CMVFigureFourBoundaryRigidity", "CMVFigureFourBoundaryRigiditySourceExclusion", "CMVFigureFourBoundaryRigidityExamples", "CMVFigureFourBoundaryRigidityAssumptions", "CMVFigureFourSourceAssumptions"]
 
 [[lean_lib]]
 name = "CMVFigureFiveSourceSupport"
 srcDir = "."
-roots = ["CMVFigureFiveSourceGeometry", "CMVFigureFiveAngular", "CMVFigureFiveScalarComparison", "CMVFigureFiveSourceAssumptions"]
+roots = ["CMVFigureFiveSourceGeometry", "CMVFigureFiveAngular", "CMVFigureFiveScalarComparison", "CMVFigureFiveExamples", "CMVFigureFiveSourceAssumptions"]
 
 [[lean_lib]]
 name = "CMVTypeThreePhaseThresholdSupport"
@@ -192,3 +192,242 @@ srcDir = "."
 roots = ["CMVSourceClassification", "CMVFigureFourBilateralExamples",
   "CMVFourArcSourceCompetitor", "CMVTypeThreeSourceExclusion",
   "CMVTypeThreeSourceExclusionAssumptions"]
+
+[[lean_lib]]
+name = "CMVTwoPatchGraphVariationSupport"
+srcDir = "."
+roots = ["CMVTwoPatchGraphVariation", "CMVTwoPatchStationarity",
+  "CMVTwoPatchGraphVariationAssumptions"]
+
+[[lean_lib]]
+name = "CMVLocalGraphSurgerySupport"
+srcDir = "."
+roots = ["CMVLocalGraphSurgery", "CMVFiniteJunctionRepair",
+  "CMVFiniteCornerRepair", "CMVLocalGraphSurgeryAssumptions"]
+
+[[lean_lib]]
+name = "CMVRelativeLevelTraceAveragingSupport"
+srcDir = "."
+roots = ["CMVRelativeParameterSelection",
+  "CMVRelativeLevelTraceAveraging",
+  "CMVRelativeLevelTraceAveragingAssumptions"]
+
+[[lean_lib]]
+name = "CMVTwoPatchCurvatureGeometrySupport"
+srcDir = "."
+roots = ["CMVTwoPatchCurvatureGeometry",
+  "CMVTwoPatchCurvatureGeometryExamples",
+  "CMVTwoPatchCurvatureHypothesisContract",
+  "CMVTwoPatchCurvatureGeometryAssumptions"]
+
+[[lean_lib]]
+name = "CMVSourceBoundaryContinuationSupport"
+srcDir = "."
+roots = ["CMVSourceBoundaryContinuation",
+  "CMVSourceBoundaryContinuationAssumptions"]
+
+[[lean_lib]]
+name = "CMVMixedChartSupportContinuationSupport"
+srcDir = "."
+roots = ["CMVMixedChartSupportContinuation",
+  "CMVMixedChartSupportContinuationAssumptions"]
+
+[[lean_lib]]
+name = "CMVSourceFiniteSlabArcInventorySupport"
+srcDir = "."
+roots = ["CMVSourceFiniteSlabArcInventory",
+  "CMVSourceFiniteSlabArcInventoryAssumptions"]
+
+[[lean_lib]]
+name = "CMVExteriorMaximalArcSupport"
+srcDir = "."
+roots = ["CMVExteriorMaximalArc",
+  "CMVExteriorMaximalArcAssumptions"]
+
+[[lean_lib]]
+name = "CMVAEOpenRepresentativeSupport"
+srcDir = "."
+roots = ["CMVAEOpenRepresentative",
+  "CMVAEOpenRepresentativeAssumptions"]
+
+[[lean_lib]]
+name = "CMVAEIntervalSectionsSupport"
+srcDir = "."
+roots = ["CMVAEIntervalSections",
+  "CMVAEIntervalSectionsAssumptions"]
+
+[[lean_lib]]
+name = "CMVAELocalChartPreservationSupport"
+srcDir = "."
+roots = ["CMVAELocalChartPreservation",
+  "CMVAELocalChartPreservationAssumptions"]
+
+[[lean_lib]]
+name = "CMVTransverseContactVariationSupport"
+srcDir = "."
+roots = ["CMVTransverseContactVariation",
+  "CMVTransverseContactVariationAssumptions",
+  "CMVTransverseContactMomentum",
+  "CMVTransverseContactMomentumAssumptions"]
+
+[[lean_lib]]
+name = "CMVFiniteBandRearrangementSupport"
+srcDir = "."
+roots = ["CMVFiniteBandRearrangement",
+  "CMVFiniteBandFrontier",
+  "CMVFiniteBandCosts",
+  "CMVFiniteBandCostAssembly",
+  "CMVFiniteBandCostComparison",
+  "CMVFiniteBandEqualityRigidity",
+  "CMVFiniteBandEqualityRigidityExample",
+  "CMVFiniteBandRearrangementExample",
+  "CMVFiniteBandGraphProjection",
+  "CMVFiniteBandGraphProjectionExample",
+  "CMVFiniteBandGraphProjectionAssumptions",
+  "CMVFiniteBandRearrangementAssumptions"]
+
+[[lean_lib]]
+name = "CMVLiteralCornerShorteningSupport"
+srcDir = "."
+roots = ["CMVLiteralCornerShortening",
+  "CMVLiteralCornerShorteningAssumptions"]
+
+[[lean_lib]]
+name = "CMVRegularTraceCornerComparisonSupport"
+srcDir = "."
+roots = ["CMVRegularParametricArclength",
+  "CMVRegularParametricArclengthAssumptions",
+  "CMVRegularTraceCornerComparison",
+  "CMVRegularTraceCornerComparisonAssumptions",
+  "CMVRegularGermSplice",
+  "CMVRegularGermSpliceAssumptions",
+  "CMVRegularGermScaledSplice",
+  "CMVRegularGermScaledSpliceAssumptions",
+  "CMVRegularGermMetricSplice",
+  "CMVRegularGermMetricSpliceAssumptions",
+  "CMVRegularGermExtension",
+  "CMVRegularGermExtensionAssumptions",
+  "CMVRegularGermInterfaceExtension",
+  "CMVRegularGermInterfaceExtensionAssumptions",
+  "CMVInterfaceExtensionSpecimen",
+  "CMVInterfaceExtensionSpecimenAssumptions",
+  "CMVInterfaceExtensionGenericSpecimen",
+  "CMVInterfaceExtensionGenericSpecimenAssumptions",
+  "CMVRegularGermExactAreaCompensation",
+  "CMVRegularGermExactAreaCompensationAssumptions",
+  "CMVRegularGermExactAreaFrontier",
+  "CMVRegularGermExactAreaFrontierAssumptions",
+  "CMVInterfaceExtensionExactAreaSpecimen",
+  "CMVInterfaceExtensionExactAreaSpecimenAssumptions"]
+
+[[lean_lib]]
+name = "CMVWeightedCurveMultiplicitySupport"
+srcDir = "."
+roots = ["CMVWeightedCurveMultiplicity",
+  "CMVWeightedCurveMultiplicityAssumptions"]
+
+[[lean_lib]]
+name = "CMVCompactCoreEnergyLimitSupport"
+srcDir = "."
+roots = ["CMVCompactCoreEnergyLimit",
+  "CMVCompactCoreEnergyLimitAssumptions"]
+
+[[lean_lib]]
+name = "CMVSharpLocalTangentDensitySupport"
+srcDir = "."
+roots = ["CMVSharpLocalTangentDensity",
+  "CMVSharpLocalTangentDensityAssumptions",
+  "CMVFigureFiveUpperOnlySource",
+  "CMVFigureFiveUpperOnlySourceAssumptions"]
+
+[[lean_lib]]
+name = "CMVBoundaryLocalAtlasSupport"
+srcDir = "."
+roots = ["CMVBoundaryLocalAtlas",
+  "CMVBoundaryComponentTopology",
+  "CMVBoundaryGlobalTransition",
+  "CMVBoundaryFiniteChartCuts",
+  "CMVBoundaryGraphAtlas",
+  "CMVBoundaryNonsmoothJunction",
+  "CMVBoundaryNonsmoothJunctionAssumptions",
+  "CMVBoundaryLocalAtlasSpecimen",
+  "CMVBoundaryFiniteChartCutsSpecimen",
+  "CMVBoundaryLocalAtlasAssumptions",
+  "CMVBoundaryComponentTopologyAssumptions",
+  "CMVBoundaryHeightCompletion",
+  "CMVBoundaryEndpointLimits",
+  "CMVBoundaryCompletedChains",
+  "CMVBoundaryOrderedChains",
+  "CMVBoundaryOrderTopology",
+  "CMVBoundaryIntervalParameterization",
+  "CMVBoundarySimpleLoop",
+  "CMVBoundarySourceTraceAdapter",
+  "CMVBoundaryHeightCompletionSpecimen",
+  "CMVBoundaryHeightCompletionAssumptions"]
+
+[[lean_lib]]
+name = "CMVBoundaryHeightCompletionAudit"
+srcDir = "."
+roots = ["CMVBoundaryHeightCompletionAssumptions"]
+
+[[lean_lib]]
+name = "CMVSmoothAmbientTransportSupport"
+srcDir = "."
+roots = ["CMVSmoothAmbientTransport",
+  "CMVSmoothAmbientTransportAssumptions",
+  "CMVRelaxedMinimizingSequence",
+  "CMVRelaxedMinimizingSequenceAssumptions",
+  "CMVTwoPatchAmbientVariation",
+  "CMVTwoPatchAmbientVariationAssumptions"]
+
+[[lean_lib]]
+name = "CMVAnnularGapRecoverySupport"
+srcDir = "."
+roots = ["CMVAnnularGapRecovery",
+  "CMVAnnularGapRecoveryAssumptions"]
+
+[[lean_lib]]
+name = "CMVDistributionalVariationSupport"
+srcDir = "."
+roots = ["CMVDistributionalVariation",
+  "CMVDistributionalVariationAssumptions"]
+
+[[lean_lib]]
+name = "CMVOrientedLoopLocalizationSupport"
+srcDir = "."
+roots = ["CMVOrientedLoopRegularCuts",
+  "CMVOrientedLoopPiecewiseAtlas",
+  "CMVOrientedLoopIncidence",
+  "CMVOrientedLoopCycles",
+  "CMVOrientedLoopPathRealization",
+  "CMVOrientedLoopOrbitSelection",
+  "CMVOrientedLoopEmbeddedness",
+  "CMVOrientedLoopEmbeddednessAssumptions",
+  "CMVOrientedLoopCostAccounting",
+  "CMVOrientedLoopSmoothTrace",
+  "CMVOrientedLoopOrientation",
+  "CMVOrientedLoopOrientationAssumptions",
+  "CMVOrientedLoopEndpointOrientation",
+  "CMVOrientedLoopEndpointOrientationAssumptions",
+  "CMVOrientedLoopOrbitSelectionAssumptions",
+  "CMVOrientedLoopCostAccountingAssumptions",
+  "CMVOrientedLoopPathRealizationAssumptions",
+  "CMVOrientedLoopSmoothTraceAssumptions",
+  "CMVOrientedLoopCyclesAssumptions",
+  "CMVOrientedLoopIncidenceAssumptions",
+  "CMVOrientedLoopLocalization",
+  "CMVOrientedLoopLocalizationAssumptions",
+  "CMVFigureFiveOrientedLoopLocalization",
+  "CMVFigureFiveOrientedLoopLocalizationAssumptions"]
+
+[[lean_lib]]
+name = "CMVPolygonalModTwoSupport"
+srcDir = "."
+roots = ["CMVPolygonalModTwo",
+  "CMVPolygonalModTwoParity",
+  "CMVPolygonalModTwoApplications",
+  "CMVPolygonalModTwoRegions",
+  "CMVPolygonalReducedMass",
+  "CMVPolygonalCommonRefinement",
+  "CMVPolygonalFiniteFilling",
+  "CMVPolygonalModTwoAssumptions"]

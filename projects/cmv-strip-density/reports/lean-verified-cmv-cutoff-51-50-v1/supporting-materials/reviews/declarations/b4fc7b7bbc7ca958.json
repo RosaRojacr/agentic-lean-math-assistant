@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCore_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "Weighted length of the left core arc is its parameter span.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1675-1694, the source contract is `theorem leftCore_weightedIntegral (lam : ℝ) (c : StripCore) : ∫ p, StripDensity lam p ∂leftCoreBoundaryMeasure c = 2 * ell c.sideAngle`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e333f475432d30c40456ab56a9f5187cebdb61288c7e07d5eec293804ac77f49",
+  "symbol_mismatches": []
+}

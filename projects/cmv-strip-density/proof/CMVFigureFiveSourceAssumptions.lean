@@ -1,10 +1,46 @@
-import CMVFigureFiveScalarComparison
+import CMVFigureFiveExamples
 
 #print axioms CMVFigureFive.CappedInterface.cap_endpoints_between
 #print axioms CMVFigureFive.SourceGeometry.width_pos
 #print axioms CMVFigureFive.SourceGeometry.leftStripCenter_snd_eq_zero
 #print axioms CMVFigureFive.SourceGeometry.rightStripCenter_snd_eq_zero
 #print axioms CMVFigureFive.SourceGeometry.sourceRadius_eq_one
+#print axioms CMVFigureFive.CappedInterface.cos_theta_pos
+#print axioms CMVFigureFive.CappedInterface.cos_theta_lt_one
+#print axioms CMVFigureFive.CappedInterface.upper_center_lt_interface
+#print axioms CMVFigureFive.CappedInterface.upper_interface_lt_pole
+#print axioms CMVFigureFive.CappedInterface.lower_interface_lt_center
+#print axioms CMVFigureFive.CappedInterface.lower_pole_lt_interface
+#print axioms
+  CMVFigureFive.CappedInterface.arcTrace_abscissa_eq_left_or_right
+#print axioms CMVFigureFive.CappedInterface.upper_boundaryPoints_mem_arcTrace
+#print axioms CMVFigureFive.CappedInterface.lower_boundaryPoints_mem_arcTrace
+#print axioms CMVFigureFive.SourceGeometry.measure_exteriorExceptionalHeights
+#print axioms
+  CMVFigureFive.SourceGeometry.upperCappedBoundaryPoints_mem_section_frontier
+#print axioms CMVFigureFive.SourceGeometry.frontier_upperCappedSection_eq_pair
+#print axioms CMVFigureFive.SourceGeometry.actual_upperCappedSection
+#print axioms CMVFigureFive.SourceGeometry.actual_upperExposedSection_empty
+#print axioms
+  CMVFigureFive.SourceGeometry.actual_upperCappedSection_empty_above
+#print axioms
+  CMVFigureFive.SourceGeometry.lowerCappedBoundaryPoints_mem_section_frontier
+#print axioms CMVFigureFive.SourceGeometry.frontier_lowerCappedSection_eq_pair
+#print axioms CMVFigureFive.SourceGeometry.actual_lowerCappedSection
+#print axioms CMVFigureFive.SourceGeometry.actual_lowerExposedSection_empty
+#print axioms
+  CMVFigureFive.SourceGeometry.actual_lowerCappedSection_empty_below
+#print axioms CMVFigureFive.SourceGeometry.actual_upperExteriorSection
+#print axioms CMVFigureFive.SourceGeometry.actual_lowerExteriorSection
+#print axioms CMVFigureFive.InterfaceBoundary.trace_second_ge_one
+#print axioms CMVFigureFive.InterfaceBoundary.trace_second_le_neg_one
+#print axioms CMVFigureFive.SourceGeometry.leftStripBoundaryPoint_mem_trace
+#print axioms CMVFigureFive.SourceGeometry.rightStripBoundaryPoint_mem_trace
+#print axioms CMVFigureFive.SourceGeometry.frontier_strictStripSection_eq_pair
+#print axioms CMVFigureFive.SourceGeometry.actual_strictStripSection
+#print axioms
+  CMVFigureFive.SourceGeometry.sourceCarrier_ae_representative_sections
+#print axioms CMVFigureFive.SourceGeometry.ae_sourceCarrier_strictStripSection
 #print axioms CMVFigureFive.SourceGeometry.sourceCarrier_nullMeasurableSet
 #print axioms CMVFigureFive.SourceGeometry.one_or_two_exterior_caps
 #print axioms LeanSuffixAnalytic.typeThreeArea_continuousAt_one
@@ -31,6 +67,17 @@ import CMVFigureFiveScalarComparison
 #print axioms CMVFigureFive.InterfaceBoundary.volume_trace
 #print axioms CMVFigureFive.InterfaceBoundary.weightedAreaContribution_eq
 #print axioms CMVFigureFive.InterfaceBoundary.weightedBoundaryCost_eq
+#print axioms CMVFigureFive.SourceGeometry.integrableOn_representative
+#print axioms CMVFigureFive.SourceGeometry.integrableOn_sourceCarrier
+#print axioms
+  CMVFigureFive.SourceGeometry.weightedArea_sourceCarrier_eq_representative
+#print axioms CMVFigureFive.SourceGeometry.representative_ae_sectionRegion
+#print axioms CMVFigureFive.SourceGeometry.volume_strictStripRegion
+#print axioms CMVFigureFive.SourceGeometry.volume_upperExteriorRegion
+#print axioms CMVFigureFive.SourceGeometry.volume_lowerExteriorRegion
+#print axioms
+  CMVFigureFive.SourceGeometry.weightedArea_sourceCarrier_eq_modeledWeightedArea
+#print axioms CMVFigureFive.SourceGeometry.weightedArea_sourceCarrier_eq
 #print axioms CMVFigureFive.SourceGeometry.volume_frontier_representative
 #print axioms CMVFigureFive.SourceGeometry.sourceCarrier_ae_closure_representative
 #print axioms CMVFigureFive.SourceGeometry.weightedArea_sourceCarrier_eq_closure
@@ -47,3 +94,16 @@ import CMVFigureFiveScalarComparison
   CMVFigureFive.SourceGeometry.modeledWeightedArea_add_support_le_modeledWeightedPerimeter
 #print axioms
   CMVFigureFive.SourceGeometry.exists_admissible_typeThree_below_modeledWeightedPerimeter
+namespace CMVFigureFive.SourceGeometry
+#print axioms
+  exists_admissible_typeThree_relaxedPerimeter_lt_modeledWeightedPerimeter
+#print axioms
+  sourceCarrier_not_isMinimizer_of_modeledWeightedPerimeter_le_relaxedPerimeter
+end CMVFigureFive.SourceGeometry
+#print axioms CMVFigureFive.SourceGeometry.ofRadiusOneFourArcCandidate
+#print axioms CMVFigureFive.Examples.endpointCandidate_radius
+#print axioms CMVFigureFive.Examples.twoCapEndpointSource
+#print axioms CMVFigureFive.Examples.twoCapEndpointSource_sourceRadius
+#print axioms CMVFigureFive.Examples.twoCapEndpointSource_capCount
+#print axioms
+  CMVFigureFive.Examples.twoCapEndpointSource_exists_relaxed_competitor

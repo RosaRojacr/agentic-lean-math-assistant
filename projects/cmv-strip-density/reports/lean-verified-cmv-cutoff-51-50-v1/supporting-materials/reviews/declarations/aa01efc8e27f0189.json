@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.bottomChord_nonneg",
+  "domain_issues": [],
+  "informal_statement": "The bottom chord length is nonnegative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:352-354, the source contract is `theorem bottomChord_nonneg : 0 ≤ a.bottomChord`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bbe5a0b68c27b1eab70889a99796728aff04d58c47eda0333c16191c78a8f12a",
+  "symbol_mismatches": []
+}

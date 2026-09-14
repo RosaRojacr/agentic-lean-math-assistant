@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThree_fold_atom_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Soundness of the type-(iii) fold interval assembled from atom bounds.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:473-528, the source contract is `theorem typeThree_fold_atom_enclosure (lambdaInterval hI uI dI asinQI asinRatioI : QInterval) {lam h : ℝ} (hlam : lambdaInterval.RealContains lam) (hh : hI.RealContains h) (hatoms : uI.RealContains (sqrt (1 - LeanSuffixAnalytic.typeThreeShape h ^ 2)) ∧ dI.RealContains (sqrt (lam ^ 2 - LeanSuffixAnalytic.typeThreeShape h ^ 2)) ∧ asinQI.RealContains (arcsin (LeanSuffixAnalytic.typeThreeShape h)) ∧ asinRatioI.RealContains (arcsin (LeanSuffixAnalytic.typeThreeShape h / lam))) (hlambda : 0 < lambdaInterval.lo) (huPos : 0 < uI.lo) (hlambdaD : 0 < (lambdaInterval.mul dI).lo) : (typeThreeFoldBox lambdaInterval hI uI dI asinQI asinRatioI hlambda huPos hlambdaD).RealContains (LeanSuffixAnalytic.typeThreeFold lam h)`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0e739ea56f950a43598c09273d8fde5874e105be082082bb67c5da1055a66a6",
+  "symbol_mismatches": []
+}

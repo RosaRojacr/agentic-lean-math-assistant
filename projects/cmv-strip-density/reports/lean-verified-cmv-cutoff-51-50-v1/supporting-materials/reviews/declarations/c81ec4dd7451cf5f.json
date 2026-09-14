@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.volume_rightCapCarrier",
+  "domain_issues": [],
+  "informal_statement": "Area of the right core circular segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2139-2201, the source contract is `lemma volume_rightCapCarrier (c : StripCore) : volume c.rightCapCarrier = ENNReal.ofReal (4 * area c.sideAngle)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7bc214af5d8d445665e416853a1fab80112ca5fe1116500de0e9b2b6285dfdf7",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.K3",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's angular type-(iii) fold expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:720-727, the source contract is `def K3 (p : Point) : ℝ := let h3 := (1 + cos (w p)) / 2 4 * h3 * ((1 + cos (w p)) / sin (w p) - (lam p ^ 2 + cos (w p)) / (lam p * (lam p * sin (v p)))) - 2 * (B3 p + D3 p)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dded0a92a5475f561e4ec09b53d31fd672246c1e3a18679f1d82548595f59954",
+  "symbol_mismatches": []
+}

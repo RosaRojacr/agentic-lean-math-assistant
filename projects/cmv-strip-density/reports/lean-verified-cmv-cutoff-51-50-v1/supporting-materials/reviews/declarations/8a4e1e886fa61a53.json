@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedRightCoreParam",
+  "domain_issues": [],
+  "informal_statement": "Right core arc parametrization in Euclidean L2 coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:709-712, the source contract is `noncomputable def realizedRightCoreParam (c : StripCore) (s : ℝ) : EuclideanPlane := planeEuclideanHomeomorph (rightCoreParam c s)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f8de565538cdbe799e2faf0a2d6452b4030fcfacd5b43a7347015b8e46924a9",
+  "symbol_mismatches": []
+}

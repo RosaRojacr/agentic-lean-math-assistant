@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.upperCenter",
+  "domain_issues": [],
+  "informal_statement": "Center of the upper exterior circle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:76-79, the source contract is `def upperCenter : PlanePoint := (0, 1 - a.radius * cos a.outerAngle)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6dabb1e2d2dfee1af758b047dfb6728a97191f4c64742b75a35f102c81c1c3c1",
+  "symbol_mismatches": []
+}

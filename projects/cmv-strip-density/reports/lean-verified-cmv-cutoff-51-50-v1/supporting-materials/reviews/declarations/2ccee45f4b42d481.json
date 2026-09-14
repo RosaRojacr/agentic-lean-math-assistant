@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θstar_mem_Icc",
+  "domain_issues": [],
+  "informal_statement": "The selected angle belongs to [0,pi/2].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:96-98, the source contract is `lemma θstar_mem_Icc : θstar ∈ Icc 0 (π / 2)`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "60a56c312e094733952f7446cf434fefca8186b21010cd17ab60b2b44864dffb",
+  "symbol_mismatches": []
+}

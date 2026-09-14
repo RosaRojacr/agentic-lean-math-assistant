@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.oppositeFace_zero",
+  "domain_issues": [],
+  "informal_statement": "If a <= b and f is continuous on [a,b] with f(a) <= 0 <= f(b), then f has a zero in the closed interval [a,b]; endpoint zeros and a = b are allowed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:411-417, the source contract is `theorem oppositeFace_zero {a b : ℝ} (hab : a ≤ b) {f : ℝ → ℝ} (hf : ContinuousOn f (Icc a b)) (ha : f a ≤ 0) (hb : 0 ≤ f b) : ∃ x ∈ Icc a b, f x = 0`. The IVT uses a <= b, continuity on [a,b], f(a) <= 0 and 0 <= f(b), and returns a zero in the closed interval. Equality at an endpoint and the degenerate case a=b are allowed; the author does not claim strict interior existence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "77378bc472ea0851732650cda76cddbb51de35a2f8573fa992dd84ae00b26c15",
+  "symbol_mismatches": []
+}

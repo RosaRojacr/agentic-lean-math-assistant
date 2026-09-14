@@ -1,0 +1,71 @@
+import CMVRegularGermSplice
+
+namespace CMVRelaxation.RegularTraceCornerComparison
+
+#print axioms ActualRegularTraceCorner.interface_stripDensity_eq_one
+#print axioms closure_trimmedOpenCorner
+#print axioms frontier_trimmedOpenCorner
+#print axioms weightedTraceCost_eq_const_mul_hausdorff_except_point
+
+namespace RegularCornerChartApplicability
+
+#print axioms isOpen_localModel
+#print axioms isOpen_collar
+#print axioms isClosed_window
+#print axioms isBounded_window
+#print axioms closure_interior_window
+#print axioms frontier_window_subset_collar
+#print axioms representative_inter_collar_eq_localModel
+#print axioms window_subset_localizationSquare
+#print axioms localModel_frontier_inside_window
+#print axioms representative_frontier_inside_window
+#print axioms isOpen_competitor
+#print axioms isBounded_competitor
+#print axioms competitor_frontier
+#print axioms competitor_complete_cost
+#print axioms competitor_agrees_outside
+#print axioms competitor_weightedArea_defect_le
+#print axioms connectorTrace_eq_image_Icc
+#print axioms incident_injOn_local
+#print axioms interface_injOn_local
+#print axioms connectorParam_injOn
+#print axioms exists_traceMetricRadius
+#print axioms hausdorffMeasure_oldIncidentTrace_eq_arcLength
+#print axioms hausdorffMeasure_retainedIncidentTrace_eq_arcLength_sub
+#print axioms hausdorffMeasure_oldInterfaceTrace_eq_arcLength
+#print axioms hausdorffMeasure_retainedInterfaceTrace_eq_arcLength_sub
+#print axioms measurableSet_retainedIncidentTrace
+#print axioms measurableSet_retainedInterfaceTrace
+#print axioms measurableSet_connectorTrace
+#print axioms retainedIncidentTrace_disjoint_retainedInterfaceTrace
+#print axioms retainedIncidentTrace_inter_connector_finite
+#print axioms retainedInterfaceTrace_inter_connector_finite
+#print axioms oldIncidentTrace_inter_oldInterfaceTrace_finite
+#print axioms localModel_inside_cost_eq_trace_sum
+#print axioms representative_inside_cost_eq_trace_sum
+#print axioms weightedTraceCost_oldInterface_eq_hausdorff
+#print axioms weightedTraceCost_retainedInterface_eq_hausdorff
+#print axioms weightedTraceCost_oldInterface_eq_arcLength
+#print axioms weightedTraceCost_retainedInterface_eq_arcLength_sub
+#print axioms LocalTracePhase.stripDensity_eq_weight
+#print axioms PhysicalPhaseApplicability.incident_stripDensity_eq_weight
+#print axioms
+  PhysicalPhaseApplicability.weightedTraceCost_oldIncident_eq_phase_hausdorff
+#print axioms
+  PhysicalPhaseApplicability.weightedTraceCost_oldIncident_eq_phase_arcLength
+#print axioms
+  PhysicalPhaseApplicability.weightedTraceCost_retainedIncident_eq_phase_hausdorff
+#print axioms
+  PhysicalPhaseApplicability.weightedTraceCost_retainedIncident_eq_phase_arcLength_sub
+#print axioms
+  PhysicalPhaseApplicability.localModel_inside_cost_eq_phase_arcLength_add_connector
+#print axioms PhysicalPhaseApplicability.connector_stripDensity_eq_weight
+#print axioms
+  PhysicalPhaseApplicability.weightedTraceCost_connector_eq_phase_hausdorff
+#print axioms
+  PhysicalPhaseApplicability.representative_inside_cost_eq_phase_arcLengths
+#print axioms
+  PhysicalPhaseApplicability.localModel_inside_cost_eq_phase_arcLength_add_connectorHausdorff
+
+end RegularCornerChartApplicability
+end CMVRelaxation.RegularTraceCornerComparison

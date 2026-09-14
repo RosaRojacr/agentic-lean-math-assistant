@@ -2,6 +2,32 @@
 
 ## Unreleased
 
+## 1.2.0 — 2026-09-14
+
+### Runtime resilience
+
+- Serialized local OMP invocations behind a crash-released host resource lease,
+  with admission wait time retained in each invocation receipt.
+- Classified cgroup exhaustion, aborts, and segmentation faults as terminal
+  process failures so blank-output retry policy cannot amplify a crash.
+- Enabled whole-cgroup OOM termination and conservative single-agent planning
+  defaults. The CMV workload now uses a 6 GiB memory cap and 128-task cap.
+
+### Proof publication
+
+- Added the problem-agnostic `proof-builder init|build|resume|verify` workflow.
+  Versioned manifests select one primary and any number of secondary Lean roots;
+  the builder exports their executable project-local closure, pins Lake inputs,
+  checks exact root types and axioms, and rejects configured publication leaks.
+- Added isolated Astra authoring and adversarial semantic-review passes with
+  exhaustive declaration coverage, generated-certificate family ledgers,
+  external-citation checks, and at most three fail-closed prose repair cycles.
+- Added deterministic professor-facing main-proof, lemma-supplement, and
+  semantic-audit PDFs. Reader-facing package roots contain only those PDFs and a
+  cross-platform reproduction README; editable sources, prompts, reviews,
+  receipts, provenance, checksums, references, and Lean code live under one
+  supporting-materials directory.
+
 ### CMV formalization
 
 - Completed the kernel-replayed 113-cell middle-face inventory, the 1,024-cell
@@ -40,6 +66,17 @@
   adjudications, deep active-contract validation, append-only contract and
   adjudication history, aligned indexed checkpoint evidence, sticky replacement
   requirements, and fail-closed handling of malformed or stale output.
+- Added one invocation-bound `autorun-report` command for conductor claims. It
+  obtains strategy identity from the frozen round request, rejects stale or
+  inconsistent active contexts, and emits the unchanged strict seven-field
+  marker plus a round-local diagnostic receipt, without adjudicating evidence
+  or mutating controller state. Controller claim handling remains based on the
+  strict parser and independent adjudication rather than the diagnostic receipt.
+- Added an explicit one-use stopped-session autorun resume token. Resume consumes
+  only its matching durable stop request after acquiring the retained session's
+  exclusive controller lock and validating stopped ownership, project, Master
+  Prompt, and incomplete status; ordinary startup, replayed tokens, competing
+  owners, and newer stop requests remain fail-closed.
 - Upgraded autorun retained state to schema 3 and strategy contracts to schema 2.
   Schema-1 and schema-2 sessions preserve counters and artifact paths, archive
   legacy strategy data, and require a fresh governor selection before resumed
@@ -56,6 +93,9 @@
 - Made all autorun pane followers survive controller stop/resume cycles and
   transient state-read failures. Current-output and raw-event views now follow
   `active_round` and update their Herdr pane labels on every round change.
+- Added an idempotent `autorun-workspace` command that constructs and verifies
+  the three-pane Herdr monitor before closing an older workspace with the same
+  label, then focuses the replacement.
 - Added the exact next-retry timestamp to recovering autorun status displays,
   distinguishing intentional exponential backoff from a stopped controller.
 - Enforced transient cgroup resource limits even when a trusted campaign disables

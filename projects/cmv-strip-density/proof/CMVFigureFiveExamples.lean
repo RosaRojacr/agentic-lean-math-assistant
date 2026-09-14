@@ -69,6 +69,7 @@ private theorem core_leftCenterX_eq_leftEndpoint
     core_cos_sideAngle_eq_zero candidate hradius]
   simp [FourArcCandidate.assembly, FourArcCandidate.stripCore,
     FourArcAssembly.upperCap, OneSidedCircularCap.leftEndpoint]
+  ring
 
 private theorem core_rightCenterX_eq_rightEndpoint
     (hradius : candidate.stripCore.radius = 1) :
@@ -198,7 +199,9 @@ def ofRadiusOneFourArcCandidate
   strip_centers_ordered := by
     rw [core_leftCenterX_eq_leftEndpoint candidate hradius,
       core_rightCenterX_eq_rightEndpoint candidate hradius]
-    change -candidate.capChord / 2 < candidate.capChord / 2
+    simp only [OneSidedCircularCap.leftEndpoint,
+      OneSidedCircularCap.rightEndpoint, FourArcAssembly.upperCap,
+      FourArcCandidate.assembly, FourArcCandidate.stripCore]
     linarith [candidate.capChord_pos]
   upper_left_tangent_coordinate := rfl
   upper_right_tangent_coordinate := rfl
@@ -234,25 +237,29 @@ def ofRadiusOneFourArcCandidate
       CMVFigureFour.FourArcAssembly.rightArcTrace_eq_stripCircleTrace,
       InterfaceBoundary.trace,
       upperEndpointBoundary_trace candidate hcandidate hradius,
+      InterfaceBoundary.trace,
       lowerEndpointBoundary_trace candidate hcandidate hradius]
+    rfl
   left_strip_one_sided := by
     intro p hp hupper hlower
-    rw [← CMVFigureFour.FourArcAssembly.leftArcTrace_eq_stripCircleTrace]
-      at hp
+    have hp' : p ∈ StripCore.leftArcTrace candidate.assembly.core := by
+      rw [CMVFigureFour.FourArcAssembly.leftArcTrace_eq_stripCircleTrace]
+      exact hp
     apply CMVFigureFour.FourArcAssembly.left_locallyOneSided
-      candidate.assembly hp
+      candidate.assembly hp'
     · simpa [core_leftCenterX_eq_leftEndpoint candidate hradius,
-        FourArcAssembly.upperCap, OneSidedCircularCap.leftEndpoint]
-        using hupper
+        FourArcAssembly.upperCap, OneSidedCircularCap.leftEndpoint,
+        neg_div] using hupper
     · simpa [core_leftCenterX_eq_leftEndpoint candidate hradius,
-        FourArcAssembly.upperCap, OneSidedCircularCap.leftEndpoint]
-        using hlower
+        FourArcAssembly.upperCap, OneSidedCircularCap.leftEndpoint,
+        neg_div] using hlower
   right_strip_one_sided := by
     intro p hp hupper hlower
-    rw [← CMVFigureFour.FourArcAssembly.rightArcTrace_eq_stripCircleTrace]
-      at hp
+    have hp' : p ∈ StripCore.rightArcTrace candidate.assembly.core := by
+      rw [CMVFigureFour.FourArcAssembly.rightArcTrace_eq_stripCircleTrace]
+      exact hp
     apply CMVFigureFour.FourArcAssembly.right_locallyOneSided
-      candidate.assembly hp
+      candidate.assembly hp'
     · simpa [core_rightCenterX_eq_rightEndpoint candidate hradius,
         FourArcAssembly.upperCap, OneSidedCircularCap.rightEndpoint]
         using hupper
@@ -261,12 +268,24 @@ def ofRadiusOneFourArcCandidate
         using hlower
   upper_cap_one_sided := by
     intro p hp hleft hright
-    rw [candidate.four_arcs_common_radius.1]
+    change p ∈ candidate.assembly.upperCap.arcTrace at hp
+    change p ≠ candidate.assembly.upperCap.leftEndpoint at hleft
+    change p ≠ candidate.assembly.upperCap.rightEndpoint at hright
+    change CMVFigureFour.LocallyOneSided
+      (interior candidate.assembly.carrier) candidate.assembly.upperCap.center
+        candidate.stripCore.radius p
+    rw [← candidate.four_arcs_common_radius.1]
     exact CMVFigureFour.FourArcAssembly.upper_locallyOneSided
       candidate.assembly hp hleft hright
   lower_cap_one_sided := by
     intro p hp hleft hright
-    rw [candidate.four_arcs_common_radius.2]
+    change p ∈ candidate.assembly.lowerCap.arcTrace at hp
+    change p ≠ candidate.assembly.lowerCap.leftEndpoint at hleft
+    change p ≠ candidate.assembly.lowerCap.rightEndpoint at hright
+    change CMVFigureFour.LocallyOneSided
+      (interior candidate.assembly.carrier) candidate.assembly.lowerCap.center
+        candidate.stripCore.radius p
+    rw [← candidate.four_arcs_common_radius.2]
     exact CMVFigureFour.FourArcAssembly.lower_locallyOneSided
       candidate.assembly hp hleft hright
 
@@ -306,9 +325,21 @@ def twoCapEndpointSource : SourceGeometry 2 :=
 
 @[simp] theorem twoCapEndpointSource_capCount :
     twoCapEndpointSource.capCount = 2 := by
-  simp [twoCapEndpointSource,
-    SourceGeometry.ofRadiusOneFourArcCandidate,
-    SourceGeometry.capCount, InterfaceBoundary.capIndicator]
+  change (1 : ℝ) + 1 = 2
+  norm_num
+
+/-- The complete endpoint specimen exercises the source-connected competitor
+side of the Figure-5 comparison in the extended relaxation. -/
+theorem twoCapEndpointSource_exists_relaxed_competitor :
+    ∃ a : _root_.TypeThreeAssembly 2,
+      a.h ∈ Set.Ioo (0 : ℝ) 1 ∧
+      (CMVRelaxation.relaxedSourceSemantics 2).IsAdmissible a.carrier ∧
+      _root_.WeightedArea 2 a.carrier =
+        _root_.WeightedArea 2 twoCapEndpointSource.sourceCarrier ∧
+      CMVRelaxation.relaxedPerimeter 2 a.carrier <
+        ENNReal.ofReal twoCapEndpointSource.modeledWeightedPerimeter :=
+  twoCapEndpointSource
+    |>.exists_admissible_typeThree_relaxedPerimeter_lt_modeledWeightedPerimeter
 
 end Examples
 end CMVFigureFive

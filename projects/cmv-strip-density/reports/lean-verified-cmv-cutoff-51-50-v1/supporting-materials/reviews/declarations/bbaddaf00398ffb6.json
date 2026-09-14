@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hasDerivAt_g",
+  "domain_issues": [],
+  "informal_statement": "The derivative of the normalized cap-saving function.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:130-150, the source contract is `theorem hasDerivAt_g {x : ℝ} (hx : 0 < x) : HasDerivAt g (4 * sin (θOf x) - 4 * sin (θOf (2 * x))) x`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "decc0673d8052a837dfd48ad4a92fcf973c064c1bdb19f47382d7d73801df7cf",
+  "symbol_mismatches": []
+}

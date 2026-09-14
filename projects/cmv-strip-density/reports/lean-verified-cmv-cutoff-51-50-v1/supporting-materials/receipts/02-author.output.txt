@@ -1,0 +1,1 @@
+Wrote `supporting-materials/reviews/author-02.json`. Corrected five prose entries; preserved the proof and frozen claims. Validated strict JSON, all 850 classifications, both generated families, and all root citations.

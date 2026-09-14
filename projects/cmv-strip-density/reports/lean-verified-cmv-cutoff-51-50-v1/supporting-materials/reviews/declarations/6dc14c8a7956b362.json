@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "isometry_rightCoreComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "The right core placement map is an isometry.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:696-704, the source contract is `lemma isometry_rightCoreComplexIsometryMap (c : StripCore) : Isometry (rightCoreComplexIsometryMap c)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2857926ac4225e60a51ede217224fdfda63879d202e0be14411ea5c13b2fc6bf",
+  "symbol_mismatches": []
+}

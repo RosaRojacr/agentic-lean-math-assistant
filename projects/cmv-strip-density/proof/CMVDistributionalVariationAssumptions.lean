@@ -1,0 +1,18 @@
+import CMVDistributionalVariation
+
+namespace CMVRelaxation
+
+#print axioms DistributionalTestField.contDiff_divergence
+#print axioms DistributionalTestField.hasCompactSupport_divergence
+#print axioms nullMeasurableSet_euclideanCarrier
+#print axioms volume_euclideanCarrier_symmDiff
+#print axioms distributionalVariation_congr_ae
+#print axioms abs_setIntegral_sub_setIntegral_le_symmDiff
+#print axioms ofReal_abs_characteristicFlux_le_add_distance_of_bound
+#print axioms SmoothGaussGreenBound.of_euclidean
+#print axioms distributionalVariation_le_sequenceCost
+#print axioms distributionalVariation_le_sequenceCost_of_smooth
+#print axioms distributionalVariation_le_relaxedPerimeter_of_smooth
+#print axioms distributionalVariation_le_relaxedPerimeter_of_euclidean
+
+end CMVRelaxation

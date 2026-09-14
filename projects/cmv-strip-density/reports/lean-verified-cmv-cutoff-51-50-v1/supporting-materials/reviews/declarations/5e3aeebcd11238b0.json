@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.radius_pos",
+  "domain_issues": [],
+  "informal_statement": "The core radius is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:460-462, the source contract is `theorem radius_pos (c : StripCore) : 0 < c.radius`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "754f25da7343b067aca1ccf07fea956e09bfd461a16a072435b6b938ea98f462",
+  "symbol_mismatches": []
+}

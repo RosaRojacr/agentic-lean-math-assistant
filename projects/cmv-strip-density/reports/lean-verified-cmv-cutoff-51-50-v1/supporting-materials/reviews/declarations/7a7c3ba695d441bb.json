@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.IsWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "No admissible equal-area competitor has smaller perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:90-94, the source contract is `def IsWeightedPerimeterMinimizer : Prop := ∀ competitor : AdmissibleCompetitor lam, competitor.WeightedArea = candidate.WeightedArea → candidate.WeightedPerimeter ≤ competitor.WeightedPerimeter`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f04b5c158c1a510cd5a8af38df8f99424aeed5e376f986e1d437f95e6a4cbe17",
+  "symbol_mismatches": []
+}

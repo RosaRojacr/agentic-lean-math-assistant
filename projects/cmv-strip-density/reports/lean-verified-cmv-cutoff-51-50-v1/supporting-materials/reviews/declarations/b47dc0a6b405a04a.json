@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceCells92To103.candidate_not_isWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "Candidate exclusion over middle-face cells ninety-two through 103.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceCells92To103.lean:32-169, the source contract is `theorem candidate_not_isWeightedPerimeterMinimizer {lam : ℝ} (hlower : (102921 / 100000 : ℝ) ≤ lam) (hupper : lam ≤ (103041 / 100000 : ℝ)) (candidate : _root_.FourArcCandidate lam) (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : ¬ candidate.IsWeightedPerimeterMinimizer`. This batch uses only the closed endpoint inequalities and candidate CMV hypotheses. Its case splits cover the stated consecutive middle bricks without excluding shared endpoints; the output is actual candidate nonminimality, not just a stationary scalar inequality.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eb8d5eea5007ec9d93249eb58e5ea168ebe71c7c90ef757bae9ec70ea6beb8ed",
+  "symbol_mismatches": []
+}

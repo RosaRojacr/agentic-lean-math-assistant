@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.lamMid",
+  "domain_issues": [],
+  "informal_statement": "The right brick's density midpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:75-75, the source contract is `abbrev lamMid : ℚ := (brick.lamLo + brick.lamHi) / 2`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6872199d838a1fa3e543ff329eb7ed7979df53e9ab7df478a48be79baedaf0cf",
+  "symbol_mismatches": []
+}

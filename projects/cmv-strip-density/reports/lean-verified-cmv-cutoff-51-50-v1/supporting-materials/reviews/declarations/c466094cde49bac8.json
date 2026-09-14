@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.boundaryTrace_subset_frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "Every listed replacement trace is exposed boundary.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3933-3940, the source contract is `theorem boundaryTrace_subset_frontier_carrier (a : ReplacementAssembly) : a.boundaryTrace ⊆ frontier a.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6c897595e7667c418f2a95e4221cabe00a508a6ab4dac16eff0c51ccb2b4d8a9",
+  "symbol_mismatches": []
+}

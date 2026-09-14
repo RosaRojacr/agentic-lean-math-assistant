@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.Brick",
+  "domain_issues": [],
+  "informal_statement": "The shared middle-face brick type used by the right prototype.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:20-22, the source contract is `abbrev Brick := MiddleFaceAssembly.Brick`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c2ed826f9f797c84fdf65a35205275ba3596085d3c93941f0721f070655d9db0",
+  "symbol_mismatches": []
+}

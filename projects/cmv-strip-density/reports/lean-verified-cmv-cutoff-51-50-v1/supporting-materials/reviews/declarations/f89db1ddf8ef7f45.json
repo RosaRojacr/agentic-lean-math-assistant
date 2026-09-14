@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.weightedArea_components",
+  "domain_issues": [],
+  "informal_statement": "Candidate area is core area plus twice lambda times one cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:364-373, the source contract is `theorem weightedArea_components : candidate.WeightedArea = candidate.stripCore.euclideanArea + 2 * lam * candidate.capArea`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "654554fba4e2f4847eae4f853550061afa29cf158da02de52109cffacefd702e",
+  "symbol_mismatches": []
+}

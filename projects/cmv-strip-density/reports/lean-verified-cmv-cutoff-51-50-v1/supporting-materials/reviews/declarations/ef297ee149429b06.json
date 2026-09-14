@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.vars",
+  "domain_issues": [],
+  "informal_statement": "Extract the four angular errors from a first-prototype point.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:799-799, the source contract is `def vars (p : Point) : Vec4 := ![p.xi, p.eta, p.rho, p.sigma]`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d389f5673106602bb401f76b3d594d64ec6f00b7fcff209bdfc571267bc953d5",
+  "symbol_mismatches": []
+}

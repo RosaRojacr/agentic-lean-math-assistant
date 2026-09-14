@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.D4",
+  "domain_issues": [],
+  "informal_statement": "The right brick's type-(iv) sine displacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:120-120, the source contract is `def D4 (p : Point) : ℝ := sin (y p) - sin (x p)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "458c17f197940395eb065d606c56a29538dee5cfc382d507f31979fa9b14e3b0",
+  "symbol_mismatches": []
+}

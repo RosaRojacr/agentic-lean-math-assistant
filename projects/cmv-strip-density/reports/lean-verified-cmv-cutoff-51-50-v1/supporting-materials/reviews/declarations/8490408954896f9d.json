@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.C4_eta_low_face_margin",
+  "domain_issues": [],
+  "informal_statement": "C4 is strictly negative on the first prototype's low eta face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:2190-2211, the source contract is `theorem C4_eta_low_face_margin : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → z 1 = -radiiReal 1 → C4 (pointOf t z) < -(11 / 10000000000 : ℝ)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9d228ca47508753791f14fd62b25ef0aa8eb7814e1715715afaf3fe27d1a441b",
+  "symbol_mismatches": []
+}

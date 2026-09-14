@@ -264,6 +264,22 @@ theorem sourceCarrier_not_isMinimizer_of_ae_rawFourArcCoordinates
     (raw.almostEverywhereHorizontallyCongruent_candidate_of_ae
       hgeometry hsource)
 
+/-- Existential almost-everywhere raw classification is the complete input
+needed by the direct all-density consumer.  This is the classifier-facing
+interface: the caller need not choose a raw witness before invoking the
+exclusion theorem. -/
+theorem sourceCarrier_not_isMinimizer_of_ae_rawFourArcClassification
+    {lam : ℝ} {sourceCarrier : Set PlanePoint}
+    (hlam : 1 < lam)
+    (hclassification :
+      ∃ raw : CMVSourceClassification.RawFourArcCoordinates,
+        raw.SatisfiesClosedGeometry ∧
+          sourceCarrier =ᵐ[MeasureTheory.volume] raw.carrier) :
+    ¬ (relaxedSourceSemantics lam).IsMinimizer sourceCarrier := by
+  rcases hclassification with ⟨raw, hgeometry, hsource⟩
+  exact sourceCarrier_not_isMinimizer_of_ae_rawFourArcCoordinates
+    raw hlam hgeometry hsource
+
 /-- Sectionwise classification is sufficient for the same all-density source
 exclusion.  Null measurability is obtained from the alleged minimizer, so the
 caller supplies only closed raw geometry and almost-everywhere slice equality.

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Brick",
+  "domain_issues": [],
+  "informal_statement": "Exact rational density endpoints, affine angle predictors, coupling slopes, and positive error radii.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:27-37, the source contract is `structure Brick where lamLo : ℚ lamHi : ℚ centers : Fin 4 → ℚ slopes : Fin 4 → ℚ yXiSlope : ℚ vRhoSlope : ℚ radii : Fin 4 → ℚ lamOrdered : lamLo < lamHi radiiPos : ∀ j, 0 < radii j`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0941d7d9eb0eaebceb5359d2c2683a5354c44a25e853225ca2ccbf95f4460178",
+  "symbol_mismatches": []
+}

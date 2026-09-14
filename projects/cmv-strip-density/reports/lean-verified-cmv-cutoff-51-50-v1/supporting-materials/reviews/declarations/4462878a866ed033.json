@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedSegmentParam_image_carrier",
+  "domain_issues": [],
+  "informal_statement": "The realized image equals the Euclidean image of the coordinate carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:913-922, the source contract is `theorem realizedSegmentParam_image_carrier (seg : HorizontalSegment) : realizedSegmentParam seg '' Icc (segmentStart seg) (segmentEnd seg) = planeEuclideanHomeomorph '' seg.carrier`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fc21a65690cb2d00a27cb6aebde20046f1dffbc15b7f30d3caf58ac1aefd1725",
+  "symbol_mismatches": []
+}

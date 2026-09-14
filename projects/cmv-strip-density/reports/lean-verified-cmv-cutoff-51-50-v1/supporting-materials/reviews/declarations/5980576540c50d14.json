@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "isometry_unitCircleArcRotation",
+  "domain_issues": [],
+  "informal_statement": "For every real r,m, the map z maps to z exp(i m/r) is an isometry of the complex plane.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:315-322, the source contract is `lemma isometry_unitCircleArcRotation (r m : ℝ) : Isometry (unitCircleArcRotation r m)`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0390b164e94132c53e908a7960b31f68dc786e7272a9a9f6482fa79cade88362",
+  "symbol_mismatches": []
+}

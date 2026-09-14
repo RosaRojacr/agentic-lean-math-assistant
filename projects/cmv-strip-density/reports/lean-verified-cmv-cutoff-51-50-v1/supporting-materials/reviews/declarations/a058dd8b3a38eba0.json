@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.weightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "Replacement area is core area plus lambda times upper-cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3338-3362, the source contract is `theorem weightedArea_formula (lam : ℝ) (a : ReplacementAssembly) : a.weightedArea lam = a.core.euclideanArea + lam * a.upperCap.euclideanArea`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f1ba4256fd2f5c3e87624e59042924594647c2f49dcba6ed06cd14dc8d287789",
+  "symbol_mismatches": []
+}

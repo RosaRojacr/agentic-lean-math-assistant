@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "intervalPushforward",
+  "domain_issues": [],
+  "informal_statement": "Pushforward of interval-restricted Lebesgue measure by a parametrization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1200-1202, the source contract is `def intervalPushforward (curve : ℝ → PlanePoint) (a b : ℝ) : Measure PlanePoint := Measure.map curve (volume.restrict (Icc a b))`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "366d70f2307ddf912f8fe8519c486284fdacdab2c9bb76f371f9a65dd8ee807d",
+  "symbol_mismatches": []
+}

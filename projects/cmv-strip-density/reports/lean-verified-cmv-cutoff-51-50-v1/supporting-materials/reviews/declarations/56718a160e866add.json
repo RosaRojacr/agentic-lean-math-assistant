@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.rootMap_continuous",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's exact root map is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:807-815, the source contract is `theorem rootMap_continuous (t : ℝ) : Continuous (rootMap t)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2df03b7ca4b2fad1bc9d6c65609dfe1a30f18068ea4f5844ffe3335f9f65c08b",
+  "symbol_mismatches": []
+}

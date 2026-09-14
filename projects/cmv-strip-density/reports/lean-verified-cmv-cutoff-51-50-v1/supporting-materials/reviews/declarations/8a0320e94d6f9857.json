@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The segment parameter interval has exactly the segment carrier as its image.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:835-863, the source contract is `theorem segmentParam_image_Icc (seg : HorizontalSegment) : segmentParam seg '' Icc (segmentStart seg) (segmentEnd seg) = seg.carrier`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "78cfdac8328c8d0308b83fecd45a7d72c3a0a830edb6a3f41f9bd2da54db0f76",
+  "symbol_mismatches": []
+}

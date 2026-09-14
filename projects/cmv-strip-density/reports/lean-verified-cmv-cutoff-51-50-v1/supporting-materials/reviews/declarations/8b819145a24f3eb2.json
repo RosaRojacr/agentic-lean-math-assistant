@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_partition_polygon_lower",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, 0 < theta < pi and positive natural N, the N-edge inscribed polygon gives the Hausdorff lower bound N(2r sin(theta/N)).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:208-268, the source contract is `lemma cap_partition_polygon_lower {r theta : ℝ} (hr : 0 < r) (htheta : theta ∈ Ioo 0 Real.pi) (N : ℕ) (hN : 0 < N) : ENNReal.ofReal ((N : ℝ) * (2 * r * Real.sin (theta / (N : ℝ)))) ≤ (μH[1] : Measure ℂ) (unitCircleArc r '' Icc (-r * theta) (r * theta))`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4dc7fcd936b6c56a4643f00c8d67c38ce24d6351f625a8873960fc070d61a446",
+  "symbol_mismatches": []
+}

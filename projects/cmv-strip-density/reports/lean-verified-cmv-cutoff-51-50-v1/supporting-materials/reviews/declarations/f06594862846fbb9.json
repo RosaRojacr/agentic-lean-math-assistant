@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeFold",
+  "domain_issues": [],
+  "informal_statement": "The explicit numerator K3 controlling the type-(iii) area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:71-77, the source contract is `def typeThreeFold (lam h : ℝ) : ℝ := 4 * h * ((1 + typeThreeShape h) / sqrt (1 - typeThreeShape h ^ 2) - (lam ^ 2 + typeThreeShape h) / (lam * sqrt (lam ^ 2 - typeThreeShape h ^ 2))) - 2 * (typeThreeAngle lam h + π / 2 + typeThreeDelta lam h)`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "de466d8508a0def3484419e5a98402f15940017ff9d116432fb67c21c1d22c86",
+  "symbol_mismatches": []
+}

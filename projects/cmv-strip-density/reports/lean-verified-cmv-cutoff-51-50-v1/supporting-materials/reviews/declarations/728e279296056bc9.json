@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Conditions.candidate_not_isWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "A checked middle-face brick excludes all modeled candidates at each density in its interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:2424-2438, the source contract is `theorem candidate_not_isWeightedPerimeterMinimizer (conditions : Conditions b) {t lam0 : ℝ} (ht : (tInterval b).RealContains t) (hlam : (lamMid b : ℝ) + t = lam0) (candidate : _root_.FourArcCandidate lam0) (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : ¬ candidate.IsWeightedPerimeterMinimizer`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ceb5515954483428fb5ae9be3255392f99e773ed979053baf3c18aa42dc8d6cd",
+  "symbol_mismatches": []
+}

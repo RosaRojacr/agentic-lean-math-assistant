@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "min_g_eq_three_mul_cos_θstar",
+  "domain_issues": [],
+  "informal_statement": "Three times cosine of the root angle is a global lower bound for g.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:148-153, the source contract is `theorem min_g_eq_three_mul_cos_θstar {x : ℝ} (hx : 0 < x) : 3 * cos θstar ≤ g x`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "76e47f07f4c6982bfe46b74b225bb1e09621a21e59136f8d33d5ed15a7efc3b0",
+  "symbol_mismatches": []
+}

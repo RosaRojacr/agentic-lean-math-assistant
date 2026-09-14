@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore",
+  "domain_issues": [],
+  "informal_statement": "A strip core specified by positive chord and curvature in (0,1].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:416-425, the source contract is `structure StripCore where chord : ℝ curvature : ℝ chord_pos : 0 < chord curvature_pos : 0 < curvature curvature_le_one : curvature ≤ 1`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a32ba501747725a0a1307cf7bd2abbffd387c8bc9d810f24cf348c7c04513aad",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.E_rho_high_face_margin",
+  "domain_issues": [],
+  "informal_statement": "E is strictly positive on the high rho face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:2056-2088, the source contract is `theorem E_rho_high_face_margin : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → z 2 = radiiReal 2 → (14 / 1000000000 : ℝ) < E (pointOf t z)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eb3eec8dea60a8df64d88b6b4837361d3d879b92fece643a52712269468a17a0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.realContains_recipPos",
+  "domain_issues": [],
+  "informal_statement": "Positive reciprocal intervals enclose reciprocals of enclosed reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:109-119, the source contract is `theorem realContains_recipPos {i : QInterval} {x : ℝ} (hi : 0 < i.lo) (hx : i.RealContains x) : (i.recipPos hi).RealContains (1 / x)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6bebb0eb9a5daccfb0e032373488c963884df078d4bcae42d816f15559377e3f",
+  "symbol_mismatches": []
+}

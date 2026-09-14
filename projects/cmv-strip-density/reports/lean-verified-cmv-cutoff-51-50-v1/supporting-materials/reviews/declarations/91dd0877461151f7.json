@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.halfPiBox",
+  "domain_issues": [],
+  "informal_statement": "A rational interval enclosing pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:193-201, the source contract is `def halfPiBox : QInterval := ScalarSuffixCertificate.piInterval.nsmul (1 / 2) (by norm_num) @[simp] theorem halfPiBox_lo : halfPiBox.lo = 392699 / 250000 := by norm_num [halfPiBox, ScalarSuffixCertificate.piInterval, LeanSuffixReflective.QInterval.nsmul]`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b24b5a3000649c97c552eff6f175f59f2e5aa6602a533417871ec37dfc3c128c",
+  "symbol_mismatches": []
+}

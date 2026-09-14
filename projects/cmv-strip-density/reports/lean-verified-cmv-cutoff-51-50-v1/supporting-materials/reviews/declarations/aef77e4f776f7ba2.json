@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C4Residual.reduced_hasDerivAt_xi",
+  "domain_issues": [],
+  "informal_statement": "The xi derivative formula for C4 is correct.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:737-757, the source contract is `theorem reduced_hasDerivAt_xi (t xi eta : ℝ) : HasDerivAt (fun u => reduced b t u eta) (derivXi b t xi eta) xi`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c5aed8fcfa67c76068e264e5cfde03a674d4b1ee2a4b7f25289608330e62d6c",
+  "symbol_mismatches": []
+}

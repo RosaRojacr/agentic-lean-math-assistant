@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.candidate_not_isWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "Every modeled candidate is nonminimal on [51/50,102001/100000].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:4190-4203, the source contract is `theorem candidate_not_isWeightedPerimeterMinimizer {lam0 : ℝ} (hlam : lamInterval.RealContains lam0) (candidate : _root_.FourArcCandidate lam0) (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) : ¬ candidate.IsWeightedPerimeterMinimizer`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "addf63fb8e32b74a68ab723aad485618435e5da3c6625d624ab901eb3e183553",
+  "symbol_mismatches": []
+}

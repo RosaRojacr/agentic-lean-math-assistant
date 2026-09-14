@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The exact scalar type-(iv) weighted perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:65-70, the source contract is `def typeFourPerimeter (lam h : ℝ) : ℝ := 4 * typeFourAngle lam h / h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad0bebbd79c17351c0f12ce6a7fdae3e930dba33de0077415a6116df1d1e6e25",
+  "symbol_mismatches": []
+}

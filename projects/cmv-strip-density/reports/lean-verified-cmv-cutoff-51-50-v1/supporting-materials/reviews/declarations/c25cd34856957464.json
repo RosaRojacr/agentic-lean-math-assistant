@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.y",
+  "domain_issues": [],
+  "informal_statement": "The coupled type-(iv) exterior-angle predictor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:64-64, the source contract is `def y (p : Point) : ℝ := b.centers 1 + b.slopes 1 * p.t + b.yXiSlope * p.xi + p.eta`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e9aa09104ad8189cc4fa9f32855b42af7f901b88654816cd3974a6e8c5d751d4",
+  "symbol_mismatches": []
+}

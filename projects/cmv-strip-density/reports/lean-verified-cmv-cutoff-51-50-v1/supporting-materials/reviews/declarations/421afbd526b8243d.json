@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.realContains_of_mem_uIcc",
+  "domain_issues": [],
+  "informal_statement": "An intermediate point between two enclosed reals remains enclosed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:69-76, the source contract is `theorem realContains_of_mem_uIcc {i : QInterval} {c h x : ℝ} (hc : i.RealContains c) (hh : i.RealContains h) (hx : x ∈ uIcc c h) : i.RealContains x`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ebce25efd40e9df8676596e53d18f779f851450dc32118fcfdf8ff8a4a80eceb",
+  "symbol_mismatches": []
+}

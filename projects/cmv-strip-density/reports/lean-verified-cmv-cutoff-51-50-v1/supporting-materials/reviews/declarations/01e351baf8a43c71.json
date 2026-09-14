@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "F_strictMonoOn",
+  "domain_issues": [],
+  "informal_statement": "The function F is strictly increasing on the full closed interval [0,pi].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:62-71, the source contract is `lemma F_strictMonoOn : StrictMonoOn F (Icc 0 π)`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "159fcb80f1fa4e926941eda01dd71a676dd66fef614b9045e53e04469f3d4efe",
+  "symbol_mismatches": []
+}

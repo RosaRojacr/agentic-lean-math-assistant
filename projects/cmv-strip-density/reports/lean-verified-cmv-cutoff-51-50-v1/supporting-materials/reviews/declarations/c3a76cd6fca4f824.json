@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_xstar_le",
+  "domain_issues": [],
+  "informal_statement": "Xstar is a global minimizer of g on positive normalized areas.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:132-147, the source contract is `theorem g_xstar_le {x : ℝ} (hx : 0 < x) : g xstar ≤ g x`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b1c43512db9300ddb51ff2adbde05838f6b0dd21a49572dbdd5454f8a1f394a2",
+  "symbol_mismatches": []
+}

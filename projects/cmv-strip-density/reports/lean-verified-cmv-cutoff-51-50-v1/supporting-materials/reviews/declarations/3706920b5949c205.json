@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreBoundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "Interval-pushforward measure on the right core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1491-1493, the source contract is `def rightCoreBoundaryMeasure (c : StripCore) : Measure PlanePoint := intervalPushforward (rightCoreParam c) (coreArcStart c) (coreArcEnd c)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "33cbc13fa6fcd71207ac7e5dfb0579966744c8887bb1c9af1b95e6c688f55ea8",
+  "symbol_mismatches": []
+}

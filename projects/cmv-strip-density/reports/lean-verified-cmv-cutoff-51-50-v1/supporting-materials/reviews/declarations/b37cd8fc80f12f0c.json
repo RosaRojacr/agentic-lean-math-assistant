@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θstar",
+  "domain_issues": [],
+  "informal_statement": "The selected root of F in the closed half-pi interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:92-93, the source contract is `noncomputable def θstar : ℝ := exists_F_root.choose`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "10465817c5977e25bde5deaa090eec0b969594d7d01505755dd8387cec5029e1",
+  "symbol_mismatches": []
+}

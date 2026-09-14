@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_xstar",
+  "domain_issues": [],
+  "informal_statement": "The inverse angle at Xstar is the selected root angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:158-160, the source contract is `lemma θOf_xstar : θOf xstar = θstar`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5f96bbbf1ba25c54aa03e1adcc89a5374c79ae31eab08da194eece7875964d2e",
+  "symbol_mismatches": []
+}

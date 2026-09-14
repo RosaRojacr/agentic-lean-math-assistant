@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.QInterval",
+  "domain_issues": [],
+  "informal_statement": "The shared exact rational interval type used by compact certificates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:19-23, the source contract is `abbrev QInterval := ScalarSuffixCertificate.QInterval`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "baf33f14dafc66f34a92b548a53e5c251fc54f718db15c2e52f89ec02947b54d",
+  "symbol_mismatches": []
+}

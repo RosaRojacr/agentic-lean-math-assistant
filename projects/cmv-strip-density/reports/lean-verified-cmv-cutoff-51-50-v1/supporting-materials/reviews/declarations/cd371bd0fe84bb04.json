@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.reduced",
+  "domain_issues": [],
+  "informal_statement": "The equal-area residual expressed in the five centered affine variables.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:135-144, the source contract is `def reduced (t xi eta rho sigma : ℝ) : ℝ := let ll := (lamMid b : ℝ) + t let xx := (b.centers 0 : ℝ) + b.slopes 0 * t + xi let yy := (b.centers 1 : ℝ) + b.slopes 1 * t + b.yXiSlope * xi + eta let ww := (b.centers 2 : ℝ) + b.slopes 2 * t + rho let vv := (b.centers 3 : ℝ) + b.slopes 3 * t + b.vRhoSlope * rho + sigma let nn4 := ll * yy + π / 2 - xx + cos xx * (sin yy - sin xx) let nn3 := ll * vv + π - ww + (cos ww + 2) * (sin vv - sin ww) 2 * cos xx ^ 2 * nn3 - (1 + cos ww) ^ 2 * nn4`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ccf5bbc3e7c269d91f270f90b97e975e0915b24935827f4200f4750d122e6b7c",
+  "symbol_mismatches": []
+}

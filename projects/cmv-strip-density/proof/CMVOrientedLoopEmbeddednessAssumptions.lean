@@ -1,0 +1,16 @@
+import CMVOrientedLoopEmbeddedness
+
+open CMVBoundaryLocalAtlas.BoundaryHalfSpaceAtlas.FiniteChartCutSystem
+
+#print axioms CutPointCoreNeighborhood.otherIncidentArc_eq_of_ne
+#print axioms eq_or_eq_switchHalfEdge_of_vertex_eq
+#print axioms walkVertex_injOn_minimalPeriod
+#print axioms finiteArc_endpointPair_eq_halfEdge_vertices
+#print axioms traversedArc_endpointPair_eq_walkVertices
+#print axioms CyclicallyAdjacent
+#print axioms traversedArc_cyclicallyAdjacent_of_closure_inter_nonempty
+#print axioms boundaryGeometricWalkLoop_embeddedArcCycle
+#print axioms arcBoundaryLoopIndex_eq_of_finiteArcClosure_inter_nonempty
+#print axioms disjoint_range_boundaryGeometricWalkLoop
+#print axioms HasEmbeddedBoundaryArcCycles
+#print axioms hasEmbeddedBoundaryArcCycles

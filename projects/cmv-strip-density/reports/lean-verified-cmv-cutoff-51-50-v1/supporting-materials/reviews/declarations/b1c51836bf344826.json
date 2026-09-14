@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "arc_eq",
+  "domain_issues": [],
+  "informal_statement": "The arc function equals ell evaluated at the inverse-area angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:269-271, the source contract is `lemma arc_eq (x : ℝ) : arc x = ell (θOf x)`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3b036fd44214b60f3d2baaf90be272e48c10ba5e310883f73c7eb20af846505a",
+  "symbol_mismatches": []
+}

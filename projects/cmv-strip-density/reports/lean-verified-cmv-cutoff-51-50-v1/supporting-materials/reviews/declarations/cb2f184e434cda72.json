@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.analyticFaceBounds",
+  "domain_issues": [],
+  "informal_statement": "The first prototype satisfies its analytic face-bound interface.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:3250-3280, the source contract is `theorem analyticFaceBounds : AnalyticFaceBounds`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f2c7f2a169ba9c55d2865d26a4898b9b5bc1410e5acd882f9326aa435e600409",
+  "symbol_mismatches": []
+}

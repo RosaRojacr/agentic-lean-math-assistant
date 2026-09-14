@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.Conditions.stationaryEqualArea_improvement_exists",
+  "domain_issues": [],
+  "informal_statement": "Compact-cell conditions produce a stationary equal-area strict improvement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellAssembly.lean:244-264, the source contract is `theorem stationaryEqualArea_improvement_exists (conditions : Conditions lambdaInterval h3Interval h4Interval) {lam : ℝ} (hlam : lambdaInterval.RealContains lam) : ∃ h₄ h₃ : ℝ, h4Interval.RealContains h₄ ∧ LeanSuffixAnalytic.typeFourFold lam h₄ = 0 ∧ h3Interval.RealContains h₃ ∧ LeanSuffixAnalytic.typeThreeArea lam h₃ = LeanSuffixAnalytic.typeFourArea lam h₄ ∧ LeanSuffixAnalytic.typeThreePerimeter lam h₃ < LeanSuffixAnalytic.typeFourPerimeter lam h₄`. The Conditions record contains regular root slabs, opposite stationary-fold and area-face signs, negative type-(iii) fold, and a strict perimeter sign. The generic assembly derives a stationary pair and then uses the all-curvature envelope; candidate curvature is not confined to the certificate slab.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e63a75b5ca3c02a2700397ede0d62a135c22960b730b6191885ca6432b43a9fe",
+  "symbol_mismatches": []
+}

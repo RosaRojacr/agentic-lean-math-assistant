@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "gd_xstar",
+  "domain_issues": [],
+  "informal_statement": "The explicit derivative function vanishes at Xstar.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:40-41, the source contract is `lemma gd_xstar : gd xstar = 0`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "36e1f834bfffffc0c34e5ca4b702e9f19b5aa6de3e168944b257119d1ee48362",
+  "symbol_mismatches": []
+}

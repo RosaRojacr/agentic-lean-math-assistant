@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.realContains_sub",
+  "domain_issues": [],
+  "informal_statement": "Interval subtraction encloses differences of enclosed reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixReflective.lean:78-85, the source contract is `theorem realContains_sub {i j : QInterval} {x y : ℝ} (hx : i.RealContains x) (hy : j.RealContains y) : (i.sub j).RealContains (x - y)`. Intervals have rational ordered endpoints and closed containment. Arithmetic enclosure statements concern the real-valued operations after rational casting; exact checks do not stand for floating-point evidence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8bd28ee4b73b928fde4081285e5ca72b48a1703fbb61327a22c0b7e93e0fc99c",
+  "symbol_mismatches": []
+}

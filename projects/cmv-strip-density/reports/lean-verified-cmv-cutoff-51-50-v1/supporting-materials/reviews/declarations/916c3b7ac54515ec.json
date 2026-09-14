@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.cosTaylor26Interval_sound",
+  "domain_issues": [],
+  "informal_statement": "For every rational x, the degree-26 Taylor cosine interval contains cos(x), with no size or sign restriction on x.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:311-325, the source contract is `theorem cosTaylor26Interval_sound (x : ℚ) : (cosTaylor26Interval x).RealContains (cos (x : ℝ))`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "527e561394d27648791691ec45e120c58633f8289f9131a5419b3b4150dbd9b7",
+  "symbol_mismatches": []
+}

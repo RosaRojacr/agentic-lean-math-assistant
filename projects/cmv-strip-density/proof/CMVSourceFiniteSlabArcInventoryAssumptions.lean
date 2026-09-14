@@ -1,0 +1,26 @@
+import CMVSourceFiniteSlabArcInventory
+
+namespace CMVSourceFiniteSlabArcInventory
+
+#print axioms circleHorizontalFiber_subset_pair_of_mem
+#print axioms circleHorizontalFiber_finite
+#print axioms circleHorizontalFiber_ncard_le_two
+#print axioms ordered_circle_intersections
+#print axioms lineHorizontalFiber_eq_singleton
+#print axioms lineHorizontalFiber_zero_slope_support_height
+#print axioms lineHorizontalFiber_zero_slope_other_height
+#print axioms lineHorizontalFiber_zero_slope_support_height_infinite
+#print axioms supportingLine_horizontalSection_eq_singleton
+#print axioms supportAt_range_finite_of_compact
+#print axioms supportAt_range_finite
+#print axioms supportAt_horizontalSection_finite
+#print axioms supportAt_horizontalSection_ncard_le_two
+#print axioms maximalComponentHorizontalFiber_subset_support
+#print axioms maximalComponentHorizontalFiber_finite
+#print axioms maximalComponentHorizontalFiber_ncard_le_two
+#print axioms sectionVisibleFrontier_eq_pair_of_section_eq_Ioo
+#print axioms sectionVisibleFrontier_subset_frontier
+#print axioms transverse_circle_point_eq_interval_endpoint
+#print axioms ordered_transverse_circle_points_are_interval_endpoints
+
+end CMVSourceFiniteSlabArcInventory

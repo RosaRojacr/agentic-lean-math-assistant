@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacement_cap_area",
+  "domain_issues": [],
+  "informal_statement": "The replacement upper cap has twice the area of an original exterior cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CapReplacement.lean:79-88, the source contract is `theorem replacement_cap_area : candidate.CapReplacement.upperCap.euclideanArea = 2 * candidate.capArea`. The replacement retains the strip core, doubles the upper cap area, and exposes the lower chord. Its new half-angle is in (0,pi), so a major cap is not silently discarded; the statement uses the candidate constructor inequalities.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5517f888e5fc2a04dba3edea18ff03637b20f17abc45bd337950afb694709ec8",
+  "symbol_mismatches": []
+}

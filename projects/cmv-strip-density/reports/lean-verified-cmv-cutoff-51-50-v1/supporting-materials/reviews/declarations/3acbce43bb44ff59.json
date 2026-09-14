@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "Placement map for the right core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:681-684, the source contract is `noncomputable def rightCoreComplexIsometryMap (c : StripCore) (z : ℂ) : EuclideanPlane := WithLp.toLp 2 (c.rightCenterX + z.re, z.im)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "24206b125ec8e6de86a054126e34b32568c5cb9c365728de42d394ff9cc0ede6",
+  "symbol_mismatches": []
+}

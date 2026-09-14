@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.affine_branches",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's four angles stay in (0,pi/4) over its entire box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:1590-1624, the source contract is `theorem affine_branches : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → let p := pointOf t z 0 < x p ∧ x p < π / 4 ∧ 0 < y p ∧ y p < π / 4 ∧ 0 < w p ∧ w p < π / 4 ∧ 0 < v p ∧ v p < π / 4`. The complete conclusion includes positivity and strict pi/4 upper bounds for each of x,y,w,v, after pointOf t z is introduced. Both t and the full error vector are universally quantified subject to the recorded prototype box constraints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e4d28d57906a58d6905767ae59f9a6cca32fef94fecf64598fa3b381471d528f",
+  "symbol_mismatches": []
+}

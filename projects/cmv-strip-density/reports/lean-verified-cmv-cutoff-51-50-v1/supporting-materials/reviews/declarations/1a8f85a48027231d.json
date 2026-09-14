@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourArea_fold_le",
+  "domain_issues": [],
+  "informal_statement": "The stationary type-(iv) fold minimizes A4 on (0,1].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:1095-1129, the source contract is `theorem typeFourArea_fold_le {lam fold h : ℝ} (hlam : 1 < lam) (hfold : fold ∈ Set.Ioo (0 : ℝ) 1) (hzero : typeFourFold lam fold = 0) (hh : h ∈ Set.Ioc (0 : ℝ) 1) : typeFourArea lam fold ≤ typeFourArea lam h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "00808b809e3e67ecf06ff39be8e712a367908c043a9c526b98df7d97ff33901d",
+  "symbol_mismatches": []
+}

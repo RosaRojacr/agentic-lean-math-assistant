@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourFold",
+  "domain_issues": [],
+  "informal_statement": "K4 has derivative four h squared times the reciprocal-cube radical difference.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:457-495, the source contract is `theorem hasDerivAt_typeFourFold {lam h : ℝ} (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) : HasDerivAt (typeFourFold lam) (4 * h ^ 2 * (1 / sqrt (1 - h ^ 2) ^ 3 - lam / sqrt (lam ^ 2 - h ^ 2) ^ 3)) h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "df765bf2b71951f20ce86d7897c71befd43183478a79e7706b6061a82ade97f0",
+  "symbol_mismatches": []
+}

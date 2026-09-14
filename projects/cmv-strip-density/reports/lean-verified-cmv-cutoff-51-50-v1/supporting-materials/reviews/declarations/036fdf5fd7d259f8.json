@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cmv_comparison_bound_optimized",
+  "domain_issues": [],
+  "informal_statement": "For lambda at least 1.2581840884 and X>0, 1/lambda is strictly less than g(X).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Certificate.lean:746-753, the source contract is `theorem cmv_comparison_bound_optimized {lam x : ℝ} (hlam : (1.2581840884 : ℝ) ≤ lam) (hx : 0 < x) : 1 / lam < g x`. The exact threshold is the rational decimal 1.2581840884. The conclusion is the strict inequality 1/lambda < g(X) for every X > 0 under the displayed threshold hypothesis. The argument uses the global minimum, not a finite set of positive-area samples.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "507439948a37eb806f48ea9934d720941448689e7e9b24960cacb11d308a3d9b",
+  "symbol_mismatches": []
+}

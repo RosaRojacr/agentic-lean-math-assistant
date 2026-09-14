@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.pointEquationSemantics",
+  "domain_issues": [],
+  "informal_statement": "The checker semantics follow from the branch bounds and the two incidence equations.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1552-1700, the source contract is `theorem pointEquationSemantics (b : Brick) (p : Point) (hlam : 1 < lam b p) (hbranches : 0 < x b p ∧ x b p < π / 4 ∧ 0 < y b p ∧ y b p < π / 4 ∧ 0 < w b p ∧ w b p < π / 4 ∧ 0 < v b p ∧ v b p < π / 4) (hC4 : C4 b p = 0) (hC3 : C3 b p = 0) : PointEquationSemantics b p`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c757c9ef8ed58ec827195f2ddcc9f974e6ab47521674ab7d055018fa79f178cf",
+  "symbol_mismatches": []
+}

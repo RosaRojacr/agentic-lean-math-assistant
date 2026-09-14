@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "stripDensity_integrable_intervalPushforward",
+  "domain_issues": [],
+  "informal_statement": "The bounded strip density is integrable against a finite interval pushforward.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2243-2259, the source contract is `lemma stripDensity_integrable_intervalPushforward (lam : ℝ) {curve : ℝ → PlanePoint} {a b : ℝ} (hcurve : Measurable curve) : Integrable (StripDensity lam) (intervalPushforward curve a b)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6315c9471ea2031d23e0cb4552b23f2812fe90938358c371a246f04d7f2d8095",
+  "symbol_mismatches": []
+}

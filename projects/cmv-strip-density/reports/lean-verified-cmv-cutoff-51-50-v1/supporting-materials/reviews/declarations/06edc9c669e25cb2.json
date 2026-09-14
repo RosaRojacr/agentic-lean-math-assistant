@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.cosTaylor26Interval",
+  "domain_issues": [],
+  "informal_statement": "For any rational x, the interval centered at the degree-26 cosine polynomial with error radius |x|^27/27!.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:230-234, the source contract is `def cosTaylor26Interval (x : ℚ) : QInterval := let p := cosTaylor26 x let r := |x| ^ 27 / (Nat.factorial 27 : ℚ) ⟨p - r, p + r, by linarith [show 0 ≤ r by positivity]⟩`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "97a38531dd63947f237378c23320eb2947ffd81d0b5929b322bafd6a94ec891e",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "The core frontier consists of two side arcs and two horizontal chords.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1088-1199, the source contract is `theorem frontier_carrier (c : StripCore) : frontier c.carrier = leftArcTrace c ∪ (rightArcTrace c ∪ (upperChordTrace c ∪ lowerChordTrace c))`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "34bdf246812f32ba3d6167bf3b3ff5fea490b0816170740d97a7d77e703585bf",
+  "symbol_mismatches": []
+}

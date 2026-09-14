@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.integrableOn_carrier",
+  "domain_issues": [],
+  "informal_statement": "The density is integrable over the type-(iii) carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:3000-3011, the source contract is `theorem integrableOn_carrier : IntegrableOn (StripDensity lam) a.carrier`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f50bce5009ef96b4081db29960a7e72186fb76edbfedf9fa6fd538bc59ab8c22",
+  "symbol_mismatches": []
+}

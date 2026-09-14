@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair",
+  "domain_issues": [],
+  "informal_statement": "One stationary pair with negative type-(iii) fold and negative perimeter gap excludes every candidate at that density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVSuffixModel.lean:225-248, the source contract is `theorem not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) (pair : LeanSuffixAnalytic.StationaryEqualAreaPair lam) (hfoldThree : LeanSuffixAnalytic.typeThreeFold lam pair.h₃ < 0) (hperimeter : LeanSuffixAnalytic.typeThreePerimeter lam pair.h₃ < LeanSuffixAnalytic.typeFourPerimeter lam pair.h₄) : ¬ candidate.IsWeightedPerimeterMinimizer`. This bridge identifies actual carrier integrals with the scalar profiles. In particular the geometric type-(iii) angle term is typeThreeAngle + pi/2; regular-only wrappers are not substituted for the separate endpoint-inclusive candidate bridge.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6670f69ae0dd1a579233b44583ff3b5ab90f13ac210ff1ddaabbb1088c5b5e2",
+  "symbol_mismatches": []
+}

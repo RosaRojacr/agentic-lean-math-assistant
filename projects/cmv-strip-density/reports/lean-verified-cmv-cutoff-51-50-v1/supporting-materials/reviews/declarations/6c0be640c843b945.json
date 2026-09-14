@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.B4",
+  "domain_issues": [],
+  "informal_statement": "Angular checker expression for the type-(iv) angle term.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:68-68, the source contract is `def B4 (p : Point) : ℝ := lam b p * y b p + π / 2 - x b p`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4571608d53f0160a6715950590485e849c7587509687cead6580411b7968f1d6",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "continuous_realizedCapParam",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean cap parametrization is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:442-450, the source contract is `lemma continuous_realizedCapParam (c : OneSidedCircularCap) : Continuous (realizedCapParam c)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "439602ca8a442d23dec8f858626a27ca71e9723ce90b04b56ee6e94cd89590f1",
+  "symbol_mismatches": []
+}

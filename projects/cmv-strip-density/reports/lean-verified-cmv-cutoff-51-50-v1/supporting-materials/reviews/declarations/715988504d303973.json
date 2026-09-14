@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_unitCircleArc_image_eq",
+  "domain_issues": [],
+  "informal_statement": "For r > 0 and 0 < theta < pi, the image u_r([-r theta,r theta]) has Hausdorff length 2r theta.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:294-311, the source contract is `theorem hausdorffMeasure_unitCircleArc_image_eq {r theta : ℝ} (hr : 0 < r) (htheta : theta ∈ Ioo 0 Real.pi) : (μH[1] : Measure ℂ) (unitCircleArc r '' Icc (-r * theta) (r * theta)) = ENNReal.ofReal (2 * r * theta)`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f4746d8c9b2c6ef1416bccca1f814590cdef08c393e10b7189ff167eb0402ab3",
+  "symbol_mismatches": []
+}

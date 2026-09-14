@@ -1,0 +1,1 @@
+Wrote and validated `supporting-materials/reviews/reviewer-05.json`: 850 declarations and 2 generated families reviewed; package relation `equivalent`; no critical errors or citation issues identified.

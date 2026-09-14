@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.F_xi_low_face_margin",
+  "domain_issues": [],
+  "informal_statement": "F is strictly positive on the right prototype's low xi face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:1546-1571, the source contract is `theorem F_xi_low_face_margin : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → z 0 = -radiiReal 0 → (88 / 1000000000 : ℝ) < F (pointOf t z)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "09956ba2c2677ff4925e529c6578299ab10ba3f2d08cee3e462aa50640f59f58",
+  "symbol_mismatches": []
+}

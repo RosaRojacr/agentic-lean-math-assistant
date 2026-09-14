@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.beta",
+  "domain_issues": [],
+  "informal_statement": "The complementary source angle beta.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:39-41, the source contract is `def beta : ℝ := π / 2 - arcsin candidate.h`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f3520601e601026585d5024a59c3bee3be514d265897b65e66919a9d3ea7fd1e",
+  "symbol_mismatches": []
+}

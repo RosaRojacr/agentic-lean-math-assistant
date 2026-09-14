@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "measurable_stripDensity",
+  "domain_issues": [],
+  "informal_statement": "The strip density is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1234-1240, the source contract is `theorem measurable_stripDensity (lam : ℝ) : Measurable (StripDensity lam)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6fc908d8bba478440a5c35f7c75a94366dc691bdf7d2125848e2a8f512284af",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.shapeParameter",
+  "domain_issues": [],
+  "informal_statement": "The source cosine parameter q=2h-1.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:50-52, the source contract is `def shapeParameter : ℝ := 2 * a.h - 1`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "29190b0ec0676db3ee8da889fc7b1e078bce75188f6b4271945e3fee045f2920",
+  "symbol_mismatches": []
+}

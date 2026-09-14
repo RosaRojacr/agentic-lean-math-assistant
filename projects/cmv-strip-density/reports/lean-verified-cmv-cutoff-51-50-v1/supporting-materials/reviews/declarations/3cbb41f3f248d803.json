@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_tendsto_zero",
+  "domain_issues": [],
+  "informal_statement": "Normalized cap area tends to zero as the angle decreases to zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:173-187, the source contract is `lemma area_tendsto_zero : Tendsto area (𝓝[>] 0) (𝓝 0)`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6f401985b37aaf23b22e61608890d9398b8c4c885ef124fa9b1095661462feec",
+  "symbol_mismatches": []
+}

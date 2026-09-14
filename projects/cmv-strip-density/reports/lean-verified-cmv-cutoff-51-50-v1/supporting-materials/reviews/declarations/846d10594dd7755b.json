@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_lt_self",
+  "domain_issues": [],
+  "informal_statement": "For the recorded small-angle domain, normalized cap area is less than the angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:158-172, the source contract is `lemma area_lt_self {θ : ℝ} (h0 : 0 < θ) (h1 : θ ≤ 1) : area θ < θ`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "505f4cfdbccff59a35c0181afbb77947295aa04ad4c13ed1bce28a912b3e1042",
+  "symbol_mismatches": []
+}

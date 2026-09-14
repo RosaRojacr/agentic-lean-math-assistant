@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.FoldGapNegative",
+  "domain_issues": [],
+  "informal_statement": "Strict negativity of the genuine perimeter gap at the selected stationary fold.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At EqualAreaEnvelope.lean:577-581, the source contract is `def FoldGapNegative {lam : ℝ} (env : DescendingEqualAreaEnvelope lam) : Prop := equalAreaPerimeterGap lam env.root env.fold < 0`. Equal area and the negative-fold branch are distinct requirements. Interior differentiation requires a simple root; the closure endpoint uses one-sided continuity. The main proof derives these properties rather than assuming the all-curvature perimeter comparison.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0a51358d0910c8fb2dd4ffa9d95125b8210328ea93cd0771ca9e9c1138b2ced",
+  "symbol_mismatches": []
+}

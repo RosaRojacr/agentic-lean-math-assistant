@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) perimeter derivative is K4/h squared.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:761-767, the source contract is `theorem hasDerivAt_typeFourPerimeter {lam h : ℝ} (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) : HasDerivAt (typeFourPerimeter lam) (typeFourFold lam h / h ^ 2) h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe6311de3122c760c199f2555194ef9855f7218b10bcc5afe2c6f598e18071ca",
+  "symbol_mismatches": []
+}

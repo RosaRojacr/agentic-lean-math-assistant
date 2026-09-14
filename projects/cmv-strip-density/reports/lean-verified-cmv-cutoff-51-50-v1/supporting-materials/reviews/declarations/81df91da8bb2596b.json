@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_deriv_eq_explicit",
+  "domain_issues": [],
+  "informal_statement": "Explicit algebraic formula for the type-(iii) area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:649-699, the source contract is `theorem typeThreeArea_deriv_eq_explicit {lam h : ℝ} (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) : deriv (typeThreeArea lam) h = ((2 * (2 * (1 / sqrt (1 - typeThreeShape h ^ 2) - lam / sqrt (lam ^ 2 - typeThreeShape h ^ 2)) + 2 * typeThreeShape h * (1 / sqrt (1 - typeThreeShape h ^ 2) - 1 / (lam * sqrt (lam ^ 2 - typeThreeShape h ^ 2)))) * h - 2 * (typeThreeAngle lam h + π / 2 + typeThreeDelta lam h)) / h ^ 3)`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ec96d74eb7c231919df47f4c5a7bcce391a0bf68733b2ba3385beb5c882b9ca6",
+  "symbol_mismatches": []
+}

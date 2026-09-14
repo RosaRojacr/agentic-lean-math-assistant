@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.lamMid",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's exact density midpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:454-454, the source contract is `abbrev lamMid : ℚ := (brick.lamLo + brick.lamHi) / 2`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6872199d838a1fa3e543ff329eb7ed7979df53e9ab7df478a48be79baedaf0cf",
+  "symbol_mismatches": []
+}

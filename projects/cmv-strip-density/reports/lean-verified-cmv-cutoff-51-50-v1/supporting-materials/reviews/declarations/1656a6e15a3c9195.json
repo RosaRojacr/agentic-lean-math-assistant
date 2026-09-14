@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_pi_sub",
+  "domain_issues": [],
+  "informal_statement": "The normalized area formula at the supplementary cap angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:134-140, the source contract is `lemma area_pi_sub {θ : ℝ} (_hθ : θ ∈ Ioo 0 π) : area (π - θ) = (π - θ + sin θ * cos θ) / (4 * sin θ ^ 2)`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6ddb90a2a474720c53dc6e87015838175f9560adcbb74d22d3aa99ec3da8673f",
+  "symbol_mismatches": []
+}

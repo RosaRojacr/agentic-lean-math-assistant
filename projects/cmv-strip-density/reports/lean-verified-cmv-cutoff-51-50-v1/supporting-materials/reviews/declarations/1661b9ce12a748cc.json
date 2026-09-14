@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.lam",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's reconstructed density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:111-111, the source contract is `def lam (p : Point) : ℝ := (lamMid : ℝ) + p.t`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80d4ea0b007cc38c9cef09318804f92bb1d2031dffde45077e78cad062961da3",
+  "symbol_mismatches": []
+}

@@ -22,27 +22,6 @@ noncomputable section
 
 namespace CMVRelaxation
 
-/-- The Euclidean coordinate plane identified isometrically with `ℂ`, with the
-real part representing the second source coordinate and the imaginary part the
-first. -/
-def tangentComplexEquiv : EuclideanPlane ≃ᵢ ℂ where
-  toEquiv :=
-    { toFun := fun p => ⟨(WithLp.ofLp p).2, (WithLp.ofLp p).1⟩
-      invFun := fun z => WithLp.toLp 2 (z.im, z.re)
-      left_inv := by
-        intro p
-        rfl
-      right_inv := by
-        intro z
-        rfl }
-  isometry_toFun := by
-    apply Isometry.of_dist_eq
-    intro p q
-    rw [WithLp.prod_dist_eq_add (by norm_num)]
-    norm_num [Real.dist_eq, sq_abs]
-    rw [← Real.sqrt_eq_rpow]
-    congr 1
-    ring
 
 /-- Tangent/outward-normal coordinates at signed arclength `s` on the circle
 with source center `center` and radius `r`.  The local origin is the circle
@@ -54,21 +33,6 @@ def upperCircleTangentFrame (center : PlanePoint) (r s : ℝ) :
     (IsometryEquiv.addLeft
       (⟨center.2, center.1⟩ + unitCircleArc r s)).trans
       tangentComplexEquiv.symm
-
-@[simp] theorem tangentComplexEquiv_apply (p : EuclideanPlane) :
-    tangentComplexEquiv p =
-      ⟨(WithLp.ofLp p).2, (WithLp.ofLp p).1⟩ := rfl
-
-@[simp] theorem tangentComplexEquiv_symm_apply (z : ℂ) :
-    tangentComplexEquiv.symm z = WithLp.toLp 2 (z.im, z.re) := rfl
-
-@[simp] theorem planeEuclideanHomeomorph_symm_tangentComplexEquiv_symm
-    (z : ℂ) :
-    planeEuclideanHomeomorph.symm (tangentComplexEquiv.symm z) =
-      (z.im, z.re) := rfl
-
-@[simp] theorem planeEuclideanHomeomorph_symm_toLp (p : PlanePoint) :
-    planeEuclideanHomeomorph.symm (WithLp.toLp 2 p) = p := rfl
 
 @[simp] theorem euclideanRigidMap_upperCircleTangentFrame
     (center : PlanePoint) (r s : ℝ) (p : PlanePoint) :

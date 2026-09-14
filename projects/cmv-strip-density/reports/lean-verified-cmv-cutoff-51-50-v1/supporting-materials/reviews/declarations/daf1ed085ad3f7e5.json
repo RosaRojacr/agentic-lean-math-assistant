@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.horizontalChord_subset_carrier",
+  "domain_issues": [],
+  "informal_statement": "The horizontal chord segments lie in the core.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:491-499, the source contract is `theorem horizontalChord_subset_carrier (c : StripCore) {y : ℝ} (hy : |y| ≤ 1) : {p : PlanePoint | p.2 = y ∧ |p.1| ≤ c.chord / 2} ⊆ c.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "334fc66a21b600efd108f9065db91fc12f64adadeb2b25ecfa3e64aa16686847",
+  "symbol_mismatches": []
+}

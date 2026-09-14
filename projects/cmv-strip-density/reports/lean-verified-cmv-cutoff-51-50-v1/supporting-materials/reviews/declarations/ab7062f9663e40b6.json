@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.measurableSet_carrier",
+  "domain_issues": [],
+  "informal_statement": "The full type-(iii) carrier is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:1310-1316, the source contract is `theorem measurableSet_carrier : MeasurableSet a.carrier`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "25696aa660c5c71e8ce3e6a179a069d25633bc99ff664ad8e93ea6e319cb501f",
+  "symbol_mismatches": []
+}

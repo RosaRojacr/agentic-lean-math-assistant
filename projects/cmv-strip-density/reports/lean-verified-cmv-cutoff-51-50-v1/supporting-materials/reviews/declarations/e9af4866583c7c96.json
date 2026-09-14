@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segment_strip_density",
+  "domain_issues": [],
+  "informal_statement": "A segment at a strip height has density one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1451-1456, the source contract is `theorem segment_strip_density (lam : ℝ) (seg : HorizontalSegment) (hbase : |seg.baseY| ≤ 1) (s : ℝ) : StripDensity lam (segmentParam seg s) = 1`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "085d6e1c928eaa3445cf1a074627690d3998f7b411d2733a06ce5de0f2e168c0",
+  "symbol_mismatches": []
+}

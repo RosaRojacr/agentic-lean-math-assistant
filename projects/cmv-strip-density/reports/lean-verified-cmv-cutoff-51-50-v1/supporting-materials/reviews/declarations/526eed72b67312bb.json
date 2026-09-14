@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_deriv_neg",
+  "domain_issues": [],
+  "informal_statement": "The derivative of g is negative in the small-area branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At GFunction.lean:156-166, the source contract is `theorem g_deriv_neg {x : ℝ} (hx : 0 < x) (h : x ≤ π / 16) : 4 * sin (θOf x) - 4 * sin (θOf (2 * x)) < 0`. The normalized saving is 2*L(X)-L(2*X) on X > 0. The factor of two in the chain rule and the principal inverse-cap-angle domain are retained; none of the geometric inequalities is extended to nonpositive cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "89dcdf54ccfabb31e9736dc2f8394ba49f8c59134f8b039132ae14f9404c9bd9",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcTrace",
+  "domain_issues": [],
+  "informal_statement": "The circular part of the cap boundary.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:656-661, the source contract is `def arcTrace (c : OneSidedCircularCap) : Set PlanePoint := {p | c.radiusSquaredAt p = c.radius ^ 2 ∧ match c.side with | .upper => c.baseY ≤ p.2 | .lower => p.2 ≤ c.baseY}`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5e3edb81f4f16ef8dbff7c15d5756a176b1f99c3bd5fb86ce703134a0a727a89",
+  "symbol_mismatches": []
+}

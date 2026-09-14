@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ell",
+  "domain_issues": [],
+  "informal_statement": "Arc length of a unit-chord circular segment as a function of half-angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MorgansArcFunction.lean:89-91, the source contract is `noncomputable def ell (θ : ℝ) : ℝ := θ / sin θ`. The unit-chord normalized area and arc length are constructed on 0 < theta < pi. The inverse is used geometrically only at positive area; its explicit totalization is not confused with an inverse outside that domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9adb32c6bf9324acec1e791c0ec46f0e17df835ffee7b3549cab07bdc3a760c9",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,107 @@
+import CMVMixedChartSupportContinuation
+
+namespace CMVTransverseContactVariation
+namespace HorizontalGraphPatch
+
+#print axioms supportingCircle_eq_of_anchors
+#print axioms deriv_eq_of_orientedGraphCurvature_eq_zero
+#print axioms supportingLineAt_eq_of_anchors
+
+end HorizontalGraphPatch
+end CMVTransverseContactVariation
+
+namespace CMVSourceBoundaryContinuation
+
+namespace ActualRegularGraphChart
+
+#print axioms side_eq_of_overlap_of_occupiedGerms
+
+end ActualRegularGraphChart
+
+namespace ActualRegularHorizontalGraphChart
+
+#print axioms eventuallyEq_graph_of_overlap
+#print axioms deriv_eq_of_overlap
+#print axioms normalizedTangent_eq_of_overlap
+#print axioms supportingCenter_eq_of_overlap
+#print axioms unique_supportingCircle_of_overlap
+#print axioms unique_supportingLine_of_overlap
+
+end ActualRegularHorizontalGraphChart
+namespace ActualRegularHorizontalGraphChart
+
+#print axioms side_eq_of_overlap_of_occupiedGerms
+
+end ActualRegularHorizontalGraphChart
+
+namespace MixedGraphAtlas
+namespace RegularChart
+
+#print axioms parameter_interior_and_trace_eq_of_mem
+#print axioms supportAtParameter_eq_of_anchors
+#print axioms supportAtParameter_eq_of_actual_overlap
+#print axioms exists_open_supportAt_inter_subset_traceImage
+
+end RegularChart
+
+namespace BranchNeutralMixedGraphAtlas
+
+#print axioms supportAt_eq_of_mem_neighborhood
+#print axioms supportAt_isLocallyConstant
+#print axioms supportAt_eq_of_mem_connectedComponent
+#print axioms base_mem_supportAt
+#print axioms connectedComponent_subset_supportAt
+#print axioms supportAt_eq_circleValue_zero
+#print axioms chartTrace_image_subset_locus
+#print axioms chartTrace_image_isPreconnected
+#print axioms exists_open_supportAt_inter_subset_connectedComponentIn
+#print axioms connectedComponentIn_subset_supportAt
+#print axioms connectedComponentIn_isOpen_in_supportAt
+
+end BranchNeutralMixedGraphAtlas
+end MixedGraphAtlas
+
+#print axioms supportingCircleOfTrace_eq_of_reversedContact
+#print axioms supportingLineOfTrace_eq_of_reversedContact
+
+namespace MixedOverlapAt
+
+#print axioms eventuallyEq_comp_id
+#print axioms deriv_mul_deriv_eq_one
+#print axioms occupiedSide_sign_compatibility
+#print axioms normalizedTangent_compatibility
+#print axioms tangent_and_signedCurvature_compatibility
+#print axioms supportingCenter_eq_of_mixedOverlap
+#print axioms unique_supportingCircle_of_mixedOverlap
+#print axioms unique_supportingLine_of_mixedOverlap
+
+end MixedOverlapAt
+
+namespace MixedChartComponent
+
+#print axioms curvedSupport_eq_of_overlap
+#print axioms curvedSupport_eq_of_mem_component
+#print axioms flatSupport_eq_of_overlap
+#print axioms flatSupport_eq_of_mem_component
+
+end MixedChartComponent
+
+namespace CurvedCarrierExample
+
+#print axioms coordinateTangencies_share_support_without_interface
+
+end CurvedCarrierExample
+
+namespace MixedChartExamples
+
+#print axioms openCircle_crosses_coordinateTangencies_without_contact
+
+end MixedChartExamples
+
+namespace FlatMixedChartExample
+
+#print axioms normalizedTangent_reversed
+#print axioms support_agreement
+
+end FlatMixedChartExample
+end CMVSourceBoundaryContinuation

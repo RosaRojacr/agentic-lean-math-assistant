@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.carrier",
+  "domain_issues": [],
+  "informal_statement": "Union of the type-(iii) strip core and upper exterior cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:262-264, the source contract is `def carrier : Set PlanePoint := a.coreCarrier ∪ a.outerCap.carrier`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0849c97e398a59f917657f18205fab9ffd6aa8e524ee751befd78f1c4735a4ff",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.leftCenterX",
+  "domain_issues": [],
+  "informal_statement": "Horizontal center coordinate for the left core circle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:431-433, the source contract is `def leftCenterX (c : StripCore) : ℝ := -c.chord / 2 + c.radius * cos c.sideAngle`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "01fd3b14ca7e8a9d341e71e2fb86b773a9bea051016f7f6499489c3b65bab474",
+  "symbol_mismatches": []
+}

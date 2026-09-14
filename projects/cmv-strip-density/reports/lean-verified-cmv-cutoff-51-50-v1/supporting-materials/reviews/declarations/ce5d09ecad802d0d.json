@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.typeThreeArea_deriv_eq_K3",
+  "domain_issues": [],
+  "informal_statement": "The checker K3 divided by the positive curvature cube is the type-(iii) area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:1701-1774, the source contract is `theorem typeThreeArea_deriv_eq_K3 (b : Brick) (p : Point) (hlam : 1 < lam b p) (hbranches : 0 < w b p ∧ w b p < π / 4 ∧ 0 < v b p ∧ v b p < π / 4) (hC3 : C3 b p = 0) : deriv (LeanSuffixAnalytic.typeThreeArea (lam b p)) ((1 + cos (w b p)) / 2) = K3 b p / ((1 + cos (w b p)) / 2) ^ 3`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a51562aaac4e05b4f1f95d421868e79ec4eae70d59c9a31981d5897af5fec042",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArcRotation_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "For r nonzero and arbitrary real m,u,v, rotation by angle m/r translates the circle-image parameter interval by m.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:332-349, the source contract is `lemma unitCircleArcRotation_image_Icc {r : ℝ} (hr : r ≠ 0) (m u v : ℝ) : unitCircleArcRotation r m '' (unitCircleArc r '' Icc u v) = unitCircleArc r '' Icc (u + m) (v + m)`. The circle path is r*exp(i*s/r): s is the signed arclength parameter, not the central angle, and r is not fixed to one. The author preserves the stated radius/span assumptions and, for partition formulas, the stated index and N=0 conventions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6bbfe5bd6af2f20e278e2e30ff5adc9fe7c0761359113d169ea5baae1f20d6a2",
+  "symbol_mismatches": []
+}

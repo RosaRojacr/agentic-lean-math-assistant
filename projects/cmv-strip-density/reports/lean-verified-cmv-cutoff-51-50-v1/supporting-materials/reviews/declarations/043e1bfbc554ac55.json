@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.assembly",
+  "domain_issues": [],
+  "informal_statement": "The four-arc assembly determined by the candidate parameters.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:66-72, the source contract is `def assembly : FourArcAssembly where core := candidate.stripCore outerAngle := candidate.alpha outerAngle_pos := candidate.alpha_pos outerAngle_lt_pi_div_two := candidate.alpha_lt_pi_div_two`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ca67fddb2d167afab63544438387902bb645349ebfde9d83c7a2719a2277c941",
+  "symbol_mismatches": []
+}

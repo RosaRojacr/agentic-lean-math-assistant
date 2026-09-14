@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentBoundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "Interval-pushforward measure of the segment parametrization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1403-1405, the source contract is `def segmentBoundaryMeasure (seg : HorizontalSegment) : Measure PlanePoint := intervalPushforward (segmentParam seg) (segmentStart seg) (segmentEnd seg)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f71d719edefabe163afbd5014b1ba6aa8df0398ddf3cc380ddcc9ee628163feb",
+  "symbol_mismatches": []
+}

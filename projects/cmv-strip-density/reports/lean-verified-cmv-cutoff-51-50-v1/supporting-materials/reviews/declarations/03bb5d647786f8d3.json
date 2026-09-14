@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.recipPos",
+  "domain_issues": [],
+  "informal_statement": "Reciprocal interval for a strictly positive interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:45-49, the source contract is `def recipPos (i : QInterval) (hi : 0 < i.lo) : QInterval where lo := 1 / i.hi hi := 1 / i.lo ordered := one_div_le_one_div_of_le hi i.ordered`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "90ef275967dd2ae91683ae88e032a660973bb176bd69a1f9f83086d63e1c2bed",
+  "symbol_mismatches": []
+}

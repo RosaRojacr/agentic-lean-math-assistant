@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedCapParam_eq",
+  "domain_issues": [],
+  "informal_statement": "The realized cap parametrization agrees with the scaled and placed complex arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:434-441, the source contract is `lemma realizedCapParam_eq (c : OneSidedCircularCap) (s : ℝ) : realizedCapParam c s = capComplexIsometryMap c (unitCircleArc c.radius s)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9c421cce21d93c49e9d419ecc30c8d31de995d391da25f034d29cf3f0bd85599",
+  "symbol_mismatches": []
+}

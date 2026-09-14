@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.tInterval",
+  "domain_issues": [],
+  "informal_statement": "The centered density-parameter interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:41-45, the source contract is `def tInterval (b : Brick) : QInterval := ⟨-tRadius b, tRadius b, by dsimp [tRadius] linarith [b.lamOrdered]⟩`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f0133991a8583c976d09c8410dc69827234287519ce36ced5debf237d26a4d63",
+  "symbol_mismatches": []
+}

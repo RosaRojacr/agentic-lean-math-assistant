@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.candidate_area_formula",
+  "domain_issues": [],
+  "informal_statement": "The candidate satisfies the source type-(iv) area formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:410-430, the source contract is `theorem candidate_area_formula (h : candidate.SatisfiesCMVTypeIVHypotheses) : candidate.WeightedArea = 4 * sin candidate.alpha / candidate.h + 2 * (lam * candidate.alpha - sin candidate.alpha * cos candidate.beta) / candidate.h ^ 2 + 2 * (arcsin candidate.h - candidate.h * √(1 - candidate.h ^ 2)) / candidate.h ^ 2`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6d944ecc5d4bab77cadf263520f194142a9d6855088a9b98e5873be144ab8cc",
+  "symbol_mismatches": []
+}

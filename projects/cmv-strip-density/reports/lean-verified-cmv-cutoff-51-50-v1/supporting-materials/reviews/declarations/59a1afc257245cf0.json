@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.E",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's denominator-cleared equal-area residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:513-514, the source contract is `def E (p : Point) : ℝ := 2 * cos (x p) ^ 2 * N3 p - (1 + cos (w p)) ^ 2 * N4 p`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "473eec5a0b00f868ac4f7ad090edf435fe47f07ca5bd2b59758512636541fbfa",
+  "symbol_mismatches": []
+}

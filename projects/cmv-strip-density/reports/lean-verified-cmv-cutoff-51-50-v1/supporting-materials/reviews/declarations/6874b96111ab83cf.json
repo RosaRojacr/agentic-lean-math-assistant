@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.SatisfiesCMVTypeIVHypotheses",
+  "domain_issues": [],
+  "informal_statement": "Density jump and Snell incidence for a modeled candidate.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:84-89, the source contract is `structure SatisfiesCMVTypeIVHypotheses : Prop where density_jump : 1 < lam snell_incidence : lam * cos candidate.alpha = candidate.h`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c09b9c7180b6131040333c0b3c2623f3c89af7f54fe8ab0b9f6a41be873ca0dc",
+  "symbol_mismatches": []
+}

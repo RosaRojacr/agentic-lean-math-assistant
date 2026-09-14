@@ -1,0 +1,44 @@
+import CMVAEOpenRepresentative
+
+namespace CMVRelaxation
+
+#print axioms mem_aeOpenRepresentative
+#print axioms aeOpenRepresentative_eq_compl_support
+#print axioms isOpen_aeOpenRepresentative
+#print axioms aeOpenRepresentative_congr_ae
+#print axioms open_subset_aeOpenRepresentative_self
+#print axioms open_subset_aeOpenRepresentative
+#print axioms aeOpenRepresentative_subset_closure_self
+#print axioms aeOpenRepresentative_subset_closure_open
+#print axioms volume_aeOpenRepresentative_sdiff
+#print axioms aeOpenRepresentative_ae_eq_self_of_open
+#print axioms aeOpenRepresentative_ae_eq_open
+#print axioms aeOpenRepresentative_ae_eq
+#print axioms aeOpenRepresentative_idempotent
+#print axioms open_subset_aeOpenRepresentative_of_sdiff_null
+#print axioms aeOpenRepresentative_isGreatest
+#print axioms isBounded_aeOpenRepresentative_of_ae
+#print axioms isConnected_aeOpenRepresentative_of_open_ae
+#print axioms PuncturedDiskExample.isOpen_disk
+#print axioms PuncturedDiskExample.accumulatingPunctures_countable
+#print axioms PuncturedDiskExample.volume_accumulatingPunctures
+#print axioms PuncturedDiskExample.isClosed_accumulatingPunctures
+#print axioms PuncturedDiskExample.accumulatingPunctures_subset_disk
+#print axioms PuncturedDiskExample.isOpen_puncturedDisk
+#print axioms PuncturedDiskExample.aeOpenRepresentative_disk
+#print axioms PuncturedDiskExample.aeOpenRepresentative_puncturedDisk
+#print axioms relaxedSourceSemantics_isAdmissible_congr_ae
+#print axioms relaxedSourceSemantics_isMinimizer_congr_ae
+#print axioms integrableOn_aeOpenRepresentative_iff
+#print axioms weightedArea_aeOpenRepresentative
+#print axioms relaxedPerimeter_aeOpenRepresentative
+#print axioms
+  relaxedSourceSemantics_isFinitePerimeter_aeOpenRepresentative_iff
+#print axioms
+  relaxedSourceSemantics_isAdmissible_aeOpenRepresentative_iff
+#print axioms
+  relaxedSourceSemantics_isMinimizer_aeOpenRepresentative_iff
+#print axioms relaxedSourceSemantics_perimeter_aeOpenRepresentative
+#print axioms frontier_aeOpenRepresentative_volume_pos
+
+end CMVRelaxation

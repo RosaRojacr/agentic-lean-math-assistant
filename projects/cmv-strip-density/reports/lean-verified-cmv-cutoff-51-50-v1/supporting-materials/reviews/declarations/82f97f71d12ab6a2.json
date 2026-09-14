@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "xstar_mem_Ioo",
+  "domain_issues": [],
+  "informal_statement": "Xstar lies in (pi/16,pi/8).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MinimumValue.lean:56-60, the source contract is `lemma xstar_mem_Ioo : xstar ∈ Ioo (π / 16) (π / 8)`. The derivative sign analysis concerns X > 0 and establishes a global normalized-saving minimum, not just a local stationary value. The value g(xstar)=3*cos(thetaStar) is identified on the actual inverse-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "720519699b0830892e8a5d92169d8b53b8ea57339507bc01453bc6fff96e87b0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.TypeThreeAssembly.angleTerm_eq_typeThreeAngle",
+  "domain_issues": [],
+  "informal_statement": "The geometric type-(iii) angle term equals the analytic angle term plus pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVSuffixModel.lean:42-52, the source contract is `theorem angleTerm_eq_typeThreeAngle : a.angleTerm = LeanSuffixAnalytic.typeThreeAngle lam a.h + π / 2`. This bridge identifies actual carrier integrals with the scalar profiles. In particular the geometric type-(iii) angle term is typeThreeAngle + pi/2; regular-only wrappers are not substituted for the separate endpoint-inclusive candidate bridge.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe9ab761a6d7819237c18cc5b6d5b714cc699cb312b84007d27510fce813ca50",
+  "symbol_mismatches": []
+}

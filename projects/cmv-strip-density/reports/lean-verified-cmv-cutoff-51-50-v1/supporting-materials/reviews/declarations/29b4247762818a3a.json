@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval",
+  "domain_issues": [],
+  "informal_statement": "An ordered pair of rational interval endpoints.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixReflective.lean:19-26, the source contract is `structure QInterval where lo : ℚ hi : ℚ ordered : lo ≤ hi`. Intervals have rational ordered endpoints and closed containment. Arithmetic enclosure statements concern the real-valued operations after rational casting; exact checks do not stand for floating-point evidence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "aa9fdae3c31a981fd9f3e3c84090b4a600570661da326e67bfa152cc3da18001",
+  "symbol_mismatches": []
+}

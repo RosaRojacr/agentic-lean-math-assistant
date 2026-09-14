@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.radicalCubeGap_pos",
+  "domain_issues": [],
+  "informal_statement": "The reciprocal-cube radical difference is strictly positive for lambda > 1 and -1 < x < 1, including negative x and x = 0.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:349-374, the source contract is `theorem radicalCubeGap_pos {lam x : ℝ} (hlam : 1 < lam) (hx : -1 < x) (hx1 : x < 1) : 0 < 1 / sqrt (1 - x ^ 2) ^ 3 - lam / sqrt (lam ^ 2 - x ^ 2) ^ 3`. The radical cube gap is strictly positive for lambda > 1 and every -1 < x < 1, including x=0 and negative x. This full domain is needed when x=2*h3-1; the author does not narrow it to positive x.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ed04fbfe0d2a5c8c68ae2429d8da8593a273f2471a8fcc329e85c97a6780176d",
+  "symbol_mismatches": []
+}

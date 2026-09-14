@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.descendingK3",
+  "domain_issues": [],
+  "informal_statement": "The right prototype has strictly negative K3 throughout its box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:766-934, the source contract is `theorem descendingK3 : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → K3 (pointOf t z) < 0`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e9afb66c8c2aa5658ce6fd84c67f02d2de09068f00ce68b48aceab8eeae79c86",
+  "symbol_mismatches": []
+}

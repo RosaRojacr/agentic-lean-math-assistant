@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.InRetainedSuffix",
+  "domain_issues": [],
+  "informal_statement": "The closed certificate density interval [51/50,9/7].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:1159-1161, the source contract is `def InRetainedSuffix (lam : ℝ) : Prop := (51 / 50 : ℝ) ≤ lam ∧ lam ≤ 9 / 7`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "18acd275369860c6ce3970cef1307119f694180bde02eaaf9f16412e8cd68698",
+  "symbol_mismatches": []
+}

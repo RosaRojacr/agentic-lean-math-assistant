@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_le_fold",
+  "domain_issues": [],
+  "informal_statement": "Every modeled curvature has gap at most the stationary gap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At EqualAreaEnvelope.lean:632-644, the source contract is `theorem equalAreaPerimeterGap_le_fold {lam : ℝ} (env : DescendingEqualAreaEnvelope lam) {h₄ : ℝ} (hh₄ : 0 < h₄) (hh₄_one : h₄ ≤ 1) : equalAreaPerimeterGap lam env.root h₄ ≤ equalAreaPerimeterGap lam env.root env.fold`. Equal area and the negative-fold branch are distinct requirements. Interior differentiation requires a simple root; the closure endpoint uses one-sided continuity. The main proof derives these properties rather than assuming the all-curvature perimeter comparison.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0bde810fe503972e30290f54b6517ae65288b7e84131b161bebac58ed0796e33",
+  "symbol_mismatches": []
+}

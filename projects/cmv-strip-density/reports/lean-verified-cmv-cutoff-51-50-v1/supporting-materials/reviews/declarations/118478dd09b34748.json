@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sideAngle_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "The core side angle is strictly below pi.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:470-473, the source contract is `theorem sideAngle_lt_pi (c : StripCore) : c.sideAngle < π`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4d165924e20daf34cd0cd3a93af12e6637e356347b723990beb9d1a85af59a9e",
+  "symbol_mismatches": []
+}

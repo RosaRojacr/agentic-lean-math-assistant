@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCore_strip_density",
+  "domain_issues": [],
+  "informal_statement": "Density is one along the left core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1662-1667, the source contract is `theorem leftCore_strip_density (lam : ℝ) (c : StripCore) {s : ℝ} (hs : s ∈ Icc (coreArcStart c) (coreArcEnd c)) : StripDensity lam (leftCoreParam c s) = 1`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3222d64a655ce3af15a638606821b923e89c31ae75558031c08763aeb76b72b6",
+  "symbol_mismatches": []
+}

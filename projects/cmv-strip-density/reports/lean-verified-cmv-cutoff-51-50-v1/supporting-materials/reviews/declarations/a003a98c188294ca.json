@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.rootMap_continuous",
+  "domain_issues": [],
+  "informal_statement": "The exact checker root map is continuous for each fixed centered density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:114-134, the source contract is `theorem rootMap_continuous (t : ℝ) : Continuous (rootMap b t)`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6092edc775a5fa26e9773ae9ff53a2555f68e09f5126315e8d8440fbed6260b3",
+  "symbol_mismatches": []
+}

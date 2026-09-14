@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_mem",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, theta > 0, N > 0 and natural i <= N, the ith partition point belongs to [-r theta,r theta].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:175-184, the source contract is `lemma capPartitionPoint_mem {r theta : ℝ} (hr : 0 < r) (htheta : 0 < theta) {N i : ℕ} (hN : 0 < N) (hi : i ≤ N) : capPartitionPoint r theta N i ∈ Icc (-r * theta) (r * theta)`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8f26d09621c071ac8a6a1935a21253dfb29cb269e0ec21dc71e59a40f0529e9f",
+  "symbol_mismatches": []
+}

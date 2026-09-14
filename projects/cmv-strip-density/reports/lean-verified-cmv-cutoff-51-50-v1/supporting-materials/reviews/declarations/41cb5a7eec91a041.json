@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor",
+  "domain_issues": [],
+  "informal_statement": "The competitor class: empty, general integrable carrier, four-arc assembly, or replacement assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3952-3960, the source contract is `inductive AdmissibleCompetitor (lam : ℝ) where | empty | general (region : FinitePerimeterRegion lam) | fourArc (a : FourArcAssembly) | replacement (a : ReplacementAssembly)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "52c3c4597213ca5cc7d4e12b21ad852ff148bcb8179b3f52a9c03b7d3665311b",
+  "symbol_mismatches": []
+}

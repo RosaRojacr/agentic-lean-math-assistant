@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.weightedPerimeter_eq_modeledWeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The actual complete-frontier perimeter equals the full type-(iii) component perimeter sum.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:2950-2993, the source contract is `theorem weightedPerimeter_eq_modeledWeightedPerimeter : a.WeightedPerimeter = a.modeledWeightedPerimeter`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3dd334c8f3cff9146f23a5d90e6da2520151c567d49c8604446b90aa7a9f4d2b",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.exact_euclidean_leftArcParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The left type-(iii) parameter image has exact length R times the side angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:742-778, the source contract is `theorem exact_euclidean_leftArcParam_hausdorffMeasure : (μH[1] : Measure EuclideanPlane) (a.realizedLeftArcParam '' Icc (-a.radius * a.sideArcAngle) 0) = ENNReal.ofReal (a.radius * a.sideArcAngle)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c6dc496bb93e612df391bdcd13229ada6ddb03a05f7a4a85318498972631a8fc",
+  "symbol_mismatches": []
+}

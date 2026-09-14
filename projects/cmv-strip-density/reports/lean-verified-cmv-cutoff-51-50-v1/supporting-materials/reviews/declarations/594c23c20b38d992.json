@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeFourPerimeterBox",
+  "domain_issues": [],
+  "informal_statement": "Interval expression for P4.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CompactCellCertificate.lean:597-601, the source contract is `def typeFourPerimeterBox (lambdaInterval hI asinHI asinRatioI : QInterval) (hh : 0 < hI.lo) : QInterval := (ScalarSuffixCertificate.QInterval.divPos ((typeFourAngleBox lambdaInterval asinHI asinRatioI).nsmul 4 (by norm_num)) hI hh)`. QInterval containment is closed real containment of rational endpoints. The radical and inverse-trigonometric enclosures retain their positivity and principal-branch hypotheses, and the computed bounds enclose the stated real expressions, not sampled approximations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9acb08313f7038b05bcb4ead730aaeb55230fdc38d1e200f1e4b75f2584d5063",
+  "symbol_mismatches": []
+}

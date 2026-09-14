@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exists_F_root",
+  "domain_issues": [],
+  "informal_statement": "F has a root between zero and pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At Minimiser.lean:82-91, the source contract is `lemma exists_F_root : ∃ θ ∈ Icc 0 (π / 2), F θ = 0`. F(theta)=3*theta-3*sin(theta)*cos(theta)-pi has its unique relevant root in (0,pi/2). The chosen normalized area is positive, and the supplementary angle pi-theta remains in (0,pi), including the major-cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "95a62157307a9e9688c52df86b638986f0064730d81ed190bb31889a2f44b580",
+  "symbol_mismatches": []
+}

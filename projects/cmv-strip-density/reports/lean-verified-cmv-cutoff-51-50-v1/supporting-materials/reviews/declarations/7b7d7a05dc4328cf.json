@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint",
+  "domain_issues": [],
+  "informal_statement": "Angular parametrization of the cap arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:124-133, the source contract is `def arcPoint (c : OneSidedCircularCap) (t : ℝ) : PlanePoint := match c.side with | .upper => (c.midpointX + c.radius * sin t, c.baseY + c.radius * (cos t - cos c.theta)) | .lower => (c.midpointX + c.radius * sin t, c.baseY - c.radius * (cos t - cos c.theta))`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2f12b44987266410d1b21333c27225fca467817287b4028245b465856f5540c3",
+  "symbol_mismatches": []
+}

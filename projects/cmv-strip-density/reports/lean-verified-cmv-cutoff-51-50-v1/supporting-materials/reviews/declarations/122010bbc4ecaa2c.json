@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "coreArcEnd",
+  "domain_issues": [],
+  "informal_statement": "Final arclength parameter for a core side arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1474-1476, the source contract is `def coreArcEnd (c : StripCore) : ℝ := c.radius * c.sideAngle`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ee06e3535f2fd49529132649f006dc8125adff906e2bb1c8e325a0ca4b835a4",
+  "symbol_mismatches": []
+}

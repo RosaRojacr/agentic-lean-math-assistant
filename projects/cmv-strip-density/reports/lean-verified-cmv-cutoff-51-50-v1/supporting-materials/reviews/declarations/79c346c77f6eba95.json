@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.D4",
+  "domain_issues": [],
+  "informal_statement": "Angular checker expression for type-(iv) displacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:69-69, the source contract is `def D4 (p : Point) : ℝ := sin (y b p) - sin (x b p)`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b20a244421f72357884724349d2944bd92ce6795e69082a93fe34e5d606f3a73",
+  "symbol_mismatches": []
+}

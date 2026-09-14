@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeFold_zero_between_of_area_eq",
+  "domain_issues": [],
+  "informal_statement": "For lambda > 1, 0 < a < 1, 0 < b <= 1 and a < b, equality A3(a)=A3(b) implies a zero of K3 strictly between a and b.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:905-925, the source contract is `theorem typeThreeFold_zero_between_of_area_eq {lam a b : ℝ} (hlam : 1 < lam) (ha : a ∈ Set.Ioo (0 : ℝ) 1) (hb : b ∈ Set.Ioc (0 : ℝ) 1) (hab : a < b) (harea : typeThreeArea lam a = typeThreeArea lam b) : ∃ c ∈ Set.Ioo a b, typeThreeFold lam c = 0`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "314dbeb5db22bb018c3bb2b871eb2f76a4711df985ead7c117e1cc5036bed173",
+  "symbol_mismatches": []
+}

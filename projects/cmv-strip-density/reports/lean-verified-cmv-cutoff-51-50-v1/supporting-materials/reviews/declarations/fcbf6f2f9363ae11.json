@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourFold_zero_unique",
+  "domain_issues": [],
+  "informal_statement": "A regular type-(iv) stationary fold is unique.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:1150-1158, the source contract is `theorem typeFourFold_zero_unique {lam h₁ h₂ : ℝ} (hlam : 1 < lam) (hh₁ : h₁ ∈ Set.Ioo (0 : ℝ) 1) (hh₂ : h₂ ∈ Set.Ioo (0 : ℝ) 1) (hz₁ : typeFourFold lam h₁ = 0) (hz₂ : typeFourFold lam h₂ = 0) : h₁ = h₂`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bc70631d3da63af952fb4321a7d0a57845b40dd8854182d958b30d4e8971577c",
+  "symbol_mismatches": []
+}

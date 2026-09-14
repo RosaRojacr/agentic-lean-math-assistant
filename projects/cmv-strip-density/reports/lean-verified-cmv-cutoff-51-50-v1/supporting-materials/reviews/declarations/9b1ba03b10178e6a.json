@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.C3",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's type-(iii) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:512-512, the source contract is `def C3 (p : Point) : ℝ := cos (w p) - lam p * cos (v p)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb334eb31664c80305d156013a66d4b3847b5f60bc740d68b3db43dd6612439b",
+  "symbol_mismatches": []
+}

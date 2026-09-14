@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.derivSigma",
+  "domain_issues": [],
+  "informal_statement": "The explicit sigma derivative of the equal-area residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:255-262, the source contract is `def derivSigma (t xi eta rho sigma : ℝ) : ℝ := formulaDeriv ((lamMid b : ℝ) + t) ((b.centers 0 : ℝ) + b.slopes 0 * t + xi) ((b.centers 1 : ℝ) + b.slopes 1 * t + b.yXiSlope * xi + eta) ((b.centers 2 : ℝ) + b.slopes 2 * t + rho) ((b.centers 3 : ℝ) + b.slopes 3 * t + b.vRhoSlope * rho + sigma) 0 0 0 0 1`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c526b5c951f77329daf2d0b5ffbf1fbd6d8a07576e3b33918a14d59b930c31ad",
+  "symbol_mismatches": []
+}

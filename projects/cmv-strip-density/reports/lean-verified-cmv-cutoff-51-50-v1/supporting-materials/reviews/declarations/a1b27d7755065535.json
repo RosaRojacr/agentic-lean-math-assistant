@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.InSymmetricBox",
+  "domain_issues": [],
+  "informal_statement": "Membership in the closed symmetric error box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:420-424, the source contract is `def InSymmetricBox (r z : Vec4) : Prop := ∀ j, -r j ≤ z j ∧ z j ≤ r j`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5499419d9ab0a5d1357ae99f00c375e3edfdb9ed0f97f8657ce5edf639f1f5d0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.Brick",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's rational density and affine-predictor data record.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:425-436, the source contract is `structure Brick where lamLo : ℚ lamHi : ℚ centers : Fin 4 → ℚ slopes : Fin 4 → ℚ yXiSlope : ℚ vRhoSlope : ℚ radii : Fin 4 → ℚ lamOrdered : lamLo < lamHi radiiPos : ∀ j, 0 < radii j`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe061415d65cea6f77fb8c663f249825b26067221bd27165829e3e0950822743",
+  "symbol_mismatches": []
+}

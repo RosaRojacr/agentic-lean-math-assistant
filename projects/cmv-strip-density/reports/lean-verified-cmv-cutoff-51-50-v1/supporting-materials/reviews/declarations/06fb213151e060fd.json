@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "planeEuclideanHomeomorph",
+  "domain_issues": [],
+  "informal_statement": "The coordinate-preserving homeomorphism to the Euclidean realization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:38-42, the source contract is `noncomputable def planeEuclideanHomeomorph : PlanePoint ≃ₜ EuclideanPlane := (WithLp.homeomorphProd 2 ℝ ℝ).symm`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0cae97f48ab4c061d7f08a907381bf52e9560477df33ffb993c23c2cbbf11049",
+  "symbol_mismatches": []
+}

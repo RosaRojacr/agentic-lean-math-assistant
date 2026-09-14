@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "replacement_pairwiseOverlap_subset_joinSet",
+  "domain_issues": [],
+  "informal_statement": "Replacement boundary overlaps are confined to the junctions.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1204-1252, the source contract is `theorem replacement_pairwiseOverlap_subset_joinSet (a : ReplacementAssembly) : pairwiseOverlap (StripCore.leftArcTrace a.core) (StripCore.rightArcTrace a.core) (OneSidedCircularCap.arcTrace a.upperCap) a.exposedLowerChord.carrier ⊆ joinSet a.core.chord`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "aade619b0e98a3d318437558f408789f4a791fd841078c5489c3fcd97b06ed64",
+  "symbol_mismatches": []
+}

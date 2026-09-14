@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capBoundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "The cap arc's interval-pushforward measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1249-1251, the source contract is `def capBoundaryMeasure (c : OneSidedCircularCap) : Measure PlanePoint := intervalPushforward (capParam c) (capStart c) (capEnd c)`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5dbd12f9bc57860ad2ce92a638514e0e8d15006685aca7388e2fa2e1689504cd",
+  "symbol_mismatches": []
+}

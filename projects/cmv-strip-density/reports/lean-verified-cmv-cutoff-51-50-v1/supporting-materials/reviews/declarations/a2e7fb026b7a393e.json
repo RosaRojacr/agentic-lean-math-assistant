@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "stripDensity_integrableOn_of_volume_ne_top",
+  "domain_issues": [],
+  "informal_statement": "Finite-volume carriers have integrable strip density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2289-2302, the source contract is `lemma stripDensity_integrableOn_of_volume_ne_top (lam : ℝ) {s : Set PlanePoint} (hs : volume s ≠ ⊤) : IntegrableOn (StripDensity lam) s`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d26957a576fdcc692079b92ac5054cbbeda2a914af15d77e6d70ad1d418d20fd",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_root_le_of_fold_neg",
+  "domain_issues": [],
+  "informal_statement": "For lambda > 1, a root r in (0,1) with K3(r)<0 is no larger than any y in (0,1] with A3(y)=A3(r).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:954-973, the source contract is `theorem typeThreeArea_root_le_of_fold_neg {lam root y : ℝ} (hlam : 1 < lam) (hroot : root ∈ Set.Ioo (0 : ℝ) 1) (hy : y ∈ Set.Ioc (0 : ℝ) 1) (hfold : typeThreeFold lam root < 0) (harea : typeThreeArea lam root = typeThreeArea lam y) : root ≤ y`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a9a71e3bf8960b5c96a8fc59bf3fe2a372f70aa365bd91817e7ca128cb8520b9",
+  "symbol_mismatches": []
+}

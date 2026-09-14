@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalArea_gap_identity",
+  "domain_issues": [],
+  "informal_statement": "Exact perimeter-gap elimination under equal area and nonzero curvatures.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:1208-1220, the source contract is `theorem equalArea_gap_identity {lam h₃ h₄ : ℝ} (hh₃ : h₃ ≠ 0) (hh₄ : h₄ ≠ 0) (harea : typeThreeArea lam h₃ = typeFourArea lam h₄) : typeThreePerimeter lam h₃ - typeFourPerimeter lam h₄ = 4 * (((h₃ - h₄) / h₄ ^ 2) * typeFourAngle lam h₄ + h₃ / h₄ * typeFourDelta lam h₄ - typeThreeDelta lam h₃)`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7a449a0d73201ece195743b096dbde5032c8598ab1748985129132f301a8ba9d",
+  "symbol_mismatches": []
+}

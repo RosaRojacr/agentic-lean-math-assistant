@@ -1,0 +1,119 @@
+[
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/MainProof.md",
+      "--from=markdown+fenced_divs",
+      "--standalone",
+      "--embed-resources",
+      "--mathml",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/proof-package.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/MainProof.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "[WARNING] Could not convert TeX math P_\\lambda(C)-P_\\lambda(C_{\\rm rep})=\\lambda c\\left(g(X)-\\frac1\\lambda\\right)>0., rendering as TeX:\n  )-P_\\lambda(C_{\\rm rep})=\\lambda c\\left(\n                     ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n",
+    "stderr_sha256": "f6fdd358bfe49752c544229359a47d08f7863a8687472f2f2c2d1625c080a7f5",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/MainProof.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/MainProof.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "708712 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/MainProof.pdf\n",
+    "stderr_sha256": "821aaa62514921f9c32a4d65257a51593dfd7192be1ef1530a02604794ed868d",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/LemmaSupplement.md",
+      "--from=markdown+fenced_divs",
+      "--standalone",
+      "--embed-resources",
+      "--mathml",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/proof-package.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/LemmaSupplement.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "[WARNING] Could not convert TeX math P_\\lambda(C_{\\rm rep})-P_\\lambda(C)=c\\bigl(1-\\lambda g(X)\\bigr)., rendering as TeX:\n  P_\\lambda(C_{\\rm rep})-P_\\lambda(C)=c\\bi\n                   ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math P_\\lambda(C)-P_\\lambda(C_{\\rm rep})=\\lambda c(g(X)-1/\\lambda), rendering as TeX:\n  )-P_\\lambda(C_{\\rm rep})=\\lambda c(g(X)-\n                     ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math \\lambda=\\lambda_{\\rm mid}+t, rendering as TeX:\n  ambda=\\lambda_{\\rm mid}+t\n                     ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math (\\lambda_{\\rm lo}+\\lambda_{\\rm hi})/2, rendering as TeX:\n  (\\lambda_{\\rm lo}+\\lambda_{\\rm hi})/2\n                ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math [-t_{\\rm radius},t_{\\rm radius}], rendering as TeX:\n  [-t_{\\rm radius},t_{\\rm radius}]\n           ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math (\\lambda_{\\rm hi}-\\lambda_{\\rm lo})/2>0, rendering as TeX:\n  (\\lambda_{\\rm hi}-\\lambda_{\\rm lo})/2>0\n                ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math \\lambda=\\lambda_{\\rm mid}+t, rendering as TeX:\n  ambda=\\lambda_{\\rm mid}+t\n                     ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math [-t_{\\rm radius},t_{\\rm radius}], rendering as TeX:\n  [-t_{\\rm radius},t_{\\rm radius}]\n           ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math \\lambda=\\lambda_{\\rm mid}+t, rendering as TeX:\n  ambda=\\lambda_{\\rm mid}+t\n                     ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n[WARNING] Could not convert TeX math t=\\lambda-\\lambda_{\\rm mid}, rendering as TeX:\n  ambda-\\lambda_{\\rm mid}\n                     ^\n  unexpected control sequence \\rm\n  expecting \"%\", \"\\\\label\", \"\\\\tag\", \"\\\\nonumber\", whitespace or \"\\\\allowbreak\"\n",
+    "stderr_sha256": "ae3dfae702786ccdf33cf474e278fa49eb417cb643191815fae4a4fbf1c49994",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/LemmaSupplement.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/LemmaSupplement.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "[297566:297596:0912/044709.135062:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR\n[297566:297596:0912/044709.136046:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR\n[297566:297596:0912/044709.142690:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR\n11762288 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/LemmaSupplement.pdf\n",
+    "stderr_sha256": "ddf0a306e5a79a99d85f10220c24534092128e560eeb4d9151eafc30878b3409",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/SemanticAudit.md",
+      "--from=markdown+fenced_divs",
+      "--standalone",
+      "--embed-resources",
+      "--mathml",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/proof-package.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/SemanticAudit.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/SemanticAudit.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/supporting-materials/manuscripts/SemanticAudit.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "[297813:297842:0912/044717.908528:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR\n[297813:297842:0912/044717.909423:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR\n[297813:297842:0912/044717.921020:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR\n7347019 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v1/SemanticAudit.pdf\n",
+    "stderr_sha256": "8d38c8feeab7716855eb334c9199a3dc0a1efd6add663dfee741f9da5488bc67",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  }
+]

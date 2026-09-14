@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanJoinSet",
+  "domain_issues": [],
+  "informal_statement": "The junction set transported to Euclidean coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1257-1259, the source contract is `def euclideanJoinSet (q : ℝ) : Set EuclideanPlane := planeEuclideanHomeomorph '' joinSet q`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "96d51d86f6c32a7f1c31ecb0290be17bec48e5d48a1aa38fdfbae4457025d389",
+  "symbol_mismatches": []
+}

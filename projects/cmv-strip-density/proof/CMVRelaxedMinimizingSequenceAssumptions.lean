@@ -1,0 +1,3 @@
+import CMVRelaxedMinimizingSequence
+
+#print axioms CMVRelaxation.exists_exactMinimizing_smoothSequence

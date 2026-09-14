@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.w",
+  "domain_issues": [],
+  "informal_statement": "The affine type-(iii) inner-angle predictor with rho error.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:65-65, the source contract is `def w (p : Point) : ℝ := b.centers 2 + b.slopes 2 * p.t + p.rho`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0c3c0b0f31f78a2f6c2d6cd4c7b667830ebe97b8269a630415448ba726152aa",
+  "symbol_mismatches": []
+}

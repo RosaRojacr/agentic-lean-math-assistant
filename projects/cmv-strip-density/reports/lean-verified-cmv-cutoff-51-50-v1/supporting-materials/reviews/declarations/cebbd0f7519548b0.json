@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_left",
+  "domain_issues": [],
+  "informal_statement": "The initial angular endpoint equals the left chord endpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:228-232, the source contract is `theorem arcPoint_left (c : OneSidedCircularCap) : c.arcPoint (-c.theta) = c.leftEndpoint`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4e22ae8901c6f895322d9f1591e370b613671c823882adf707a5fac1ae750287",
+  "symbol_mismatches": []
+}

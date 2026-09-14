@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "coreArcStart",
+  "domain_issues": [],
+  "informal_statement": "Initial arclength parameter for a core side arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1472-1473, the source contract is `def coreArcStart (c : StripCore) : ℝ := -c.radius * c.sideAngle`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4c395d23f09d7608737696a9d4043f61933ddaffbb62953e4470c1085d950b4e",
+  "symbol_mismatches": []
+}

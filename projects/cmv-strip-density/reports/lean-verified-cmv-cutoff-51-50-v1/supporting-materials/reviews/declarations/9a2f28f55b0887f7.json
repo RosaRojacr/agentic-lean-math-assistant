@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "Union of the two side traces and the two exterior cap traces.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2625-2630, the source contract is `def boundaryTrace (a : FourArcAssembly) : Set PlanePoint := StripCore.leftArcTrace a.core ∪ (StripCore.rightArcTrace a.core ∪ (OneSidedCircularCap.arcTrace a.upperCap ∪ OneSidedCircularCap.arcTrace a.lowerCap))`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d8944f364e38eaa5c7b77ce182d417bec91ac425efc229739d886be00ad658c6",
+  "symbol_mismatches": []
+}

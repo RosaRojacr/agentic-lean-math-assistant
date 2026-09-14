@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourArea",
+  "domain_issues": [],
+  "informal_statement": "The exact scalar type-(iv) weighted area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:61-64, the source contract is `def typeFourArea (lam h : ℝ) : ℝ := 2 * (typeFourAngle lam h + h * typeFourDelta lam h) / h ^ 2`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "775f7921b66716563dd5e0e4c35562d880f5cef2a71b40cef616cd10eb9488d2",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.G",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's scaled perimeter-gap residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:131-137, the source contract is `def G (p : Point) : ℝ := cos (x p) * (B3 p + D3 p) - (1 + cos (w p)) * B4 p`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "818854a9d2ac34b27a374a124d11eeffc488199875161c552aa19dcc6709e1ea",
+  "symbol_mismatches": []
+}

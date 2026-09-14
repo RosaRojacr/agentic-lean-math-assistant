@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.alpha_eq_arccos",
+  "domain_issues": [],
+  "informal_statement": "CMV incidence identifies alpha with arccos(h/lambda).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:276-292, the source contract is `theorem alpha_eq_arccos (h : candidate.SatisfiesCMVTypeIVHypotheses) : candidate.alpha = arccos (candidate.h / lam)`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "46219b8ad0fc6b679968f8972242a6ad511174ce969ce84539a4054206de6595",
+  "symbol_mismatches": []
+}

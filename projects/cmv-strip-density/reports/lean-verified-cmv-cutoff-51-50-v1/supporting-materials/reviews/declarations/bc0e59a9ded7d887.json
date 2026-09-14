@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.gap_upper",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's G residual has a strictly negative upper bound.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:935-1049, the source contract is `theorem gap_upper : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → G (pointOf t z) < -(437 / 1000000 : ℝ)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bfd6569809511ed8dd358788886ef4c9bc9af352f129411e514e6363ef806197",
+  "symbol_mismatches": []
+}

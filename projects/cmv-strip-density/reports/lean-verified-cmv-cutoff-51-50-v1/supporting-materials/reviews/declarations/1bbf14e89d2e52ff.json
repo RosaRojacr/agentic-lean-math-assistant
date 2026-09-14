@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_sideArcAngle",
+  "domain_issues": [],
+  "informal_statement": "The side-arc angle and inner angle have equal sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:227-230, the source contract is `theorem sin_sideArcAngle : sin a.sideArcAngle = sin a.innerAngle`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "41165bd4a88985079154632e1304282b8868bb98cc6b1d97bb3ea19faaebe0dd",
+  "symbol_mismatches": []
+}

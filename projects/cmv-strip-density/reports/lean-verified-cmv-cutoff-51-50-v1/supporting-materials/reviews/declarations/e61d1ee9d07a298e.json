@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.C3_sigma_low_face_margin",
+  "domain_issues": [],
+  "informal_statement": "C3 is strictly negative on the low sigma face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:1791-1817, the source contract is `theorem C3_sigma_low_face_margin : ∀ t z, tInterval.RealContains t → InSymmetricBox radiiReal z → z 3 = -radiiReal 3 → C3 (pointOf t z) < -(1 / 1000000000 : ℝ)`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6fb3362f5b47edfd5c864f48fb4f2f4eb79f2e4e22847db0995b5bffe22e621e",
+  "symbol_mismatches": []
+}

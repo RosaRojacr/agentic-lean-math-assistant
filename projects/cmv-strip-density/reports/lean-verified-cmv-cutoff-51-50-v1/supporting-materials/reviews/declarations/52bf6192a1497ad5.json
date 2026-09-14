@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.realContains_sqrt",
+  "domain_issues": [],
+  "informal_statement": "Certified nonnegative square bounds enclose a real square root.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:146-152, the source contract is `theorem realContains_sqrt {i : QInterval} {x : ℝ} (hlo : 0 ≤ i.lo) (hloSq : (i.lo : ℝ) ^ 2 ≤ x) (hhiSq : x ≤ (i.hi : ℝ) ^ 2) : i.RealContains (sqrt x)`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "78d08ac2e456c76c8cc84e056f4a63de293d6015fbff06b8f125a80a09ec3dd5",
+  "symbol_mismatches": []
+}

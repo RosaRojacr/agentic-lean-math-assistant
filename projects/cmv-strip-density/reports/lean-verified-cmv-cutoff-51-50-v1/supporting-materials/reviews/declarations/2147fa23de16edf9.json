@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.StationaryEqualAreaPair",
+  "domain_issues": [],
+  "informal_statement": "A type-(iii) curvature above one half and a regular stationary type-(iv) curvature with equal area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:1177-1188, the source contract is `structure StationaryEqualAreaPair (lam : ℝ) where h₃ : ℝ h₄ : ℝ h₃_gt_half : 1 / 2 < h₃ h₃_lt_one : h₃ < 1 h₄_pos : 0 < h₄ h₄_lt_one : h₄ < 1 equalArea : typeThreeArea lam h₃ = typeFourArea lam h₄ stationary : typeFourFold lam h₄ = 0`. StationaryEqualAreaPair stores regular h4, h3 strictly above one half, equal area, and K4(h4)=0. It does not itself store K3(h3)<0 or a perimeter inequality. Those are separate inputs to the envelope/improvement theorem, exactly as the surrounding explanation distinguishes.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "865710967f267b9ec6707c5d925cd799ff4862bc66ec64cf0a22afce00862eef",
+  "symbol_mismatches": []
+}

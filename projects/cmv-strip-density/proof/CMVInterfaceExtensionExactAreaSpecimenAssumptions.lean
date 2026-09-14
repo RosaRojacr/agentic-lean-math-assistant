@@ -1,0 +1,16 @@
+import CMVInterfaceExtensionExactAreaSpecimen
+
+namespace CMVRelaxation.InterfaceExtensionExactAreaSpecimen
+
+#print axioms representative_local_topPatch
+#print axioms topPatch_graph_frontier
+#print axioms remoteCompensation
+#print axioms eventually_exactAreaExtension_two
+#print axioms compensationWeightedGraphLength_two_quadratic
+#print axioms eventually_normalizedContact_complete_cost_lt
+#print axioms eventually_exactAreaExtension_frontier_two
+#print axioms eventually_exactAreaExtension_complete_cost_lt
+#print axioms eventually_exactAreaExtension_open_bounded_area_cost
+#print axioms not_completeFrontierMinimizing
+
+end CMVRelaxation.InterfaceExtensionExactAreaSpecimen

@@ -1,0 +1,35 @@
+import CMVInterfaceExtensionSpecimen
+
+namespace CMVRelaxation.InterfaceExtensionSpecimen
+
+#print axioms oldOpen_isOpen
+#print axioms oldOpen_isBounded
+#print axioms replacementOpen_isOpen
+#print axioms replacementOpen_isBounded
+#print axioms frontier_oldOpen
+#print axioms frontier_replacementOpen
+#print axioms actualCorner
+#print axioms actualCorner_conormal_product
+#print axioms actualCorner_extension_gain_pos
+#print axioms oldIncidentSegment_eq_removed_union_retained
+#print axioms extendedInterfaceSegment_eq_added_union_old
+#print axioms frontier_oldOpen_eq_namedPieces
+#print axioms frontier_replacementOpen_eq_namedPieces
+
+#print axioms oldRegion_graphTrace
+#print axioms replacementRegion_graphTrace
+#print axioms oldRegion_horizontalFrontierTrace
+#print axioms replacementRegion_horizontalFrontierTrace
+#print axioms connector_cost
+#print axioms extended_interface_cost
+#print axioms old_complete_frontier_cost
+#print axioms replacement_complete_frontier_cost
+#print axioms strict_open_frontier_cost_descent
+
+#print axioms old_weightedArea
+#print axioms replacement_weightedArea
+#print axioms weightedArea_defect_exact
+#print axioms weightedArea_signed_defect_exact
+#print axioms weightedArea_defect_le_r_sq
+
+end CMVRelaxation.InterfaceExtensionSpecimen

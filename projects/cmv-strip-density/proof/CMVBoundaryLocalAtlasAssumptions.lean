@@ -1,0 +1,16 @@
+import CMVBoundaryLocalAtlasSpecimen
+
+#print axioms CMVBoundaryLocalAtlas.PointwiseHalfSpaceChart.frontier_image
+#print axioms CMVBoundaryLocalAtlas.PointwiseHalfSpaceChart.exists_actualFrontierIntervalChart
+#print axioms CMVBoundaryLocalAtlas.ActualFrontierIntervalChart.frontier_inter_window
+#print axioms CMVBoundaryLocalAtlas.ActualFrontierIntervalChart.occupied_transition_iff
+#print axioms CMVBoundaryLocalAtlas.BoundaryHalfSpaceAtlas.exists_finiteIntervalRefinement
+#print axioms CMVBoundaryLocalAtlas.SelectedBoundaryTopologyInput.produce
+#print axioms CMVBoundaryLocalAtlas.StepPolygon.frontier_carrier
+#print axioms CMVBoundaryLocalAtlas.StepPolygon.aeOpenRepresentative_carrier
+#print axioms CMVBoundaryLocalAtlas.StepPolygon.shelf_subset_selected_frontier
+#print axioms CMVBoundaryLocalAtlas.StepPolygon.not_convex_carrier
+#print axioms CMVBoundaryLocalAtlas.StepPolygon.boundaryAtlas
+#print axioms CMVBoundaryLocalAtlas.StepPolygon.reentrantChart_side
+#print axioms CMVBoundaryLocalAtlas.StepPolygon.reentrant_actualInterval_nonempty
+#print axioms CMVBoundaryLocalAtlas.StepPolygon.selectedAtlasOutput

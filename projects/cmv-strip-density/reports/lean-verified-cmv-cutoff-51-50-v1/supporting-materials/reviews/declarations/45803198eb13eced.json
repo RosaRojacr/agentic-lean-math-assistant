@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideCap",
+  "domain_issues": [],
+  "informal_statement": "The reference circular cap whose two translated halves form the side regions.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:238-250, the source contract is `def sideCap : OneSidedCircularCap where chord := 2 * a.radius * sin a.innerAngle theta := a.sideArcAngle midpointX := 0 baseY := 1 side := .lower chord_pos := mul_pos (mul_pos (by norm_num) a.radius_pos) a.innerSin_pos theta_pos := a.sideArcAngle_pos theta_lt_pi := a.sideArcAngle_lt_pi`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "62a5fb2c6003ebc71ae1cea156d819929dd2061bdfd35d03ac33c3bf896e8fd0",
+  "symbol_mismatches": []
+}

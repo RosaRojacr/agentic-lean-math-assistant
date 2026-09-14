@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedRightArcParam",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) right arc parameter in Euclidean L2 coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:669-671, the source contract is `noncomputable def realizedRightArcParam (s : ℝ) : EuclideanPlane := planeEuclideanHomeomorph (a.rightArcParam s)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8a963395af5bf096a9c5748471f90364728d8fe511c4e2cc0591bd2068d9e016",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.FResidual.reduced_hasDerivAt_t",
+  "domain_issues": [],
+  "informal_statement": "The reduced stationary residual has the recorded t derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:978-1008, the source contract is `theorem reduced_hasDerivAt_t (t xi eta : ℝ) : HasDerivAt (fun u => reduced b u xi eta) (derivT b t xi eta) t`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e3ee85a81e52b7d5809d62785536115b9fa172b7ee957d2ee76c2badb09aafc0",
+  "symbol_mismatches": []
+}

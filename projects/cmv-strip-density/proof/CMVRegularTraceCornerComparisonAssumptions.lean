@@ -1,0 +1,39 @@
+import CMVRegularTraceCornerComparison
+
+namespace CMVRelaxation.RegularTraceCornerComparison
+
+#print axioms complexVector_injective
+#print axioms euclideanSpeed_pos
+#print axioms planeInner_unitTangent_self
+#print axioms endpointConormal_unit
+
+#print axioms RegularEndpointTrace.curve_contDiff
+#print axioms RegularEndpointTrace.curve_continuous
+#print axioms RegularEndpointTrace.euclideanParametricSpeed_curve_eq_speed
+#print axioms RegularEndpointTrace.exists_speed_pos_radius
+#print axioms RegularEndpointTrace.hausdorffMeasure_curve_Ico_eq_arcLength_sub
+#print axioms RegularEndpointTrace.speed_continuous
+#print axioms RegularEndpointTrace.arcLength_hasDerivAt_zero
+#print axioms RegularEndpointTrace.tendsto_arcLength_div
+#print axioms RegularEndpointTrace.tendsto_shortcutLength_div
+#print axioms tendsto_weightedTraceGain_div
+#print axioms eventually_weightedTraceGain_pos
+#print axioms lambdaTwo_rightAngle_tangentGain_pos
+#print axioms densityOne_rightAngle_tangentGain_pos
+
+#print axioms StripInterface.exteriorNormal_feasible
+#print axioms StripInterface.stripDensity_displaced_eq
+#print axioms ActualRegularTraceCorner.incidentConormal_unit
+#print axioms ActualRegularTraceCorner.interfaceConormal_unit
+#print axioms ActualRegularTraceCorner.incident_has_nonsingular_axis_chart
+
+#print axioms volume_localizationSquare
+#print axioms localizedCompetitor_isBounded
+#print axioms localizedCompetitor_symmDiff_subset_window
+#print axioms localizedCompetitor_agrees_outside
+#print axioms localizedCompetitor_frontier_eq_piecewise
+#print axioms localizedCompetitor_complete_cost
+#print axioms weightedArea_defect_le_localizationSquare
+#print axioms localizedCompetitor_weightedArea_defect_le
+
+end CMVRelaxation.RegularTraceCornerComparison

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_dist",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, 0 < theta < pi, positive natural N and any natural i, consecutive partition images have distance 2r sin(theta/N).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:185-207, the source contract is `lemma capPartitionPoint_dist {r theta : ℝ} (hr : 0 < r) (htheta : theta ∈ Ioo 0 Real.pi) {N i : ℕ} (hN : 0 < N) : dist (unitCircleArc r (capPartitionPoint r theta N i)) (unitCircleArc r (capPartitionPoint r theta N (i + 1))) = 2 * r * Real.sin (theta / (N : ℝ))`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6b90645e53e16e3855618b966b04af3ee0f15439043926ba1133c583e65b5a00",
+  "symbol_mismatches": []
+}

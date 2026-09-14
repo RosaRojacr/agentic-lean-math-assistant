@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capChord_pos",
+  "domain_issues": [],
+  "informal_statement": "The candidate cap chord is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FourArcCandidate.lean:99-101, the source contract is `theorem capChord_pos : 0 < candidate.capChord`. The candidate constructor has 0 < h <= 1 and 0 < alpha < pi/2. CMV incidence additionally means lambda > 1 and lambda*cos(alpha) = h. These conditions are not a hidden minimality or strict-improvement assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f52b3f7ad66a860b3cbec5075902f43e4ec10a9d92c573767d420b9a7f6a16c6",
+  "symbol_mismatches": []
+}

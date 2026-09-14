@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "joinSet",
+  "domain_issues": [],
+  "informal_statement": "The finite set of geometric boundary junctions.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At FrontierPerimeter.lean:1115-1117, the source contract is `def joinSet (q : ℝ) : Set PlanePoint := {(-q / 2, 1), (q / 2, 1), (-q / 2, -1), (q / 2, -1)}`. The length measure is Euclidean one-dimensional Hausdorff measure on the complete frontier. Arc/segment unions are combined using their proved null overlaps; glued internal chords are not charged as exterior boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "613dcfda543c5255d80175237d7db38b3386ce55bc3215682252569ce26c42d5",
+  "symbol_mismatches": []
+}

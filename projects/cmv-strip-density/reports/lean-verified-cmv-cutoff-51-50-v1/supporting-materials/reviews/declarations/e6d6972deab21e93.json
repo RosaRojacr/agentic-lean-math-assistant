@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.TypeThreeAssembly.scalarWeightedArea_eq_typeThreeArea",
+  "domain_issues": [],
+  "informal_statement": "The assembly scalar area equals the analytic type-(iii) area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVSuffixModel.lean:78-86, the source contract is `theorem scalarWeightedArea_eq_typeThreeArea : a.scalarWeightedArea = LeanSuffixAnalytic.typeThreeArea lam a.h`. This bridge identifies actual carrier integrals with the scalar profiles. In particular the geometric type-(iii) angle term is typeThreeAngle + pi/2; regular-only wrappers are not substituted for the separate endpoint-inclusive candidate bridge.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "09eff0e6af5f2cf4916a82b585443109aad4f3e8bb020859b5a5f6526f9c2f0d",
+  "symbol_mismatches": []
+}

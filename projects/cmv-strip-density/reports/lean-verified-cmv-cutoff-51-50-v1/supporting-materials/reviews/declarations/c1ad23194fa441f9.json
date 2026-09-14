@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaRoot_continuousOn_of_compact_unique",
+  "domain_issues": [],
+  "informal_statement": "Fix lambda > 1, a set S contained in (0,1], a compact set K contained in (0,1), and a function r from the reals to the reals. If, for every t in S, r(t) belongs to K and is the unique y in K satisfying A3(y) = A4(t), then r is continuous on S. Neither S nor K is required to be an interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At EqualAreaEnvelope.lean:71-107, the source contract is `theorem equalAreaRoot_continuousOn_of_compact_unique {lam : ℝ} {s K : Set ℝ} {root : ℝ → ℝ} (hlam : 1 < lam) (hK : IsCompact K) (hs_domain : s ⊆ Ioc 0 1) (hK_regular : K ⊆ Ioo 0 1) (hroot_mem : MapsTo root s K) (hequalArea : ∀ h ∈ s, typeThreeArea lam (root h) = typeFourArea lam h) (hunique : ∀ h ∈ s, ∀ y ∈ K, typeThreeArea lam y = typeFourArea lam h → y = root h) : ContinuousOn root s`. The theorem allows an arbitrary compact K contained in (0,1) and an arbitrary S contained in (0,1], not necessarily intervals or connected sets. A selected root is trapped in K, satisfies equal area, and is unique within K. Closed-graph compactness gives continuity on S; no global uniqueness outside K is inferred.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "58b73f54ea82a27e264112e64332402373c869c542bc7277160adca9dcc99fdd",
+  "symbol_mismatches": []
+}

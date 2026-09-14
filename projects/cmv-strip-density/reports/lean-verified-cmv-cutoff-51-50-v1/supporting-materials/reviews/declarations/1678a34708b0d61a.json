@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.leftArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The circular trace of the left core side.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:762-766, the source contract is `def leftArcTrace (c : StripCore) : Set PlanePoint := {p | (p.1 - c.leftCenterX) ^ 2 + p.2 ^ 2 = c.radius ^ 2 ∧ p.1 ≤ -c.chord / 2 ∧ |p.2| ≤ 1}`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "702872b40533619867ab566579d52d3f6a44e812910796d96106d1c50acbbfc2",
+  "symbol_mismatches": []
+}

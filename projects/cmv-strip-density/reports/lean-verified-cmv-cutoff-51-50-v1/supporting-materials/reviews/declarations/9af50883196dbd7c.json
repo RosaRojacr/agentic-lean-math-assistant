@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThree_variational_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) area and perimeter are differentiable and satisfy the variational identity.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:554-639, the source contract is `theorem typeThree_variational_hasDerivAt {lam h : ℝ} (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) : HasDerivAt (typeThreeArea lam) (deriv (typeThreeArea lam) h) h ∧ HasDerivAt (typeThreePerimeter lam) (h * deriv (typeThreeArea lam) h) h`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "727f5f60431aed129e76617edde1e3ccdf8d18a1ae71fbf80ca33147d09b9cfa",
+  "symbol_mismatches": []
+}

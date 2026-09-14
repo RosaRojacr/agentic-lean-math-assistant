@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.nsmul",
+  "domain_issues": [],
+  "informal_statement": "Exact scaling of a rational interval by any nonnegative rational number, including zero and 1/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixReflective.lean:48-59, the source contract is `def nsmul (q : ℚ) (hq : 0 ≤ q) (i : QInterval) : QInterval := ⟨q * i.lo, q * i.hi, mul_le_mul_of_nonneg_left i.ordered hq⟩ @[simp] theorem realContains_point (x : ℚ) (y : ℝ) : (point x).RealContains y ↔ y = (x : ℝ) := by constructor · intro h exact le_antisymm h.2 h.1 · rintro rfl exact ⟨le_rfl, le_rfl⟩`. Despite its name, nsmul takes a nonnegative rational multiplier with a proof of nonnegativity. It is not restricted to natural numbers or positive integers; zero and fractional multipliers are covered by the author's formulation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "aee3f878b71376e5cd4779ff5df12d1e44522ca38190dd8feca337d507ede104",
+  "symbol_mismatches": []
+}

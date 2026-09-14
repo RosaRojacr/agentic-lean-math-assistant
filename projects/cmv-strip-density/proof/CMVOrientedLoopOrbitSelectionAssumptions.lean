@@ -1,0 +1,47 @@
+import CMVOrientedLoopOrbitSelection
+
+open CMVBoundaryLocalAtlas.BoundaryHalfSpaceAtlas.FiniteChartCutSystem
+
+#print axioms switchHalfEdge_switchHalfEdge
+#print axioms switchHalfEdge_symm
+#print axioms crossHalfEdge_symm
+#print axioms cross_conj_walkStep
+#print axioms sameCycle_crossHalfEdge
+#print axioms walkStep_ne
+#print axioms two_le_minimalPeriod_walkStep
+#print axioms walkStep_crossHalfEdge_walkStep
+#print axioms iterate_walkStep_crossHalfEdge_iterate
+#print axioms crossHalfEdge_not_mem_walkCycle
+#print axioms disjoint_walkCycle_crossHalfEdge
+#print axioms traversedArc_injOn
+#print axioms DirectedWalkOrbit
+#print axioms finite_directedWalkOrbit
+#print axioms reverseDirectedWalkOrbit
+#print axioms reverseDirectedWalkOrbit_reverseDirectedWalkOrbit
+#print axioms unorientedWalkOrbitSetoid
+#print axioms BoundaryLoopIndex
+#print axioms finite_boundaryLoopIndex
+#print axioms boundaryLoopIndexOfHalfEdge
+#print axioms boundaryLoopIndexOfHalfEdge_eq_iff
+#print axioms boundaryLoopIndexOfHalfEdge_crossHalfEdge
+#print axioms boundaryLoopIndexOfHalfEdge_walkStep
+#print axioms boundaryLoopIndexOfHalfEdge_switchHalfEdge
+#print axioms boundaryLoopIndexOfHalfEdge_iterate_walkStep
+#print axioms arcBoundaryLoopIndex
+#print axioms arcBoundaryLoopIndex_eq_of_halfEdge_arc
+#print axioms boundaryLoopHalfEdge
+#print axioms boundaryLoopIndexOfHalfEdge_boundaryLoopHalfEdge
+#print axioms boundaryLoopIndexOfHalfEdge_surjective
+#print axioms isEmpty_boundaryLoopIndex_of_frontier_eq_empty
+#print axioms minimalGeometricWalkLoop
+#print axioms minimalGeometricWalkLoop_period
+#print axioms boundaryGeometricWalkLoop
+#print axioms boundaryGeometricWalkLoop_period_two_le
+#print axioms boundaryGeometricWalkLoop_path_range_subset_frontier
+#print axioms exists_lt_minimalPeriod_iterate_eq_of_sameCycle
+#print axioms arcBoundaryLoopIndex_traversedArc
+#print axioms exists_lt_minimalPeriod_traversedArc_eq
+#print axioms existsUnique_lt_minimalPeriod_traversedArc_eq
+#print axioms mem_range_boundaryGeometricWalkLoop_iff
+#print axioms boundaryGeometricWalkLoop_path_range_eq_iUnion_arcs
+#print axioms iUnion_boundaryGeometricWalkLoop_path_range_eq_frontier

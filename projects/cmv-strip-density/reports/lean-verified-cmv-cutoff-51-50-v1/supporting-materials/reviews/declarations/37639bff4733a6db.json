@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea",
+  "domain_issues": [],
+  "informal_statement": "The exact scalar type-(iii) weighted area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At LeanSuffixAnalytic.lean:44-48, the source contract is `def typeThreeArea (lam h : ℝ) : ℝ := (typeThreeAngle lam h + π / 2 + (typeThreeShape h + 2) * typeThreeDelta lam h) / h ^ 2`. The profiles and fold numerators are the displayed exact real formulas. Regular derivative arguments use lambda > 1 and 0 < h < 1; endpoint statements have separate continuity support. The type-(iii) profile includes the required pi/2 offset outside typeThreeAngle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63d13d5879252e16ac6f53a2d4449b4f511e353d6016e98158793484dcfaa8f7",
+  "symbol_mismatches": []
+}

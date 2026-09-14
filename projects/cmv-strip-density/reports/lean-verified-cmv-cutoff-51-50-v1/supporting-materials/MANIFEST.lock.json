@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-09-12T01:30:40Z",
+  "lean_toolchain_sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+  "models": {
+    "author": "openai-codex/gpt-6-astra",
+    "isolation": "fresh no-session invocations",
+    "reviewer": "openai-codex/gpt-6-astra"
+  },
+  "package_id": "lean-verified-cmv-cutoff-51-50",
+  "project_manifest": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/project.toml",
+  "proof_builder_version": "1.1.1",
+  "roots": [
+    {
+      "declaration": "CMVPublishedCutoff51_50.candidate_not_isWeightedPerimeterMinimizer_from_51_50",
+      "informal_statement": "For every real density λ ≥ 51/50 and every modeled four-arc candidate satisfying the formal CMV type-(iv) hypotheses, the candidate is not a weighted-perimeter minimizer.",
+      "module": "CMVPublishedCutoff51_50",
+      "role": "primary",
+      "type": "∀ {lam : ℝ}, (51 / 50 : ℝ) ≤ lam → ∀ candidate : FourArcCandidate lam, candidate.SatisfiesCMVTypeIVHypotheses → ¬ candidate.IsWeightedPerimeterMinimizer"
+    }
+  ],
+  "schema_version": 1,
+  "source_commit": "39fa09fd0d48ba27daca1729f47ddf2218b187ee",
+  "source_manifest": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-proof-package.toml",
+  "version": "v1"
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.lambda_in_retainedSuffix",
+  "domain_issues": [],
+  "informal_statement": "Every right-prototype density belongs to the retained certificate interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At RightPrototypeCell.lean:94-100, the source contract is `theorem lambda_in_retainedSuffix {lam : ℝ} (h : lamInterval.RealContains lam) : LeanSuffixAnalytic.InRetainedSuffix lam`. These statements use the retained upper prototype density interval [25781/25000,33/32] and its recorded closed error box. Affine angle bounds, inverse branches and face signs are quantified over that box, not over arbitrary real angles.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d64b377e3281e7e0b8cb140bc4c8494ca73e2578a3420d0547192d8dcd31aa70",
+  "symbol_mismatches": []
+}

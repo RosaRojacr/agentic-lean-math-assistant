@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment.carrier",
+  "domain_issues": [],
+  "informal_statement": "The closed set between the horizontal endpoints.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:406-408, the source contract is `def carrier (s : HorizontalSegment) : Set PlanePoint := {p | p.2 = s.baseY ∧ |p.1 - s.midpointX| ≤ s.chord / 2}`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "094b96b3006204081e6d336250f56e63f6b337cc71255210b9bae8ae3b894041",
+  "symbol_mismatches": []
+}

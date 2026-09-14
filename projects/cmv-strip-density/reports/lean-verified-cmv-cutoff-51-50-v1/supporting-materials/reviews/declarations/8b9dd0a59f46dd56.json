@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_lower_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "The lower cap boundary integral is lambda times arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1373-1394, the source contract is `theorem cap_lower_weightedIntegral (lam : ℝ) (c : OneSidedCircularCap) (hside : c.side = .lower) (hbase : c.baseY = -1) : ∫ p, StripDensity lam p ∂capBoundaryMeasure c = lam * c.arcLength`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5575ee03ce1e095004c86962659c2bcf1dde6c0b1ad90b439220173f4e11e7fc",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.measurableSet_carrier",
+  "domain_issues": [],
+  "informal_statement": "The core carrier is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:500-551, the source contract is `theorem measurableSet_carrier (c : StripCore) : MeasurableSet c.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c4a110b00efc328d9afc36bfb523f064a5cb69170025121ec86c0022fc798171",
+  "symbol_mismatches": []
+}

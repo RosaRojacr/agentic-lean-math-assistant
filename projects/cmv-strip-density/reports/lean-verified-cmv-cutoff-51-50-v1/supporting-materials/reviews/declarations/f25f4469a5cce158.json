@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.volume_carrier",
+  "domain_issues": [],
+  "informal_statement": "The cap carrier's Lebesgue volume equals its Euclidean area expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:1996-2028, the source contract is `theorem volume_carrier (c : OneSidedCircularCap) : volume c.carrier = ENNReal.ofReal c.euclideanArea`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d51f9d06b45af9eac50b2062d616aee51a260200ad5a2e96d2ecbe8e98be85c",
+  "symbol_mismatches": []
+}

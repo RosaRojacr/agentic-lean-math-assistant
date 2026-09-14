@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.weightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "Weighted component-boundary integral for the replacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3330-3332, the source contract is `def weightedPerimeter (lam : ℝ) (a : ReplacementAssembly) : ℝ := WeightedPerimeter lam a.boundaryMeasure`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ff8986acb5666758cd2b4555262842f122d66f79d9aaa241c37692769a5c2fbc",
+  "symbol_mismatches": []
+}

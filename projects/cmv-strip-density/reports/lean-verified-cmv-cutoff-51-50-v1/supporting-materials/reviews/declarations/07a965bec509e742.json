@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor.carrier",
+  "domain_issues": [],
+  "informal_statement": "The planar set carried by each competitor constructor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:3961-3967, the source contract is `def carrier {lam : ℝ} : AdmissibleCompetitor lam → Set PlanePoint | .empty => ∅ | .general region => region.carrier | .fourArc a => a.carrier | .replacement a => a.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b57d4c4c33776a05ffbbbc22f1b363a7f356aa7cd089d7c2b3335ead1bb65644",
+  "symbol_mismatches": []
+}

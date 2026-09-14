@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_in_open_side",
+  "domain_issues": [],
+  "informal_statement": "Interior arc parameters lie strictly on the cap side of the chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:253-266, the source contract is `theorem arcPoint_in_open_side (c : OneSidedCircularCap) {t : ℝ} (ht : |t| < c.theta) : match c.side with | .upper => c.baseY < (c.arcPoint t).2 | .lower => (c.arcPoint t).2 < c.baseY`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3dbf6a865d1d6331f9c3406c05af249acf00d7c487349d982b588394a814d697",
+  "symbol_mismatches": []
+}

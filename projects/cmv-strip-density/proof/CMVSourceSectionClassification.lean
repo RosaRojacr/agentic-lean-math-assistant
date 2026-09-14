@@ -560,6 +560,158 @@ private theorem horizontalSection_eq_lowerCap_of_lt_neg_one
   have hnotUpper : ¬(1 ≤ y) := by linarith
   simp only [habs, and_false, or_false, false_or, hnotUpper, hy.le, and_true]
 
+private theorem horizontalSection_eq_Icc_of_abs_eq_one
+    {y : ℝ} (h : raw.SatisfiesClosedGeometry) (hy : |y| = 1) :
+    horizontalSection raw.carrier y =
+      Icc (raw.horizontalPlacement - raw.outerHalfWidth)
+        (raw.horizontalPlacement + raw.outerHalfWidth) := by
+  have hR : 0 < raw.sourceRadius :=
+    lt_of_lt_of_le zero_lt_one h.radius_ge_one
+  have hinner0 : 0 ≤ raw.sourceRadius * raw.innerRadial :=
+    mul_nonneg hR.le (Real.sqrt_nonneg _)
+  have hinnerSq := raw.innerRadial_mul_radius_sq h
+  have hsinPos : 0 < Real.sin raw.exteriorHalfAngle :=
+    Real.sin_pos_of_pos_of_lt_pi h.exteriorHalfAngle_pos
+      (lt_trans h.exteriorHalfAngle_lt_pi_div_two
+        (by linarith [Real.pi_pos]))
+  have hwidthPos : 0 < raw.outerHalfWidth :=
+    mul_pos hR hsinPos
+  have htrig := Real.sin_sq_add_cos_sq raw.exteriorHalfAngle
+  have hcapSq :
+      raw.outerHalfWidth ^ 2 +
+          (raw.sourceRadius * Real.cos raw.exteriorHalfAngle) ^ 2 =
+        raw.sourceRadius ^ 2 := by
+    unfold outerHalfWidth
+    nlinarith [mul_self_nonneg raw.sourceRadius]
+  have hleftBoundary :
+      -raw.outerHalfWidth + raw.sideCenterOffset =
+        -(raw.sourceRadius * raw.innerRadial) := by
+    unfold sideCenterOffset outerHalfWidth
+    ring
+  have hrightBoundary :
+      raw.outerHalfWidth - raw.sideCenterOffset =
+        raw.sourceRadius * raw.innerRadial := by
+    unfold sideCenterOffset outerHalfWidth
+    ring
+  have hleftAttach :
+      (-raw.outerHalfWidth + raw.sideCenterOffset) ^ 2 + 1 =
+        raw.sourceRadius ^ 2 := by
+    rw [hleftBoundary]
+    nlinarith
+  have hrightAttach :
+      (raw.outerHalfWidth - raw.sideCenterOffset) ^ 2 + 1 =
+        raw.sourceRadius ^ 2 := by
+    rw [hrightBoundary]
+    nlinarith
+  have hyCases : y = 1 ∨ y = -1 := by
+    by_cases hy0 : 0 ≤ y
+    · left
+      simpa [abs_of_nonneg hy0] using hy
+    · right
+      rw [abs_of_nonpos (le_of_not_ge hy0)] at hy
+      linarith
+  rcases hyCases with rfl | rfl
+  · ext x
+    rw [show x ∈ horizontalSection raw.carrier 1 ↔
+        (x, 1) ∈ raw.carrier from Iff.rfl]
+    rw [raw.mem_carrier_iff_centered]
+    simp only [centeredCarrier, rectangleCarrier, leftSegmentCarrier,
+      rightSegmentCarrier, upperCapCarrier, lowerCapCarrier, leftCenter,
+      rightCenter, upperCenter, lowerCenter, Set.mem_union, Set.mem_ofPred_eq,
+      Set.mem_Icc, sub_zero]
+    norm_num only [abs_one, one_pow]
+    simp only [and_true, and_false, or_false]
+    constructor
+    · intro hx
+      rcases hx with hcore | hupper
+      · rcases hcore with hleftCore | hright
+        · rcases hleftCore with hrect | hleft
+          · constructor <;> linarith
+          · constructor
+            · have hdir :
+                  x - raw.horizontalPlacement + raw.sideCenterOffset ≤
+                    -raw.outerHalfWidth + raw.sideCenterOffset := by
+                linarith [hleft.2]
+              nlinarith [hleft.1, hleftAttach, hleftBoundary, hinner0]
+            · linarith [hleft.2]
+        · constructor
+          · linarith [hright.2]
+          · have hdir :
+                raw.outerHalfWidth - raw.sideCenterOffset ≤
+                  x - raw.horizontalPlacement - raw.sideCenterOffset := by
+              linarith [hright.2]
+            nlinarith [hright.1, hrightAttach, hrightBoundary, hinner0]
+      · constructor <;> nlinarith [hupper]
+    · rintro ⟨hxLower, hxUpper⟩
+      exact Or.inl (Or.inl (Or.inl
+        ⟨by linarith, by linarith⟩))
+  · ext x
+    rw [show x ∈ horizontalSection raw.carrier (-1) ↔
+        (x, -1) ∈ raw.carrier from Iff.rfl]
+    rw [raw.mem_carrier_iff_centered]
+    simp only [centeredCarrier, rectangleCarrier, leftSegmentCarrier,
+      rightSegmentCarrier, upperCapCarrier, lowerCapCarrier, leftCenter,
+      rightCenter, upperCenter, lowerCenter, Set.mem_union, Set.mem_ofPred_eq,
+      Set.mem_Icc, sub_zero]
+    norm_num only [abs_neg, abs_one, neg_one_sq]
+    simp only [and_true, and_false, or_false]
+    constructor
+    · intro hx
+      rcases hx with hcore | hlower
+      · rcases hcore with hleftCore | hright
+        · rcases hleftCore with hrect | hleft
+          · constructor <;> linarith
+          · constructor
+            · have hdir :
+                  x - raw.horizontalPlacement + raw.sideCenterOffset ≤
+                    -raw.outerHalfWidth + raw.sideCenterOffset := by
+                linarith [hleft.2]
+              nlinarith [hleft.1, hleftAttach, hleftBoundary, hinner0]
+            · linarith [hleft.2]
+        · constructor
+          · linarith [hright.2]
+          · have hdir :
+                raw.outerHalfWidth - raw.sideCenterOffset ≤
+                  x - raw.horizontalPlacement - raw.sideCenterOffset := by
+              linarith [hright.2]
+            nlinarith [hright.1, hrightAttach, hrightBoundary, hinner0]
+      · constructor <;> nlinarith [hlower]
+    · rintro ⟨hxLower, hxUpper⟩
+      exact Or.inl (Or.inl (Or.inl
+        ⟨by linarith, by linarith⟩))
+/-- Every horizontal section of the literal raw carrier is empty or one closed
+interval centered on its horizontal placement.  Unlike the almost-everywhere
+version below, this includes both interfaces, all four junctions, and both
+exterior poles. -/
+theorem horizontalSection_empty_or_centered_interval
+    (h : raw.SatisfiesClosedGeometry) (y : ℝ) :
+    IsEmptyOrCenteredClosedInterval raw.horizontalPlacement
+      (horizontalSection raw.carrier y) := by
+  rcases lt_trichotomy y (-1) with hyLower | hyLower | hyAboveLower
+  · exact raw.horizontalSection_cap y raw.lowerCenter.2
+      (raw.horizontalSection_eq_lowerCap_of_lt_neg_one hyLower)
+  · subst y
+    exact Or.inr ⟨raw.outerHalfWidth,
+      (mul_nonneg (lt_of_lt_of_le zero_lt_one h.radius_ge_one).le
+        (Real.sin_pos_of_pos_of_lt_pi h.exteriorHalfAngle_pos
+          (lt_trans h.exteriorHalfAngle_lt_pi_div_two
+            (by linarith [Real.pi_pos]))).le),
+      raw.horizontalSection_eq_Icc_of_abs_eq_one h (by norm_num)⟩
+  · rcases lt_trichotomy y 1 with hyStrip | hyUpper | hyAboveUpper
+    · have hyAbs : |y| < 1 := abs_lt.2 ⟨hyAboveLower, hyStrip⟩
+      exact Or.inr ⟨raw.stripSectionHalfWidth y,
+        raw.stripSectionHalfWidth_nonneg h hyAbs,
+        raw.horizontalSection_eq_Icc_of_abs_lt_one h hyAbs⟩
+    · subst y
+      exact Or.inr ⟨raw.outerHalfWidth,
+        (mul_nonneg (lt_of_lt_of_le zero_lt_one h.radius_ge_one).le
+          (Real.sin_pos_of_pos_of_lt_pi h.exteriorHalfAngle_pos
+            (lt_trans h.exteriorHalfAngle_lt_pi_div_two
+              (by linarith [Real.pi_pos]))).le),
+        raw.horizontalSection_eq_Icc_of_abs_eq_one h (by norm_num)⟩
+    · exact raw.horizontalSection_cap y raw.upperCenter.2
+        (raw.horizontalSection_eq_upperCap_of_one_lt hyAboveUpper)
+
 /-- Every horizontal slice of a raw closed-geometric type-(iv) carrier, except
 the two null interface heights, is either empty or one closed interval centered
 on its vertical reflection axis.  The proof includes `sourceRadius = 1` and

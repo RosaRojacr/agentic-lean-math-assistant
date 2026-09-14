@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "Weighted integral against the component arc measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:2546-2548, the source contract is `def weightedPerimeter (lam : ℝ) (a : FourArcAssembly) : ℝ := WeightedPerimeter lam a.boundaryMeasure`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "df8ef218db7076c4681d4506265ae824cfa4b1a2ec872c320aeb4f283b25493b",
+  "symbol_mismatches": []
+}

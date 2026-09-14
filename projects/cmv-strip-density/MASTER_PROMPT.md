@@ -1165,6 +1165,25 @@ route, not a premise of the direct comparison.
   literal closed-Snell target geometry remains pending, so no Figure-4
   reconstruction or source exclusion is claimed.
 
+- Round 458 advances strategy-00101's orientation branch.
+  `CMVOrientedLoopOrientation` kernel-checks the exact frontier of every strict
+  oriented graph domain and transports actual local frontier membership across
+  overlapping occupied-left germs. Vertical and horizontal germs at the same
+  frontier point are local inverse graph parametrizations, their derivatives
+  have product one, their side labels force the required strict derivative
+  sign, and their occupied-left velocities differ by a positive scalar.
+  Same-axis germs have a unique side and identical base velocity. A canonical
+  `OccupiedLeftArcBranchAssignment` chooses an actual branch at every point of
+  every selected finite open arc, proves every alternate chart represents the
+  same positive tangent ray, attaches the arc's chosen interior reference
+  velocity to each half-edge, and proves `crossHalfEdge` retains it. The
+  localized-sequence producer returns such an assignment for every selected
+  index. The registered localization-support build passes; the focused
+  declaration audit reports only `propext`, `Classical.choice`, and
+  `Quot.sound`, and the forbidden-mechanism scan is empty. Compatibility with
+  `switchHalfEdge`/`walkStep`, piecewise-`C¹` loop realization, weighted cost
+  identity, and winding remain pending.
+
 - Universal source classification remains unresolved; therefore the checked
   exact- and almost-everywhere-horizontal direct consumers do not yet yield an
   unconditional source theorem. Arbitrary-competitor `model_covered` and

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.interiorCarrier_subset_interior",
+  "domain_issues": [],
+  "informal_statement": "The strict cap carrier lies in the topological interior.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At CMVGeometry.lean:687-696, the source contract is `theorem interiorCarrier_subset_interior (c : OneSidedCircularCap) : c.interiorCarrier ⊆ interior c.carrier`. The coordinate carriers live in the product plane, but geometric boundary length is transported from the Euclidean WithLp realization. Constructor inequalities and the stated measurable/integrable hypotheses are part of the comparison; no reduced-boundary identification is being asserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e055c7441e3e2230b6bd3c3989fc3043eb631862e9cdc4e7fe3a7963b0242ddc",
+  "symbol_mismatches": []
+}

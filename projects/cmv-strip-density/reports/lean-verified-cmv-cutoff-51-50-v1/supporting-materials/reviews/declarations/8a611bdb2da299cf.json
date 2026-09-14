@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideCap_euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The reference side cap has area R squared times (gamma-sin gamma cos gamma).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:833-850, the source contract is `theorem sideCap_euclideanArea : a.sideCap.euclideanArea = a.radius ^ 2 * (a.sideArcAngle - sin a.sideArcAngle * cos a.sideArcAngle)`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6b94a03ab653ee46e011e7fa757125fdbdfe26f1473cd6911d9100fe92583e4",
+  "symbol_mismatches": []
+}

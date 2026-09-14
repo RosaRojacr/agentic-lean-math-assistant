@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.C3",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At MiddleFaceAssembly.lean:78-78, the source contract is `def C3 (p : Point) : ℝ := cos (w b p) - lam b p * cos (v b p)`. The brick uses affine, coupled angle predictors and a closed error box. The residual order is (-F,C4,E,C3); branch and face hypotheses are not interchangeable with the resulting common-zero or strict-perimeter conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2033f5e817a7ce4ac881490411dee667ce9a476eadf4a060349976ec81a234e9",
+  "symbol_mismatches": []
+}

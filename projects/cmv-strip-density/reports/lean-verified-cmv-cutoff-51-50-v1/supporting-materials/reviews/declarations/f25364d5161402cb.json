@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.regularStationaryFold_existsUnique",
+  "domain_issues": [],
+  "informal_statement": "There is a unique regular stationary type-(iv) fold at every first-prototype density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At ScalarSuffixCertificate.lean:4082-4103, the source contract is `theorem regularStationaryFold_existsUnique {lam0 : ℝ} (hlam : lamInterval.RealContains lam0) : ∃! h₄ : ℝ, h₄ ∈ Ioo (0 : ℝ) 1 ∧ LeanSuffixAnalytic.typeFourFold lam0 h₄ = 0`. The exact rational enclosures and Taylor remainders have their stated domains. Local prototype claims inherit the recorded density/error box; scalar residuals are converted to geometric equal-area improvement only after incidence and angle-branch conditions have been established.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0524e42b6946a1eef76cb933934bd9181ca74751bcf4f0c445f7b35510a5a81c",
+  "symbol_mismatches": []
+}

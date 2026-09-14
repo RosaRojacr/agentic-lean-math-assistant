@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedArea",
+  "domain_issues": [],
+  "informal_statement": "The realized admissible competitor has the type-(iii) scalar area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Equivalent in the declared constructor/section context. At TypeThreeAssembly.lean:3059-3064, the source contract is `theorem asCompetitor_weightedArea : realization.asCompetitor.WeightedArea = a.scalarWeightedArea`. The assembly constructor has lambda > 1 and the full regular range 0 < h < 1. This includes a major exterior cap below h=1/2 and the zero-width/singleton lower boundary at h=1/2. Any extra branch restriction in this particular declaration remains explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ac19f7d26c088671b4dd0552d598cd1124637e2815ea1238d0d5daf917f4ca9b",
+  "symbol_mismatches": []
+}
