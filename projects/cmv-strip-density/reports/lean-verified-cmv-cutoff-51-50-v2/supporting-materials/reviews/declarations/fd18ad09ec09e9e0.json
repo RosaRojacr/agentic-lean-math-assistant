@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "gd_strictMonoOn",
+  "domain_issues": [],
+  "informal_statement": "The derivative function gd is strictly increasing across the mixed minor/major interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "882d961320b58e7e7b5a68f1c9b6da8b8cd9f145ae2152f7eeda7c84659a8f5c",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.chordCarrier",
+  "domain_issues": [],
+  "informal_statement": "The closed horizontal chord segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0705736836c9203b120221cb0770c365bada15ab749e72d0791d55f58eba4c1e",
+  "symbol_mismatches": []
+}

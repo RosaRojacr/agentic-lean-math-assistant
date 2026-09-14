@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeFourFold_lowerFace_neg",
+  "domain_issues": [],
+  "informal_statement": "K4 is negative on the first box's lower curvature face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dcdb660b276bba4f208c5ded09cca5851f937ad4f80478890332c45cce47b8a0",
+  "symbol_mismatches": []
+}

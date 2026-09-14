@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The exact scalar type-(iv) weighted perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad0bebbd79c17351c0f12ce6a7fdae3e930dba33de0077415a6116df1d1e6e25",
+  "symbol_mismatches": []
+}

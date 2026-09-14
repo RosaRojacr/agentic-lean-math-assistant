@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentBoundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "Interval-pushforward measure of the segment parametrization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f71d719edefabe163afbd5014b1ba6aa8df0398ddf3cc380ddcc9ee628163feb",
+  "symbol_mismatches": []
+}

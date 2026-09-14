@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_inner_lt_sin_outer",
+  "domain_issues": [],
+  "informal_statement": "The sine inequality is strict unless h=1/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b3a6348544f17baf0cf9a8d51663f5b8b6187359294117163fc5d2afba78dd58",
+  "symbol_mismatches": []
+}

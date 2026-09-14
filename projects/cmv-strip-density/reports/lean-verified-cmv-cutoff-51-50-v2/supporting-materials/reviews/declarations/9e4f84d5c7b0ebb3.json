@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_arcLength_eq_two_radius_theta",
+  "domain_issues": [],
+  "informal_statement": "The cap's algebraic arc length equals 2Rtheta.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "edad6e24948a1499ce1a66a5efdc84d9c8f7899f5c52d6551716312e95163fb3",
+  "symbol_mismatches": []
+}

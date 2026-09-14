@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate",
+  "domain_issues": [],
+  "informal_statement": "A modeled four-arc candidate with 0<h<=1 and 0<alpha<pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "24dc0ff22e0918bdb2c7f16fab0da52bc08326d88e5cb8e1d2e8a8f7ec2bee62",
+  "symbol_mismatches": []
+}

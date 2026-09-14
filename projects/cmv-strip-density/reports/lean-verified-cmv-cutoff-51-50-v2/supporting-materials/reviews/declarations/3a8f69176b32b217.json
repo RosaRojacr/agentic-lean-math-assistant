@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_lt_pi_div_two",
+  "domain_issues": [],
+  "informal_statement": "Positive normalized areas below pi/8 have inverse angle below pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5baeed1a6d4a81b4780dc3116c27179937e00e0901298d63c17f2f452433e21c",
+  "symbol_mismatches": []
+}

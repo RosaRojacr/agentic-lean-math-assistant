@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.Point",
+  "domain_issues": [],
+  "informal_statement": "The centered five-coordinate point type for the right prototype.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cff2e93e4339fbf01155e35df8506905eb069e6d43c06718e6b5df7c41ed32d5",
+  "symbol_mismatches": []
+}

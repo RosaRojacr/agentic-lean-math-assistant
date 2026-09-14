@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap_euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The upper exterior cap has the standard full-branch circular-segment area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3c7709918bd2e08d7c7ea431b339d946f2eb6c3c9d1138f4304b6afe64a153c2",
+  "symbol_mismatches": []
+}

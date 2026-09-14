@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.RealContains",
+  "domain_issues": [],
+  "informal_statement": "Real containment in the rational interval after endpoint casting.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "82c7a510d68058d7816af0b7c59da61b39569db9b49cfeb125a24aafc395c508",
+  "symbol_mismatches": []
+}

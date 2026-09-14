@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentBoundaryMeasure_integrable",
+  "domain_issues": [],
+  "informal_statement": "The density is integrable against a segment boundary measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ea2176915a90a62781ded65b3f02aa8993ae5482d22cc82a781ae3b26e8f8120",
+  "symbol_mismatches": []
+}

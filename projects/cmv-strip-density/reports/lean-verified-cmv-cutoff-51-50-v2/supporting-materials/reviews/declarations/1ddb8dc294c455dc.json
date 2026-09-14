@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.candidate_perimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "The candidate satisfies the type-(iv) source perimeter formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b4949bdc7019f429151f2faf734db8466461943a33be006f4c104caebb493fe0",
+  "symbol_mismatches": []
+}

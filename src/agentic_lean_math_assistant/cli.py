@@ -7,7 +7,7 @@ import json
 import sys
 import time
 from pathlib import Path
-from typing import NoReturn
+from typing import Any, NoReturn, cast
 
 from . import __version__
 from .artifacts import atomic_write_json
@@ -53,8 +53,17 @@ from .project import ProjectSpec
 from .proof_attempt import run_candidate_proof_gate
 from .proof_builder import (
     ProofBuilderError,
+    VerificationMode,
     build_proof_package,
+    compare_proof_packages,
+    discover_lean_declarations,
+    format_proof_failure,
     initialize_proof_manifest,
+    plan_proof_package,
+    preflight_proof_package,
+    preview_proof_package,
+    proof_package_status,
+    record_review_dispositions,
     resume_proof_package,
     verify_proof_package,
 )
@@ -291,7 +300,7 @@ def _parser() -> argparse.ArgumentParser:
     _runtime_arguments(benchmark, include_runs=False)
     proof_builder = subparsers.add_parser(
         "proof-builder",
-        help="build, resume, and independently verify professor-facing Lean proof packages",
+        help="build, inspect, resume, and verify professor-facing Lean proof packages",
     )
     proof_commands = proof_builder.add_subparsers(
         dest="proof_builder_command", required=True
@@ -300,29 +309,107 @@ def _parser() -> argparse.ArgumentParser:
         "init", help="create a reusable proof-package manifest template"
     )
     proof_init.add_argument("--manifest", type=Path, required=True)
+
+    def add_model_options(command: argparse.ArgumentParser) -> None:
+        command.add_argument("--author-model")
+        command.add_argument("--semantic-review-model")
+        command.add_argument(
+            "--review-profile",
+            choices=("strict", "standard", "economical"),
+        )
+        command.add_argument("--max-model-calls", type=int)
+
+    proof_preflight = proof_commands.add_parser(
+        "preflight", help="validate inputs, tools, models, and the Lean contract"
+    )
+    proof_preflight.add_argument("--manifest", type=Path, required=True)
+    proof_preflight.add_argument("--omp")
+    proof_preflight.add_argument("--lake", default="lake")
+    proof_preflight.add_argument(
+        "--no-lean", action="store_true", help="skip the temporary Lean contract gate"
+    )
+    proof_preflight.add_argument("--format", choices=("text", "json"), default="text")
+    add_model_options(proof_preflight)
+
     proof_build = proof_commands.add_parser(
         "build", help="build a new immutable proof package"
     )
     proof_build.add_argument("--manifest", type=Path, required=True)
     proof_build.add_argument("--omp")
     proof_build.add_argument("--lake", default="lake")
+    proof_build.add_argument(
+        "--dry-run", action="store_true", help="print the execution plan without work"
+    )
+    proof_build.add_argument("--format", choices=("text", "json"), default="text")
+    add_model_options(proof_build)
+
     proof_resume = proof_commands.add_parser(
-        "resume", help="repair a failed retained proof package"
+        "resume", help="repair a failed retained proof package from a selected stage"
     )
     proof_resume.add_argument("--package", type=Path, required=True)
     proof_resume.add_argument("--feedback", action="append", default=[])
+    proof_resume.add_argument(
+        "--from",
+        dest="from_stage",
+        choices=(
+            "lean-export",
+            "explanation",
+            "semantic-review",
+            "pdf-render",
+            "checksum-ledger",
+        ),
+        default="semantic-review",
+    )
     proof_resume.add_argument("--omp")
     proof_resume.add_argument("--lake", default="lake")
+    add_model_options(proof_resume)
+
+    proof_review = proof_commands.add_parser(
+        "review", help="disposition retained semantic-review findings"
+    )
+    proof_review.add_argument("--package", type=Path, required=True)
+    proof_review.add_argument("--decision", action="append", default=[])
+
+    proof_diff = proof_commands.add_parser(
+        "diff", help="compare two proof packages semantically"
+    )
+    proof_diff.add_argument("left", type=Path)
+    proof_diff.add_argument("right", type=Path)
+    proof_diff.add_argument("--format", choices=("text", "json"), default="text")
+
+    proof_declarations = proof_commands.add_parser(
+        "declarations", help="list Lean declarations with types and collected axioms"
+    )
+    proof_declarations.add_argument("--manifest", type=Path, required=True)
+    proof_declarations.add_argument("--lake", default="lake")
+    proof_declarations.add_argument("--contains")
+    proof_declarations.add_argument(
+        "--format", choices=("text", "json"), default="text"
+    )
+
+    proof_preview = proof_commands.add_parser(
+        "preview", help="render an explicitly unverified publication preview"
+    )
+    proof_preview.add_argument("--manifest", type=Path, required=True)
+    proof_preview.add_argument("--output", type=Path)
+
     proof_verify = proof_commands.add_parser(
-        "verify", help="verify package checksums and rerun its pinned Lean build"
+        "verify", help="verify package checksums and/or rerun its pinned Lean build"
     )
     proof_verify.add_argument("--package", type=Path, required=True)
     proof_verify.add_argument("--lake", default="lake")
-    proof_verify.add_argument(
-        "--checksums-only",
-        action="store_true",
-        help="verify retained bytes without rerunning Lean",
+    verification_mode = proof_verify.add_mutually_exclusive_group()
+    verification_mode.add_argument("--checksums-only", action="store_true")
+    verification_mode.add_argument("--lean-only", action="store_true")
+    proof_verify.add_argument("--no-network", action="store_true")
+    proof_verify.add_argument("--format", choices=("text", "json"), default="text")
+    proof_verify.add_argument("--quiet", action="store_true")
+
+    proof_status = proof_commands.add_parser(
+        "status", help="show proof-package health and provenance"
     )
+    proof_status.add_argument("--package", type=Path, required=True)
+    proof_status.add_argument("--format", choices=("text", "json"), default="text")
 
     proof_attempt = subparsers.add_parser(
         "proof-attempt",
@@ -539,40 +626,193 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         if args.command == "proof-builder":
-            if args.proof_builder_command == "init":
+            command = args.proof_builder_command
+            if command == "init":
                 manifest = initialize_proof_manifest(args.manifest)
                 print(f"proof-builder manifest: {manifest}")
                 return 0
-            if args.proof_builder_command == "build":
-                result = build_proof_package(
+            if command in {"preflight", "build"}:
+                model_options = {
+                    "author_model": args.author_model,
+                    "reviewer_model": args.semantic_review_model,
+                    "review_profile": args.review_profile,
+                    "max_model_calls": args.max_model_calls,
+                }
+                if command == "preflight":
+                    preflight_report = cast(
+                        dict[str, Any],
+                        preflight_proof_package(
+                            args.manifest,
+                            omp=args.omp,
+                            lake=args.lake,
+                            run_lean=not args.no_lean,
+                            **model_options,
+                        ),
+                    )
+                    if args.format == "json":
+                        print(json.dumps(preflight_report, indent=2, sort_keys=True))
+                    else:
+                        print("proof-builder preflight: passed")
+                        for check in cast(
+                            list[dict[str, Any]], preflight_report["checks"]
+                        ):
+                            print(
+                                f"  {check['name']}: "
+                                f"{'passed' if check['passed'] else 'failed'} "
+                                f"({check['detail']})"
+                            )
+                    return 0
+                if args.dry_run:
+                    proof_plan = cast(
+                        dict[str, Any],
+                        plan_proof_package(args.manifest, **model_options),
+                    )
+                    if args.format == "json":
+                        print(json.dumps(proof_plan, indent=2, sort_keys=True))
+                    else:
+                        print(f"proof-builder plan: {proof_plan['output']}")
+                        print(
+                            f"  modules={len(proof_plan['module_closure'])} "
+                            f"declarations={proof_plan['declaration_count']} "
+                            f"model_calls<={proof_plan['limits']['planned_model_calls']}"
+                        )
+                        print("  stages: " + " -> ".join(proof_plan["stages"]))
+                    return 0
+                package_result = build_proof_package(
                     args.manifest,
                     omp=args.omp,
                     lake=args.lake,
+                    **model_options,
                 )
-                print(f"proof package status: {result.status}")
-                print(f"proof package: {result.package_dir}")
-                return 0 if result.accepted else 1
-            if args.proof_builder_command == "resume":
-                result = resume_proof_package(
+                print(f"proof package status: {package_result.status}")
+                print(f"proof package: {package_result.package_dir}")
+                failure = format_proof_failure(package_result)
+                if failure:
+                    print(failure)
+                return 0 if package_result.accepted else 1
+            if command == "resume":
+                package_result = resume_proof_package(
                     args.package,
                     omp=args.omp,
                     lake=args.lake,
                     feedback=tuple(args.feedback),
+                    from_stage=args.from_stage,
+                    author_model=args.author_model,
+                    reviewer_model=args.semantic_review_model,
+                    review_profile=args.review_profile,
+                    max_model_calls=args.max_model_calls,
                 )
-                print(f"proof package status: {result.status}")
-                print(f"proof package: {result.package_dir}")
-                return 0 if result.accepted else 1
-            if args.proof_builder_command == "verify":
+                print(f"proof package status: {package_result.status}")
+                print(f"proof package: {package_result.package_dir}")
+                failure = format_proof_failure(package_result)
+                if failure:
+                    print(failure)
+                return 0 if package_result.accepted else 1
+            if command == "review":
+                sidecar = record_review_dispositions(
+                    args.package, decisions=tuple(args.decision)
+                )
+                print(f"review dispositions: {sidecar}")
+                return 0
+            if command == "diff":
+                comparison = cast(
+                    dict[str, Any], compare_proof_packages(args.left, args.right)
+                )
+                if args.format == "json":
+                    print(json.dumps(comparison, indent=2, sort_keys=True))
+                else:
+                    label = "different" if comparison["different"] else "equivalent"
+                    declarations = comparison["declarations"]
+                    print(f"proof packages: {label}")
+                    print(
+                        f"  declarations: +{len(declarations['added'])} "
+                        f"-{len(declarations['removed'])} "
+                        f"changed={len(declarations['changed'])}"
+                    )
+                    print(
+                        f"  roots={comparison['root_contract_changed']} "
+                        f"axioms={comparison['allowed_axioms_changed']} "
+                        f"models={comparison['models_changed']}"
+                    )
+                return 1 if comparison["different"] else 0
+            if command == "declarations":
+                declarations = cast(
+                    list[dict[str, Any]],
+                    discover_lean_declarations(
+                        args.manifest, lake=args.lake, contains=args.contains
+                    ),
+                )
+                if args.format == "json":
+                    print(json.dumps(declarations, indent=2, sort_keys=True))
+                else:
+                    for declaration in declarations:
+                        print(
+                            f"{declaration['declaration']} : {declaration['type']} "
+                            f"[axioms: {', '.join(declaration['axioms'])}]"
+                        )
+                return 0
+            if command == "preview":
+                preview = preview_proof_package(
+                    args.manifest,
+                    output=args.output,
+                )
+                print(f"unverified proof-package preview: {preview}")
+                return 0
+            if command == "verify":
+                mode: VerificationMode = (
+                    "checksums"
+                    if args.checksums_only
+                    else "lean"
+                    if args.lean_only
+                    else "full"
+                )
                 count = verify_proof_package(
                     args.package,
                     lake=args.lake,
-                    rerun_lean=not args.checksums_only,
+                    mode=mode,
+                    no_network=args.no_network,
                 )
-                print(f"proof package verified: {count} retained files")
+                verification_result = {
+                    "status": "verified",
+                    "mode": mode,
+                    "retained_files": count,
+                    "no_network": args.no_network,
+                }
+                if not args.quiet:
+                    if args.format == "json":
+                        print(json.dumps(verification_result, indent=2, sort_keys=True))
+                    elif mode == "lean":
+                        print("proof package Lean rebuild verified")
+                    else:
+                        print(f"proof package verified: {count} retained files")
                 return 0
-            raise AssertionError(
-                f"unhandled proof-builder command: {args.proof_builder_command}"
-            )
+            if command == "status":
+                package_health = cast(
+                    dict[str, Any], proof_package_status(args.package)
+                )
+                if args.format == "json":
+                    print(json.dumps(package_health, indent=2, sort_keys=True))
+                else:
+                    print(f"Package status: {package_health['status']}")
+                    print(f"Ledger: {package_health['ledger']}")
+                    print(f"Retained files: {package_health['retained_files']}")
+                    print(f"Revision attempts: {package_health['revision_attempts']}")
+                    reviewer = package_health["models"].get(
+                        "semantic_reviewer", "unknown"
+                    )
+                    reviewer_route = (
+                        reviewer.get("route", "unknown")
+                        if isinstance(reviewer, dict)
+                        else reviewer
+                    )
+                    print(f"Semantic reviewer: {reviewer_route}")
+                return (
+                    0
+                    if package_health["status"] == "verified"
+                    and package_health["ledger"] == "valid"
+                    else 1
+                )
+            raise AssertionError(f"unhandled proof-builder command: {command}")
         if args.command in {"regression-assess", "regression-fit"}:
             features = load_array(
                 args.features,

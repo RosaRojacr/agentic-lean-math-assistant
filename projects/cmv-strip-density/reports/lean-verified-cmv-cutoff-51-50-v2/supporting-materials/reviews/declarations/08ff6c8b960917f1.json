@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capX_eq_area",
+  "domain_issues": [],
+  "informal_statement": "The normalized candidate cap area is a(alpha).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ef35b1cb5934a4532e1255f444a69fb5e100682afde4a7e8de56f9cb84bae537",
+  "symbol_mismatches": []
+}

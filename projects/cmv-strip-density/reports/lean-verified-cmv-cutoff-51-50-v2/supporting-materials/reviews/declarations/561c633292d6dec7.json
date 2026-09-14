@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.Conditions.stationaryEqualArea_improvement_exists",
+  "domain_issues": [],
+  "informal_statement": "Compact-cell conditions produce a stationary equal-area strict improvement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e63a75b5ca3c02a2700397ede0d62a135c22960b730b6191885ca6432b43a9fe",
+  "symbol_mismatches": []
+}

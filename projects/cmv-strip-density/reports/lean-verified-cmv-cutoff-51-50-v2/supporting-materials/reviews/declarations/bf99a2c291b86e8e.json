@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θstar_lt_of_F_pos",
+  "domain_issues": [],
+  "informal_statement": "A positive value of F on the admissible angle branch bounds its root from above.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8aed32b6dfdba14ba36157e57562cf1fa218ff121a66877337d2141e16cb6a9b",
+  "symbol_mismatches": []
+}

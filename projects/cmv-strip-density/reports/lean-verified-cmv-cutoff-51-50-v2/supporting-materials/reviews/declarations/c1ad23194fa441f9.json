@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaRoot_continuousOn_of_compact_unique",
+  "domain_issues": [],
+  "informal_statement": "Fix lambda > 1, a set S contained in (0,1], a compact set K contained in (0,1), and a function r from the reals to the reals. If, for every t in S, r(t) belongs to K and is the unique y in K satisfying A3(y) = A4(t), then r is continuous on S. Neither S nor K is required to be an interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "58b73f54ea82a27e264112e64332402373c869c542bc7277160adca9dcc99fdd",
+  "symbol_mismatches": []
+}

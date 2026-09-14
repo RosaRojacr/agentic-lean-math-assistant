@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanPairwiseOverlap",
+  "domain_issues": [],
+  "informal_statement": "For four subsets of any type, the union of their six pairwise intersections.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c1559aa1737fb404d99a3376b70fbd4f0ff514e71a947a7d30b01a1ce4c1177e",
+  "symbol_mismatches": []
+}

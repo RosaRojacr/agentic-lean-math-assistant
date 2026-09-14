@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryJoinSet_finite",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) junction set is finite.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fb8b2d3307f8905b1616f7f8934468dae8dc2d1df098e8fa72f92f5a3759db5d",
+  "symbol_mismatches": []
+}

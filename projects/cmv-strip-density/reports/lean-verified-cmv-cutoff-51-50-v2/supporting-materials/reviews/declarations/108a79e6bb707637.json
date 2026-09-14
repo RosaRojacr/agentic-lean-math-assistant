@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_end",
+  "domain_issues": [],
+  "informal_statement": "For real r,theta and a positive natural subdivision count N, the Nth partition point equals r theta.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b5d0e986af4c921461bd13ce89490a41fdc02991eaadda7d26f70db465413519",
+  "symbol_mismatches": []
+}

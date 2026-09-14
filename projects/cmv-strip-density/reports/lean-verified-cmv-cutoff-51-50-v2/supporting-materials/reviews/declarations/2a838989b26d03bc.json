@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.rightCenterX",
+  "domain_issues": [],
+  "informal_statement": "Horizontal center coordinate for the right core circle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ff1acc9e9b3ef170758d23460b0f614f6eb1c034ebd024b460f189e9f303f923",
+  "symbol_mismatches": []
+}

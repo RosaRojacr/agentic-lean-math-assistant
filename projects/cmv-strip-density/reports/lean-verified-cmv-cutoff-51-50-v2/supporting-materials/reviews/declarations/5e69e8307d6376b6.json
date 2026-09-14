@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "monotone_capPartitionPoint",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, theta > 0 and a positive natural N, the partition formula is monotone in the natural index.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "62e77199a2eb7f24e5f93307536675c49f368eab2d84be96574f544f2152a857",
+  "symbol_mismatches": []
+}

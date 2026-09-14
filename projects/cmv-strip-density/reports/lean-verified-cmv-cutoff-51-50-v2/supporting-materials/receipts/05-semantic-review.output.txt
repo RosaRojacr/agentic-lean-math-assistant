@@ -1,0 +1,1 @@
+Completed `supporting-materials/reviews/reviewer-05.json` — 850 declarations and 2 generated families audited; frozen modeled claim classified equivalent. Recorded the supplement’s reversed perimeter-difference sign and manuscript format-contract violations. `lake build CMVPublishedCutoff51_50` completed with linter warnings.

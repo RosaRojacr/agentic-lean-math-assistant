@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftArcParam",
+  "domain_issues": [],
+  "informal_statement": "Signed-arclength parametrization of the left side arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f29c060ae66edf060cbefb1375e17d2584dc8c159343c7bce4a1ff009d7632c",
+  "symbol_mismatches": []
+}

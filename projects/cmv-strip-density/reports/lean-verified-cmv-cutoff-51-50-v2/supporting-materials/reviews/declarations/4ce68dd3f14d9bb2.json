@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.measurableSet_carrier",
+  "domain_issues": [],
+  "informal_statement": "The cap carrier is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0f551f525fbf0409babb736205ec484e0a0c2ff7039ce55de1e7a7fc5595a27",
+  "symbol_mismatches": []
+}

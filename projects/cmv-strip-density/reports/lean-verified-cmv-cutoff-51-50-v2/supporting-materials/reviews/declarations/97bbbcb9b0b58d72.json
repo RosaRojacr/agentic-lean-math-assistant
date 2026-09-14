@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThree_atoms_of_exact_bounds",
+  "domain_issues": [],
+  "informal_statement": "Exact elementary bounds enclose the type-(iii) angular and radical atoms.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c51a322c3566880879bc58cb2483ec639ff97dddc9cd3e9ac9a18afac5600b84",
+  "symbol_mismatches": []
+}

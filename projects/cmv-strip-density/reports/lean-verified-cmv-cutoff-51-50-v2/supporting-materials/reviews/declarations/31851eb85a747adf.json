@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.endpoint_weightedPerimeter_eq_typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The perimeter identification holds at h=1.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9a9144c9e0869ee21b16e09b6aad1d31570ea82a7d5d876263c80c006e5e5661",
+  "symbol_mismatches": []
+}

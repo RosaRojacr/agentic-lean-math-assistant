@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.cos_sideArcAngle",
+  "domain_issues": [],
+  "informal_statement": "The side-arc angle has cosine minus the shape parameter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a8f9a8c72dcee4cc4dc59b4da10f2ae6d2741d7865a4b2faca10168fa17cc76a",
+  "symbol_mismatches": []
+}

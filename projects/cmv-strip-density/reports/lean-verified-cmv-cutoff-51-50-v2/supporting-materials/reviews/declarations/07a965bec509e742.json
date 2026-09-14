@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor.carrier",
+  "domain_issues": [],
+  "informal_statement": "The planar set carried by each competitor constructor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b57d4c4c33776a05ffbbbc22f1b363a7f356aa7cd089d7c2b3335ead1bb65644",
+  "symbol_mismatches": []
+}

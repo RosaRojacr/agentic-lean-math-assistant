@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.weightedArea_eq_typeFourArea",
+  "domain_issues": [],
+  "informal_statement": "Every candidate satisfying the CMV hypotheses has weighted area A4(h).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e8473928799276d8ba026ded04a5483fef2171ee9679b0cfa48b5117289324b3",
+  "symbol_mismatches": []
+}

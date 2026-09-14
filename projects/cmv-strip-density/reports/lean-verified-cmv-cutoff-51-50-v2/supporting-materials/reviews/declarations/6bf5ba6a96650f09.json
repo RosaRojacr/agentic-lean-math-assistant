@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.realConclusion_scalarImprovement",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's real solution yields a genuine scalar equal-area perimeter improvement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb2d746cbd9e64bb1870debe196a905e1574b27a24542c427057bd40fc2db5ef",
+  "symbol_mismatches": []
+}

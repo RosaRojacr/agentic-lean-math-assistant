@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "F_strictMonoOn",
+  "domain_issues": [],
+  "informal_statement": "The function F is strictly increasing on the full closed interval [0,pi].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "159fcb80f1fa4e926941eda01dd71a676dd66fef614b9045e53e04469f3d4efe",
+  "symbol_mismatches": []
+}

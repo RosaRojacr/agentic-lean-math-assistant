@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.Point",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's density displacement and four angular error coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "faab379d3c93e3fdbeaacb3e4e673d5518c5a8dbdfc4b2177da8137b5ec11ed2",
+  "symbol_mismatches": []
+}

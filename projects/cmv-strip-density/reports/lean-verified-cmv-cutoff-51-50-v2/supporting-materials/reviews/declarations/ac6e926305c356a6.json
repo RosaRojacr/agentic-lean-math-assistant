@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeFour_atom_enclosures",
+  "domain_issues": [],
+  "informal_statement": "Soundness of the type-(iv) objective and fold boxes.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6e810d9ecc043611b95444c9f9834f7abe166e7b764027bba215f104fde2bca9",
+  "symbol_mismatches": []
+}

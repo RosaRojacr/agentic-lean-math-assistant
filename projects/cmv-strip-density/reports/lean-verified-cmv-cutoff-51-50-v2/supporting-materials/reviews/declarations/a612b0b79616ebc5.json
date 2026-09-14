@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCore_strip_density",
+  "domain_issues": [],
+  "informal_statement": "Density is one along the right core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d879e18591ac7ff00f0a228fad33d85d1e290fb3c77820aaf80c672ec9411662",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.PointEquationSemantics",
+  "domain_issues": [],
+  "informal_statement": "The analytic meaning of checker equations on the recorded angle branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "478344dbc781da1c2b9f6b07701b41f4488a93fff689eda8b3059bdb2ad9f499",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Conditions.rootProjection",
+  "domain_issues": [],
+  "informal_statement": "A valid brick supplies the complete root projection.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b0b149b1edc9d2dd81f962164ee26472b0cb945a7e8f0c2a208f3fb617b6fe84",
+  "symbol_mismatches": []
+}

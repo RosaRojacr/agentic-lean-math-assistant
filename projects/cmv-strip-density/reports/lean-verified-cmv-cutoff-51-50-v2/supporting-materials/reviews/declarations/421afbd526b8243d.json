@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.realContains_of_mem_uIcc",
+  "domain_issues": [],
+  "informal_statement": "An intermediate point between two enclosed reals remains enclosed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ebce25efd40e9df8676596e53d18f779f851450dc32118fcfdf8ff8a4a80eceb",
+  "symbol_mismatches": []
+}

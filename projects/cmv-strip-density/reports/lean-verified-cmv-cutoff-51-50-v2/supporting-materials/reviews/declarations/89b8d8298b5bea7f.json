@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C3Residual.reduced_hasDerivAt_t",
+  "domain_issues": [],
+  "informal_statement": "The recorded t derivative of C3 is exact.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7dbe2b5150934c034dcc9733f2ecaa267ad4409fadfc1f5c1ad22c9ee3309dc2",
+  "symbol_mismatches": []
+}

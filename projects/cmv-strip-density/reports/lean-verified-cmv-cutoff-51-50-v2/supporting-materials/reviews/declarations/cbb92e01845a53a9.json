@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.DescendingEqualAreaEnvelope",
+  "domain_issues": [],
+  "informal_statement": "A stationary type-(iv) fold and a regular negative-fold equal-area type-(iii) root for every modeled curvature.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ee2db888cf8e5e37251e350d2425fb86808e5c1f7d808208572e20c0e3ea40a9",
+  "symbol_mismatches": []
+}

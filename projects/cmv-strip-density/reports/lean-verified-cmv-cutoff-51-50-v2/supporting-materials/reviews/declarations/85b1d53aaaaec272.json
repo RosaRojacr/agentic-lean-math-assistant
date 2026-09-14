@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.h4Center",
+  "domain_issues": [],
+  "informal_statement": "Exact type-(iv) center for compact box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "666f145a9e19df37e5fddc56423955a5afdef7d5d8965955b503afe70df65af5",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The density integral against a given boundary measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8d1f1a60a6d4c5ce03ccda31c1bc34ec4f837b6ce55275e4b0c06fe04e566dba",
+  "symbol_mismatches": []
+}

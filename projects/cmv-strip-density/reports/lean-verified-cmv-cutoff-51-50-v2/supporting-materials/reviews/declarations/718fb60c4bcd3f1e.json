@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeDelta",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) radical displacement D3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f96722ed089f4e5911c6013a0aa601eb4080090036491702cd0fa78e3e31113f",
+  "symbol_mismatches": []
+}

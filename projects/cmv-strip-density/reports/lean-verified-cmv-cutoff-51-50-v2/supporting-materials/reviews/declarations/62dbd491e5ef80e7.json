@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceCells.candidate_not_isWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "The generated middle-face cells exclude candidates from 102001/100000 to 25781/25000.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "65047cf47373d68e2f54c04db5fee6610caf78e9eb55ac3e2777e49e93efeff1",
+  "symbol_mismatches": []
+}

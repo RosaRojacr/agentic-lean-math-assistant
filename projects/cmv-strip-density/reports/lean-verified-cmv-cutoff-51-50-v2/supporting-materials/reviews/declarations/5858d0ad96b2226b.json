@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_semicircle_translated",
+  "domain_issues": [],
+  "informal_statement": "The circular cross-section integral after translation.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "06721e5dc911d180205234ff69b820e369a8d82b66f142e17c0a1377b9b27f8d",
+  "symbol_mismatches": []
+}

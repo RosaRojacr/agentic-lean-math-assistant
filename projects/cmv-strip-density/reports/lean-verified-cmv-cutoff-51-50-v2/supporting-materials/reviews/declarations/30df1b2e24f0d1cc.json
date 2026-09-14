@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.N4",
+  "domain_issues": [],
+  "informal_statement": "The right brick's type-(iv) area numerator.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8317292c5d87208707548fa6a07d20553105db710dba94daee68266201ce16ef",
+  "symbol_mismatches": []
+}

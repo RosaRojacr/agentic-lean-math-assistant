@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.cellCertificate",
+  "domain_issues": [],
+  "informal_statement": "The right prototype satisfies every primitive middle-face certificate field.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "37a6b153f1c09f5b0bd0af4e9abeec7bf284e6e510faf353cac76a90f727cac4",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.pointEquationSemantics",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's checker equations have the claimed scalar meaning.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "55d2eea611fa72c52ef509b0c8b4a1aa98765b6f9627ee1108103f1668f29bc9",
+  "symbol_mismatches": []
+}

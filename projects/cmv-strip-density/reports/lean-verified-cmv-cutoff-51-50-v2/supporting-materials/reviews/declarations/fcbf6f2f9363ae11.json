@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourFold_zero_unique",
+  "domain_issues": [],
+  "informal_statement": "A regular type-(iv) stationary fold is unique.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bc70631d3da63af952fb4321a7d0a57845b40dd8854182d958b30d4e8971577c",
+  "symbol_mismatches": []
+}

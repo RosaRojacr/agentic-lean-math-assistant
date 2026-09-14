@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Vec4",
+  "domain_issues": [],
+  "informal_statement": "A real vector indexed by four coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "26b6384e4234f00c2040b7fed071a12c3e6f967500dfcaee15eb69b43a2cf5e3",
+  "symbol_mismatches": []
+}

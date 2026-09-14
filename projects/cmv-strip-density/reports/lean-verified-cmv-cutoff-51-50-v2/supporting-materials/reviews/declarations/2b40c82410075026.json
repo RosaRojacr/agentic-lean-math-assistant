@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.radiiReal",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's error radii as a real four-vector.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ffbda00bb8ae49e94f67d9ad5dd16012ff60af58d9c1760a6abfb99b1bb96909",
+  "symbol_mismatches": []
+}

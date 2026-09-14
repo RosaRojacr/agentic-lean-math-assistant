@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_pi_sub",
+  "domain_issues": [],
+  "informal_statement": "The normalized area formula at the supplementary cap angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6ddb90a2a474720c53dc6e87015838175f9560adcbb74d22d3aa99ec3da8673f",
+  "symbol_mismatches": []
+}

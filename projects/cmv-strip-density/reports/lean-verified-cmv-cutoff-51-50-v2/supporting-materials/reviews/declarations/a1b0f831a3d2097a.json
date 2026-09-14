@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.pairwiseOverlap_h1_null",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) boundary overlaps have zero Euclidean Hausdorff length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "545b8d3e4922237126e7364ee9bb07b444cf8cada72b02e8afca89501d2f79b3",
+  "symbol_mismatches": []
+}

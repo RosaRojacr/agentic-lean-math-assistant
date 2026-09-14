@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.isClosed_rectangleCarrier",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) central rectangle is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a040fbd7853bc5d56529ed0d45def53a17db2084e9e6f891db5067b23f32a560",
+  "symbol_mismatches": []
+}

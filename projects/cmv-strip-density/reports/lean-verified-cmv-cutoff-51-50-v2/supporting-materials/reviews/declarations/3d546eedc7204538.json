@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArcRotation_apply",
+  "domain_issues": [],
+  "informal_statement": "For r nonzero and arbitrary real m,s, rotation by angle m/r sends u_r(s) to u_r(s+m).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dcedc37c9428c0a722c5bf130023e2389a83c7faa4036432847247c3401f6b9b",
+  "symbol_mismatches": []
+}

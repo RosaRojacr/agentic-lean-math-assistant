@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightCenter",
+  "domain_issues": [],
+  "informal_statement": "Center of the right type-(iii) side circle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c1d50740a1dfb76a9c424f19f6e78589f8a8ab930ab1727da5282aecd42c3f25",
+  "symbol_mismatches": []
+}

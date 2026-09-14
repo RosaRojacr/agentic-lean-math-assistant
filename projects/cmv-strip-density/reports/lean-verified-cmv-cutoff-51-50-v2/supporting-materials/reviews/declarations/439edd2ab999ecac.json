@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "continuous_unitCircleArc",
+  "domain_issues": [],
+  "informal_statement": "For every real r, the map s maps to r exp(i s/r) is continuous on the real line.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "343bc4472a64687ca829ebbf897c060cb6c7c3cad3716259e96fb84cf091470c",
+  "symbol_mismatches": []
+}

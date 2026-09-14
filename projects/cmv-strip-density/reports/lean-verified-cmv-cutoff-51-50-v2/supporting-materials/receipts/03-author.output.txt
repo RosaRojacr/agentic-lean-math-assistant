@@ -1,0 +1,13 @@
+Wrote `supporting-materials/reviews/author-03.json`.
+
+Verified:
+
+- Strict JSON parses successfully.
+- All 850 non-generated inventory declarations occur exactly once.
+- Both configured generated families occur exactly once.
+- `CompactCellAssembly.Conditions.candidate_not_isWeightedPerimeterMinimizer` and `MiddleFaceCells.candidate_not_isWeightedPerimeterMinimizer_from_51_50` are classified as `main`.
+- Main manuscript uses only inventory-present Lean citations.
+- Uses `LeanSuffixAnalytic.allCurvature_typeThreeImprovement_of_envelope`.
+- Does not cite `FourArcCandidate.exposed_lower_chord_on_frontier`.
+- Corrected the certificate count to 1,135 cells.
+- Corrected the CMV bibliography locator to `references/references.bib`.

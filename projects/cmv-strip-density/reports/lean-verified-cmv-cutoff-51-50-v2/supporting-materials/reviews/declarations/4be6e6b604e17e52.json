@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ofReal_dist_le_hausdorffMeasure_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "A continuous path's Hausdorff length bounds the distance between its endpoints.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "272ec4c298bc0f3582f8dd04d91ee8113b10ec4ec1c37538e792ec5391cc0936",
+  "symbol_mismatches": []
+}

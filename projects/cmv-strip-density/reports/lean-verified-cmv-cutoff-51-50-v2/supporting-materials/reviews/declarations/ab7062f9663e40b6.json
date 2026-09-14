@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.measurableSet_carrier",
+  "domain_issues": [],
+  "informal_statement": "The full type-(iii) carrier is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "25696aa660c5c71e8ce3e6a179a069d25633bc99ff664ad8e93ea6e319cb501f",
+  "symbol_mismatches": []
+}

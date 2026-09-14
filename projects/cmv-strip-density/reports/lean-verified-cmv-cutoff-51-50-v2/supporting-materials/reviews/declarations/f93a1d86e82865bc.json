@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacement_cap_arc_length",
+  "domain_issues": [],
+  "informal_statement": "The replacement upper arc has length cL(2X).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "15d3b8bc212201f87fa01ba9f302a81f8ee2f8ead5c18096e4f073110885dea8",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeFourArea_centered_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Centered type-(iv) area enclosure used by box zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "23fd914cbcc4badfdce7ba2492c48ade47c8348ae2e3255286932df9b5b0b656",
+  "symbol_mismatches": []
+}

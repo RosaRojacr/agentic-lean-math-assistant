@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "xstar_pos",
+  "domain_issues": [],
+  "informal_statement": "The selected normalized cap area is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "285916d9a661ffdef997baeb58111dd2f99ed6b3837830effc46ed8c96b2914d",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.compactCandidate_not_isWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "Every CMV-model candidate is nonminimal for densities in compact box zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0cf4dd7a93e6150799254c4879293eeac9af163fdbd193bd279b77559f43d237",
+  "symbol_mismatches": []
+}

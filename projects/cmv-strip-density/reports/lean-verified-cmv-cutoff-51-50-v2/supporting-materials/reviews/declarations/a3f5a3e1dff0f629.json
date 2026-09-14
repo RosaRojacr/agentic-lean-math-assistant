@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pi_div_sixteen_lt_xstar",
+  "domain_issues": [],
+  "informal_statement": "Xstar is greater than pi/16.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "57b6eb878ba5fce5bf94c8fc02b54dbda28d42d21c498f918d5255530a944bbc",
+  "symbol_mismatches": []
+}

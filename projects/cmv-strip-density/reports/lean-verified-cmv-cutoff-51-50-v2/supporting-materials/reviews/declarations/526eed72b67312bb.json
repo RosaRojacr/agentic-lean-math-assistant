@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_deriv_neg",
+  "domain_issues": [],
+  "informal_statement": "The derivative of g is negative in the small-area branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "89dcdf54ccfabb31e9736dc2f8394ba49f8c59134f8b039132ae14f9404c9bd9",
+  "symbol_mismatches": []
+}

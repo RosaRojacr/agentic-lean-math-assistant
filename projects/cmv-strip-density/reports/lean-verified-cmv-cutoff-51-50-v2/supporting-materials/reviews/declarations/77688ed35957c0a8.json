@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.h4Interval",
+  "domain_issues": [],
+  "informal_statement": "Stationary type-(iv) slab for compact box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "af804f12d01723b2d7a86305f48af3d27bbb99fca40d12171d80e480fb2a6639",
+  "symbol_mismatches": []
+}

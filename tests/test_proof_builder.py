@@ -10,6 +10,15 @@ from agentic_lean_math_assistant.cli import main
 from agentic_lean_math_assistant.proof_builder import (
     ProofBuilderError,
     build_proof_package,
+    collect_review_findings,
+    compare_proof_packages,
+    discover_lean_declarations,
+    format_proof_failure,
+    plan_proof_package,
+    preflight_proof_package,
+    preview_proof_package,
+    proof_package_status,
+    record_review_dispositions,
     resume_proof_package,
     verify_proof_package,
 )
@@ -29,6 +38,9 @@ import json
 import pathlib
 import re
 import sys
+cache = pathlib.Path.cwd() / ".lake" / "build"
+cache.mkdir(parents=True, exist_ok=True)
+(cache / "generated-artifact").write_bytes(b"generated")
 
 if sys.argv[1:] in (["update"], ["exe", "cache", "get"]):
     print("Lake setup completed.")
@@ -54,6 +66,18 @@ elif sys.argv[1:3] == ["env", "lean"] and sys.argv[-1] == "_ProofBuilderDependen
         "".join(f"{item['declaration']}\n" for item in inventory["declarations"]),
         encoding="utf-8",
     )
+elif sys.argv[1:3] == ["env", "lean"] and sys.argv[-1].endswith("Declarations.lean"):
+    source = pathlib.Path(sys.argv[-1]).read_text(encoding="utf-8")
+    output = pathlib.Path(
+        json.loads(re.search(r'IO\.FS\.writeFile ("[^"]+")', source).group(1))
+    )
+    names_text = re.search(r"let names : List Name := \[([^\]]+)\]", source).group(1)
+    names = [name.strip().lstrip("`") for name in names_text.split(",")]
+    output.write_text(json.dumps([
+        {"declaration": name, "type": "True",
+         "axioms": ["propext", "Classical.choice", "Quot.sound"]}
+        for name in names
+    ]), encoding="utf-8")
 elif "--run" in sys.argv:
     separator = sys.argv.index("--")
     for declaration in sys.argv[separator + 1:]:
@@ -86,7 +110,7 @@ inventory = json.loads(
 )
 conceptual = [item for item in inventory["declarations"] if item["generated_family"] is None]
 attempt = int(prompt_path.name.split("-", 1)[0])
-if prompt.startswith("# Isolated Astra proof-package author pass"):
+if prompt.startswith("# Isolated proof-package author pass"):
     handoff.write_text(json.dumps({
         "schema_version": 1,
         "main_markdown": (
@@ -279,7 +303,15 @@ timeout_seconds = 60
 def test_proof_builder_creates_clean_reviewed_package(tmp_path: Path) -> None:
     manifest, omp, lake = _fixture(tmp_path)
 
-    result = build_proof_package(manifest, omp=str(omp), lake=str(lake))
+    result = build_proof_package(
+        manifest,
+        omp=str(omp),
+        lake=str(lake),
+        author_model="provider/economical-author",
+        reviewer_model="provider/economical-reviewer",
+        review_profile="economical",
+        max_model_calls=4,
+    )
 
     package = result.package_dir
     assert result.status == "verified"
@@ -294,6 +326,7 @@ def test_proof_builder_creates_clean_reviewed_package(tmp_path: Path) -> None:
     assert (package / "supporting-materials/lean/Example.lean").is_file()
     assert (package / "supporting-materials/lean/Support.lean").is_file()
     assert not (package / "supporting-materials/manuscripts").exists()
+    assert not (package / "supporting-materials/lean/.lake").exists()
     readme = (package / "README.md").read_text(encoding="utf-8")
     assert "rendering intermediates are discarded after PDF creation" in readme
     rendering = json.loads(
@@ -321,10 +354,16 @@ def test_proof_builder_creates_clean_reviewed_package(tmp_path: Path) -> None:
         )
     )
     assert [root["role"] for root in lock["roots"]] == ["primary", "secondary"]
+    assert lock["models"]["author"]["route"] == "provider/economical-author"
+    assert (
+        lock["models"]["semantic_reviewer"]["route"] == "provider/economical-reviewer"
+    )
+    assert lock["models"]["review_profile"] == "economical"
+    assert lock["models"]["fallback_policy"] == "disabled"
     assert (manifest.parent / "fixture-proof.pdf").read_bytes() == (
         package / "MainProof.pdf"
     ).read_bytes()
-    assert verify_proof_package(package, lake=str(lake), rerun_lean=True) > 10
+    assert verify_proof_package(package, lake=str(lake), mode="full") > 10
 
 
 def test_proof_builder_integrity_rejects_tampering(tmp_path: Path) -> None:
@@ -333,7 +372,7 @@ def test_proof_builder_integrity_rejects_tampering(tmp_path: Path) -> None:
     (package / "MainProof.pdf").write_bytes(b"tampered")
 
     with pytest.raises(ProofBuilderError, match="digest mismatch"):
-        verify_proof_package(package, lake=str(lake), rerun_lean=False)
+        verify_proof_package(package, lake=str(lake), mode="checksums")
 
 
 def test_publication_boundary_rejects_forbidden_declaration(tmp_path: Path) -> None:
@@ -352,16 +391,16 @@ def test_proof_builder_resumes_unfinalized_crash(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     manifest, omp, lake = _fixture(tmp_path)
-    original_invoke = proof_builder_module._invoke_astra
+    original_invoke = proof_builder_module._invoke_model
 
     def crash(**_kwargs: object) -> Path:
         raise ProofBuilderError("simulated crash")
 
-    monkeypatch.setattr(proof_builder_module, "_invoke_astra", crash)
+    monkeypatch.setattr(proof_builder_module, "_invoke_model", crash)
     with pytest.raises(ProofBuilderError, match="simulated crash"):
         build_proof_package(manifest, omp=str(omp), lake=str(lake))
 
-    monkeypatch.setattr(proof_builder_module, "_invoke_astra", original_invoke)
+    monkeypatch.setattr(proof_builder_module, "_invoke_model", original_invoke)
     package = manifest.parent / "fixture-proof-v1"
     result = resume_proof_package(package, omp=str(omp), lake=str(lake))
 
@@ -381,3 +420,206 @@ def test_declaration_anchors_preserve_case_sensitive_identity() -> None:
     assert proof_builder_module._anchor("Namespace.rootProjection") != (
         proof_builder_module._anchor("Namespace.RootProjection")
     )
+
+
+def test_planning_preflight_discovery_and_preview_are_model_free(
+    tmp_path: Path,
+) -> None:
+    manifest, _omp, lake = _fixture(tmp_path)
+
+    plan = plan_proof_package(
+        manifest,
+        reviewer_model="provider/lower-tier-reviewer",
+        review_profile="standard",
+        max_model_calls=5,
+    )
+    assert plan["output_exists"] is False
+    assert plan["limits"] == {
+        "max_revisions": 2,
+        "max_model_calls": 5,
+        "planned_model_calls": 5,
+    }
+    models = plan["models"]
+    assert isinstance(models, dict)
+    reviewer = models["semantic_reviewer"]
+    assert isinstance(reviewer, dict)
+    assert reviewer["route"] == "provider/lower-tier-reviewer"
+    report = preflight_proof_package(
+        manifest,
+        lake=str(lake),
+        run_lean=False,
+    )
+    assert report["ok"] is True
+    assert report["lean_verified"] is False
+
+    declarations = discover_lean_declarations(
+        manifest,
+        lake=str(lake),
+        contains="main_theorem",
+    )
+    assert declarations == [
+        {
+            "declaration": "Example.main_theorem",
+            "kind": "theorem",
+            "module": "Example",
+            "source": "Example.lean",
+            "line": 5,
+            "type": "True",
+            "axioms": ["propext", "Classical.choice", "Quot.sound"],
+            "generated_family": None,
+        }
+    ]
+
+    preview = preview_proof_package(manifest)
+    assert {path.name for path in preview.iterdir()} == {
+        "README.md",
+        "MainProof.pdf",
+        "LemmaSupplement.pdf",
+        "SemanticAudit.pdf",
+        "supporting-materials",
+    }
+    assert (
+        json.loads(
+            (preview / "supporting-materials/preview.json").read_text(encoding="utf-8")
+        )["status"]
+        == "unverified-preview"
+    )
+
+
+def test_failed_review_disposition_targeted_resume_and_status(tmp_path: Path) -> None:
+    manifest, omp, lake = _fixture(tmp_path)
+    manifest.write_text(
+        manifest.read_text(encoding="utf-8").replace(
+            "max_revisions = 3", "max_revisions = 0"
+        ),
+        encoding="utf-8",
+    )
+    failed = build_proof_package(manifest, omp=str(omp), lake=str(lake))
+    assert failed.status == "review_failed"
+    assert "First-pass adversarial rejection." in format_proof_failure(failed)
+    findings = collect_review_findings(failed.package_dir)
+    assert findings[0]["finding"] == "First-pass adversarial rejection."
+
+    sidecar = record_review_dispositions(
+        failed.package_dir,
+        decisions=("F001=repair:Correct the rejected explanation.",),
+    )
+    assert sidecar.is_file()
+    rerendered = resume_proof_package(
+        failed.package_dir,
+        lake=str(lake),
+        from_stage="pdf-render",
+    )
+    assert rerendered.status == "review_failed"
+    checksum = failed.package_dir / "supporting-materials/CHECKSUMS.sha256"
+    checksum.unlink()
+    rechecksummed = resume_proof_package(
+        failed.package_dir,
+        from_stage="checksum-ledger",
+    )
+    assert rechecksummed.status == "review_failed"
+    assert checksum.is_file()
+
+    accepted = resume_proof_package(
+        failed.package_dir,
+        omp=str(omp),
+        lake=str(lake),
+        from_stage="semantic-review",
+        review_profile="strict",
+        max_model_calls=8,
+        reviewer_model="provider/lower-tier-reviewer",
+    )
+    assert accepted.status == "verified"
+    assert (
+        accepted.package_dir / "supporting-materials/reviews/operator-dispositions.json"
+    ).is_file()
+    assert (
+        len(
+            tuple(
+                (accepted.package_dir / "supporting-materials/receipts").glob(
+                    "*-author.request.json"
+                )
+            )
+        )
+        == 1
+    )
+    health = proof_package_status(accepted.package_dir)
+    assert health["status"] == "verified"
+    assert health["ledger"] == "valid"
+    assert (
+        compare_proof_packages(accepted.package_dir, accepted.package_dir)["different"]
+        is False
+    )
+    assert (
+        verify_proof_package(
+            accepted.package_dir,
+            lake=str(lake),
+            mode="lean",
+        )
+        == 0
+    )
+
+
+def test_model_call_budget_fails_before_unbudgeted_review(tmp_path: Path) -> None:
+    manifest, omp, lake = _fixture(tmp_path)
+
+    with pytest.raises(ProofBuilderError, match="model-call budget exhausted"):
+        build_proof_package(
+            manifest,
+            omp=str(omp),
+            lake=str(lake),
+            max_model_calls=1,
+        )
+
+
+def test_cli_exposes_dry_run_status_and_structured_verification(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    manifest, omp, lake = _fixture(tmp_path)
+    assert (
+        main(
+            [
+                "proof-builder",
+                "build",
+                "--manifest",
+                str(manifest),
+                "--dry-run",
+                "--format",
+                "json",
+                "--semantic-review-model",
+                "provider/reviewer",
+            ]
+        )
+        == 0
+    )
+    assert '"fallback_policy": "disabled"' in capsys.readouterr().out
+    package = build_proof_package(manifest, omp=str(omp), lake=str(lake)).package_dir
+    assert (
+        main(
+            [
+                "proof-builder",
+                "status",
+                "--package",
+                str(package),
+                "--format",
+                "json",
+            ]
+        )
+        == 0
+    )
+    assert '"ledger": "valid"' in capsys.readouterr().out
+    assert (
+        main(
+            [
+                "proof-builder",
+                "verify",
+                "--package",
+                str(package),
+                "--checksums-only",
+                "--format",
+                "json",
+            ]
+        )
+        == 0
+    )
+    assert '"mode": "checksums"' in capsys.readouterr().out

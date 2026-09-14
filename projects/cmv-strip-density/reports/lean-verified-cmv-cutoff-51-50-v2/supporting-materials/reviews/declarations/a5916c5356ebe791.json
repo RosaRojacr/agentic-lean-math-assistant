@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.radius",
+  "domain_issues": [],
+  "informal_statement": "The core circle radius is reciprocal curvature.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f23d45618cc8f0a402155f6b0b9c9bed86df54007d8b97c4f4027753ebfcd373",
+  "symbol_mismatches": []
+}

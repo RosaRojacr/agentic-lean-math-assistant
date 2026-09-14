@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "Weighted area of the four-arc carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad43970e4ac79b935baed41701092f4d901053e35bb88583dcbd5a9003db13a3",
+  "symbol_mismatches": []
+}

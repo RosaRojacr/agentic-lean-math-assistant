@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap",
+  "domain_issues": [],
+  "informal_statement": "The perimeter difference along a selected equal-area root function.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e8643a1549a791c31f1d0a91f7cb9b302d6832ce9c0d1d8e354d9c3e22351fcb",
+  "symbol_mismatches": []
+}

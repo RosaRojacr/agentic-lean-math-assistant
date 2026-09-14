@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The exposed right circle trace restricted to the strip.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "828cebab0c56e67a2a3cfaae9e912a8a76f497287dcea6b589e1a22a40edd616",
+  "symbol_mismatches": []
+}

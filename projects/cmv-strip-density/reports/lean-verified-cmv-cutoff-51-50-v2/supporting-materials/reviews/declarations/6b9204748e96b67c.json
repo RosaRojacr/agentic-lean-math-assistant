@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.center",
+  "domain_issues": [],
+  "informal_statement": "The circle center for the chosen cap placement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "58a018a3af71f1eb6c5aebb7ee395b60aab79f7b55a9d384d43694baace0d346",
+  "symbol_mismatches": []
+}

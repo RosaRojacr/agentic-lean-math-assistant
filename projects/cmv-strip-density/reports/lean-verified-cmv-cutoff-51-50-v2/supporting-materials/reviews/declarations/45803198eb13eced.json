@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideCap",
+  "domain_issues": [],
+  "informal_statement": "The reference circular cap whose two translated halves form the side regions.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "62a5fb2c6003ebc71ae1cea156d819929dd2061bdfd35d03ac33c3bf896e8fd0",
+  "symbol_mismatches": []
+}

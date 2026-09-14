@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThreePerimeter_centered_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Centered enclosure for type-(iii) perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "716e11bc278bf7afe71f82cb84a51dd8766c11970a07ccc39643388de278cc03",
+  "symbol_mismatches": []
+}

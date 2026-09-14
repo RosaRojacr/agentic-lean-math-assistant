@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capParam",
+  "domain_issues": [],
+  "informal_statement": "Arclength-scaled parametrization of a circular cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d80d6cd5283176fe8b29770f039d1135a8892539144575a4bc1d9962ad427168",
+  "symbol_mismatches": []
+}

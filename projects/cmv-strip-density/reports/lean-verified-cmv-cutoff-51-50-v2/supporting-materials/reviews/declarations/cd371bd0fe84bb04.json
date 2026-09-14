@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.reduced",
+  "domain_issues": [],
+  "informal_statement": "The equal-area residual expressed in the five centered affine variables.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ccf5bbc3e7c269d91f270f90b97e975e0915b24935827f4200f4750d122e6b7c",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.sin_alpha_pos",
+  "domain_issues": [],
+  "informal_statement": "The candidate's exterior angle has positive sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b92e14d3743fcaa1d6c447d96c6334ba3f5f129152aa26ff47b97d6fd8de2e28",
+  "symbol_mismatches": []
+}

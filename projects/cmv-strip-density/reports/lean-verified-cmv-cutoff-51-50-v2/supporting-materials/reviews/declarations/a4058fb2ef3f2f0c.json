@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap_center",
+  "domain_issues": [],
+  "informal_statement": "The constructed upper cap has the prescribed upper-circle center.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1057a7a30ad6e7558c1c0e586fc0147d20f1fc01e6c3e508acda901e55191c4c",
+  "symbol_mismatches": []
+}

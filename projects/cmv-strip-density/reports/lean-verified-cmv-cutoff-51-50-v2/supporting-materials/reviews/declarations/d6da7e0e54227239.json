@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeThreeFold_neg_on_slab",
+  "domain_issues": [],
+  "informal_statement": "K3 is strictly negative throughout the first type-(iii) slab.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "708577dd88ded1a5fe8468072b9f381b014a4ba74d97e65eac8e88ea179dff0e",
+  "symbol_mismatches": []
+}

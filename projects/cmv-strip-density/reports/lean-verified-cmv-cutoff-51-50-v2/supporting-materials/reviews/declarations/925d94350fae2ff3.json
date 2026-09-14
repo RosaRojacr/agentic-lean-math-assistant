@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.exact_euclidean_bottomSegmentCarrier_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean bottom segment has Hausdorff measure equal to bottomChord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "56949577898a4e9f1638a1a8bab2c43a8263ea9e6cf0976fce47fbff56b3fe00",
+  "symbol_mismatches": []
+}

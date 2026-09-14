@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.neg",
+  "domain_issues": [],
+  "informal_statement": "Interval negation with reversed endpoints.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "81fd6f63aa66c1f67c60e066b58e12cde99767a33f0cf5e8a79a120837332892",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_semicircle_scaled",
+  "domain_issues": [],
+  "informal_statement": "The corresponding integral for a circle of arbitrary positive radius.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe66bbeed922271b7cf0e4043f58e6b4f6651310c0d02aa776383ac42b18240d",
+  "symbol_mismatches": []
+}

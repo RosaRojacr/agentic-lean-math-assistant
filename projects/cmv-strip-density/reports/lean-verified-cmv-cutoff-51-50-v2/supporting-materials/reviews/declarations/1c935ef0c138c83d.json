@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacement_perimeter_cap_components",
+  "domain_issues": [],
+  "informal_statement": "Replacement perimeter equals core arc length plus lambda c L(2X) plus c.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad5283b2c2158e01ae2eb9db43ef15a8cb068a20feefa5923311c31d1fd30f36",
+  "symbol_mismatches": []
+}

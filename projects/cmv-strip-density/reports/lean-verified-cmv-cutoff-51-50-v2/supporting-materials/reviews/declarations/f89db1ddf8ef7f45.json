@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.weightedArea_components",
+  "domain_issues": [],
+  "informal_statement": "Candidate area is core area plus twice lambda times one cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "654554fba4e2f4847eae4f853550061afa29cf158da02de52109cffacefd702e",
+  "symbol_mismatches": []
+}

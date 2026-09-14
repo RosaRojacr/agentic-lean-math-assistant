@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.InRetainedSuffix",
+  "domain_issues": [],
+  "informal_statement": "The closed certificate density interval [51/50,9/7].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "18acd275369860c6ce3970cef1307119f694180bde02eaaf9f16412e8cd68698",
+  "symbol_mismatches": []
+}

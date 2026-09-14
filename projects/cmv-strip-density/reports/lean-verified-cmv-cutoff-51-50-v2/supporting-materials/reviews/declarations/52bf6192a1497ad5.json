@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.realContains_sqrt",
+  "domain_issues": [],
+  "informal_statement": "Certified nonnegative square bounds enclose a real square root.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "78d08ac2e456c76c8cc84e056f4a63de293d6015fbff06b8f125a80a09ec3dd5",
+  "symbol_mismatches": []
+}

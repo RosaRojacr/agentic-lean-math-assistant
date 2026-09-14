@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerSin_pos",
+  "domain_issues": [],
+  "informal_statement": "The inner angle has positive sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "88694b992a38f1dff3c67f32d082f4eb742c98f01874e62941887bfa3c13f04d",
+  "symbol_mismatches": []
+}

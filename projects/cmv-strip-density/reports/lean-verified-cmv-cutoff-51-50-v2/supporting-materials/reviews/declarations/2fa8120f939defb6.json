@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment.euclideanLength",
+  "domain_issues": [],
+  "informal_statement": "The segment's Euclidean length parameter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c965c7e2ff7089171e9318c88e3733eb9629da0051af6a9aad082bf1ad5a5aef",
+  "symbol_mismatches": []
+}

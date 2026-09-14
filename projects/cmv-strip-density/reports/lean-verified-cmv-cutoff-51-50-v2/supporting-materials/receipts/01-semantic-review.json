@@ -1,0 +1,23 @@
+{
+  "attempt": 1,
+  "command": [
+    "omp",
+    "--mode=text",
+    "--print",
+    "--no-session",
+    "--auto-approve",
+    "--max-time=21600",
+    "--cwd=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v2",
+    "--tools=read,grep,glob,bash,write",
+    "--model=openai-codex/gpt-5.6-terra",
+    "--thinking=medium",
+    "@/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v2/supporting-materials/prompts/01-semantic-review.md"
+  ],
+  "empty_output_retries": 1,
+  "handoff": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v2/supporting-materials/reviews/reviewer-01.json",
+  "invocations": [],
+  "role_id": "proof-builder-semantic-review",
+  "schema_version": 1,
+  "started_at": "2026-09-14T09:16:17Z",
+  "status": "running"
+}

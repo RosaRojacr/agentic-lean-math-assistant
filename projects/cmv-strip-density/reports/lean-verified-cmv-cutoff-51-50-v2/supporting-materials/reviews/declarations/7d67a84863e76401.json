@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.cap_replacement_preserves_area",
+  "domain_issues": [],
+  "informal_statement": "The cap replacement has exactly the candidate's weighted area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "40dbfacc980c0caa8be7bb02e41318ad70f3b454256d042f4cd60d664125314b",
+  "symbol_mismatches": []
+}

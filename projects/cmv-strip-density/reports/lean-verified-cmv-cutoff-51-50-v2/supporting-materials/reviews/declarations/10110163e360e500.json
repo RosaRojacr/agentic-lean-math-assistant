@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.G",
+  "domain_issues": [],
+  "informal_statement": "The positively scaled perimeter-gap residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cd83bee785b1a55d445030d234df204752ee92464928a982e6215564d1ecad3b",
+  "symbol_mismatches": []
+}

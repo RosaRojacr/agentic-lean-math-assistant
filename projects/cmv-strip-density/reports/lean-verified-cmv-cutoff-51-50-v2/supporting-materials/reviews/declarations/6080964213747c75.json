@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThreeFoldBox",
+  "domain_issues": [],
+  "informal_statement": "Interval expression for K3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "134abfc2384eaab1be42cb464447703ca4b8c8946a097fc0f4846639ef17f9e4",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourFold",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) stationary-fold numerator K4.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e492724315b735482cab607f768694fcd028864cb336800b7469d841099293ee",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.Conditions.typeThreeEqualArea_existsUnique_in_slab",
+  "domain_issues": [],
+  "informal_statement": "At the stationary type-(iv) area, the type-(iii) slab contains a unique equal-area root.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "79c92a7e4df192f65dc043cccd8bea4a018e8826ba49c09591fd046f371a56f7",
+  "symbol_mismatches": []
+}

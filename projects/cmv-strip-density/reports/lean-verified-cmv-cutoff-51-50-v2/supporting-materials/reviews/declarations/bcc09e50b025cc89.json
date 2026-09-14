@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_deriv_pos",
+  "domain_issues": [],
+  "informal_statement": "The derivative of g is positive in the large-area branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4d597413573bb96cb2e13a079780c61d7a55d50fcebe5b68b68cbf58a0cbfa39",
+  "symbol_mismatches": []
+}

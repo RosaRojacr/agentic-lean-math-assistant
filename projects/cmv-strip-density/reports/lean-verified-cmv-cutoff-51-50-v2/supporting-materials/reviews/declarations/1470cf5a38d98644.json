@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.original_arc_eq_ell",
+  "domain_issues": [],
+  "informal_statement": "The normalized arc function at the candidate cap area equals ell(alpha).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b932d1e6553b24d46c1b0161df0040ebd64f34413f6c447a3da4b2b0f95c234a",
+  "symbol_mismatches": []
+}

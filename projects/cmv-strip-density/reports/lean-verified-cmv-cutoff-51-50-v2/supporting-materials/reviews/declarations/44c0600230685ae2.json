@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_sub_factor",
+  "domain_issues": [],
+  "informal_statement": "For r nonzero and arbitrary real s,t, the difference of radius-scaled circle points factors into a rotated exponential difference.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6c59e7f498e1352e21969a1c8084fa6600038a792db1172f4e5bd3b2836eece",
+  "symbol_mismatches": []
+}

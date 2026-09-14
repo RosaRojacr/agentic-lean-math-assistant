@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideArcComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean placement map for the complex type-(iii) side arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2d2b0ae6442b1aeb7779e0e2c761b53071a3b1948418645b546ba443dcc3b322",
+  "symbol_mismatches": []
+}

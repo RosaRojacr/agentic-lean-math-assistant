@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.leftCapCarrier",
+  "domain_issues": [],
+  "informal_statement": "The left circular segment attached to the core rectangle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2ca301cf56be587995c60fad814a6021c666b20d0f45e1fa3f2964b23f678cbc",
+  "symbol_mismatches": []
+}

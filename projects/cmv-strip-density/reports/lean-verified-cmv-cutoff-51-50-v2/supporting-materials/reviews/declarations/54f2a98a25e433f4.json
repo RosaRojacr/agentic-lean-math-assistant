@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C4Residual.reduced",
+  "domain_issues": [],
+  "informal_statement": "Type-(iv) incidence residual in centered density and angle errors.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6ad85092e6bdf9c53b20e583c6a631e4f162d95899defb77f3673f60e1415681",
+  "symbol_mismatches": []
+}

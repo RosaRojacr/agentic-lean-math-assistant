@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.weightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "Replacement perimeter includes side arcs, weighted upper arc, and lower chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0ec330da63b1183620a69c25b9b52f69e166e1fbc55093558ecffbfdc73ed619",
+  "symbol_mismatches": []
+}

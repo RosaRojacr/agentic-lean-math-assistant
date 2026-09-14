@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.rectangleCarrier",
+  "domain_issues": [],
+  "informal_statement": "The central rectangle of width c and height two.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5204ba429abcba2c9a7bfd26b44272d1068d5b57b8a97a88331831661e9408f9",
+  "symbol_mismatches": []
+}

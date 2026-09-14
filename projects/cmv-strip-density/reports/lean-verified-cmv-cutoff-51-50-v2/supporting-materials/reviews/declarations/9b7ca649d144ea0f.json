@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor.WeightedArea",
+  "domain_issues": [],
+  "informal_statement": "Weighted area evaluated according to the competitor constructor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d58b51a28690771d1b404e9048905bb6eae43f08f6798b27166b1234f3251f5e",
+  "symbol_mismatches": []
+}

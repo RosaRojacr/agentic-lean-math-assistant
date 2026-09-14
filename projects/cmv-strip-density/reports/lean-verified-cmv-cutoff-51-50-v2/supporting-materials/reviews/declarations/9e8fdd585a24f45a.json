@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_θOf",
+  "domain_issues": [],
+  "informal_statement": "Normalized area of the selected inverse angle equals the positive input.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "18eb44e54860ffad838e65be5e17f4d170f11530a4f7b414a16d834abbb9e2c1",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.isOpen_interiorCarrier",
+  "domain_issues": [],
+  "informal_statement": "The strict cap carrier is open.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ec8c11c26c05148d770698c167cdecd56869de41dc90864a365cf2514de87bc1",
+  "symbol_mismatches": []
+}

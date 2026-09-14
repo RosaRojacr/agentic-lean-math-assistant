@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.weightedPerimeter_components",
+  "domain_issues": [],
+  "informal_statement": "Candidate perimeter is core arc length plus 2 lambda c ell(alpha).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d02953cec6a51d470b1b940fa2318bbd5c86354d0e420d179322c86356c9434a",
+  "symbol_mismatches": []
+}

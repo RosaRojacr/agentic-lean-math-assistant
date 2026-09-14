@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.N4",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) area numerator before its factor two.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "471118e366d83932c15b82b181a3387515c42d96f12d08eec3d20f86b701eec8",
+  "symbol_mismatches": []
+}

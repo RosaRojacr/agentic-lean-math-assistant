@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeThreeFold_cell_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Exact enclosure of K3 over the first compact box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c9da53af261130db3061bf11c0e74ee8196fae038a2277ad282922335d64dc0a",
+  "symbol_mismatches": []
+}

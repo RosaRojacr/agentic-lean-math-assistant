@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.oppositeFace_zero",
+  "domain_issues": [],
+  "informal_statement": "If a <= b and f is continuous on [a,b] with f(a) <= 0 <= f(b), then f has a zero in the closed interval [a,b]; endpoint zeros and a = b are allowed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "77378bc472ea0851732650cda76cddbb51de35a2f8573fa992dd84ae00b26c15",
+  "symbol_mismatches": []
+}

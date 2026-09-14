@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_xstar",
+  "domain_issues": [],
+  "informal_statement": "The inverse angle at Xstar is the selected root angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5f96bbbf1ba25c54aa03e1adcc89a5374c79ae31eab08da194eece7875964d2e",
+  "symbol_mismatches": []
+}

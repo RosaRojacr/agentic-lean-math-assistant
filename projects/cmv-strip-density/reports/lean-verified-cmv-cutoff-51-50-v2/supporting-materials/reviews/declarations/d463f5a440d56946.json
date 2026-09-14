@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.D3",
+  "domain_issues": [],
+  "informal_statement": "Angular checker expression for type-(iii) displacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "68fc1a2e05e1a65f1772f92a4660582f4e3c321b287cc3594448b912c6e7c624",
+  "symbol_mismatches": []
+}

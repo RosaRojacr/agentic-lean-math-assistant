@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeFourArea_centered_enclosure",
+  "domain_issues": [],
+  "informal_statement": "A centered value and derivative enclosure bound the type-(iv) area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c97a83974bdea22e535e6c42e2259805e5f45e9f57a2175a11ade991b773562",
+  "symbol_mismatches": []
+}

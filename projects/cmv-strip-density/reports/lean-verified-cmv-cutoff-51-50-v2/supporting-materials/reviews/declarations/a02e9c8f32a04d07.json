@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.affine_branches",
+  "domain_issues": [],
+  "informal_statement": "All four right-prototype angle predictors stay on the checked principal branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9a77fd11c6c2c0e0a916f823adc4aea4c608cadccacf0dbe2100c6ac6d1bce78",
+  "symbol_mismatches": []
+}

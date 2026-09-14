@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capParam_image_Icc_eq_arcTrace",
+  "domain_issues": [],
+  "informal_statement": "The full cap parameter interval traces exactly the cap arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f412e9294ab946fde4ef494447fa75b0b57b0600c2bd61007639df1bb35c0e9e",
+  "symbol_mismatches": []
+}

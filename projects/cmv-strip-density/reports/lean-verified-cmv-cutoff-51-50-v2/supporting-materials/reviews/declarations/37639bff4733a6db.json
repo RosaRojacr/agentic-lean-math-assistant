@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea",
+  "domain_issues": [],
+  "informal_statement": "The exact scalar type-(iii) weighted area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63d13d5879252e16ac6f53a2d4449b4f511e353d6016e98158793484dcfaa8f7",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_partition_polygon_lower",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, 0 < theta < pi and positive natural N, the N-edge inscribed polygon gives the Hausdorff lower bound N(2r sin(theta/N)).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4dc7fcd936b6c56a4643f00c8d67c38ce24d6351f625a8873960fc070d61a446",
+  "symbol_mismatches": []
+}

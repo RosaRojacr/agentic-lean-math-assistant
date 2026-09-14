@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.D4",
+  "domain_issues": [],
+  "informal_statement": "Angular checker expression for type-(iv) displacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b20a244421f72357884724349d2944bd92ce6795e69082a93fe34e5d606f3a73",
+  "symbol_mismatches": []
+}

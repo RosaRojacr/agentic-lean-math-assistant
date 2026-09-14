@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C3Residual.reduced",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) incidence residual in centered coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4b58f212985cabd9417414d5466594d9a780e38a8e0c1797d384042e1674c68b",
+  "symbol_mismatches": []
+}

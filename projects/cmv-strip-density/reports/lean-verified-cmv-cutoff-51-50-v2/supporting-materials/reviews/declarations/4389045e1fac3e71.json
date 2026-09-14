@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.reducedFoldGap",
+  "domain_issues": [],
+  "informal_statement": "The radical expression obtained after equal-area and fold elimination.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "90c9f564cc40a2e05814e95c52b8ea113ecc45335e828ff2a54c8e9f2caf08b3",
+  "symbol_mismatches": []
+}

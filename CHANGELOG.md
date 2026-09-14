@@ -2,6 +2,38 @@
 
 ## Unreleased
 
+## 1.3.0 — 2026-09-14
+
+### Proof-builder workflow
+
+- Made author and semantic-review models independently selectable from the
+  manifest or CLI. Every effective route, provider, model revision, reasoning
+  setting, review profile, call budget, and disabled fallback policy is retained
+  in package provenance; Astra remains the recommended strict-profile reviewer.
+- Added strict, standard, and economical review profiles plus an enforceable
+  model-call ceiling. Semantic author and reviewer invocations remain isolated
+  regardless of whether they use the same route.
+- Added preflight validation and dry-run planning for tools, output collisions,
+  root declarations, import closure, exact Lean contracts, model routes, stages,
+  and maximum model calls.
+- Added interactive or scripted semantic-finding disposition, targeted resume
+  from Lean export, explanation, semantic review, PDF rendering, or checksum
+  generation, and concise remediation summaries for failed reviews.
+- Added semantic package comparison, kernel-backed declaration discovery with
+  exact types and collected axioms, explicitly unverified PDF previews,
+  human-readable package health, and text or JSON CI verification modes,
+  including checksums-only, Lean-only, quiet, and network-isolated execution.
+
+### Published example
+
+- Published version 2 of the Lean-verified CMV 51/50 proof package as the
+  end-to-end Proof Builder example, including its main proof, complete lemma
+  supplement, adversarial semantic audit, executable Lean closure, model
+  provenance, receipts, and SHA-256 ledger.
+- Rewrote the README around the trust model and current Proof Builder workflow,
+  with direct links to the version-2 `MainProof.pdf`, `LemmaSupplement.pdf`, and
+  `SemanticAudit.pdf` outputs.
+
 ## 1.2.0 — 2026-09-14
 
 ### Runtime resilience

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.exact_euclidean_leftArcTrace_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The actual Euclidean left side trace has length R gamma.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9b484f3710815971495ad59b2a292d470a94ac2f3cadc3edb96b8870979733b3",
+  "symbol_mismatches": []
+}

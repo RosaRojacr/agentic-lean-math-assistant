@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.rootMap",
+  "domain_issues": [],
+  "informal_statement": "The four-dimensional map whose zero solves the comparison equations.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bbd8ee6a24e6b32afa58618b3b175c83e9f669c90a7f1ad7d90339051f50892f",
+  "symbol_mismatches": []
+}

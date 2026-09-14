@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedArea",
+  "domain_issues": [],
+  "informal_statement": "The realized admissible competitor has the type-(iii) scalar area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ac19f7d26c088671b4dd0552d598cd1124637e2815ea1238d0d5daf917f4ca9b",
+  "symbol_mismatches": []
+}

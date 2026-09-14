@@ -1,0 +1,13 @@
+Created `supporting-materials/reviews/author-05.json`.
+
+Checks passed:
+
+- Strict JSON schema and field validation.
+- 850 non-generated declarations classified exactly once.
+- Both configured generated families described exactly once.
+- All generated representatives exist in the inventory.
+- Main manuscript begins with an allowed section heading.
+- Supplement begins with prose-only introduction.
+- No forbidden title, banner, raw repository URL, or supplement heading in reader-facing manuscript fields.
+- Root declaration citation present.
+- Completion line emitted on stdout.

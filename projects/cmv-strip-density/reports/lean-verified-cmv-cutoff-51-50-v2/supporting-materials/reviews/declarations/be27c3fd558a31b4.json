@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C3Residual.reduced_hasDerivAt_rho",
+  "domain_issues": [],
+  "informal_statement": "The recorded rho derivative of C3 is exact.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "78960ca166459039fcd13d2b254e90bc61da69bb828a41a82ae24260c24dc81e",
+  "symbol_mismatches": []
+}

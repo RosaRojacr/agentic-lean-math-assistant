@@ -1,0 +1,1 @@
+author-02.json written and contract checks passed. Classified both specified composition declarations as `main`; declaration, generated-family, citation, and JSON-schema validation passed.

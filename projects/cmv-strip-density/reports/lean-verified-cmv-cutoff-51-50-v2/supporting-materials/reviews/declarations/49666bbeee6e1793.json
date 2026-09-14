@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.lambda_in_retainedSuffix",
+  "domain_issues": [],
+  "informal_statement": "Every right-prototype density belongs to the retained certificate interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d64b377e3281e7e0b8cb140bc4c8494ca73e2578a3420d0547192d8dcd31aa70",
+  "symbol_mismatches": []
+}

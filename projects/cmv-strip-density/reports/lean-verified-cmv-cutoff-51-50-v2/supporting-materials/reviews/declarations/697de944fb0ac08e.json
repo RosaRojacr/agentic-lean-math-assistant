@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.triangular_root",
+  "domain_issues": [],
+  "informal_statement": "Every first-prototype density slice has a simultaneous checker-equation root in its box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "84268649affbe380ad5f3767cb23b92f1867804e119cb1a35ce8cf1fd4dbb9a5",
+  "symbol_mismatches": []
+}

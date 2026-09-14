@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cmv_type_four_not_minimizing",
+  "domain_issues": [],
+  "informal_statement": "Candidates satisfying the formal CMV hypotheses are nonminimal for lambda at least 1.2581840884.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The corrected author explanation states the same replacement-minus-candidate identity and strictly negative sign used in the Lean proof; the threshold, candidate hypotheses, and nonminimality conclusion agree.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6d0ea3949f7dbdcb13da7efae9522f57a17102179e82571502380037275e9220",
+  "symbol_mismatches": []
+}

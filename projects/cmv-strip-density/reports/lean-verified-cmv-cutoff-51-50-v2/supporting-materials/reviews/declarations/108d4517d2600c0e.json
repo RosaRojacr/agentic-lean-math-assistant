@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair",
+  "domain_issues": [],
+  "informal_statement": "One stationary pair with negative type-(iii) fold and negative perimeter gap excludes every candidate at that density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6670f69ae0dd1a579233b44583ff3b5ab90f13ac210ff1ddaabbb1088c5b5e2",
+  "symbol_mismatches": []
+}

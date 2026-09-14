@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C4Residual.derivXi",
+  "domain_issues": [],
+  "informal_statement": "Explicit xi derivative of the type-(iv) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ed53afb5e433a1f19562ef174d9cbdc3d2d47f108aac2160d30aaf8712b1aa82",
+  "symbol_mismatches": []
+}

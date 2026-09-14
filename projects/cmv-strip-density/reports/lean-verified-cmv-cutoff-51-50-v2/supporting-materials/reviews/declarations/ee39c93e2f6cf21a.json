@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "The equal-area perimeter gap has derivative (r(t)-t)A4'(t).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "42f42f4f683c9b8ff6e876958c9ae3b87d6bfd1ebf63072c7e612401d7b5ee93",
+  "symbol_mismatches": []
+}

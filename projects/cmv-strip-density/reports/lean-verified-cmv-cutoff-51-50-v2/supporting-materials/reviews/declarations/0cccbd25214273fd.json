@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.derivEta",
+  "domain_issues": [],
+  "informal_statement": "The explicit eta derivative of the equal-area residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3f40afdbac974dd2d7b928190653d4044cf2a42449bc6353b0884369f5086079",
+  "symbol_mismatches": []
+}

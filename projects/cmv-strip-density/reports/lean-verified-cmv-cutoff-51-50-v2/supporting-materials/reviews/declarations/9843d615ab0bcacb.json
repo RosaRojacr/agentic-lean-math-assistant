@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.frontier_carrier_subset_boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "Every frontier point lies on one of the four arcs.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d72e7b21e3528564863313aa2366a2e4806e01c00a4772872911d424abf3cc5",
+  "symbol_mismatches": []
+}

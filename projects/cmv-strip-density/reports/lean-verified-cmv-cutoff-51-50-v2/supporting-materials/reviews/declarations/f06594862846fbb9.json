@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeFold",
+  "domain_issues": [],
+  "informal_statement": "The explicit numerator K3 controlling the type-(iii) area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "de466d8508a0def3484419e5a98402f15940017ff9d116432fb67c21c1d22c86",
+  "symbol_mismatches": []
+}

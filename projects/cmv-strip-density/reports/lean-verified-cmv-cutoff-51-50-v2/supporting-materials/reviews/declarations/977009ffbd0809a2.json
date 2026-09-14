@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "image_Ico_eq_image_Icc_diff_endpoint",
+  "domain_issues": [],
+  "informal_statement": "For an injective map, the half-open interval image removes exactly the final endpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c4fb0e64c0405d8f9fa3cb2429d9a9bc01ac95be8aba1e08560d1aeae3f939e9",
+  "symbol_mismatches": []
+}

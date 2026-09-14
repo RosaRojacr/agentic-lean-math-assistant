@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cos_two_mul_sin_sq",
+  "domain_issues": [],
+  "informal_statement": "The double-angle cosine identity in sine-square form.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "457c64175a22d2778423d351b2d6d75e23c9d3a388b2439675e854dd25957517",
+  "symbol_mismatches": []
+}

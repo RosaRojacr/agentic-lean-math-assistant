@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.B4",
+  "domain_issues": [],
+  "informal_statement": "Angular checker expression for the type-(iv) angle term.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4571608d53f0160a6715950590485e849c7587509687cead6580411b7968f1d6",
+  "symbol_mismatches": []
+}

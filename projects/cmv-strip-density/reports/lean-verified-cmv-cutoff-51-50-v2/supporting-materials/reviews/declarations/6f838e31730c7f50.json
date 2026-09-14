@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.upperCap",
+  "domain_issues": [],
+  "informal_statement": "The upper exterior cap of a four-arc assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3f084f0dbec6bee8992e556fe2ca304aae5eb8981815636bf15454a3b8e613f9",
+  "symbol_mismatches": []
+}

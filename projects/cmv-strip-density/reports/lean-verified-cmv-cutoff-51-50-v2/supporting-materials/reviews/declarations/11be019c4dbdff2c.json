@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capReplacementRegion",
+  "domain_issues": [],
+  "informal_statement": "The cap replacement as an admissible competitor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c2d6906ef5b69db6b314e7ac4d82d54432092c90cdf06b81f1a87bed1432f7c3",
+  "symbol_mismatches": []
+}

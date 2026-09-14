@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_deriv_pos",
+  "domain_issues": [],
+  "informal_statement": "The normalized cap-area derivative is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9b40e28d2efa8873c77b49eab27397ba54c7d20988e9930377fea092b5b1fc66",
+  "symbol_mismatches": []
+}

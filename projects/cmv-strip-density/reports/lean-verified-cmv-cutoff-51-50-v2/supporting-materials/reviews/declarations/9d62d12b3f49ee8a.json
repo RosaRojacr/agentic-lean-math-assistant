@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_capTrace_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The actual Euclidean cap trace has length 2Rtheta.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8a0602f46d010a0d38a019d5e1052cfe4c5d69fc3db5988eaac8c5dbcc5c5e1c",
+  "symbol_mismatches": []
+}

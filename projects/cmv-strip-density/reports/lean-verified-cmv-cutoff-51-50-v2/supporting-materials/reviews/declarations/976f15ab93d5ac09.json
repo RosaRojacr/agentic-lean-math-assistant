@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.CellCertificate",
+  "domain_issues": [],
+  "informal_statement": "Primitive strict face signs, branch bounds, density jump, negative K3, and negative G for a brick.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c5e1550765346522815e726fec39295f689896e3151daad7810df51dd4df337f",
+  "symbol_mismatches": []
+}

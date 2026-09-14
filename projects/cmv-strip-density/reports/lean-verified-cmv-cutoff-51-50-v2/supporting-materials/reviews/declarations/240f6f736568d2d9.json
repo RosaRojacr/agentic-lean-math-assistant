@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.sinTaylor27",
+  "domain_issues": [],
+  "informal_statement": "The degree-27 Taylor polynomial for sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cad29fad0ca5f0f5a021df9a703aaac6f17eda67757816193f0541445c680252",
+  "symbol_mismatches": []
+}

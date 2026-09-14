@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_leftCoreParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The left core parameter image has length 2R arcsin(h).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0211c9e8b0941bc0bbeb3bd977afe28d78688025726aac98a4d738bf7f180e9",
+  "symbol_mismatches": []
+}

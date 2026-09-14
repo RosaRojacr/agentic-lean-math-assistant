@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pi_div_eight_pos",
+  "domain_issues": [],
+  "informal_statement": "Pi/8 is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "69407ed5917d0d3fc3922aeeb807cf1b44f3f653f3ebf198c99ff7ac4ce4eba5",
+  "symbol_mismatches": []
+}

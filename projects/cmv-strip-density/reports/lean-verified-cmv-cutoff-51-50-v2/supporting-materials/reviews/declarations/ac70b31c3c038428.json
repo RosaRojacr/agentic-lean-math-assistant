@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.radius_pos",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) radius is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a610fc617d9a92f1154e4b9627bb16a0d909464945f9e22ccb900c975acb2c7d",
+  "symbol_mismatches": []
+}

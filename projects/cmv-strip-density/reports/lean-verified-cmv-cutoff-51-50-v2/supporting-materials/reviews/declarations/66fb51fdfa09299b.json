@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.cosTaylor26",
+  "domain_issues": [],
+  "informal_statement": "The degree-26 Taylor polynomial for cosine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "46d8e337f6347f1173e5244107f4620ec9e73c77dbe96ffed5fdcf32a93ba782",
+  "symbol_mismatches": []
+}

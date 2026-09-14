@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "The left disk segment inside the strip.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7a6b1fb5a536fc1614b926138e279c79369045c2b292e00c145e1a0e699dbced",
+  "symbol_mismatches": []
+}

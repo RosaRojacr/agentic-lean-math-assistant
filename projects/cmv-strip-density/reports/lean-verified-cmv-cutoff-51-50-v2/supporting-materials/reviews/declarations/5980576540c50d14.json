@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "isometry_unitCircleArcRotation",
+  "domain_issues": [],
+  "informal_statement": "For every real r,m, the map z maps to z exp(i m/r) is an isometry of the complex plane.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0390b164e94132c53e908a7960b31f68dc786e7272a9a9f6482fa79cade88362",
+  "symbol_mismatches": []
+}

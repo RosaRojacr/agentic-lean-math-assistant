@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.realContains_cos_interval",
+  "domain_issues": [],
+  "informal_statement": "Cosine endpoint enclosures extend to the recorded interval of arguments.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eedd5e166794798d683fb5483e2b9b97111a653338c01d010cd7592bb93d98f1",
+  "symbol_mismatches": []
+}

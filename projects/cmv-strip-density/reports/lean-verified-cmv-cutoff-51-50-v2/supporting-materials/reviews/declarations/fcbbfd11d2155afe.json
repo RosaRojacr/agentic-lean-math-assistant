@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThree_area_perimeter_atom_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Soundness of the type-(iii) area and perimeter boxes.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6ef0ef761987f79259cc0d419f8a32fbed4691f7270b539e416653bb41f839b",
+  "symbol_mismatches": []
+}

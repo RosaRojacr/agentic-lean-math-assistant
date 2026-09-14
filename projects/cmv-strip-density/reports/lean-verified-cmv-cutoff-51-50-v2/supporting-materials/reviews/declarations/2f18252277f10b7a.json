@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.B3",
+  "domain_issues": [],
+  "informal_statement": "First-prototype complete type-(iii) angle expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fbc773e40d79a1d6d31822cdbd56d9a9607c6a7f8abc1ba0f47027df7b631eae",
+  "symbol_mismatches": []
+}

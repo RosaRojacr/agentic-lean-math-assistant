@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.isClosed_carrier",
+  "domain_issues": [],
+  "informal_statement": "The replacement carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7d390bd6162828599bf858ab60165e80e65e5c04a4677e586ff23aba97d10394",
+  "symbol_mismatches": []
+}

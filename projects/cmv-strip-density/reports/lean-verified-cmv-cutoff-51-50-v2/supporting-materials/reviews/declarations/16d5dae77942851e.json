@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.sinTaylor27Interval",
+  "domain_issues": [],
+  "informal_statement": "A rational sine enclosure built from the degree-27 polynomial and a remainder bound.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9588051f8a2ff67152b4c9b894d6f120c8732ea5b8195eebd297f8f7e92a5437",
+  "symbol_mismatches": []
+}

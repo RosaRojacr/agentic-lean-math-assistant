@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "Union of the two side arcs, upper exterior arc, and bottom segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "77ded3af26dffe034b843162e20202cd8e868c69330a0cb95819f9e3b2a0bbf5",
+  "symbol_mismatches": []
+}

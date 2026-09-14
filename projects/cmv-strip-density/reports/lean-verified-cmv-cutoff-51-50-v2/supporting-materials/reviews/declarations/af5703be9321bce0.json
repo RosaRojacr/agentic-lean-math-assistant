@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.nsmul",
+  "domain_issues": [],
+  "informal_statement": "Exact scaling of a rational interval by any nonnegative rational number, including zero and 1/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "aee3f878b71376e5cd4779ff5df12d1e44522ca38190dd8feca337d507ede104",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.E",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's denominator-cleared equal-area residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "473eec5a0b00f868ac4f7ad090edf435fe47f07ca5bd2b59758512636541fbfa",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.upperCap",
+  "domain_issues": [],
+  "informal_statement": "The replacement's upper cap on the core chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b30d86506333a29d0fea0a0c213d5ab5e404eb8902dd90c6019d57dad3b8f56f",
+  "symbol_mismatches": []
+}

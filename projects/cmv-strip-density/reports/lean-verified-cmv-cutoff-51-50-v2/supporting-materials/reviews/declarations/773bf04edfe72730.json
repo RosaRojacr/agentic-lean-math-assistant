@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_lt_fold",
+  "domain_issues": [],
+  "informal_statement": "The stationary fold is the strict maximum of the equal-area perimeter gap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1a0b26ad0e4af7fdd933118930486f792fc517471c75bd1495b190e7f97f3420",
+  "symbol_mismatches": []
+}

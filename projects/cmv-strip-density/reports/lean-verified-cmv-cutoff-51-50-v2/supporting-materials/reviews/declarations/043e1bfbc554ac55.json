@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.assembly",
+  "domain_issues": [],
+  "informal_statement": "The four-arc assembly determined by the candidate parameters.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ca67fddb2d167afab63544438387902bb645349ebfde9d83c7a2719a2277c941",
+  "symbol_mismatches": []
+}

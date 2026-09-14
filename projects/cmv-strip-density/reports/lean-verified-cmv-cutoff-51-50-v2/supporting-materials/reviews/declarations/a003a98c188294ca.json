@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.rootMap_continuous",
+  "domain_issues": [],
+  "informal_statement": "The exact checker root map is continuous for each fixed centered density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6092edc775a5fa26e9773ae9ff53a2555f68e09f5126315e8d8440fbed6260b3",
+  "symbol_mismatches": []
+}

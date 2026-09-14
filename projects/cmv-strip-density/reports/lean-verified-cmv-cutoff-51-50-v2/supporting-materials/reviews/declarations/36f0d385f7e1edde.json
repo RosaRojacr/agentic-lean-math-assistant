@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capArea",
+  "domain_issues": [],
+  "informal_statement": "Euclidean area of either original exterior cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eb6c25ab8d5e1e4d2ce589b98fc3af2d04e58bd682ad273d1b07834426ee23d0",
+  "symbol_mismatches": []
+}

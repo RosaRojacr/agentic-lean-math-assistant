@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreBoundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "Interval-pushforward measure on the right core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "33cbc13fa6fcd71207ac7e5dfb0579966744c8887bb1c9af1b95e6c688f55ea8",
+  "symbol_mismatches": []
+}

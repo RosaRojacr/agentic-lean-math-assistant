@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "three_cos_lt_of_θstar_lt",
+  "domain_issues": [],
+  "informal_statement": "An upper angle bound yields a lower bound on three times the root cosine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c9da56286228487769dd40657ed749a3741fda3b807926be4434af7975f1b3b8",
+  "symbol_mismatches": []
+}

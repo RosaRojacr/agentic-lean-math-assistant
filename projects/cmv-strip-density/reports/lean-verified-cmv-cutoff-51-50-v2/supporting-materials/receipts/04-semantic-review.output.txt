@@ -1,0 +1,6 @@
+Completed `supporting-materials/reviews/reviewer-04.json`.
+
+- Semantic relation: `equivalent` within the explicitly formalized model.
+- Reviewed records: 850 non-generated declarations; all declaration hashes match inventory.
+- Generated-family reviews: `CompactCells*.lean`, `MiddleFaceCell[0-9]*.lean`.
+- Identified publication-format defects in both manuscripts: prohibited title/credit-status banners; supplement introduction incorrectly headed.

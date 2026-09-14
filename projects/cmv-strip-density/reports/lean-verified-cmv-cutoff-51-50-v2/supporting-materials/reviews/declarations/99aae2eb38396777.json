@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "EuclideanPlane",
+  "domain_issues": [],
+  "informal_statement": "The coordinate product with its Euclidean L2 metric.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dfa2db26da624a2b5333b886cff8c9cd3151218ea8aa3e3cb39c78359b32470e",
+  "symbol_mismatches": []
+}

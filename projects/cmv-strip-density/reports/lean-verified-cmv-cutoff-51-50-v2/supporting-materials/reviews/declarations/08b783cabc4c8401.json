@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourAngle_eq_checker",
+  "domain_issues": [],
+  "informal_statement": "The analytic type-(iv) angle term agrees with the checker form.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6ea741d7af136e9d0263d84561c8171caafa7b1249aceaa9a355bce3a415957",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θstar_pos",
+  "domain_issues": [],
+  "informal_statement": "The selected root angle is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1d24d5264a96edc189b17b575a738900ce2888e0222ccbf2e0c850b185522fca",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "fourArc_frontier_weightedPerimeter_eq",
+  "domain_issues": [],
+  "informal_statement": "The component four-arc perimeter equals the canonical complete-frontier perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e95ee1864c7bc7d9bc3a3ec2659625a510c6cefccdafe0cd2efab0e2d93e1067",
+  "symbol_mismatches": []
+}

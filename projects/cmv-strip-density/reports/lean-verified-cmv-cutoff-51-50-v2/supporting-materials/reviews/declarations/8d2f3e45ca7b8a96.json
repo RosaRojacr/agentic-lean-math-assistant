@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.hasModeledCompetitor",
+  "domain_issues": [],
+  "informal_statement": "Every regular type-(iii) assembly has the required admissible realization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6010bc1b92d07ee7af37566e925a969f227d520e7144371bb334d772b94b8386",
+  "symbol_mismatches": []
+}

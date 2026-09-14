@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.lamMid",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's exact density midpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6872199d838a1fa3e543ff329eb7ed7979df53e9ab7df478a48be79baedaf0cf",
+  "symbol_mismatches": []
+}

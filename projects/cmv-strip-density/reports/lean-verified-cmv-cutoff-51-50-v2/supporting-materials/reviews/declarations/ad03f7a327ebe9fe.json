@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.reduced_hasDerivAt_sigma",
+  "domain_issues": [],
+  "informal_statement": "The recorded sigma derivative is exact.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bd919b6d5eb11263919e208acc2f1dc4dcb2acf50a28cc2e3a87fcc770f90e3b",
+  "symbol_mismatches": []
+}

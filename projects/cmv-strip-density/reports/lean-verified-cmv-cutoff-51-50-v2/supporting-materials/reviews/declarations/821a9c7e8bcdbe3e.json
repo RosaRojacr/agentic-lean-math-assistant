@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedLeftArcParam",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) left arc parameter in Euclidean L2 coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "51fbf9517aa10415de53dc106db635c5f70b9c39860ba75778e696cdebf2d6c3",
+  "symbol_mismatches": []
+}

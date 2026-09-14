@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.typeThreeArea_deriv_eq_K3",
+  "domain_issues": [],
+  "informal_statement": "The checker K3 divided by the positive curvature cube is the type-(iii) area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a51562aaac4e05b4f1f95d421868e79ec4eae70d59c9a31981d5897af5fec042",
+  "symbol_mismatches": []
+}

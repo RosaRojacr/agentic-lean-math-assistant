@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.positive_of_realContains",
+  "domain_issues": [],
+  "informal_statement": "A positive interval lower endpoint forces every enclosed value to be positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4196ef90c8a23949f2eeda7be784e128a7fc085f82c49c1113a0dbdd35e4d445",
+  "symbol_mismatches": []
+}

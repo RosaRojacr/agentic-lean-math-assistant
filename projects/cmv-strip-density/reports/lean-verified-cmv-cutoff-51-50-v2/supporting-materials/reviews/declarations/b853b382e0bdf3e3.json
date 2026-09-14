@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θstar_mem",
+  "domain_issues": [],
+  "informal_statement": "The selected root lies strictly between zero and pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c88631345f244802cc83acea97a1e4d6db39816cf66b6157c7b1a365c1b58e68",
+  "symbol_mismatches": []
+}

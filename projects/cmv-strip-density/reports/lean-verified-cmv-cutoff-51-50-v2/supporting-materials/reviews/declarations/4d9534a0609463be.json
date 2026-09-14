@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_dist",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, the chord distance between u_r(s) and u_r(t) is 2r times the absolute sine of (s-t)/(2r).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1c583965a8663dcd3d0483716b4801199d867b2ff4cbe96f04d4cbeb57ff9c08",
+  "symbol_mismatches": []
+}

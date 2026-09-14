@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "tendsto_cap_polygon_length",
+  "domain_issues": [],
+  "informal_statement": "For arbitrary real r and theta > 0, the sequence (n+1) 2r sin(theta/(n+1)) converges to 2r theta.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "32d7803e3d290677cdac6cd7bd331241d0a1e99888d3a8665e326de2ca241a11",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.tRadius",
+  "domain_issues": [],
+  "informal_statement": "Half the width of the brick's density interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "18f0ba106ace07af0a9a6397628ed7aba1c4508d8c6f08edfb081b20e3385643",
+  "symbol_mismatches": []
+}

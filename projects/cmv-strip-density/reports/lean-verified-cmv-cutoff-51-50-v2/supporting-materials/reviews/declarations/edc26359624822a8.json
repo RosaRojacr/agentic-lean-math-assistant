@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanJoinSet_finite",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean junction set is finite.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9539ffd4336468eab518f7e951c9dc4db7ee2d6bd08f0fa98bbda9dcf0817f38",
+  "symbol_mismatches": []
+}

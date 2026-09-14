@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreBoundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "Interval-pushforward measure on the left core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e243bfd8c440c79be3e701f3e1ba7f0b4af716d3ad6d1c3de2eb88023b1a30c8",
+  "symbol_mismatches": []
+}

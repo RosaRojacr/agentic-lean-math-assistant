@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThree_fold_atom_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Soundness of the type-(iii) fold interval assembled from atom bounds.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0e739ea56f950a43598c09273d8fde5874e105be082082bb67c5da1055a66a6",
+  "symbol_mismatches": []
+}

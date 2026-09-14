@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.realContains_mul",
+  "domain_issues": [],
+  "informal_statement": "The interval product encloses products of enclosed real values.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bcb27cff58a492c7470bc52a00dd315717a6bfbc49a464e152ee6b024b200dfd",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.endpoint_weightedArea_eq_typeFourArea",
+  "domain_issues": [],
+  "informal_statement": "The area identification also holds when h=1.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1d3c440482f713868366732790a87ef12add8058ecc71af2e6fb07df04bb3b83",
+  "symbol_mismatches": []
+}

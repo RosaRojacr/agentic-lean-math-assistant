@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.C4_eta_low_face_margin",
+  "domain_issues": [],
+  "informal_statement": "C4 is strictly negative on the first prototype's low eta face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9d228ca47508753791f14fd62b25ef0aa8eb7814e1715715afaf3fe27d1a441b",
+  "symbol_mismatches": []
+}

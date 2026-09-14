@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.interiorCarrier",
+  "domain_issues": [],
+  "informal_statement": "The corresponding strict disk and strict half-plane intersection.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d9986ab2dd520dfd41d6ccb99ca9878df085185d6c10c136685b43549b4c4dc1",
+  "symbol_mismatches": []
+}

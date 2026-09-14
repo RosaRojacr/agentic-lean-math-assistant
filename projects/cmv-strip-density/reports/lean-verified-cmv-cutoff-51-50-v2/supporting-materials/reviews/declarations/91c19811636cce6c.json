@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Conditions.RootProjection",
+  "domain_issues": [],
+  "informal_statement": "A checker zero together with its branch, box, and strict-sign information.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2f76fbe7f8dbd852f7dc66c768c04d395e099b30fab88a0cc5ace08e7978fcf4",
+  "symbol_mismatches": []
+}

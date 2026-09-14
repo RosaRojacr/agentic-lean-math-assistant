@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique_of_stationary_pair",
+  "domain_issues": [],
+  "informal_statement": "A negative-fold stationary equal-area anchor supplies a unique descending root at every modeled type-(iv) area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f368bc947db4d0b119fefc4c63c0de6d0d14cb14db7e5a28faa26c535eb880b8",
+  "symbol_mismatches": []
+}

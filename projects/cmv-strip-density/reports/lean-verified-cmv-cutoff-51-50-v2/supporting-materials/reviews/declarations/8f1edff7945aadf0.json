@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.E_rho_high_face_margin",
+  "domain_issues": [],
+  "informal_statement": "E is strictly positive on the high rho face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eb3eec8dea60a8df64d88b6b4837361d3d879b92fece643a52712269468a17a0",
+  "symbol_mismatches": []
+}

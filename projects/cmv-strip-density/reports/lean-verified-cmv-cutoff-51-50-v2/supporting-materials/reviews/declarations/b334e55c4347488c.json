@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_lt_pi_div_two_of_mem",
+  "domain_issues": [],
+  "informal_statement": "In the mixed-area interval, the original inverse angle is below pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80218f0a09a02137efcf79005b6fbcec3641c36ec9134e0575885f8ad1c23afb",
+  "symbol_mismatches": []
+}

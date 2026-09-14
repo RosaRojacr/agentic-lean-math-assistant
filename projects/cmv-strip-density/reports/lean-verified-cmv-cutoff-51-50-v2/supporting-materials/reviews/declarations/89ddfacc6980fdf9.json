@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_strictMonoOn",
+  "domain_issues": [],
+  "informal_statement": "The inverse cap-area angle is strictly increasing on positive inputs.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "27129f3095ed7521a354aa523bb8840a0881e0fcc6c3fb3346c9443b50265957",
+  "symbol_mismatches": []
+}

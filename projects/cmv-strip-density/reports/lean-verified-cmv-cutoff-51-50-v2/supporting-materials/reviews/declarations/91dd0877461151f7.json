@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.halfPiBox",
+  "domain_issues": [],
+  "informal_statement": "A rational interval enclosing pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b24b5a3000649c97c552eff6f175f59f2e5aa6602a533417871ec37dfc3c128c",
+  "symbol_mismatches": []
+}

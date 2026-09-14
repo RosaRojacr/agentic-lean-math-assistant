@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "continuous_realizedSegmentParam",
+  "domain_issues": [],
+  "informal_statement": "The realized segment parametrization is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5ba4505531fe6afcb59f3956aaf9fe6e352c8d17f3326d5e955e4afc3e17c5df",
+  "symbol_mismatches": []
+}

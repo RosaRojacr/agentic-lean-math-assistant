@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.cap_replacement_strictly_improves",
+  "domain_issues": [],
+  "informal_statement": "Cap replacement strictly lowers perimeter at the certified high-density threshold.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c953f49d8456f94f9248f042331d7c54782ee3366628a4a57c9db7cc82ecdd4a",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.exposedLowerChord_subset_carrier",
+  "domain_issues": [],
+  "informal_statement": "The exposed lower chord belongs to the replacement carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4d73b08bb97103964040bbdf24b1dbc10e728893bf174f22b32f933c62dcef7f",
+  "symbol_mismatches": []
+}

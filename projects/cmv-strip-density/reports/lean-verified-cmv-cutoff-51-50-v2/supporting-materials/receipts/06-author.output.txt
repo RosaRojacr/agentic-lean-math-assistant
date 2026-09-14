@@ -1,0 +1,8 @@
+author-06.json written and verified.
+
+- Strict JSON parses successfully.
+- All 850 non-generated declarations classified exactly once.
+- Both configured generated families included.
+- Corrected `cmv_type_four_not_minimizing` to state
+  \(P_{\mathrm{rep}}-P_{\mathrm{candidate}}=c(1-\lambda g(X))<0\).
+- No other package content changed.

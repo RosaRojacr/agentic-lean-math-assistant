@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedRightCoreParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The realized right parameter image equals the Euclidean right trace.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e28432904f0d4f1c849ed6ed56e30bdae00185a8e05f01ccceab8ef89d16f29b",
+  "symbol_mismatches": []
+}

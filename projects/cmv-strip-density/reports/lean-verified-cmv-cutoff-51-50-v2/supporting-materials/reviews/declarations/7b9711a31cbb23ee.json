@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.reduced_hasDerivAt_rho",
+  "domain_issues": [],
+  "informal_statement": "The recorded rho derivative is exact.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5cd6c45099afc8ddab65369fcdbbfab3f07c85f8b5c029f56ce626072c6d9e4f",
+  "symbol_mismatches": []
+}

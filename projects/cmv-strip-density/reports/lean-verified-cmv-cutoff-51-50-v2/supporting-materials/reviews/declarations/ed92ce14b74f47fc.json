@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The right core parameter interval traces exactly the right core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "78bb53ade5c270538e82ae914ea314e16857498de0ee3dfc73dde7468e65c773",
+  "symbol_mismatches": []
+}

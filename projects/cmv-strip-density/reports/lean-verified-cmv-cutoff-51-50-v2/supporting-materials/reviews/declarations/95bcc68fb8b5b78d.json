@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeFourDeltaBox",
+  "domain_issues": [],
+  "informal_statement": "Interval expression for D4.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ab7d789a19d88d75ee1647ab012fc735ddecd9dc900020900794197c4a8a7372",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.Brick",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's rational density and affine-predictor data record.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe061415d65cea6f77fb8c663f249825b26067221bd27165829e3e0950822743",
+  "symbol_mismatches": []
+}

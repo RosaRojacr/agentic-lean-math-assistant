@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "replacement_frontier_weightedPerimeter_eq",
+  "domain_issues": [],
+  "informal_statement": "The replacement's component perimeter equals its canonical frontier perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4689c717c4c51ee163362ad12dd8fdcb9855d6e5f3a329efb232be3060d7d4cf",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_lt_typeFourArea",
+  "domain_issues": [],
+  "informal_statement": "At the same curvature, type-(iii) scalar area is strictly less than type-(iv) scalar area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "292616e61180882b74b7405ba97fd168e8ed5d3653115a72ad0fa3e78e338f65",
+  "symbol_mismatches": []
+}

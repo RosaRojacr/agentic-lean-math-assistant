@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.AnalyticFaceBounds",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's analytic opposite-face sign interface.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "55d57a38a3bc2fde4dddd82f77d73cfb2e9ed05adcef3d85713a2b783119493f",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.weightedPerimeter_eq_modeledWeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The actual complete-frontier perimeter equals the full type-(iii) component perimeter sum.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3dd334c8f3cff9146f23a5d90e6da2520151c567d49c8604446b90aa7a9f4d2b",
+  "symbol_mismatches": []
+}

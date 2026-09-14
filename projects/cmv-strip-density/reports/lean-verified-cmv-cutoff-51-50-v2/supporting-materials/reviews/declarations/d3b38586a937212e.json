@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.affine_branches",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's four angles stay in (0,pi/4) over its entire box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e4d28d57906a58d6905767ae59f9a6cca32fef94fecf64598fa3b381471d528f",
+  "symbol_mismatches": []
+}

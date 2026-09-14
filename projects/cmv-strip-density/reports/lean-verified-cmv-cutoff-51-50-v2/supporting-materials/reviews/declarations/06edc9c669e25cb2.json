@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.cosTaylor26Interval",
+  "domain_issues": [],
+  "informal_statement": "For any rational x, the interval centered at the degree-26 cosine polynomial with error radius |x|^27/27!.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "97a38531dd63947f237378c23320eb2947ffd81d0b5929b322bafd6a94ec891e",
+  "symbol_mismatches": []
+}

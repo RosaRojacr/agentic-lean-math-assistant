@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "Density integral over the replacement carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "30517c93164485b2476e45ea547b19187ad53db44a33af2bf70144ca4c93c662",
+  "symbol_mismatches": []
+}

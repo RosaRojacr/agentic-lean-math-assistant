@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) perimeter derivative is K4/h squared.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe6311de3122c760c199f2555194ef9855f7218b10bcc5afe2c6f598e18071ca",
+  "symbol_mismatches": []
+}

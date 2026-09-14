@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sineGap",
+  "domain_issues": [],
+  "informal_statement": "The exterior-minus-inner sine displacement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e9d7a7074e27fe28a23aa0db9c4cf9b0ef4e5f2181f1cfab6098f7cc2e240ecb",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedRightCoreParam",
+  "domain_issues": [],
+  "informal_statement": "Right core arc parametrization in Euclidean L2 coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f8de565538cdbe799e2faf0a2d6452b4030fcfacd5b43a7347015b8e46924a9",
+  "symbol_mismatches": []
+}

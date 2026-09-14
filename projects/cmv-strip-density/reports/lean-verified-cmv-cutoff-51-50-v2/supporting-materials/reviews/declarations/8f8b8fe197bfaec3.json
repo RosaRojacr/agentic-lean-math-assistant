@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_continuousOn",
+  "domain_issues": [],
+  "informal_statement": "Normalized cap area is continuous on (0,pi).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7d3a7659000f0acd2289cd80ef6ad9d2f860c6244018818d478eaee78e42ab6d",
+  "symbol_mismatches": []
+}

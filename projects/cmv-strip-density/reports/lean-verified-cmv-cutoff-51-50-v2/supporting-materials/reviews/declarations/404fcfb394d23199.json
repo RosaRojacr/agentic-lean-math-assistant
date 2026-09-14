@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "arc",
+  "domain_issues": [],
+  "informal_statement": "The unit-chord arc length as a function of enclosed area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d1b33dc05b11585801ca5ae18eed6d15a605f3d852a3120f8561f8ec87bdc3a5",
+  "symbol_mismatches": []
+}

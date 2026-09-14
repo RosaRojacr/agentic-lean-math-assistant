@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.add",
+  "domain_issues": [],
+  "informal_statement": "Endpoint interval addition.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bdc18247a80ffa4a9b050a8d17f0cc87f5a29f49311d73038324983c96603c22",
+  "symbol_mismatches": []
+}

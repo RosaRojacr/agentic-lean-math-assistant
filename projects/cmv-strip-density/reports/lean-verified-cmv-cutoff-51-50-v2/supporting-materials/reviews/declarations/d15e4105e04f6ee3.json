@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pairwise_aedisjoint_of_overlap_null",
+  "domain_issues": [],
+  "informal_statement": "Null total overlap implies pairwise almost-everywhere disjointness.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4b46ea8bfc070cb38c17e38f03c2486a1eb119281a4706f7a55c5da843e21d49",
+  "symbol_mismatches": []
+}

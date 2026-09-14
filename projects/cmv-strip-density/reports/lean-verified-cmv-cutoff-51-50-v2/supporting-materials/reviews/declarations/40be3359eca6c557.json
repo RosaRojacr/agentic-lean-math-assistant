@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C3Residual.reduced_hasDerivAt_sigma",
+  "domain_issues": [],
+  "informal_statement": "The recorded sigma derivative of C3 is exact.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4b0f795e660ad8612256b86b0826502532784fc2e8dabb3224b9d16a883aa33e",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.QInterval.realContains_arcsin_of_taylor",
+  "domain_issues": [],
+  "informal_statement": "Taylor sine bounds certify an arcsine enclosure on its principal branch.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4923f85862130adb8d9efbeee24dfca326699114fa32f80b790af2693e065f1b",
+  "symbol_mismatches": []
+}

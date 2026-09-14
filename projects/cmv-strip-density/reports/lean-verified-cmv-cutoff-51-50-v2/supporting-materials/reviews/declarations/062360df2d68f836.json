@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_upper_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "The upper cap boundary integral is lambda times arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "45644ff66dcb2be9e3cb6c626527848bf909f532df9be34ffa1977e24d25b8f4",
+  "symbol_mismatches": []
+}

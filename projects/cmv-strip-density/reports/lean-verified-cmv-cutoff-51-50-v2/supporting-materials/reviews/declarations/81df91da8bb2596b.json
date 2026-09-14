@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_deriv_eq_explicit",
+  "domain_issues": [],
+  "informal_statement": "Explicit algebraic formula for the type-(iii) area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ec96d74eb7c231919df47f4c5a7bcce391a0bf68733b2ba3385beb5c882b9ca6",
+  "symbol_mismatches": []
+}

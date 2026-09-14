@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.pointOf",
+  "domain_issues": [],
+  "informal_statement": "Build a first-prototype point from centered density and an error vector.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "123eaac2727784b857a8a1d07babc6e08557c023e8c73b6b961970da83630664",
+  "symbol_mismatches": []
+}

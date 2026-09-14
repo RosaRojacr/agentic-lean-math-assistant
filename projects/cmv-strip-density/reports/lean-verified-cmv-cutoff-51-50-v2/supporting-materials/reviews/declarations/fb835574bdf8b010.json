@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.measurableSet_euclidean_leftArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean type-(iii) left trace is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "791dc1e2fe6e2d0cb10c51a3bd4f4018c5ee53a25eeef24b22bc0d4e6f0f1192",
+  "symbol_mismatches": []
+}

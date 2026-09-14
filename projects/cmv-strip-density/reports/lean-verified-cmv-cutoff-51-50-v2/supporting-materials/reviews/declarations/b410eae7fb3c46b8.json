@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.formulaDerivExpr",
+  "domain_issues": [],
+  "informal_statement": "Certificate-expression representation of the equal-area derivative formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c2d0ab98cf3dfe4dcf08e2029ce80163a7ccf657f84dbd95007f146980c85f86",
+  "symbol_mismatches": []
+}

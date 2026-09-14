@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArcRotation_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "For r nonzero and arbitrary real m,u,v, rotation by angle m/r translates the circle-image parameter interval by m.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6bbfe5bd6af2f20e278e2e30ff5adc9fe7c0761359113d169ea5baae1f20d6a2",
+  "symbol_mismatches": []
+}

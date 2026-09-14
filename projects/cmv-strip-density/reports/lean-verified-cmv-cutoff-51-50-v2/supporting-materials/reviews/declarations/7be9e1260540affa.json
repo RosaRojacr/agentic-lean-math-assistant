@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.C3_sigma_high_face_margin",
+  "domain_issues": [],
+  "informal_statement": "C3 is strictly positive on the high sigma face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5b3bf1ce51b69bccdd8bfe9c8c7de37ad57b8cb9ed698111103e6ab5d416bdcb",
+  "symbol_mismatches": []
+}

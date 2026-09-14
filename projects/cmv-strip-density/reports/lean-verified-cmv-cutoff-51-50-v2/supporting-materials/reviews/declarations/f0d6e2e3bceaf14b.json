@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "lintegral_semicircle_translated",
+  "domain_issues": [],
+  "informal_statement": "Nonnegative-integral form of the translated circular cross-section formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3c8e90cd635d133e832b64fe2731d46db4f68d0a1a341d292df3904cf66e67e8",
+  "symbol_mismatches": []
+}

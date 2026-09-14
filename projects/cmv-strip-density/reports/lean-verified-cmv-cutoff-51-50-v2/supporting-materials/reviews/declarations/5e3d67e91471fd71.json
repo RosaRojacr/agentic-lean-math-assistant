@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.InSymmetricBox",
+  "domain_issues": [],
+  "informal_statement": "Coordinatewise membership in a symmetric four-dimensional box.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7113db679549bacbee758495cf87555b49cdbe440060902d1105828bd48ba194",
+  "symbol_mismatches": []
+}

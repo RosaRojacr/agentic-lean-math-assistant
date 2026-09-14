@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacementAngle_mem",
+  "domain_issues": [],
+  "informal_statement": "The replacement angle lies in (0,pi).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "01b8487a31a244058e7174a351228b05206d647acdd690d9902ffea504fec4b6",
+  "symbol_mismatches": []
+}

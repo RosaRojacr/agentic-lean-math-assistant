@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.mem_chordCarrier_of_mem_carrier_of_eq_base",
+  "domain_issues": [],
+  "informal_statement": "A cap point at base height belongs to its chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "424261710f758c71ebe7e57dd13ebd11ffc59cb51b840ff8fc86319890ddae19",
+  "symbol_mismatches": []
+}

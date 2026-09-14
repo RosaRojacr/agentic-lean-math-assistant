@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc",
+  "domain_issues": [],
+  "informal_statement": "The complex circle parametrization u_r(s) = r exp(i s/r), with signed-arclength parameter s when r > 0.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6865b0b68c07403ee39252efa35feb9b50850a4644c2bf915fb506723c7a07c7",
+  "symbol_mismatches": []
+}

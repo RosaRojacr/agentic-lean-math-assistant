@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.CertificateExpr",
+  "domain_issues": [],
+  "informal_statement": "An arithmetic certificate expression with real-value and interval interpretations.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b7255be61ccd2c3030071696969cf641da72d2598375adad83bc3d9088d769f2",
+  "symbol_mismatches": []
+}

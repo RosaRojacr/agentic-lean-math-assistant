@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.lamInterval",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's closed density interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f66ba63b466bb0baa42078e66a7ef00780edcfd66cb63df195880be1a2d957b6",
+  "symbol_mismatches": []
+}

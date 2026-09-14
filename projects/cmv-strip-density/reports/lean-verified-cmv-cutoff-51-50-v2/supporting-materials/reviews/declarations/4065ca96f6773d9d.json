@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedLeftArcParam_eq",
+  "domain_issues": [],
+  "informal_statement": "The realized left parameter equals its placed scaled complex-circle form.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "538a7925bd9a6977d5e74933bd5f951885abb82dc534e3d102db01bf6aa01a1e",
+  "symbol_mismatches": []
+}

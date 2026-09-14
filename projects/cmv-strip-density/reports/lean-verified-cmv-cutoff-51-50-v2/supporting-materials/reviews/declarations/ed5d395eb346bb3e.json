@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.lambdaInterval",
+  "domain_issues": [],
+  "informal_statement": "Density interval of compact box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "69be0395e97b77b018ac7b8ae43d4c795e095c167e0e517d474ad3537fb6b8ec",
+  "symbol_mismatches": []
+}

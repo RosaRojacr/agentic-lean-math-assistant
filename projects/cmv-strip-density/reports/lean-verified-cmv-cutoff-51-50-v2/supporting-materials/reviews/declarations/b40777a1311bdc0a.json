@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.N3",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) area numerator.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "558a63c2734e558c548a2f1daef67adb206ef229c2adc0edc698dc7c3f00e2c9",
+  "symbol_mismatches": []
+}

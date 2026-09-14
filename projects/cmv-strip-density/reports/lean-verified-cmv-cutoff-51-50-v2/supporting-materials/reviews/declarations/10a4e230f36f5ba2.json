@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.carrier",
+  "domain_issues": [],
+  "informal_statement": "Union of the type-(iii) strip core and upper exterior cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0849c97e398a59f917657f18205fab9ffd6aa8e524ee751befd78f1c4735a4ff",
+  "symbol_mismatches": []
+}

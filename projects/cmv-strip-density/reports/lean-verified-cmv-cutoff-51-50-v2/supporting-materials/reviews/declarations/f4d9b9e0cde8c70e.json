@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_one_euclideanJoinSet",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean junction set has zero one-dimensional Hausdorff measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ebe8fae03ad531268ff769afa248cd1067ee674eba1a7f8bc77f36d3ab49ebc",
+  "symbol_mismatches": []
+}

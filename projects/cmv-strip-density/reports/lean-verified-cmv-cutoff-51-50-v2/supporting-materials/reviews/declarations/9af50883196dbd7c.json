@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThree_variational_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "The type-(iii) area and perimeter are differentiable and satisfy the variational identity.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "727f5f60431aed129e76617edde1e3ccdf8d18a1ae71fbf80ca33147d09b9cfa",
+  "symbol_mismatches": []
+}

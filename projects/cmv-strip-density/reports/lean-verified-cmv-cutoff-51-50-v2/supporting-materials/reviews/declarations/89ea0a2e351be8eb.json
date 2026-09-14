@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.abs_image_sub_le_of_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "Let R >= 0 and u belong to [-R,R]. If f has derivative D(q) at every q in [-R,R] and |D(q)| <= M throughout that interval, then |f(u)-f(0)| <= M|u|.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b7f0e88d7d03b44d4326633ce2286459e2f413f783621bf0b54b9742012c3366",
+  "symbol_mismatches": []
+}

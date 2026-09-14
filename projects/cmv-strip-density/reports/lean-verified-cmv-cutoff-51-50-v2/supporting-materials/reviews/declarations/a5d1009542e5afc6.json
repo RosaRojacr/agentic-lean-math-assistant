@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_capParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean image of the full cap parameter interval has the cap's stated arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ce3a2c8ff8b380f7da5859563d117de2848052560e457ef5f88e25aa88808f43",
+  "symbol_mismatches": []
+}

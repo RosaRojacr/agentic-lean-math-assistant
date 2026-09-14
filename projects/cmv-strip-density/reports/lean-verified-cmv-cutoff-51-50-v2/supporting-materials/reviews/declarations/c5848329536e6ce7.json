@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.h4Interval",
+  "domain_issues": [],
+  "informal_statement": "Rational stationary type-(iv) curvature slab for box zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "21261a7072ad9b4e7e79f4c2420b3ea2c0b04219a9a6039f38c82d6959dee705",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcTrace",
+  "domain_issues": [],
+  "informal_statement": "The circular part of the cap boundary.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5e3edb81f4f16ef8dbff7c15d5756a176b1f99c3bd5fb86ce703134a0a727a89",
+  "symbol_mismatches": []
+}

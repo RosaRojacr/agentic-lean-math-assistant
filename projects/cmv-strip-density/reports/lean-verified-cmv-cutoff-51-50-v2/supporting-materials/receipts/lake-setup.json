@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "lake",
+      "update"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "warning: toolchain not updated; multiple toolchain candidates:\n  leanprover/lean4:v4.33.0-rc2\n    from mathlib (fixed toolchain)\n  leanprover/lean4:v4.33.0\n    from Gametheory\ninfo: mathlib: running post-update hooks\n",
+    "stderr_sha256": "84f0c7ff8cebf07af1db99171619f8a356a2bfc4e2cd8570d67bf699ef642c34",
+    "stderr_truncated": false,
+    "stdout": "Current branch: HEAD\nUsing cache from origin: (some leanprover-community/mathlib4)\nNo files to download\nAlready decompressed 8681 file(s)\n",
+    "stdout_sha256": "ed8e58ac58ffdf3e054029ce66c4707767d7be02da4194fc980cfe4c951e54ae",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "lake",
+      "exe",
+      "cache",
+      "get"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "Current branch: HEAD\nUsing cache from origin: (some leanprover-community/mathlib4)\nNo files to download\nAlready decompressed 8681 file(s)\n",
+    "stdout_sha256": "ed8e58ac58ffdf3e054029ce66c4707767d7be02da4194fc980cfe4c951e54ae",
+    "stdout_truncated": false
+  }
+]

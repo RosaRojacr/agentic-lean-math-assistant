@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.horizontalChord_subset_carrier",
+  "domain_issues": [],
+  "informal_statement": "The horizontal chord segments lie in the core.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "334fc66a21b600efd108f9065db91fc12f64adadeb2b25ecfa3e64aa16686847",
+  "symbol_mismatches": []
+}

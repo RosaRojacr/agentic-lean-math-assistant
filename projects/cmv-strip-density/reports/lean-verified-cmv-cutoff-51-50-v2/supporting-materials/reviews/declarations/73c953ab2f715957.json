@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.exposedLowerChord",
+  "domain_issues": [],
+  "informal_statement": "The lower horizontal segment left exposed after removing the lower cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f5b2acb16292464686c2dc7d4da985f73189845b89d73512b7e850cb9f2f8b26",
+  "symbol_mismatches": []
+}

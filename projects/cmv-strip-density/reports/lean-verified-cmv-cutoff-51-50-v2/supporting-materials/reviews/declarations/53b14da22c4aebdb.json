@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.derivT",
+  "domain_issues": [],
+  "informal_statement": "The equal-area residual's explicit density-coordinate derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63d0ee648f437cabdbbbea64daa954d7e00b41424d9d35808ce7891e2d6f80a5",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "xstar_lt_pi_div_eight",
+  "domain_issues": [],
+  "informal_statement": "Xstar is less than pi/8.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cf3af1a7b133df1071b52ee9fcdff29abd10638feaf9c104776dea7ea70a191e",
+  "symbol_mismatches": []
+}

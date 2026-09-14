@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_mem",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, theta > 0, N > 0 and natural i <= N, the ith partition point belongs to [-r theta,r theta].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8f26d09621c071ac8a6a1935a21253dfb29cb269e0ec21dc71e59a40f0529e9f",
+  "symbol_mismatches": []
+}

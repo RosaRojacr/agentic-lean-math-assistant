@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hasDerivAt_ell",
+  "domain_issues": [],
+  "informal_statement": "Derivative of normalized arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cae8d71b9bdc0c10b243d112a9ada6dbc5d44d1c5f710020d8f577d13d56023c",
+  "symbol_mismatches": []
+}

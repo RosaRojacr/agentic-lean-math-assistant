@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.radius",
+  "domain_issues": [],
+  "informal_statement": "Radius determined by the chord and half-angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e898cc7066a75a606fdc3b1d1e563939ad569bdb0f66fd289569e58c7f4c44b8",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "xstar_mem_Ioo",
+  "domain_issues": [],
+  "informal_statement": "Xstar lies in (pi/16,pi/8).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "720519699b0830892e8a5d92169d8b53b8ea57339507bc01453bc6fff96e87b0",
+  "symbol_mismatches": []
+}

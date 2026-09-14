@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.C3_sigma_high_face_margin",
+  "domain_issues": [],
+  "informal_statement": "C3 is strictly positive on the high sigma face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d14003647889eccbbfb10aaee4768200f899b458693a4ef6f074530360518a08",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_image",
+  "domain_issues": [],
+  "informal_statement": "Every angle in (0,pi) is the inverse-area angle of some positive normalized area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d81b765da2f8cf7cb10a3e3b057fc5bc93f2a0c62b4ee7c5334eaaf98f1bd323",
+  "symbol_mismatches": []
+}

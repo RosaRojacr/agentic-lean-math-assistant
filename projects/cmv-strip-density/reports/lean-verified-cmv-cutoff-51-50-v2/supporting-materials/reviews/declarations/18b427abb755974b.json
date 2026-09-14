@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C4Residual.derivEta",
+  "domain_issues": [],
+  "informal_statement": "Explicit eta derivative of the type-(iv) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1a437771f514f75dbb66dda75e523e87384fcd4e7f50961082bd2649fc01f800",
+  "symbol_mismatches": []
+}

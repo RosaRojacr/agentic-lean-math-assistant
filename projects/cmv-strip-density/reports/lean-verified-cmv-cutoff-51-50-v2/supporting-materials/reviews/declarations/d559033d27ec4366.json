@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_pi_sub_eq_two_mul",
+  "domain_issues": [],
+  "informal_statement": "At the selected root, the supplementary angle has twice the normalized area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a8e24b12489f7a578d21b419b549e47a8c62b05b8eaac09a11261e5958d93945",
+  "symbol_mismatches": []
+}

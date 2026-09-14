@@ -1,0 +1,3 @@
+Completed `supporting-materials/reviews/reviewer-02.json`.
+
+Validated strict JSON structure: 850 non-generated declarations, both generated-family globs, permitted relation values, and inventory code-hash correspondence.

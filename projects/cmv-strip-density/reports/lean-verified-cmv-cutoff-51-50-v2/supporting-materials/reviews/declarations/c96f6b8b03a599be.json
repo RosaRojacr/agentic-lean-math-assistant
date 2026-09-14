@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.exposed_lower_chord_length",
+  "domain_issues": [],
+  "informal_statement": "The exposed lower chord has the candidate's chord length c.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f04f252743e50cee8e8705384217c84f1c347cf4e87d10a166f74cf59b5b7fd6",
+  "symbol_mismatches": []
+}

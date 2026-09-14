@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.candidate_area_formula",
+  "domain_issues": [],
+  "informal_statement": "The candidate satisfies the source type-(iv) area formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6d944ecc5d4bab77cadf263520f194142a9d6855088a9b98e5873be144ab8cc",
+  "symbol_mismatches": []
+}

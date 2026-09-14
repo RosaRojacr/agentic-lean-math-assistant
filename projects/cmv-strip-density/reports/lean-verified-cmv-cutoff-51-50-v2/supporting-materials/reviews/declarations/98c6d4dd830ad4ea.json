@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "Complex-to-Euclidean placement map for the left core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c0385e604fc62ea1f5b752f17a4538ba2edeedf20e52cbfb6848b3b966b2ab57",
+  "symbol_mismatches": []
+}

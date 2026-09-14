@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.typeThreeArea_deriv_eq_K3",
+  "domain_issues": [],
+  "informal_statement": "The first prototype's K3 divided by the curvature cube equals the analytic area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8a9cde70bef0dfad1eb697f78cb39f5a363eb9e41679d7d14dd8c12231f3ec28",
+  "symbol_mismatches": []
+}

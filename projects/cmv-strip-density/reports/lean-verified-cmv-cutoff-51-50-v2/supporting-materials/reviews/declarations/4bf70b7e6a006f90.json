@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.carrier",
+  "domain_issues": [],
+  "informal_statement": "The closed disk intersected with the selected chord half-plane.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0644dd0b5f330958b79efbb3810eb1cc2f4356e5db251a95736b532b75bfcf1",
+  "symbol_mismatches": []
+}

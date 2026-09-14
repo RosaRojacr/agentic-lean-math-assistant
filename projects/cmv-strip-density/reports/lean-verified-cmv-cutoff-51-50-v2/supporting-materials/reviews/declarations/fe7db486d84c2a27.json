@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.side_caps_area_formula",
+  "domain_issues": [],
+  "informal_statement": "The two core side segments have the standard arcsine area expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a639bd8c9eef40f2c4f87fdb62b671cf7db0ce41013e7d923721f6f472bc8cf1",
+  "symbol_mismatches": []
+}

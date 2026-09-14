@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideCap_euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The reference side cap has area R squared times (gamma-sin gamma cos gamma).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6b94a03ab653ee46e011e7fa757125fdbdfe26f1473cd6911d9100fe92583e4",
+  "symbol_mismatches": []
+}

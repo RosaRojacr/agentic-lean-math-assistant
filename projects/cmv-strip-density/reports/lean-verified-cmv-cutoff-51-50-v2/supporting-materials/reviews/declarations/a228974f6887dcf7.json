@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "The core frontier consists of two side arcs and two horizontal chords.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "34bdf246812f32ba3d6167bf3b3ff5fea490b0816170740d97a7d77e703585bf",
+  "symbol_mismatches": []
+}

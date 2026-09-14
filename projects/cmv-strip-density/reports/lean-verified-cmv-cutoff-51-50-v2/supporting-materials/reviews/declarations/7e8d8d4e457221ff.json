@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFour_variational_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) profiles are differentiable and satisfy P4'=h A4' on (0,1).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "be216789e3804b1c530f202d3470319a386e5c80dc03952cfaf3ebc685f27297",
+  "symbol_mismatches": []
+}

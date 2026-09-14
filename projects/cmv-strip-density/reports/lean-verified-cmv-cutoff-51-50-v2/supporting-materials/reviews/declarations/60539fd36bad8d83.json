@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.isClosed_rightSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "The right type-(iii) disk segment is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "97ec89af687cf23451a62fdd3fb4816f90150533b2e6c5aca3fc7cb1fe8e300f",
+  "symbol_mismatches": []
+}

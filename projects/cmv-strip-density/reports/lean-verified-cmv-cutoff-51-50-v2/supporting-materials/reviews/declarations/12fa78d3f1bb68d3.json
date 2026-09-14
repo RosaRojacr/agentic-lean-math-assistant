@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripDensity",
+  "domain_issues": [],
+  "informal_statement": "Density one on the closed strip and lambda outside.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "51e629a8115629e4652f417b9dcfc46beea6a584d8ebcb351e746df181f97ab1",
+  "symbol_mismatches": []
+}

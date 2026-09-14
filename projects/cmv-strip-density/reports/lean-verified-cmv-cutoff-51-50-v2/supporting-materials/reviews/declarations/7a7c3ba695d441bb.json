@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.IsWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "No admissible equal-area competitor has smaller perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f04b5c158c1a510cd5a8af38df8f99424aeed5e376f986e1d437f95e6a4cbe17",
+  "symbol_mismatches": []
+}

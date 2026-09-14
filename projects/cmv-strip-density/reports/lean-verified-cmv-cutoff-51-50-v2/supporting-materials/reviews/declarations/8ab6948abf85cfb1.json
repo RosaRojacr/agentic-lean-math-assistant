@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.w",
+  "domain_issues": [],
+  "informal_statement": "The affine type-(iii) inner-angle predictor with rho error.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0c3c0b0f31f78a2f6c2d6cd4c7b667830ebe97b8269a630415448ba726152aa",
+  "symbol_mismatches": []
+}

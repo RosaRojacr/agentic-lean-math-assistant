@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_mem",
+  "domain_issues": [],
+  "informal_statement": "The selected inverse angle lies in (0,pi) for positive input.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cffddd09f082d4b6674b40f5793e1c255fa99c0cb678be3643150d9630636943",
+  "symbol_mismatches": []
+}

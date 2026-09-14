@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_zero",
+  "domain_issues": [],
+  "informal_statement": "For all real r,theta and natural N, the zeroth partition point equals -r theta.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1714782661300a21ee2d4243c7e4fbe79e1e97ce545ea187699c13d709db2db9",
+  "symbol_mismatches": []
+}

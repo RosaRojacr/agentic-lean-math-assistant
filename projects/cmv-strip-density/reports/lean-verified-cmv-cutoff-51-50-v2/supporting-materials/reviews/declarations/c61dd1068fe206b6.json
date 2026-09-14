@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "intervalPushforward",
+  "domain_issues": [],
+  "informal_statement": "Pushforward of interval-restricted Lebesgue measure by a parametrization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "366d70f2307ddf912f8fe8519c486284fdacdab2c9bb76f371f9a65dd8ee807d",
+  "symbol_mismatches": []
+}

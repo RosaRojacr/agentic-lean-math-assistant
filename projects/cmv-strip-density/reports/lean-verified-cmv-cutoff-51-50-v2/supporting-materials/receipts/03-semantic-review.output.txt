@@ -1,0 +1,3 @@
+Completed `supporting-materials/reviews/reviewer-03.json`.
+
+Verified strict JSON coverage: 850 non-generated declarations, exact inventory hashes, exact author statements, and both generated families. Verdict: `conditional_fragment`.

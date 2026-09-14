@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FinitePerimeterRegion",
+  "domain_issues": [],
+  "informal_statement": "A measurable carrier with integrable weighted area and weighted complete-frontier measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2efb7176d17b946809f4cd07b78237ddd03cd4197c405c38d08e97342106a1a0",
+  "symbol_mismatches": []
+}

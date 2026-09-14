@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint",
+  "domain_issues": [],
+  "informal_statement": "The affine signed-arclength partition formula -r theta + i(2r theta/N), for real r,theta and natural N,i.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "49ac6ecbe67b9040843eeee672d7b0f08055016781814c3ce0fa4e7d31ff805a",
+  "symbol_mismatches": []
+}

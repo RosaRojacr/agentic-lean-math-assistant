@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.realContains_arcsin_of_taylor_interval",
+  "domain_issues": [],
+  "informal_statement": "The first-cell arcsine enclosure extends to every enclosed input.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "04625f4bdbd8d2aa4776f4b5c665d47c58bb244e2be98c92835ce4982a969a1c",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FinitePerimeterRegion.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "Weighted area of the record's carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3892310b68bd795c4ddff8f1d276f58be0efcb96c1e8c4fad96ec7d73deea20a",
+  "symbol_mismatches": []
+}

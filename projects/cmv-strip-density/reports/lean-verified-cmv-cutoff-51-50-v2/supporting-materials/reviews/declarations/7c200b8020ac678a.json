@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.piInterval",
+  "domain_issues": [],
+  "informal_statement": "A fixed rational enclosure of pi.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "da867cd8e471ad99a2b0bc5bbf7e433df88cee3a9989f797f883fa79eab1b795",
+  "symbol_mismatches": []
+}

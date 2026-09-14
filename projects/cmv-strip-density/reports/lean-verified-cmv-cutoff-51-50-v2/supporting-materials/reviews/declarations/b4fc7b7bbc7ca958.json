@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCore_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "Weighted length of the left core arc is its parameter span.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e333f475432d30c40456ab56a9f5187cebdb61288c7e07d5eec293804ac77f49",
+  "symbol_mismatches": []
+}

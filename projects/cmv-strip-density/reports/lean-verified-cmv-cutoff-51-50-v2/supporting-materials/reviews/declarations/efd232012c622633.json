@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf",
+  "domain_issues": [],
+  "informal_statement": "A total real function equal to the inverse normalized-area angle for positive input and to pi/2 for nonpositive input.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ae683fbf0fd357d5b8a59395fa6c08ffe184192942daf192789541eb610f89e3",
+  "symbol_mismatches": []
+}

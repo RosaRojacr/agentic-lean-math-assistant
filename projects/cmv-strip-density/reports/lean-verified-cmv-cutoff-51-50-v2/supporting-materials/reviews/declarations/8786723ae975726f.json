@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_continuousAt",
+  "domain_issues": [],
+  "informal_statement": "The inverse cap-area angle is continuous at each positive input.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "efcd76351169996ba87c9b4ec14eb080fd4c43d9ee67eed507a1d6cc3182dbda",
+  "symbol_mismatches": []
+}

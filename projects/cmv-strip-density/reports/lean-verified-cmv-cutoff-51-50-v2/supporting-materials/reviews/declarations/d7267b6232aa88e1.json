@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Brick",
+  "domain_issues": [],
+  "informal_statement": "Exact rational density endpoints, affine angle predictors, coupling slopes, and positive error radii.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0941d7d9eb0eaebceb5359d2c2683a5354c44a25e853225ca2ccbf95f4460178",
+  "symbol_mismatches": []
+}

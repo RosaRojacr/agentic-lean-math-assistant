@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.gap_upper",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's G residual has a strictly negative upper bound.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bfd6569809511ed8dd358788886ef4c9bc9af352f129411e514e6363ef806197",
+  "symbol_mismatches": []
+}

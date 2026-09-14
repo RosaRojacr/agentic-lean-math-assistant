@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.FResidual.reduced",
+  "domain_issues": [],
+  "informal_statement": "The stationary-fold residual after centered affine substitution.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e2d8d4b1eb446b26168d3d1be2a5c6a59a042bb296a5fe1b9a5da048c481863",
+  "symbol_mismatches": []
+}

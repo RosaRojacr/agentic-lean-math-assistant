@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capX",
+  "domain_issues": [],
+  "informal_statement": "Scale-free area of an original cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a20fa39233b648b55a696be0bec2aeffc6c5d3bf3467f9a8163b812924a00e64",
+  "symbol_mismatches": []
+}

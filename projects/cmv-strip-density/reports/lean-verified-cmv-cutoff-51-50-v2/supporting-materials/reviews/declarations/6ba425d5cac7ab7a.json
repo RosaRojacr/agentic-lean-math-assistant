@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "replacement_pairwiseOverlap_h1_null",
+  "domain_issues": [],
+  "informal_statement": "Replacement boundary overlaps have zero Hausdorff length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "757396ecdaece07d8adc70b78cb910b95f948774e1e20f4dcb7710270834cc6c",
+  "symbol_mismatches": []
+}

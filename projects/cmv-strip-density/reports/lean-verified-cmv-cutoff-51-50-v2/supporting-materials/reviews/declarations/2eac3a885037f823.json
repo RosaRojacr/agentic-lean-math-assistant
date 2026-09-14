@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_strictAntiOn",
+  "domain_issues": [],
+  "informal_statement": "The cap-saving function strictly decreases up to Xstar.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9a778ff550b85fbf2a285e9d241dc6696a5778402499a6962e2ebab67dde9834",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "The component perimeter is core arc length plus lambda times both exterior arc lengths.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "43ff4cdbd6774032399c0e7d7f5767a18500986a522e0ace1e470e2035290acd",
+  "symbol_mismatches": []
+}

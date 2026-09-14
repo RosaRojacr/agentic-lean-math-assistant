@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.TypeThreeAssembly.scalarWeightedPerimeter_eq_typeThreePerimeter",
+  "domain_issues": [],
+  "informal_statement": "The assembly scalar perimeter equals the analytic type-(iii) perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1cbaa2764b23e5bf11163fb498e9653b454e16f1f8f6b84d752362e7a842718b",
+  "symbol_mismatches": []
+}

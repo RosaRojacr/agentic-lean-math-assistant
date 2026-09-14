@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "The replacement's two side arcs, upper arc, and lower chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c14f256441519af3907ade461995fd9aa134a8b3a94b950059f337d7edd4be97",
+  "symbol_mismatches": []
+}

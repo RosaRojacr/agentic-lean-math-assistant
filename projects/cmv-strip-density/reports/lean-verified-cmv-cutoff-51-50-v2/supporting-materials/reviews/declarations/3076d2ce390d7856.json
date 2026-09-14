@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.point_equations_to_scalar_improvement",
+  "domain_issues": [],
+  "informal_statement": "A first-prototype equation solution with negative G yields a stationary scalar strict improvement.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dbe5cd193da271e760511f0742066e9fa2712d960f6dbb5c7963df325913da93",
+  "symbol_mismatches": []
+}

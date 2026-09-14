@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideArcAngle_pos",
+  "domain_issues": [],
+  "informal_statement": "The complementary side-arc angle is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fb3e4cdd6ff568be2285a238c6293705a5d18ec17ca0000cf9fc5fd3be6f53e2",
+  "symbol_mismatches": []
+}

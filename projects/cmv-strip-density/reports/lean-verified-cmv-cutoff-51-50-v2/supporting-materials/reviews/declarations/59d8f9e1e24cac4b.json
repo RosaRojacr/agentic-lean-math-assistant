@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.leftCenterX",
+  "domain_issues": [],
+  "informal_statement": "Horizontal center coordinate for the left core circle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "01fd3b14ca7e8a9d341e71e2fb86b773a9bea051016f7f6499489c3b65bab474",
+  "symbol_mismatches": []
+}

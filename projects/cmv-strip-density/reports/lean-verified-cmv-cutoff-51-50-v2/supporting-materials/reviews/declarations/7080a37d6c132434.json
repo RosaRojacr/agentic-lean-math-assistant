@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellAssembly.Conditions",
+  "domain_issues": [],
+  "informal_statement": "Primitive branch, fold-face, equal-area-face, and perimeter-sign obligations for a compact cell.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c3b2aa26c0b8b3d8801158e0abfe33b06aca94b7f9fdd276d46c23ec0373f44",
+  "symbol_mismatches": []
+}

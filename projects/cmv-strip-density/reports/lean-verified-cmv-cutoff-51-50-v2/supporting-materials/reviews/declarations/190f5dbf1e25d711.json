@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.stationaryEqualArea_gap_identity",
+  "domain_issues": [],
+  "informal_statement": "At a stationary equal-area pair the perimeter gap is four times the reduced radical gap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ca190ef8d3e84eb702882d4666162a0576db626556bb2591b0ba437f522132f",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.TypeThreeAssembly.sineGap_eq_typeThreeDelta",
+  "domain_issues": [],
+  "informal_statement": "The geometric sine displacement equals D3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0b54dd8dd926b7670949326ff7f7fb7d21250d76068f1da2eb207447216f1aac",
+  "symbol_mismatches": []
+}

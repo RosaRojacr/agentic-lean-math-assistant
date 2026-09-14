@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sideAngle_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "The core side angle is strictly below pi.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4d165924e20daf34cd0cd3a93af12e6637e356347b723990beb9d1a85af59a9e",
+  "symbol_mismatches": []
+}

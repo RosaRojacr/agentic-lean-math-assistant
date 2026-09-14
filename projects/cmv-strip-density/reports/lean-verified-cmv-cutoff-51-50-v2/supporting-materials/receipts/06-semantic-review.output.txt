@@ -1,0 +1,3 @@
+Completed `supporting-materials/reviews/reviewer-06.json`.
+
+Verification: strict JSON schema, exact top-level keys, 850 unique non-generated declaration reviews with inventory hashes/statements, and both generated-family reviews validated.

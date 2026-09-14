@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.shapeParameter",
+  "domain_issues": [],
+  "informal_statement": "The source cosine parameter q=2h-1.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "29190b0ec0676db3ee8da889fc7b1e078bce75188f6b4271945e3fee045f2920",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.C3",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's type-(iii) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb334eb31664c80305d156013a66d4b3847b5f60bc740d68b3db43dd6612439b",
+  "symbol_mismatches": []
+}

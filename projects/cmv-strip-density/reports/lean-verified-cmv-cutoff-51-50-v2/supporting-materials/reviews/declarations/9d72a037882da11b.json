@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_in_open_side",
+  "domain_issues": [],
+  "informal_statement": "Interior arc parameters lie strictly on the cap side of the chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3dbf6a865d1d6331f9c3406c05af249acf00d7c487349d982b588394a814d697",
+  "symbol_mismatches": []
+}

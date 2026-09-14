@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_deriv_xstar",
+  "domain_issues": [],
+  "informal_statement": "The derivative of g vanishes at Xstar.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1eebac5648246e00a782c35d06dac92c6d57fafb232dc20b208113c4fcc2af00",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentEnd",
+  "domain_issues": [],
+  "informal_statement": "Final parameter of the horizontal segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "161abc8655ce59212c511d028e178416823adf64c523c73dae6b889ae03ed1f4",
+  "symbol_mismatches": []
+}

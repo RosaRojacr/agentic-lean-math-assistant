@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θstar_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "The selected root angle is below pi.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "00d6146ca546d963629c29e057f27680f814201f70ca0ff861a828ca133ab65c",
+  "symbol_mismatches": []
+}

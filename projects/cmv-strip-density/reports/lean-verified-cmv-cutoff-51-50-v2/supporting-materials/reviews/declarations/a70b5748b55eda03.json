@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "F_continuous",
+  "domain_issues": [],
+  "informal_statement": "F is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "944215df53ab5a1f8d80d30f68581f0d2605e8a8c87867772cbaa9697833f26f",
+  "symbol_mismatches": []
+}

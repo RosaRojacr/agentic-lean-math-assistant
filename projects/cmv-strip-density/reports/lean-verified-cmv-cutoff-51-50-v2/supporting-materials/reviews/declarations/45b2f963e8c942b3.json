@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C3Residual.derivRho",
+  "domain_issues": [],
+  "informal_statement": "Explicit rho derivative of the type-(iii) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c1e483238adef1a69bda282637a3ed4325a085039bf7cd8b957f9f3fdb1c5e6e",
+  "symbol_mismatches": []
+}

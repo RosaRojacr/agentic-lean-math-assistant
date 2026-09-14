@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.PointEquationSemantics",
+  "domain_issues": [],
+  "informal_statement": "Analytic interpretation of the first prototype's equations and gap sign.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "57c3cf6c23b8d0095e640676ca4732afaae3f1e4c4e649a7f2e21c72d97bbd64",
+  "symbol_mismatches": []
+}

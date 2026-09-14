@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeThreeArea_upperFace_minus_stationaryTypeFour_neg",
+  "domain_issues": [],
+  "informal_statement": "At the upper type-(iii) face, A3 is below stationary type-(iv) area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ae9709ef08dafd6acf18487ff86ef2f78b6f5204c9d53ab45605c720440adb8",
+  "symbol_mismatches": []
+}

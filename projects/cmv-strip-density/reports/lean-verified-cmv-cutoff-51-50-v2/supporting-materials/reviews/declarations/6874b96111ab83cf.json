@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.SatisfiesCMVTypeIVHypotheses",
+  "domain_issues": [],
+  "informal_statement": "Density jump and Snell incidence for a modeled candidate.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c09b9c7180b6131040333c0b3c2623f3c89af7f54fe8ab0b9f6a41be873ca0dc",
+  "symbol_mismatches": []
+}

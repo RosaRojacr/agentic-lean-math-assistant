@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "The complete component perimeter sum equals the source scalar type-(iii) perimeter formula.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb4c05a2ca2fd9d5b63be1b6ad16da716cc43497abcad228054765e6eaa2e39e",
+  "symbol_mismatches": []
+}

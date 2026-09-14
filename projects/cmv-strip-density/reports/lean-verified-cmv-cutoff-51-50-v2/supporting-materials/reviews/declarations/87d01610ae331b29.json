@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftUpperJunction",
+  "domain_issues": [],
+  "informal_statement": "The left side arc meets the upper cap at the left upper junction.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a660a79d351317f739116ce079a065c0c8bced856fae9b73442ad8d1339dd7ec",
+  "symbol_mismatches": []
+}

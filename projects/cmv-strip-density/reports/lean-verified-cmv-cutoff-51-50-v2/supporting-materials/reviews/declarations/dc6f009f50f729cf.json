@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.EResidual.derivRho",
+  "domain_issues": [],
+  "informal_statement": "The explicit rho derivative of the equal-area residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3de77d285680f5b628dc186984128f3143ab98fcad154680680ec2be723c01a7",
+  "symbol_mismatches": []
+}

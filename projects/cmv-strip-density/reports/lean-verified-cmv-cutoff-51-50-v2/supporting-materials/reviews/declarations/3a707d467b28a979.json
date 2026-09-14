@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_inner_le_sin_outer",
+  "domain_issues": [],
+  "informal_statement": "The inner-angle sine is no greater than the exterior-angle sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "def468198882d033570072298a83ae1d41fc003f0ecb9d0b4ee3a6b94e6a1d10",
+  "symbol_mismatches": []
+}

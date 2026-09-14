@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_right",
+  "domain_issues": [],
+  "informal_statement": "The final angular endpoint equals the right chord endpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ba639553cc75debbcac47cb7f164b0cdee0e14e9586cdc6d1cf857f7fa27f21b",
+  "symbol_mismatches": []
+}

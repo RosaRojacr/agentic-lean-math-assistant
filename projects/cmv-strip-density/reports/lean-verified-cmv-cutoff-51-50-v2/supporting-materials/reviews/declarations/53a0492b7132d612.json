@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.FoldGapNegative",
+  "domain_issues": [],
+  "informal_statement": "Strict negativity of the genuine perimeter gap at the selected stationary fold.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0a51358d0910c8fb2dd4ffa9d95125b8210328ea93cd0771ca9e9c1138b2ced",
+  "symbol_mismatches": []
+}

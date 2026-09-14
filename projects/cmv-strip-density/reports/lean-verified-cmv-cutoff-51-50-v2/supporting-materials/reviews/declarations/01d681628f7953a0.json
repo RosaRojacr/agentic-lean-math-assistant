@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.stripCore",
+  "domain_issues": [],
+  "informal_statement": "The candidate's central strip core.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "66aff9e1eb934bbbeeb8dd09a1a68a4c23aef3ee09735d3ba9bc12eadb4664ee",
+  "symbol_mismatches": []
+}

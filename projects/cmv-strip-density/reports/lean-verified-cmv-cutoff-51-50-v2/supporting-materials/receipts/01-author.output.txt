@@ -1,0 +1,9 @@
+Completed the repair pass.
+
+Updated `supporting-materials/reviews/author-01.json`:
+- Removed `FourArcCandidate.exposed_lower_chord_on_frontier`.
+- Replaced the analytic citation with `LeanSuffixAnalytic.allCurvature_typeThreeImprovement_of_envelope`.
+- Preserved all 850 non-generated classifications exactly once.
+- Preserved both configured generated families.
+- Verified all Lean citation tokens resolve to inventory declarations.
+- Verified strict JSON validity and retained root citation presence.

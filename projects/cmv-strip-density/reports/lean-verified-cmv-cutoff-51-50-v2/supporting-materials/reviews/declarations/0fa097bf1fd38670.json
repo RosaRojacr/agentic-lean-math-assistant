@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaRoot_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "A continuous simple equal-area root is differentiable at an interior curvature, without requiring it to be a descending root.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4240cf112f1c537233001e48d7956d1d7de811e741deeb8b94332f375fdbb1f0",
+  "symbol_mismatches": []
+}

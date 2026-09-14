@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.isClosed_carrier",
+  "domain_issues": [],
+  "informal_statement": "The core carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d28fca8c993d5d2b9aa0b2ebe7f3f0372ebdd951a5cda90d26adf748bface0e4",
+  "symbol_mismatches": []
+}

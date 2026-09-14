@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.F_xi_low_face_margin",
+  "domain_issues": [],
+  "informal_statement": "F is strictly positive on the right prototype's low xi face.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "09956ba2c2677ff4925e529c6578299ab10ba3f2d08cee3e462aa50640f59f58",
+  "symbol_mismatches": []
+}

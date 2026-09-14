@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.lowerCap",
+  "domain_issues": [],
+  "informal_statement": "The reflected lower exterior cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a60a9393b363872f08f12dbab41380b51afefa746b9504c5841f28d389091bfe",
+  "symbol_mismatches": []
+}

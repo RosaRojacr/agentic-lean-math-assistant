@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap_rightEndpoint",
+  "domain_issues": [],
+  "informal_statement": "The upper cap's right endpoint is its intended upper junction.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0bf0b00b58f0396d9b9b8bc9e08617bcd76cf3f0b76937e23b52dec1f9b5fe12",
+  "symbol_mismatches": []
+}

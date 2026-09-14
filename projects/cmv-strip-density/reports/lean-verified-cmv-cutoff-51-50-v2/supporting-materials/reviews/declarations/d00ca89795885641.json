@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactFirstCell.typeThreePerimeter_centered_enclosure",
+  "domain_issues": [],
+  "informal_statement": "Centered type-(iii) perimeter enclosure for box zero.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0acb33ec361f95f1dd6ecbaa5f29b078d12d8e006095b8006b41890c9e85efd5",
+  "symbol_mismatches": []
+}

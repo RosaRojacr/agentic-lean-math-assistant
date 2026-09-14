@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacement_cap_area",
+  "domain_issues": [],
+  "informal_statement": "The replacement upper cap has twice the area of an original exterior cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5517f888e5fc2a04dba3edea18ff03637b20f17abc45bd337950afb694709ec8",
+  "symbol_mismatches": []
+}

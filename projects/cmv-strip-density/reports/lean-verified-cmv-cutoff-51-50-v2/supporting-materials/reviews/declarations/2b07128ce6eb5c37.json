@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.volume_carrier",
+  "domain_issues": [],
+  "informal_statement": "The core carrier has its stated Euclidean area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a426f0908aec7b73455f4a0093170232e841cf46ab8f580ee2fe442ff66a7997",
+  "symbol_mismatches": []
+}

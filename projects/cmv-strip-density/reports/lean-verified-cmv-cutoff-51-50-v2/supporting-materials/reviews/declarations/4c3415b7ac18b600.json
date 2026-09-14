@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "Isometric placement and reflection of a complex cap arc in Euclidean coordinates.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3ed78deaf1597a91c6218ca8fe10519ba693355e7329e0301f17fcce226f5a43",
+  "symbol_mismatches": []
+}

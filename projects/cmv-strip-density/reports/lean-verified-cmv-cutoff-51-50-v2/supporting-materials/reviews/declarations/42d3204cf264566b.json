@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "F_pi_div_two",
+  "domain_issues": [],
+  "informal_statement": "F at pi/2 equals pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1bd957238f9de023b62b37f505e2ceebe0cf17d7fa9db27be00533881b095aac",
+  "symbol_mismatches": []
+}

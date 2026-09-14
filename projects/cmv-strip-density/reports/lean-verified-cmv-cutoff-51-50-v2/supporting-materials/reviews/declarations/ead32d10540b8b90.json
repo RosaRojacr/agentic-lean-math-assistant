@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerArgument_mem",
+  "domain_issues": [],
+  "informal_statement": "The exterior arccosine argument lies in (-1,1).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fc2a8b1032448c01ece41eff0bcd5d748f70ee556d5721867bb36b59d56ce63a",
+  "symbol_mismatches": []
+}

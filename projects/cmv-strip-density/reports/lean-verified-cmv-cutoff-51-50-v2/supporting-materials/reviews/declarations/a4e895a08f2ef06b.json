@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_le_pi_div_two",
+  "domain_issues": [],
+  "informal_statement": "Normalized area at most pi/8 gives an inverse angle at most pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e9cfe5c6a9cd5cf538683dfa1919d265b38f9b8ab0aa4ba7f8c7d2c013301928",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "gd",
+  "domain_issues": [],
+  "informal_statement": "The explicit derivative function for g.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b105248ee05b475037dd209f9b23e6a5119f0585d6ae1093bea44c7ceded4050",
+  "symbol_mismatches": []
+}

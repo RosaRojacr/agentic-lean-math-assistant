@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C4Residual.reduced_hasDerivAt_xi",
+  "domain_issues": [],
+  "informal_statement": "The xi derivative formula for C4 is correct.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c5aed8fcfa67c76068e264e5cfde03a674d4b1ee2a4b7f25289608330e62d6c",
+  "symbol_mismatches": []
+}

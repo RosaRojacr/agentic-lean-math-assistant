@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.C3Residual.derivT",
+  "domain_issues": [],
+  "informal_statement": "Explicit t derivative of the type-(iii) incidence residual.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c4e519ef7409cb708317db418241213f452ef4b4aa73c4ae26a3279d8dcb518d",
+  "symbol_mismatches": []
+}

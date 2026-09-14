@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixReflective.QInterval.realContains_sub",
+  "domain_issues": [],
+  "informal_statement": "Interval subtraction encloses differences of enclosed reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8bd28ee4b73b928fde4081285e5ca72b48a1703fbb61327a22c0b7e93e0fc99c",
+  "symbol_mismatches": []
+}

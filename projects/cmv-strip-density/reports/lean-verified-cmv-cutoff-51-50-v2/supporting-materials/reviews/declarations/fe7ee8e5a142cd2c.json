@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Model.v",
+  "domain_issues": [],
+  "informal_statement": "The coupled type-(iii) exterior-angle predictor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "384327e74651ca26a49098121b5edc0d2aec2203e7adb9b9c2f01e9786a1b96b",
+  "symbol_mismatches": []
+}

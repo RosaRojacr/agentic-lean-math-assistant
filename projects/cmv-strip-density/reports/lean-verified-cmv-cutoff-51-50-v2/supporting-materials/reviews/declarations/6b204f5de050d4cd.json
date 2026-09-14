@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.h3Interval",
+  "domain_issues": [],
+  "informal_statement": "Type-(iii) equal-area slab for compact box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bee35652f5b82397fd6b36e73591556e7291b9c519843c28a1442d7cd4f919a5",
+  "symbol_mismatches": []
+}

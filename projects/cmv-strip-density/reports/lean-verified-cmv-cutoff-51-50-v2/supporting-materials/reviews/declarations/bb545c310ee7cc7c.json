@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactSecondCell.checkedConditions",
+  "domain_issues": [],
+  "informal_statement": "All generic compact-cell conditions hold for box one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c9b3f9f7a265a22f128e05df51ad2c73f46eedace1983e930b75a5ccef6ea3ba",
+  "symbol_mismatches": []
+}

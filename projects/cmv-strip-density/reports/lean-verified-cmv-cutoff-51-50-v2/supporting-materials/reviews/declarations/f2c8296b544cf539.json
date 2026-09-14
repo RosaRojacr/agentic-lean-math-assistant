@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.QInterval.realContains_centered_meanValue",
+  "domain_issues": [],
+  "informal_statement": "Center and derivative intervals yield a sound enclosure by the mean value theorem.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0ed29af5eec0bee2a0714dc6eef9fd9127d30190d983af8320b3b10560c11496",
+  "symbol_mismatches": []
+}

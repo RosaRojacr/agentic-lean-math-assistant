@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment.carrier",
+  "domain_issues": [],
+  "informal_statement": "The closed set between the horizontal endpoints.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "094b96b3006204081e6d336250f56e63f6b337cc71255210b9bae8ae3b894041",
+  "symbol_mismatches": []
+}

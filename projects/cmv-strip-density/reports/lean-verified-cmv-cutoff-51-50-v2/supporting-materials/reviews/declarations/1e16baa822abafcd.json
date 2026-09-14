@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θOf_pi_div_eight",
+  "domain_issues": [],
+  "informal_statement": "The inverse area angle at pi/8 is pi/2.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "787022501b978041cc5dda7d507ec1898466d85828bc2384ff3ced42461fa420",
+  "symbol_mismatches": []
+}

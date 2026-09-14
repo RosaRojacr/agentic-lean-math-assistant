@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourAngle",
+  "domain_issues": [],
+  "informal_statement": "The type-(iv) angle contribution B4.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "94e6a9f5b491cb7ca4802d89fba1fa7ccb864bbe777d6e41d89b1d6bf892bdd0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique",
+  "domain_issues": [],
+  "informal_statement": "An area at least a negative-fold anchor area has a unique negative-fold regular root.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "15660b04d9615f11056408ab4ae99cb03c7fde3d8d26f5056c89e742987b7edb",
+  "symbol_mismatches": []
+}

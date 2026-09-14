@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ScalarSuffixCertificate.FirstPrototypeCell.tRadius",
+  "domain_issues": [],
+  "informal_statement": "Half the first prototype's density width.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ec2e049acded7f92cfecfef90c8523058c254046f34ddfc61af74c906f331c0",
+  "symbol_mismatches": []
+}

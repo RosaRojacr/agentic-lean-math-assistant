@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.y",
+  "domain_issues": [],
+  "informal_statement": "Its coupled type-(iv) exterior-angle predictor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9e7642719b786de830ac8e4bdac8c25ca9f746737432d174122c9b0d847d92b9",
+  "symbol_mismatches": []
+}

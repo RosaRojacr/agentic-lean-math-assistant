@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_unitCircleArc_image_eq_of_span_lt_two_pi",
+  "domain_issues": [],
+  "informal_statement": "For r > 0, u < v and v-u < 2 pi r, the circle image u_r([u,v]) has Hausdorff length v-u.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a5a68294ffad2a36064599c08079161b28ea03171c66437e00e8f24eba632c26",
+  "symbol_mismatches": []
+}

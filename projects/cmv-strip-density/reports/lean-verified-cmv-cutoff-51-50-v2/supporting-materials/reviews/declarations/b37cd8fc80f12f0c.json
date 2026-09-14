@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "θstar",
+  "domain_issues": [],
+  "informal_statement": "The selected root of F in the closed half-pi interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "10465817c5977e25bde5deaa090eec0b969594d7d01505755dd8387cec5029e1",
+  "symbol_mismatches": []
+}

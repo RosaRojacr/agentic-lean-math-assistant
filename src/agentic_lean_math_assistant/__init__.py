@@ -1,6 +1,6 @@
 """Public API for the deterministic Agentic Lean Math Assistant."""
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 
 from .autonomy import (
     AutonomyError,
@@ -31,7 +31,14 @@ from .proof_builder import (
     ProofPackageResult,
     ProofPackageSpec,
     build_proof_package,
+    compare_proof_packages,
+    discover_lean_declarations,
     initialize_proof_manifest,
+    plan_proof_package,
+    preflight_proof_package,
+    preview_proof_package,
+    proof_package_status,
+    record_review_dispositions,
     resume_proof_package,
     verify_proof_package,
 )
@@ -89,12 +96,19 @@ __all__ = [
     "build_proof_package",
     "choose_strategy",
     "collect_compute_metrics",
+    "compare_proof_packages",
+    "discover_lean_declarations",
     "fit_regression",
     "initialize_proof_manifest",
     "inspect_assurance",
     "inspect_claim_ledgers",
     "load_array",
+    "plan_proof_package",
+    "preflight_proof_package",
+    "preview_proof_package",
+    "proof_package_status",
     "record_autonomy_decision",
+    "record_review_dispositions",
     "replay_verifier_command",
     "resume_benchmark_suite",
     "resume_proof_package",

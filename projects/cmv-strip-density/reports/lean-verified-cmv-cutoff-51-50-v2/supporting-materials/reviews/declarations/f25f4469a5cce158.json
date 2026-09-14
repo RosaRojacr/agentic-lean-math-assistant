@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.volume_carrier",
+  "domain_issues": [],
+  "informal_statement": "The cap carrier's Lebesgue volume equals its Euclidean area expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d51f9d06b45af9eac50b2062d616aee51a260200ad5a2e96d2ecbe8e98be85c",
+  "symbol_mismatches": []
+}

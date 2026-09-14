@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.cap_replacement_perimeter_difference",
+  "domain_issues": [],
+  "informal_statement": "For every modeled candidate and arbitrary real density parameter, replacement perimeter minus candidate perimeter equals c(1-lambda g(X)).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cef0cb1c446892a6b4545fed077efd78b2014155506ae9d18d92702507d05712",
+  "symbol_mismatches": []
+}

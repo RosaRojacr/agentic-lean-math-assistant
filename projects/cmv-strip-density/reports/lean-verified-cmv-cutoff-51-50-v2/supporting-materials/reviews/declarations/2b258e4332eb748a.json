@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capEnd",
+  "domain_issues": [],
+  "informal_statement": "Final arclength parameter for the cap arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a140ca726638df619aef507f8019eb9f7ca9503d3231f8bfa8f0a64feb377161",
+  "symbol_mismatches": []
+}

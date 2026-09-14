@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CompactCellCertificate.typeThreeAreaBox",
+  "domain_issues": [],
+  "informal_statement": "Interval expression for A3.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ef992989a954766b4ace02b65812003aa8c6c32c075d2783aff3bdaa521effd7",
+  "symbol_mismatches": []
+}

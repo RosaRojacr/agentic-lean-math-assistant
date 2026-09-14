@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "lipschitzWith_unitCircleArc",
+  "domain_issues": [],
+  "informal_statement": "For every r > 0, the signed-arclength parametrization u_r is 1-Lipschitz on the real line.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6ddc026dd017d7b20d15e385a48bc34f5bcbfcad3796885aedaeb1fd06730313",
+  "symbol_mismatches": []
+}

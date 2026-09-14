@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hasDerivAt_arc",
+  "domain_issues": [],
+  "informal_statement": "The arc-area function has derivative twice sine of the inverse angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eb72e29cac89c3bb9db09a43c638398f57ad6c7fbce7c36f45c192d4285ebfc2",
+  "symbol_mismatches": []
+}

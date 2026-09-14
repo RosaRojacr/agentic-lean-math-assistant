@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "sin_θstar_pos",
+  "domain_issues": [],
+  "informal_statement": "The selected root angle has positive sine.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4e8cec70a1403c2eeb99e9733f21156d53cc03eb293ae991df42fda32054bfd6",
+  "symbol_mismatches": []
+}

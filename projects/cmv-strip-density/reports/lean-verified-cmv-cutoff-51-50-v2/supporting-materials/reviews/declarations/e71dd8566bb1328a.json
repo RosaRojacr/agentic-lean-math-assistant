@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.replacementAngle_pos",
+  "domain_issues": [],
+  "informal_statement": "The replacement angle is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9919f7c2d00e4667c39a44e5eadcdd729471eff6713284062fbdbad133333572",
+  "symbol_mismatches": []
+}

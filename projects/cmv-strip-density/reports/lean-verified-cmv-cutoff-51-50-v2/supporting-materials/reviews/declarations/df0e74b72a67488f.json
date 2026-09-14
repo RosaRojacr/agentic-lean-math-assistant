@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightArcParam",
+  "domain_issues": [],
+  "informal_statement": "Signed-arclength parametrization of the right side arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "74515bd4fc474dfa2c52a14662b8cc34aa0f40ef9d8185819e05d1de94ccf588",
+  "symbol_mismatches": []
+}

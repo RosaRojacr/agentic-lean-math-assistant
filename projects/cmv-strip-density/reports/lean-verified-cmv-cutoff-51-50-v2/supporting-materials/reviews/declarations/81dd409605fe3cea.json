@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.rightEndpoint",
+  "domain_issues": [],
+  "informal_statement": "Right endpoint of the horizontal chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e83d4942af5a95dd72bd914bc15f416e046e239fc23caff7a851807f832f26a3",
+  "symbol_mismatches": []
+}

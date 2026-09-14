@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc",
+  "domain_issues": [],
+  "informal_statement": "For lambda > 1, a > 0 and b < 1, negativity of A3 derivative on (a,b) implies strict decrease of A3 on [a,b].",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fd210f8a463759cd45da345eae2826fb3a7bdf59d29239656d68c8efc64fb7fc",
+  "symbol_mismatches": []
+}

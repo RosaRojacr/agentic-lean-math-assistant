@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "g_strictMonoOn_Ici",
+  "domain_issues": [],
+  "informal_statement": "The cap-saving function strictly increases from Xstar onward.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bbc00bca790c91cdaec1fe6d2fa43a3abe6e68cd5e0920d9ebd378f169cf5602",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "Canonical complete-frontier weighted perimeter of the type-(iii) carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ac2df4f2daf804e358c901d1a6b496eaadc35076745e389cd399733fc5dead10",
+  "symbol_mismatches": []
+}

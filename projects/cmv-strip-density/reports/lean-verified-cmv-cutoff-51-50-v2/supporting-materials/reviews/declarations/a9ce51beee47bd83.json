@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "upper_cap_integral",
+  "domain_issues": [],
+  "informal_statement": "The upper exterior cap's Euclidean Hausdorff density integral is lambda times its arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "447beffafa9faf9c0047e982aa709b3b243852770c1fde70cc3c6676215458bf",
+  "symbol_mismatches": []
+}

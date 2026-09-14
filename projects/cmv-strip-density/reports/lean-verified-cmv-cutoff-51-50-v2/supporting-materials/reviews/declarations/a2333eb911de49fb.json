@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "RightPrototypeCell.K3",
+  "domain_issues": [],
+  "informal_statement": "The right prototype's type-(iii) fold expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dded0a92a5475f561e4ec09b53d31fd672246c1e3a18679f1d82548595f59954",
+  "symbol_mismatches": []
+}

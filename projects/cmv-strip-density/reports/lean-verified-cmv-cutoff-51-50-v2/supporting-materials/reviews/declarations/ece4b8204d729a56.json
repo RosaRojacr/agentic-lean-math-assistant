@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "sin_lt_sin_of_le_pi_div_two",
+  "domain_issues": [],
+  "informal_statement": "Sine is strictly increasing on the relevant lower half of the principal angle interval.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8163503cd18ad5473edae576484d993037d91228ee5ab16856af467dd4e699d7",
+  "symbol_mismatches": []
+}

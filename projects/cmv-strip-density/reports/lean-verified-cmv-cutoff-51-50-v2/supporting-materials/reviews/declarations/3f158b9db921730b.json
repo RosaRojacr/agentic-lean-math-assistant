@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "MiddleFaceAssembly.Conditions",
+  "domain_issues": [],
+  "informal_statement": "Root-map face conditions and strict branch/comparison conditions for a brick.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c36f9057f1d62e8c0bcb35e1c262b414fda26bcb9bf4a32565a3c1e70dc5568",
+  "symbol_mismatches": []
+}

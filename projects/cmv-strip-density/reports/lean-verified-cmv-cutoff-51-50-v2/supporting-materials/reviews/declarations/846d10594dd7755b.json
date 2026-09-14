@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_lt_self",
+  "domain_issues": [],
+  "informal_statement": "For the recorded small-angle domain, normalized cap area is less than the angle.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "505f4cfdbccff59a35c0181afbb77947295aa04ad4c13ed1bce28a912b3e1042",
+  "symbol_mismatches": []
+}

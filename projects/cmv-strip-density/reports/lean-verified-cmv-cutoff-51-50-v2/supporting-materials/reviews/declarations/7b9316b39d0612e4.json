@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.integrableOn_carrier",
+  "domain_issues": [],
+  "informal_statement": "The density is integrable over the type-(iii) carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f50bce5009ef96b4081db29960a7e72186fb76edbfedf9fa6fd538bc59ab8c22",
+  "symbol_mismatches": []
+}

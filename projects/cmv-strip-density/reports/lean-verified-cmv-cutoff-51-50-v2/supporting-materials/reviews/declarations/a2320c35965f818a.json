@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.pairwiseOverlap_subset_boundaryJoinSet",
+  "domain_issues": [],
+  "informal_statement": "Intersections of distinct type-(iii) boundary pieces occur only at junctions.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f8736f4dd5a67fc4149e15b1ed3e3f21030a49e12643cd517b41158566d4664f",
+  "symbol_mismatches": []
+}

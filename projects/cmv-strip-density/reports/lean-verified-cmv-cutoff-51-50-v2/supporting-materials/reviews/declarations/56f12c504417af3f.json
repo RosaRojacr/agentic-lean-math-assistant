@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourArea_deriv_pos_after_zero",
+  "domain_issues": [],
+  "informal_statement": "Type-(iv) area increases after a regular stationary fold.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "The author's statement and explanation preserve the formal declaration's hypotheses, quantifier order, domains, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "574cf814295ee9aa4cb9406582955f50506dd66296979a4f903f27b9ae8e2667",
+  "symbol_mismatches": []
+}
