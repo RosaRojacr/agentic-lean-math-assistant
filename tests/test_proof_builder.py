@@ -425,7 +425,7 @@ def test_declaration_anchors_preserve_case_sensitive_identity() -> None:
 def test_planning_preflight_discovery_and_preview_are_model_free(
     tmp_path: Path,
 ) -> None:
-    manifest, _omp, lake = _fixture(tmp_path)
+    manifest, omp, lake = _fixture(tmp_path)
 
     plan = plan_proof_package(
         manifest,
@@ -446,6 +446,7 @@ def test_planning_preflight_discovery_and_preview_are_model_free(
     assert reviewer["route"] == "provider/lower-tier-reviewer"
     report = preflight_proof_package(
         manifest,
+        omp=str(omp),
         lake=str(lake),
         run_lean=False,
     )

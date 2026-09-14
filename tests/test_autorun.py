@@ -1031,17 +1031,18 @@ def test_autorun_report_rejects_invalid_claim_content_without_marker(
     assert "CONDUCTOR_RESULT_JSON:" not in capsys.readouterr().out
 
 
-def test_round_435_malformed_report_remains_rejected() -> None:
-    malformed = (
-        Path(__file__).resolve().parents[1]
-        / "projects/cmv-strip-density/autorun-runs"
-        / "20260902T064759Z-62a799/rounds/round-00435/output.md"
+def test_legacy_conductor_report_remains_rejected() -> None:
+    legacy_report = (
+        'CONDUCTOR_RESULT_JSON: {"round":435,"strategy":"strategy-00095",'
+        '"revision":1,"checkpoint_id":"ambient_transport_sharp_local_increment",'
+        '"status":"blocked","progress_class":"meaningful","summary":"Verified work.",'
+        '"artifacts":["proof/CMVSmoothAmbientTransport.lean"],'
+        '"verification":["lake build: success"],'
+        '"blockers":["The coefficient-one estimate remains unavailable."],'
+        '"next_action":"Prove the localized transport theorem."}'
     )
 
-    assert (
-        AutoRunRunner._parse_conductor_claim(malformed.read_text(encoding="utf-8"))
-        is None
-    )
+    assert AutoRunRunner._parse_conductor_claim(legacy_report) is None
 
 
 def test_first_round_selects_strategy_before_sol_and_adjudicates_afterward(
