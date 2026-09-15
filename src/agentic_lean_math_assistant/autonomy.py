@@ -49,6 +49,7 @@ class AutonomyRuntimeOptions:
     output: TextIO | None = None
     waive_missing_sources: bool = False
     decision_poll_seconds: float = 1.0
+    direct_agents: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -596,6 +597,7 @@ class AutonomyRunner:
                 waive_missing_sources=self.options.waive_missing_sources,
                 campaign_directive=directive,
                 input_overrides=overrides,
+                direct_agents=self.options.direct_agents,
             ),
         )
 

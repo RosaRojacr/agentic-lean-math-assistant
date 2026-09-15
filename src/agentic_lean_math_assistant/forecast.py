@@ -148,13 +148,15 @@ class CompletionForecast:
         if not isinstance(reason, str) or not reason.strip():
             raise ConfigurationError("completion forecast reason must be nonempty text")
         review_after = value["recommended_review_after_seconds"]
+        minimum_review_after = 0 if assessment == "complete" else 60
         if (
             isinstance(review_after, bool)
             or not isinstance(review_after, int)
-            or not 60 <= review_after <= 604_800
+            or not minimum_review_after <= review_after <= 604_800
         ):
             raise ConfigurationError(
-                "completion forecast recommended_review_after_seconds must be between 60 and 604800"
+                "completion forecast recommended_review_after_seconds must be "
+                f"between {minimum_review_after} and 604800"
             )
         next_runtime = _optional_quantiles(
             value["next_publishable_runtime_seconds"], "next publishable runtime"
@@ -255,6 +257,12 @@ def predicted_limit_breached(
 
 def _optional_quantiles(value: object, label: str) -> RuntimeQuantiles | None:
     if value is None:
+        return None
+    if (
+        isinstance(value, dict)
+        and set(value) == {"p50", "p80", "p95"}
+        and all(item is None for item in value.values())
+    ):
         return None
     return RuntimeQuantiles.parse(value, label)
 

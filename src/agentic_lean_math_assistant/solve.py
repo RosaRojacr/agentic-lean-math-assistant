@@ -88,6 +88,7 @@ class SolveSpec:
     max_model_calls: int | None
     allow_web: bool
     sandbox: bool
+    memory_max_mb: int
     profile: Literal["economical", "balanced", "max"]
     models: SolveModels
     forecast: ForecastPolicy
@@ -116,6 +117,8 @@ class SolveSpec:
         forecast_percentile: int | None = None,
         max_model_calls: int | None = None,
         profile: str | None = None,
+        proof_author_model: str | None = None,
+        proof_reviewer_model: str | None = None,
         restart: bool = False,
         publish_inconclusive: bool | None = None,
         headless: bool = False,
@@ -199,7 +202,7 @@ class SolveSpec:
                 "proof_reviewer",
             },
         )
-        _known_keys(execution_table, "execution", {"sandbox"})
+        _known_keys(execution_table, "execution", {"sandbox", "memory_max_mb"})
         raw_problem = problem or Path(str(solve_table.get("problem", "problem.md")))
         resolved_problem = raw_problem.expanduser()
         if not resolved_problem.is_absolute():
@@ -267,6 +270,20 @@ class SolveSpec:
                 for name in SolveModels.__dataclass_fields__
             }
         )
+        if proof_author_model is not None:
+            selected_models = replace(
+                selected_models,
+                proof_author=_optional_text(
+                    proof_author_model, "proof author model override"
+                ),
+            )
+        if proof_reviewer_model is not None:
+            selected_models = replace(
+                selected_models,
+                proof_reviewer=_optional_text(
+                    proof_reviewer_model, "proof reviewer model override"
+                ),
+            )
         configured_calls = resource_table.get(
             "max_model_calls", retained.get("max_model_calls")
         )
@@ -297,6 +314,12 @@ class SolveSpec:
                 sandbox
                 if sandbox is not None
                 else _boolean(execution_table.get("sandbox", True), "execution.sandbox")
+            ),
+            memory_max_mb=_integer(
+                execution_table.get("memory_max_mb", 8192),
+                "execution.memory_max_mb",
+                64,
+                1_048_576,
             ),
             profile=selected_profile,  # type: ignore[arg-type]
             models=selected_models,
@@ -634,7 +657,10 @@ def create_input_snapshot(spec: SolveSpec) -> InputSnapshot:
     files: list[Path] = []
     for path in sorted(root.rglob("*")):
         relative = path.relative_to(root)
-        if any(part in _INPUT_EXCLUDES for part in relative.parts):
+        if any(
+            part in _INPUT_EXCLUDES or part.startswith(".alma-archive-")
+            for part in relative.parts
+        ):
             continue
         if path.is_symlink():
             raise SolveError(f"solve inputs cannot contain symlinks: {relative}")

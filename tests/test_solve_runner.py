@@ -60,6 +60,7 @@ def test_folder_solve_reaches_verified_publication(
     folder = tmp_path / "truth-problem"
     folder.mkdir()
     (folder / "problem.md").write_text("Prove True.\n", encoding="utf-8")
+    autonomy_options: list[Any] = []
 
     def fake_execute(request_path: Path) -> int:
         request = json.loads(request_path.read_text(encoding="utf-8"))
@@ -93,6 +94,7 @@ def test_folder_solve_reaches_verified_publication(
     class FakeAutonomyRunner:
         def __init__(self, project: Any, options: Any) -> None:
             self.project = project
+            autonomy_options.append(options)
 
         def start(self) -> Path:
             session = self.project.runs_dir / "autonomy-runs" / "session"
@@ -152,13 +154,21 @@ def test_folder_solve_reaches_verified_publication(
     )
 
     result = SolveRunner(
-        SolveSpec.load(folder, runtime_limit="1h"), omp=sys.executable
+        SolveSpec.load(folder, runtime_limit="1h", headless=True),
+        omp=sys.executable,
     ).run()
 
     assert result.status == "complete"
     assert result.mathematical_status == "verified"
     assert result.publication_status == "verified"
     assert result.proof_package == folder / "result" / "proof-package"
+    assert autonomy_options[0].direct_agents is True
+    assert (
+        json.loads((folder / ".alma" / "state.json").read_text(encoding="utf-8"))[
+            "runtime"
+        ]["active_since"]
+        is None
+    )
     status = solve_status(folder)
     assert len(status["checkpoints"]) == 1
     semantic_lock = json.loads(
@@ -179,9 +189,73 @@ def test_folder_solve_reaches_verified_publication(
         main(["solve-resume", str(folder), "--omp", sys.executable, "--headless"]) == 0
     )
     assert "solve status: complete" in capsys.readouterr().out
+    assert (
+        json.loads((folder / ".alma" / "state.json").read_text(encoding="utf-8"))[
+            "runtime"
+        ]["active_since"]
+        is None
+    )
     assert main(["solve-stop", str(folder)]) == 0
     assert "solve stop requested" in capsys.readouterr().out
     assert (folder / ".alma" / "STOP").is_file()
+
+
+def test_resume_retries_verified_publication_failure(tmp_path: Path) -> None:
+    folder = tmp_path / "publication-retry"
+    folder.mkdir()
+    (folder / "problem.md").write_text("Prove True.\n", encoding="utf-8")
+    initial = SolveRunner(SolveSpec.load(folder, runtime_limit="1h"))
+    initial._prepare_state_root()
+    initial._initialize_or_resume()
+    failed = initial._state()
+    failed["status"] = "publication_failed"
+    failed["mathematical_status"] = "verified"
+    failed["publication_status"] = "failed"
+    failed["checkpoints"] = [{"path": str(folder / ".alma" / "checkpoint")}]
+    failed["error"] = "missing publication models"
+    failed["runtime"] = {"active_seconds": 0, "active_since": None, "model_calls": 0}
+    initial._save(failed, "test:publication-failed")
+
+    resumed = SolveRunner(
+        SolveSpec.load(
+            folder,
+            runtime_limit="1h",
+            proof_author_model="provider/author",
+            proof_reviewer_model="provider/reviewer",
+        )
+    )
+    resumed._prepare_state_root()
+    resumed._initialize_or_resume()
+
+    state = resumed._state()
+    assert state["status"] == "publishing"
+    assert state["publication_status"] == "pending"
+    assert state["error"] is None
+    assert resumed.spec.models.proof_author == "provider/author"
+    assert resumed.spec.models.proof_reviewer == "provider/reviewer"
+
+
+def test_resume_retries_failed_solve_from_retained_progress(tmp_path: Path) -> None:
+    folder = tmp_path / "solve-retry"
+    folder.mkdir()
+    (folder / "problem.md").write_text("Prove True.\n", encoding="utf-8")
+    initial = SolveRunner(SolveSpec.load(folder, runtime_limit="1h"))
+    initial._prepare_state_root()
+    initial._initialize_or_resume()
+    failed = initial._state()
+    failed["status"] = "failed"
+    failed["error"] = "agent resource exhausted"
+    failed["runtime"] = {"active_seconds": 5, "active_since": None, "model_calls": 1}
+    initial._save(failed, "test:solve-failed")
+
+    resumed = SolveRunner(SolveSpec.load(folder, runtime_limit="1h"))
+    resumed._prepare_state_root()
+    resumed._initialize_or_resume()
+
+    state = resumed._state()
+    assert state["status"] == "contracting"
+    assert state["error"] is None
+    assert state["runtime"]["active_since"] is not None
 
 
 def test_contract_rejection_pauses_after_five_attempts(

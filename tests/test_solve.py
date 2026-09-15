@@ -44,20 +44,31 @@ minimum_interval = "15m"
 percentile = 95
 breach_confirmations = 2
 minimum_confidence = "high"
+
+[execution]
+memory_max_mb = 9216
 """.strip()
         + "\n",
         encoding="utf-8",
     )
 
-    spec = SolveSpec.load(tmp_path, headless=True)
+    spec = SolveSpec.load(
+        tmp_path,
+        headless=True,
+        proof_author_model="provider/author",
+        proof_reviewer_model="provider/reviewer",
+    )
 
     assert spec.problem == tmp_path / "problem.md"
     assert spec.runtime_limit_seconds == 10800
     assert spec.max_model_calls == 17
     assert spec.allow_web
     assert spec.headless
+    assert spec.memory_max_mb == 9216
     assert spec.forecast.percentile == 95
     assert spec.forecast.breach_confirmations == 2
+    assert spec.models.proof_author == "provider/author"
+    assert spec.models.proof_reviewer == "provider/reviewer"
 
 
 def test_solve_spec_requires_a_limit(tmp_path: Path) -> None:
@@ -84,6 +95,10 @@ def test_input_snapshot_is_content_addressed_and_excludes_runtime_state(
     (tmp_path / "notes.txt").write_text("Notes\n", encoding="utf-8")
     (tmp_path / ".alma" / "old").mkdir(parents=True)
     (tmp_path / ".alma" / "old" / "state.json").write_text("{}", encoding="utf-8")
+    (tmp_path / ".alma-archive-20260915T000000Z" / "workspace").mkdir(parents=True)
+    (
+        tmp_path / ".alma-archive-20260915T000000Z" / "workspace" / "large.bin"
+    ).write_bytes(b"x" * 1024)
     spec = SolveSpec.load(tmp_path, runtime_limit="1h")
 
     first = create_input_snapshot(spec)
@@ -92,6 +107,7 @@ def test_input_snapshot_is_content_addressed_and_excludes_runtime_state(
     assert first.fingerprint == second.fingerprint
     assert (first.root / "problem.md").read_text(encoding="utf-8") == "Problem\n"
     assert not (first.root / ".alma").exists()
+    assert not (first.root / ".alma-archive-20260915T000000Z").exists()
     assert (first.root / "INPUTS.json").is_file()
 
 

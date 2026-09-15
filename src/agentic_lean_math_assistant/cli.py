@@ -499,6 +499,8 @@ def _solve_arguments(parser: argparse.ArgumentParser, *, include_restart: bool) 
     parser.add_argument("--forecast-percentile", type=int, choices=(50, 80, 95))
     parser.add_argument("--max-model-calls", type=int)
     parser.add_argument("--profile", choices=("economical", "balanced", "max"))
+    parser.add_argument("--proof-author-model")
+    parser.add_argument("--proof-reviewer-model")
     parser.add_argument("--feedback", action="append", default=[])
     parser.add_argument("--headless", action="store_true")
     web = parser.add_mutually_exclusive_group()
@@ -694,6 +696,8 @@ def main(argv: list[str] | None = None) -> int:
                 forecast_percentile=args.forecast_percentile,
                 max_model_calls=args.max_model_calls,
                 profile=args.profile,
+                proof_author_model=args.proof_author_model,
+                proof_reviewer_model=args.proof_reviewer_model,
                 restart=getattr(args, "restart", False),
                 publish_inconclusive=args.publish_inconclusive,
                 headless=args.headless,

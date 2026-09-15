@@ -68,6 +68,27 @@ def test_low_confidence_and_insufficient_evidence_do_not_stop() -> None:
     )
 
 
+def test_all_null_quantiles_mean_indeterminate_runtime() -> None:
+    forecast = _forecast(
+        next_publishable_runtime_seconds={"p50": None, "p80": None, "p95": None}
+    )
+
+    assert forecast.next_publishable_runtime is None
+    with pytest.raises(ConfigurationError, match="nonnegative integer"):
+        _forecast(next_publishable_runtime_seconds={"p50": None, "p80": 10, "p95": 20})
+
+
+def test_complete_forecast_allows_no_further_review_delay() -> None:
+    complete = _forecast(
+        assessment="complete",
+        recommended_review_after_seconds=0,
+    )
+
+    assert complete.recommended_review_after_seconds == 0
+    with pytest.raises(ConfigurationError, match="between 60 and 604800"):
+        _forecast(recommended_review_after_seconds=0)
+
+
 def test_publishable_forecast_requires_verified_roots() -> None:
     with pytest.raises(ConfigurationError, match="strongest verified result"):
         _forecast(current_result_publishable=True)

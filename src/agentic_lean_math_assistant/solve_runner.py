@@ -157,8 +157,10 @@ class SolveRunner:
                     "solve inputs changed; use --restart to create a new solution lineage"
                 )
             self._apply_resume_decision(state)
-            ledger = RuntimeLedger.parse(state["runtime"]).start()
-            state["runtime"] = ledger.to_dict()
+            ledger = RuntimeLedger.parse(state["runtime"])
+            state["runtime"] = (
+                ledger.pause() if state.get("status") in _TERMINAL else ledger.start()
+            ).to_dict()
             self._save(state, "solve:resumed")
             return
         initial_state: dict[str, Any] = {
@@ -194,6 +196,24 @@ class SolveRunner:
         self._save(initial_state, "solve:initialized")
 
     def _apply_resume_decision(self, state: dict[str, Any]) -> None:
+        if state.get("status") == "failed":
+            state["status"] = (
+                "publication_failed"
+                if state.get("mathematical_status") == "verified"
+                and isinstance(state.get("checkpoints"), list)
+                and state["checkpoints"]
+                else "contracting"
+            )
+            state["error"] = None
+        if (
+            state.get("status") == "publication_failed"
+            and state.get("mathematical_status") == "verified"
+            and isinstance(state.get("checkpoints"), list)
+            and state["checkpoints"]
+        ):
+            state["status"] = "publishing"
+            state["publication_status"] = "pending"
+            state["error"] = None
         if self.spec.feedback:
             feedback = state.setdefault("feedback", [])
             if not isinstance(feedback, list):
@@ -584,6 +604,7 @@ class SolveRunner:
                 lake=self.lake,
                 focus=False,
                 close_herdr=True,
+                direct_agents=self.spec.headless,
             ),
         )
         autonomy_state = self._advance_autonomy(runner, state)
@@ -1096,6 +1117,7 @@ class SolveRunner:
             failed["status"] = "publication_failed"
             failed["publication_status"] = "failed"
             failed["error"] = f"{type(exc).__name__}: {exc}"
+            failed["runtime"] = RuntimeLedger.parse(failed["runtime"]).pause().to_dict()
             self._save(failed, "solve:publication-failed")
             return
         latest = self._state()
@@ -1108,6 +1130,7 @@ class SolveRunner:
             latest["status"] = "publication_failed"
             latest["publication_status"] = result.status
             latest["error"] = "; ".join(result.errors)
+        latest["runtime"] = RuntimeLedger.parse(latest["runtime"]).pause().to_dict()
         atomic_write_json(self.spec.result_root / "status.json", _public_status(latest))
         self._save(latest, "solve:publication-completed")
 
@@ -1260,7 +1283,7 @@ audit_thinking = "high"
 sandbox = {str(self.spec.sandbox).lower()}
 network = {str(self.spec.allow_web).lower()}
 workspace_max_mb = 32768
-memory_max_mb = 6144
+memory_max_mb = {self.spec.memory_max_mb}
 tasks_max = 256
 
 [autonomy]
@@ -1396,7 +1419,7 @@ pandoc = {_toml(self.pandoc)}
             {
                 "sandbox": self.spec.sandbox,
                 "network": self.spec.allow_web,
-                "memory_max_mb": 6144,
+                "memory_max_mb": self.spec.memory_max_mb,
                 "tasks_max": 128,
                 "workspace_max_mb": 32768,
             },

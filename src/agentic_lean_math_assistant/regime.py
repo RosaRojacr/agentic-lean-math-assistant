@@ -69,6 +69,7 @@ class RegimeOptions:
     waive_missing_sources: bool = False
     campaign_directive: Path | None = None
     input_overrides: tuple[tuple[str, Path], ...] = ()
+    direct_agents: bool = False
 
 
 class RegimeRunner:
@@ -298,6 +299,7 @@ class RegimeRunner:
                 close_herdr=self.options.close_herdr,
                 output=self.output,
                 max_parallel=plan.max_parallel,
+                direct_agents=self.options.direct_agents,
             ),
             run_dir=self.run_dir,
         )
@@ -1045,6 +1047,7 @@ class RegimeRunner:
                 output=self.output,
                 retry_stages=tuple(task.task_id for task in plan.tasks),
                 max_parallel=plan.max_parallel,
+                direct_agents=self.options.direct_agents,
             )
             builder = CampaignBuilder(campaign, options=options, run_dir=self.run_dir)
             run = self._run_builder(builder, resume_existing=True)

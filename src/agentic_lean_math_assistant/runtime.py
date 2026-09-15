@@ -374,6 +374,7 @@ class CampaignOptions:
     retry_stages: tuple[str, ...] = ()
     retry_feedback: tuple[str, ...] = ()
     max_parallel: int | None = None
+    direct_agents: bool = False
 
 
 class CampaignBuilder:
@@ -1062,6 +1063,7 @@ class CampaignBuilder:
             },
             herdr=self.herdr if self.herdr_workspace is not None else None,
             pane_id=self.panes.get(stage.stage_id),
+            direct_agents=self.options.direct_agents,
             omp=self.options.omp,
             lake=self.options.lake,
             python_executable=self.python_executable,
@@ -1451,6 +1453,8 @@ class CampaignBuilder:
 
     def _create_herdr_workspace(self) -> None:
         assert self.workspace is not None
+        if self.options.direct_agents:
+            return
         agent_stages = [
             stage
             for stage in self.campaign.stages

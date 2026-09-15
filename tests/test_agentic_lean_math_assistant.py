@@ -692,6 +692,57 @@ max_time = 60
         )
 
 
+def test_direct_agent_mode_runs_without_herdr(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _base_files(tmp_path)
+    manifest = tmp_path / "campaign.toml"
+    manifest.write_text(
+        """schema_version = 1
+[campaign]
+id = "direct-agent"
+title = "Direct Agent"
+instructions = "campaign.md"
+runs_dir = "runs"
+[[inputs]]
+source = "input.txt"
+target = "input.txt"
+[[stages]]
+id = "analyst"
+title = "Analyst"
+mode = "research"
+feature = "agent"
+depends_on = []
+[stages.config]
+instructions = "role.md"
+tools = ["read"]
+max_time = 60
+""",
+        encoding="utf-8",
+    )
+    options = replace(
+        _options(tmp_path, monkeypatch),
+        direct_agents=True,
+        herdr=str(tmp_path / "missing-herdr"),
+    )
+
+    run_dir = CampaignBuilder(
+        CampaignSpec.load(manifest),
+        options=options,
+    ).run()
+
+    state = json.loads((run_dir / "state.json").read_text(encoding="utf-8"))
+    receipt = json.loads(
+        (run_dir / "agents/research/analyst/attempt-01.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert state["status"] == "complete"
+    assert state["herdr_workspace_id"] is None
+    assert receipt["status"] == "succeeded"
+    assert not (tmp_path / "herdr.json").exists()
+
+
 def test_agent_stage_retry_continues_from_partial_workspace(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

@@ -2,6 +2,28 @@
 
 ## Unreleased
 
+## 1.4.2 — 2026-09-15
+
+### Solve restart isolation
+
+- Excluded retained `.alma-archive-*` lineages from content-addressed input
+  snapshots, preventing recursive archive copying and exponential disk growth
+  across `solve --restart` attempts.
+- Made `solve --headless` execute campaign agents directly instead of depending
+  on terminal-pane dispatch, eliminating unattended receipt timeouts while
+  retaining the same request, receipt, resource, and solve-budget boundaries.
+- Accepted a zero review delay for forecasts that declare the requested solution
+  complete; unfinished forecasts retain the one-minute minimum.
+- Treated all-null forecast quantile objects as indeterminate runtime estimates,
+  while continuing to reject partially null quantile sets.
+- Added folder-solve publication model overrides and made `solve-resume` retry a
+  failed publication from its verified checkpoint instead of treating it as
+  permanently terminal.
+- Raised the default folder-solve agent memory ceiling to 8 GiB, exposed it as
+  `execution.memory_max_mb`, and made `solve-resume` continue other retained
+  operational failures instead of discarding completed contract work.
+- Paused the retained runtime ledger on every terminal publication outcome.
+
 ## 1.4.1 — 2026-09-15
 
 ### Solve budget enforcement

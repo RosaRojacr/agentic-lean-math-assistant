@@ -16,6 +16,7 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path, PurePosixPath
 from typing import Any, Protocol
 
+from .agent_runner import execute as execute_agent_request
 from .artifacts import Artifact, atomic_write_json, atomic_write_text, digest_file
 from .claims import ClaimProposalBundle, ClaimVerdictBundle, build_claim_ledger
 from .command import run_captured_command
@@ -70,6 +71,7 @@ class FeatureContext:
     omp: str
     lake: str
     python_executable: str
+    direct_agents: bool = False
 
 
 class CampaignFeature(Protocol):
@@ -423,7 +425,9 @@ class AgentFeature:
     def execute(self, context: FeatureContext) -> FeatureResult:
         config = context.config
         assert isinstance(config, AgentConfig)
-        if context.herdr is None or context.pane_id is None:
+        if not context.direct_agents and (
+            context.herdr is None or context.pane_id is None
+        ):
             return FeatureResult("failed", "agent feature has no Herdr pane")
         if config.verifier_type is None:
             return self._execute_agent(context, config)
@@ -527,7 +531,8 @@ class AgentFeature:
     def _execute_agent(
         self, context: FeatureContext, config: AgentConfig
     ) -> FeatureResult:
-        assert context.herdr is not None and context.pane_id is not None
+        if not context.direct_agents:
+            assert context.herdr is not None and context.pane_id is not None
         personal_dir = _workspace_path(
             context.workspace,
             f"agents/{config.category}/{context.stage.stage_id}",
@@ -616,16 +621,20 @@ class AgentFeature:
         if handoff is not None:
             payload["handoff"] = str(handoff)
         atomic_write_json(request, payload)
-        context.herdr.run_in_pane(
-            context.pane_id,
-            (
-                context.python_executable,
-                "-m",
-                "agentic_lean_math_assistant.agent_runner",
-                "--request",
-                str(request),
-            ),
-        )
+        if context.direct_agents:
+            execute_agent_request(request)
+        else:
+            assert context.herdr is not None and context.pane_id is not None
+            context.herdr.run_in_pane(
+                context.pane_id,
+                (
+                    context.python_executable,
+                    "-m",
+                    "agentic_lean_math_assistant.agent_runner",
+                    "--request",
+                    str(request),
+                ),
+            )
         runner = _wait_for_receipt(
             receipt,
             (config.max_time + 70) * (config.empty_output_retries + 1) + 20,

@@ -56,8 +56,13 @@ percentile = 80
 breach_confirmations = 2
 minimum_confidence = "medium"
 
+[models]
+proof_author = "provider/author-model"
+proof_reviewer = "provider/reviewer-model"
+
 [execution]
 sandbox = true
+memory_max_mb = 8192
 ```
 
 The independent evaluator runs after one active hour, at safe milestone or
@@ -71,6 +76,11 @@ packaging it; headless runs skip it after the approval timeout unless
 
 State is retained under `<folder>/.alma/`; the final package is written under
 `<folder>/result/`.
+Publication requires explicit author and semantic-review routes. Configure them
+under `[models]`, or supply `--proof-author-model` and
+`--proof-reviewer-model`; those overrides can also recover a retained
+`publication_failed` solve without restarting its verified mathematics.
+
 
 ```bash
 agentic-lean-math-assistant solve-status ./my-problem
@@ -443,7 +453,7 @@ Optional regression backend:
 uv sync --locked --extra ml
 ```
 
-The package version is `1.4.1`. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
+The package version is `1.4.2`. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Execution containment
 
