@@ -91,6 +91,8 @@ from .runtime import (
     replay_verifier_command,
     verify_campaign_bundle,
 )
+from .solve import SolveError, SolveSpec
+from .solve_runner import SolveRunner, request_solve_stop, solve_status
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -205,6 +207,22 @@ def _parser() -> argparse.ArgumentParser:
         "autonomy-status", help="show verified autonomous session state"
     )
     autonomy_show.add_argument("--session", type=Path, required=True)
+    solve = subparsers.add_parser(
+        "solve", help="solve and publish a mathematical problem folder"
+    )
+    _solve_arguments(solve, include_restart=True)
+    solve_resume = subparsers.add_parser(
+        "solve-resume", help="resume a retained folder solve"
+    )
+    _solve_arguments(solve_resume, include_restart=False)
+    solve_show = subparsers.add_parser(
+        "solve-status", help="show retained folder solve state"
+    )
+    solve_show.add_argument("folder", type=Path)
+    solve_stop = subparsers.add_parser(
+        "solve-stop", help="request a durable stop at the next safe boundary"
+    )
+    solve_stop.add_argument("folder", type=Path)
     resume = subparsers.add_parser("resume", help="resume a retained campaign")
     resume.add_argument("--run", type=Path, required=True)
     resume.add_argument(
@@ -472,6 +490,41 @@ def _autonomy_arguments(parser: argparse.ArgumentParser) -> None:
     _runtime_arguments(parser, include_runs=False, omp_default=None)
 
 
+def _solve_arguments(parser: argparse.ArgumentParser, *, include_restart: bool) -> None:
+    parser.add_argument("folder", type=Path)
+    parser.add_argument("--problem", type=Path)
+    parser.add_argument("--runtime-limit")
+    parser.add_argument("--predicted-runtime-limit")
+    parser.add_argument("--forecast-interval")
+    parser.add_argument("--forecast-percentile", type=int, choices=(50, 80, 95))
+    parser.add_argument("--max-model-calls", type=int)
+    parser.add_argument("--profile", choices=("economical", "balanced", "max"))
+    parser.add_argument("--feedback", action="append", default=[])
+    parser.add_argument("--headless", action="store_true")
+    web = parser.add_mutually_exclusive_group()
+    web.add_argument("--allow-web", dest="allow_web", action="store_true")
+    web.add_argument("--no-web", dest="allow_web", action="store_false")
+    parser.set_defaults(allow_web=None)
+    sandbox = parser.add_mutually_exclusive_group()
+    sandbox.add_argument("--sandbox", dest="sandbox", action="store_true")
+    sandbox.add_argument("--no-sandbox", dest="sandbox", action="store_false")
+    parser.set_defaults(sandbox=None)
+    publication = parser.add_mutually_exclusive_group()
+    publication.add_argument(
+        "--publish-inconclusive", dest="publish_inconclusive", action="store_true"
+    )
+    publication.add_argument(
+        "--skip-inconclusive", dest="publish_inconclusive", action="store_false"
+    )
+    parser.set_defaults(publish_inconclusive=None)
+    if include_restart:
+        parser.add_argument("--restart", action="store_true")
+    parser.add_argument("--omp", default="omp")
+    parser.add_argument("--lake", default="lake")
+    parser.add_argument("--pandoc", default="pandoc")
+    parser.add_argument("--chromium")
+
+
 def _options(args: argparse.Namespace) -> CampaignOptions:
     return CampaignOptions(
         herdr=args.herdr,
@@ -625,6 +678,49 @@ def main(argv: list[str] | None = None) -> int:
     parser = _parser()
     args = parser.parse_args(argv)
     try:
+        if args.command == "solve-status":
+            print(json.dumps(solve_status(args.folder), indent=2, sort_keys=True))
+            return 0
+        if args.command == "solve-stop":
+            print(f"solve stop requested: {request_solve_stop(args.folder)}")
+            return 0
+        if args.command in {"solve", "solve-resume"}:
+            solve_spec = SolveSpec.load(
+                args.folder,
+                problem=args.problem,
+                runtime_limit=args.runtime_limit,
+                predicted_runtime_limit=args.predicted_runtime_limit,
+                forecast_interval=args.forecast_interval,
+                forecast_percentile=args.forecast_percentile,
+                max_model_calls=args.max_model_calls,
+                profile=args.profile,
+                restart=getattr(args, "restart", False),
+                publish_inconclusive=args.publish_inconclusive,
+                headless=args.headless,
+                allow_web=args.allow_web,
+                sandbox=args.sandbox,
+                feedback=tuple(args.feedback),
+            )
+            solve_result = SolveRunner(
+                solve_spec,
+                omp=args.omp,
+                lake=args.lake,
+                pandoc=args.pandoc,
+                chromium=args.chromium,
+            ).run()
+            print(f"solve status: {solve_result.status}")
+            print(f"mathematical status: {solve_result.mathematical_status}")
+            print(f"publication status: {solve_result.publication_status}")
+            print(f"state directory: {solve_result.state_root}")
+            if solve_result.proof_package is not None:
+                print(f"proof package: {solve_result.proof_package}")
+            if solve_result.error:
+                print(f"detail: {solve_result.error}")
+            if solve_result.status == "complete":
+                return 0
+            if solve_result.status == "needs_input":
+                return 3
+            return 1
         if args.command == "proof-builder":
             command = args.proof_builder_command
             if command == "init":
@@ -1104,6 +1200,7 @@ def main(argv: list[str] | None = None) -> int:
         RegimeError,
         HerdrError,
         ProofBuilderError,
+        SolveError,
         OSError,
         ValueError,
     ) as exc:

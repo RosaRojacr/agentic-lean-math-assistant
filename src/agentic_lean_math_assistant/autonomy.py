@@ -185,11 +185,33 @@ class AutonomyRunner:
             raise ValueError("decision poll interval must be positive")
         self.session_dir: Path | None = None
 
+    def start(self) -> Path:
+        """Create one retained autonomous session without executing a campaign."""
+
+        self.session_dir = self._initialize_session()
+        return self.session_dir
+
     def run(self) -> Path:
         """Create and drive one new retained autonomous session."""
 
-        self.session_dir = self._initialize_session()
+        self.start()
         return self._drive()
+
+    def step(self, session_dir: Path) -> str:
+        """Advance one durable controller cycle and return authoritative status."""
+
+        self.session_dir = session_dir.expanduser().resolve()
+        state = self._state()
+        if state.get("project_manifest") != str(self.base_project.manifest_path):
+            raise AutonomyError("autonomous session belongs to a different project")
+        self._verify_contract(state)
+        controller = self.session_dir / "controller"
+        try:
+            with campaign_run_lock(controller):
+                self._step_locked()
+        except CampaignRunError as exc:
+            raise AutonomyError(f"cannot acquire autonomous controller: {exc}") from exc
+        return str(self._state().get("status"))
 
     def resume(self, session_dir: Path) -> Path:
         """Resume one interrupted or operator-unblocked autonomous session."""
@@ -289,21 +311,28 @@ class AutonomyRunner:
     def _drive_locked(self) -> Path:
         assert self.session_dir is not None
         while True:
-            state = self._state()
-            self._verify_contract(state)
-            status = state.get("status")
+            self._step_locked()
+            status = self._state().get("status")
             if status in {"solved", "stopped", "budget_exhausted", "checkpoint"}:
                 return self.session_dir
-            if status == "awaiting_approval":
-                choice, source = self._await_decision(state)
-                self._apply_decision(choice, source)
-                continue
-            if status == "analysis_retry":
-                self._retry_analysis(state)
-                continue
-            if status not in {"ready", "campaign_running"}:
-                raise AutonomyError(f"autonomous session status is invalid: {status!r}")
-            self._execute_or_resume_round(state)
+
+    def _step_locked(self) -> None:
+        assert self.session_dir is not None
+        state = self._state()
+        self._verify_contract(state)
+        status = state.get("status")
+        if status in {"solved", "stopped", "budget_exhausted", "checkpoint"}:
+            return
+        if status == "awaiting_approval":
+            choice, source = self._await_decision(state)
+            self._apply_decision(choice, source)
+            return
+        if status == "analysis_retry":
+            self._retry_analysis(state)
+            return
+        if status not in {"ready", "campaign_running"}:
+            raise AutonomyError(f"autonomous session status is invalid: {status!r}")
+        self._execute_or_resume_round(state)
 
     def _execute_or_resume_round(self, state: dict[str, Any]) -> None:
         assert self.session_dir is not None

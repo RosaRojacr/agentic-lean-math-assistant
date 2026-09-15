@@ -1,6 +1,6 @@
 """Public API for the deterministic Agentic Lean Math Assistant."""
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 
 from .autonomy import (
     AutonomyError,
@@ -17,6 +17,7 @@ from .benchmark import (
 )
 from .claims import ClaimProposalBundle, ClaimVerdictBundle, build_claim_ledger
 from .config import CampaignSpec, ConfigurationError, ObligationSpec, TargetSpec
+from .forecast import CompletionForecast, RuntimeQuantiles
 from .inspection import inspect_assurance, inspect_claim_ledgers
 from .metrics import collect_compute_metrics, write_compute_ledger
 from .project import (
@@ -58,6 +59,8 @@ from .runtime import (
     replay_verifier_command,
 )
 from .semantic import SemanticReview
+from .solve import ForecastPolicy, SolveError, SolveModels, SolveSpec
+from .solve_runner import SolveResult, SolveRunner, request_solve_stop, solve_status
 
 __all__ = [
     "AutonomyError",
@@ -73,8 +76,10 @@ __all__ = [
     "CampaignSpec",
     "ClaimProposalBundle",
     "ClaimVerdictBundle",
+    "CompletionForecast",
     "ComputeProfile",
     "ConfigurationError",
+    "ForecastPolicy",
     "LeanTheoremSpec",
     "ObligationSpec",
     "ProjectSpec",
@@ -87,7 +92,13 @@ __all__ = [
     "RegressionAssessment",
     "RegressionConfig",
     "RegressionError",
+    "RuntimeQuantiles",
     "SemanticReview",
+    "SolveError",
+    "SolveModels",
+    "SolveResult",
+    "SolveRunner",
+    "SolveSpec",
     "TargetSpec",
     "__version__",
     "assess_regression",
@@ -110,9 +121,11 @@ __all__ = [
     "record_autonomy_decision",
     "record_review_dispositions",
     "replay_verifier_command",
+    "request_solve_stop",
     "resume_benchmark_suite",
     "resume_proof_package",
     "run_benchmark_suite",
+    "solve_status",
     "verify_proof_package",
     "write_compute_ledger",
 ]

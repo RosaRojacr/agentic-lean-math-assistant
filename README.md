@@ -8,6 +8,79 @@ Agentic Lean Math Assistant is a Python 3.12–3.14 controller for evidence-reta
 
 <p align="center"><a href="docs/program-map.html"><strong>Open the standalone HTML Program Map</strong></a></p>
 
+## Solve a problem folder
+
+`solve` is the one-command path from informal materials to a Lean-verified,
+professor-facing proof package. Put the main question in `problem.md`; place
+notes, papers, datasets, and an optional existing Lean/Lake project beside it.
+The controller freezes those inputs, has independent agents agree on semantic
+and formal contracts, generates an internal autonomous project, and works in
+verifier-gated steps. Proof Builder runs only after solving stops.
+
+```bash
+uv run agentic-lean-math-assistant solve ./my-problem \
+  --runtime-limit 24h \
+  --predicted-runtime-limit 12h \
+  --headless
+```
+
+At least one runtime limit is required. The hard limit covers contract
+extraction, research, formalization, verification, and forecasting; final
+publication time is excluded. The predicted limit compares projected total
+runtime from the original start. Work continues when either a complete solution
+or the next publication-worthy verified improvement fits that limit.
+
+Optional `solve.toml` settings make repeated or unattended runs reproducible:
+
+```toml
+schema_version = 1
+
+[solve]
+problem = "problem.md"
+profile = "balanced"
+allow_web = false
+
+[resources]
+runtime_limit = "24h"
+max_model_calls = 64
+approval_timeout = "15m"
+
+[forecast]
+predicted_runtime_limit = "12h"
+initial_after = "1h"
+interval = "2h"
+minimum_interval = "30m"
+percentile = 80
+breach_confirmations = 2
+minimum_confidence = "medium"
+
+[execution]
+sandbox = true
+```
+
+The independent evaluator runs after one active hour, at safe milestone or
+termination boundaries, and at an adaptive interval no longer than two hours.
+Its forecast covers both the next publication-worthy result and full completion.
+Each accepted partial result becomes a content-addressed checkpoint while the
+solver continues. If no result was judged publication-worthy but a weaker
+Lean-verified result exists at termination, interactive runs ask before
+packaging it; headless runs skip it after the approval timeout unless
+`--publish-inconclusive` was supplied.
+
+State is retained under `<folder>/.alma/`; the final package is written under
+`<folder>/result/`.
+
+```bash
+agentic-lean-math-assistant solve-status ./my-problem
+agentic-lean-math-assistant solve-stop ./my-problem
+agentic-lean-math-assistant solve-resume ./my-problem \
+  --feedback "Interpret the endpoint as inclusive."
+```
+
+Five failed author/reviewer attempts to establish either contract pause in
+`needs_input`. Resume with explicit `--feedback`; use `solve --restart` to
+archive the prior lineage and freeze changed source materials.
+
 ## Proof Builder
 
 `proof-builder` turns a completed Lean/Lake development into an immutable, professor-facing publication package. It is problem-agnostic: theorem names, source paths, informal claims, generated certificate families, references, model routes, and output versions come from a version-controlled `proof-package.toml` manifest.
@@ -368,7 +441,7 @@ Optional regression backend:
 uv sync --locked --extra ml
 ```
 
-The package version is `1.3.0`. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
+The package version is `1.4.0`. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Execution containment
 

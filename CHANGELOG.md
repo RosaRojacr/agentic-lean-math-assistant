@@ -2,6 +2,24 @@
 
 ## Unreleased
 
+## 1.4.0 — 2026-09-15
+
+### Folder-to-proof solving
+
+- Added the `solve` workflow, which freezes an informal problem folder, runs
+  independent semantic and formal contract author/reviewer loops, bootstraps a
+  pinned Lean project, and drives verifier-gated autonomous campaigns from one
+  command.
+- Added hard active-runtime and model-call limits plus independent adaptive
+  forecasts for the next publication-worthy result and full completion.
+  Confirmed projected-runtime breaches stop only when neither target fits.
+- Added content-addressed Lean-verified progress checkpoints. The solver keeps
+  working after publishable partial progress and invokes Proof Builder only at
+  termination, outside the solve-time ledger.
+- Added durable `solve-status`, `solve-stop`, and `solve-resume` operations,
+  bounded contract repair with explicit user feedback after five failures, and
+  opt-in packaging for verified but non-publication-worthy partial results.
+
 ## 1.3.0 — 2026-09-14
 
 ### Proof-builder workflow
