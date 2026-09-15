@@ -41,6 +41,11 @@ from .solve import (
     create_input_snapshot,
     predicted_policy_breach,
 )
+from .solve_budget import (
+    initialize_solve_budget,
+    solve_budget_environment,
+    solve_budget_model_calls,
+)
 
 _TERMINAL = {
     "complete",
@@ -581,22 +586,7 @@ class SolveRunner:
                 close_herdr=True,
             ),
         )
-        session_value = state.get("autonomy_session")
-        if isinstance(session_value, str):
-            session = Path(session_value)
-        else:
-            session = runner.start()
-            state["autonomy_session"] = str(session)
-            self._save(state, "solve:autonomy-started")
-        autonomy_state = autonomy_status(session)
-        if autonomy_state.get("status") not in {
-            "solved",
-            "stopped",
-            "budget_exhausted",
-            "checkpoint",
-        }:
-            runner.step(session)
-            autonomy_state = autonomy_status(session)
+        autonomy_state = self._advance_autonomy(runner, state)
         status = autonomy_state.get("status")
         latest = self._state()
         self._refresh_model_calls(latest)
@@ -614,6 +604,36 @@ class SolveRunner:
             self._final_forecast_if_possible(latest)
             reason = f"autonomy stopped at {status}"
             self._terminate_solve(self._state(), "stopped", reason)
+
+    def _advance_autonomy(
+        self, runner: AutonomyRunner, state: dict[str, Any]
+    ) -> dict[str, Any]:
+        budget = self.spec.state_root / "solve-budget.json"
+        ledger = RuntimeLedger.parse(state["runtime"])
+        initialize_solve_budget(
+            budget,
+            remaining_seconds=self._remaining_seconds(state),
+            max_model_calls=self.spec.max_model_calls,
+            model_calls=ledger.model_calls,
+        )
+        with solve_budget_environment(budget):
+            session_value = state.get("autonomy_session")
+            if isinstance(session_value, str):
+                session = Path(session_value)
+            else:
+                session = runner.start()
+                state["autonomy_session"] = str(session)
+                self._save(state, "solve:autonomy-started")
+            autonomy_state = autonomy_status(session)
+            if autonomy_state.get("status") not in {
+                "solved",
+                "stopped",
+                "budget_exhausted",
+                "checkpoint",
+            }:
+                runner.step(session)
+                autonomy_state = autonomy_status(session)
+        return autonomy_state
 
     def _forecast_if_due(
         self,
@@ -1431,7 +1451,7 @@ pandoc = {_toml(self.pandoc)}
         return tools
 
     def _budget_exhausted(self, state: dict[str, Any]) -> bool:
-        if self._remaining_seconds(state) <= 0:
+        if self._remaining_seconds(state) < 30:
             return True
         ledger = RuntimeLedger.parse(state["runtime"])
         return (
@@ -1466,11 +1486,15 @@ pandoc = {_toml(self.pandoc)}
         )
 
     def _refresh_model_calls(self, state: dict[str, Any]) -> None:
-        observed = sum(
-            1
-            for path in self.spec.state_root.rglob("request.json")
-            if path.is_file() and ".lake" not in path.parts
-        )
+        budget = self.spec.state_root / "solve-budget.json"
+        if budget.is_file():
+            observed = solve_budget_model_calls(budget)
+        else:
+            observed = sum(
+                1
+                for path in self.spec.state_root.rglob("request.json")
+                if path.is_file() and ".lake" not in path.parts
+            )
         ledger = RuntimeLedger.parse(state["runtime"])
         if observed > ledger.model_calls:
             state["runtime"] = replace(ledger, model_calls=observed).to_dict()

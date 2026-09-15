@@ -39,6 +39,7 @@ from .sandbox import (
     terminate_sandbox,
     workspace_size_exceeds,
 )
+from .solve_budget import SolveBudgetExceeded, admit_nested_model_call
 from .terminal_status import PaneHeartbeat
 
 _MAX_CAPTURE = 1024 * 1024
@@ -269,7 +270,14 @@ def _invoke(
     run_dir: Path | None = None,
     stdout_destination: TextIO | None = None,
     stderr_destination: TextIO | None = None,
+    global_deadline_epoch: float | None = None,
 ) -> tuple[int, str, str, bool, bool, str | None, dict[str, object]]:
+    deadline = time.monotonic() + max_time + 60
+    if global_deadline_epoch is not None:
+        deadline = min(
+            deadline,
+            time.monotonic() + max(0.0, global_deadline_epoch - time.time()),
+        )
     stdout_chunks: list[str] = []
     stderr_chunks: list[str] = []
     stdout_truncated = [False]
@@ -377,7 +385,6 @@ def _invoke(
         )
         stdout_thread.start()
         stderr_thread.start()
-        deadline = time.monotonic() + max_time + 60
         next_workspace_check = 0.0
         while True:
             if _process_exited_without_reaping(process):
@@ -622,6 +629,41 @@ def execute(request_path: Path) -> int:
     for ordinal in range(1, empty_output_retries + 2):
         invocation_started = time.monotonic()
         with host_resource_lease() as resource_wait_seconds:
+            try:
+                admission = admit_nested_model_call(max_time)
+            except SolveBudgetExceeded as exc:
+                exit_code = 75
+                status = "budget_exhausted"
+                failure_class = "budget_exhausted"
+                error = str(exc)
+                invocations.append(
+                    {
+                        "ordinal": ordinal,
+                        "exit_code": exit_code,
+                        "status": status,
+                        "error": error,
+                        "duration_seconds": round(
+                            time.monotonic() - invocation_started, 3
+                        ),
+                        "failure_class": failure_class,
+                        "resource_wait_seconds": round(resource_wait_seconds, 3),
+                        "effective_max_time": None,
+                        "global_model_call": None,
+                        "stdout_truncated": False,
+                        "stderr_truncated": False,
+                        "sandbox": {},
+                    }
+                )
+                break
+            effective_max_time = admission.max_time
+            invocation_command = [
+                (
+                    f"--max-time={effective_max_time}"
+                    if argument.startswith("--max-time=")
+                    else argument
+                )
+                for argument in command
+            ]
             (
                 exit_code,
                 invocation_stdout,
@@ -631,16 +673,17 @@ def execute(request_path: Path) -> int:
                 error,
                 sandbox,
             ) = _invoke(
-                command,
+                invocation_command,
                 workspace,
                 heartbeat,
-                max_time,
+                effective_max_time,
                 execution,
                 sandbox_read_paths,
                 workspace_executables,
                 run_dir,
                 stdout_destination=live_stdout,
                 stderr_destination=live_stderr,
+                global_deadline_epoch=admission.deadline_epoch,
             )
         failure_class = _failure_class(exit_code, invocation_stderr, error)
         signal_value = sandbox.get("interrupted_signal")
@@ -657,7 +700,7 @@ def execute(request_path: Path) -> int:
             error = None
         elif deadline_exceeded:
             status = "timed_out"
-            error = f"OMP deadline exceeded after {max_time} seconds"
+            error = f"OMP deadline exceeded after {effective_max_time} seconds"
         elif failure_class is not None:
             status = failure_class
             if error is None:
@@ -687,6 +730,8 @@ def execute(request_path: Path) -> int:
                 "duration_seconds": round(time.monotonic() - invocation_started, 3),
                 "failure_class": failure_class,
                 "resource_wait_seconds": round(resource_wait_seconds, 3),
+                "effective_max_time": effective_max_time,
+                "global_model_call": admission.model_call,
                 "stdout_truncated": invocation_stdout_truncated,
                 "stderr_truncated": invocation_stderr_truncated,
                 "sandbox": sandbox,

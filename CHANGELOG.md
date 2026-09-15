@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## 1.4.1 — 2026-09-15
+
+### Solve budget enforcement
+
+- Enforced the solve deadline at the shared OMP invocation boundary, including
+  nested autonomy, regime, and feature calls. Each admitted call is shortened
+  to fit the remaining lifecycle budget and its runner shutdown grace.
+- Enforced the solve model-call ceiling atomically across nested controllers
+  and blank-output retries, with fail-closed retained budget state and
+  per-invocation admission provenance.
+
 ## 1.4.0 — 2026-09-15
 
 ### Folder-to-proof solving

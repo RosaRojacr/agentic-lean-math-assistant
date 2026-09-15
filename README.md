@@ -25,10 +25,12 @@ uv run agentic-lean-math-assistant solve ./my-problem \
 ```
 
 At least one runtime limit is required. The hard limit covers contract
-extraction, research, formalization, verification, and forecasting; final
-publication time is excluded. The predicted limit compares projected total
-runtime from the original start. Work continues when either a complete solution
-or the next publication-worthy verified improvement fits that limit.
+extraction, research, formalization, verification, forecasting, and every
+nested OMP invocation; final publication time is excluded. `max_model_calls`
+likewise counts every nested invocation and blank-output retry before it starts.
+The predicted limit compares projected total runtime from the original start.
+Work continues when either a complete solution or the next publication-worthy
+verified improvement fits that limit.
 
 Optional `solve.toml` settings make repeated or unattended runs reproducible:
 
@@ -441,7 +443,7 @@ Optional regression backend:
 uv sync --locked --extra ml
 ```
 
-The package version is `1.4.0`. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
+The package version is `1.4.1`. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Execution containment
 
