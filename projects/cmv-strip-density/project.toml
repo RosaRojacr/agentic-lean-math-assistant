@@ -60,9 +60,9 @@ tasks_max = 128
 enabled = true
 approval_timeout_minutes = 15
 afk_autonomy = true
-max_campaigns = 12
+max_campaigns = 1000
 max_consecutive_failures = 3
-max_elapsed_minutes = 10080
+max_elapsed_minutes = 43200
 analysis_agent_seconds = 2400
 compute_profile = "local-balanced"
 
@@ -98,4 +98,11 @@ excludes = [".lake", ".lake/**", ".git/**", "__pycache__", "__pycache__/**"]
 [[inputs]]
 path = "reports"
 target = "reports"
-excludes = [".ipynb_checkpoints", ".ipynb_checkpoints/**", "__pycache__", "__pycache__/**"]
+excludes = [
+    "**/.lake",
+    "**/.lake/**",
+    ".ipynb_checkpoints",
+    ".ipynb_checkpoints/**",
+    "__pycache__",
+    "__pycache__/**",
+]
