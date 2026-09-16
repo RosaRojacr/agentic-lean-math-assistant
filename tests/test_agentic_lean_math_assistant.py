@@ -3008,6 +3008,57 @@ def test_controller_registrations_preserve_reused_pid_identities(
     assert remaining[0]["process_start_time"] == "old-start"
 
 
+def test_registrations_scope_retained_workspaces_by_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    runtime_dir = tmp_path / "runtime"
+    first_run = tmp_path / "first-run"
+    second_run = tmp_path / "second-run"
+    first_run.mkdir()
+    second_run.mkdir()
+    monkeypatch.setattr(
+        campaign_processes,
+        "_process_start_time",
+        lambda _pid: "same-start",
+    )
+
+    register_campaign(first_run, "herdr", pid=4242, runtime_dir=runtime_dir)
+    register_workspace(
+        "first-workspace",
+        pid=4242,
+        runtime_dir=runtime_dir,
+        run_dir=first_run,
+    )
+    register_campaign(second_run, "herdr", pid=4242, runtime_dir=runtime_dir)
+    register_workspace(
+        "second-workspace",
+        pid=4242,
+        runtime_dir=runtime_dir,
+        run_dir=second_run,
+    )
+
+    registrations = [
+        campaign_processes._read_registration(path)
+        for path in sorted(runtime_dir.glob("*.json"))
+    ]
+    assert {
+        (value["run_dir"], value["herdr_workspace_id"]) for value in registrations
+    } == {
+        (str(first_run.resolve()), "first-workspace"),
+        (str(second_run.resolve()), "second-workspace"),
+    }
+
+    campaign_processes.unregister_campaign(
+        pid=4242, runtime_dir=runtime_dir, run_dir=second_run
+    )
+    remaining = [
+        campaign_processes._read_registration(path)
+        for path in runtime_dir.glob("*.json")
+    ]
+    assert len(remaining) == 1
+    assert remaining[0]["run_dir"] == str(first_run.resolve())
+
+
 def test_stop_all_treats_missing_registered_workspace_as_closed(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

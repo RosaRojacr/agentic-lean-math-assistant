@@ -53,7 +53,7 @@ max_invention_tasks = 4
 [execution]
 sandbox = false
 workspace_max_mb = 32768
-memory_max_mb = 6144
+memory_max_mb = 8192
 tasks_max = 128
 
 [autonomy]
@@ -61,7 +61,7 @@ enabled = true
 approval_timeout_minutes = 15
 afk_autonomy = true
 max_campaigns = 1000
-max_consecutive_failures = 3
+max_consecutive_failures = 20
 max_elapsed_minutes = 43200
 analysis_agent_seconds = 2400
 compute_profile = "local-balanced"

@@ -104,10 +104,21 @@ def _owned_registration_path(
     pid: int,
     runtime_dir: Path | None = None,
     *,
+    run_dir: Path | None = None,
     required: bool = True,
 ) -> Path | None:
     registry = _runtime_dir(runtime_dir)
     current_start = _process_start_time(pid)
+    if run_dir is not None:
+        path = _registration_path(pid, current_start, run_dir, runtime_dir)
+        if path.is_file():
+            return path
+        if not required:
+            return None
+        raise RuntimeError(
+            f"registration is missing for process identity "
+            f"{pid}/{current_start} and run {run_dir.resolve()}"
+        )
     matches: list[Path] = []
     for path in registry.glob("*.json") if registry.is_dir() else ():
         try:
@@ -154,11 +165,12 @@ def register_workspace_creation(
     *,
     pid: int | None = None,
     runtime_dir: Path | None = None,
+    run_dir: Path | None = None,
 ) -> None:
     if not label:
         raise ValueError("Herdr creation label must not be empty")
     process_id = os.getpid() if pid is None else pid
-    path = _owned_registration_path(process_id, runtime_dir)
+    path = _owned_registration_path(process_id, runtime_dir, run_dir=run_dir)
     assert path is not None
     value = _read_registration(path)
     value["herdr_creation_label"] = label
@@ -166,10 +178,13 @@ def register_workspace_creation(
 
 
 def clear_workspace_creation(
-    *, pid: int | None = None, runtime_dir: Path | None = None
+    *,
+    pid: int | None = None,
+    runtime_dir: Path | None = None,
+    run_dir: Path | None = None,
 ) -> None:
     process_id = os.getpid() if pid is None else pid
-    path = _owned_registration_path(process_id, runtime_dir)
+    path = _owned_registration_path(process_id, runtime_dir, run_dir=run_dir)
     assert path is not None
     value = _read_registration(path)
     value["herdr_creation_label"] = None
@@ -181,9 +196,10 @@ def register_workspace(
     *,
     pid: int | None = None,
     runtime_dir: Path | None = None,
+    run_dir: Path | None = None,
 ) -> None:
     process_id = os.getpid() if pid is None else pid
-    path = _owned_registration_path(process_id, runtime_dir)
+    path = _owned_registration_path(process_id, runtime_dir, run_dir=run_dir)
     assert path is not None
     value = _read_registration(path)
     value["herdr_workspace_id"] = workspace_id
@@ -191,10 +207,15 @@ def register_workspace(
 
 
 def unregister_campaign(
-    *, pid: int | None = None, runtime_dir: Path | None = None
+    *,
+    pid: int | None = None,
+    runtime_dir: Path | None = None,
+    run_dir: Path | None = None,
 ) -> None:
     process_id = os.getpid() if pid is None else pid
-    path = _owned_registration_path(process_id, runtime_dir, required=False)
+    path = _owned_registration_path(
+        process_id, runtime_dir, run_dir=run_dir, required=False
+    )
     if path is not None:
         path.unlink(missing_ok=True)
 

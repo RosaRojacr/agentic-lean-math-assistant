@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Runtime resilience
+
+- Scoped retained Herdr workspace registrations by campaign run, allowing one
+  long-lived autonomy controller to preserve visible workspaces across
+  successive campaigns without ambiguous process-identity failures.
+
+
 ## 1.4.2 — 2026-09-15
 
 ### Solve restart isolation

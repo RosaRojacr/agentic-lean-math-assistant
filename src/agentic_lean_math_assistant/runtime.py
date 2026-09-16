@@ -858,7 +858,7 @@ class CampaignBuilder:
                 not isinstance(workspace_id, str)
                 or self.state.get("herdr_closed") is True
             ):
-                unregister_campaign()
+                unregister_campaign(run_dir=self.run_dir)
             for registered_signal, previous in previous_handlers.items():
                 signal.signal(registered_signal, previous)
         return self.run_dir
@@ -1464,7 +1464,7 @@ class CampaignBuilder:
         label = f"campaign:{self.campaign.campaign_id}:{secrets.token_hex(8)}"
         self.state["herdr_creation_label"] = label
         self._save_state()
-        register_workspace_creation(label)
+        register_workspace_creation(label, run_dir=self.run_dir)
         workspace = self.herdr.create_workspace(
             cwd=self.workspace,
             label=label,
@@ -1472,12 +1472,12 @@ class CampaignBuilder:
             environment={"NO_COLOR": "1"} if not self.output.isatty() else None,
         )
         self.herdr_workspace = workspace
-        register_workspace(workspace.workspace_id)
+        register_workspace(workspace.workspace_id, run_dir=self.run_dir)
         self.state["herdr_workspace_id"] = workspace.workspace_id
         self.state["herdr_closed"] = False
         self.state["herdr_creation_label"] = None
         self._save_state()
-        clear_workspace_creation()
+        clear_workspace_creation(run_dir=self.run_dir)
         anchor = workspace.root_pane_id
         for index, stage in enumerate(agent_stages):
             pane = (
