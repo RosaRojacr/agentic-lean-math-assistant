@@ -954,6 +954,30 @@ tools = ["read"]
     ).run()
 
     state = json.loads((run_dir / "state.json").read_text(encoding="utf-8"))
+    herdr_state = json.loads((tmp_path / "herdr.json").read_text(encoding="utf-8"))
+    assert herdr_state["splits"] == pytest.approx([2 / 3, 1 / 2])
+    reports = herdr_state["agent_reports"]
+    assert any(
+        report["agent"] == "pilot" and report["state"] == "working"
+        for report in reports
+    )
+    latest_status = {report["agent"]: report["state"] for report in reports}
+    assert latest_status == {
+        "pilot": "idle",
+        "pilot_gate": "blocked",
+        "expensive_research": "idle",
+    }
+    assert all(
+        command[1:3]
+        == [
+            "-c",
+            (
+                "from agentic_lean_math_assistant.agent_runner import main; "
+                "raise SystemExit(main())"
+            ),
+        ]
+        for command in herdr_state["run_commands"]
+    )
     assert state["status"] == "incomplete"
     assert state["stages"]["pilot"]["status"] == "succeeded"
     assert state["stages"]["pilot_gate"]["status"] == "failed"
@@ -2931,6 +2955,42 @@ def test_herdr_pane_run_preserves_absolute_program(
             "run",
             "w1:p1",
             "/opt/campaign/bin/python -m runner",
+        )
+    ]
+
+
+def test_herdr_reports_pane_agent_lifecycle(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    client = HerdrClient("herdr")
+    observed: list[tuple[str, ...]] = []
+
+    def json_command(*arguments: str) -> dict[str, object]:
+        observed.append(arguments)
+        return {"result": {"type": "ok"}}
+
+    monkeypatch.setattr(client, "_json", json_command)
+
+    client.report_agent(
+        "w1:p1",
+        agent="semantic_audit",
+        state="working",
+        message="Attempt 2 running",
+    )
+
+    assert observed == [
+        (
+            "pane",
+            "report-agent",
+            "w1:p1",
+            "--source",
+            "agentic-lean-math-assistant",
+            "--agent",
+            "semantic_audit",
+            "--state",
+            "working",
+            "--message",
+            "Attempt 2 running",
         )
     ]
 

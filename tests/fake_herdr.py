@@ -19,7 +19,14 @@ def load_state() -> tuple[Path, dict[str, object]]:
     path = Path(os.environ["FAKE_HERDR_STATE"])
     if path.exists():
         return path, json.loads(path.read_text(encoding="utf-8"))
-    return path, {"workspace": 0, "pane": 0, "workspaces": {}}
+    return path, {
+        "workspace": 0,
+        "pane": 0,
+        "workspaces": {},
+        "splits": [],
+        "agent_reports": [],
+        "run_commands": [],
+    }
 
 
 def save_state(path: Path, state: dict[str, object]) -> None:
@@ -61,6 +68,9 @@ def main() -> int:
         return 0
     if arguments[:2] == ["pane", "split"]:
         state["pane"] = int(state["pane"]) + 1
+        splits = state.setdefault("splits", [])
+        assert isinstance(splits, list)
+        splits.append(float(arguments[arguments.index("--ratio") + 1]))
         save_state(path, state)
         workspace_id = arguments[2].split(":", 1)[0]
         emit({"pane": {"pane_id": f"{workspace_id}:p{state['pane']}"}})
@@ -68,8 +78,25 @@ def main() -> int:
     if arguments[:2] == ["pane", "rename"]:
         emit({"type": "ok"})
         return 0
+    if arguments[:2] == ["pane", "report-agent"]:
+        reports = state.setdefault("agent_reports", [])
+        assert isinstance(reports, list)
+        reports.append(
+            {
+                "pane_id": arguments[2],
+                "agent": arguments[arguments.index("--agent") + 1],
+                "state": arguments[arguments.index("--state") + 1],
+            }
+        )
+        save_state(path, state)
+        emit({"type": "ok"})
+        return 0
     if arguments[:2] == ["pane", "run"]:
         command = shlex.split(arguments[3]) if len(arguments) == 4 else arguments[3:]
+        run_commands = state.setdefault("run_commands", [])
+        assert isinstance(run_commands, list)
+        run_commands.append(command)
+        save_state(path, state)
         subprocess.Popen(
             command,
             stdin=subprocess.DEVNULL,

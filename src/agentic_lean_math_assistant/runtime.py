@@ -1069,7 +1069,7 @@ class CampaignBuilder:
             python_executable=self.python_executable,
         )
         try:
-            return self.registry.feature(stage.feature).execute(context)
+            result = self.registry.feature(stage.feature).execute(context)
         except (
             ConfigurationError,
             HerdrError,
@@ -1077,7 +1077,13 @@ class CampaignBuilder:
             RuntimeError,
             ValueError,
         ) as exc:
-            return FeatureResult("failed", f"{type(exc).__name__}: {exc}")
+            result = FeatureResult("failed", f"{type(exc).__name__}: {exc}")
+        self._report_pane_agent(
+            stage,
+            "idle" if result.succeeded else "blocked",
+            result.summary,
+        )
+        return result
 
     def _consume(self, stage: StageSpec, result: FeatureResult) -> None:
         assert self.run_dir is not None
@@ -1451,6 +1457,20 @@ class CampaignBuilder:
             for stage in self.campaign.stages
         )
 
+    def _report_pane_agent(self, stage: StageSpec, state: str, message: str) -> None:
+        pane_id = self.panes.get(stage.stage_id)
+        if pane_id is None:
+            return
+        try:
+            self.herdr.report_agent(
+                pane_id,
+                agent=stage.stage_id,
+                state=state,
+                message=message[:240],
+            )
+        except HerdrError:
+            pass
+
     def _create_herdr_workspace(self) -> None:
         assert self.workspace is not None
         if self.options.direct_agents:
@@ -1479,14 +1499,20 @@ class CampaignBuilder:
         self._save_state()
         clear_workspace_creation(run_dir=self.run_dir)
         anchor = workspace.root_pane_id
+        stage_count = len(agent_stages)
         for index, stage in enumerate(agent_stages):
-            pane = (
-                anchor
-                if index == 0
-                else self.herdr.split_pane(anchor, cwd=self.workspace)
-            )
+            if index == 0:
+                pane = anchor
+            else:
+                remaining_slots = stage_count - index
+                pane = self.herdr.split_pane(
+                    anchor,
+                    cwd=self.workspace,
+                    ratio=remaining_slots / (remaining_slots + 1),
+                )
             self.herdr.rename_pane(pane, stage.title)
             self.panes[stage.stage_id] = pane
+            self._report_pane_agent(stage, "idle", "Waiting for stage dependencies")
 
     def _finalize_herdr(self) -> None:
         if self.herdr_workspace is None or not self.options.close_herdr:

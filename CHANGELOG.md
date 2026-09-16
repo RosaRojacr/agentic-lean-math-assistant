@@ -7,6 +7,10 @@
 - Scoped retained Herdr workspace registrations by campaign run, allowing one
   long-lived autonomy controller to preserve visible workspaces across
   successive campaigns without ambiguous process-identity failures.
+- Reported campaign-agent lifecycle states to Herdr, balanced multi-agent pane
+  widths, and removed the pane-local module re-execution warning.
+- Exposed the pinned Elan executable directory to CMV campaign agents so pane
+  tasks can invoke `lake` under the declared execution policy.
 
 
 ## 1.4.2 — 2026-09-15

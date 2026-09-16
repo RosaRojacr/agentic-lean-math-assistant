@@ -165,6 +165,33 @@ class HerdrClient:
     def rename_pane(self, pane_id: str, label: str) -> None:
         self._json("pane", "rename", pane_id, label)
 
+    def report_agent(
+        self,
+        pane_id: str,
+        *,
+        agent: str,
+        state: str,
+        message: str | None = None,
+    ) -> None:
+        if state not in {"idle", "working", "blocked", "unknown"}:
+            raise ValueError("pane agent state is invalid")
+        if not agent.strip():
+            raise ValueError("pane agent label must not be empty")
+        arguments = [
+            "pane",
+            "report-agent",
+            pane_id,
+            "--source",
+            "agentic-lean-math-assistant",
+            "--agent",
+            agent,
+            "--state",
+            state,
+        ]
+        if message:
+            arguments.extend(("--message", message))
+        self._json(*arguments)
+
     def run_in_pane(self, pane_id: str, command: tuple[str, ...]) -> None:
         if not command or any(not argument for argument in command):
             raise ValueError("pane command must contain nonempty arguments")

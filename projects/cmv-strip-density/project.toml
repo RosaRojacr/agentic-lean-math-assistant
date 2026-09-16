@@ -55,6 +55,7 @@ sandbox = false
 workspace_max_mb = 32768
 memory_max_mb = 8192
 tasks_max = 128
+allowed_executable_paths = ["/home/rosa/.elan/bin"]
 
 [autonomy]
 enabled = true

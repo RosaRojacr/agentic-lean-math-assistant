@@ -26,7 +26,7 @@ from .handoff import (
     digest_handoff,
     handoff_prompt_contract,
 )
-from .herdr import HerdrClient
+from .herdr import HerdrClient, HerdrError
 from .lean import run_proof_gate, validate_substitution_value
 from .models import ContinuationDecision
 from .semantic import SemanticReview
@@ -34,6 +34,10 @@ from .semantic import SemanticReview
 _CLAIM_ID = re.compile(r"[a-z][a-z0-9_-]*")
 _LEAN_SUBSTITUTION_NAME = re.compile(r"[a-z][a-z0-9_]*")
 _LEAN_SUBSTITUTION_KINDS = frozenset({"decimal", "identifier", "string", "token"})
+_AGENT_RUNNER_BOOTSTRAP = (
+    "from agentic_lean_math_assistant.agent_runner import main; "
+    "raise SystemExit(main())"
+)
 _LEAN_METADATA_FIELD = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
 
 
@@ -629,12 +633,21 @@ class AgentFeature:
                 context.pane_id,
                 (
                     context.python_executable,
-                    "-m",
-                    "agentic_lean_math_assistant.agent_runner",
+                    "-c",
+                    _AGENT_RUNNER_BOOTSTRAP,
                     "--request",
                     str(request),
                 ),
             )
+            try:
+                context.herdr.report_agent(
+                    context.pane_id,
+                    agent=context.stage.stage_id,
+                    state="working",
+                    message=f"Attempt {context.attempt} running",
+                )
+            except HerdrError:
+                pass
         runner = _wait_for_receipt(
             receipt,
             (config.max_time + 70) * (config.empty_output_retries + 1) + 20,
