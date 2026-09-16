@@ -12,6 +12,12 @@
 - Exposed the pinned Elan executable directory to CMV campaign agents so pane
   tasks can invoke `lake` under the declared execution policy.
 
+### CMV Question 2
+
+- Added a month-long autonomous project for the ball-density single-transition
+  problem left open after CMV Theorem 3.23, with pinned Lean definitions,
+  explicit equal-area success criteria, and the primary paper as its source.
+
 
 ## 1.4.2 — 2026-09-15
 

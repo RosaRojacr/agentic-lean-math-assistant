@@ -1,0 +1,84 @@
+schema_version = 1
+
+[project]
+id = "cmv-ball-density"
+title = "CMV Ball-Density Single-Transition Problem"
+problem = "problem.md"
+references = "references"
+knowledge = "knowledge"
+runs = "runs"
+
+[regime]
+omp = "omp"
+planner_model = "openai-codex/gpt-5.6-sol"
+execution_model = "openai-codex/gpt-5.6-luna"
+analysis_model = "openai-codex/gpt-5.6-terra"
+invention_model = "openai-codex/gpt-5.6-sol"
+audit_model = "openai-codex/gpt-5.6-terra"
+strategy_reflection_model = "openai-codex/gpt-6-astra"
+targeted_task_model = "openai-codex/gpt-6-astra"
+planner_thinking = "xhigh"
+max_tasks = 16
+max_parallel = 1
+max_restarts = 1
+default_agent_time = 2400
+allowed_tools = ["read", "grep", "glob", "bash", "eval", "write", "edit", "web_search"]
+pilot_agent_seconds = 28800
+research_agent_seconds = 72000
+formalization_agent_seconds = 50400
+max_attempts_total = 32
+max_invention_tasks = 4
+max_targeted_tasks = 1
+execution_thinking = "medium"
+analysis_thinking = "high"
+invention_thinking = "high"
+audit_thinking = "high"
+
+[[compute_profiles]]
+id = "local-balanced"
+omp = "omp"
+planner_thinking = "xhigh"
+execution_thinking = "medium"
+analysis_thinking = "high"
+invention_thinking = "high"
+audit_thinking = "high"
+max_parallel = 1
+default_agent_time = 2400
+pilot_agent_seconds = 28800
+research_agent_seconds = 72000
+formalization_agent_seconds = 50400
+max_attempts_total = 32
+max_invention_tasks = 4
+
+[execution]
+sandbox = false
+workspace_max_mb = 32768
+memory_max_mb = 8192
+tasks_max = 128
+allowed_executable_paths = ["/home/rosa/.elan/bin"]
+
+[autonomy]
+enabled = true
+approval_timeout_minutes = 15
+afk_autonomy = true
+max_campaigns = 1000
+max_consecutive_failures = 20
+max_elapsed_minutes = 43200
+analysis_agent_seconds = 2400
+compute_profile = "local-balanced"
+
+[autonomy.success]
+workspace = "proof"
+build_command = ["lake", "build"]
+allowed_axioms = ["propext", "Quot.sound", "Classical.choice"]
+required_artifacts = ["CMVBallCase.lean"]
+
+[[autonomy.success.theorems]]
+module = "CMVBallCase"
+declaration = "CMVBallCase.typeC_dominance_persists"
+type = "∀ {lam v₀ v : ℝ}, 0 < lam → lam < 1 → lam * Real.pi < v₀ → v₀ < v → typeCPerimeterAtArea lam v₀ ≤ typeBPerimeterAtArea lam v₀ → typeCPerimeterAtArea lam v < typeBPerimeterAtArea lam v"
+
+[[inputs]]
+path = "proof"
+target = "proof"
+excludes = [".lake", ".lake/**", ".git/**", "__pycache__", "__pycache__/**"]

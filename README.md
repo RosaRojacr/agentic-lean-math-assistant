@@ -373,6 +373,17 @@ lake env lean _Assumptions.lean
 
 The broader frontier paper is available as [PDF](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.pdf), [Markdown](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.md), and [HTML](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.html). Those explanatory formats are not themselves part of the mathematical trust boundary.
 
+### CMV Question 2
+
+[`projects/cmv-ball-density/`](projects/cmv-ball-density/) targets the paper's
+separate ball-density question for $0<\lambda<1$. Its formal contract asks for
+the single-transition theorem left open after Theorem 3.23: once the
+equal-area type-(C) orthogonal ball is no worse than the type-(B) two-arc
+candidate, type (B) cannot become optimal again at a larger weighted area.
+The project starts from source-faithful Lean definitions of the two candidate
+area and perimeter formulas; it does not reuse the strip-density result.
+
+
 ## Research controller
 
 Proof Builder is one publication surface of a larger problem-agnostic controller. A project manifest supplies frozen inputs, model routes, budgets, source policy, containment policy, exact targets, and success contracts.
