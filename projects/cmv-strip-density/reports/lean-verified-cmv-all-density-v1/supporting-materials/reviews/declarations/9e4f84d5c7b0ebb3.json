@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_arcLength_eq_two_radius_theta",
+  "domain_issues": [],
+  "informal_statement": "For every one-sided cap \\(c\\), \\[L\\,\\frac{\\theta}{\\sin\\theta}=2R\\theta.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:451-456; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "edad6e24948a1499ce1a66a5efdc84d9c8f7899f5c52d6551716312e95163fb3",
+  "symbol_mismatches": []
+}

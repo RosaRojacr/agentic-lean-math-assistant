@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_lt",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\), \\(r\\in(0,1)\\), \\(0<h\\leq1\\), \\(F_3(r)<0\\), and \\(A_3(r)=A_4(h)\\), then \\(r<h\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:586-622; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f0218743e3c66d2b3ba1e5bdde4d44d6f7c58ed79dc9416fb8fb18d852a14824",
+  "symbol_mismatches": []
+}

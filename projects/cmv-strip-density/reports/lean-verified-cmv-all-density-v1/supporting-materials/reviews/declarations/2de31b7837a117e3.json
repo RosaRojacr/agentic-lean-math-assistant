@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanPairwiseOverlap",
+  "domain_issues": [],
+  "informal_statement": "For arbitrary sets \\(A,B,C,D\\) in any type, the Euclidean pairwise-overlap expression is the union of all six pairwise intersections.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1591-1597; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c1559aa1737fb404d99a3376b70fbd4f0ff514e71a947a7d30b01a1ce4c1177e",
+  "symbol_mismatches": []
+}

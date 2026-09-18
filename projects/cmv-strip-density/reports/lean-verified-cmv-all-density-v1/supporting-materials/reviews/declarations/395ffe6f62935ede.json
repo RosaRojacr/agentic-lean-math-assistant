@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.weightedArea_eq_modeledWeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The canonical weighted area of the type-\\(\\mathrm{iii}\\) carrier equals its rectangle-plus-cap modeled area expression.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1562-1583; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5f7913f0171c133683a735330062b186a060d0e518987c5488549de7bfd06347",
+  "symbol_mismatches": []
+}

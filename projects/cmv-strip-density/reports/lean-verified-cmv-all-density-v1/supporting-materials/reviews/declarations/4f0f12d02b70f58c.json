@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedLeftArcParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The realized left arc image on \\([{-R\\gamma},0]\\) equals the Euclidean image of the left arc trace.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:710-720; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "06e6662a39cd836487840418c7224db9c1b8779c37aa295aab4e1109503a76c7",
+  "symbol_mismatches": []
+}

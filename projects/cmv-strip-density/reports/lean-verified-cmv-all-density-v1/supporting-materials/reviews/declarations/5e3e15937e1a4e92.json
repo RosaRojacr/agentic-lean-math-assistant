@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.chordCarrier_subset_carrier",
+  "domain_issues": [],
+  "informal_statement": "The chord carrier is contained in the cap carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:311-334; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a35dcecd8fd218da748131deaec9b02f5328c1034952ad269b6ba1f5b686d947",
+  "symbol_mismatches": []
+}

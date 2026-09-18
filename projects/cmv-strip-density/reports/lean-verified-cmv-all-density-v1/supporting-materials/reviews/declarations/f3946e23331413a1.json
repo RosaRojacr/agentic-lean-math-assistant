@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftArcParam",
+  "domain_issues": [],
+  "informal_statement": "The left signed-arclength map is \\[s\\longmapsto(-w+R\\sin(s/R),\\ R-1-R\\cos(s/R)).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:120-126; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f29c060ae66edf060cbefb1375e17d2584dc8c159343c7bce4a1ff009d7632c",
+  "symbol_mismatches": []
+}

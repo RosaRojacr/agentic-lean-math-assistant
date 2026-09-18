@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FrontierMeasure",
+  "domain_issues": [],
+  "informal_statement": "The frontier measure of \\(E\\) is the pullback under \\(J\\) of \\(\\mathcal H^1\\) restricted to \\(\\partial J(E)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:61-66; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7323bb80c0a565daf410d27d199e2143ee33a0ecca0460c52504f2e7e50b48e2",
+  "symbol_mismatches": []
+}

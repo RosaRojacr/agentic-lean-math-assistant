@@ -1,0 +1,661 @@
+[0] PlanePoint (30-33)
+abbrev PlanePoint := ℝ × ℝ
+
+[1] EuclideanPlane (34-37)
+abbrev EuclideanPlane := WithLp 2 (ℝ × ℝ)
+
+[2] planeEuclideanHomeomorph (38-42)
+noncomputable def planeEuclideanHomeomorph : PlanePoint ≃ₜ EuclideanPlane :=
+  (WithLp.homeomorphProd 2 ℝ ℝ).symm
+
+[3] StripDensity (43-54)
+def StripDensity (lam : ℝ) (p : PlanePoint) : ℝ :=
+  if |p.2| ≤ 1 then 1 else lam
+
+@[simp] theorem stripDensity_upper_interface (lam x : ℝ) :
+    StripDensity lam (x, 1) = 1 := by
+  simp [StripDensity]
+
+@[simp] theorem stripDensity_lower_interface (lam x : ℝ) :
+    StripDensity lam (x, -1) = 1 := by
+  simp [StripDensity]
+
+[4] WeightedArea (55-60)
+def WeightedArea (lam : ℝ) (carrier : Set PlanePoint) : ℝ :=
+  ∫ p in carrier, StripDensity lam p
+
+[5] FrontierMeasure (61-66)
+def FrontierMeasure (carrier : Set PlanePoint) : Measure PlanePoint :=
+  Measure.map planeEuclideanHomeomorph.symm
+    ((μH[1] : Measure EuclideanPlane).restrict
+      (frontier (planeEuclideanHomeomorph '' carrier)))
+
+[6] WeightedPerimeter (67-73)
+def WeightedPerimeter (lam : ℝ)
+    (boundaryMeasure : Measure PlanePoint) : ℝ :=
+  ∫ p, StripDensity lam p ∂boundaryMeasure
+
+[7] FinitePerimeterRegion (74-82)
+structure FinitePerimeterRegion (lam : ℝ) where
+  carrier : Set PlanePoint
+  measurable_carrier : MeasurableSet carrier
+  finite_weighted_area : IntegrableOn (StripDensity lam) carrier
+  finite_weighted_perimeter :
+    Integrable (StripDensity lam) (FrontierMeasure carrier)
+
+[8] FinitePerimeterRegion.weightedArea (83-85)
+def weightedArea {lam : ℝ} (r : FinitePerimeterRegion lam) : ℝ :=
+  WeightedArea lam r.carrier
+
+[9] CapSide (92-99)
+inductive CapSide where
+  | upper
+  | lower
+  deriving DecidableEq
+
+[10] OneSidedCircularCap (100-112)
+structure OneSidedCircularCap where
+  chord : ℝ
+  theta : ℝ
+  midpointX : ℝ
+  baseY : ℝ
+  side : CapSide
+  chord_pos : 0 < chord
+  theta_pos : 0 < theta
+  theta_lt_pi : theta < π
+
+[11] OneSidedCircularCap.radius (113-116)
+def radius (c : OneSidedCircularCap) : ℝ := c.chord / (2 * sin c.theta)
+
+[12] OneSidedCircularCap.center (117-123)
+def center (c : OneSidedCircularCap) : PlanePoint :=
+  match c.side with
+  | .upper => (c.midpointX, c.baseY - c.radius * cos c.theta)
+  | .lower => (c.midpointX, c.baseY + c.radius * cos c.theta)
+
+[13] OneSidedCircularCap.arcPoint (124-133)
+def arcPoint (c : OneSidedCircularCap) (t : ℝ) : PlanePoint :=
+  match c.side with
+  | .upper =>
+      (c.midpointX + c.radius * sin t,
+        c.baseY + c.radius * (cos t - cos c.theta))
+  | .lower =>
+      (c.midpointX + c.radius * sin t,
+        c.baseY - c.radius * (cos t - cos c.theta))
+
+[14] OneSidedCircularCap.leftEndpoint (134-137)
+def leftEndpoint (c : OneSidedCircularCap) : PlanePoint :=
+  (c.midpointX - c.chord / 2, c.baseY)
+
+[15] OneSidedCircularCap.rightEndpoint (138-141)
+def rightEndpoint (c : OneSidedCircularCap) : PlanePoint :=
+  (c.midpointX + c.chord / 2, c.baseY)
+
+[16] OneSidedCircularCap.radiusSquaredAt (142-145)
+def radiusSquaredAt (c : OneSidedCircularCap) (p : PlanePoint) : ℝ :=
+  (p.1 - c.center.1) ^ 2 + (p.2 - c.center.2) ^ 2
+
+[17] OneSidedCircularCap.carrier (146-152)
+def carrier (c : OneSidedCircularCap) : Set PlanePoint :=
+  {p | c.radiusSquaredAt p ≤ c.radius ^ 2 ∧
+    match c.side with
+    | .upper => c.baseY ≤ p.2
+    | .lower => p.2 ≤ c.baseY}
+
+[18] OneSidedCircularCap.interiorCarrier (153-159)
+def interiorCarrier (c : OneSidedCircularCap) : Set PlanePoint :=
+  {p | c.radiusSquaredAt p < c.radius ^ 2 ∧
+    match c.side with
+    | .upper => c.baseY < p.2
+    | .lower => p.2 < c.baseY}
+
+[19] OneSidedCircularCap.chordCarrier (160-163)
+def chordCarrier (c : OneSidedCircularCap) : Set PlanePoint :=
+  {p | p.2 = c.baseY ∧ |p.1 - c.midpointX| ≤ c.chord / 2}
+
+[20] OneSidedCircularCap.euclideanArea (164-166)
+def euclideanArea (c : OneSidedCircularCap) : ℝ := c.chord ^ 2 * area c.theta
+
+[21] OneSidedCircularCap.arcLength (167-170)
+def arcLength (c : OneSidedCircularCap) : ℝ := c.chord * ell c.theta
+
+[22] OneSidedCircularCap.sin_theta_pos (207-209)
+theorem sin_theta_pos (c : OneSidedCircularCap) : 0 < sin c.theta
+
+[23] OneSidedCircularCap.radius_pos (210-212)
+theorem radius_pos (c : OneSidedCircularCap) : 0 < c.radius
+
+[24] OneSidedCircularCap.euclideanArea_pos (213-215)
+theorem euclideanArea_pos (c : OneSidedCircularCap) : 0 < c.euclideanArea
+
+[25] OneSidedCircularCap.ell_theta_pos (216-219)
+theorem ell_theta_pos (c : OneSidedCircularCap) : 0 < ell c.theta
+
+[26] OneSidedCircularCap.arcLength_pos (220-222)
+theorem arcLength_pos (c : OneSidedCircularCap) : 0 < c.arcLength
+
+[27] OneSidedCircularCap.radius_mul_sin (223-227)
+theorem radius_mul_sin (c : OneSidedCircularCap) :
+    c.radius * sin c.theta = c.chord / 2
+
+[28] OneSidedCircularCap.arcPoint_left (228-232)
+theorem arcPoint_left (c : OneSidedCircularCap) :
+    c.arcPoint (-c.theta) = c.leftEndpoint
+
+[29] OneSidedCircularCap.arcPoint_right (233-239)
+theorem arcPoint_right (c : OneSidedCircularCap) :
+    c.arcPoint c.theta = c.rightEndpoint
+
+[30] OneSidedCircularCap.arcPoint_in_closed_side (240-252)
+theorem arcPoint_in_closed_side (c : OneSidedCircularCap) {t : ℝ}
+    (ht : |t| ≤ c.theta) :
+    match c.side with
+    | .upper => c.baseY ≤ (c.arcPoint t).2
+    | .lower => (c.arcPoint t).2 ≤ c.baseY
+
+[31] OneSidedCircularCap.arcPoint_in_open_side (253-266)
+theorem arcPoint_in_open_side (c : OneSidedCircularCap) {t : ℝ}
+    (ht : |t| < c.theta) :
+    match c.side with
+    | .upper => c.baseY < (c.arcPoint t).2
+    | .lower => (c.arcPoint t).2 < c.baseY
+
+[32] OneSidedCircularCap.mem_chordCarrier_of_mem_carrier_of_eq_base (291-310)
+theorem mem_chordCarrier_of_mem_carrier_of_eq_base
+    (c : OneSidedCircularCap) {p : PlanePoint}
+    (hp : p ∈ c.carrier) (hy : p.2 = c.baseY) :
+    p ∈ c.chordCarrier
+
+[33] OneSidedCircularCap.chordCarrier_subset_carrier (311-334)
+theorem chordCarrier_subset_carrier (c : OneSidedCircularCap) :
+    c.chordCarrier ⊆ c.carrier
+
+[34] OneSidedCircularCap.measurableSet_carrier (335-363)
+theorem measurableSet_carrier (c : OneSidedCircularCap) :
+    MeasurableSet c.carrier
+
+[35] OneSidedCircularCap.isClosed_carrier (364-391)
+theorem isClosed_carrier (c : OneSidedCircularCap) :
+    IsClosed c.carrier
+
+[36] HorizontalSegment (392-399)
+structure HorizontalSegment where
+  chord : ℝ
+  midpointX : ℝ
+  baseY : ℝ
+  chord_pos : 0 < chord
+
+[37] HorizontalSegment.leftEndpoint (400-402)
+def leftEndpoint (s : HorizontalSegment) : PlanePoint :=
+  (s.midpointX - s.chord / 2, s.baseY)
+
+[38] HorizontalSegment.rightEndpoint (403-405)
+def rightEndpoint (s : HorizontalSegment) : PlanePoint :=
+  (s.midpointX + s.chord / 2, s.baseY)
+
+[39] HorizontalSegment.carrier (406-408)
+def carrier (s : HorizontalSegment) : Set PlanePoint :=
+  {p | p.2 = s.baseY ∧ |p.1 - s.midpointX| ≤ s.chord / 2}
+
+[40] HorizontalSegment.euclideanLength (409-415)
+def euclideanLength (s : HorizontalSegment) : ℝ := s.chord
+
+[41] StripCore (416-425)
+structure StripCore where
+  chord : ℝ
+  curvature : ℝ
+  chord_pos : 0 < chord
+  curvature_pos : 0 < curvature
+  curvature_le_one : curvature ≤ 1
+
+[42] StripCore.radius (426-428)
+def radius (c : StripCore) : ℝ := 1 / c.curvature
+
+[43] StripCore.sideAngle (429-430)
+def sideAngle (c : StripCore) : ℝ := arcsin c.curvature
+
+[44] StripCore.leftCenterX (431-433)
+def leftCenterX (c : StripCore) : ℝ :=
+  -c.chord / 2 + c.radius * cos c.sideAngle
+
+[45] StripCore.rightCenterX (434-436)
+def rightCenterX (c : StripCore) : ℝ :=
+  c.chord / 2 - c.radius * cos c.sideAngle
+
+[46] StripCore.rectangleCarrier (437-439)
+def rectangleCarrier (c : StripCore) : Set PlanePoint :=
+  {p | -c.chord / 2 ≤ p.1 ∧ p.1 ≤ c.chord / 2 ∧ |p.2| ≤ 1}
+
+[47] StripCore.leftCapCarrier (440-443)
+def leftCapCarrier (c : StripCore) : Set PlanePoint :=
+  {p | (p.1 - c.leftCenterX) ^ 2 + p.2 ^ 2 ≤ c.radius ^ 2 ∧
+    p.1 ≤ -c.chord / 2 ∧ |p.2| ≤ 1}
+
+[48] StripCore.rightCapCarrier (444-448)
+def rightCapCarrier (c : StripCore) : Set PlanePoint :=
+  {p | (p.1 - c.rightCenterX) ^ 2 + p.2 ^ 2 ≤ c.radius ^ 2 ∧
+    c.chord / 2 ≤ p.1 ∧ |p.2| ≤ 1}
+
+[49] StripCore.carrier (449-452)
+def carrier (c : StripCore) : Set PlanePoint :=
+  c.rectangleCarrier ∪ c.leftCapCarrier ∪ c.rightCapCarrier
+
+[50] StripCore.euclideanArea (453-456)
+def euclideanArea (c : StripCore) : ℝ :=
+  2 * c.chord + 8 * area c.sideAngle
+
+[51] StripCore.boundaryArcLength (457-459)
+def boundaryArcLength (c : StripCore) : ℝ :=
+  4 * ell c.sideAngle
+
+[52] StripCore.radius_pos (460-462)
+theorem radius_pos (c : StripCore) : 0 < c.radius
+
+[53] StripCore.sideAngle_pos (463-465)
+theorem sideAngle_pos (c : StripCore) : 0 < c.sideAngle
+
+[54] StripCore.sideAngle_le_pi_div_two (466-469)
+theorem sideAngle_le_pi_div_two (c : StripCore) :
+    c.sideAngle ≤ π / 2
+
+[55] StripCore.sideAngle_lt_pi (470-473)
+theorem sideAngle_lt_pi (c : StripCore) : c.sideAngle < π
+
+[56] StripCore.sin_sideAngle (474-477)
+theorem sin_sideAngle (c : StripCore) : sin c.sideAngle = c.curvature
+
+[57] StripCore.cos_sideAngle (478-481)
+theorem cos_sideAngle (c : StripCore) :
+    cos c.sideAngle = √(1 - c.curvature ^ 2)
+
+[58] StripCore.carrier_y_bounds (482-490)
+theorem carrier_y_bounds (c : StripCore) {p : PlanePoint}
+    (hp : p ∈ c.carrier) : |p.2| ≤ 1
+
+[59] StripCore.measurableSet_carrier (500-551)
+theorem measurableSet_carrier (c : StripCore) : MeasurableSet c.carrier
+
+[60] OneSidedCircularCap.arcTrace (656-661)
+def arcTrace (c : OneSidedCircularCap) : Set PlanePoint :=
+  {p | c.radiusSquaredAt p = c.radius ^ 2 ∧
+    match c.side with
+    | .upper => c.baseY ≤ p.2
+    | .lower => p.2 ≤ c.baseY}
+
+[61] OneSidedCircularCap.isOpen_interiorCarrier (662-686)
+theorem isOpen_interiorCarrier (c : OneSidedCircularCap) :
+    IsOpen c.interiorCarrier
+
+[62] OneSidedCircularCap.interiorCarrier_subset_interior (687-696)
+theorem interiorCarrier_subset_interior (c : OneSidedCircularCap) :
+    c.interiorCarrier ⊆ interior c.carrier
+
+[63] OneSidedCircularCap.frontier_carrier (697-761)
+theorem frontier_carrier (c : OneSidedCircularCap) :
+    frontier c.carrier = arcTrace c ∪ c.chordCarrier
+
+[64] StripCore.leftArcTrace (762-766)
+def leftArcTrace (c : StripCore) : Set PlanePoint :=
+  {p | (p.1 - c.leftCenterX) ^ 2 + p.2 ^ 2 = c.radius ^ 2 ∧
+    p.1 ≤ -c.chord / 2 ∧ |p.2| ≤ 1}
+
+[65] StripCore.rightArcTrace (767-770)
+def rightArcTrace (c : StripCore) : Set PlanePoint :=
+  {p | (p.1 - c.rightCenterX) ^ 2 + p.2 ^ 2 = c.radius ^ 2 ∧
+    c.chord / 2 ≤ p.1 ∧ |p.2| ≤ 1}
+
+[66] StripCore.upperChordTrace (771-773)
+def upperChordTrace (c : StripCore) : Set PlanePoint :=
+  {p | p.2 = 1 ∧ |p.1| ≤ c.chord / 2}
+
+[67] StripCore.lowerChordTrace (774-776)
+def lowerChordTrace (c : StripCore) : Set PlanePoint :=
+  {p | p.2 = -1 ∧ |p.1| ≤ c.chord / 2}
+
+[68] StripCore.isClosed_carrier (805-843)
+theorem isClosed_carrier (c : StripCore) : IsClosed c.carrier
+
+[69] StripCore.frontier_carrier (1088-1199)
+theorem frontier_carrier (c : StripCore) :
+    frontier c.carrier =
+      leftArcTrace c ∪
+        (rightArcTrace c ∪ (upperChordTrace c ∪ lowerChordTrace c))
+
+[70] intervalPushforward (1200-1202)
+def intervalPushforward (curve : ℝ → PlanePoint) (a b : ℝ) : Measure PlanePoint :=
+  Measure.map curve (volume.restrict (Icc a b))
+
+[71] measurable_stripDensity (1234-1240)
+theorem measurable_stripDensity (lam : ℝ) : Measurable (StripDensity lam)
+
+[72] capParam (1241-1243)
+def capParam (c : OneSidedCircularCap) (s : ℝ) : PlanePoint :=
+  c.arcPoint (s / c.radius)
+
+[73] capStart (1244-1245)
+def capStart (c : OneSidedCircularCap) : ℝ := -c.radius * c.theta
+
+[74] capEnd (1246-1248)
+def capEnd (c : OneSidedCircularCap) : ℝ := c.radius * c.theta
+
+[75] capBoundaryMeasure (1249-1251)
+def capBoundaryMeasure (c : OneSidedCircularCap) : Measure PlanePoint :=
+  intervalPushforward (capParam c) (capStart c) (capEnd c)
+
+[76] cap_upper_external_density (1329-1340)
+theorem cap_upper_external_density (lam : ℝ) (c : OneSidedCircularCap)
+    (hside : c.side = .upper) (hbase : c.baseY = 1)
+    {s : ℝ} (hs : s ∈ Ioo (capStart c) (capEnd c)) :
+    StripDensity lam (capParam c s) = lam
+
+[77] cap_lower_external_density (1341-1352)
+theorem cap_lower_external_density (lam : ℝ) (c : OneSidedCircularCap)
+    (hside : c.side = .lower) (hbase : c.baseY = -1)
+    {s : ℝ} (hs : s ∈ Ioo (capStart c) (capEnd c)) :
+    StripDensity lam (capParam c s) = lam
+
+[78] cap_upper_weightedIntegral (1353-1372)
+theorem cap_upper_weightedIntegral (lam : ℝ) (c : OneSidedCircularCap)
+    (hside : c.side = .upper) (hbase : c.baseY = 1) :
+    ∫ p, StripDensity lam p ∂capBoundaryMeasure c = lam * c.arcLength
+
+[79] cap_lower_weightedIntegral (1373-1394)
+theorem cap_lower_weightedIntegral (lam : ℝ) (c : OneSidedCircularCap)
+    (hside : c.side = .lower) (hbase : c.baseY = -1) :
+    ∫ p, StripDensity lam p ∂capBoundaryMeasure c = lam * c.arcLength
+
+[80] segmentParam (1395-1397)
+def segmentParam (seg : HorizontalSegment) (s : ℝ) : PlanePoint :=
+  (seg.midpointX + s, seg.baseY)
+
+[81] segmentStart (1398-1399)
+def segmentStart (seg : HorizontalSegment) : ℝ := -seg.chord / 2
+
+[82] segmentEnd (1400-1402)
+def segmentEnd (seg : HorizontalSegment) : ℝ := seg.chord / 2
+
+[83] coreArcStart (1472-1473)
+def coreArcStart (c : StripCore) : ℝ := -c.radius * c.sideAngle
+
+[84] coreArcEnd (1474-1476)
+def coreArcEnd (c : StripCore) : ℝ := c.radius * c.sideAngle
+
+[85] leftCoreParam (1477-1481)
+def leftCoreParam (c : StripCore) (s : ℝ) : PlanePoint :=
+  (c.leftCenterX - c.radius * cos (s / c.radius),
+    c.radius * sin (s / c.radius))
+
+[86] rightCoreParam (1482-1486)
+def rightCoreParam (c : StripCore) (s : ℝ) : PlanePoint :=
+  (c.rightCenterX + c.radius * cos (s / c.radius),
+    c.radius * sin (s / c.radius))
+
+[87] leftCoreBoundaryMeasure (1487-1490)
+def leftCoreBoundaryMeasure (c : StripCore) : Measure PlanePoint :=
+  intervalPushforward (leftCoreParam c) (coreArcStart c) (coreArcEnd c)
+
+[88] rightCoreBoundaryMeasure (1491-1493)
+def rightCoreBoundaryMeasure (c : StripCore) : Measure PlanePoint :=
+  intervalPushforward (rightCoreParam c) (coreArcStart c) (coreArcEnd c)
+
+[89] leftCore_strip_density (1662-1667)
+theorem leftCore_strip_density (lam : ℝ) (c : StripCore) {s : ℝ}
+    (hs : s ∈ Icc (coreArcStart c) (coreArcEnd c)) :
+    StripDensity lam (leftCoreParam c s) = 1
+
+[90] rightCore_strip_density (1668-1674)
+theorem rightCore_strip_density (lam : ℝ) (c : StripCore) {s : ℝ}
+    (hs : s ∈ Icc (coreArcStart c) (coreArcEnd c)) :
+    StripDensity lam (rightCoreParam c s) = 1
+
+[91] leftCore_weightedIntegral (1675-1694)
+theorem leftCore_weightedIntegral (lam : ℝ) (c : StripCore) :
+    ∫ p, StripDensity lam p ∂leftCoreBoundaryMeasure c = 2 * ell c.sideAngle
+
+[92] rightCore_weightedIntegral (1695-1714)
+theorem rightCore_weightedIntegral (lam : ℝ) (c : StripCore) :
+    ∫ p, StripDensity lam p ∂rightCoreBoundaryMeasure c = 2 * ell c.sideAngle
+
+[93] integral_sqrt_one_sub_sq_from_cos (1729-1758)
+lemma integral_sqrt_one_sub_sq_from_cos {θ : ℝ} (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) :
+    (∫ x in cos θ..1, √(1 - x ^ 2)) =
+      (θ - sin θ * cos θ) / 2
+
+[94] integral_semicircle_scaled (1759-1791)
+lemma integral_semicircle_scaled {r θ : ℝ} (hr : 0 < r)
+    (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) :
+    (∫ y in r * cos θ..r, 2 * √(r ^ 2 - y ^ 2)) =
+      r ^ 2 * (θ - sin θ * cos θ)
+
+[95] integral_semicircle_translated (1792-1800)
+lemma integral_semicircle_translated {a r θ : ℝ} (hr : 0 < r)
+    (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) :
+    (∫ y in a + r * cos θ..a + r, 2 * √(r ^ 2 - (y - a) ^ 2)) =
+      r ^ 2 * (θ - sin θ * cos θ)
+
+[96] lintegral_semicircle_translated (1801-1819)
+lemma lintegral_semicircle_translated {a r θ : ℝ} (hr : 0 < r)
+    (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) :
+    (∫⁻ y in Icc (a + r * cos θ) (a + r),
+        ENNReal.ofReal (2 * √(r ^ 2 - (y - a) ^ 2))) =
+      ENNReal.ofReal (r ^ 2 * (θ - sin θ * cos θ))
+
+[97] volume_upper_circular_segment (1820-1944)
+lemma volume_upper_circular_segment (mx cy r θ : ℝ) (hr : 0 < r)
+    (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) :
+    volume {p : ℝ × ℝ |
+        (p.1 - mx) ^ 2 + (p.2 - cy) ^ 2 ≤ r ^ 2 ∧
+          cy + r * cos θ ≤ p.2} =
+      ENNReal.ofReal (r ^ 2 * (θ - sin θ * cos θ))
+
+[98] volume_lower_circular_segment (1945-1995)
+lemma volume_lower_circular_segment (mx cy r θ : ℝ) (hr : 0 < r)
+    (hθ0 : 0 ≤ θ) (hθπ : θ ≤ π) :
+    volume {p : ℝ × ℝ |
+        (p.1 - mx) ^ 2 + (p.2 - cy) ^ 2 ≤ r ^ 2 ∧
+          p.2 ≤ cy - r * cos θ} =
+      ENNReal.ofReal (r ^ 2 * (θ - sin θ * cos θ))
+
+[99] OneSidedCircularCap.volume_carrier (1996-2028)
+theorem volume_carrier (c : OneSidedCircularCap) :
+    volume c.carrier = ENNReal.ofReal c.euclideanArea
+
+[100] volume_horizontalLine (2029-2036)
+lemma volume_horizontalLine (b : ℝ) :
+    volume {p : PlanePoint | p.2 = b} = 0
+
+[101] volume_verticalLine (2037-2046)
+lemma volume_verticalLine (a : ℝ) :
+    volume {p : PlanePoint | p.1 = a} = 0
+
+[102] StripCore.volume_rectangleCarrier (2060-2075)
+lemma volume_rectangleCarrier (c : StripCore) :
+    volume c.rectangleCarrier = ENNReal.ofReal (2 * c.chord)
+
+[103] StripCore.volume_leftCapCarrier (2076-2138)
+lemma volume_leftCapCarrier (c : StripCore) :
+    volume c.leftCapCarrier = ENNReal.ofReal (4 * area c.sideAngle)
+
+[104] StripCore.volume_rightCapCarrier (2139-2201)
+lemma volume_rightCapCarrier (c : StripCore) :
+    volume c.rightCapCarrier = ENNReal.ofReal (4 * area c.sideAngle)
+
+[105] StripCore.volume_carrier (2202-2242)
+lemma volume_carrier (c : StripCore) :
+    volume c.carrier = ENNReal.ofReal c.euclideanArea
+
+[106] stripDensity_integrable_intervalPushforward (2243-2259)
+lemma stripDensity_integrable_intervalPushforward (lam : ℝ)
+    {curve : ℝ → PlanePoint} {a b : ℝ} (hcurve : Measurable curve) :
+    Integrable (StripDensity lam) (intervalPushforward curve a b)
+
+[107] capBoundaryMeasure_integrable (2260-2267)
+lemma capBoundaryMeasure_integrable (lam : ℝ) (c : OneSidedCircularCap) :
+    Integrable (StripDensity lam) (capBoundaryMeasure c)
+
+[108] leftCoreBoundaryMeasure_integrable (2275-2281)
+lemma leftCoreBoundaryMeasure_integrable (lam : ℝ) (c : StripCore) :
+    Integrable (StripDensity lam) (leftCoreBoundaryMeasure c)
+
+[109] rightCoreBoundaryMeasure_integrable (2282-2288)
+lemma rightCoreBoundaryMeasure_integrable (lam : ℝ) (c : StripCore) :
+    Integrable (StripDensity lam) (rightCoreBoundaryMeasure c)
+
+[110] stripDensity_integrableOn_of_volume_ne_top (2289-2302)
+lemma stripDensity_integrableOn_of_volume_ne_top (lam : ℝ)
+    {s : Set PlanePoint} (hs : volume s ≠ ⊤) :
+    IntegrableOn (StripDensity lam) s
+
+[111] cap_integrableOn (2303-2308)
+lemma cap_integrableOn (lam : ℝ) (c : OneSidedCircularCap) :
+    IntegrableOn (StripDensity lam) c.carrier
+
+[112] core_integrableOn (2309-2314)
+lemma core_integrableOn (lam : ℝ) (c : StripCore) :
+    IntegrableOn (StripDensity lam) c.carrier
+
+[113] StripCore.weightedArea_formula (2315-2333)
+lemma StripCore.weightedArea_formula (lam : ℝ) (c : StripCore) :
+    WeightedArea lam c.carrier = c.euclideanArea
+
+[114] cap_upper_weightedArea (2334-2359)
+lemma cap_upper_weightedArea (lam : ℝ) (c : OneSidedCircularCap)
+    (hside : c.side = .upper) (hbase : c.baseY = 1) :
+    WeightedArea lam c.carrier = lam * c.euclideanArea
+
+[115] cap_lower_weightedArea (2360-2389)
+lemma cap_lower_weightedArea (lam : ℝ) (c : OneSidedCircularCap)
+    (hside : c.side = .lower) (hbase : c.baseY = -1) :
+    WeightedArea lam c.carrier = lam * c.euclideanArea
+
+[116] FourArcAssembly (2491-2498)
+structure FourArcAssembly where
+  core : StripCore
+  outerAngle : ℝ
+  outerAngle_pos : 0 < outerAngle
+  outerAngle_lt_pi_div_two : outerAngle < π / 2
+
+[117] FourArcAssembly.upperCap (2499-2508)
+def upperCap (a : FourArcAssembly) : OneSidedCircularCap where
+  chord := a.core.chord
+  theta := a.outerAngle
+  midpointX := 0
+  baseY := 1
+  side := .upper
+  chord_pos := a.core.chord_pos
+  theta_pos := a.outerAngle_pos
+  theta_lt_pi := lt_trans a.outerAngle_lt_pi_div_two (by linarith [Real.pi_pos])
+
+[118] FourArcAssembly.lowerCap (2509-2518)
+def lowerCap (a : FourArcAssembly) : OneSidedCircularCap where
+  chord := a.core.chord
+  theta := a.outerAngle
+  midpointX := 0
+  baseY := -1
+  side := .lower
+  chord_pos := a.core.chord_pos
+  theta_pos := a.outerAngle_pos
+  theta_lt_pi := lt_trans a.outerAngle_lt_pi_div_two (by linarith [Real.pi_pos])
+
+[119] FourArcAssembly.carrier (2519-2524)
+def carrier (a : FourArcAssembly) : Set PlanePoint :=
+  a.core.carrier ∪ a.upperCap.carrier ∪ a.lowerCap.carrier
+
+[120] FourArcAssembly.boundaryMeasure (2525-2529)
+def boundaryMeasure (a : FourArcAssembly) : Measure PlanePoint :=
+  leftCoreBoundaryMeasure a.core + rightCoreBoundaryMeasure a.core +
+    capBoundaryMeasure a.upperCap + capBoundaryMeasure a.lowerCap
+
+[121] FourArcAssembly.weightedArea (2541-2545)
+def weightedArea (lam : ℝ) (a : FourArcAssembly) : ℝ :=
+  WeightedArea lam a.carrier
+
+[122] FourArcAssembly.weightedPerimeter (2546-2548)
+def weightedPerimeter (lam : ℝ) (a : FourArcAssembly) : ℝ :=
+  WeightedPerimeter lam a.boundaryMeasure
+
+[123] FourArcAssembly.weightedArea_formula (2554-2602)
+theorem weightedArea_formula (lam : ℝ) (a : FourArcAssembly) :
+    a.weightedArea lam =
+      a.core.euclideanArea + lam *
+        (a.upperCap.euclideanArea + a.lowerCap.euclideanArea)
+
+[124] FourArcAssembly.weightedPerimeter_formula (2603-2624)
+theorem weightedPerimeter_formula (lam : ℝ) (a : FourArcAssembly) :
+    a.weightedPerimeter lam =
+      a.core.boundaryArcLength + lam *
+        (a.upperCap.arcLength + a.lowerCap.arcLength)
+
+[125] FourArcAssembly.boundaryTrace (2625-2630)
+def boundaryTrace (a : FourArcAssembly) : Set PlanePoint :=
+  StripCore.leftArcTrace a.core ∪
+    (StripCore.rightArcTrace a.core ∪
+      (OneSidedCircularCap.arcTrace a.upperCap ∪
+        OneSidedCircularCap.arcTrace a.lowerCap))
+
+[126] FourArcAssembly.frontier_carrier_subset_boundaryTrace (2795-2819)
+theorem frontier_carrier_subset_boundaryTrace (a : FourArcAssembly) :
+    frontier a.carrier ⊆ a.boundaryTrace
+
+[127] FourArcAssembly.boundaryTrace_subset_frontier_carrier (3244-3251)
+theorem boundaryTrace_subset_frontier_carrier (a : FourArcAssembly) :
+    a.boundaryTrace ⊆ frontier a.carrier
+
+[128] FourArcAssembly.frontier_carrier (3252-3259)
+theorem frontier_carrier (a : FourArcAssembly) :
+    frontier a.carrier = a.boundaryTrace
+
+[129] ReplacementAssembly (3281-3288)
+structure ReplacementAssembly where
+  core : StripCore
+  replacementAngle : ℝ
+  replacementAngle_pos : 0 < replacementAngle
+  replacementAngle_lt_pi : replacementAngle < π
+
+[130] ReplacementAssembly.upperCap (3289-3298)
+def upperCap (a : ReplacementAssembly) : OneSidedCircularCap where
+  chord := a.core.chord
+  theta := a.replacementAngle
+  midpointX := 0
+  baseY := 1
+  side := .upper
+  chord_pos := a.core.chord_pos
+  theta_pos := a.replacementAngle_pos
+  theta_lt_pi := a.replacementAngle_lt_pi
+
+[131] ReplacementAssembly.carrier (3305-3309)
+def carrier (a : ReplacementAssembly) : Set PlanePoint :=
+  a.core.carrier ∪ a.upperCap.carrier
+
+[132] ReplacementAssembly.weightedArea (3326-3329)
+def weightedArea (lam : ℝ) (a : ReplacementAssembly) : ℝ :=
+  WeightedArea lam a.carrier
+
+[133] AdmissibleCompetitor (3952-3960)
+inductive AdmissibleCompetitor (lam : ℝ) where
+  | empty
+  | general (region : FinitePerimeterRegion lam)
+  | fourArc (a : FourArcAssembly)
+  | replacement (a : ReplacementAssembly)
+
+[134] AdmissibleCompetitor.carrier (3961-3967)
+def carrier {lam : ℝ} : AdmissibleCompetitor lam → Set PlanePoint
+  | .empty => ∅
+  | .general region => region.carrier
+  | .fourArc a => a.carrier
+  | .replacement a => a.carrier
+
+[135] AdmissibleCompetitor.WeightedArea (3968-3975)
+def WeightedArea {lam : ℝ} : AdmissibleCompetitor lam → ℝ
+  | .empty => 0
+  | .general region => region.weightedArea
+  | .fourArc a => a.weightedArea lam
+  | .replacement a => a.weightedArea lam
+
+[136] AdmissibleCompetitor.WeightedPerimeter (3976-3980)
+def WeightedPerimeter {lam : ℝ} (r : AdmissibleCompetitor lam) : ℝ :=
+  _root_.WeightedPerimeter lam (FrontierMeasure r.carrier)
+
+[137] AdmissibleCompetitor.weightedArea_eq_carrier (3981-3990)
+theorem weightedArea_eq_carrier {lam : ℝ} (r : AdmissibleCompetitor lam) :
+    r.WeightedArea = _root_.WeightedArea lam r.carrier

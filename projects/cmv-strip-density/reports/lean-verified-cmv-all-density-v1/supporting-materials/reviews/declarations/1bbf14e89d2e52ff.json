@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_sideArcAngle",
+  "domain_issues": [],
+  "informal_statement": "\\(\\sin\\gamma=\\sin\\beta\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:227-230; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "41165bd4a88985079154632e1304282b8868bb98cc6b1d97bb3ea19faaebe0dd",
+  "symbol_mismatches": []
+}

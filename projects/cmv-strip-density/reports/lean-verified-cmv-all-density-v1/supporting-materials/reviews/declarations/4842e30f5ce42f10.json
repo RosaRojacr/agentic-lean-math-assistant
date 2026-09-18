@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreePerimeter_deriv_eq_height_mul_area_deriv",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(P_3'(h)=hA_3'(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:640-648; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7607f8124dad06702d520d2b8e20b8eab5117f85a2007d935f98d72479aad4e2",
+  "symbol_mismatches": []
+}

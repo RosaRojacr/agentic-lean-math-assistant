@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_continuousAt_one",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\), the scalar function \\(A_3\\) is continuous at one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:384-393; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b82ff69676ab90ec4fb13d857723ab9b2dd80ce0482e1e3d55da8f2320d7eef0",
+  "symbol_mismatches": []
+}

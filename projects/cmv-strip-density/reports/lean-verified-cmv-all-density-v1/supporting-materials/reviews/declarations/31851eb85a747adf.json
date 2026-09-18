@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.endpoint_weightedPerimeter_eq_typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "For a CMV candidate with \\(h=1\\), its weighted perimeter equals \\(P_4(1)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVSuffixModel.lean:167-176; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9a9144c9e0869ee21b16e09b6aad1d31570ea82a7d5d876263c80c006e5e5661",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_lower_circular_segment",
+  "domain_issues": [],
+  "informal_statement": "For \\(r>0\\) and \\(0\\leq\\theta\\leq\\pi\\), the disk centered at \\((m,c)\\), restricted to \\(y\\leq c-r\\cos\\theta\\), has the same circular-segment area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1945-1995; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2301e25d7ced8d1d9e2c23a9b63e02ba7c6e8f9ea615112d4c41d15aeb777045",
+  "symbol_mismatches": []
+}

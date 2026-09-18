@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "monotone_capPartitionPoint",
+  "domain_issues": [],
+  "informal_statement": "If \\(r>0\\), \\(\\theta>0\\), and \\(N>0\\), the map \\(i\\mapsto p_{N,i}\\) on natural indices is monotone.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:167-174; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "62e77199a2eb7f24e5f93307536675c49f368eab2d84be96574f544f2152a857",
+  "symbol_mismatches": []
+}

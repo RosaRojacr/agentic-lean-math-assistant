@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreParam",
+  "domain_issues": [],
+  "informal_statement": "The left core arclength map is \\((c_{\\mathrm L}-R\\cos(s/R),R\\sin(s/R))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1477-1481; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80f940fe52c510e69a283605275f10b49a7ca369836a80a40ece896dbbf606db",
+  "symbol_mismatches": []
+}

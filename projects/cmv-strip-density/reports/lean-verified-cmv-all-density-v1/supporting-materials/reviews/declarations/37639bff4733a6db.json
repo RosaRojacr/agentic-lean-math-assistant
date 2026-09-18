@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iii}\\) scalar area is \\(A_3(h)=[B(q(h))+\\pi/2+(q(h)+2)D(q(h))]/h^2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:44-48; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63d13d5879252e16ac6f53a2d4449b4f511e353d6016e98158793484dcfaa8f7",
+  "symbol_mismatches": []
+}

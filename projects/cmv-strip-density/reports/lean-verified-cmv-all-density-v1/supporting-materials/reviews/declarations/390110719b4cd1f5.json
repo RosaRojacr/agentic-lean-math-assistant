@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.sameHeight_support_identity",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and \\(h\\ne0\\), \\(h[(P_3(h)-hA_3(h))-(P_4(h)-hA_4(h))]=S(2h-1)+\\pi/2-2S(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:348-361; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dfaacd20b555a53066a164daf8f9b4ebb1dbcc86f6d564ed5188ef405330e787",
+  "symbol_mismatches": []
+}

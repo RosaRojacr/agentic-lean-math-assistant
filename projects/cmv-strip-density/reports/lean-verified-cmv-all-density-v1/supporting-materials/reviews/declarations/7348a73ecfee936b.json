@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedLeftCoreParam_eq",
+  "domain_issues": [],
+  "informal_statement": "For every strip core \\(c\\) and real \\(s\\), the realized left parametrization equals the left complex isometry applied to \\(\\gamma_R(s)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:713-719; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e2c0026193d6fa0dd58c252b75c6df1a108616049c60130059ddb93311c0b2a0",
+  "symbol_mismatches": []
+}

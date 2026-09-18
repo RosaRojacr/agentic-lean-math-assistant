@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint",
+  "domain_issues": [],
+  "informal_statement": "The cap arc is parameterized by \\((m+R\\sin t,b\\pm R(\\cos t-\\cos\\theta))\\), with the plus sign for the upper side.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:124-133; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2f12b44987266410d1b21333c27225fca467817287b4028245b465856f5540c3",
+  "symbol_mismatches": []
+}

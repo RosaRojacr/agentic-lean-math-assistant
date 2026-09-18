@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.not_isWeightedPerimeterMinimizer_of_typeThree",
+  "domain_issues": [],
+  "informal_statement": "An equal-area regular type-\\(\\mathrm{iii}\\) assembly with smaller scalar perimeter refutes minimality of the four-arc candidate.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:3101-3118; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6807359794d5b2629c85ed715f93a0b06f1e0f5dc3b504c99a54401226562f55",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.euclideanArea_pos",
+  "domain_issues": [],
+  "informal_statement": "Every cap's scalar Euclidean area is strictly positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:213-215; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3902ccdc9eb3694014c5a47aad3179ebe09a3fd3cddb066b9c4c1ca933463218",
+  "symbol_mismatches": []
+}

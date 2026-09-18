@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "The replacement assembly weighted area is \\(A_\\lambda\\) of its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:3326-3329; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "30517c93164485b2476e45ea547b19187ad53db44a33af2bf70144ca4c93c662",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerAngle",
+  "domain_issues": [],
+  "informal_statement": "The exterior cap half-angle is \\(\\alpha=\\arccos(q/\\lambda)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:59-63; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e2ff2070394fdda5b4ec09824f47ed543dabdfe101c076ad378e0c92be2ff47",
+  "symbol_mismatches": []
+}

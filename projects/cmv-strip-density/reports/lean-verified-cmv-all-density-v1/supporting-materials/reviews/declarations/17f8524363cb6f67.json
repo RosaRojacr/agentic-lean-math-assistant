@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capStart",
+  "domain_issues": [],
+  "informal_statement": "The starting arclength parameter of a cap is \\(-R\\theta\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1244-1245; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "594eb6e2bbf3cbc7a2397b6af7a93506027168fa75ecf7f70b7012b2fc6e208a",
+  "symbol_mismatches": []
+}

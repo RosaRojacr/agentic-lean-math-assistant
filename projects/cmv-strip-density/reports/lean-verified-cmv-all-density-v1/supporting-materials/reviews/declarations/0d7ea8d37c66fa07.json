@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedRightArcParam",
+  "domain_issues": [],
+  "informal_statement": "The realized right arc parametrization is \\(J(\\operatorname{rightArcParam}(s))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:669-671; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8a963395af5bf096a9c5748471f90364728d8fe511c4e2cc0591bd2068d9e016",
+  "symbol_mismatches": []
+}

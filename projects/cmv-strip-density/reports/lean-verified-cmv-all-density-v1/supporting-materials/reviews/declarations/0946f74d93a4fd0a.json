@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.radius_mul_h",
+  "domain_issues": [],
+  "informal_statement": "The reciprocal-radius normalization satisfies \\(Rh=1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:197-200; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e90d4095fef5e1e089527a179a53736b5dbf462b6149abecb5375e96b7380078",
+  "symbol_mismatches": []
+}

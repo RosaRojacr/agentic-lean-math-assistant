@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.candidate_perimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "For a CMV candidate, \\(P_\\lambda(E)=4\\lambda\\alpha/h+4\\arcsin h/h\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FourArcCandidate.lean:391-409; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b4949bdc7019f429151f2faf734db8466461943a33be006f4c104caebb493fe0",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "The component modeled weighted area equals the scalar formula: \\(A_{\\mathrm{modeled}}=A_{\\mathrm{scalar}}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:885-895; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b0e70e8aeaefad1e18dbaff1d3d6364f544c6042f48ce97bebd3fa5c6cc8e74e",
+  "symbol_mismatches": []
+}

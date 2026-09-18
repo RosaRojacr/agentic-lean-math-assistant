@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), assembly component perimeter equals core curved-side length plus \\(\\lambda\\) times both cap arc lengths.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2603-2624; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "43ff4cdbd6774032399c0e7d7f5767a18500986a522e0ace1e470e2035290acd",
+  "symbol_mismatches": []
+}

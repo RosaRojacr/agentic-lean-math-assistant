@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capParam_image_Icc_eq_arcTrace",
+  "domain_issues": [],
+  "informal_statement": "For every one-sided cap \\(c\\), its cap parametrization maps \\([{-R\\theta},{R\\theta}]\\) exactly onto its arc trace.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:947-1070; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f412e9294ab946fde4ef494447fa75b0b57b0600c2bd61007639df1bb35c0e9e",
+  "symbol_mismatches": []
+}

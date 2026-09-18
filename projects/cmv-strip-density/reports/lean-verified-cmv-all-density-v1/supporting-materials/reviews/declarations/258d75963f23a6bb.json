@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideArcComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "For a center \\(c\\), the side-arc complex map is \\(z\\mapsto(c_x+\\operatorname{Im}z,c_y-\\operatorname{Re}z)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:649-652; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2d2b0ae6442b1aeb7779e0e2c761b53071a3b1948418645b546ba443dcc3b322",
+  "symbol_mismatches": []
+}

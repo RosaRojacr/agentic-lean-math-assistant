@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerAngle_semicircular",
+  "domain_issues": [],
+  "informal_statement": "If \\(h=1/2\\), then \\(\\alpha=\\pi/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:374-377; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9ff26a1092e7089058ecf98f24fecce78972031b475870c0e4d30009e831f8ee",
+  "symbol_mismatches": []
+}

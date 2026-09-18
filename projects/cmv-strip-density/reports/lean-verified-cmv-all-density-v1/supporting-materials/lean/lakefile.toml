@@ -1,0 +1,25 @@
+name = "RangeNarrow"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["ProofPackage"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "Gametheory"
+git = "https://github.com/math-xmum/Brouwer.git"
+rev = "09941e849a81e520cc0cc53220f10f8e5f4768e0"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.0-rc2"
+
+[[lean_lib]]
+name = "ProofPackage"
+srcDir = "."
+roots = ["CMVGeometry", "CMVSuffixModel", "CandidateExclusion", "CapReplacement", "Certificate", "EqualAreaEnvelope", "FourArcCandidate", "FrontierPerimeter", "GFunction", "GeometricBridge", "LeanSuffixAnalytic", "Minimiser", "MinimumValue", "MorgansArcFunction", "SameCurvatureArea", "TypeFourStationaryRoot", "TypeThreeAssembly", "UniversalStationaryPair"]

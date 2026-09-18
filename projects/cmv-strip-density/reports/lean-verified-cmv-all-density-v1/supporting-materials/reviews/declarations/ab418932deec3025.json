@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap_arcLength",
+  "domain_issues": [],
+  "informal_statement": "The outer cap arc length is \\(2R\\alpha\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:875-884; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e4c6a09e492a4c9395262e1c277f2cd0b185e72ae34042a7f14138b12c6b4c19",
+  "symbol_mismatches": []
+}

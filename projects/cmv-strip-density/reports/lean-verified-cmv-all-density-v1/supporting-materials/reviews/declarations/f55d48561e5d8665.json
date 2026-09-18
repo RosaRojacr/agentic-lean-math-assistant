@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerArgument",
+  "domain_issues": [],
+  "informal_statement": "The Snell-adjusted outer cosine argument is \\(q/\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:56-58; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6cfc025aa1368c77ccefa6b050dbf8bfa113c35569b4434625ec2d735b91f41",
+  "symbol_mismatches": []
+}

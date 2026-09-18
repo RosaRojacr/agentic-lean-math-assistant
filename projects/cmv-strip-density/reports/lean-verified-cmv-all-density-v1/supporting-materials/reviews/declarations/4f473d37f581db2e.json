@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourSupport",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iv}\\) support term is \\(S(x)=B(x)-xD(x)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:266-269; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fdeb0489b7e6f5e26dfa807a57579da3ecea22f44d0bba90cd5fa78c0744aa33",
+  "symbol_mismatches": []
+}

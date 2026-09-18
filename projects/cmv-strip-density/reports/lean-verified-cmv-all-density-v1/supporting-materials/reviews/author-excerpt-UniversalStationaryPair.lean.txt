@@ -1,0 +1,33 @@
+[458] LeanSuffixAnalytic.typeThreeArea_half (27-37)
+theorem typeThreeArea_half {lam : ℝ} (hlam : 1 < lam) :
+    typeThreeArea lam (1 / 2 : ℝ) = 2 * π * (lam + 1)
+
+[459] LeanSuffixAnalytic.typeFourArea_one_lt_typeThreeArea_half (38-61)
+theorem typeFourArea_one_lt_typeThreeArea_half {lam : ℝ} (hlam : 1 < lam) :
+    typeFourArea lam 1 < typeThreeArea lam (1 / 2 : ℝ)
+
+[460] LeanSuffixAnalytic.stationaryEqualAreaPair_of_typeFourFold_zero (62-106)
+theorem stationaryEqualAreaPair_of_typeFourFold_zero
+    {lam h₄ : ℝ} (hlam : 1 < lam)
+    (hh₄ : h₄ ∈ Set.Ioo (0 : ℝ) 1) (hh₄_half : 1 / 2 < h₄)
+    (hfold : typeFourFold lam h₄ = 0) :
+    ∃ pair : StationaryEqualAreaPair lam,
+      pair.h₃ < pair.h₄ ∧ pair.h₄ = h₄
+
+[461] LeanSuffixAnalytic.stationaryEqualAreaPair_exists (107-115)
+theorem stationaryEqualAreaPair_exists {lam : ℝ} (hlam : 1 < lam) :
+    ∃ pair : StationaryEqualAreaPair lam, pair.h₃ < pair.h₄
+
+[462] LeanSuffixAnalytic.stationaryEqualAreaPair_strictImprovement_exists (116-145)
+theorem stationaryEqualAreaPair_strictImprovement_exists
+    {lam : ℝ} (hlam : 1 < lam) :
+    ∃ pair : StationaryEqualAreaPair lam,
+      typeThreeFold lam pair.h₃ < 0 ∧
+      typeThreePerimeter lam pair.h₃ < typeFourPerimeter lam pair.h₄ ∧
+      reducedFoldGap lam pair.h₃ pair.h₄ < 0
+
+[463] CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one (146-158)
+theorem not_isWeightedPerimeterMinimizer_of_density_gt_one
+    (hlam : 1 < lam)
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) :
+    ¬ candidate.IsWeightedPerimeterMinimizer

@@ -1,0 +1,1 @@
+Wrote `supporting-materials/reviews/author-03.json`. Corrected the area/integrability mismatches and clarified perimeter wording; preserved the main proof and scope. Validated strict JSON, all 464 classifications, Lean references, and LaTeX delimiters.

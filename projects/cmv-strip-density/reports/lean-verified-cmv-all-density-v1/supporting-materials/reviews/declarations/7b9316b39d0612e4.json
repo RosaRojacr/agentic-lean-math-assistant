@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.integrableOn_carrier",
+  "domain_issues": [],
+  "informal_statement": "For every regular type-\\(\\mathrm{iii}\\) assembly with density \\(\\lambda>1\\), curvature \\(0<h<1\\), and coordinate carrier \\(E_3\\), the strip density is Lebesgue integrable on the carrier:\n\n\\[\nf_\\lambda\\in L^1(E_3,\\mathcal L^2).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:3000-3011; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f50bce5009ef96b4081db29960a7e72186fb76edbfedf9fa6fd538bc59ab8c22",
+  "symbol_mismatches": []
+}

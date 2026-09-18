@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "coreArcStart",
+  "domain_issues": [],
+  "informal_statement": "A core side arc starts at parameter \\(-R\\phi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1472-1473; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4c395d23f09d7608737696a9d4043f61933ddaffbb62953e4470c1085d950b4e",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentEnd",
+  "domain_issues": [],
+  "informal_statement": "The segment's ending parameter is \\(L/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1400-1402; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "161abc8655ce59212c511d028e178416823adf64c523c73dae6b889ae03ed1f4",
+  "symbol_mismatches": []
+}

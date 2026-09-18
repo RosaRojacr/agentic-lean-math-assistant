@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripDensity",
+  "domain_issues": [],
+  "informal_statement": "The strip density is \\(f_\\lambda(x,y)=1\\) for \\(\\lvert y\\rvert\\leq1\\), and \\(f_\\lambda(x,y)=\\lambda\\) otherwise.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:43-54; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "51e629a8115629e4652f417b9dcfc46beea6a584d8ebcb351e746df181f97ab1",
+  "symbol_mismatches": []
+}

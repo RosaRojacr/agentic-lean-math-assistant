@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArcRotation",
+  "domain_issues": [],
+  "informal_statement": "For real \\(r,m\\), rotation by phase \\(m/r\\) is the map \\(z\\mapsto z\\exp(i m/r)\\) on \\(\\mathbb C\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:312-314; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cfdc45400ed0d08a69b42a215854d1f81999a500771f48a7f18476aafefe48ef",
+  "symbol_mismatches": []
+}

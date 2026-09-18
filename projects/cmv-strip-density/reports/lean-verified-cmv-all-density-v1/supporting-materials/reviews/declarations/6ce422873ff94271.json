@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.sin_theta_pos",
+  "domain_issues": [],
+  "informal_statement": "For every cap, \\(\\sin\\theta>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:207-209; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8c22795350624813eb7b9aec2fdcda7bfc438d144ebb38b607db3cac77688583",
+  "symbol_mismatches": []
+}

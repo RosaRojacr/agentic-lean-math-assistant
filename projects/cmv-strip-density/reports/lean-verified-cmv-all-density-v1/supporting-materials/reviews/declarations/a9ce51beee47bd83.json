@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "upper_cap_integral",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and every cap based at \\(y=1\\) on the upper side, \\[\\int_{J(\\operatorname{arcTrace}c)} f_\\lambda\\circ J^{-1}\\,d\\mathcal H^1=\\lambda\\,\\operatorname{arcLength}(c).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1545-1552; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "447beffafa9faf9c0047e982aa709b3b243852770c1fde70cc3c6676215458bf",
+  "symbol_mismatches": []
+}

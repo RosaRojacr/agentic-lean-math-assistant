@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capEnd",
+  "domain_issues": [],
+  "informal_statement": "The ending arclength parameter of a cap is \\(R\\theta\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1246-1248; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a140ca726638df619aef507f8019eb9f7ca9503d3231f8bfa8f0a64feb377161",
+  "symbol_mismatches": []
+}

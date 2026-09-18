@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.region",
+  "domain_issues": [],
+  "informal_statement": "The candidate region is its four-arc assembly regarded as an admissible competitor.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FourArcCandidate.lean:73-75; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8ab9f84c197a1a6dbe90236469e9ff5cc2696f04e42133db44cdf34546558b75",
+  "symbol_mismatches": []
+}

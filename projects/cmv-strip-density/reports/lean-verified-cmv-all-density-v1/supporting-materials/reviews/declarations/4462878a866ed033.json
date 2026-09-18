@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedSegmentParam_image_carrier",
+  "domain_issues": [],
+  "informal_statement": "For every horizontal segment \\(g\\), the realized parametrization image equals \\(J(g.\\operatorname{carrier})\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:913-922; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fc21a65690cb2d00a27cb6aebde20046f1dffbc15b7f30d3caf58ac1aefd1725",
+  "symbol_mismatches": []
+}

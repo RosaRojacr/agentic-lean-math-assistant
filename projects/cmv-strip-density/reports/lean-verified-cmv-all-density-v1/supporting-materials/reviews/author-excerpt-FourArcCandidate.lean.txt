@@ -1,0 +1,110 @@
+[161] FourArcCandidate (23-35)
+structure FourArcCandidate (lam : ℝ) where
+  h : ℝ
+  alpha : ℝ
+  h_pos : 0 < h
+  h_le_one : h ≤ 1
+  alpha_pos : 0 < alpha
+  alpha_lt_pi_div_two : alpha < π / 2
+
+[162] FourArcCandidate.beta (39-41)
+def beta : ℝ := π / 2 - arcsin candidate.h
+
+[163] FourArcCandidate.capChord (42-44)
+def capChord : ℝ := 2 * sin candidate.alpha / candidate.h
+
+[164] FourArcCandidate.capArea (45-49)
+def capArea : ℝ :=
+  (candidate.alpha - sin candidate.alpha * cos candidate.alpha) /
+    candidate.h ^ 2
+
+[165] FourArcCandidate.stripCore (53-65)
+def stripCore : StripCore where
+  chord := candidate.capChord
+  curvature := candidate.h
+  chord_pos := by
+    exact div_pos (mul_pos (by norm_num)
+      (sin_pos_of_pos_of_lt_pi candidate.alpha_pos
+        (lt_trans candidate.alpha_lt_pi_div_two
+          (by linarith [Real.pi_pos])))) candidate.h_pos
+  curvature_pos := candidate.h_pos
+  curvature_le_one := candidate.h_le_one
+
+[166] FourArcCandidate.assembly (66-72)
+def assembly : FourArcAssembly where
+  core := candidate.stripCore
+  outerAngle := candidate.alpha
+  outerAngle_pos := candidate.alpha_pos
+  outerAngle_lt_pi_div_two := candidate.alpha_lt_pi_div_two
+
+[167] FourArcCandidate.region (73-75)
+def region : AdmissibleCompetitor lam := .fourArc candidate.assembly
+
+[168] FourArcCandidate.WeightedArea (76-78)
+def WeightedArea : ℝ := candidate.region.WeightedArea
+
+[169] FourArcCandidate.WeightedPerimeter (79-83)
+def WeightedPerimeter : ℝ := candidate.region.WeightedPerimeter
+
+[170] FourArcCandidate.SatisfiesCMVTypeIVHypotheses (84-89)
+structure SatisfiesCMVTypeIVHypotheses : Prop where
+  density_jump : 1 < lam
+  snell_incidence : lam * cos candidate.alpha = candidate.h
+
+[171] FourArcCandidate.IsWeightedPerimeterMinimizer (90-94)
+def IsWeightedPerimeterMinimizer : Prop :=
+  ∀ competitor : AdmissibleCompetitor lam,
+    competitor.WeightedArea = candidate.WeightedArea →
+      candidate.WeightedPerimeter ≤ competitor.WeightedPerimeter
+
+[172] FourArcCandidate.sin_alpha_pos (95-98)
+theorem sin_alpha_pos : 0 < sin candidate.alpha
+
+[173] FourArcCandidate.capArea_eq_chord_sq_mul_area (104-109)
+theorem capArea_eq_chord_sq_mul_area :
+    candidate.capArea = candidate.capChord ^ 2 * area candidate.alpha
+
+[174] FourArcCandidate.upperCap_euclideanArea (153-158)
+theorem upperCap_euclideanArea :
+    candidate.assembly.upperCap.euclideanArea = candidate.capArea
+
+[175] FourArcCandidate.lowerCap_euclideanArea (159-166)
+theorem lowerCap_euclideanArea :
+    candidate.assembly.lowerCap.euclideanArea = candidate.capArea
+
+[176] FourArcCandidate.alpha_eq_arccos (276-292)
+theorem alpha_eq_arccos (h : candidate.SatisfiesCMVTypeIVHypotheses) :
+    candidate.alpha = arccos (candidate.h / lam)
+
+[177] FourArcCandidate.side_caps_area_formula (351-363)
+theorem side_caps_area_formula :
+    8 * area candidate.stripCore.sideAngle =
+      2 * (arcsin candidate.h -
+        candidate.h * √(1 - candidate.h ^ 2)) / candidate.h ^ 2
+
+[178] FourArcCandidate.weightedArea_components (364-373)
+theorem weightedArea_components :
+    candidate.WeightedArea = candidate.stripCore.euclideanArea +
+      2 * lam * candidate.capArea
+
+[179] FourArcCandidate.weightedPerimeter_components (374-390)
+theorem weightedPerimeter_components :
+    candidate.WeightedPerimeter = candidate.stripCore.boundaryArcLength +
+      2 * lam * candidate.capChord * ell candidate.alpha
+
+[180] FourArcCandidate.candidate_perimeter_formula (391-409)
+theorem candidate_perimeter_formula
+    (_h : candidate.SatisfiesCMVTypeIVHypotheses) :
+    candidate.WeightedPerimeter =
+      4 * lam * candidate.alpha / candidate.h +
+        4 * arcsin candidate.h / candidate.h
+
+[181] FourArcCandidate.candidate_area_formula (410-430)
+theorem candidate_area_formula
+    (h : candidate.SatisfiesCMVTypeIVHypotheses) :
+    candidate.WeightedArea =
+      4 * sin candidate.alpha / candidate.h +
+      2 * (lam * candidate.alpha -
+        sin candidate.alpha * cos candidate.beta) / candidate.h ^ 2 +
+      2 * (arcsin candidate.h -
+        candidate.h * √(1 - candidate.h ^ 2)) / candidate.h ^ 2

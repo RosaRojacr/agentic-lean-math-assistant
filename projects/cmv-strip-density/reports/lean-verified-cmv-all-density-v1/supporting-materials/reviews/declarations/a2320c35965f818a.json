@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.pairwiseOverlap_subset_boundaryJoinSet",
+  "domain_issues": [],
+  "informal_statement": "The pairwise overlap of the left trace, right trace, outer-cap trace, and bottom segment is contained in the boundary join set.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1142-1257; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f8736f4dd5a67fc4149e15b1ed3e3f21030a49e12643cd517b41158566d4664f",
+  "symbol_mismatches": []
+}

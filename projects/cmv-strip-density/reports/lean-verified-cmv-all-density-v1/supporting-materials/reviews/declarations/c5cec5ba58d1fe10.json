@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourClearedFold_continuousOn",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), \\(C\\) is continuous on \\([9/10,1]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeFourStationaryRoot.lean:35-40; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "aad0d8aa37abd7a9983d9c3fef33a66d571f8cc007154660095f3a1d473e9d30",
+  "symbol_mismatches": []
+}

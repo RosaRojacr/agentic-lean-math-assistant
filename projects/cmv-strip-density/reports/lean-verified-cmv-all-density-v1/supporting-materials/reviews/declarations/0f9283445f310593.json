@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.volume_coreCarrier",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean planar volume of the type-\\(\\mathrm{iii}\\) core equals the rectangle area plus one side-cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1481-1529; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e422839d8a82e578aa8619bf8a6d240c5dc840fd4d4e1880ecc09a0307558380",
+  "symbol_mismatches": []
+}

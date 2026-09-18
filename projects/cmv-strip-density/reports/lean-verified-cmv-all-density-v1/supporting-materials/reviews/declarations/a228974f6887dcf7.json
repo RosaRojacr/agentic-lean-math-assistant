@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "The strip-core frontier is the union of the two side arc traces and the upper and lower chord traces.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1088-1199; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "34bdf246812f32ba3d6167bf3b3ff5fea490b0816170740d97a7d77e703585bf",
+  "symbol_mismatches": []
+}

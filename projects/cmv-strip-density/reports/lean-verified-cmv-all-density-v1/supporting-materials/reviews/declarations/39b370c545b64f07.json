@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreePerimeter",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iii}\\) scalar perimeter is \\(P_3(h)=2[B(q(h))+\\pi/2+D(q(h))]/h\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:49-52; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "22e35e36f9c0930c9f9233f0004c686c48f6f282298a578def5a6e6bba11f34e",
+  "symbol_mismatches": []
+}

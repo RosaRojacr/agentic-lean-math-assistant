@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_upper_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), an upper cap based on \\(y=1\\) has weighted arc integral \\(\\lambda L\\ell(\\theta)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1353-1372; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "45644ff66dcb2be9e3cb6c626527848bf909f532df9be34ffa1977e24d25b8f4",
+  "symbol_mismatches": []
+}

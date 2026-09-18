@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourFold_strictMonoOn",
+  "domain_issues": [],
+  "informal_statement": "For every \\(\\lambda>1\\), \\(F_4\\) is strictly increasing on \\((0,1)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:1056-1070; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "16af12c38f3bb1c629d7204f781995879e693ae4c65a0b5d7c3475b2043d0222",
+  "symbol_mismatches": []
+}

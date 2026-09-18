@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CapSide",
+  "domain_issues": [],
+  "informal_statement": "A cap side is either upper or lower.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:92-99; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6863ffc025769eb8169e9582a3d673fe180025902f766c2557257f6937cc7a7e",
+  "symbol_mismatches": []
+}

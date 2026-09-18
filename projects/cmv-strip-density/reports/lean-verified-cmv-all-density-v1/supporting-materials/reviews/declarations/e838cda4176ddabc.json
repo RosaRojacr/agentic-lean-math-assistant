@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.isClosed_rectangleCarrier",
+  "domain_issues": [],
+  "informal_statement": "The central rectangle carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1282-1288; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a040fbd7853bc5d56529ed0d45def53a17db2084e9e6f891db5067b23f32a560",
+  "symbol_mismatches": []
+}

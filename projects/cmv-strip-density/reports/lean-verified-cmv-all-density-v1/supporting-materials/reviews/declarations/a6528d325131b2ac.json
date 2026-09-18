@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.scalarWeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The scalar type-\\(\\mathrm{iii}\\) weighted-area formula is \\[\\frac{\\lambda\\alpha+\\pi-\\beta+(q+2)(\\sin\\alpha-\\sin\\beta)}{h^2}.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:295-299; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "195fdb382725116907cc721bab689c5c6f6f34b356a442f900ba649d89b62b9c",
+  "symbol_mismatches": []
+}

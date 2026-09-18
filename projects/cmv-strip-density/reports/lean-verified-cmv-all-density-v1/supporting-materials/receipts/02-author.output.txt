@@ -1,0 +1,3 @@
+Completed: wrote `supporting-materials/reviews/author-02.json`.
+
+Validation passed: 464 unique inventory declarations, 192 main / 272 supplement classifications, 0 generated families, 3 citations, all 146 reviewer-flagged rows corrected, exact Lean references, balanced LaTeX delimiters, and no dollar delimiters or control-character corruption.

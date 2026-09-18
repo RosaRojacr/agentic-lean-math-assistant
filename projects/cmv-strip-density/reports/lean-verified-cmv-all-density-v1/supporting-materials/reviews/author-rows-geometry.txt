@@ -1,0 +1,138 @@
+0|s|The coordinate point space is \(\mathbb R\times\mathbb R\).|This abbreviation supplies ordered real coordinates; it does not itself select the Euclidean norm used for perimeter.
+1|s|The Euclidean realization of the coordinate plane has the norm \(\sqrt{x^2+y^2}\).|The underlying pairs are unchanged, but the metric for Hausdorff measure is the Euclidean product norm.
+2|s|The map \(J\) identifies the coordinate plane homeomorphically with its Euclidean realization.|It sends each coordinate pair to the identical pair with the Euclidean norm; it is a homeomorphism, not a claim that every product metric agrees with that norm.
+3|m|The strip density is \(f_\lambda(x,y)=1\) for \(\lvert y\rvert\leq1\), and \(f_\lambda(x,y)=\lambda\) otherwise.|Both interfaces have density one. The definition permits any real density parameter; the main theorem requires \(\lambda>1\).
+4|m|The weighted area of a carrier \(E\) is \(A_\lambda(E)=\int_E f_\lambda\,d\mathcal L^2\).|This is a real integral over the coordinate carrier; the geometric realization proves integrability rather than assuming a scalar area.
+5|m|The frontier measure of \(E\) is the pullback under \(J\) of \(\mathcal H^1\) restricted to \(\partial J(E)\).|Explicitly, the measure is \((J^{-1})_*(\mathcal H^1\mathbin{\vrule height 1.4ex depth -0.3ex width 0.07ex\vrule height 0.07ex depth 0ex width 0.7ex}\partial J(E))\). The complete Euclidean frontier, not the reduced boundary, is used.
+6|m|For a boundary measure \(\mu\), weighted perimeter is \(\int f_\lambda\,d\mu\).|The definition accepts an arbitrary measure; canonical carrier perimeter is obtained by using the frontier measure.
+7|m|A general modeled region consists of a measurable carrier with integrable density over its area and against its frontier measure.|These are precisely the two finiteness obligations stored with the carrier. The name does not assert a separate bounded-variation or reduced-boundary definition.
+8|s|The weighted area of a general modeled region is the weighted integral over its stored carrier.|No independent area value is stored: this operation applies \(A_\lambda\) to the carrier.
+9|s|A cap side is either upper or lower.|This two-element choice determines which closed half-plane is intersected with the cap's disk.
+10|m|A one-sided circular cap is specified by \(L>0\), \(0<\theta<\pi\), a chord midpoint \((m,b)\), and a choice of side.|The radius, center, carrier, and boundary arc are derived. The interval includes minor, semicircular, and major caps.
+11|s|A cap with chord \(L\) and half-central angle \(\theta\) has radius \(R=L/(2\sin\theta)\).|The angular bounds make the denominator strictly positive and give the usual chord relation.
+12|s|The upper cap center is \((m,b-R\cos\theta)\), and the lower cap center is \((m,b+R\cos\theta)\).|The vertical sign selects which side of the chord contains the cap, including the major-cap case.
+13|s|The cap arc is parameterized by \((m+R\sin t,b\pm R(\cos t-\cos\theta))\), with the plus sign for the upper side.|The intended angular interval is \([-\theta,\theta]\); the formula itself is defined for every real \(t\).
+14|s|The left endpoint of a cap is \((m-L/2,b)\).|It is the left end of the horizontal chord, independently of the cap side.
+15|s|The right endpoint of a cap is \((m+L/2,b)\).|It is the right end of the horizontal chord, independently of the cap side.
+16|s|The squared distance of \(p\) from the cap center \(c\) is \((p_1-c_1)^2+(p_2-c_2)^2\).|This coordinate polynomial defines the disk inequality without invoking the product-space metric.
+17|m|The cap carrier is its closed disk intersected with \(y\geq b\) for an upper cap or \(y\leq b\) for a lower cap.|The disk is centered as specified above and has radius \(R\). This is the actual planar set whose area and arc trace are computed.
+18|s|The interior cap carrier uses strict disk and strict side inequalities.|It is the intersection of the open disk with the chosen open half-plane; its inclusion in the carrier interior is proved separately.
+19|s|The chord carrier is \(\{(x,b):\lvert x-m\rvert\leq L/2\}\).|It includes both endpoints and is shared by the upper and lower cap descriptions.
+20|m|The cap's scalar Euclidean area is \(L^2a(\theta)\).|Since \(L=2R\sin\theta\), this equals \(R^2(\theta-\sin\theta\cos\theta)\); equality with carrier volume is a theorem.
+21|m|The cap's scalar arc length is \(L\ell(\theta)\).|The chord-radius relation turns this into \(2R\theta\); later results identify it with Euclidean Hausdorff length.
+22|s|For every cap, \(\sin\theta>0\).|This follows from \(0<\theta<\pi\) and justifies division by the sine.
+23|s|Every cap radius is strictly positive.|Both the chord and the denominator \(2\sin\theta\) are positive.
+24|s|Every cap's scalar Euclidean area is strictly positive.|The factor \(L^2\) is positive and \(a(\theta)>0\) throughout the cap-angle domain.
+25|s|For every cap, \(\ell(\theta)>0\).|The quotient \(\theta/\sin\theta\) has positive numerator and denominator.
+26|s|Every cap's scalar arc length is strictly positive.|It is the product of the positive chord length and positive normalized arc length.
+27|s|The cap radius satisfies \(R\sin\theta=L/2\).|This identity relates the trigonometric parameterization to the geometric chord endpoints.
+28|s|At \(t=-\theta\), the cap arc reaches the left endpoint.|Oddness of sine and the chord-radius identity give horizontal coordinate \(m-L/2\); the vertical displacement vanishes.
+29|s|At \(t=\theta\), the cap arc reaches the right endpoint.|The chord-radius identity gives horizontal coordinate \(m+L/2\), and the point lies on the base line.
+30|s|For \(\lvert t\rvert\leq\theta\), the cap arc lies in its chosen closed half-plane.|On this angular interval, \(\cos t\geq\cos\theta\); the vertical sign distinguishes the upper and lower statements.
+31|s|For \(\lvert t\rvert<\theta\), the cap arc lies in its chosen open half-plane.|The strict cosine inequality separates all interior arc points from the chord line.
+32|s|A cap-carrier point on the base line belongs to the chord carrier.|Substituting \(y=b\) into the disk inequality bounds the horizontal displacement by \(L/2\).
+33|s|The chord carrier is contained in the cap carrier.|The chord inequality implies the disk inequality, and the base line satisfies either closed side condition.
+34|s|Every cap carrier is measurable.|It is described by continuous polynomial inequalities and a closed half-plane condition.
+35|s|Every cap carrier is closed.|The disk and the chosen half-plane are closed, so their intersection is closed.
+36|s|A horizontal segment is specified by length \(L>0\) and midpoint \((m,b)\).|This auxiliary constructor is nondegenerate; the type-\(\mathrm{iii}\) bottom segment has a separate description allowing zero length.
+37|s|The segment's left endpoint is \((m-L/2,b)\).|The point is obtained by translating the midpoint left by half the chord length.
+38|s|The segment's right endpoint is \((m+L/2,b)\).|The point is obtained by translating the midpoint right by half the chord length.
+39|s|The segment carrier is \(\{(x,b):\lvert x-m\rvert\leq L/2\}\).|This is a closed horizontal interval, including its two endpoints.
+40|s|The scalar Euclidean length of the horizontal segment is \(L\).|The value is later identified with its Euclidean Hausdorff measure.
+41|m|A strip core is specified by \(L>0\) and \(0<\kappa\leq1\).|Its rectangle and circular side pieces are derived from the chord and curvature, including the semicircular endpoint \(\kappa=1\).
+42|s|The strip-core radius is \(R=1/\kappa\).|The curvature bound implies \(R\geq1\), so the circle can span the strip height.
+43|s|The strip-core side angle is \(\phi=\arcsin\kappa\).|The principal arcsine gives \(0<\phi\leq\pi/2\).
+44|s|The left side-circle center has horizontal coordinate \(c_{\mathrm L}=-L/2+R\cos\phi\).|Its vertical coordinate is zero; the circle meets the left chord endpoints at heights \(\pm1\).
+45|s|The right side-circle center has horizontal coordinate \(c_{\mathrm R}=L/2-R\cos\phi\).|It is the reflection of the left center across the vertical axis.
+46|s|The core rectangle is \([-L/2,L/2]\times[-1,1]\).|This central rectangle joins the two circular side pieces and has area \(2L\).
+47|s|The left core piece is the disk \((x-c_{\mathrm L})^2+y^2\leq R^2\) restricted to \(x\leq-L/2\) and \(\lvert y\rvert\leq1\).|Only the outer left circular segment is retained; the rectangle occupies the remaining central portion.
+48|s|The right core piece is the disk \((x-c_{\mathrm R})^2+y^2\leq R^2\) restricted to \(x\geq L/2\) and \(\lvert y\rvert\leq1\).|This is the reflected right circular segment adjoining the rectangle.
+49|m|The strip-core carrier is the union of its rectangle and its two side pieces.|The construction defines an actual closed coordinate set within the strip rather than an assigned area-perimeter pair.
+50|m|The strip core's scalar area is \(2L+8a(\phi)\).|Each side segment has chord length two and hence area \(4a(\phi)\); the rectangle contributes \(2L\).
+51|m|The total length of the core's two curved sides is \(4\ell(\phi)\).|Each side arc has chord two and length \(2\ell(\phi)=2R\phi\); the interface chords are not counted here.
+52|s|The strip-core radius is positive.|This follows from the strictly positive curvature in the constructor.
+53|s|The strip-core side angle is positive.|The principal arcsine is positive at a positive curvature.
+54|s|The strip-core side angle satisfies \(\phi\leq\pi/2\).|The upper curvature bound includes equality, so this assertion is deliberately non-strict.
+55|s|The strip-core side angle satisfies \(\phi<\pi\).|The sharper bound \(\phi\leq\pi/2\) places the side segment in the generic cap-angle domain.
+56|s|The identity \(\sin\phi=\kappa\) holds for every strip core.|The curvature lies in the principal inverse-sine domain.
+57|s|The identity \(\cos\phi=\sqrt{1-\kappa^2}\) holds for every strip core.|The cosine is nonnegative on the selected principal branch, including the zero endpoint cosine.
+58|s|Every point of the strip-core carrier satisfies \(\lvert y\rvert\leq1\).|Each constituent set includes the same vertical strip restriction.
+59|s|The strip-core carrier is measurable.|Measurability follows from the coordinate inequalities and closure under finite unions.
+60|m|The cap arc trace is the circle \(\lVert p-c\rVert_2^2=R^2\) restricted to the chosen closed side of the base line.|It excludes the interior of the chord but includes its endpoints; it is a set-theoretic boundary piece.
+61|s|The strict interior cap carrier is open.|Both its defining inequalities are strict inequalities of continuous functions.
+62|s|The strict interior cap carrier lies in the topological interior of the closed cap carrier.|An open subset of the carrier is necessarily contained in its interior.
+63|m|The complete cap frontier is the union of its arc trace and chord carrier.|No other boundary components occur; the endpoints may belong to both pieces.
+64|s|The left core arc trace is \((x-c_{\mathrm L})^2+y^2=R^2\), with \(x\leq-L/2\) and \(\lvert y\rvert\leq1\).|This is the curved outer boundary of the left side piece.
+65|s|The right core arc trace is \((x-c_{\mathrm R})^2+y^2=R^2\), with \(x\geq L/2\) and \(\lvert y\rvert\leq1\).|This is the reflected curved outer boundary of the right side piece.
+66|s|The upper chord trace is \(\{(x,1):\lvert x\rvert\leq L/2\}\).|It is the top boundary of the isolated strip core before the exterior cap is attached.
+67|s|The lower chord trace is \(\{(x,-1):\lvert x\rvert\leq L/2\}\).|It is the bottom boundary of the isolated strip core before the lower cap is attached.
+68|s|Every strip-core carrier is closed.|Its rectangle and circular pieces are closed and there are finitely many pieces.
+69|m|The strip-core frontier is the union of the two side arc traces and the upper and lower chord traces.|This exact decomposition distinguishes exposed chords from chords later hidden by attaching exterior caps.
+70|s|For a curve \(c\) and real endpoints \(a,b\), the interval pushforward is \(c_*(\mathcal L^1\text{ restricted to }[a,b])\).|The definition is meaningful even when the interval is empty; arclength curves make it a boundary-length measure.
+71|s|The strip density is measurable for every real \(\lambda\).|The strip is a measurable set and the density takes only two constant values.
+72|s|The cap's arclength parameterization is \(s\mapsto c(s/R)\), where \(c\) is its angular arc map.|Scaling the angular parameter by the positive radius gives unit speed on the intended arc interval.
+73|s|The starting arclength parameter of a cap is \(-R\theta\).|Dividing it by the radius recovers the angular starting value \(-\theta\).
+74|s|The ending arclength parameter of a cap is \(R\theta\).|Together with the starting parameter, this gives interval length \(2R\theta\).
+75|s|The cap boundary measure is the pushforward of length on \([-R\theta,R\theta]\) by its arclength parameterization.|It measures the arc, not the chord; its relation to Hausdorff measure is supplied by the geometric length results.
+76|s|For an upper cap based on \(y=1\), every interior arclength parameter has density \(\lambda\).|The strict side inequality places these arc points in \(y>1\); only the two endpoints lie on the density-one interface.
+77|s|For a lower cap based on \(y=-1\), every interior arclength parameter has density \(\lambda\).|The interior points lie in \(y<-1\), whereas the endpoint density is one.
+78|s|For every real \(\lambda\), an upper cap based on \(y=1\) has weighted arc integral \(\lambda L\ell(\theta)\).|The density is \(\lambda\) away from the two parameter endpoints; those endpoints have zero length measure.
+79|s|For every real \(\lambda\), a lower cap based on \(y=-1\) has weighted arc integral \(\lambda L\ell(\theta)\).|The same endpoint-null argument applies to the reflected lower arc.
+80|s|A horizontal segment has arclength map \(s\mapsto(m+s,b)\).|It is intended for \(-L/2\leq s\leq L/2\) and has unit horizontal speed.
+81|s|The segment's starting parameter is \(-L/2\).|Substitution in the parameterization yields its left endpoint.
+82|s|The segment's ending parameter is \(L/2\).|The parameter interval therefore has length equal to the chord.
+83|s|A core side arc starts at parameter \(-R\phi\).|The corresponding circular angle is \(-\phi\), with vertical coordinate \(-1\).
+84|s|A core side arc ends at parameter \(R\phi\).|The parameter span is \(2R\phi\) and the final vertical coordinate is one.
+85|s|The left core arclength map is \((c_{\mathrm L}-R\cos(s/R),R\sin(s/R))\).|It traces the left outer side between the two interfaces on \([-R\phi,R\phi]\).
+86|s|The right core arclength map is \((c_{\mathrm R}+R\cos(s/R),R\sin(s/R))\).|It traces the reflected right outer side over the same parameter interval.
+87|s|The left core boundary measure pushes interval length along the left core arclength map.|The interval is \([-R\phi,R\phi]\); this measure counts only the left curved side.
+88|s|The right core boundary measure pushes interval length along the right core arclength map.|It is the analogous measure on the right curved side, not on either chord.
+89|s|Every point on the closed parameter interval of the left core arc has density one.|Its vertical coordinate stays within the closed strip, including both interfaces.
+90|s|Every point on the closed parameter interval of the right core arc has density one.|The statement uses the same strip bound for the reflected arc.
+91|s|The weighted integral along the left core boundary measure is \(2\ell(\phi)\), for every real \(\lambda\).|The density is constantly one and the parameter interval has length \(2R\phi=2\ell(\phi)\).
+92|s|The weighted integral along the right core boundary measure is \(2\ell(\phi)\), for every real \(\lambda\).|This is the equal contribution of the reflected right curved side.
+93|s|For \(0\leq\theta\leq\pi\), \(\int_{\cos\theta}^{1}\sqrt{1-x^2}\,dx=(\theta-\sin\theta\cos\theta)/2\).|The circular-slice integral is evaluated on the full half-central-angle range, including the degenerate endpoint values.
+94|s|For \(r>0\) and \(0\leq\theta\leq\pi\), \(\int_{r\cos\theta}^{r}2\sqrt{r^2-y^2}\,dy=r^2(\theta-\sin\theta\cos\theta)\).|Scaling the unit-circle integral produces the Euclidean area of the circular segment.
+95|s|For real \(a\), \(r>0\), and \(0\leq\theta\leq\pi\), \(\int_{a+r\cos\theta}^{a+r}2\sqrt{r^2-(y-a)^2}\,dy=r^2(\theta-\sin\theta\cos\theta)\).|Translation moves the circle center without changing the segment-area integral.
+96|s|The nonnegative integral of \(2\sqrt{r^2-(y-a)^2}\) over \([a+r\cos\theta,a+r]\) equals \(r^2(\theta-\sin\theta\cos\theta)\), for \(r>0\) and \(0\leq\theta\leq\pi\).|Both sides are interpreted as extended nonnegative reals; the equality converts the real slice integral into the form used by volume integration.
+97|s|For \(r>0\) and \(0\leq\theta\leq\pi\), the disk centered at \((m,c)\), restricted to \(y\geq c+r\cos\theta\), has area \(r^2(\theta-\sin\theta\cos\theta)\).|Integrating horizontal slices derives the area of this actual upper circular segment for arbitrary center coordinates.
+98|s|For \(r>0\) and \(0\leq\theta\leq\pi\), the disk centered at \((m,c)\), restricted to \(y\leq c-r\cos\theta\), has the same circular-segment area.|Reflection changes the upper slice condition into the lower one and preserves planar volume.
+99|m|The planar volume of every cap carrier equals its scalar Euclidean area.|Thus the coordinate disk-half-plane intersection has volume \(L^2a(\theta)=R^2(\theta-\sin\theta\cos\theta)\), not merely an assigned numerical label.
+100|s|Every horizontal line has zero planar Lebesgue measure.|The statement holds at every real height and removes area contributions from interfaces and joining chords.
+101|s|Every vertical line has zero planar Lebesgue measure.|This permits addition of rectangle and side-piece areas despite their shared vertical boundaries.
+102|s|The rectangle in a strip core has planar volume \(2L\).|Its horizontal width is \(L\) and its vertical height is two.
+103|s|The left core circular piece has volume \(4a(\phi)\).|It is a circular segment on a chord of length two, so normalized area scales by four.
+104|s|The right core circular piece has volume \(4a(\phi)\).|Reflection preserves the volume of the left segment.
+105|m|The planar volume of the whole strip-core carrier equals \(2L+8a(\phi)\).|The pieces overlap only on planar-null line segments, so their volumes add to the stored scalar area.
+106|s|For every measurable curve and every real \(\lambda,a,b\), the strip density is integrable against the interval pushforward on \([a,b]\).|A bounded measurable two-valued function is integrable against this finite pushforward measure.
+107|s|For every cap and real \(\lambda\), the strip density is integrable against its cap boundary measure.|This establishes the integrability needed to evaluate the cap's weighted arc contribution.
+108|s|For every core and real \(\lambda\), the strip density is integrable against the left core boundary measure.|The curve is measurable and its parameter interval has finite length.
+109|s|For every core and real \(\lambda\), the strip density is integrable against the right core boundary measure.|This is the corresponding finiteness statement for the reflected arc measure.
+110|s|On any coordinate set of finite planar measure, the strip density is integrable for every real \(\lambda\).|No additional measurability assumption on the set is explicitly required by this lemma; boundedness and the measurable density give integrability for the restricted measure.
+111|s|The strip density is integrable over every cap carrier, for every real \(\lambda\).|The exact cap volume is finite, so the general bounded-density integrability lemma applies.
+112|s|The strip density is integrable over every strip-core carrier, for every real \(\lambda\).|The core's computed finite volume supplies the requisite measure bound.
+113|m|The weighted area of a strip-core carrier equals its Euclidean scalar area, for every real \(\lambda\).|The density is one at every core point, so the weighted integral equals planar volume.
+114|s|For an upper cap based on \(y=1\), the weighted area is \(\lambda\) times its Euclidean area, for every real \(\lambda\).|Except for the planar-null base line, the whole cap lies in the exterior-density half-plane.
+115|s|For a lower cap based on \(y=-1\), the weighted area is \(\lambda\) times its Euclidean area, for every real \(\lambda\).|The reflected cap has the same exterior-density property up to its planar-null chord.
+116|m|A four-arc assembly consists of a strip core and an exterior half-angle \(0<\alpha<\pi/2\).|The two minor exterior caps share the core chord. The assembly alone does not assume Snell incidence or equality of exterior and core radii.
+117|s|The assembly's upper cap has chord \(L\), half-angle \(\alpha\), midpoint \((0,1)\), and upper side.|These data fix its carrier above the strip and its shared top chord.
+118|s|The assembly's lower cap has chord \(L\), half-angle \(\alpha\), midpoint \((0,-1)\), and lower side.|It is the horizontal reflection of the upper cap with identical Euclidean area and arc length.
+119|m|The four-arc assembly carrier is the union of the strip core and both exterior caps.|This union removes the interface chord interiors from the exposed boundary.
+120|s|The assembly boundary measure is the sum of its two core arc measures and two cap arc measures.|It is an explicit component measure; equality of its weighted cost with complete-frontier cost is proved later.
+121|s|The assembly weighted area is the integral \(A_\lambda\) of its carrier.|The scalar component formula follows from this definition rather than being part of the assembly data.
+122|s|The assembly component perimeter is the density integral against its four-arc boundary measure.|It initially uses the explicit arc-measure sum; the frontier theorem identifies it with canonical carrier perimeter.
+123|m|For every real \(\lambda\), assembly area equals core area plus \(\lambda\) times the sum of the two cap areas.|The union intersections have planar measure zero, and the density is one in the core and \(\lambda\) almost everywhere in the caps.
+124|m|For every real \(\lambda\), assembly component perimeter equals core curved-side length plus \(\lambda\) times both cap arc lengths.|The statement evaluates the explicit four-measure sum before its canonical frontier identification.
+125|m|The four-arc assembly boundary trace is the union of the left and right core arc traces and the upper and lower cap arc traces.|No full interface chord is included: those chord interiors are covered on both sides in the assembled carrier.
+126|s|The complete frontier of a four-arc assembly is contained in its boundary trace.|This inclusion rules out additional exposed boundary components beyond the four declared arcs.
+127|s|The four-arc assembly boundary trace is contained in its complete frontier.|The converse inclusion confirms that none of the four arcs is hidden inside the assembled region.
+128|m|The complete frontier of a four-arc assembly equals its boundary trace.|Together with Euclidean length and overlap-null calculations, this justifies the geometric perimeter formula.
+129|s|A replacement assembly consists of a strip core and an upper half-angle \(0<\theta<\pi\).|This is an auxiliary competitor constructor retained in the model's type definition; its separate exclusion results are not publication claims here.
+130|s|The replacement upper cap uses the core chord, half-angle \(\theta\), and upper base \((0,1)\).|The angle range allows a minor cap, semicircle, or major cap.
+131|s|The replacement carrier is the union of the core and its upper cap.|Unlike a four-arc assembly, it has no lower exterior cap.
+132|s|The replacement assembly weighted area is \(A_\lambda\) of its carrier.|This definition is present because replacement regions are among the formal competitor constructors.
+133|m|An admissible competitor is empty, a general integrable measurable region, a four-arc assembly, or a replacement assembly.|The general constructor allows comparison with the constructed type-\(\mathrm{iii}\) carrier; minimality is not restricted to scalar or four-arc alternatives.
+134|s|Each admissible competitor has its underlying coordinate carrier, with the empty constructor assigned the empty set.|The other cases return the carrier of the stored region or assembly.
+135|m|Competitor weighted area is zero for the empty set and the carrier-derived weighted area for each nonempty constructor.|The later carrier identity unifies these cases into a single integral formula.
+136|m|Every competitor's weighted perimeter is the density integral against the frontier measure of its carrier.|Thus all competitor constructors use the same complete-frontier convention.
+137|m|For every admissible competitor, its weighted area equals \(A_\lambda\) of its carrier.|This identity prevents independently selectable scalar areas in the geometric minimality comparison.

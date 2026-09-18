@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.exact_euclidean_rightArcTrace_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean image of the right arc trace has \\(\\mathcal H^1\\)-measure \\(\\operatorname{ofReal}(R\\gamma)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:825-832; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "82deac992e3b3149a73b5a9867d35c880f6af8171bd8434cc5a883788eaac184",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,36 @@
+[323] LeanSuffixAnalytic.typeFourClearedFold (24-28)
+def typeFourClearedFold (lam h : ℝ) : ℝ :=
+  h * (sqrt (lam ^ 2 - h ^ 2) - lam * sqrt (1 - h ^ 2)) -
+    typeFourAngle lam h * sqrt (1 - h ^ 2) * sqrt (lam ^ 2 - h ^ 2)
+
+[324] LeanSuffixAnalytic.typeFourClearedFold_continuous (29-34)
+theorem typeFourClearedFold_continuous (lam : ℝ) :
+    Continuous (typeFourClearedFold lam)
+
+[325] LeanSuffixAnalytic.typeFourClearedFold_continuousOn (35-40)
+theorem typeFourClearedFold_continuousOn (lam : ℝ) :
+    ContinuousOn (typeFourClearedFold lam) (Set.Icc (9 / 10 : ℝ) 1)
+
+[326] LeanSuffixAnalytic.typeFourClearedFold_eq_fold (41-54)
+theorem typeFourClearedFold_eq_fold {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    typeFourClearedFold lam h =
+      sqrt (1 - h ^ 2) * sqrt (lam ^ 2 - h ^ 2) *
+        typeFourFold lam h / 4
+
+[327] LeanSuffixAnalytic.typeFourClearedFold_multiplier_pos (55-61)
+theorem typeFourClearedFold_multiplier_pos {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    0 < sqrt (1 - h ^ 2) * sqrt (lam ^ 2 - h ^ 2) / 4
+
+[328] LeanSuffixAnalytic.typeFourClearedFold_nine_tenths_neg (112-124)
+theorem typeFourClearedFold_nine_tenths_neg {lam : ℝ} (hlam : 1 < lam) :
+    typeFourClearedFold lam (9 / 10 : ℝ) < 0
+
+[329] LeanSuffixAnalytic.typeFourClearedFold_one_pos (125-131)
+theorem typeFourClearedFold_one_pos {lam : ℝ} (hlam : 1 < lam) :
+    0 < typeFourClearedFold lam 1
+
+[330] LeanSuffixAnalytic.typeFourFold_zero_exists (132-167)
+theorem typeFourFold_zero_exists {lam : ℝ} (hlam : 1 < lam) :
+    ∃ h : ℝ, 9 / 10 < h ∧ h < 1 ∧ typeFourFold lam h = 0

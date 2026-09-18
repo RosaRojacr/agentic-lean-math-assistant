@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_analytic_typeThree",
+  "domain_issues": [],
+  "informal_statement": "A CMV candidate is not minimizing if some \\(r\\in(0,1)\\) satisfies \\(A_3(r)=A_4(h)\\) and \\(P_3(r)<P_4(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVSuffixModel.lean:201-224; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "99c923b45cbc09e9ba012e383efbf5a498fe0a194180526cbe54c89d50a0f151",
+  "symbol_mismatches": []
+}

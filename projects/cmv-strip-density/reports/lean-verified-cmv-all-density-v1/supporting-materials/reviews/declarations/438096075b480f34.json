@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The modeled type-\\(\\mathrm{iii}\\) perimeter is the lower side-cap arc length, \\(\\lambda\\) times the upper cap arc length, and the bottom chord length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:285-288; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "76198be6eb5b8790a4af34449bf29c4b963314e1e4bd268b4d3c9cdb2e69ea0d",
+  "symbol_mismatches": []
+}

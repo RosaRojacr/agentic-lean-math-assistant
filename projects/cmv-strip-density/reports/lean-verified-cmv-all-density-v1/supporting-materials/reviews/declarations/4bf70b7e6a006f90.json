@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.carrier",
+  "domain_issues": [],
+  "informal_statement": "The cap carrier is its closed disk intersected with \\(y\\geq b\\) for an upper cap or \\(y\\leq b\\) for a lower cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:146-152; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0644dd0b5f330958b79efbb3810eb1cc2f4356e5db251a95736b532b75bfcf1",
+  "symbol_mismatches": []
+}

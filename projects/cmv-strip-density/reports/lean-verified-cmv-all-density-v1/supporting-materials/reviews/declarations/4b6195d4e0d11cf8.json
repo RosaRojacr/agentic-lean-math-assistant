@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreParam",
+  "domain_issues": [],
+  "informal_statement": "The right core arclength map is \\((c_{\\mathrm R}+R\\cos(s/R),R\\sin(s/R))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1482-1486; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "38ea0d845e704b5d320adc3936a1b6a5fba52e17ce5fb320da7c20200afa9e4d",
+  "symbol_mismatches": []
+}

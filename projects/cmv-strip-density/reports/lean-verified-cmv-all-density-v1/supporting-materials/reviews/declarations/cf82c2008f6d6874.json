@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pairwiseOverlap",
+  "domain_issues": [],
+  "informal_statement": "For arbitrary sets \\(A,B,C,D\\), the pairwise-overlap set is the union of all six intersections \\(A\\cap B\\), \\(A\\cap C\\), \\(A\\cap D\\), \\(B\\cap C\\), \\(B\\cap D\\), and \\(C\\cap D\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1110-1114; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f2051dcd764bb55c1f4c980a58c56ba3f51d928d6141df3262dbdd919f1b5fbd",
+  "symbol_mismatches": []
+}

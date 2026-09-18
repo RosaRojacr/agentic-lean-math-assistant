@@ -1,0 +1,53 @@
+{
+  "attempt": 2,
+  "empty_output_retries": 1,
+  "execution": {
+    "allowed_executable_paths": [
+      "/home/rosa/.elan/bin"
+    ],
+    "cpu_quota_percent": 800,
+    "environment_allow": [
+      "HOME",
+      "LANG",
+      "LC_ALL",
+      "LEAN_NUM_THREADS",
+      "PATH",
+      "SSL_CERT_DIR",
+      "SSL_CERT_FILE",
+      "TZ",
+      "XDG_CONFIG_HOME"
+    ],
+    "file_size_max_mb": 1024,
+    "memory_max_mb": 8192,
+    "network": false,
+    "sandbox": false,
+    "secret_environment": [],
+    "tasks_max": 128,
+    "workspace_max_mb": 32768
+  },
+  "handoff": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/reviews/reviewer-02.json",
+  "max_time": 21600,
+  "model": "openai-codex/gpt-5.6-terra",
+  "omp": "omp",
+  "output": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/receipts/02-semantic-review.output.txt",
+  "prompt": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/prompts/02-semantic-review.md",
+  "receipt": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/receipts/02-semantic-review.json",
+  "role_id": "proof-builder-semantic-review",
+  "run_dir": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials",
+  "sandbox_read_paths": [
+    "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1",
+    "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/prompts/02-semantic-review.md"
+  ],
+  "stderr_log": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/receipts/02-semantic-review.stderr.log",
+  "stdout_log": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/receipts/02-semantic-review.stdout.log",
+  "thinking": "xhigh",
+  "tools": [
+    "read",
+    "grep",
+    "glob",
+    "bash",
+    "write"
+  ],
+  "workspace": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1",
+  "workspace_executables": false
+}

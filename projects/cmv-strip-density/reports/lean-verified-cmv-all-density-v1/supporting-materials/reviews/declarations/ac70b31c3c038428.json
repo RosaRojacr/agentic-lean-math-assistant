@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.radius_pos",
+  "domain_issues": [],
+  "informal_statement": "Every regular type-\\(\\mathrm{iii}\\) assembly has \\(R>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:145-147; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a610fc617d9a92f1154e4b9627bb16a0d909464945f9e22ccb900c975acb2c7d",
+  "symbol_mismatches": []
+}

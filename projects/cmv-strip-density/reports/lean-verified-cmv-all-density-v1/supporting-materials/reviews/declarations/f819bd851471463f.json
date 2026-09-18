@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint",
+  "domain_issues": [],
+  "informal_statement": "For real \\(r,\\theta\\) and natural numbers \\(N,i\\), the signed-arclength partition point is \\[p_{N,i}=-r\\theta+i\\,\\frac{2r\\theta}{N}.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:154-156; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "49ac6ecbe67b9040843eeee672d7b0f08055016781814c3ce0fa4e7d31ff805a",
+  "symbol_mismatches": []
+}

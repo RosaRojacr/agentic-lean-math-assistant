@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "image_Ico_eq_image_Icc_diff_endpoint",
+  "domain_issues": [],
+  "informal_statement": "If \\(f\\) is injective on \\(S\\), \\(u\\leq v\\), and \\([u,v]\\subseteq S\\), then \\[f([u,v))=f([u,v])\\setminus\\{f(v)\\}.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:124-141; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c4fb0e64c0405d8f9fa3cb2429d9a9bc01ac95be8aba1e08560d1aeae3f939e9",
+  "symbol_mismatches": []
+}

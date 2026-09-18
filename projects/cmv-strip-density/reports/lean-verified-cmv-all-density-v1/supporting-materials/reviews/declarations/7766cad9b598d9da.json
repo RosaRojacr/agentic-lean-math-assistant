@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcLength_pos",
+  "domain_issues": [],
+  "informal_statement": "Every cap's scalar arc length is strictly positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:220-222; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "615464c0ac73967d872be72b9e5d931fb0644d2db70b6e9168ad1dd7c81aa184",
+  "symbol_mismatches": []
+}

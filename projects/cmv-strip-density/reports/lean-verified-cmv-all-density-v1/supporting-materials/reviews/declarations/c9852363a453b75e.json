@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_segmentCarrier_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the indicated realized arc or segment trace equals its declared scalar length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:937-946; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f2e6ec79942c7df8c258fab2922138cb782506dbaa0184c81a94b12e6e9b9896",
+  "symbol_mismatches": []
+}

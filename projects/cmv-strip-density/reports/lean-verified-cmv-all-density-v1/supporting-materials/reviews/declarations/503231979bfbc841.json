@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourFold_zero_exists",
+  "domain_issues": [],
+  "informal_statement": "For every \\(\\lambda>1\\), there exists \\(s\\in(9/10,1)\\) with \\(F_4(s)=0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeFourStationaryRoot.lean:132-167; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d603264a772d81bf55a0dad7fb9b6a0704e412d433e0051ac8f104d2554f1f15",
+  "symbol_mismatches": []
+}

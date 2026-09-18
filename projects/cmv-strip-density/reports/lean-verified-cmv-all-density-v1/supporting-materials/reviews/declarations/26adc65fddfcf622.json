@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.isClosed_leftSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "The left circular segment carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1289-1295; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9a06aa24438ad23f7c7f01c4c87ea6fc01e48b3ecec4d358799e726bea34abb1",
+  "symbol_mismatches": []
+}

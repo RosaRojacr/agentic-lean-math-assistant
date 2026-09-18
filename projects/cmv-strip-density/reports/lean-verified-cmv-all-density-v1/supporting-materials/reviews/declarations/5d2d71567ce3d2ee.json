@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\), a regular anchor \\(a\\) with \\(F_3(a)<0\\), and \\(V\\geq A_3(a)\\), there is exactly one regular \\(r\\) with \\(A_3(r)=V\\) and \\(F_3(r)<0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:1013-1039; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "15660b04d9615f11056408ab4ae99cb03c7fde3d8d26f5056c89e742987b7edb",
+  "symbol_mismatches": []
+}

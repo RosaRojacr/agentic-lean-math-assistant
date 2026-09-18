@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sineGap",
+  "domain_issues": [],
+  "informal_statement": "The declaration defines the type-\\(\\mathrm{iii}\\) angle contribution \\(\\lambda\\alpha+\\pi-\\beta\\) or sine displacement \\(\\sin\\alpha-\\sin\\beta\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:292-294; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e9d7a7074e27fe28a23aa0db9c4cf9b0ef4e5f2181f1cfab6098f7cc2e240ecb",
+  "symbol_mismatches": []
+}

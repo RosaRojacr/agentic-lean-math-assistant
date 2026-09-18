@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedSegmentParam",
+  "domain_issues": [],
+  "informal_statement": "For every horizontal segment \\(g\\) and real \\(s\\), the Euclidean segment parametrization is \\(J(\\operatorname{segmentParam}_g(s))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:864-867; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4c1728c18c2df9a1da871e357fce4f6439c6307fe654c71c273fe06b8caaa0fd",
+  "symbol_mismatches": []
+}

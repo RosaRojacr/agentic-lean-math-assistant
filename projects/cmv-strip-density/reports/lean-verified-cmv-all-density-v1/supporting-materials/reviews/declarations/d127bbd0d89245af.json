@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap_euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The outer cap has Euclidean area \\[R^2\\bigl(\\alpha-\\sin\\alpha\\cos\\alpha\\bigr).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:851-864; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3c7709918bd2e08d7c7ea431b339d946f2eb6c3c9d1138f4304b6afe64a153c2",
+  "symbol_mismatches": []
+}

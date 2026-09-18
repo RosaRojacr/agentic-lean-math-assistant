@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeAreaSupport",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iii}\\) area-support function at target \\(V\\) is \\(H_V(x)=P_3(x)+x(V-A_3(x))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:464-466; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "59983bd94c5b2c86b0a792e561e5d858c16e3c1a5d5652441772674daa8dcfc8",
+  "symbol_mismatches": []
+}

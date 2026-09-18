@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.isClosed_bottomSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "The bottom segment carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1589-1594; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4502cfa8cbb9cfeeb9921da9cbccfe0b4a2a7c969d9473aede4beb6ee9ada554",
+  "symbol_mismatches": []
+}

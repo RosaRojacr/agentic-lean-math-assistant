@@ -1,0 +1,140 @@
+[
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/MainProof.md",
+      "--from=markdown+fenced_divs+tex_math_single_backslash",
+      "--standalone",
+      "--embed-resources",
+      "--metadata=pagetitle:MainProof",
+      "--mathml",
+      "--fail-if-warnings",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/proof-package-main.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/MainProof.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "math_validation": {
+      "rendered_math_elements": 96,
+      "source_math_fragments": 96,
+      "status": "passed"
+    },
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/MainProof.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/MainProof.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "513895 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/MainProof.pdf\n",
+    "stderr_sha256": "3a6b951a7f921189cae413bec3facc695f3d9c4269834808a016f62f51a16e3c",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/LemmaSupplement.md",
+      "--from=markdown+fenced_divs+tex_math_single_backslash",
+      "--standalone",
+      "--embed-resources",
+      "--metadata=pagetitle:LemmaSupplement",
+      "--mathml",
+      "--fail-if-warnings",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/proof-package-technical.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/LemmaSupplement.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "math_validation": {
+      "rendered_math_elements": 1117,
+      "source_math_fragments": 1117,
+      "status": "passed"
+    },
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/LemmaSupplement.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/LemmaSupplement.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "4895639 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/LemmaSupplement.pdf\n",
+    "stderr_sha256": "ef674deb0b56b21749567c67b6541c6e240c35a32d97e2d322ed61386d7f7e2e",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/SemanticAudit.md",
+      "--from=markdown+fenced_divs+tex_math_single_backslash",
+      "--standalone",
+      "--embed-resources",
+      "--metadata=pagetitle:SemanticAudit",
+      "--mathml",
+      "--fail-if-warnings",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/proof-package-technical.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/SemanticAudit.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "math_validation": {
+      "rendered_math_elements": 22,
+      "source_math_fragments": 22,
+      "status": "passed"
+    },
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/SemanticAudit.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/manuscripts/SemanticAudit.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "1452814 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/SemanticAudit.pdf\n",
+    "stderr_sha256": "0f4135324f05b33d1774c3f559a3acdfc825e523a0be7e7a0a78d0e926075e4e",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  }
+]

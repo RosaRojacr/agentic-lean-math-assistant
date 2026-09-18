@@ -1,0 +1,8 @@
+[305] ell (89-91)
+noncomputable def ell (θ : ℝ) : ℝ := θ / sin θ
+
+[306] area (92-93)
+noncomputable def area (θ : ℝ) : ℝ := (θ - sin θ * cos θ) / (4 * sin θ ^ 2)
+
+[307] area_pos (148-157)
+lemma area_pos {θ : ℝ} (h0 : 0 < θ) (hπ : θ < π) : 0 < area θ

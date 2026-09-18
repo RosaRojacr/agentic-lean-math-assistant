@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "intervalPushforward",
+  "domain_issues": [],
+  "informal_statement": "For a curve \\(c\\) and real endpoints \\(a,b\\), the interval pushforward is \\(c_*(\\mathcal L^1\\text{ restricted to }[a,b])\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1200-1202; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "366d70f2307ddf912f8fe8519c486284fdacdab2c9bb76f371f9a65dd8ee807d",
+  "symbol_mismatches": []
+}

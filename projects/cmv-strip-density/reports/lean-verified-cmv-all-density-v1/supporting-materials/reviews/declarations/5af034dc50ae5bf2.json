@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.boundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "The assembly boundary measure is the sum of its two core arc measures and two cap arc measures.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2525-2529; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a07e8d5b98aab97a737c50d9ee9eae871142e1adb2b58a3132be8c4b6a093cce",
+  "symbol_mismatches": []
+}

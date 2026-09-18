@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeShape",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iii}\\) shape parameter is \\(q(h)=2h-1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:32-34; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9ef91461acc972465b98decfe31d601788f1354eb0ffbb8d094be6f5c46ca593",
+  "symbol_mismatches": []
+}

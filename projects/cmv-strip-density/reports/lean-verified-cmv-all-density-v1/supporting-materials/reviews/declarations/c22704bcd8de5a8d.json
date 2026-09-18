@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap",
+  "domain_issues": [],
+  "informal_statement": "A one-sided circular cap is specified by \\(L>0\\), \\(0<\\theta<\\pi\\), a chord midpoint \\((m,b)\\), and a choice of side.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:100-112; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a9dd2ba7ee653be367b6a2072de1384c3362b0214117e3aecceae763bc6f8403",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rectangleCarrier",
+  "domain_issues": [],
+  "informal_statement": "The central rectangular part of the type-\\(\\mathrm{iii}\\) core is \\(\\{(x,y):-w\\leq x\\leq w,\\ -1\\leq y\\leq1\\}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:80-84; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d451775e4018b5bae444c6a8ed6911c5adcc23db4a0efc68ab71c655f2933477",
+  "symbol_mismatches": []
+}

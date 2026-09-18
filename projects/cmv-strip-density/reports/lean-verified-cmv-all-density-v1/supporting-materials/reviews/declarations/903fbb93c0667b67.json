@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique_of_stationary_pair",
+  "domain_issues": [],
+  "informal_statement": "A regular stationary equal-area pair with negative type-\\(\\mathrm{iii}\\) fold yields a unique descending type-\\(\\mathrm{iii}\\) equal-area root for each \\(0<h\\leq1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:1130-1149; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f368bc947db4d0b119fefc4c63c0de6d0d14cb14db7e5a28faa26c535eb880b8",
+  "symbol_mismatches": []
+}

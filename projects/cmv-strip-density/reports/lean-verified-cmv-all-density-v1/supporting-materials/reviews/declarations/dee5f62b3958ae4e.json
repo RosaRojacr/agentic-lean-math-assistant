@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideCap_arcLength",
+  "domain_issues": [],
+  "informal_statement": "The side cap arc length is \\(2R\\gamma\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:865-874; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0735084a84605f457abd29f126bfc3b41f13fe2e361355b34befa71a89121ae9",
+  "symbol_mismatches": []
+}

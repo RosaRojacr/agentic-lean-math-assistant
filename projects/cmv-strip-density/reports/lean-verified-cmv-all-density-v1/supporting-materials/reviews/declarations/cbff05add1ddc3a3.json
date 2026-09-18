@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentParam",
+  "domain_issues": [],
+  "informal_statement": "A horizontal segment has arclength map \\(s\\mapsto(m+s,b)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1395-1397; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ba8ed6bbc5cd19b9c405036bea7c221ae24e5c76ea0f6ef5cc2d62c327ae1dc5",
+  "symbol_mismatches": []
+}

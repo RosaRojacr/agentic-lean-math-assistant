@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.hasModeledCompetitor",
+  "domain_issues": [],
+  "informal_statement": "Every regular type-\\(\\mathrm{iii}\\) assembly has an admissible competitor realization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:3081-3100; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6010bc1b92d07ee7af37566e925a969f227d520e7144371bb334d772b94b8386",
+  "symbol_mismatches": []
+}

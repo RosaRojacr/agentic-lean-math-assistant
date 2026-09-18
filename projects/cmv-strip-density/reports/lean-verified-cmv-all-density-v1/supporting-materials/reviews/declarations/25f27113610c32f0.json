@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.carrier",
+  "domain_issues": [],
+  "informal_statement": "The four-arc assembly carrier is the union of the strip core and both exterior caps.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2519-2524; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a55616796db22264c4fe11d48e20ab173ecb661c3bdced26752617ea90d1f816",
+  "symbol_mismatches": []
+}

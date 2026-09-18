@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_four_union",
+  "domain_issues": [],
+  "informal_statement": "Let \\(A,B,C,D\\) be Euclidean sets and \\(f\\) a function. If all six pairs are almost disjoint for \\(\\mathcal H^1\\), \\(B,C,D\\) are measurable, and \\(f\\) is integrable on each of \\(A,B,C,D\\), then \\[\\int_{A\\cup(B\\cup(C\\cup D))}f\\,d\\mathcal H^1=\\int_Af\\,d\\mathcal H^1+\\int_Bf\\,d\\mathcal H^1+\\int_Cf\\,d\\mathcal H^1+\\int_Df\\,d\\mathcal H^1.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1562-1590; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8b3fbc02eae74d84636263a1b0bedcffb91c58bcc3410ac92807b51d54cc9ea4",
+  "symbol_mismatches": []
+}

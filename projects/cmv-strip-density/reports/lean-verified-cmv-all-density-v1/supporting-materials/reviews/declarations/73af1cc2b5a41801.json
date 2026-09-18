@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), assembly area equals core area plus \\(\\lambda\\) times the sum of the two cap areas.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2554-2602; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "839e3c1d7a83b5801ac118ef77feb57b415f9e5a71dfa154b8987ba3b91118a0",
+  "symbol_mismatches": []
+}

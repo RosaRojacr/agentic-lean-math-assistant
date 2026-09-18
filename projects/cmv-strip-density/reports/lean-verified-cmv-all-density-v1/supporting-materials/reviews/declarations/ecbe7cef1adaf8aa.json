@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc_of_fold_neg_right",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\), \\(a>0\\), \\(0<b<1\\), and \\(F_3(b)<0\\), then \\(A_3\\) is strictly decreasing on \\([a,b]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at EqualAreaEnvelope.lean:124-138; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1b1d7870499bdaf74cbcd036814fc1cce139b4cf2463cce4ba39b71ae55024b7",
+  "symbol_mismatches": []
+}

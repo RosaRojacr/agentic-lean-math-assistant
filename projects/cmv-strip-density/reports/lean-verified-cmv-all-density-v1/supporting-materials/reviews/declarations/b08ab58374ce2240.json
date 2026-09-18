@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryJoinSet",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iii}\\) boundary join set is \\[\\{(-R\\sin\\alpha,1),(R\\sin\\alpha,1),(-w,-1),(w,-1)\\}.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1130-1135; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4d107bd731d106706191e0cc66c1eb6e52b0ad83df797a9379d71e46e9ea68c7",
+  "symbol_mismatches": []
+}

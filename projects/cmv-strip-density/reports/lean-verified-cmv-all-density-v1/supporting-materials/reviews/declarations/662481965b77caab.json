@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanJoinSet",
+  "domain_issues": [],
+  "informal_statement": "For real \\(q\\), the Euclidean join set is \\(J(\\operatorname{joinSet}(q))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1257-1259; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "96d51d86f6c32a7f1c31ecb0290be17bec48e5d48a1aa38fdfbae4457025d389",
+  "symbol_mismatches": []
+}

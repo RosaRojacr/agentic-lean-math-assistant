@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.mem_chordCarrier_of_mem_carrier_of_eq_base",
+  "domain_issues": [],
+  "informal_statement": "A cap-carrier point on the base line belongs to the chord carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:291-310; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "424261710f758c71ebe7e57dd13ebd11ffc59cb51b840ff8fc86319890ddae19",
+  "symbol_mismatches": []
+}

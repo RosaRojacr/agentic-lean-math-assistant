@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeDelta",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), the derivative of \\(D(q(h))\\) is \\(2q(h)[1/\\sqrt{1-q(h)^2}-1/(\\lambda\\sqrt{\\lambda^2-q(h)^2})]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:206-240; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6a259e36542b424c2657b96b59d66f9d38d054281073fe5c590c3110a33522c8",
+  "symbol_mismatches": []
+}

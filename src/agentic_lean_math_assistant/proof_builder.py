@@ -76,7 +76,7 @@ _RAW_MATH_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ),
     (
         "single-letter mathematical symbol",
-        re.compile(r"(?<![\w`'])(?:[B-HJ-Z]|[bcfghpqrstuvxyz])(?![\w`'])"),
+        re.compile(r"(?<![\w`'’])(?:[B-HJ-Z]|[bcfghpqrstuvxyz])(?![\w`'’])"),
     ),
 )
 
@@ -848,12 +848,13 @@ def _retain_dependency_records(
     output = lean_dir / "_proof-builder-dependencies.txt"
     modules = tuple(module for module, _path in _module_closure(spec))
     atomic_write_text(source, _dependency_audit_source(spec, modules, output))
+    lean_env = {**os.environ, "LEAN_NUM_THREADS": str(_LEAN_BUILD_THREADS)}
     argv = (lake, "env", "lean", source.name)
     try:
         result = run_captured_command(
             argv,
             cwd=lean_dir,
-            env=os.environ,
+            env=lean_env,
             timeout=spec.lean_timeout,
             execution=project.execution,
             workspace=lean_dir,
@@ -1464,6 +1465,14 @@ def _without_markdown_code(markdown: str) -> str:
         markdown,
     )
     prose = _CITATION.sub(" ", prose)
+    prose = re.sub(r"\b[A-Z]\.(?=\s+[A-ZÀ-ÖØ-Þ])", " ", prose)
+    prose = re.sub(r"\b[\w.-]+\.lean(?::\d+(?:-\d+)?)?", " ", prose)
+    prose = re.sub(r"\b(?:[A-Z]\w*\.)+\w+\b", " ", prose)
+    prose = re.sub(
+        r"\b[A-Za-z][A-Za-z0-9']{2,}(?:_[A-Za-z][A-Za-z0-9']{1,})+\b",
+        " ",
+        prose,
+    )
     prose = re.sub(r"(?is)<code(?:\s[^>]*)?>.*?</code>", " ", prose)
     prose = re.sub(r"`[^`\n]*`", " ", prose)
     return re.sub(r"\bpp?\.\s*\d+(?:[–—-]\d+)?", " ", prose)
@@ -3819,49 +3828,76 @@ def resume_proof_package(
         )
 
     if from_stage in ("pdf-render", "checksum-ledger"):
-        if state_path.is_file() and checksum_path.is_file():
+        finalized = state_path.is_file()
+        if finalized and checksum_path.is_file():
             _verify_checksums(root)
-        raw_attempts = state.get("revision_attempts", 0)
-        attempts = raw_attempts if isinstance(raw_attempts, int) else 0
         status_value = state.get("status")
-        if status_value not in ("conditional", "review_failed"):
-            raise ProofBuilderError(
-                f"{from_stage} resume requires a finalized failed package"
-            )
-        status: PackageStatus = status_value
-        errors_value = state.get("errors", [])
-        errors = (
-            tuple(str(item) for item in errors_value)
-            if isinstance(errors_value, list)
-            else ()
-        )
         if from_stage == "checksum-ledger":
-            checksum = root / "supporting-materials" / "CHECKSUMS.sha256"
-            if checksum.is_file():
+            if not finalized or status_value not in ("conditional", "review_failed"):
+                raise ProofBuilderError(
+                    "checksum-ledger resume requires a finalized failed package"
+                )
+            status: PackageStatus = status_value
+            raw_attempts = state.get("revision_attempts", 0)
+            attempts = raw_attempts if isinstance(raw_attempts, int) else 0
+            errors_value = state.get("errors", [])
+            errors = (
+                tuple(str(item) for item in errors_value)
+                if isinstance(errors_value, list)
+                else ()
+            )
+            if checksum_path.is_file():
                 return ProofPackageResult(status, root, attempts, errors)
             _root_layout(root)
             _write_checksums(spec, root)
             return ProofPackageResult(status, root, attempts, errors)
+
         records = _retained_declaration_records(spec, root)
         authors = sorted(
             (root / "supporting-materials" / "reviews").glob("author-*.json")
         )
-        reviewers = sorted(
-            (root / "supporting-materials" / "reviews").glob("reviewer-*.json")
-        )
-        if not authors or not reviewers:
+        if not authors:
             raise ProofBuilderError(
                 "pdf-render resume requires retained model handoffs"
             )
-        author = _validate_author(authors[-1], spec, records)
-        reviewer, _accepted, reviewed_status = _validate_reviewer(
-            reviewers[-1], records, author, spec, root
+        author_handoff = authors[-1]
+        attempts = int(author_handoff.stem.rsplit("-", 1)[1])
+        reviewer_handoff = (
+            root
+            / "supporting-materials"
+            / "reviews"
+            / f"reviewer-{attempts:02d}.json"
         )
-        if reviewed_status != status:
-            raise ProofBuilderError("retained semantic-review status changed")
+        if not reviewer_handoff.is_file():
+            raise ProofBuilderError(
+                "pdf-render resume requires matching retained model handoffs"
+            )
+        author = _validate_author(author_handoff, spec, records)
+        reviewer, _accepted, reviewed_status = _validate_reviewer(
+            reviewer_handoff, records, author, spec, root
+        )
+        if finalized:
+            if status_value not in ("conditional", "review_failed"):
+                raise ProofBuilderError(
+                    "pdf-render resume requires a failed or interrupted package"
+                )
+            status = status_value
+            if reviewed_status != status:
+                raise ProofBuilderError("retained semantic-review status changed")
+            raw_attempts = state.get("revision_attempts", 0)
+            attempts = raw_attempts if isinstance(raw_attempts, int) else 0
+            errors_value = state.get("errors", [])
+            errors = (
+                tuple(str(item) for item in errors_value)
+                if isinstance(errors_value, list)
+                else ()
+            )
+        else:
+            status = reviewed_status
+            errors = _all_reviewer_issues(reviewer)
         for filename in _ROOT_FILES:
             (root / filename).unlink(missing_ok=True)
-        (root / "supporting-materials" / "CHECKSUMS.sha256").unlink(missing_ok=True)
+        checksum_path.unlink(missing_ok=True)
         _assemble_manuscripts(spec, root, records, author, status)
         _assemble_audit(spec, root, records, reviewer, status)
         return _finalize(spec, root, status, attempts, errors)

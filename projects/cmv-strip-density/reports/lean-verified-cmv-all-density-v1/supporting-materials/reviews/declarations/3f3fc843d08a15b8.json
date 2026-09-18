@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "The declared boundary trace is the union of the two strip-side arc traces, the upper cap arc trace, and the bottom segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1595-1599; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "77ded3af26dffe034b843162e20202cd8e868c69330a0cb95819f9e3b2a0bbf5",
+  "symbol_mismatches": []
+}

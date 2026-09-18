@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "/home/rosa/.elan/bin/lake",
+      "update"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "info: leanprover-community/mathlib: cloning https://github.com/leanprover-community/mathlib4\ninfo: leanprover-community/mathlib: checking out revision '51e6992efd06126df61a496bebf8f49482a4e129'\ninfo: Gametheory: cloning https://github.com/math-xmum/Brouwer.git\ninfo: Gametheory: checking out revision '09941e849a81e520cc0cc53220f10f8e5f4768e0'\nwarning: toolchain not updated; multiple toolchain candidates:\n  leanprover/lean4:v4.33.0-rc2\n    from mathlib (fixed toolchain)\n  leanprover/lean4:v4.33.0\n    from Gametheory\ninfo: plausible: cloning https://github.com/leanprover-community/plausible\ninfo: plausible: checking out revision '123d15766ba49356c02ebad2a4462dfe12d79899'\ninfo: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient\ninfo: LeanSearchClient: checking out revision 'f5c090429dff3cf66cb65562526c9ea6e8edfbcb'\ninfo: importGraph: cloning https://github.com/leanprover-community/import-graph\ninfo: importGraph: checking out revision 'bb3469a87774349fe01898d8bf2fc6a1ce6411ca'\ninfo: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4\ninfo: proofwidgets: checking out revision '222c58dad7706a6e7cae46c0edd65ea881d3ee27'\ninfo: aesop: cloning https://github.com/leanprover-community/aesop\ninfo: aesop: checking out revision '7db8190085343afde2f5d2cdcc9bac719b6ec02c'\ninfo: Qq: cloning https://github.com/leanprover-community/quote4\ninfo: Qq: checking out revision 'ef42f8944eaf5b6cbfbe75d1917d824c7dd6cf33'\ninfo: batteries: cloning https://github.com/leanprover-community/batteries\ninfo: batteries: checking out revision '76e1c118b0700b4ceafe99532e887d6431625e1a'\ninfo: Cli: cloning https://github.com/leanprover/lean4-cli\ninfo: Cli: checking out revision '1319485273bf87833fa472afbcefdedecb16b45f'\ninfo: mathlib: running post-update hooks\n✔ [2/6] Built Cache.Cli (244ms)\n✔ [3/6] Built Cache.Lean (285ms)\n✔ [9/27] Built Cache.Infra (289ms)\n✔ [10/27] Built Cache.Cli:c.o (614ms)\n✔ [11/27] Built Cache.Lean:c.o (621ms)\n✔ [12/27] Built Cache.Infra:c.o (371ms)\n✔ [13/27] Built Cache.IO (1.0s)\n✔ [14/27] Built Cache.Hashing (582ms)\n✔ [15/27] Built Cache.Hashing:c.o (268ms)\n✔ [16/27] Built Cache.IO:c.o (957ms)\n✔ [17/27] Built Cache.Requests (1.3s)\n✔ [18/27] Built Cache.Marker (466ms)\n✔ [19/27] Built Cache.Marker:c.o (76ms)\n✔ [20/27] Built Cache.Query (518ms)\n✔ [21/27] Built Cache.Query:c.o (185ms)\n✔ [22/27] Built Cache.Warning (508ms)\n✔ [23/27] Built Cache.Warning:c.o (161ms)\n✔ [24/27] Built Cache.Requests:c.o (1.8s)\n✔ [25/27] Built Cache.Main (803ms)\n✔ [26/27] Built Cache.Main:c.o (580ms)\n✔ [27/27] Built cache:exe (1.4s)\n",
+    "stderr_sha256": "7737af70c0ddef1bf7ee15088ae0b9496ed398ee641013f22d90aecb2800acdb",
+    "stderr_truncated": false,
+    "stdout": "Current branch: HEAD\nUsing cache from origin: (some leanprover-community/mathlib4)\nDecompressing 8489 already-cached file(s) (192 already decompressed)\nNo files to download\nDecompressed 8489 already-cached file(s)\nCompleted successfully in 17817 ms!\n",
+    "stdout_sha256": "aefa7a897304fe14d848cbb7b7948e606c09a7b8491db7f3641b499402783ed5",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/home/rosa/.elan/bin/lake",
+      "exe",
+      "cache",
+      "get"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "Current branch: HEAD\nUsing cache from origin: (some leanprover-community/mathlib4)\nNo files to download\nAlready decompressed 8681 file(s)\n",
+    "stdout_sha256": "ed8e58ac58ffdf3e054029ce66c4707767d7be02da4194fc980cfe4c951e54ae",
+    "stdout_truncated": false
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "For every strip core \\(c\\), write \\(R=c.\\operatorname{radius}\\), \\(\\phi=c.\\operatorname{sideAngle}\\), \\(s_-=-R\\phi\\), and \\(s_+=R\\phi\\). Then the right arclength map satisfies \\[\\operatorname{rightParam}_c([s_-,s_+])=c.\\operatorname{rightArcTrace}.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:597-676; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "78bb53ade5c270538e82ae914ea314e16857498de0ee3dfc73dde7468e65c773",
+  "symbol_mismatches": []
+}

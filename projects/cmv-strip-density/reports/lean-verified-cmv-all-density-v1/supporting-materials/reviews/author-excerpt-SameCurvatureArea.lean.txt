@@ -1,0 +1,88 @@
+[308] LeanSuffixAnalytic.typeThreeArea_lt_typeFourArea (225-265)
+theorem typeThreeArea_lt_typeFourArea {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h ≤ 1) :
+    typeThreeArea lam h < typeFourArea lam h
+
+[309] LeanSuffixAnalytic.typeFourSupport (266-269)
+def typeFourSupport (lam x : ℝ) : ℝ :=
+  typeFourAngle lam x - x * typeFourDelta lam x
+
+[310] LeanSuffixAnalytic.typeFourSupport_hasDerivAt (270-292)
+theorem typeFourSupport_hasDerivAt {lam x : ℝ}
+    (hlam : 1 < lam) (hx : 0 < x) (hx1 : x < 1) :
+    HasDerivAt (typeFourSupport lam) (-2 * typeFourDelta lam x) x
+
+[311] LeanSuffixAnalytic.typeFourSupport_concaveOn (293-311)
+theorem typeFourSupport_concaveOn {lam : ℝ} (hlam : 1 < lam) :
+    ConcaveOn ℝ (Set.Icc 0 1) (typeFourSupport lam)
+
+[312] LeanSuffixAnalytic.typeFourSupport_one_gt_halfPi (312-320)
+theorem typeFourSupport_one_gt_halfPi {lam : ℝ} (hlam : 1 < lam) :
+    π / 2 < typeFourSupport lam 1
+
+[313] LeanSuffixAnalytic.typeFourSupport_midpoint (321-347)
+theorem typeFourSupport_midpoint {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 1 / 2 < h) (hh1 : h < 1) :
+    typeFourSupport lam (2 * h - 1) + typeFourSupport lam 1 ≤
+      2 * typeFourSupport lam h
+
+[314] LeanSuffixAnalytic.sameHeight_support_identity (348-361)
+theorem sameHeight_support_identity (lam h : ℝ) (hh : h ≠ 0) :
+    h * ((typeThreePerimeter lam h - h * typeThreeArea lam h) -
+      (typeFourPerimeter lam h - h * typeFourArea lam h)) =
+      typeFourSupport lam (2 * h - 1) + π / 2 -
+        2 * typeFourSupport lam h
+
+[315] LeanSuffixAnalytic.typeThree_support_lt_typeFour_support (362-383)
+theorem typeThree_support_lt_typeFour_support {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 1 / 2 < h) (hh1 : h < 1) :
+    typeThreePerimeter lam h - h * typeThreeArea lam h <
+      typeFourPerimeter lam h - h * typeFourArea lam h
+
+[316] LeanSuffixAnalytic.typeThreeArea_continuousAt_one (384-393)
+theorem typeThreeArea_continuousAt_one {lam : ℝ} (hlam : 1 < lam) :
+    ContinuousAt (typeThreeArea lam) 1
+
+[317] LeanSuffixAnalytic.typeThreeArea_le_max_endpoints (394-463)
+theorem typeThreeArea_le_max_endpoints {lam a b x : ℝ}
+    (hlam : 1 < lam) (ha : 0 < a) (hax : a ≤ x)
+    (hxb : x ≤ b) (hb : b ≤ 1) :
+    typeThreeArea lam x ≤
+      max (typeThreeArea lam a) (typeThreeArea lam b)
+
+[318] LeanSuffixAnalytic.typeThreeAreaSupport (464-466)
+def typeThreeAreaSupport (lam V x : ℝ) : ℝ :=
+  typeThreePerimeter lam x + x * (V - typeThreeArea lam x)
+
+[319] LeanSuffixAnalytic.typeThreeAreaSupport_hasDerivAt (467-480)
+theorem typeThreeAreaSupport_hasDerivAt {lam V x : ℝ}
+    (hlam : 1 < lam) (hx : 0 < x) (hx1 : x < 1) :
+    HasDerivAt (typeThreeAreaSupport lam V)
+      (V - typeThreeArea lam x) x
+
+[320] LeanSuffixAnalytic.typeThreePerimeter_lt_typeFourPerimeter_of_equalArea (495-553)
+theorem typeThreePerimeter_lt_typeFourPerimeter_of_equalArea
+    {lam r h : ℝ}
+    (hlam : 1 < lam) (hr : 1 / 2 < r) (hrh : r < h) (hh1 : h < 1)
+    (harea : typeThreeArea lam r = typeFourArea lam h) :
+    typeThreePerimeter lam r < typeFourPerimeter lam h
+
+[321] LeanSuffixAnalytic.typeThreeFold_neg_of_equalArea_of_lt (554-585)
+theorem typeThreeFold_neg_of_equalArea_of_lt
+    {lam root h : ℝ}
+    (hlam : 1 < lam)
+    (hroot : root ∈ Set.Ioo (0 : ℝ) 1)
+    (hh : h ∈ Set.Ioo (0 : ℝ) 1)
+    (hroot_lt : root < h)
+    (harea : typeThreeArea lam root = typeFourArea lam h) :
+    typeThreeFold lam root < 0
+
+[322] LeanSuffixAnalytic.typeThreeArea_descending_root_lt (586-622)
+theorem typeThreeArea_descending_root_lt
+    {lam root h : ℝ}
+    (hlam : 1 < lam)
+    (hroot : root ∈ Set.Ioo (0 : ℝ) 1)
+    (hh : 0 < h) (hh1 : h ≤ 1)
+    (hfold : typeThreeFold lam root < 0)
+    (harea : typeThreeArea lam root = typeFourArea lam h) :
+    root < h

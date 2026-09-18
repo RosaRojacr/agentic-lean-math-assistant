@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "The four-arc assembly boundary trace is the union of the left and right core arc traces and the upper and lower cap arc traces.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2625-2630; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d8944f364e38eaa5c7b77ce182d417bec91ac425efc229739d886be00ad658c6",
+  "symbol_mismatches": []
+}

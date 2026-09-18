@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "fourArc_euclidean_frontier",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean frontier of a four-arc assembly is the union of its two strip-side arcs and its two exterior cap arcs.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1338-1348; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "748ff0ec3e12377aa952eabaefbf59718df5bc069c8651bdcd45a9c687a1d41d",
+  "symbol_mismatches": []
+}

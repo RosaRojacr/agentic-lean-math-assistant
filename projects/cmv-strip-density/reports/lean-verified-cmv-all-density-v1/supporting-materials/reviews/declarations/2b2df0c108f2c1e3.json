@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedLeftCoreParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "For every strip core \\(c\\), with \\(s_-=-c.\\operatorname{radius}\\,c.\\operatorname{sideAngle}\\) and \\(s_+=c.\\operatorname{radius}\\,c.\\operatorname{sideAngle}\\), \\[J(\\operatorname{leftParam}_c([s_-,s_+]))=J(c.\\operatorname{leftArcTrace}).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:801-810; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "43b7188db3ec73adee2747ff0dc65e5368084e5e17965fa7fdaa8f3c9301ccd7",
+  "symbol_mismatches": []
+}

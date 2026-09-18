@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightCenter",
+  "domain_issues": [],
+  "informal_statement": "The right side-circle center is \\((w,R-1)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:73-75; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c1d50740a1dfb76a9c424f19f6e78589f8a8ab930ab1727da5282aecd42c3f25",
+  "symbol_mismatches": []
+}

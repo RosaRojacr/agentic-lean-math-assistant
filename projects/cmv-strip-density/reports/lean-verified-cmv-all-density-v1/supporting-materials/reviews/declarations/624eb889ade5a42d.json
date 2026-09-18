@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_upper_circular_segment",
+  "domain_issues": [],
+  "informal_statement": "For \\(r>0\\) and \\(0\\leq\\theta\\leq\\pi\\), the disk centered at \\((m,c)\\), restricted to \\(y\\geq c+r\\cos\\theta\\), has area \\(r^2(\\theta-\\sin\\theta\\cos\\theta)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1820-1944; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d23f6efcc432aaa58959c64bfa3f6f589362c33546093657b1717ec5dbfb1b34",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.WeightedArea",
+  "domain_issues": [],
+  "informal_statement": "For a regular type-\\(\\mathrm{iii}\\) assembly with density \\(\\lambda>1\\), curvature \\(0<h<1\\), and coordinate carrier \\(E_3\\), the weighted area is the ambient Lebesgue integral\n\n\\[\nA_\\lambda(E_3)=\\int_{E_3} f_\\lambda\\,d\\mathcal L^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:265-268; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5d054747c494e793da416a19e2d895420eb9e121366a5645e79b7ab53a0c3c7f",
+  "symbol_mismatches": []
+}

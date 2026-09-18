@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideHalfWidth_eq_zero_iff",
+  "domain_issues": [],
+  "informal_statement": "\\(w=0\\) if and only if \\(h=1/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:344-351; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "aa31042682af8c9fc65e3a19a4a9ce7dc71ed7e2ad3e807732dcfcc2da35644f",
+  "symbol_mismatches": []
+}

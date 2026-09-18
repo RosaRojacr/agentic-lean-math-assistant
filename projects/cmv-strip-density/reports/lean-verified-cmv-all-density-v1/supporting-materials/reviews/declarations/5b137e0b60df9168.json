@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "core_integrableOn",
+  "domain_issues": [],
+  "informal_statement": "The strip density is integrable over every strip-core carrier, for every real \\(\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2309-2314; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ebecbc727d05931a9afed5e77aa787703ada65169aa70e3f372bec6e04bddcac",
+  "symbol_mismatches": []
+}

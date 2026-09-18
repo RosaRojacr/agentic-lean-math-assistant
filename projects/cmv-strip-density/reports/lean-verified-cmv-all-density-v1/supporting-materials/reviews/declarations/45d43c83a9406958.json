@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.allCurvature_typeThreeImprovement_of_envelope",
+  "domain_issues": [],
+  "informal_statement": "A descending envelope with negative fold gap supplies, for every \\(0<h\\leq1\\), a regular \\(r\\) with \\(A_3(r)=A_4(h)\\) and \\(P_3(r)<P_4(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at EqualAreaEnvelope.lean:645-658; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c4f7d83c3e3a4e728eb9be863cb4e20b5d04c133005f9a44bb6548808441f1ae",
+  "symbol_mismatches": []
+}

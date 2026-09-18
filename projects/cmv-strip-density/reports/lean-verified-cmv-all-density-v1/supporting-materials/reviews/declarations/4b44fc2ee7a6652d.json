@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourClearedFold_eq_fold",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(C(h)=\\sqrt{1-h^2}\\sqrt{\\lambda^2-h^2}F_4(h)/4\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeFourStationaryRoot.lean:41-54; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "45ea307682f4ec267ee71b675163dd61e82ecf847d6e7f8bf8dbc13d2cb15e17",
+  "symbol_mismatches": []
+}

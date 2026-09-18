@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.isometry_sideArcComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "For every center \\(c\\), the side-arc complex map is an isometry from \\(\\mathbb C\\) to the Euclidean plane.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:653-664; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5f9f98564eebaed09c3cd958295e743ceabd92f2b665793225e0fb64c4812ba4",
+  "symbol_mismatches": []
+}

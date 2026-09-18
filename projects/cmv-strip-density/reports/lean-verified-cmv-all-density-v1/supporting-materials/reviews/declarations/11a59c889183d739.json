@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.weightedPerimeter_eq_modeledWeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The canonical complete-frontier weighted perimeter of the type-\\(\\mathrm{iii}\\) carrier equals its modeled component perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:2950-2993; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3dd334c8f3cff9146f23a5d90e6da2520151c567d49c8604446b90aa7a9f4d2b",
+  "symbol_mismatches": []
+}

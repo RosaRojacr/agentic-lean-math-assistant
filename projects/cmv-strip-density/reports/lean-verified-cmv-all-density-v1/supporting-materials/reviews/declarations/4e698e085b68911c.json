@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanStripDensity_integrableOn_of_measure_ne_top",
+  "domain_issues": [],
+  "informal_statement": "If a Euclidean set \\(S\\) has finite \\(\\mathcal H^1\\)-measure, then the transported strip density is integrable on \\(S\\) with respect to \\(\\mathcal H^1\\), for every real \\(\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1404-1411; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "509b7e5c9b45ab61b5e958fce825f92bda813640616ddf5c7591ac420818c5d2",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.TypeThreeAssembly.angleTerm_eq_typeThreeAngle",
+  "domain_issues": [],
+  "informal_statement": "For every regular type-\\(\\mathrm{iii}\\) assembly, its geometric angle term equals \\(B(q(h))+\\pi/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVSuffixModel.lean:42-52; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe9ab761a6d7819237c18cc5b6d5b714cc699cb312b84007d27510fce813ca50",
+  "symbol_mismatches": []
+}

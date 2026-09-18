@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.stationaryEqualAreaPair_of_typeFourFold_zero",
+  "domain_issues": [],
+  "informal_statement": "Every stationary \\(s\\in(1/2,1)\\) at density \\(\\lambda>1\\) admits a stationary equal-area pair with type-\\(\\mathrm{iv}\\) member \\(s\\) and type-\\(\\mathrm{iii}\\) member \\(r<s\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at UniversalStationaryPair.lean:62-106; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "87c6601c0e4b1d865832811725296f245fb9e4dc0b97693804d443361bf40752",
+  "symbol_mismatches": []
+}

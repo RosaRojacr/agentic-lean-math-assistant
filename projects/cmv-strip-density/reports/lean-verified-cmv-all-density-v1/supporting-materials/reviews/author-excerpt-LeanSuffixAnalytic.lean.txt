@@ -1,0 +1,274 @@
+[262] LeanSuffixAnalytic.typeThreeShape (32-34)
+def typeThreeShape (h : ℝ) : ℝ := 2 * h - 1
+
+[263] LeanSuffixAnalytic.typeThreeAngle (35-38)
+def typeThreeAngle (lam h : ℝ) : ℝ :=
+  lam * arccos (typeThreeShape h / lam) + arcsin (typeThreeShape h)
+
+[264] LeanSuffixAnalytic.typeThreeDelta (39-43)
+def typeThreeDelta (lam h : ℝ) : ℝ :=
+  sqrt (lam ^ 2 - typeThreeShape h ^ 2) / lam -
+    sqrt (1 - typeThreeShape h ^ 2)
+
+[265] LeanSuffixAnalytic.typeThreeArea (44-48)
+def typeThreeArea (lam h : ℝ) : ℝ :=
+  (typeThreeAngle lam h + π / 2 +
+      (typeThreeShape h + 2) * typeThreeDelta lam h) / h ^ 2
+
+[266] LeanSuffixAnalytic.typeThreePerimeter (49-52)
+def typeThreePerimeter (lam h : ℝ) : ℝ :=
+  2 * (typeThreeAngle lam h + π / 2 + typeThreeDelta lam h) / h
+
+[267] LeanSuffixAnalytic.typeFourAngle (53-56)
+def typeFourAngle (lam h : ℝ) : ℝ :=
+  lam * arccos (h / lam) + arcsin h
+
+[268] LeanSuffixAnalytic.typeFourDelta (57-60)
+def typeFourDelta (lam h : ℝ) : ℝ :=
+  sqrt (lam ^ 2 - h ^ 2) / lam - sqrt (1 - h ^ 2)
+
+[269] LeanSuffixAnalytic.typeFourArea (61-64)
+def typeFourArea (lam h : ℝ) : ℝ :=
+  2 * (typeFourAngle lam h + h * typeFourDelta lam h) / h ^ 2
+
+[270] LeanSuffixAnalytic.typeFourPerimeter (65-70)
+def typeFourPerimeter (lam h : ℝ) : ℝ :=
+  4 * typeFourAngle lam h / h
+
+[271] LeanSuffixAnalytic.typeThreeFold (71-77)
+def typeThreeFold (lam h : ℝ) : ℝ :=
+  4 * h * ((1 + typeThreeShape h) / sqrt (1 - typeThreeShape h ^ 2) -
+    (lam ^ 2 + typeThreeShape h) /
+      (lam * sqrt (lam ^ 2 - typeThreeShape h ^ 2))) -
+    2 * (typeThreeAngle lam h + π / 2 + typeThreeDelta lam h)
+
+[272] LeanSuffixAnalytic.typeFourFold (78-82)
+def typeFourFold (lam h : ℝ) : ℝ :=
+  4 * (h * (1 / sqrt (1 - h ^ 2) -
+    lam / sqrt (lam ^ 2 - h ^ 2)) - typeFourAngle lam h)
+
+[273] LeanSuffixAnalytic.reducedFoldGap (83-92)
+def reducedFoldGap (lam h₃ h₄ : ℝ) : ℝ :=
+  (h₃ - h₄) / h₄ *
+      (1 / sqrt (1 - h₄ ^ 2) - lam / sqrt (lam ^ 2 - h₄ ^ 2)) +
+    h₃ / h₄ * typeFourDelta lam h₄ - typeThreeDelta lam h₃
+
+[274] LeanSuffixAnalytic.centered_meanValue_exists (93-129)
+theorem centered_meanValue_exists
+    (f f' : ℝ → ℝ) {c h : ℝ}
+    (hderiv : ∀ x ∈ Set.uIcc c h, HasDerivAt f (f' x) x) :
+    ∃ ξ ∈ Set.uIcc c h, f h = f c + f' ξ * (h - c)
+
+[275] LeanSuffixAnalytic.typeThreeAngle_add_halfPi (130-138)
+theorem typeThreeAngle_add_halfPi (lam h : ℝ) :
+    typeThreeAngle lam h + π / 2 =
+      lam * arccos (typeThreeShape h / lam) + π -
+        arccos (typeThreeShape h)
+
+[276] LeanSuffixAnalytic.hasDerivAt_typeThreeShape (146-153)
+theorem hasDerivAt_typeThreeShape (h : ℝ) :
+    HasDerivAt typeThreeShape 2 h
+
+[277] LeanSuffixAnalytic.hasDerivAt_typeThreeAngle (154-205)
+theorem hasDerivAt_typeThreeAngle {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeThreeAngle lam)
+      (2 * (1 / sqrt (1 - typeThreeShape h ^ 2) -
+        lam / sqrt (lam ^ 2 - typeThreeShape h ^ 2))) h
+
+[278] LeanSuffixAnalytic.hasDerivAt_typeThreeDelta (206-240)
+theorem hasDerivAt_typeThreeDelta {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeThreeDelta lam)
+      (2 * typeThreeShape h *
+        (1 / sqrt (1 - typeThreeShape h ^ 2) -
+          1 / (lam * sqrt (lam ^ 2 - typeThreeShape h ^ 2)))) h
+
+[279] LeanSuffixAnalytic.hasDerivAt_typeFourAngle (241-278)
+theorem hasDerivAt_typeFourAngle {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeFourAngle lam)
+      (1 / sqrt (1 - h ^ 2) - lam / sqrt (lam ^ 2 - h ^ 2)) h
+
+[280] LeanSuffixAnalytic.hasDerivAt_typeFourDelta (279-305)
+theorem hasDerivAt_typeFourDelta {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeFourDelta lam)
+      (h / sqrt (1 - h ^ 2) -
+        h / (lam * sqrt (lam ^ 2 - h ^ 2))) h
+
+[281] LeanSuffixAnalytic.radicalCubeGap_pos (349-374)
+theorem radicalCubeGap_pos {lam x : ℝ}
+    (hlam : 1 < lam) (hx : -1 < x) (hx1 : x < 1) :
+    0 < 1 / sqrt (1 - x ^ 2) ^ 3 -
+      lam / sqrt (lam ^ 2 - x ^ 2) ^ 3
+
+[282] LeanSuffixAnalytic.hasDerivAt_typeThreeFold (375-456)
+theorem hasDerivAt_typeThreeFold {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeThreeFold lam)
+      (16 * h ^ 2 * (1 / sqrt (1 - typeThreeShape h ^ 2) ^ 3 -
+        lam / sqrt (lam ^ 2 - typeThreeShape h ^ 2) ^ 3)) h
+
+[283] LeanSuffixAnalytic.hasDerivAt_typeFourFold (457-495)
+theorem hasDerivAt_typeFourFold {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeFourFold lam)
+      (4 * h ^ 2 * (1 / sqrt (1 - h ^ 2) ^ 3 -
+        lam / sqrt (lam ^ 2 - h ^ 2) ^ 3)) h
+
+[284] LeanSuffixAnalytic.hasDerivAt_typeFourArea (496-553)
+theorem hasDerivAt_typeFourArea {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeFourArea lam) (typeFourFold lam h / h ^ 3) h
+
+[285] LeanSuffixAnalytic.typeThree_variational_hasDerivAt (554-639)
+theorem typeThree_variational_hasDerivAt {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeThreeArea lam) (deriv (typeThreeArea lam) h) h ∧
+      HasDerivAt (typeThreePerimeter lam)
+        (h * deriv (typeThreeArea lam) h) h
+
+[286] LeanSuffixAnalytic.typeThreePerimeter_deriv_eq_height_mul_area_deriv (640-648)
+theorem typeThreePerimeter_deriv_eq_height_mul_area_deriv {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    deriv (typeThreePerimeter lam) h =
+      h * deriv (typeThreeArea lam) h
+
+[287] LeanSuffixAnalytic.typeThreeArea_deriv_eq_explicit (649-699)
+theorem typeThreeArea_deriv_eq_explicit {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    deriv (typeThreeArea lam) h =
+      ((2 * (2 * (1 / sqrt (1 - typeThreeShape h ^ 2) -
+          lam / sqrt (lam ^ 2 - typeThreeShape h ^ 2)) +
+        2 * typeThreeShape h *
+          (1 / sqrt (1 - typeThreeShape h ^ 2) -
+            1 / (lam * sqrt (lam ^ 2 - typeThreeShape h ^ 2)))) * h -
+        2 * (typeThreeAngle lam h + π / 2 + typeThreeDelta lam h)) /
+          h ^ 3)
+
+[288] LeanSuffixAnalytic.hasDerivAt_typeThreeArea (700-724)
+theorem hasDerivAt_typeThreeArea {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeThreeArea lam) (typeThreeFold lam h / h ^ 3) h
+
+[289] LeanSuffixAnalytic.typeFour_variational_hasDerivAt (733-753)
+theorem typeFour_variational_hasDerivAt {lam h : ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1) :
+    HasDerivAt (typeFourArea lam) (deriv (typeFourArea lam) h) h ∧
+      HasDerivAt (typeFourPerimeter lam)
+        (h * deriv (typeFourArea lam) h) h
+
+[290] LeanSuffixAnalytic.typeThreeArea_centered_meanValue (778-789)
+theorem typeThreeArea_centered_meanValue {lam c h : ℝ}
+    (hlam : 1 < lam) (hc : c ∈ Set.Ioo (0 : ℝ) 1)
+    (hh : h ∈ Set.Ioo (0 : ℝ) 1) :
+    ∃ ξ ∈ Set.uIcc c h,
+      typeThreeArea lam h = typeThreeArea lam c +
+        typeThreeFold lam ξ / ξ ^ 3 * (h - c)
+
+[291] LeanSuffixAnalytic.typeThreeArea_tendsto_atRight_zero (828-871)
+theorem typeThreeArea_tendsto_atRight_zero {lam : ℝ} (hlam : 1 < lam) :
+    Tendsto (typeThreeArea lam) (𝓝[>] 0) atTop
+
+[292] LeanSuffixAnalytic.typeThreeFold_strictMonoOn (872-893)
+theorem typeThreeFold_strictMonoOn {lam : ℝ} (hlam : 1 < lam) :
+    StrictMonoOn (typeThreeFold lam) (Set.Ioo 0 1)
+
+[293] LeanSuffixAnalytic.typeThreeFold_zero_between_of_area_eq (905-925)
+theorem typeThreeFold_zero_between_of_area_eq {lam a b : ℝ}
+    (hlam : 1 < lam) (ha : a ∈ Set.Ioo (0 : ℝ) 1)
+    (hb : b ∈ Set.Ioc (0 : ℝ) 1) (hab : a < b)
+    (harea : typeThreeArea lam a = typeThreeArea lam b) :
+    ∃ c ∈ Set.Ioo a b, typeThreeFold lam c = 0
+
+[294] LeanSuffixAnalytic.typeThreeArea_root_le_of_fold_neg (954-973)
+theorem typeThreeArea_root_le_of_fold_neg {lam root y : ℝ}
+    (hlam : 1 < lam) (hroot : root ∈ Set.Ioo (0 : ℝ) 1)
+    (hy : y ∈ Set.Ioc (0 : ℝ) 1) (hfold : typeThreeFold lam root < 0)
+    (harea : typeThreeArea lam root = typeThreeArea lam y) :
+    root ≤ y
+
+[295] LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique (1013-1039)
+theorem typeThreeArea_descending_root_existsUnique
+    {lam anchor target : ℝ}
+    (hlam : 1 < lam) (hanchor : anchor ∈ Set.Ioo (0 : ℝ) 1)
+    (hfold : typeThreeFold lam anchor < 0)
+    (htarget : typeThreeArea lam anchor ≤ target) :
+    ∃! root : ℝ, root ∈ Set.Ioo (0 : ℝ) 1 ∧
+      typeThreeArea lam root = target ∧ typeThreeFold lam root < 0
+
+[296] LeanSuffixAnalytic.typeFourFold_strictMonoOn (1056-1070)
+theorem typeFourFold_strictMonoOn {lam : ℝ} (hlam : 1 < lam) :
+    StrictMonoOn (typeFourFold lam) (Set.Ioo 0 1)
+
+[297] LeanSuffixAnalytic.typeFourArea_deriv_neg_before_zero (1071-1082)
+theorem typeFourArea_deriv_neg_before_zero {lam fold h : ℝ}
+    (hlam : 1 < lam) (hfold : fold ∈ Set.Ioo (0 : ℝ) 1)
+    (hzero : typeFourFold lam fold = 0)
+    (hh : h ∈ Set.Ioo (0 : ℝ) 1) (hlt : h < fold) :
+    deriv (typeFourArea lam) h < 0
+
+[298] LeanSuffixAnalytic.typeFourArea_deriv_pos_after_zero (1083-1094)
+theorem typeFourArea_deriv_pos_after_zero {lam fold h : ℝ}
+    (hlam : 1 < lam) (hfold : fold ∈ Set.Ioo (0 : ℝ) 1)
+    (hzero : typeFourFold lam fold = 0)
+    (hh : h ∈ Set.Ioo (0 : ℝ) 1) (hlt : fold < h) :
+    0 < deriv (typeFourArea lam) h
+
+[299] LeanSuffixAnalytic.typeFourArea_fold_le (1095-1129)
+theorem typeFourArea_fold_le {lam fold h : ℝ} (hlam : 1 < lam)
+    (hfold : fold ∈ Set.Ioo (0 : ℝ) 1)
+    (hzero : typeFourFold lam fold = 0)
+    (hh : h ∈ Set.Ioc (0 : ℝ) 1) :
+    typeFourArea lam fold ≤ typeFourArea lam h
+
+[300] LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique_of_stationary_pair (1130-1149)
+theorem typeThreeArea_descending_root_existsUnique_of_stationary_pair
+    {lam h₃fold h₄fold h₄ : ℝ}
+    (hlam : 1 < lam)
+    (hh₃fold : h₃fold ∈ Set.Ioo (0 : ℝ) 1)
+    (hh₄fold : h₄fold ∈ Set.Ioo (0 : ℝ) 1)
+    (hh₄ : h₄ ∈ Set.Ioc (0 : ℝ) 1)
+    (hfoldThree : typeThreeFold lam h₃fold < 0)
+    (hfoldFour : typeFourFold lam h₄fold = 0)
+    (hequalFold :
+      typeThreeArea lam h₃fold = typeFourArea lam h₄fold) :
+    ∃! root : ℝ, root ∈ Set.Ioo (0 : ℝ) 1 ∧
+      typeThreeArea lam root = typeFourArea lam h₄ ∧
+      typeThreeFold lam root < 0
+
+[301] LeanSuffixAnalytic.StationaryEqualAreaPair (1177-1188)
+structure StationaryEqualAreaPair (lam : ℝ) where
+  h₃ : ℝ
+  h₄ : ℝ
+  h₃_gt_half : 1 / 2 < h₃
+  h₃_lt_one : h₃ < 1
+  h₄_pos : 0 < h₄
+  h₄_lt_one : h₄ < 1
+  equalArea : typeThreeArea lam h₃ = typeFourArea lam h₄
+  stationary : typeFourFold lam h₄ = 0
+
+[302] LeanSuffixAnalytic.equalArea_gap_identity (1208-1220)
+theorem equalArea_gap_identity {lam h₃ h₄ : ℝ}
+    (hh₃ : h₃ ≠ 0) (hh₄ : h₄ ≠ 0)
+    (harea : typeThreeArea lam h₃ = typeFourArea lam h₄) :
+    typeThreePerimeter lam h₃ - typeFourPerimeter lam h₄ =
+      4 * (((h₃ - h₄) / h₄ ^ 2) * typeFourAngle lam h₄ +
+        h₃ / h₄ * typeFourDelta lam h₄ - typeThreeDelta lam h₃)
+
+[303] LeanSuffixAnalytic.stationaryEqualArea_gap_identity (1221-1238)
+theorem stationaryEqualArea_gap_identity {lam h₃ h₄ : ℝ}
+    (hh₃ : h₃ ≠ 0) (hh₄ : h₄ ≠ 0)
+    (harea : typeThreeArea lam h₃ = typeFourArea lam h₄)
+    (hfold : typeFourFold lam h₄ = 0) :
+    typeThreePerimeter lam h₃ - typeFourPerimeter lam h₄ =
+      4 * reducedFoldGap lam h₃ h₄
+
+[304] LeanSuffixAnalytic.stationaryEqualArea_typeThree_improves_iff (1239-1252)
+theorem stationaryEqualArea_typeThree_improves_iff {lam h₃ h₄ : ℝ}
+    (hh₃ : h₃ ≠ 0) (hh₄ : h₄ ≠ 0)
+    (harea : typeThreeArea lam h₃ = typeFourArea lam h₄)
+    (hfold : typeFourFold lam h₄ = 0) :
+    typeThreePerimeter lam h₃ < typeFourPerimeter lam h₄ ↔
+      reducedFoldGap lam h₃ h₄ < 0

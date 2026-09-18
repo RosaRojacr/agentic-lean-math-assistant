@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedCapParam_eq",
+  "domain_issues": [],
+  "informal_statement": "For every cap \\(c\\) and real \\(s\\), the Euclidean cap parametrization equals the cap isometry applied to the standard circle point: \\[J(\\operatorname{capParam}_c(s))=\\Phi_c(\\gamma_{R}(s)).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:434-441; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9c421cce21d93c49e9d419ecc30c8d31de995d391da25f034d29cf3f0bd85599",
+  "symbol_mismatches": []
+}

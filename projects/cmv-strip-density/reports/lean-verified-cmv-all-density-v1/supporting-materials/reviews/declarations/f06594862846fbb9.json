@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeFold",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iii}\\) fold is \\(F_3(h)=4h[(1+q)/\\sqrt{1-q^2}-(\\lambda^2+q)/(\\lambda\\sqrt{\\lambda^2-q^2})]-2[B(q)+\\pi/2+D(q)]\\), with \\(q=2h-1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:71-77; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "de466d8508a0def3484419e5a98402f15940017ff9d116432fb67c21c1d22c86",
+  "symbol_mismatches": []
+}

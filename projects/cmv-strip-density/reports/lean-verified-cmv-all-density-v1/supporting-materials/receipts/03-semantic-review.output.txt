@@ -1,0 +1,1 @@
+Completed semantic review: `reviewer-03.json` is strict JSON; verdict `equivalent`, with all 464 non-generated declarations matched exactly once, matching inventory code hashes, no generated families, and no citation issues.

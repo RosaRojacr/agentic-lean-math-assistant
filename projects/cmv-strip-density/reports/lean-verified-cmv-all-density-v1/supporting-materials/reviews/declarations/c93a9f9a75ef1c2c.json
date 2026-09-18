@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreBoundaryMeasure_integrable",
+  "domain_issues": [],
+  "informal_statement": "For every core and real \\(\\lambda\\), the strip density is integrable against the right core boundary measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2282-2288; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63cd5ea28e72c7cf39aef8bfd2e698b16940d7ae74acc20f074d60c55994913c",
+  "symbol_mismatches": []
+}

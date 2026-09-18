@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment.carrier",
+  "domain_issues": [],
+  "informal_statement": "The segment carrier is \\(\\{(x,b):\\lvert x-m\\rvert\\leq L/2\\}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:406-408; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "094b96b3006204081e6d336250f56e63f6b337cc71255210b9bae8ae3b894041",
+  "symbol_mismatches": []
+}

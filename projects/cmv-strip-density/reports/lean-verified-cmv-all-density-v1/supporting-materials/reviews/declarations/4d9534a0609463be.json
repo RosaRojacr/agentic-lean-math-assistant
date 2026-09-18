@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_dist",
+  "domain_issues": [],
+  "informal_statement": "If \\(r>0\\), then for all real \\(s,t\\), \\[\\operatorname{dist}(\\gamma_r(s),\\gamma_r(t))=r\\left|2\\sin\\!\\left(\\frac{s-t}{2r}\\right)\\right|.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:55-66; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1c583965a8663dcd3d0483716b4801199d867b2ff4cbe96f04d4cbeb57ff9c08",
+  "symbol_mismatches": []
+}

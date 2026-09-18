@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.weightedPerimeter_components",
+  "domain_issues": [],
+  "informal_statement": "Candidate weighted perimeter equals core curved-side length plus \\(2\\lambda L\\ell(\\alpha)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FourArcCandidate.lean:374-390; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d02953cec6a51d470b1b940fa2318bbd5c86354d0e420d179322c86356c9434a",
+  "symbol_mismatches": []
+}

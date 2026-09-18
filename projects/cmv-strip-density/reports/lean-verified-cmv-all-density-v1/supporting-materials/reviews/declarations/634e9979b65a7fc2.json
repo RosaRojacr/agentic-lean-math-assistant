@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.lowerChordTrace",
+  "domain_issues": [],
+  "informal_statement": "The lower chord trace is \\(\\{(x,-1):\\lvert x\\rvert\\leq L/2\\}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:774-776; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "faa702d9afdff2eed044fad4474692be94c38bb3a9868779993853eb74445596",
+  "symbol_mismatches": []
+}

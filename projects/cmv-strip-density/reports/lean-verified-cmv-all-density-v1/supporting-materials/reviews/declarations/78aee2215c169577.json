@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "stripDensity_integrable_intervalPushforward",
+  "domain_issues": [],
+  "informal_statement": "For every measurable curve and every real \\(\\lambda,a,b\\), the strip density is integrable against the interval pushforward on \\([a,b]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2243-2259; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6315c9471ea2031d23e0cb4552b23f2812fe90938358c371a246f04d7f2d8095",
+  "symbol_mismatches": []
+}

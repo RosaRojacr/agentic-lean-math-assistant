@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The right side trace is \\(\\{(x,y):(x-w)^2+(y-(R-1))^2=R^2,\\ w\\leq x,\\ -1\\leq y\\leq1\\}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:111-119; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "828cebab0c56e67a2a3cfaae9e912a8a76f497287dcea6b589e1a22a40edd616",
+  "symbol_mismatches": []
+}

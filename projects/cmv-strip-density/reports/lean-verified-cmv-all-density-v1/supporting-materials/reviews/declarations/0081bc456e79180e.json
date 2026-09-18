@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_dist",
+  "domain_issues": [],
+  "informal_statement": "If \\(r>0\\), \\(0<\\theta<\\pi\\), and \\(N>0\\), then for every natural index \\(i\\), \\[\\operatorname{dist}(\\gamma_r(p_{N,i}),\\gamma_r(p_{N,i+1}))=2r\\sin(\\theta/N).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:185-207; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6b90645e53e16e3855618b966b04af3ee0f15439043926ba1133c583e65b5a00",
+  "symbol_mismatches": []
+}

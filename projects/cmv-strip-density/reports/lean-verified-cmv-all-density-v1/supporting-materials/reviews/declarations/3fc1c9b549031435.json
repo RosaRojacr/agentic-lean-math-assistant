@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The realized admissible competitor has weighted perimeter equal to the type-\\(\\mathrm{iii}\\) scalar perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:3065-3075; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c73f289c45ecd5870b19789b66c484f95d8c8aad15bb42c8e172d87d107523d8",
+  "symbol_mismatches": []
+}

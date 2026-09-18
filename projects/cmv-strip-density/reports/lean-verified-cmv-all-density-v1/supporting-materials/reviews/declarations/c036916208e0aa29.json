@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourSupport_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<x<1\\), \\(S'(x)=-2D(x)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:270-292; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ec9ad85e9c92ae246dffaf1ad5a0c048a08bd6754c8a63a3be2760ea37a093f",
+  "symbol_mismatches": []
+}

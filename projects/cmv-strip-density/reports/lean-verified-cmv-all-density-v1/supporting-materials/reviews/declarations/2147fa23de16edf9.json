@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.StationaryEqualAreaPair",
+  "domain_issues": [],
+  "informal_statement": "A stationary equal-area pair stores \\(1/2<r<1\\), \\(0<s<1\\), \\(A_3(r)=A_4(s)\\), and \\(F_4(s)=0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:1177-1188; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "865710967f267b9ec6707c5d925cd799ff4862bc66ec64cf0a22afce00862eef",
+  "symbol_mismatches": []
+}

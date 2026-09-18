@@ -1,0 +1,99 @@
+[150] LeanSuffixAnalytic.equalAreaPerimeterGap (34-39)
+def equalAreaPerimeterGap (lam : ℝ) (root : ℝ → ℝ) (h₄ : ℝ) : ℝ :=
+  typeThreePerimeter lam (root h₄) - typeFourPerimeter lam h₄
+
+[151] LeanSuffixAnalytic.equalAreaRoot_continuousOn_of_compact_unique (71-107)
+theorem equalAreaRoot_continuousOn_of_compact_unique
+    {lam : ℝ} {s K : Set ℝ} {root : ℝ → ℝ}
+    (hlam : 1 < lam)
+    (hK : IsCompact K)
+    (hs_domain : s ⊆ Ioc 0 1)
+    (hK_regular : K ⊆ Ioo 0 1)
+    (hroot_mem : MapsTo root s K)
+    (hequalArea : ∀ h ∈ s,
+      typeThreeArea lam (root h) = typeFourArea lam h)
+    (hunique : ∀ h ∈ s, ∀ y ∈ K,
+      typeThreeArea lam y = typeFourArea lam h → y = root h) :
+    ContinuousOn root s
+
+[152] LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc (108-123)
+theorem typeThreeArea_strictAntiOn_Icc
+    {lam a b : ℝ}
+    (hlam : 1 < lam) (ha : 0 < a) (hb : b < 1)
+    (hderiv : ∀ y ∈ Ioo a b,
+      deriv (typeThreeArea lam) y < 0) :
+    StrictAntiOn (typeThreeArea lam) (Icc a b)
+
+[153] LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc_of_fold_neg_right (124-138)
+theorem typeThreeArea_strictAntiOn_Icc_of_fold_neg_right
+    {lam a b : ℝ} (hlam : 1 < lam) (ha : 0 < a) (hb : b < 1)
+    (hb_pos : 0 < b) (hfoldb : typeThreeFold lam b < 0) :
+    StrictAntiOn (typeThreeArea lam) (Icc a b)
+
+[154] LeanSuffixAnalytic.equalAreaRoot_hasDerivAt (165-183)
+theorem equalAreaRoot_hasDerivAt
+    {lam h : ℝ} {root : ℝ → ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1)
+    (hroot_pos : 0 < root h) (hroot_lt_one : root h < 1)
+    (hroot_continuous : ContinuousAt root h)
+    (hareaThree_ne : deriv (typeThreeArea lam) (root h) ≠ 0)
+    (hequalArea : ∀ ⦃x : ℝ⦄, 0 < x → x ≤ 1 →
+      typeThreeArea lam (root x) = typeFourArea lam x) :
+    HasDerivAt root
+      (deriv (typeFourArea lam) h /
+        deriv (typeThreeArea lam) (root h)) h
+
+[155] LeanSuffixAnalytic.equalAreaPerimeterGap_hasDerivAt (184-225)
+theorem equalAreaPerimeterGap_hasDerivAt
+    {lam h : ℝ} {root : ℝ → ℝ}
+    (hlam : 1 < lam) (hh : 0 < h) (hh1 : h < 1)
+    (hroot_pos : 0 < root h) (hroot_lt_one : root h < 1)
+    (hroot_differentiable : DifferentiableAt ℝ root h)
+    (hequalArea : ∀ ⦃x : ℝ⦄, 0 < x → x ≤ 1 →
+      typeThreeArea lam (root x) = typeFourArea lam x) :
+    HasDerivAt (equalAreaPerimeterGap lam root)
+      ((root h - h) * deriv (typeFourArea lam) h) h
+
+[156] LeanSuffixAnalytic.DescendingEqualAreaEnvelope (279-300)
+structure DescendingEqualAreaEnvelope (lam : ℝ) where
+  
+  fold : ℝ
+  
+  root : ℝ → ℝ
+  density_jump : 1 < lam
+  fold_pos : 0 < fold
+  fold_lt_one : fold < 1
+  fold_stationary : typeFourFold lam fold = 0
+  root_pos : ∀ ⦃h₄ : ℝ⦄, 0 < h₄ → h₄ ≤ 1 → 0 < root h₄
+  root_lt_one : ∀ ⦃h₄ : ℝ⦄, 0 < h₄ → h₄ ≤ 1 → root h₄ < 1
+  equalArea : ∀ ⦃h₄ : ℝ⦄, 0 < h₄ → h₄ ≤ 1 →
+    typeThreeArea lam (root h₄) = typeFourArea lam h₄
+  
+  root_fold_neg : ∀ ⦃h₄ : ℝ⦄, 0 < h₄ → h₄ ≤ 1 →
+    typeThreeFold lam (root h₄) < 0
+
+[157] LeanSuffixAnalytic.FoldGapNegative (577-581)
+def FoldGapNegative {lam : ℝ} (env : DescendingEqualAreaEnvelope lam) : Prop :=
+  equalAreaPerimeterGap lam env.root env.fold < 0
+
+[158] LeanSuffixAnalytic.equalAreaPerimeterGap_lt_fold (582-631)
+theorem equalAreaPerimeterGap_lt_fold {lam : ℝ}
+    (env : DescendingEqualAreaEnvelope lam) {h₄ : ℝ}
+    (hh₄ : 0 < h₄) (hh₄_one : h₄ ≤ 1) (hne : h₄ ≠ env.fold) :
+    equalAreaPerimeterGap lam env.root h₄ <
+      equalAreaPerimeterGap lam env.root env.fold
+
+[159] LeanSuffixAnalytic.equalAreaPerimeterGap_le_fold (632-644)
+theorem equalAreaPerimeterGap_le_fold {lam : ℝ}
+    (env : DescendingEqualAreaEnvelope lam) {h₄ : ℝ}
+    (hh₄ : 0 < h₄) (hh₄_one : h₄ ≤ 1) :
+    equalAreaPerimeterGap lam env.root h₄ ≤
+      equalAreaPerimeterGap lam env.root env.fold
+
+[160] LeanSuffixAnalytic.allCurvature_typeThreeImprovement_of_envelope (645-658)
+theorem allCurvature_typeThreeImprovement_of_envelope {lam h₄ : ℝ}
+    (env : DescendingEqualAreaEnvelope lam) (hfoldGap : FoldGapNegative env)
+    (hh₄ : 0 < h₄) (hh₄_one : h₄ ≤ 1) :
+    ∃ h₃ : ℝ, 0 < h₃ ∧ h₃ < 1 ∧
+      typeThreeArea lam h₃ = typeFourArea lam h₄ ∧
+      typeThreePerimeter lam h₃ < typeFourPerimeter lam h₄

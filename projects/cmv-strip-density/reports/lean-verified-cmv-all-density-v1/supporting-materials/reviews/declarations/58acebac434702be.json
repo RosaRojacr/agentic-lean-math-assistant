@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_le_max_endpoints",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<a\\leq x\\leq b\\leq1\\), \\(A_3(x)\\leq\\max\\{A_3(a),A_3(b)\\}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:394-463; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f271402f8f772a214053257391493497c3abc162da11014d954aaf909e4fe1d5",
+  "symbol_mismatches": []
+}

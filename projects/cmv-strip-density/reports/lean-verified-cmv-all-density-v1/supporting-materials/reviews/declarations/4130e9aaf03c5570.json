@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.centered_meanValue_exists",
+  "domain_issues": [],
+  "informal_statement": "If \\(f\\) has derivative \\(g(x)\\) throughout the closed interval between \\(c\\) and \\(h\\), some \\(\\xi\\) in that interval satisfies \\(f(h)=f(c)+g(\\xi)(h-c)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:93-129; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9e16c64246998ba49ad719b4074913f0337c8612efed42e98f32935fcd55a3e5",
+  "symbol_mismatches": []
+}

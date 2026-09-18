@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "stripDensity_integrableOn_of_volume_ne_top",
+  "domain_issues": [],
+  "informal_statement": "On any coordinate set of finite planar measure, the strip density is integrable for every real \\(\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2289-2302; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d26957a576fdcc692079b92ac5054cbbeda2a914af15d77e6d70ad1d418d20fd",
+  "symbol_mismatches": []
+}

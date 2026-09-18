@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rectangleArea",
+  "domain_issues": [],
+  "informal_statement": "The rectangle contribution is \\(4w\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:273-277; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3314187b7b48ab958a7d8415bcf10afdb2dd85317d354dfd049f5344c2569e90",
+  "symbol_mismatches": []
+}

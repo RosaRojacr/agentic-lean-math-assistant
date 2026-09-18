@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment.rightEndpoint",
+  "domain_issues": [],
+  "informal_statement": "The segment's right endpoint is \\((m+L/2,b)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:403-405; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a14791633639531ab0cb8801c8e0e16383dd7712b7d5730aa7f0d9178c83e5da",
+  "symbol_mismatches": []
+}

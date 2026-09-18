@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.carrier",
+  "domain_issues": [],
+  "informal_statement": "The complete type-\\(\\mathrm{iii}\\) carrier is the union of its core carrier and its upper exterior cap carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:262-264; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0849c97e398a59f917657f18205fab9ffd6aa8e524ee751befd78f1c4735a4ff",
+  "symbol_mismatches": []
+}

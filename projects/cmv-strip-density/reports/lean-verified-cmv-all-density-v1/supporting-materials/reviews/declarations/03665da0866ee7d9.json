@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.radicalCubeGap_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(-1<x<1\\), \\(K(x)=(1-x^2)^{-3/2}-\\lambda(\\lambda^2-x^2)^{-3/2}>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:349-374; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ed04fbfe0d2a5c8c68ae2429d8da8593a273f2471a8fcc329e85c97a6780176d",
+  "symbol_mismatches": []
+}

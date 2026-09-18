@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor.weightedArea_eq_carrier",
+  "domain_issues": [],
+  "informal_statement": "For every admissible competitor, its weighted area equals \\(A_\\lambda\\) of its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:3981-3990; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bf49ad5d7ddb4e090057dafec5dba684f6e36be017290e55451b4a9c6cfabce1",
+  "symbol_mismatches": []
+}

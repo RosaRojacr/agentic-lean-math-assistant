@@ -1,0 +1,2815 @@
+{
+  "schema_version": 1,
+  "main_markdown": "## Statement and geometric setting\n\nCañete, Miranda Jr., and Vittone study the isoperimetric problem for the lower-semicontinuous planar strip density and identify a symmetric four-arc family among the possible candidates. Their Conjecture 3.12 predicts that type-\\(\\mathrm{iv}\\) candidates are never minimizing; the relevant geometric classification and the type-\\(\\mathrm{iii}\\)/type-\\(\\mathrm{iv}\\) formulas occur in §3.2, especially Lemma 3.8 and equations (26)–(27) of the cited paper.\n\nFix \\(\\lambda>1\\). On \\(\\mathbb R^2\\), set\n\n\\[\nf_\\lambda(x,y)=\n\\begin{cases}\n1,& |y|\\leq 1,\\\\\n\\lambda,& |y|>1,\n\\end{cases}\n\\qquad\nA_\\lambda(E)=\\int_E f_\\lambda\\,d\\mathcal L^2,\n\\qquad\nP_\\lambda(E)=\\int_{\\partial E} f_\\lambda\\,d\\mathcal H^1.\n\\]\n\nHere the boundary is the complete topological frontier of the Euclidean realization of the coordinate carrier, not a freely chosen list of arcs. The formal modeled regions carry the integrability hypotheses needed for the area and frontier integrals, and the admissible competitor type compares the candidate with empty, general, four-arc, and replacement carriers. [@lean:StripDensity] [@lean:WeightedArea] [@lean:FrontierMeasure] [@lean:WeightedPerimeter] [@lean:FinitePerimeterRegion] [@lean:AdmissibleCompetitor] [@lean:AdmissibleCompetitor.weightedArea_eq_carrier] [@lean:AdmissibleCompetitor.WeightedPerimeter]\n\nA modeled four-arc candidate has curvature and exterior half-angle satisfying\n\n\\[\n0<h\\leq1,\n\\qquad\n0<\\alpha<\\frac{\\pi}{2},\n\\qquad\n\\lambda\\cos\\alpha=h.\n\\]\n\nIts common radius is \\(R=1/h\\); the upper and lower exterior caps have chord length \\(2R\\sin\\alpha\\) on the two density-one interfaces, and the strip core contributes two circular side arcs. The formal CMV predicate consists exactly of the density jump and Snell incidence. It does not assume an area formula, a competitor, or nonminimality. The incidence equation selects the principal inverse-cosine branch:\n\n\\[\\alpha=\\arccos(h/\\lambda).\\]\n\nThe analytic arguments use \\(0<h<1\\), while the candidate constructor retains the finite closure value \\(h=1\\). [@lean:FourArcCandidate] [@lean:FourArcCandidate.capChord] [@lean:FourArcCandidate.stripCore] [@lean:FourArcCandidate.assembly] [@lean:FourArcCandidate.SatisfiesCMVTypeIVHypotheses] [@lean:FourArcCandidate.alpha_eq_arccos]\n\n**Theorem.** For every \\(\\lambda>1\\), every modeled regular type-\\(\\mathrm{iv}\\) four-arc candidate satisfying the formal CMV type-\\(\\mathrm{iv}\\) hypotheses fails to minimize weighted perimeter. Explicitly, the assertion\n\n\\[\n\\forall F\\text{ admissible},\\quad\nA_\\lambda(F)=A_\\lambda(E)\\Longrightarrow P_\\lambda(E)\\leq P_\\lambda(F)\n\\]\n\nis false for the modeled candidate \\(E\\). The formal root has precisely this all-density modeled scope and includes the constructor's closure endpoint through the proved formula identities; it does not introduce a source-level normalization theorem. [@lean:FourArcCandidate.IsWeightedPerimeterMinimizer] [@lean:CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one]\n\n## Scalar formulas and geometric realization\n\nFor the analytic comparison, write\n\n\\[\nB(x)=\\lambda\\arccos(x/\\lambda)+\\arcsin x,\n\\qquad\nD(x)=\\frac{\\sqrt{\\lambda^2-x^2}}{\\lambda}-\\sqrt{1-x^2},\n\\qquad\nq(h)=2h-1.\n\\]\n\nThe scalar areas and perimeters are\n\n\\[\n\\begin{aligned}\nA_4(h)&=\\frac{2\\bigl(B(h)+hD(h)\\bigr)}{h^2},\n&P_4(h)&=\\frac{4B(h)}{h},\\\\\nA_3(h)&=\\frac{B(q(h))+\\pi/2+(q(h)+2)D(q(h))}{h^2},\n&P_3(h)&=\\frac{2\\bigl(B(q(h))+\\pi/2+D(q(h))\\bigr)}{h}.\n\\end{aligned}\n\\]\n\nThe geometric type-\\(\\mathrm{iii}\\) carrier uses \\(0<h<1\\); the type-\\(\\mathrm{iv}\\) candidate uses \\(0<h\\leq1\\). Formula values at a closure point are not silently treated as a regular carrier. [@lean:LeanSuffixAnalytic.typeThreeShape] [@lean:LeanSuffixAnalytic.typeThreeAngle] [@lean:LeanSuffixAnalytic.typeThreeDelta] [@lean:LeanSuffixAnalytic.typeThreeArea] [@lean:LeanSuffixAnalytic.typeThreePerimeter] [@lean:LeanSuffixAnalytic.typeFourAngle] [@lean:LeanSuffixAnalytic.typeFourDelta] [@lean:LeanSuffixAnalytic.typeFourArea] [@lean:LeanSuffixAnalytic.typeFourPerimeter]\n\nFor a regular type-\\(\\mathrm{iii}\\) competitor at curvature \\(h\\), put\n\n\\[\nR=\\frac1h,\n\\qquad \\beta=\\arccos q(h),\n\\qquad \\alpha=\\arccos\\!\\bigl(q(h)/\\lambda\\bigr),\n\\qquad w=R\\bigl(\\sin\\alpha-\\sin\\beta\\bigr).\n\\]\n\nThe carrier is the union of a rectangle \\([-w,w]\\times[-1,1]\\), two strip-side circular segments, and an upper circular cap. Its complete frontier is the two strip-side arcs, the upper cap arc, and the bottom horizontal segment. The bottom segment is allowed to degenerate at \\(h=1/2\\); the upper cap is branch-complete, so major, semicircular, and minor cases are all represented. [@lean:TypeThreeAssembly] [@lean:TypeThreeAssembly.coreCarrier] [@lean:TypeThreeAssembly.outerCap] [@lean:TypeThreeAssembly.carrier] [@lean:TypeThreeAssembly.bottomSegmentCarrier] [@lean:TypeThreeAssembly.bottomChord]\n\nA circular cap of radius \\(R\\) and half-central angle \\(\\theta\\in(0,\\pi)\\) has Euclidean area and arc length\n\n\\[\nR^2\\bigl(\\theta-\\sin\\theta\\cos\\theta\\bigr)\n\\qquad\\text{and}\\qquad\n2R\\theta,\n\\]\n\nrespectively. The formal Hausdorff-measure identities identify these lengths with the Euclidean \\(\\mathcal H^1\\)-measure of the actual arc traces. Finite junction sets have zero one-dimensional measure, so the complete-frontier integrals are exactly the sums of the displayed component contributions. [@lean:OneSidedCircularCap.volume_carrier] [@lean:cap_arcLength_eq_two_radius_theta] [@lean:exact_euclidean_capTrace_hausdorffMeasure] [@lean:exact_euclidean_leftArcTrace_hausdorffMeasure] [@lean:exact_euclidean_rightArcTrace_hausdorffMeasure] [@lean:TypeThreeAssembly.exact_euclidean_bottomSegmentCarrier_hausdorffMeasure] [@lean:fourArc_euclidean_frontier] [@lean:fourArc_frontier_weightedPerimeter_eq] [@lean:TypeThreeAssembly.euclidean_frontier] [@lean:TypeThreeAssembly.weightedPerimeter_eq_modeledWeightedPerimeter]\n\nThe type-\\(\\mathrm{iii}\\) carrier is therefore a genuine measurable, integrable admissible competitor. Its geometric area and perimeter reduce to \\(A_3(h)\\) and \\(P_3(h)\\), while the candidate's complete-frontier area and perimeter reduce to \\(A_4(h)\\) and \\(P_4(h)\\). [@lean:CMVSuffixModel.TypeThreeAssembly.scalarWeightedArea_eq_typeThreeArea] [@lean:CMVSuffixModel.TypeThreeAssembly.scalarWeightedPerimeter_eq_typeThreePerimeter] [@lean:CMVSuffixModel.FourArcCandidate.weightedArea_eq_typeFourArea] [@lean:CMVSuffixModel.FourArcCandidate.weightedPerimeter_eq_typeFourPerimeter] [@lean:TypeThreeAssembly.weightedArea_formula] [@lean:TypeThreeAssembly.weightedPerimeter_formula] [@lean:TypeThreeAssembly.integrableOn_carrier] [@lean:TypeThreeAssembly.integrable_frontierMeasure]\n\n## Fold monotonicity and the stationary pair\n\nOn \\(0<h<1\\), define\n\n\\[\n\\begin{aligned}\nF_4(h)&=4\\left[h\\left(\\frac1{\\sqrt{1-h^2}}-\\frac\\lambda{\\sqrt{\\lambda^2-h^2}}\\right)-B(h)\\right],\\\\\nF_3(h)&=4h\\left[\\frac{1+q(h)}{\\sqrt{1-q(h)^2}}-\\frac{\\lambda^2+q(h)}{\\lambda\\sqrt{\\lambda^2-q(h)^2}}\\right]\\\\\n&\\qquad-2\\left[B(q(h))+\\frac\\pi2+D(q(h))\\right].\n\\end{aligned}\n\\]\n\nDifferentiation gives\n\n\\[\nA_i'(h)=\\frac{F_i(h)}{h^3},\n\\qquad\nP_i'(h)=hA_i'(h),\n\\qquad i\\in\\{3,4\\}.\n\\]\n\nThus the fold zeros are stationary points of the area profiles; stationarity is used to choose a comparison pair, not assumed of the candidate being excluded. [@lean:LeanSuffixAnalytic.typeThreeFold] [@lean:LeanSuffixAnalytic.typeFourFold] [@lean:LeanSuffixAnalytic.hasDerivAt_typeThreeArea] [@lean:LeanSuffixAnalytic.hasDerivAt_typeFourArea] [@lean:LeanSuffixAnalytic.typeThree_variational_hasDerivAt] [@lean:LeanSuffixAnalytic.typeFour_variational_hasDerivAt]\n\nFor \\(-1<x<1\\), the radical-cube gap\n\n\\[\nK(x)=\\frac1{(1-x^2)^{3/2}}-\\frac\\lambda{(\\lambda^2-x^2)^{3/2}}\n\\]\n\nis positive whenever \\(\\lambda>1\\). Consequently \\(F_3\\) and \\(F_4\\) are strictly increasing on their regular domains. In particular, \\(A_3\\) has at most one fold transition, so its value on a compact interval is bounded by the larger endpoint value. [@lean:LeanSuffixAnalytic.radicalCubeGap_pos] [@lean:LeanSuffixAnalytic.hasDerivAt_typeThreeFold] [@lean:LeanSuffixAnalytic.hasDerivAt_typeFourFold] [@lean:LeanSuffixAnalytic.typeThreeFold_strictMonoOn] [@lean:LeanSuffixAnalytic.typeFourFold_strictMonoOn] [@lean:LeanSuffixAnalytic.typeThreeArea_le_max_endpoints]\n\nTo avoid evaluating the singular expression \\(F_4(1)\\), clear its positive radical denominators with\n\n\\[\nC(h)=h\\bigl(\\sqrt{\\lambda^2-h^2}-\\lambda\\sqrt{1-h^2}\\bigr)-B(h)\\sqrt{1-h^2}\\sqrt{\\lambda^2-h^2}.\n\\]\n\nThis function is continuous through \\(h=1\\), agrees with a positive multiple of \\(F_4\\) on \\(0<h<1\\), is negative at \\(h=9/10\\), and is positive at \\(h=1\\). Hence some \\(s\\in(9/10,1)\\) satisfies \\(F_4(s)=0\\). Strict fold monotonicity then gives\n\n\\[\nA_4(s)\\leq A_4(h)\n\\qquad(0<h\\leq1).\n\\]\n\nAt the closure endpoint, the argument uses continuity of the finite area formula; it does not use an endpoint derivative of the singular raw fold. [@lean:LeanSuffixAnalytic.typeFourClearedFold] [@lean:LeanSuffixAnalytic.typeFourClearedFold_continuous] [@lean:LeanSuffixAnalytic.typeFourClearedFold_eq_fold] [@lean:LeanSuffixAnalytic.typeFourClearedFold_multiplier_pos] [@lean:LeanSuffixAnalytic.typeFourClearedFold_nine_tenths_neg] [@lean:LeanSuffixAnalytic.typeFourClearedFold_one_pos] [@lean:LeanSuffixAnalytic.typeFourFold_zero_exists] [@lean:LeanSuffixAnalytic.typeFourArea_fold_le]\n\n## Equal-area comparison and the envelope\n\nThe same-curvature comparison is strict:\n\n\\[\nA_3(h)<A_4(h)\n\\qquad(\\lambda>1,\\quad 0<h\\leq1).\n\\]\n\nA support-function argument also gives, for \\(1/2<h<1\\),\n\n\\[\nP_3(h)-hA_3(h)<P_4(h)-hA_4(h).\n\\]\n\nIf \\(1/2<r<h<1\\) and \\(A_3(r)=A_4(h)=V\\), introduce the support-transfer function\n\n\\[H_V(x)=P_3(x)+x\\bigl(V-A_3(x)\\bigr).\\]\n\nThe function \\(H_V\\) is nondecreasing from \\(r\\) to \\(h\\). Combining this with the support inequality yields\n\n\\[\nP_3(r)<P_4(h),\n\\]\n\nand the increasing-fold argument yields \\(F_3(r)<0\\). [@lean:LeanSuffixAnalytic.typeThreeArea_lt_typeFourArea] [@lean:LeanSuffixAnalytic.typeFourSupport] [@lean:LeanSuffixAnalytic.typeFourSupport_hasDerivAt] [@lean:LeanSuffixAnalytic.typeFourSupport_concaveOn] [@lean:LeanSuffixAnalytic.typeFourSupport_one_gt_halfPi] [@lean:LeanSuffixAnalytic.typeFourSupport_midpoint] [@lean:LeanSuffixAnalytic.sameHeight_support_identity] [@lean:LeanSuffixAnalytic.typeThree_support_lt_typeFour_support] [@lean:LeanSuffixAnalytic.typeThreeAreaSupport] [@lean:LeanSuffixAnalytic.typeThreeAreaSupport_hasDerivAt] [@lean:LeanSuffixAnalytic.typeThreePerimeter_lt_typeFourPerimeter_of_equalArea] [@lean:LeanSuffixAnalytic.typeThreeFold_neg_of_equalArea_of_lt]\n\nThe endpoint values\n\n\\[\nA_3(1/2)=2\\pi(\\lambda+1),\n\\qquad\nA_4(1)<A_3(1/2)\n\\]\n\nbracket the stationary target \\(A_4(s)\\). Continuity therefore produces \\(r\\in(1/2,s)\\) with\n\n\\[\nA_3(r)=A_4(s),\n\\qquad F_3(r)<0,\n\\qquad P_3(r)<P_4(s).\n\\]\n\nEquivalently, there is a stationary equal-area pair with a strictly better type-\\(\\mathrm{iii}\\) member for every \\(\\lambda>1\\). [@lean:LeanSuffixAnalytic.typeThreeArea_half] [@lean:LeanSuffixAnalytic.typeFourArea_one_lt_typeThreeArea_half] [@lean:LeanSuffixAnalytic.stationaryEqualAreaPair_of_typeFourFold_zero] [@lean:LeanSuffixAnalytic.stationaryEqualAreaPair_exists] [@lean:LeanSuffixAnalytic.stationaryEqualAreaPair_strictImprovement_exists]\n\nFix such a pair \\((r,s)\\). Since \\(A_3(h)\\to+\\infty\\) as \\(h\\downarrow0\\), strict decrease on the negative-fold branch supplies, for every \\(h\\in(0,1]\\), a unique descending root \\(\\rho(h)\\) satisfying\n\n\\[\nA_3(\\rho(h))=A_4(h),\n\\qquad F_3(\\rho(h))<0.\n\\]\n\nThe root obeys \\(\\rho(h)<h\\), is continuous on \\((0,1]\\), and is differentiable in the interior with\n\n\\[\n\\rho'(h)=\\frac{A_4'(h)}{A_3'(\\rho(h))}.\n\\]\n\n[@lean:LeanSuffixAnalytic.typeThreeArea_tendsto_atRight_zero] [@lean:LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc_of_fold_neg_right] [@lean:LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique] [@lean:LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique_of_stationary_pair] [@lean:LeanSuffixAnalytic.typeThreeArea_descending_root_lt] [@lean:LeanSuffixAnalytic.equalAreaRoot_continuousOn_of_compact_unique] [@lean:LeanSuffixAnalytic.equalAreaRoot_hasDerivAt]\n\nDefine the equal-area perimeter gap\n\n\\[\n\\Delta(h)=P_3(\\rho(h))-P_4(h).\n\\]\n\nThe variational identities give\n\n\\[\n\\Delta'(h)=(\\rho(h)-h)A_4'(h).\n\\]\n\nThe first factor is negative, while \\(A_4'\\) changes sign only at \\(s\\). Thus \\(\\Delta\\) reaches its maximum at \\(s\\), and\n\n\\[\n\\Delta(h)\\leq\\Delta(s)=P_3(r)-P_4(s)<0\n\\qquad(0<h\\leq1).\n\\]\n\nThis is the all-curvature step: the stationary pair controls the envelope, but the excluded candidate may have any modeled curvature in its formal range. [@lean:LeanSuffixAnalytic.equalAreaPerimeterGap] [@lean:LeanSuffixAnalytic.equalAreaPerimeterGap_hasDerivAt] [@lean:LeanSuffixAnalytic.equalAreaPerimeterGap_lt_fold] [@lean:LeanSuffixAnalytic.equalAreaPerimeterGap_le_fold] [@lean:LeanSuffixAnalytic.allCurvature_typeThreeImprovement_of_envelope]\n\nFor the candidate at curvature \\(h\\), use the regular type-\\(\\mathrm{iii}\\) assembly at \\(\\rho(h)\\). The carrier realization gives exactly equal weighted area and strictly smaller complete-frontier weighted perimeter, so substituting it into the definition of modeled minimality is contradictory. [@lean:CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_analytic_typeThree] [@lean:CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair] [@lean:FourArcCandidate.not_isWeightedPerimeterMinimizer_of_typeThree]\n\n## Closing scope\n\nThis all-density theorem subsumes the earlier modeled cutoff \\(\\lambda\\geq51/50\\) and closes the entire modeled interval \\(1<\\lambda<51/50\\). The root concerns precisely modeled regular type-\\(\\mathrm{iv}\\) four-arc candidates satisfying the formal hypotheses, with the formal constructor's closure endpoint handled by the proved branch-complete identities. It does not claim the unqualified source-level CMV Conjecture 3.12.\n\nTwo separate bridges remain outside this root: normalization of every source-defined type-\\(\\mathrm{iv}\\) region into the formal candidate, and compatibility between CMV's reduced-boundary perimeter and the model's complete-frontier perimeter for the candidate and the constructed competitor. A universal classification of every arbitrary minimizer is stronger than the bridge needed for this modeled theorem; the present result needs only the identified modeled candidate and one validated equal-area, lower-perimeter competitor. [@lean:CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one]\n\n## Bibliography\n\nA. Cañete, M. Miranda Jr., and D. Vittone, “Some Isoperimetric Problems in Planes with Density,” *The Journal of Geometric Analysis* **20** (2010), 243–290. Preprint arXiv:0906.1256; see §3.2, Lemma 3.8, Conjecture 3.12, and equations (26)–(27).\n",
+  "supplement_introduction": "The supplement records the mathematical meanings of every declaration in the frozen publication closure. The assembled ledger is ordered alphabetically by declaration name within two classification blocks: the first contains the \\(192\\) declarations classified as main, and the second contains the \\(272\\) declarations classified as supplement. Each entry separates its mathematical statement and explanation from the declaration name, source location, and Lean code supplied as metadata by the renderer.\n\nThe notation is as follows. The density is \\(f_\\lambda\\), weighted area and complete-frontier weighted perimeter are \\(A_\\lambda\\) and \\(P_\\lambda\\), and \\(B,D,q,A_3,P_3,A_4,P_4,F_3,F_4\\) have the meanings stated in the main proof. Unless an entry states a larger domain, analytic comparisons use \\(\\lambda>1\\) and regular curvatures in \\((0,1)\\); endpoint identities are stated separately when they are valid. A cap has chord \\(L>0\\), half-central angle \\(0<\\theta<\\pi\\), midpoint \\((m,b)\\), and radius \\(R=L/(2\\sin\\theta)\\). Write \\(a(\\theta)=(\\theta-\\sin\\theta\\cos\\theta)/(4\\sin^2\\theta)\\) and \\(\\ell(\\theta)=\\theta/\\sin\\theta\\). A regular type-\\(\\mathrm{iii}\\) assembly uses \\(R=1/h\\), \\(q=2h-1\\), \\(\\beta=\\arccos q\\), \\(\\alpha=\\arccos(q/\\lambda)\\), \\(\\gamma=\\pi-\\beta\\), and \\(w=R(\\sin\\alpha-\\sin\\beta)\\). All Hausdorff measures in the ledger are Euclidean; coordinate carriers and their Euclidean images are distinguished explicitly.\n\nNo generated declaration families are configured in this frozen package, and no inventoried declaration is marked generated. Accordingly the generated-family list is empty. Repetitive algebra, endpoint arithmetic, parametrization plumbing, and integrability transport remain in the declaration-level ledger; the main proof retains the conceptual geometric and analytic argument. The supplement does not add source normalization, reduced-boundary/complete-frontier compatibility, or a classification of arbitrary minimizers beyond the modeled root.",
+  "classifications": [
+    {
+      "declaration": "PlanePoint",
+      "category": "supplement",
+      "informal_statement": "The coordinate point space is \\(\\mathbb R\\times\\mathbb R\\).",
+      "latex_explanation": "This abbreviation supplies ordered real coordinates; it does not itself select the Euclidean norm used for perimeter."
+    },
+    {
+      "declaration": "EuclideanPlane",
+      "category": "supplement",
+      "informal_statement": "The Euclidean realization of the coordinate plane has the norm \\(\\sqrt{x^2+y^2}\\).",
+      "latex_explanation": "The underlying pairs are unchanged, but the metric for Hausdorff measure is the Euclidean product norm."
+    },
+    {
+      "declaration": "planeEuclideanHomeomorph",
+      "category": "supplement",
+      "informal_statement": "The map \\(J\\) identifies the coordinate plane homeomorphically with its Euclidean realization.",
+      "latex_explanation": "It sends each coordinate pair to the identical pair with the Euclidean norm; it is a homeomorphism, not a claim that every product metric agrees with that norm."
+    },
+    {
+      "declaration": "StripDensity",
+      "category": "main",
+      "informal_statement": "The strip density is \\(f_\\lambda(x,y)=1\\) for \\(\\lvert y\\rvert\\leq1\\), and \\(f_\\lambda(x,y)=\\lambda\\) otherwise.",
+      "latex_explanation": "Both interfaces have density one. The definition permits any real density parameter; the main theorem requires \\(\\lambda>1\\)."
+    },
+    {
+      "declaration": "WeightedArea",
+      "category": "main",
+      "informal_statement": "The weighted area of a carrier \\(E\\) is \\(A_\\lambda(E)=\\int_E f_\\lambda\\,d\\mathcal L^2\\).",
+      "latex_explanation": "This is a real integral over the coordinate carrier; the geometric realization proves integrability rather than assuming a scalar area."
+    },
+    {
+      "declaration": "FrontierMeasure",
+      "category": "main",
+      "informal_statement": "The frontier measure of \\(E\\) is the pullback under \\(J\\) of \\(\\mathcal H^1\\) restricted to \\(\\partial J(E)\\).",
+      "latex_explanation": "Explicitly, the measure is \\((J^{-1})_*(\\mathcal H^1\\big|_{\\partial J(E)})\\). The complete Euclidean frontier, not the reduced boundary, is used."
+    },
+    {
+      "declaration": "WeightedPerimeter",
+      "category": "main",
+      "informal_statement": "For a boundary measure \\(\\mu\\), weighted perimeter is \\(\\int f_\\lambda\\,d\\mu\\).",
+      "latex_explanation": "The definition accepts an arbitrary measure; canonical carrier perimeter is obtained by using the frontier measure."
+    },
+    {
+      "declaration": "FinitePerimeterRegion",
+      "category": "main",
+      "informal_statement": "A general modeled region consists of a measurable carrier with integrable density over its area and against its frontier measure.",
+      "latex_explanation": "These are precisely the two finiteness obligations stored with the carrier. The name does not assert a separate bounded-variation or reduced-boundary definition."
+    },
+    {
+      "declaration": "FinitePerimeterRegion.weightedArea",
+      "category": "supplement",
+      "informal_statement": "The weighted area of a general modeled region is the weighted integral over its stored carrier.",
+      "latex_explanation": "No independent area value is stored: this operation applies \\(A_\\lambda\\) to the carrier."
+    },
+    {
+      "declaration": "CapSide",
+      "category": "supplement",
+      "informal_statement": "A cap side is either upper or lower.",
+      "latex_explanation": "This two-element choice determines which closed half-plane is intersected with the cap's disk."
+    },
+    {
+      "declaration": "OneSidedCircularCap",
+      "category": "main",
+      "informal_statement": "A one-sided circular cap is specified by \\(L>0\\), \\(0<\\theta<\\pi\\), a chord midpoint \\((m,b)\\), and a choice of side.",
+      "latex_explanation": "The radius, center, carrier, and boundary arc are derived. The interval includes minor, semicircular, and major caps."
+    },
+    {
+      "declaration": "OneSidedCircularCap.radius",
+      "category": "supplement",
+      "informal_statement": "A cap with chord \\(L\\) and half-central angle \\(\\theta\\) has radius \\(R=L/(2\\sin\\theta)\\).",
+      "latex_explanation": "The angular bounds make the denominator strictly positive and give the usual chord relation."
+    },
+    {
+      "declaration": "OneSidedCircularCap.center",
+      "category": "supplement",
+      "informal_statement": "The upper cap center is \\((m,b-R\\cos\\theta)\\), and the lower cap center is \\((m,b+R\\cos\\theta)\\).",
+      "latex_explanation": "The vertical sign selects which side of the chord contains the cap, including the major-cap case."
+    },
+    {
+      "declaration": "OneSidedCircularCap.arcPoint",
+      "category": "supplement",
+      "informal_statement": "The cap arc is parameterized by \\((m+R\\sin t,b\\pm R(\\cos t-\\cos\\theta))\\), with the plus sign for the upper side.",
+      "latex_explanation": "The intended angular interval is \\([-\\theta,\\theta]\\); the formula itself is defined for every real \\(t\\)."
+    },
+    {
+      "declaration": "OneSidedCircularCap.leftEndpoint",
+      "category": "supplement",
+      "informal_statement": "The left endpoint of a cap is \\((m-L/2,b)\\).",
+      "latex_explanation": "It is the left end of the horizontal chord, independently of the cap side."
+    },
+    {
+      "declaration": "OneSidedCircularCap.rightEndpoint",
+      "category": "supplement",
+      "informal_statement": "The right endpoint of a cap is \\((m+L/2,b)\\).",
+      "latex_explanation": "It is the right end of the horizontal chord, independently of the cap side."
+    },
+    {
+      "declaration": "OneSidedCircularCap.radiusSquaredAt",
+      "category": "supplement",
+      "informal_statement": "The squared distance of \\(p\\) from the cap center \\(c\\) is \\((p_1-c_1)^2+(p_2-c_2)^2\\).",
+      "latex_explanation": "This coordinate polynomial defines the disk inequality without invoking the product-space metric."
+    },
+    {
+      "declaration": "OneSidedCircularCap.carrier",
+      "category": "main",
+      "informal_statement": "The cap carrier is its closed disk intersected with \\(y\\geq b\\) for an upper cap or \\(y\\leq b\\) for a lower cap.",
+      "latex_explanation": "The disk is centered as specified above and has radius \\(R\\). This is the actual planar set whose area and arc trace are computed."
+    },
+    {
+      "declaration": "OneSidedCircularCap.interiorCarrier",
+      "category": "supplement",
+      "informal_statement": "The interior cap carrier uses strict disk and strict side inequalities.",
+      "latex_explanation": "It is the intersection of the open disk with the chosen open half-plane; its inclusion in the carrier interior is proved separately."
+    },
+    {
+      "declaration": "OneSidedCircularCap.chordCarrier",
+      "category": "supplement",
+      "informal_statement": "The chord carrier is \\(\\{(x,b):\\lvert x-m\\rvert\\leq L/2\\}\\).",
+      "latex_explanation": "It includes both endpoints and is shared by the upper and lower cap descriptions."
+    },
+    {
+      "declaration": "OneSidedCircularCap.euclideanArea",
+      "category": "main",
+      "informal_statement": "The cap's scalar Euclidean area is \\(L^2a(\\theta)\\).",
+      "latex_explanation": "Since \\(L=2R\\sin\\theta\\), this equals \\(R^2(\\theta-\\sin\\theta\\cos\\theta)\\); equality with carrier volume is a theorem."
+    },
+    {
+      "declaration": "OneSidedCircularCap.arcLength",
+      "category": "main",
+      "informal_statement": "The cap's scalar arc length is \\(L\\ell(\\theta)\\).",
+      "latex_explanation": "The chord-radius relation turns this into \\(2R\\theta\\); later results identify it with Euclidean Hausdorff length."
+    },
+    {
+      "declaration": "OneSidedCircularCap.sin_theta_pos",
+      "category": "supplement",
+      "informal_statement": "For every cap, \\(\\sin\\theta>0\\).",
+      "latex_explanation": "This follows from \\(0<\\theta<\\pi\\) and justifies division by the sine."
+    },
+    {
+      "declaration": "OneSidedCircularCap.radius_pos",
+      "category": "supplement",
+      "informal_statement": "Every cap radius is strictly positive.",
+      "latex_explanation": "Both the chord and the denominator \\(2\\sin\\theta\\) are positive."
+    },
+    {
+      "declaration": "OneSidedCircularCap.euclideanArea_pos",
+      "category": "supplement",
+      "informal_statement": "Every cap's scalar Euclidean area is strictly positive.",
+      "latex_explanation": "The factor \\(L^2\\) is positive and \\(a(\\theta)>0\\) throughout the cap-angle domain."
+    },
+    {
+      "declaration": "OneSidedCircularCap.ell_theta_pos",
+      "category": "supplement",
+      "informal_statement": "For every cap, \\(\\ell(\\theta)>0\\).",
+      "latex_explanation": "The quotient \\(\\theta/\\sin\\theta\\) has positive numerator and denominator."
+    },
+    {
+      "declaration": "OneSidedCircularCap.arcLength_pos",
+      "category": "supplement",
+      "informal_statement": "Every cap's scalar arc length is strictly positive.",
+      "latex_explanation": "It is the product of the positive chord length and positive normalized arc length."
+    },
+    {
+      "declaration": "OneSidedCircularCap.radius_mul_sin",
+      "category": "supplement",
+      "informal_statement": "The cap radius satisfies \\(R\\sin\\theta=L/2\\).",
+      "latex_explanation": "This identity relates the trigonometric parameterization to the geometric chord endpoints."
+    },
+    {
+      "declaration": "OneSidedCircularCap.arcPoint_left",
+      "category": "supplement",
+      "informal_statement": "At \\(t=-\\theta\\), the cap arc reaches the left endpoint.",
+      "latex_explanation": "Oddness of sine and the chord-radius identity give horizontal coordinate \\(m-L/2\\); the vertical displacement vanishes."
+    },
+    {
+      "declaration": "OneSidedCircularCap.arcPoint_right",
+      "category": "supplement",
+      "informal_statement": "At \\(t=\\theta\\), the cap arc reaches the right endpoint.",
+      "latex_explanation": "The chord-radius identity gives horizontal coordinate \\(m+L/2\\), and the point lies on the base line."
+    },
+    {
+      "declaration": "OneSidedCircularCap.arcPoint_in_closed_side",
+      "category": "supplement",
+      "informal_statement": "For \\(\\lvert t\\rvert\\leq\\theta\\), the cap arc lies in its chosen closed half-plane.",
+      "latex_explanation": "On this angular interval, \\(\\cos t\\geq\\cos\\theta\\); the vertical sign distinguishes the upper and lower statements."
+    },
+    {
+      "declaration": "OneSidedCircularCap.arcPoint_in_open_side",
+      "category": "supplement",
+      "informal_statement": "For \\(\\lvert t\\rvert<\\theta\\), the cap arc lies in its chosen open half-plane.",
+      "latex_explanation": "The strict cosine inequality separates all interior arc points from the chord line."
+    },
+    {
+      "declaration": "OneSidedCircularCap.mem_chordCarrier_of_mem_carrier_of_eq_base",
+      "category": "supplement",
+      "informal_statement": "A cap-carrier point on the base line belongs to the chord carrier.",
+      "latex_explanation": "Substituting \\(y=b\\) into the disk inequality bounds the horizontal displacement by \\(L/2\\)."
+    },
+    {
+      "declaration": "OneSidedCircularCap.chordCarrier_subset_carrier",
+      "category": "supplement",
+      "informal_statement": "The chord carrier is contained in the cap carrier.",
+      "latex_explanation": "The chord inequality implies the disk inequality, and the base line satisfies either closed side condition."
+    },
+    {
+      "declaration": "OneSidedCircularCap.measurableSet_carrier",
+      "category": "supplement",
+      "informal_statement": "Every cap carrier is measurable.",
+      "latex_explanation": "It is described by continuous polynomial inequalities and a closed half-plane condition."
+    },
+    {
+      "declaration": "OneSidedCircularCap.isClosed_carrier",
+      "category": "supplement",
+      "informal_statement": "Every cap carrier is closed.",
+      "latex_explanation": "The disk and the chosen half-plane are closed, so their intersection is closed."
+    },
+    {
+      "declaration": "HorizontalSegment",
+      "category": "supplement",
+      "informal_statement": "A horizontal segment is specified by length \\(L>0\\) and midpoint \\((m,b)\\).",
+      "latex_explanation": "This auxiliary constructor is nondegenerate; the type-\\(\\mathrm{iii}\\) bottom segment has a separate description allowing zero length."
+    },
+    {
+      "declaration": "HorizontalSegment.leftEndpoint",
+      "category": "supplement",
+      "informal_statement": "The segment's left endpoint is \\((m-L/2,b)\\).",
+      "latex_explanation": "The point is obtained by translating the midpoint left by half the chord length."
+    },
+    {
+      "declaration": "HorizontalSegment.rightEndpoint",
+      "category": "supplement",
+      "informal_statement": "The segment's right endpoint is \\((m+L/2,b)\\).",
+      "latex_explanation": "The point is obtained by translating the midpoint right by half the chord length."
+    },
+    {
+      "declaration": "HorizontalSegment.carrier",
+      "category": "supplement",
+      "informal_statement": "The segment carrier is \\(\\{(x,b):\\lvert x-m\\rvert\\leq L/2\\}\\).",
+      "latex_explanation": "This is a closed horizontal interval, including its two endpoints."
+    },
+    {
+      "declaration": "HorizontalSegment.euclideanLength",
+      "category": "supplement",
+      "informal_statement": "The scalar Euclidean length of the horizontal segment is \\(L\\).",
+      "latex_explanation": "The value is later identified with its Euclidean Hausdorff measure."
+    },
+    {
+      "declaration": "StripCore",
+      "category": "main",
+      "informal_statement": "A strip core is specified by \\(L>0\\) and \\(0<\\kappa\\leq1\\).",
+      "latex_explanation": "Its rectangle and circular side pieces are derived from the chord and curvature, including the semicircular endpoint \\(\\kappa=1\\)."
+    },
+    {
+      "declaration": "StripCore.radius",
+      "category": "supplement",
+      "informal_statement": "The strip-core radius is \\(R=1/\\kappa\\).",
+      "latex_explanation": "The curvature bound implies \\(R\\geq1\\), so the circle can span the strip height."
+    },
+    {
+      "declaration": "StripCore.sideAngle",
+      "category": "supplement",
+      "informal_statement": "The strip-core side angle is \\(\\phi=\\arcsin\\kappa\\).",
+      "latex_explanation": "The principal arcsine gives \\(0<\\phi\\leq\\pi/2\\)."
+    },
+    {
+      "declaration": "StripCore.leftCenterX",
+      "category": "supplement",
+      "informal_statement": "The left side-circle center has horizontal coordinate \\(c_{\\mathrm L}=-L/2+R\\cos\\phi\\).",
+      "latex_explanation": "Its vertical coordinate is zero; the circle meets the left chord endpoints at heights \\(\\pm1\\)."
+    },
+    {
+      "declaration": "StripCore.rightCenterX",
+      "category": "supplement",
+      "informal_statement": "The right side-circle center has horizontal coordinate \\(c_{\\mathrm R}=L/2-R\\cos\\phi\\).",
+      "latex_explanation": "It is the reflection of the left center across the vertical axis."
+    },
+    {
+      "declaration": "StripCore.rectangleCarrier",
+      "category": "supplement",
+      "informal_statement": "The core rectangle is \\([-L/2,L/2]\\times[-1,1]\\).",
+      "latex_explanation": "This central rectangle joins the two circular side pieces and has area \\(2L\\)."
+    },
+    {
+      "declaration": "StripCore.leftCapCarrier",
+      "category": "supplement",
+      "informal_statement": "The left core piece is the disk \\((x-c_{\\mathrm L})^2+y^2\\leq R^2\\) restricted to \\(x\\leq-L/2\\) and \\(\\lvert y\\rvert\\leq1\\).",
+      "latex_explanation": "Only the outer left circular segment is retained; the rectangle occupies the remaining central portion."
+    },
+    {
+      "declaration": "StripCore.rightCapCarrier",
+      "category": "supplement",
+      "informal_statement": "The right core piece is the disk \\((x-c_{\\mathrm R})^2+y^2\\leq R^2\\) restricted to \\(x\\geq L/2\\) and \\(\\lvert y\\rvert\\leq1\\).",
+      "latex_explanation": "This is the reflected right circular segment adjoining the rectangle."
+    },
+    {
+      "declaration": "StripCore.carrier",
+      "category": "main",
+      "informal_statement": "The strip-core carrier is the union of its rectangle and its two side pieces.",
+      "latex_explanation": "The construction defines an actual closed coordinate set within the strip rather than an assigned area-perimeter pair."
+    },
+    {
+      "declaration": "StripCore.euclideanArea",
+      "category": "main",
+      "informal_statement": "The strip core's scalar area is \\(2L+8a(\\phi)\\).",
+      "latex_explanation": "Each side segment has chord length two and hence area \\(4a(\\phi)\\); the rectangle contributes \\(2L\\)."
+    },
+    {
+      "declaration": "StripCore.boundaryArcLength",
+      "category": "main",
+      "informal_statement": "The total length of the core's two curved sides is \\(4\\ell(\\phi)\\).",
+      "latex_explanation": "Each side arc has chord two and length \\(2\\ell(\\phi)=2R\\phi\\); the interface chords are not counted here."
+    },
+    {
+      "declaration": "StripCore.radius_pos",
+      "category": "supplement",
+      "informal_statement": "The strip-core radius is positive.",
+      "latex_explanation": "This follows from the strictly positive curvature in the constructor."
+    },
+    {
+      "declaration": "StripCore.sideAngle_pos",
+      "category": "supplement",
+      "informal_statement": "The strip-core side angle is positive.",
+      "latex_explanation": "The principal arcsine is positive at a positive curvature."
+    },
+    {
+      "declaration": "StripCore.sideAngle_le_pi_div_two",
+      "category": "supplement",
+      "informal_statement": "The strip-core side angle satisfies \\(\\phi\\leq\\pi/2\\).",
+      "latex_explanation": "The upper curvature bound includes equality, so this assertion is deliberately non-strict."
+    },
+    {
+      "declaration": "StripCore.sideAngle_lt_pi",
+      "category": "supplement",
+      "informal_statement": "The strip-core side angle satisfies \\(\\phi<\\pi\\).",
+      "latex_explanation": "The sharper bound \\(\\phi\\leq\\pi/2\\) places the side segment in the cap-angle domain."
+    },
+    {
+      "declaration": "StripCore.sin_sideAngle",
+      "category": "supplement",
+      "informal_statement": "The identity \\(\\sin\\phi=\\kappa\\) holds for every strip core.",
+      "latex_explanation": "The curvature lies in the principal inverse-sine domain."
+    },
+    {
+      "declaration": "StripCore.cos_sideAngle",
+      "category": "supplement",
+      "informal_statement": "The identity \\(\\cos\\phi=\\sqrt{1-\\kappa^2}\\) holds for every strip core.",
+      "latex_explanation": "The cosine is nonnegative on the selected principal branch, including the zero endpoint cosine."
+    },
+    {
+      "declaration": "StripCore.carrier_y_bounds",
+      "category": "supplement",
+      "informal_statement": "Every point of the strip-core carrier satisfies \\(\\lvert y\\rvert\\leq1\\).",
+      "latex_explanation": "Each constituent set includes the same vertical strip restriction."
+    },
+    {
+      "declaration": "StripCore.measurableSet_carrier",
+      "category": "supplement",
+      "informal_statement": "The strip-core carrier is measurable.",
+      "latex_explanation": "Measurability follows from the coordinate inequalities and closure under finite unions."
+    },
+    {
+      "declaration": "OneSidedCircularCap.arcTrace",
+      "category": "main",
+      "informal_statement": "The cap arc trace is the circle \\(\\lVert p-c\\rVert_2^2=R^2\\) restricted to the chosen closed side of the base line.",
+      "latex_explanation": "It excludes the interior of the chord but includes its endpoints; it is a set-theoretic boundary piece."
+    },
+    {
+      "declaration": "OneSidedCircularCap.isOpen_interiorCarrier",
+      "category": "supplement",
+      "informal_statement": "The strict interior cap carrier is open.",
+      "latex_explanation": "Both its defining inequalities are strict inequalities of continuous functions."
+    },
+    {
+      "declaration": "OneSidedCircularCap.interiorCarrier_subset_interior",
+      "category": "supplement",
+      "informal_statement": "The strict interior cap carrier lies in the topological interior of the closed cap carrier.",
+      "latex_explanation": "An open subset of the carrier is necessarily contained in its interior."
+    },
+    {
+      "declaration": "OneSidedCircularCap.frontier_carrier",
+      "category": "main",
+      "informal_statement": "The complete cap frontier is the union of its arc trace and chord carrier.",
+      "latex_explanation": "No other boundary components occur; the endpoints may belong to both pieces."
+    },
+    {
+      "declaration": "StripCore.leftArcTrace",
+      "category": "supplement",
+      "informal_statement": "The left core arc trace is \\((x-c_{\\mathrm L})^2+y^2=R^2\\), with \\(x\\leq-L/2\\) and \\(\\lvert y\\rvert\\leq1\\).",
+      "latex_explanation": "This is the curved outer boundary of the left side piece."
+    },
+    {
+      "declaration": "StripCore.rightArcTrace",
+      "category": "supplement",
+      "informal_statement": "The right core arc trace is \\((x-c_{\\mathrm R})^2+y^2=R^2\\), with \\(x\\geq L/2\\) and \\(\\lvert y\\rvert\\leq1\\).",
+      "latex_explanation": "This is the reflected curved outer boundary of the right side piece."
+    },
+    {
+      "declaration": "StripCore.upperChordTrace",
+      "category": "supplement",
+      "informal_statement": "The upper chord trace is \\(\\{(x,1):\\lvert x\\rvert\\leq L/2\\}\\).",
+      "latex_explanation": "It is the top boundary of the isolated strip core before the exterior cap is attached."
+    },
+    {
+      "declaration": "StripCore.lowerChordTrace",
+      "category": "supplement",
+      "informal_statement": "The lower chord trace is \\(\\{(x,-1):\\lvert x\\rvert\\leq L/2\\}\\).",
+      "latex_explanation": "It is the bottom boundary of the isolated strip core before the lower cap is attached."
+    },
+    {
+      "declaration": "StripCore.isClosed_carrier",
+      "category": "supplement",
+      "informal_statement": "Every strip-core carrier is closed.",
+      "latex_explanation": "Its rectangle and circular pieces are closed and there are finitely many pieces."
+    },
+    {
+      "declaration": "StripCore.frontier_carrier",
+      "category": "main",
+      "informal_statement": "The strip-core frontier is the union of the two side arc traces and the upper and lower chord traces.",
+      "latex_explanation": "This exact decomposition distinguishes exposed chords from chords later hidden by attaching exterior caps."
+    },
+    {
+      "declaration": "intervalPushforward",
+      "category": "supplement",
+      "informal_statement": "For a curve \\(c\\) and real endpoints \\(a,b\\), the interval pushforward is \\(c_*(\\mathcal L^1\\text{ restricted to }[a,b])\\).",
+      "latex_explanation": "The definition is meaningful even when the interval is empty; arclength curves make it a boundary-length measure."
+    },
+    {
+      "declaration": "measurable_stripDensity",
+      "category": "supplement",
+      "informal_statement": "The strip density is measurable for every real \\(\\lambda\\).",
+      "latex_explanation": "The strip is a measurable set and the density takes only two constant values."
+    },
+    {
+      "declaration": "capParam",
+      "category": "supplement",
+      "informal_statement": "The cap's arclength parameterization is \\(s\\mapsto c(s/R)\\), where \\(c\\) is its angular arc map.",
+      "latex_explanation": "Scaling the angular parameter by the positive radius gives unit speed on the intended arc interval."
+    },
+    {
+      "declaration": "capStart",
+      "category": "supplement",
+      "informal_statement": "The starting arclength parameter of a cap is \\(-R\\theta\\).",
+      "latex_explanation": "Dividing it by the radius recovers the angular starting value \\(-\\theta\\)."
+    },
+    {
+      "declaration": "capEnd",
+      "category": "supplement",
+      "informal_statement": "The ending arclength parameter of a cap is \\(R\\theta\\).",
+      "latex_explanation": "Together with the starting parameter, this gives interval length \\(2R\\theta\\)."
+    },
+    {
+      "declaration": "capBoundaryMeasure",
+      "category": "supplement",
+      "informal_statement": "The cap boundary measure is the pushforward of length on \\([-R\\theta,R\\theta]\\) by its arclength parameterization.",
+      "latex_explanation": "It measures the arc, not the chord; its relation to Hausdorff measure is supplied by the geometric length results."
+    },
+    {
+      "declaration": "cap_upper_external_density",
+      "category": "supplement",
+      "informal_statement": "For an upper cap based on \\(y=1\\), every interior arclength parameter has density \\(\\lambda\\).",
+      "latex_explanation": "The strict side inequality places these arc points in \\(y>1\\); only the two endpoints lie on the density-one interface."
+    },
+    {
+      "declaration": "cap_lower_external_density",
+      "category": "supplement",
+      "informal_statement": "For a lower cap based on \\(y=-1\\), every interior arclength parameter has density \\(\\lambda\\).",
+      "latex_explanation": "The interior points lie in \\(y<-1\\), whereas the endpoint density is one."
+    },
+    {
+      "declaration": "cap_upper_weightedIntegral",
+      "category": "supplement",
+      "informal_statement": "For every real \\(\\lambda\\), an upper cap based on \\(y=1\\) has weighted arc integral \\(\\lambda L\\ell(\\theta)\\).",
+      "latex_explanation": "The density is \\(\\lambda\\) away from the two parameter endpoints; those endpoints have zero length measure."
+    },
+    {
+      "declaration": "cap_lower_weightedIntegral",
+      "category": "supplement",
+      "informal_statement": "For every real \\(\\lambda\\), a lower cap based on \\(y=-1\\) has weighted arc integral \\(\\lambda L\\ell(\\theta)\\).",
+      "latex_explanation": "The same endpoint-null argument applies to the reflected lower arc."
+    },
+    {
+      "declaration": "segmentParam",
+      "category": "supplement",
+      "informal_statement": "A horizontal segment has arclength map \\(s\\mapsto(m+s,b)\\).",
+      "latex_explanation": "It is intended for \\(-L/2\\leq s\\leq L/2\\) and has unit horizontal speed."
+    },
+    {
+      "declaration": "segmentStart",
+      "category": "supplement",
+      "informal_statement": "The segment's starting parameter is \\(-L/2\\).",
+      "latex_explanation": "Substitution in the parameterization yields its left endpoint."
+    },
+    {
+      "declaration": "segmentEnd",
+      "category": "supplement",
+      "informal_statement": "The segment's ending parameter is \\(L/2\\).",
+      "latex_explanation": "The parameter interval therefore has length equal to the chord."
+    },
+    {
+      "declaration": "coreArcStart",
+      "category": "supplement",
+      "informal_statement": "A core side arc starts at parameter \\(-R\\phi\\).",
+      "latex_explanation": "The corresponding circular angle is \\(-\\phi\\), with vertical coordinate \\(-1\\)."
+    },
+    {
+      "declaration": "coreArcEnd",
+      "category": "supplement",
+      "informal_statement": "A core side arc ends at parameter \\(R\\phi\\).",
+      "latex_explanation": "The parameter span is \\(2R\\phi\\) and the final vertical coordinate is one."
+    },
+    {
+      "declaration": "leftCoreParam",
+      "category": "supplement",
+      "informal_statement": "The left core arclength map is \\((c_{\\mathrm L}-R\\cos(s/R),R\\sin(s/R))\\).",
+      "latex_explanation": "It traces the left outer side between the two interfaces on \\([-R\\phi,R\\phi]\\)."
+    },
+    {
+      "declaration": "rightCoreParam",
+      "category": "supplement",
+      "informal_statement": "The right core arclength map is \\((c_{\\mathrm R}+R\\cos(s/R),R\\sin(s/R))\\).",
+      "latex_explanation": "It traces the reflected right outer side over the same parameter interval."
+    },
+    {
+      "declaration": "leftCoreBoundaryMeasure",
+      "category": "supplement",
+      "informal_statement": "The left core boundary measure pushes interval length along the left core arclength map.",
+      "latex_explanation": "The interval is \\([-R\\phi,R\\phi]\\); this measure counts only the left curved side."
+    },
+    {
+      "declaration": "rightCoreBoundaryMeasure",
+      "category": "supplement",
+      "informal_statement": "The right core boundary measure pushes interval length along the right core arclength map.",
+      "latex_explanation": "It is the analogous measure on the right curved side, not on either chord."
+    },
+    {
+      "declaration": "leftCore_strip_density",
+      "category": "supplement",
+      "informal_statement": "Every point on the closed parameter interval of the left core arc has density one.",
+      "latex_explanation": "Its vertical coordinate stays within the closed strip, including both interfaces."
+    },
+    {
+      "declaration": "rightCore_strip_density",
+      "category": "supplement",
+      "informal_statement": "Every point on the closed parameter interval of the right core arc has density one.",
+      "latex_explanation": "The statement uses the same strip bound for the reflected arc."
+    },
+    {
+      "declaration": "leftCore_weightedIntegral",
+      "category": "supplement",
+      "informal_statement": "The weighted integral along the left core boundary measure is \\(2\\ell(\\phi)\\), for every real \\(\\lambda\\).",
+      "latex_explanation": "The density is constantly one and the parameter interval has length \\(2R\\phi=2\\ell(\\phi)\\)."
+    },
+    {
+      "declaration": "rightCore_weightedIntegral",
+      "category": "supplement",
+      "informal_statement": "The weighted integral along the right core boundary measure is \\(2\\ell(\\phi)\\), for every real \\(\\lambda\\).",
+      "latex_explanation": "This is the equal contribution of the reflected right curved side."
+    },
+    {
+      "declaration": "integral_sqrt_one_sub_sq_from_cos",
+      "category": "supplement",
+      "informal_statement": "For \\(0\\leq\\theta\\leq\\pi\\), \\(\\int_{\\cos\\theta}^{1}\\sqrt{1-x^2}\\,dx=(\\theta-\\sin\\theta\\cos\\theta)/2\\).",
+      "latex_explanation": "The circular-slice integral is evaluated on the full half-central-angle range, including the degenerate endpoint values."
+    },
+    {
+      "declaration": "integral_semicircle_scaled",
+      "category": "supplement",
+      "informal_statement": "For \\(r>0\\) and \\(0\\leq\\theta\\leq\\pi\\), \\(\\int_{r\\cos\\theta}^{r}2\\sqrt{r^2-y^2}\\,dy=r^2(\\theta-\\sin\\theta\\cos\\theta)\\).",
+      "latex_explanation": "Scaling the unit-circle integral produces the Euclidean area of the circular segment."
+    },
+    {
+      "declaration": "integral_semicircle_translated",
+      "category": "supplement",
+      "informal_statement": "For real \\(a\\), \\(r>0\\), and \\(0\\leq\\theta\\leq\\pi\\), \\(\\int_{a+r\\cos\\theta}^{a+r}2\\sqrt{r^2-(y-a)^2}\\,dy=r^2(\\theta-\\sin\\theta\\cos\\theta)\\).",
+      "latex_explanation": "Translation moves the circle center without changing the segment-area integral."
+    },
+    {
+      "declaration": "lintegral_semicircle_translated",
+      "category": "supplement",
+      "informal_statement": "The nonnegative integral of \\(2\\sqrt{r^2-(y-a)^2}\\) over \\([a+r\\cos\\theta,a+r]\\) equals \\(r^2(\\theta-\\sin\\theta\\cos\\theta)\\), for \\(r>0\\) and \\(0\\leq\\theta\\leq\\pi\\).",
+      "latex_explanation": "Both sides are interpreted as extended nonnegative reals; the equality converts the real slice integral into the form used by volume integration."
+    },
+    {
+      "declaration": "volume_upper_circular_segment",
+      "category": "supplement",
+      "informal_statement": "For \\(r>0\\) and \\(0\\leq\\theta\\leq\\pi\\), the disk centered at \\((m,c)\\), restricted to \\(y\\geq c+r\\cos\\theta\\), has area \\(r^2(\\theta-\\sin\\theta\\cos\\theta)\\).",
+      "latex_explanation": "Integrating horizontal slices derives the area of this actual upper circular segment for arbitrary center coordinates."
+    },
+    {
+      "declaration": "volume_lower_circular_segment",
+      "category": "supplement",
+      "informal_statement": "For \\(r>0\\) and \\(0\\leq\\theta\\leq\\pi\\), the disk centered at \\((m,c)\\), restricted to \\(y\\leq c-r\\cos\\theta\\), has the same circular-segment area.",
+      "latex_explanation": "Reflection changes the upper slice condition into the lower one and preserves planar volume."
+    },
+    {
+      "declaration": "OneSidedCircularCap.volume_carrier",
+      "category": "main",
+      "informal_statement": "The planar volume of every cap carrier equals its scalar Euclidean area.",
+      "latex_explanation": "Thus the coordinate disk-half-plane intersection has volume \\(L^2a(\\theta)=R^2(\\theta-\\sin\\theta\\cos\\theta)\\), not merely an assigned numerical label."
+    },
+    {
+      "declaration": "volume_horizontalLine",
+      "category": "supplement",
+      "informal_statement": "Every horizontal line has zero planar Lebesgue measure.",
+      "latex_explanation": "The statement holds at every real height and removes area contributions from interfaces and joining chords."
+    },
+    {
+      "declaration": "volume_verticalLine",
+      "category": "supplement",
+      "informal_statement": "Every vertical line has zero planar Lebesgue measure.",
+      "latex_explanation": "This permits addition of rectangle and side-piece areas despite their shared vertical boundaries."
+    },
+    {
+      "declaration": "StripCore.volume_rectangleCarrier",
+      "category": "supplement",
+      "informal_statement": "The rectangle in a strip core has planar volume \\(2L\\).",
+      "latex_explanation": "Its horizontal width is \\(L\\) and its vertical height is two."
+    },
+    {
+      "declaration": "StripCore.volume_leftCapCarrier",
+      "category": "supplement",
+      "informal_statement": "The left core circular piece has volume \\(4a(\\phi)\\).",
+      "latex_explanation": "It is a circular segment on a chord of length two, so normalized area scales by four."
+    },
+    {
+      "declaration": "StripCore.volume_rightCapCarrier",
+      "category": "supplement",
+      "informal_statement": "The right core circular piece has volume \\(4a(\\phi)\\).",
+      "latex_explanation": "Reflection preserves the volume of the left segment."
+    },
+    {
+      "declaration": "StripCore.volume_carrier",
+      "category": "main",
+      "informal_statement": "The planar volume of the whole strip-core carrier equals \\(2L+8a(\\phi)\\).",
+      "latex_explanation": "The pieces overlap only on planar-null line segments, so their volumes add to the stored scalar area."
+    },
+    {
+      "declaration": "stripDensity_integrable_intervalPushforward",
+      "category": "supplement",
+      "informal_statement": "For every measurable curve and every real \\(\\lambda,a,b\\), the strip density is integrable against the interval pushforward on \\([a,b]\\).",
+      "latex_explanation": "A bounded measurable two-valued function is integrable against this finite pushforward measure."
+    },
+    {
+      "declaration": "capBoundaryMeasure_integrable",
+      "category": "supplement",
+      "informal_statement": "For every cap and real \\(\\lambda\\), the strip density is integrable against its cap boundary measure.",
+      "latex_explanation": "This establishes the integrability needed to evaluate the cap's weighted arc contribution."
+    },
+    {
+      "declaration": "leftCoreBoundaryMeasure_integrable",
+      "category": "supplement",
+      "informal_statement": "For every core and real \\(\\lambda\\), the strip density is integrable against the left core boundary measure.",
+      "latex_explanation": "The curve is measurable and its parameter interval has finite length."
+    },
+    {
+      "declaration": "rightCoreBoundaryMeasure_integrable",
+      "category": "supplement",
+      "informal_statement": "For every core and real \\(\\lambda\\), the strip density is integrable against the right core boundary measure.",
+      "latex_explanation": "This is the corresponding finiteness statement for the reflected arc measure."
+    },
+    {
+      "declaration": "stripDensity_integrableOn_of_volume_ne_top",
+      "category": "supplement",
+      "informal_statement": "On any coordinate set of finite planar measure, the strip density is integrable for every real \\(\\lambda\\).",
+      "latex_explanation": "No additional measurability assumption on the set is explicitly required by this lemma; boundedness and the measurable density give integrability for the restricted measure."
+    },
+    {
+      "declaration": "cap_integrableOn",
+      "category": "supplement",
+      "informal_statement": "The strip density is integrable over every cap carrier, for every real \\(\\lambda\\).",
+      "latex_explanation": "The exact cap volume is finite, so the general bounded-density integrability lemma applies."
+    },
+    {
+      "declaration": "core_integrableOn",
+      "category": "supplement",
+      "informal_statement": "The strip density is integrable over every strip-core carrier, for every real \\(\\lambda\\).",
+      "latex_explanation": "The core's computed finite volume supplies the requisite measure bound."
+    },
+    {
+      "declaration": "StripCore.weightedArea_formula",
+      "category": "main",
+      "informal_statement": "The weighted area of a strip-core carrier equals its Euclidean scalar area, for every real \\(\\lambda\\).",
+      "latex_explanation": "The density is one at every core point, so the weighted integral equals planar volume."
+    },
+    {
+      "declaration": "cap_upper_weightedArea",
+      "category": "supplement",
+      "informal_statement": "For an upper cap based on \\(y=1\\), the weighted area is \\(\\lambda\\) times its Euclidean area, for every real \\(\\lambda\\).",
+      "latex_explanation": "Except for the planar-null base line, the whole cap lies in the exterior-density half-plane."
+    },
+    {
+      "declaration": "cap_lower_weightedArea",
+      "category": "supplement",
+      "informal_statement": "For a lower cap based on \\(y=-1\\), the weighted area is \\(\\lambda\\) times its Euclidean area, for every real \\(\\lambda\\).",
+      "latex_explanation": "The reflected cap has the same exterior-density property up to its planar-null chord."
+    },
+    {
+      "declaration": "FourArcAssembly",
+      "category": "main",
+      "informal_statement": "A four-arc assembly consists of a strip core and an exterior half-angle \\(0<\\alpha<\\pi/2\\).",
+      "latex_explanation": "The two minor exterior caps share the core chord. The assembly alone does not assume Snell incidence or equality of exterior and core radii."
+    },
+    {
+      "declaration": "FourArcAssembly.upperCap",
+      "category": "supplement",
+      "informal_statement": "The assembly's upper cap has chord \\(L\\), half-angle \\(\\alpha\\), midpoint \\((0,1)\\), and upper side.",
+      "latex_explanation": "These data fix its carrier above the strip and its shared top chord."
+    },
+    {
+      "declaration": "FourArcAssembly.lowerCap",
+      "category": "supplement",
+      "informal_statement": "The assembly's lower cap has chord \\(L\\), half-angle \\(\\alpha\\), midpoint \\((0,-1)\\), and lower side.",
+      "latex_explanation": "It is the horizontal reflection of the upper cap with identical Euclidean area and arc length."
+    },
+    {
+      "declaration": "FourArcAssembly.carrier",
+      "category": "main",
+      "informal_statement": "The four-arc assembly carrier is the union of the strip core and both exterior caps.",
+      "latex_explanation": "This union removes the interface chord interiors from the exposed boundary."
+    },
+    {
+      "declaration": "FourArcAssembly.boundaryMeasure",
+      "category": "supplement",
+      "informal_statement": "The assembly boundary measure is the sum of its two core arc measures and two cap arc measures.",
+      "latex_explanation": "It is an explicit component measure; equality of its weighted cost with complete-frontier cost is proved later."
+    },
+    {
+      "declaration": "FourArcAssembly.weightedArea",
+      "category": "supplement",
+      "informal_statement": "The assembly weighted area is the integral \\(A_\\lambda\\) of its carrier.",
+      "latex_explanation": "The scalar component formula follows from this definition rather than being part of the assembly data."
+    },
+    {
+      "declaration": "FourArcAssembly.weightedPerimeter",
+      "category": "supplement",
+      "informal_statement": "The assembly component perimeter is the density integral against its four-arc boundary measure.",
+      "latex_explanation": "It initially uses the explicit arc-measure sum; the frontier theorem identifies it with canonical carrier perimeter."
+    },
+    {
+      "declaration": "FourArcAssembly.weightedArea_formula",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\), assembly area equals core area plus \\(\\lambda\\) times the sum of the two cap areas.",
+      "latex_explanation": "The union intersections have planar measure zero, and the density is one in the core and \\(\\lambda\\) almost everywhere in the caps."
+    },
+    {
+      "declaration": "FourArcAssembly.weightedPerimeter_formula",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\), assembly component perimeter equals core curved-side length plus \\(\\lambda\\) times both cap arc lengths.",
+      "latex_explanation": "The statement evaluates the explicit four-measure sum before its canonical frontier identification."
+    },
+    {
+      "declaration": "FourArcAssembly.boundaryTrace",
+      "category": "main",
+      "informal_statement": "The four-arc assembly boundary trace is the union of the left and right core arc traces and the upper and lower cap arc traces.",
+      "latex_explanation": "No full interface chord is included: those chord interiors are covered on both sides in the assembled carrier."
+    },
+    {
+      "declaration": "FourArcAssembly.frontier_carrier_subset_boundaryTrace",
+      "category": "supplement",
+      "informal_statement": "The complete frontier of a four-arc assembly is contained in its boundary trace.",
+      "latex_explanation": "This inclusion rules out additional exposed boundary components beyond the four declared arcs."
+    },
+    {
+      "declaration": "FourArcAssembly.boundaryTrace_subset_frontier_carrier",
+      "category": "supplement",
+      "informal_statement": "The four-arc assembly boundary trace is contained in its complete frontier.",
+      "latex_explanation": "The converse inclusion confirms that none of the four arcs is hidden inside the assembled region."
+    },
+    {
+      "declaration": "FourArcAssembly.frontier_carrier",
+      "category": "main",
+      "informal_statement": "The complete frontier of a four-arc assembly equals its boundary trace.",
+      "latex_explanation": "Together with Euclidean length and overlap-null calculations, this justifies the geometric perimeter formula."
+    },
+    {
+      "declaration": "ReplacementAssembly",
+      "category": "supplement",
+      "informal_statement": "A replacement assembly consists of a strip core and an upper half-angle \\(0<\\theta<\\pi\\).",
+      "latex_explanation": "This is an auxiliary competitor constructor retained in the model's type definition; its separate exclusion results are not publication claims here."
+    },
+    {
+      "declaration": "ReplacementAssembly.upperCap",
+      "category": "supplement",
+      "informal_statement": "The replacement upper cap uses the core chord, half-angle \\(\\theta\\), and upper base \\((0,1)\\).",
+      "latex_explanation": "The angle range allows a minor cap, semicircle, or major cap."
+    },
+    {
+      "declaration": "ReplacementAssembly.carrier",
+      "category": "supplement",
+      "informal_statement": "The replacement carrier is the union of the core and its upper cap.",
+      "latex_explanation": "Unlike a four-arc assembly, it has no lower exterior cap."
+    },
+    {
+      "declaration": "ReplacementAssembly.weightedArea",
+      "category": "supplement",
+      "informal_statement": "The replacement assembly weighted area is \\(A_\\lambda\\) of its carrier.",
+      "latex_explanation": "This definition is present because replacement regions are among the formal competitor constructors."
+    },
+    {
+      "declaration": "AdmissibleCompetitor",
+      "category": "main",
+      "informal_statement": "An admissible competitor is empty, a general integrable measurable region, a four-arc assembly, or a replacement assembly.",
+      "latex_explanation": "The general constructor allows comparison with the constructed type-\\(\\mathrm{iii}\\) carrier; minimality is not restricted to scalar or four-arc alternatives."
+    },
+    {
+      "declaration": "AdmissibleCompetitor.carrier",
+      "category": "supplement",
+      "informal_statement": "Each admissible competitor has its underlying coordinate carrier, with the empty constructor assigned the empty set.",
+      "latex_explanation": "The other cases return the carrier of the stored region or assembly."
+    },
+    {
+      "declaration": "AdmissibleCompetitor.WeightedArea",
+      "category": "main",
+      "informal_statement": "Competitor weighted area is zero for the empty set and the carrier-derived weighted area for each nonempty constructor.",
+      "latex_explanation": "The later carrier identity unifies these cases into a single integral formula."
+    },
+    {
+      "declaration": "AdmissibleCompetitor.WeightedPerimeter",
+      "category": "main",
+      "informal_statement": "Every competitor's weighted perimeter is the density integral against the frontier measure of its carrier.",
+      "latex_explanation": "Thus all competitor constructors use the same complete-frontier convention."
+    },
+    {
+      "declaration": "AdmissibleCompetitor.weightedArea_eq_carrier",
+      "category": "main",
+      "informal_statement": "For every admissible competitor, its weighted area equals \\(A_\\lambda\\) of its carrier.",
+      "latex_explanation": "This identity prevents independently selectable scalar areas in the geometric minimality comparison."
+    },
+    {
+      "declaration": "CMVSuffixModel.TypeThreeAssembly.angleTerm_eq_typeThreeAngle",
+      "category": "supplement",
+      "informal_statement": "For every regular type-\\(\\mathrm{iii}\\) assembly, its geometric angle term equals \\(B(q(h))+\\pi/2\\).",
+      "latex_explanation": "The identity rewrites \\(\\lambda\\alpha+\\pi-\\beta\\) using \\(\\arcsin q+\\arccos q=\\pi/2\\), matching the analytic formula."
+    },
+    {
+      "declaration": "CMVSuffixModel.TypeThreeAssembly.sineGap_eq_typeThreeDelta",
+      "category": "supplement",
+      "informal_statement": "The geometric sine gap of a regular type-\\(\\mathrm{iii}\\) assembly equals \\(D(q(h))\\).",
+      "latex_explanation": "The principal-angle sine identities turn \\(\\sin\\alpha-\\sin\\beta\\) into the difference of the two nonnegative radicals."
+    },
+    {
+      "declaration": "CMVSuffixModel.TypeThreeAssembly.scalarWeightedArea_eq_typeThreeArea",
+      "category": "main",
+      "informal_statement": "The scalar area of every regular type-\\(\\mathrm{iii}\\) assembly is \\(A_3(h)\\).",
+      "latex_explanation": "Substitution of the angle-term and sine-gap identities identifies the independently derived geometric and analytic area formulas throughout \\(0<h<1\\)."
+    },
+    {
+      "declaration": "CMVSuffixModel.TypeThreeAssembly.scalarWeightedPerimeter_eq_typeThreePerimeter",
+      "category": "main",
+      "informal_statement": "The scalar perimeter of every regular type-\\(\\mathrm{iii}\\) assembly is \\(P_3(h)\\).",
+      "latex_explanation": "The identification holds on the entire regular curvature interval, not only on one exterior-cap branch."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.regular_weightedArea_eq_typeFourArea",
+      "category": "supplement",
+      "informal_statement": "For a CMV candidate with \\(h<1\\), its weighted area equals \\(A_4(h)\\).",
+      "latex_explanation": "The candidate already supplies \\(h>0\\), angle bounds, and the incidence hypothesis; the strict upper bound records the regular subcase."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.regular_weightedPerimeter_eq_typeFourPerimeter",
+      "category": "supplement",
+      "informal_statement": "For a CMV candidate with \\(h<1\\), its weighted perimeter equals \\(P_4(h)\\).",
+      "latex_explanation": "This is the regular-domain identification of the complete-frontier perimeter with the analytic formula."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.endpoint_weightedArea_eq_typeFourArea",
+      "category": "main",
+      "informal_statement": "For a CMV candidate with \\(h=1\\), its weighted area equals \\(A_4(1)\\).",
+      "latex_explanation": "The equality uses the finite geometric formula and does not evaluate or differentiate the singular fold at the endpoint."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.endpoint_weightedPerimeter_eq_typeFourPerimeter",
+      "category": "main",
+      "informal_statement": "For a CMV candidate with \\(h=1\\), its weighted perimeter equals \\(P_4(1)\\).",
+      "latex_explanation": "This separates endpoint formula identification from the regular derivative arguments."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.weightedArea_eq_typeFourArea",
+      "category": "main",
+      "informal_statement": "Every candidate satisfying the CMV hypotheses has weighted area \\(A_4(h)\\) on \\(0<h\\leq1\\).",
+      "latex_explanation": "The proof combines the regular and endpoint identities; there is no extra area-formula hypothesis in the candidate predicate."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.weightedPerimeter_eq_typeFourPerimeter",
+      "category": "main",
+      "informal_statement": "Every candidate satisfying the CMV hypotheses has weighted perimeter \\(P_4(h)\\) on \\(0<h\\leq1\\).",
+      "latex_explanation": "The identity is with complete-frontier weighted perimeter and includes the finite closure endpoint."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_analytic_typeThree",
+      "category": "main",
+      "informal_statement": "A CMV candidate is not minimizing if some \\(r\\in(0,1)\\) satisfies \\(A_3(r)=A_4(h)\\) and \\(P_3(r)<P_4(h)\\).",
+      "latex_explanation": "Constructing the type-\\(\\mathrm{iii}\\) assembly at \\(r\\) turns the scalar witness into a measurable, integrable, equal-area competitor with smaller canonical perimeter."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair",
+      "category": "main",
+      "informal_statement": "A stationary equal-area pair with \\(F_3(r)<0\\) and \\(P_3(r)<P_4(s)\\) excludes every CMV candidate at the same density.",
+      "latex_explanation": "The pair has \\(1/2<r<1\\), \\(0<s<1\\), \\(A_3(r)=A_4(s)\\), and \\(F_4(s)=0\\). The envelope transfers its strict comparison to all candidate curvatures."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap",
+      "category": "main",
+      "informal_statement": "For a selected root function \\(\\rho\\), the equal-area perimeter gap is \\(\\Delta(h)=P_3(\\rho(h))-P_4(h)\\).",
+      "latex_explanation": "The definition itself does not assume equal area; that constraint is part of the hypotheses of the comparison theorems."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.equalAreaRoot_continuousOn_of_compact_unique",
+      "category": "main",
+      "informal_statement": "A selected equal-area root is continuous on \\(S\\subset(0,1]\\) if it lies in a compact \\(K\\subset(0,1)\\) and is the unique root in \\(K\\) for each source height.",
+      "latex_explanation": "Assume \\(\\lambda>1\\), \\(\\rho(S)\\subset K\\), and \\(A_3(\\rho(h))=A_4(h)\\) on \\(S\\). Continuity of the area formulas gives a closed zero graph; compactness and uniqueness imply continuity of the selection, including relative endpoint continuity."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc",
+      "category": "main",
+      "informal_statement": "If \\(\\lambda>1\\), \\(a>0\\), \\(b<1\\), and \\(A_3'<0\\) on \\((a,b)\\), then \\(A_3\\) is strictly decreasing on \\([a,b]\\).",
+      "latex_explanation": "The assertion also accommodates empty or singleton intervals; on a nontrivial regular interval it follows from continuity and the mean value theorem."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc_of_fold_neg_right",
+      "category": "main",
+      "informal_statement": "If \\(\\lambda>1\\), \\(a>0\\), \\(0<b<1\\), and \\(F_3(b)<0\\), then \\(A_3\\) is strictly decreasing on \\([a,b]\\).",
+      "latex_explanation": "Increasing fold and the derivative identity give \\(A_3'(x)<0\\) throughout the preceding interval."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.equalAreaRoot_hasDerivAt",
+      "category": "main",
+      "informal_statement": "A continuous regular equal-area root at \\(h\\in(0,1)\\) with \\(A_3'(\\rho(h))\\ne0\\) has derivative \\(\\rho'(h)=A_4'(h)/A_3'(\\rho(h))\\).",
+      "latex_explanation": "Assume \\(\\lambda>1\\), \\(0<\\rho(h)<1\\), and equal area on all \\((0,1]\\). The local inverse-function theorem differentiates the constraint; root continuity is an explicit hypothesis of this lemma."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\), a differentiable regular equal-area selection satisfies \\(\\Delta'(h)=(\\rho(h)-h)A_4'(h)\\) at every regular source height where it is differentiable.",
+      "latex_explanation": "Assume \\(0<h<1\\), \\(0<\\rho(h)<1\\), and \\(A_3(\\rho(x))=A_4(x)\\) for \\(0<x\\leq1\\). Differentiate this equality and use \\(P_i'=hA_i'\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.DescendingEqualAreaEnvelope",
+      "category": "main",
+      "informal_statement": "A descending envelope consists of \\(\\lambda>1\\), a stationary \\(s\\in(0,1)\\), and regular roots \\(\\rho(h)\\) on \\(0<h\\leq1\\) with equal area and \\(F_3(\\rho(h))<0\\).",
+      "latex_explanation": "Precisely, \\(F_4(s)=0\\), \\(0<\\rho(h)<1\\), and \\(A_3(\\rho(h))=A_4(h)\\). Continuity, strict root order, and differentiability are consequences, not fields assumed in this structure."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.FoldGapNegative",
+      "category": "main",
+      "informal_statement": "Fold-gap negativity for an envelope means \\(P_3(\\rho(s))-P_4(s)<0\\).",
+      "latex_explanation": "This is a strict comparison only at the stationary source curvature; it contains no all-curvature conclusion."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_lt_fold",
+      "category": "main",
+      "informal_statement": "For every descending envelope and \\(h\\in(0,1]\\) with \\(h\\ne s\\), the perimeter gap satisfies \\(\\Delta(h)<\\Delta(s)\\).",
+      "latex_explanation": "The derivative is positive before the stationary curvature and negative after it; relative continuity handles the source endpoint."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_le_fold",
+      "category": "main",
+      "informal_statement": "For every descending envelope, \\(\\Delta(h)\\leq\\Delta(s)\\) for all \\(0<h\\leq1\\).",
+      "latex_explanation": "Equality at the stationary point is combined with the strict comparison away from it."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.allCurvature_typeThreeImprovement_of_envelope",
+      "category": "main",
+      "informal_statement": "A descending envelope with negative fold gap supplies, for every \\(0<h\\leq1\\), a regular \\(r\\) with \\(A_3(r)=A_4(h)\\) and \\(P_3(r)<P_4(h)\\).",
+      "latex_explanation": "Take \\(r=\\rho(h)\\); the global maximum bound for the gap transfers the stationary strict inequality to the entire modeled range."
+    },
+    {
+      "declaration": "FourArcCandidate",
+      "category": "main",
+      "informal_statement": "A four-arc candidate stores \\(h,\\alpha\\) with \\(0<h\\leq1\\) and \\(0<\\alpha<\\pi/2\\).",
+      "latex_explanation": "The density parameter indexes the family, but incidence is not part of this constructor. The region and its area and perimeter are derived from these geometric data."
+    },
+    {
+      "declaration": "FourArcCandidate.beta",
+      "category": "supplement",
+      "informal_statement": "The candidate angle \\(\\beta\\) is \\(\\pi/2-\\arcsin h\\).",
+      "latex_explanation": "Thus \\(\\cos\\beta=h\\), including the endpoint \\(h=1\\)."
+    },
+    {
+      "declaration": "FourArcCandidate.capChord",
+      "category": "main",
+      "informal_statement": "The exterior cap chord of a candidate is \\(L=2\\sin\\alpha/h\\).",
+      "latex_explanation": "This forces the cap radius \\(L/(2\\sin\\alpha)\\) to equal the core radius \\(1/h\\)."
+    },
+    {
+      "declaration": "FourArcCandidate.capArea",
+      "category": "main",
+      "informal_statement": "The Euclidean area of one original candidate cap is \\((\\alpha-\\sin\\alpha\\cos\\alpha)/h^2\\).",
+      "latex_explanation": "It is the circular-segment area with radius \\(1/h\\); it is unweighted until multiplied by the exterior density."
+    },
+    {
+      "declaration": "FourArcCandidate.stripCore",
+      "category": "main",
+      "informal_statement": "The candidate strip core uses chord \\(2\\sin\\alpha/h\\) and curvature \\(h\\).",
+      "latex_explanation": "The candidate angle and curvature bounds establish positive chord and admissible core curvature without adding any comparison premise."
+    },
+    {
+      "declaration": "FourArcCandidate.assembly",
+      "category": "main",
+      "informal_statement": "The candidate assembly combines its strip core with exterior half-angle \\(\\alpha\\).",
+      "latex_explanation": "The shared chord fixes two reflected caps; the constructed four arcs have the common radius \\(1/h\\)."
+    },
+    {
+      "declaration": "FourArcCandidate.region",
+      "category": "main",
+      "informal_statement": "The candidate region is its four-arc assembly regarded as an admissible competitor.",
+      "latex_explanation": "This embeds the geometric candidate into the same carrier-based comparison class used for alternatives."
+    },
+    {
+      "declaration": "FourArcCandidate.WeightedArea",
+      "category": "main",
+      "informal_statement": "The candidate weighted area is the weighted area of its admissible region.",
+      "latex_explanation": "It is computed from the carrier, not supplied as a free scalar field."
+    },
+    {
+      "declaration": "FourArcCandidate.WeightedPerimeter",
+      "category": "main",
+      "informal_statement": "The candidate weighted perimeter is the canonical weighted perimeter of its admissible region.",
+      "latex_explanation": "The definition uses the complete frontier through the common competitor semantics."
+    },
+    {
+      "declaration": "FourArcCandidate.SatisfiesCMVTypeIVHypotheses",
+      "category": "main",
+      "informal_statement": "The CMV hypothesis predicate is exactly \\(\\lambda>1\\) and \\(\\lambda\\cos\\alpha=h\\).",
+      "latex_explanation": "It adds the density jump and Snell incidence to the constructor's geometric bounds; it assumes no area identity, competitor, or nonminimality."
+    },
+    {
+      "declaration": "FourArcCandidate.IsWeightedPerimeterMinimizer",
+      "category": "main",
+      "informal_statement": "A candidate is a modeled minimizer when every admissible equal-area competitor has perimeter at least that of the candidate.",
+      "latex_explanation": "Formally the comparison quantifies over the whole admissible class. One strictly improving equal-area carrier refutes it."
+    },
+    {
+      "declaration": "FourArcCandidate.sin_alpha_pos",
+      "category": "supplement",
+      "informal_statement": "For every candidate, \\(\\sin\\alpha>0\\).",
+      "latex_explanation": "The stored bound \\(0<\\alpha<\\pi/2\\) ensures a nondegenerate chord and justifies denominator cancellation."
+    },
+    {
+      "declaration": "FourArcCandidate.capArea_eq_chord_sq_mul_area",
+      "category": "supplement",
+      "informal_statement": "One original cap area equals \\(L^2a(\\alpha)\\), where \\(L=2\\sin\\alpha/h\\).",
+      "latex_explanation": "Substituting the normalized circular-segment area cancels the positive sine factors and yields the radius-based expression."
+    },
+    {
+      "declaration": "FourArcCandidate.upperCap_euclideanArea",
+      "category": "supplement",
+      "informal_statement": "The upper cap of the constructed candidate has Euclidean scalar area equal to the candidate cap-area formula.",
+      "latex_explanation": "The cap constructor uses exactly the candidate chord and angle, so its normalized-area scaling agrees."
+    },
+    {
+      "declaration": "FourArcCandidate.lowerCap_euclideanArea",
+      "category": "supplement",
+      "informal_statement": "The lower cap of the constructed candidate has Euclidean scalar area equal to the candidate cap-area formula.",
+      "latex_explanation": "Horizontal reflection preserves the same chord, angle, and Euclidean area."
+    },
+    {
+      "declaration": "FourArcCandidate.alpha_eq_arccos",
+      "category": "main",
+      "informal_statement": "For a candidate satisfying CMV incidence, \\(\\alpha=\\arccos(h/\\lambda)\\).",
+      "latex_explanation": "The positive density and stored angle bounds select the principal inverse cosine, so incidence determines the intended exterior angle uniquely."
+    },
+    {
+      "declaration": "FourArcCandidate.side_caps_area_formula",
+      "category": "supplement",
+      "informal_statement": "The combined side-segment area is \\(8a(\\arcsin h)=2(\\arcsin h-h\\sqrt{1-h^2})/h^2\\).",
+      "latex_explanation": "The identity is valid for every candidate, including \\(h=1\\), and uses the principal sine and cosine formulas."
+    },
+    {
+      "declaration": "FourArcCandidate.weightedArea_components",
+      "category": "main",
+      "informal_statement": "Candidate weighted area equals core Euclidean area plus \\(2\\lambda\\) times one cap's Euclidean area.",
+      "latex_explanation": "The two exterior caps have equal area and their interface intersections contribute no planar area."
+    },
+    {
+      "declaration": "FourArcCandidate.weightedPerimeter_components",
+      "category": "main",
+      "informal_statement": "Candidate weighted perimeter equals core curved-side length plus \\(2\\lambda L\\ell(\\alpha)\\).",
+      "latex_explanation": "The frontier theorem identifies the four boundary components with their canonical weighted integral; the top and bottom chords are internal."
+    },
+    {
+      "declaration": "FourArcCandidate.candidate_perimeter_formula",
+      "category": "main",
+      "informal_statement": "For a CMV candidate, \\(P_\\lambda(E)=4\\lambda\\alpha/h+4\\arcsin h/h\\).",
+      "latex_explanation": "The two exterior arcs contribute \\(4\\lambda\\alpha/h\\), and the two strip-side arcs contribute \\(4\\arcsin h/h\\)."
+    },
+    {
+      "declaration": "FourArcCandidate.candidate_area_formula",
+      "category": "main",
+      "informal_statement": "For a CMV candidate, its area is \\(4\\sin\\alpha/h+2(\\lambda\\alpha-\\sin\\alpha\\cos\\beta)/h^2+2(\\arcsin h-h\\sqrt{1-h^2})/h^2\\).",
+      "latex_explanation": "The terms come from the central rectangle, the two exterior caps after Snell substitution, and the two side segments. Here \\(\\beta=\\pi/2-\\arcsin h\\)."
+    },
+    {
+      "declaration": "unitCircleArc",
+      "category": "supplement",
+      "informal_statement": "For all real numbers \\(r\\) and \\(s\\), the complex parametrization is \\(\\gamma_r(s)=r\\exp(i s/r)\\).",
+      "latex_explanation": "This is a total definition on \\(\\mathbb R^2\\); later geometric theorems impose \\(r>0\\) or \\(r\\ne0\\) when division or a genuine circle is required."
+    },
+    {
+      "declaration": "continuous_unitCircleArc",
+      "category": "supplement",
+      "informal_statement": "The indicated parametrization or cleared expression is continuous on its stated domain.",
+      "latex_explanation": "Continuity follows from continuity of the elementary coordinate, trigonometric, exponential, or square-root operations and is used for Hausdorff-measure transfer or an intermediate-value argument."
+    },
+    {
+      "declaration": "unitCircleArc_sub_factor",
+      "category": "supplement",
+      "informal_statement": "If \\(r\\ne0\\), then for all real \\(s,t\\), \\[\\gamma_r(s)-\\gamma_r(t)=r\\exp(i t/r)\\bigl(\\exp(i(s-t)/r)-1\\bigr).\\]",
+      "latex_explanation": "The factorization is an exact complex identity under the nonzero-radius hypothesis; it isolates the phase at \\(t\\) and the increment \\(s-t\\)."
+    },
+    {
+      "declaration": "lipschitzWith_unitCircleArc",
+      "category": "supplement",
+      "informal_statement": "If \\(r>0\\), the map \\(s\\mapsto\\gamma_r(s)\\) is globally \\(1\\)-Lipschitz from \\(\\mathbb R\\) to \\(\\mathbb C\\).",
+      "latex_explanation": "The chord distance between two parametrized points is bounded by the signed-arclength parameter difference, providing the Hausdorff-measure upper bound for every interval."
+    },
+    {
+      "declaration": "unitCircleArc_dist",
+      "category": "supplement",
+      "informal_statement": "If \\(r>0\\), then for all real \\(s,t\\), \\[\\operatorname{dist}(\\gamma_r(s),\\gamma_r(t))=r\\left|2\\sin\\!\\left(\\frac{s-t}{2r}\\right)\\right|.\\]",
+      "latex_explanation": "This is the exact chord-distance formula for the radius-\\(r\\) circle parametrized by signed arclength."
+    },
+    {
+      "declaration": "unitCircleArc_injOn",
+      "category": "supplement",
+      "informal_statement": "If \\(r>0\\) and \\(0<\\theta<\\pi\\), the map \\(\\gamma_r\\) is injective on \\([-r\\theta,r\\theta]\\).",
+      "latex_explanation": "The angular span is strictly less than one full revolution, so no two distinct parameters in the stated closed interval have the same complex point."
+    },
+    {
+      "declaration": "hausdorffMeasure_unitCircleArc_image_le",
+      "category": "supplement",
+      "informal_statement": "If \\(r>0\\), then for all real \\(a,b\\), \\[\\mathcal H^1\\!\\left(\\gamma_r([a,b])\\right)\\leq\\max\\{b-a,0\\}.\\]",
+      "latex_explanation": "This is an upper bound for the Hausdorff measure of the parametrized image; it is not an equality with the interval or with a carrier."
+    },
+    {
+      "declaration": "ofReal_dist_le_hausdorffMeasure_image_Icc",
+      "category": "supplement",
+      "informal_statement": "For a continuous map \\(f:\\mathbb R\\to E\\) into a metric Borel space and \\(u\\leq v\\), \\[\\operatorname{dist}(f(u),f(v))\\leq\\mathcal H^1\\!\\left(f([u,v])\\right).\\]",
+      "latex_explanation": "The image of the interval contains a connected path joining the endpoint images, so its one-dimensional Hausdorff measure dominates their distance. The assertion is a measure inequality, not a set equality."
+    },
+    {
+      "declaration": "image_Ico_eq_image_Icc_diff_endpoint",
+      "category": "supplement",
+      "informal_statement": "If \\(f\\) is injective on \\(S\\), \\(u\\leq v\\), and \\([u,v]\\subseteq S\\), then \\[f([u,v))=f([u,v])\\setminus\\{f(v)\\}.\\]",
+      "latex_explanation": "Injectivity removes precisely the final endpoint from the image of the half-open interval; the initial endpoint remains because it belongs to both intervals."
+    },
+    {
+      "declaration": "hausdorffMeasure_image_Ico_eq_Icc",
+      "category": "supplement",
+      "informal_statement": "If \\(f\\) is injective on \\(S\\), \\(u\\leq v\\), and \\([u,v]\\subseteq S\\), then \\[\\mathcal H^1(f([u,v)))=\\mathcal H^1(f([u,v])).\\]",
+      "latex_explanation": "The two images differ by the singleton \\(\\{f(v)\\}\\), which has zero one-dimensional Hausdorff measure. The theorem equates measures, not the underlying half-open and closed sets."
+    },
+    {
+      "declaration": "capPartitionPoint",
+      "category": "supplement",
+      "informal_statement": "For real \\(r,\\theta\\) and natural numbers \\(N,i\\), the signed-arclength partition point is \\[p_{N,i}=-r\\theta+i\\,\\frac{2r\\theta}{N}.\\]",
+      "latex_explanation": "This is only the affine partition-point definition; positivity, monotonicity, interval membership, and endpoint identities are established by separate declarations."
+    },
+    {
+      "declaration": "capPartitionPoint_zero",
+      "category": "supplement",
+      "informal_statement": "For all real \\(r,\\theta\\) and every natural number \\(N\\), \\(p_{N,0}=-r\\theta\\).",
+      "latex_explanation": "The initial partition point is the left endpoint without any positivity assumption on the radius, angle, or number of subdivisions."
+    },
+    {
+      "declaration": "capPartitionPoint_end",
+      "category": "supplement",
+      "informal_statement": "If \\(N>0\\), then for all real \\(r,\\theta\\), \\(p_{N,N}=r\\theta\\).",
+      "latex_explanation": "The final partition point equals the right endpoint; the positive natural-number hypothesis makes division by \\(N\\) legitimate."
+    },
+    {
+      "declaration": "monotone_capPartitionPoint",
+      "category": "supplement",
+      "informal_statement": "If \\(r>0\\), \\(\\theta>0\\), and \\(N>0\\), the map \\(i\\mapsto p_{N,i}\\) on natural indices is monotone.",
+      "latex_explanation": "The increment per index is \\(2r\\theta/N\\geq0\\), so the partition is ordered from left to right."
+    },
+    {
+      "declaration": "capPartitionPoint_mem",
+      "category": "supplement",
+      "informal_statement": "If \\(r>0\\), \\(\\theta>0\\), \\(N>0\\), and \\(i\\leq N\\), then \\[p_{N,i}\\in[-r\\theta,r\\theta].\\]",
+      "latex_explanation": "Monotonicity together with the two endpoint identities places every indexed point in the closed signed-arclength interval."
+    },
+    {
+      "declaration": "capPartitionPoint_dist",
+      "category": "supplement",
+      "informal_statement": "If \\(r>0\\), \\(0<\\theta<\\pi\\), and \\(N>0\\), then for every natural index \\(i\\), \\[\\operatorname{dist}(\\gamma_r(p_{N,i}),\\gamma_r(p_{N,i+1}))=2r\\sin(\\theta/N).\\]",
+      "latex_explanation": "Adjacent partition points have angular separation \\(\\theta/N\\); the circle chord formula gives the displayed distance. The source theorem has no additional bound on \\(i\\)."
+    },
+    {
+      "declaration": "cap_partition_polygon_lower",
+      "category": "supplement",
+      "informal_statement": "If \\(r>0\\), \\(0<\\theta<\\pi\\), and \\(N>0\\), then \\[\\operatorname{ofReal}\\!\\left(N\\,2r\\sin(\\theta/N)\\right)\\leq\\mathcal H^1\\!\\left(\\gamma_r([-r\\theta,r\\theta])\\right).\\]",
+      "latex_explanation": "The polygonal chain through the \\(N\\) partition points has total chord length on the left and lies in the circular-arc image, yielding a lower bound for its Hausdorff measure."
+    },
+    {
+      "declaration": "tendsto_cap_polygon_length",
+      "category": "supplement",
+      "informal_statement": "For every real \\(r\\) and every \\(\\theta>0\\), the sequence \\[ (n+1)\\,2r\\sin\\!\\left(\\frac{\\theta}{n+1}\\right) \\] converges to \\(2r\\theta\\) as \\(n\\to\\infty\\).",
+      "latex_explanation": "This limit uses the continuity of the normalized sinc function at zero and does not require a positive-radius hypothesis."
+    },
+    {
+      "declaration": "hausdorffMeasure_unitCircleArc_image_eq",
+      "category": "main",
+      "informal_statement": "If \\(r>0\\) and \\(0<\\theta<\\pi\\), then \\[\\mathcal H^1\\!\\left(\\gamma_r([-r\\theta,r\\theta])\\right)=\\operatorname{ofReal}(2r\\theta).\\]",
+      "latex_explanation": "The Lipschitz upper bound and polygonal lower bounds meet, giving the exact one-dimensional Hausdorff measure of the injective circular arc. The positive-radius premise is essential to the geometric statement."
+    },
+    {
+      "declaration": "unitCircleArcRotation",
+      "category": "supplement",
+      "informal_statement": "For real \\(r,m\\), rotation by phase \\(m/r\\) is the map \\(z\\mapsto z\\exp(i m/r)\\) on \\(\\mathbb C\\).",
+      "latex_explanation": "This definition is total in \\(r\\); later shift identities assume \\(r\\ne0\\)."
+    },
+    {
+      "declaration": "isometry_unitCircleArcRotation",
+      "category": "supplement",
+      "informal_statement": "The indicated coordinate-to-complex or rotation map preserves Euclidean distance.",
+      "latex_explanation": "Translations, reflections, rotations, and the coordinate realization preserve the metric, allowing Hausdorff-measure results for the standard circular parametrization to transfer to the modeled traces."
+    },
+    {
+      "declaration": "unitCircleArcRotation_apply",
+      "category": "supplement",
+      "informal_statement": "If \\(r\\ne0\\), then for all real \\(m,s\\), rotating \\(\\gamma_r(s)\\) by phase \\(m/r\\) gives \\[\\gamma_r(s+m).\\]",
+      "latex_explanation": "The nonzero-radius hypothesis permits the exponential-addition calculation that translates the signed-arclength parameter by \\(m\\)."
+    },
+    {
+      "declaration": "unitCircleArcRotation_image_Icc",
+      "category": "supplement",
+      "informal_statement": "If \\(r\\ne0\\), then for all real \\(m,u,v\\), \\[R_{r,m}(\\gamma_r([u,v]))=\\gamma_r([u+m,v+m]).\\]",
+      "latex_explanation": "The rotation identity is applied pointwise and the affine parameter translation carries the closed interval exactly to its translated interval."
+    },
+    {
+      "declaration": "hausdorffMeasure_unitCircleArc_image_eq_of_span_lt_two_pi",
+      "category": "main",
+      "informal_statement": "An injective circular arc whose signed-arclength span is less than \\(2\\pi r\\) has Euclidean \\(\\mathcal H^1\\)-measure equal to its parameter span.",
+      "latex_explanation": "The strict span bound prevents wraparound, so the circular image is a single non-self-overlapping arc and its one-dimensional Hausdorff measure is \\(\\operatorname{ofReal}(v-u)\\)."
+    },
+    {
+      "declaration": "capComplexIsometryMap",
+      "category": "supplement",
+      "informal_statement": "For a cap \\(c\\), the Euclidean realization map sends \\(z\\in\\mathbb C\\) to \\((c_x+\\operatorname{Im}z,c_y-R\\cos\\theta+\\operatorname{Re}z)\\) on the upper side and to \\((c_x+\\operatorname{Im}z,c_y+R\\cos\\theta-\\operatorname{Re}z)\\) on the lower side.",
+      "latex_explanation": "The two branches combine a translation, coordinate interchange, and optional reflection; the map sends the standard complex circle to the cap coordinates."
+    },
+    {
+      "declaration": "isometry_capComplexIsometryMap",
+      "category": "supplement",
+      "informal_statement": "The indicated coordinate-to-complex or rotation map preserves Euclidean distance.",
+      "latex_explanation": "Translations, reflections, rotations, and the coordinate realization preserve the metric, allowing Hausdorff-measure results for the standard circular parametrization to transfer to the modeled traces."
+    },
+    {
+      "declaration": "unitCircleArc_eq",
+      "category": "supplement",
+      "informal_statement": "For all real \\(r,s\\), \\[\\gamma_r(s)=r\\left(\\cos(s/r)+\\sin(s/r)\\,i\\right).\\]",
+      "latex_explanation": "This is the Euler-form expansion of the complex exponential used to read off real and imaginary coordinates."
+    },
+    {
+      "declaration": "unitCircleArc_re",
+      "category": "supplement",
+      "informal_statement": "For all real \\(r,s\\), \\[\\operatorname{Re}\\gamma_r(s)=r\\cos(s/r).\\]",
+      "latex_explanation": "The identity is obtained by taking the real coordinate of the exponential expansion."
+    },
+    {
+      "declaration": "unitCircleArc_im",
+      "category": "supplement",
+      "informal_statement": "For all real \\(r,s\\), \\[\\operatorname{Im}\\gamma_r(s)=r\\sin(s/r).\\]",
+      "latex_explanation": "The identity is obtained by taking the imaginary coordinate of the exponential expansion."
+    },
+    {
+      "declaration": "realizedCapParam",
+      "category": "supplement",
+      "informal_statement": "For every cap \\(c\\) and real \\(s\\), the Euclidean cap parametrization is \\(J(\\operatorname{capParam}_c(s))\\).",
+      "latex_explanation": "This is a definition by composition with the coordinate-to-Euclidean homeomorphism, not an existence theorem for a cap."
+    },
+    {
+      "declaration": "realizedCapParam_eq",
+      "category": "supplement",
+      "informal_statement": "For every cap \\(c\\) and real \\(s\\), the Euclidean cap parametrization equals the cap isometry applied to the standard circle point: \\[J(\\operatorname{capParam}_c(s))=\\Phi_c(\\gamma_{R}(s)).\\]",
+      "latex_explanation": "The equality identifies the coordinate parametrization with the explicit upper/lower Euclidean isometry and supplies the realization bridge for Hausdorff measure."
+    },
+    {
+      "declaration": "continuous_realizedCapParam",
+      "category": "supplement",
+      "informal_statement": "The indicated parametrization or cleared expression is continuous on its stated domain.",
+      "latex_explanation": "Continuity follows from continuity of the elementary coordinate, trigonometric, exponential, or square-root operations and is used for Hausdorff-measure transfer or an intermediate-value argument."
+    },
+    {
+      "declaration": "cap_arcLength_eq_two_radius_theta",
+      "category": "main",
+      "informal_statement": "For every one-sided cap \\(c\\), \\[L\\,\\frac{\\theta}{\\sin\\theta}=2R\\theta.\\]",
+      "latex_explanation": "The chord-radius relation converts the normalized scalar arc length into the geometric arc length. The cap hypotheses give \\(L>0\\) and \\(0<\\theta<\\pi\\), so division by \\(\\sin\\theta\\) is valid."
+    },
+    {
+      "declaration": "exact_euclidean_capParam_hausdorffMeasure",
+      "category": "main",
+      "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the indicated realized arc or segment trace equals its declared scalar length.",
+      "latex_explanation": "The relevant parametrization is continuous, injective on its closed parameter interval, and an isometric image of a unit-speed circular or affine path. Endpoints and finite joins do not alter the one-dimensional measure."
+    },
+    {
+      "declaration": "leftCoreParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\), write \\(R=c.\\operatorname{radius}\\), \\(\\phi=c.\\operatorname{sideAngle}\\), \\(s_-=-R\\phi\\), and \\(s_+=R\\phi\\). Then the left arclength map satisfies \\[\\operatorname{leftParam}_c([s_-,s_+])=c.\\operatorname{leftArcTrace}.\\]",
+      "latex_explanation": "Here \\(s_-\\) and \\(s_+\\) are the core arc endpoints. The theorem identifies the complete clipped circular trace, not the full side circle."
+    },
+    {
+      "declaration": "rightCoreParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\), write \\(R=c.\\operatorname{radius}\\), \\(\\phi=c.\\operatorname{sideAngle}\\), \\(s_-=-R\\phi\\), and \\(s_+=R\\phi\\). Then the right arclength map satisfies \\[\\operatorname{rightParam}_c([s_-,s_+])=c.\\operatorname{rightArcTrace}.\\]",
+      "latex_explanation": "The reflected parametrization covers precisely the clipped right circular trace on the same closed parameter interval."
+    },
+    {
+      "declaration": "leftCoreComplexIsometryMap",
+      "category": "supplement",
+      "informal_statement": "For a strip core \\(c\\), the left complex-to-Euclidean map is \\(z\\mapsto(c_{\\mathrm L}-\\operatorname{Re}z,\\operatorname{Im}z)\\).",
+      "latex_explanation": "The map places the standard circle at the left side-circle center and reverses its horizontal coordinate."
+    },
+    {
+      "declaration": "rightCoreComplexIsometryMap",
+      "category": "supplement",
+      "informal_statement": "For a strip core \\(c\\), the right complex-to-Euclidean map is \\(z\\mapsto(c_{\\mathrm R}+\\operatorname{Re}z,\\operatorname{Im}z)\\).",
+      "latex_explanation": "The map places the standard circle at the right side-circle center without horizontal reflection."
+    },
+    {
+      "declaration": "isometry_leftCoreComplexIsometryMap",
+      "category": "supplement",
+      "informal_statement": "The indicated coordinate-to-complex or rotation map preserves Euclidean distance.",
+      "latex_explanation": "Translations, reflections, rotations, and the coordinate realization preserve the metric, allowing Hausdorff-measure results for the standard circular parametrization to transfer to the modeled traces."
+    },
+    {
+      "declaration": "isometry_rightCoreComplexIsometryMap",
+      "category": "supplement",
+      "informal_statement": "The indicated coordinate-to-complex or rotation map preserves Euclidean distance.",
+      "latex_explanation": "Translations, reflections, rotations, and the coordinate realization preserve the metric, allowing Hausdorff-measure results for the standard circular parametrization to transfer to the modeled traces."
+    },
+    {
+      "declaration": "realizedLeftCoreParam",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\) and real \\(s\\), the realized left core parametrization is \\(J(\\operatorname{leftParam}_c(s))\\).",
+      "latex_explanation": "This definition transports the coordinate left-arc map to the Euclidean metric space used for Hausdorff measure."
+    },
+    {
+      "declaration": "realizedRightCoreParam",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\) and real \\(s\\), the realized right core parametrization is \\(J(\\operatorname{rightParam}_c(s))\\).",
+      "latex_explanation": "This is the corresponding Euclidean realization of the right coordinate arc."
+    },
+    {
+      "declaration": "realizedLeftCoreParam_eq",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\) and real \\(s\\), the realized left parametrization equals the left complex isometry applied to \\(\\gamma_R(s)\\).",
+      "latex_explanation": "The pointwise equality combines the real and imaginary coordinate formulas with the explicit left isometry."
+    },
+    {
+      "declaration": "realizedRightCoreParam_eq",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\) and real \\(s\\), the realized right parametrization equals the right complex isometry applied to \\(\\gamma_R(s)\\).",
+      "latex_explanation": "The pointwise equality is the reflected counterpart of the left realization identity."
+    },
+    {
+      "declaration": "continuous_realizedLeftCoreParam",
+      "category": "supplement",
+      "informal_statement": "The indicated parametrization or cleared expression is continuous on its stated domain.",
+      "latex_explanation": "Continuity follows from continuity of the elementary coordinate, trigonometric, exponential, or square-root operations and is used for Hausdorff-measure transfer or an intermediate-value argument."
+    },
+    {
+      "declaration": "continuous_realizedRightCoreParam",
+      "category": "supplement",
+      "informal_statement": "The indicated parametrization or cleared expression is continuous on its stated domain.",
+      "latex_explanation": "Continuity follows from continuity of the elementary coordinate, trigonometric, exponential, or square-root operations and is used for Hausdorff-measure transfer or an intermediate-value argument."
+    },
+    {
+      "declaration": "exact_euclidean_leftCoreParam_hausdorffMeasure",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\), write \\(R=c.\\operatorname{radius}\\), \\(\\phi=c.\\operatorname{sideAngle}\\), and \\(s_-=-R\\phi\\), \\(s_+=R\\phi\\). The Euclidean left arclength image has \\[\\mathcal H^1\\!\\left(J(\\operatorname{leftParam}_c([s_-,s_+]))\\right)=\\operatorname{ofReal}(s_+-s_-).\\]",
+      "latex_explanation": "The complex arc has exact Hausdorff mass equal to its parameter span, and the left complex map is an isometry. The interval endpoints are the core arc endpoints."
+    },
+    {
+      "declaration": "exact_euclidean_rightCoreParam_hausdorffMeasure",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\), write \\(R=c.\\operatorname{radius}\\), \\(\\phi=c.\\operatorname{sideAngle}\\), and \\(s_-=-R\\phi\\), \\(s_+=R\\phi\\). The Euclidean right arclength image has \\[\\mathcal H^1\\!\\left(J(\\operatorname{rightParam}_c([s_-,s_+]))\\right)=\\operatorname{ofReal}(s_+-s_-).\\]",
+      "latex_explanation": "The right isometry preserves the exact Hausdorff mass of the same signed-arclength interval."
+    },
+    {
+      "declaration": "realizedLeftCoreParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\), with \\(s_-=-c.\\operatorname{radius}\\,c.\\operatorname{sideAngle}\\) and \\(s_+=c.\\operatorname{radius}\\,c.\\operatorname{sideAngle}\\), \\[J(\\operatorname{leftParam}_c([s_-,s_+]))=J(c.\\operatorname{leftArcTrace}).\\]",
+      "latex_explanation": "Transporting the coordinate image equality through the homeomorphism gives the Euclidean image equality."
+    },
+    {
+      "declaration": "realizedRightCoreParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "For every strip core \\(c\\), with \\(s_-=-c.\\operatorname{radius}\\,c.\\operatorname{sideAngle}\\) and \\(s_+=c.\\operatorname{radius}\\,c.\\operatorname{sideAngle}\\), \\[J(\\operatorname{rightParam}_c([s_-,s_+]))=J(c.\\operatorname{rightArcTrace}).\\]",
+      "latex_explanation": "This is the corresponding transported equality for the right clipped arc."
+    },
+    {
+      "declaration": "exact_euclidean_leftArcTrace_hausdorffMeasure",
+      "category": "main",
+      "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the indicated realized arc or segment trace equals its declared scalar length.",
+      "latex_explanation": "The relevant parametrization is continuous, injective on its closed parameter interval, and an isometric image of a unit-speed circular or affine path. Endpoints and finite joins do not alter the one-dimensional measure."
+    },
+    {
+      "declaration": "exact_euclidean_rightArcTrace_hausdorffMeasure",
+      "category": "main",
+      "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the indicated realized arc or segment trace equals its declared scalar length.",
+      "latex_explanation": "The relevant parametrization is continuous, injective on its closed parameter interval, and an isometric image of a unit-speed circular or affine path. Endpoints and finite joins do not alter the one-dimensional measure."
+    },
+    {
+      "declaration": "segmentParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "For every horizontal segment with chord length \\(L\\), its affine parametrization maps the closed interval \\([{-L}/{2},{L}/{2}]\\) exactly onto its carrier.",
+      "latex_explanation": "The closed interval contains both segment endpoints and the carrier contains exactly the same horizontal points."
+    },
+    {
+      "declaration": "realizedSegmentParam",
+      "category": "supplement",
+      "informal_statement": "For every horizontal segment \\(g\\) and real \\(s\\), the Euclidean segment parametrization is \\(J(\\operatorname{segmentParam}_g(s))\\).",
+      "latex_explanation": "This is a definition transporting the coordinate affine segment into the Euclidean realization."
+    },
+    {
+      "declaration": "realizedSegmentParam_image_affineSegment",
+      "category": "supplement",
+      "informal_statement": "For every horizontal segment \\(g\\), the realized parameter image equals the Euclidean affine segment joining the realized left and right endpoints.",
+      "latex_explanation": "The exact closed parameter interval is carried affinely between the two endpoint images; this is a set equality in the Euclidean plane."
+    },
+    {
+      "declaration": "realizedSegmentParam_image_carrier",
+      "category": "supplement",
+      "informal_statement": "For every horizontal segment \\(g\\), the realized parametrization image equals \\(J(g.\\operatorname{carrier})\\).",
+      "latex_explanation": "The coordinate parametrization-carrier equality is transported through the homeomorphism."
+    },
+    {
+      "declaration": "segmentEndpoint_edist",
+      "category": "supplement",
+      "informal_statement": "For every horizontal segment \\(g\\), the extended distance between its realized endpoints is \\[\\operatorname{edist}(J(g.\\operatorname{leftEndpoint}),J(g.\\operatorname{rightEndpoint}))=\\operatorname{ofReal}(L).\\]",
+      "latex_explanation": "The Euclidean endpoint distance equals the positive segment length."
+    },
+    {
+      "declaration": "exact_euclidean_segmentCarrier_hausdorffMeasure",
+      "category": "main",
+      "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the indicated realized arc or segment trace equals its declared scalar length.",
+      "latex_explanation": "The relevant parametrization is continuous, injective on its closed parameter interval, and an isometric image of a unit-speed circular or affine path. Endpoints and finite joins do not alter the one-dimensional measure."
+    },
+    {
+      "declaration": "capParam_image_Icc_eq_arcTrace",
+      "category": "supplement",
+      "informal_statement": "For every one-sided cap \\(c\\), its cap parametrization maps \\([{-R\\theta},{R\\theta}]\\) exactly onto its arc trace.",
+      "latex_explanation": "The closed angular interval covers the selected minor, semicircular, or major arc including both endpoints."
+    },
+    {
+      "declaration": "realizedCapParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "For every one-sided cap \\(c\\), \\[J(\\operatorname{capParam}_c([{-R\\theta},{R\\theta}]))=J(c.\\operatorname{arcTrace}).\\]",
+      "latex_explanation": "This is the Euclidean transport of the exact coordinate image equality."
+    },
+    {
+      "declaration": "exact_euclidean_capTrace_hausdorffMeasure",
+      "category": "main",
+      "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the indicated realized arc or segment trace equals its declared scalar length.",
+      "latex_explanation": "The relevant parametrization is continuous, injective on its closed parameter interval, and an isometric image of a unit-speed circular or affine path. Endpoints and finite joins do not alter the one-dimensional measure."
+    },
+    {
+      "declaration": "measurableSet_euclidean_leftArcTrace",
+      "category": "supplement",
+      "informal_statement": "The indicated Euclidean trace is measurable.",
+      "latex_explanation": "It is a continuous image of a compact interval or a closed semialgebraic trace, so it is measurable in the Euclidean realization."
+    },
+    {
+      "declaration": "measurableSet_euclidean_rightArcTrace",
+      "category": "supplement",
+      "informal_statement": "The indicated Euclidean trace is measurable.",
+      "latex_explanation": "It is a continuous image of a compact interval or a closed semialgebraic trace, so it is measurable in the Euclidean realization."
+    },
+    {
+      "declaration": "measurableSet_euclidean_capTrace",
+      "category": "supplement",
+      "informal_statement": "The indicated Euclidean trace is measurable.",
+      "latex_explanation": "It is a continuous image of a compact interval or a closed semialgebraic trace, so it is measurable in the Euclidean realization."
+    },
+    {
+      "declaration": "pairwiseOverlap",
+      "category": "supplement",
+      "informal_statement": "For arbitrary sets \\(A,B,C,D\\), the pairwise-overlap set is the union of all six intersections \\(A\\cap B\\), \\(A\\cap C\\), \\(A\\cap D\\), \\(B\\cap C\\), \\(B\\cap D\\), and \\(C\\cap D\\).",
+      "latex_explanation": "This is a definition for unrestricted sets. It asserts neither finiteness nor nullity; those properties require separate assembly-specific hypotheses or theorems."
+    },
+    {
+      "declaration": "joinSet",
+      "category": "supplement",
+      "informal_statement": "For real \\(q\\), the join set is the four-point set \\[\\{(-q/2,1),(q/2,1),(-q/2,-1),(q/2,-1)\\}.\\]",
+      "latex_explanation": "This finite coordinate set records the possible junction points of the four primitive boundary traces."
+    },
+    {
+      "declaration": "fourArc_pairwiseOverlap_subset_joinSet",
+      "category": "supplement",
+      "informal_statement": "The pairwise overlaps of the displayed boundary pieces are contained in a finite set and therefore have zero Euclidean one-dimensional Hausdorff measure.",
+      "latex_explanation": "This prevents double counting at junctions while retaining all endpoints in the set-theoretic frontier."
+    },
+    {
+      "declaration": "joinSet_finite",
+      "category": "supplement",
+      "informal_statement": "For every real \\(q\\), the join set is finite.",
+      "latex_explanation": "The conclusion concerns the explicitly defined four-point set, not arbitrary overlaps."
+    },
+    {
+      "declaration": "euclideanJoinSet",
+      "category": "supplement",
+      "informal_statement": "For real \\(q\\), the Euclidean join set is \\(J(\\operatorname{joinSet}(q))\\).",
+      "latex_explanation": "This is the image of the coordinate join set under the Euclidean realization map."
+    },
+    {
+      "declaration": "euclideanJoinSet_finite",
+      "category": "supplement",
+      "informal_statement": "For every real \\(q\\), the Euclidean join set is finite.",
+      "latex_explanation": "An image of a finite set under the homeomorphism remains finite."
+    },
+    {
+      "declaration": "hausdorffMeasure_one_euclideanJoinSet",
+      "category": "supplement",
+      "informal_statement": "For every real \\(q\\), the Euclidean join set has zero one-dimensional Hausdorff measure: \\[\\mathcal H^1(J(\\operatorname{joinSet}(q)))=0.\\]",
+      "latex_explanation": "Finite sets are null for one-dimensional Hausdorff measure."
+    },
+    {
+      "declaration": "fourArc_pairwiseOverlap_h1_null",
+      "category": "supplement",
+      "informal_statement": "The pairwise overlaps of the displayed boundary pieces are contained in a finite set and therefore have zero Euclidean one-dimensional Hausdorff measure.",
+      "latex_explanation": "This prevents double counting at junctions while retaining all endpoints in the set-theoretic frontier."
+    },
+    {
+      "declaration": "fourArc_euclidean_frontier",
+      "category": "main",
+      "informal_statement": "The Euclidean frontier of a four-arc assembly is the union of its two strip-side arcs and its two exterior cap arcs.",
+      "latex_explanation": "The interface chords are internal to the union and therefore do not contribute to the complete frontier."
+    },
+    {
+      "declaration": "euclideanStripDensity",
+      "category": "supplement",
+      "informal_statement": "For real \\(\\lambda\\) and Euclidean point \\(z\\), the transported density is \\(f_\\lambda(J^{-1}z)\\).",
+      "latex_explanation": "This definition expresses the coordinate strip density in the Euclidean metric space used by the frontier measure."
+    },
+    {
+      "declaration": "euclideanStripDensity_integrableOn_of_measure_ne_top",
+      "category": "supplement",
+      "informal_statement": "If a Euclidean set \\(S\\) has finite \\(\\mathcal H^1\\)-measure, then the transported strip density is integrable on \\(S\\) with respect to \\(\\mathcal H^1\\), for every real \\(\\lambda\\).",
+      "latex_explanation": "The transported density is bounded by \\(1+|\\lambda|\\), so finite Hausdorff measure implies integrability."
+    },
+    {
+      "declaration": "upper_cap_integral",
+      "category": "supplement",
+      "informal_statement": "For every real \\(\\lambda\\) and every cap based at \\(y=1\\) on the upper side, \\[\\int_{J(\\operatorname{arcTrace}c)} f_\\lambda\\circ J^{-1}\\,d\\mathcal H^1=\\lambda\\,\\operatorname{arcLength}(c).\\]",
+      "latex_explanation": "The interior of the upper arc lies in the exterior-density region; the two endpoints are Hausdorff-null, so the integral is the exterior density times the exact arc length."
+    },
+    {
+      "declaration": "integral_four_union",
+      "category": "supplement",
+      "informal_statement": "Let \\(A,B,C,D\\) be Euclidean sets and \\(f\\) a function. If all six pairs are almost disjoint for \\(\\mathcal H^1\\), \\(B,C,D\\) are measurable, and \\(f\\) is integrable on each of \\(A,B,C,D\\), then \\[\\int_{A\\cup(B\\cup(C\\cup D))}f\\,d\\mathcal H^1=\\int_Af\\,d\\mathcal H^1+\\int_Bf\\,d\\mathcal H^1+\\int_Cf\\,d\\mathcal H^1+\\int_Df\\,d\\mathcal H^1.\\]",
+      "latex_explanation": "The six pairwise almost-disjoint hypotheses permit successive union-splitting, while the stated measurability and integrability hypotheses justify each set integral."
+    },
+    {
+      "declaration": "euclideanPairwiseOverlap",
+      "category": "supplement",
+      "informal_statement": "For arbitrary sets \\(A,B,C,D\\) in any type, the Euclidean pairwise-overlap expression is the union of all six pairwise intersections.",
+      "latex_explanation": "This polymorphic definition carries no finiteness, boundary, or nullity assumption."
+    },
+    {
+      "declaration": "pairwise_aedisjoint_of_overlap_null",
+      "category": "supplement",
+      "informal_statement": "If the one-dimensional Hausdorff measure of the union of all six pairwise intersections of Euclidean sets \\(A,B,C,D\\) is zero, then every one of the six pairs is almost disjoint for that measure.",
+      "latex_explanation": "The null-overlap hypothesis is an assumption and the conclusion is almost-disjointness. No finiteness conclusion about the overlap set follows from this declaration."
+    },
+    {
+      "declaration": "fourArc_frontier_weightedPerimeter_eq",
+      "category": "main",
+      "informal_statement": "The explicit four-arc component perimeter equals the canonical weighted perimeter obtained from the complete frontier.",
+      "latex_explanation": "The four exposed arcs are exactly the frontier, their pairwise intersections are \\(\\mathcal H^1\\)-null, and the density integrals give the component formula."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeShape",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) shape parameter is \\(q(h)=2h-1\\).",
+      "latex_explanation": "It maps regular curvature \\(0<h<1\\) to the principal trigonometric domain \\(-1<q<1\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeAngle",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) angle contribution is \\(B(q(h))=\\lambda\\arccos(q(h)/\\lambda)+\\arcsin q(h)\\).",
+      "latex_explanation": "Its additional \\(\\pi/2\\) in the area and perimeter formulas converts it to the geometric term \\(\\lambda\\alpha+\\pi-\\beta\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeDelta",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) radical displacement is \\(D(q(h))=\\sqrt{\\lambda^2-q(h)^2}/\\lambda-\\sqrt{1-q(h)^2}\\).",
+      "latex_explanation": "On the regular geometric domain this is \\(\\sin\\alpha-\\sin\\beta\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) scalar area is \\(A_3(h)=[B(q(h))+\\pi/2+(q(h)+2)D(q(h))]/h^2\\).",
+      "latex_explanation": "The geometric theorem identifies this real function with weighted carrier area when \\(\\lambda>1\\) and \\(0<h<1\\); closed formula values are used only where justified."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreePerimeter",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) scalar perimeter is \\(P_3(h)=2[B(q(h))+\\pi/2+D(q(h))]/h\\).",
+      "latex_explanation": "Its geometric realization includes the bottom density-one segment as well as the three arcs."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourAngle",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iv}\\) angle contribution is \\(B(h)=\\lambda\\arccos(h/\\lambda)+\\arcsin h\\).",
+      "latex_explanation": "The exterior and interior arc-angle contributions are combined with their respective density weights."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourDelta",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iv}\\) radical displacement is \\(D(h)=\\sqrt{\\lambda^2-h^2}/\\lambda-\\sqrt{1-h^2}\\).",
+      "latex_explanation": "Both square roots are nonnegative; their derivative formulas are invoked only in the regular open domain."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourArea",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iv}\\) scalar area is \\(A_4(h)=2[B(h)+hD(h)]/h^2\\).",
+      "latex_explanation": "For a CMV candidate, this is its weighted coordinate area on the complete modeled range \\(0<h\\leq1\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourPerimeter",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iv}\\) scalar perimeter is \\(P_4(h)=4B(h)/h\\).",
+      "latex_explanation": "The formula remains finite at \\(h=1\\), unlike the regular fold expression."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeFold",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) fold is \\(F_3(h)=4h[(1+q)/\\sqrt{1-q^2}-(\\lambda^2+q)/(\\lambda\\sqrt{\\lambda^2-q^2})]-2[B(q)+\\pi/2+D(q)]\\), with \\(q=2h-1\\).",
+      "latex_explanation": "On \\(\\lambda>1\\), \\(0<h<1\\), the identity \\(A_3'(h)=F_3(h)/h^3\\) makes this the numerator controlling the sign of the area derivative."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourFold",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iv}\\) fold is \\(F_4(h)=4[h(1/\\sqrt{1-h^2}-\\lambda/\\sqrt{\\lambda^2-h^2})-B(h)]\\).",
+      "latex_explanation": "Its zero on the regular interval is the stationary area curvature. The proof never interprets its totalized endpoint value as a geometric derivative."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.reducedFoldGap",
+      "category": "supplement",
+      "informal_statement": "The reduced stationary gap is \\(G(r,s)=(r-s)[1/\\sqrt{1-s^2}-\\lambda/\\sqrt{\\lambda^2-s^2}]/s+(r/s)D(s)-D(q(r))\\).",
+      "latex_explanation": "Equal-area and stationary-fold identities make \\(P_3(r)-P_4(s)=4G(r,s)\\). This algebraic elimination is retained in the closure but is not needed to prove negativity via concavity."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.centered_meanValue_exists",
+      "category": "supplement",
+      "informal_statement": "If \\(f\\) has derivative \\(g(x)\\) throughout the closed interval between \\(c\\) and \\(h\\), some \\(\\xi\\) in that interval satisfies \\(f(h)=f(c)+g(\\xi)(h-c)\\).",
+      "latex_explanation": "This centered mean value theorem covers either order of the endpoints and also their equality."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeAngle_add_halfPi",
+      "category": "supplement",
+      "informal_statement": "For all real parameters, \\(B(q(h))+\\pi/2=\\lambda\\arccos(q(h)/\\lambda)+\\pi-\\arccos(q(h))\\).",
+      "latex_explanation": "The identity uses the globally valid relation between principal arcsine and arccosine and aligns the analytic and coordinate angle terms."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeShape",
+      "category": "supplement",
+      "informal_statement": "The shape function has derivative \\(q'(h)=2\\) for every real \\(h\\).",
+      "latex_explanation": "This elementary affine derivative supplies the chain-rule factor in the type-\\(\\mathrm{iii}\\) calculations."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeAngle",
+      "category": "supplement",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), the derivative of \\(B(q(h))\\) is \\(2[1/\\sqrt{1-q(h)^2}-\\lambda/\\sqrt{\\lambda^2-q(h)^2}]\\).",
+      "latex_explanation": "The regular domain ensures both inverse-trigonometric arguments are interior and both radical denominators are nonzero."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeDelta",
+      "category": "supplement",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), the derivative of \\(D(q(h))\\) is \\(2q(h)[1/\\sqrt{1-q(h)^2}-1/(\\lambda\\sqrt{\\lambda^2-q(h)^2})]\\).",
+      "latex_explanation": "Differentiate the two square roots and apply \\(q'(h)=2\\), retaining the common shape argument."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourAngle",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(B'(h)=1/\\sqrt{1-h^2}-\\lambda/\\sqrt{\\lambda^2-h^2}\\).",
+      "latex_explanation": "The principal inverse-trigonometric derivatives and positive density simplify to this expression."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourDelta",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(D'(h)=h/\\sqrt{1-h^2}-h/(\\lambda\\sqrt{\\lambda^2-h^2})\\).",
+      "latex_explanation": "The formula implies strict positivity for positive regular curvature and supports the monotonicity and concavity comparisons."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.radicalCubeGap_pos",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(-1<x<1\\), \\(K(x)=(1-x^2)^{-3/2}-\\lambda(\\lambda^2-x^2)^{-3/2}>0\\).",
+      "latex_explanation": "For nonzero shape, compare squared radicals; at zero the expression is \\(1-\\lambda^{-2}\\). This supplies fold monotonicity on both shape halves."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeFold",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(F_3'(h)=16h^2K(q(h))\\).",
+      "latex_explanation": "The exact derivative is positive by the radical-cube comparison, even when \\(q(h)\\) is negative."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourFold",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(F_4'(h)=4h^2K(h)\\).",
+      "latex_explanation": "Cancellation of the first-order angle terms leaves the strictly positive radical-cube expression."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourArea",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(A_4'(h)=F_4(h)/h^3\\).",
+      "latex_explanation": "The denominator is positive, so the fold and area derivative have exactly the same sign."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThree_variational_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), both type-\\(\\mathrm{iii}\\) scalar functions are differentiable and \\(P_3'(h)=hA_3'(h)\\).",
+      "latex_explanation": "The statement records actual differentiability as well as the variational derivative identity used in the support and envelope arguments."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreePerimeter_deriv_eq_height_mul_area_deriv",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(P_3'(h)=hA_3'(h)\\).",
+      "latex_explanation": "This derivative equality is extracted from the stronger differentiability statement; it expresses curvature as the marginal perimeter cost along the family."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_deriv_eq_explicit",
+      "category": "supplement",
+      "informal_statement": "If \\(\\lambda>1\\) and \\(0<h<1\\), put \\(q=2h-1\\), \\[U=\\frac1{\\sqrt{1-q^2}}-\\frac{\\lambda}{\\sqrt{\\lambda^2-q^2}},\\qquad V=\\frac1{\\sqrt{1-q^2}}-\\frac1{\\lambda\\sqrt{\\lambda^2-q^2}}.\\] Then \\[A_3'(h)=\\frac{\\bigl(2(2U+2qV)h-2(B(q)+\\pi/2+D(q))\\bigr)}{h^3}.\\]",
+      "latex_explanation": "The derivative of the shape displacement contributes \\(2qV\\), so the numerator contains \\(2U+2qV\\), not \\(2U+qV\\). This is the exact explicit derivative identity on the regular domain."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeArea",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(A_3'(h)=F_3(h)/h^3\\).",
+      "latex_explanation": "The statement gives the derivative itself, not merely a sign implication, and licenses the mean value arguments."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFour_variational_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), both type-\\(\\mathrm{iv}\\) scalar functions are differentiable and \\(P_4'(h)=hA_4'(h)\\).",
+      "latex_explanation": "Together with its type-\\(\\mathrm{iii}\\) counterpart, this produces the equal-area envelope derivative."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_centered_meanValue",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(c,h\\in(0,1)\\), some \\(\\xi\\) between them satisfies \\(A_3(h)=A_3(c)+F_3(\\xi)(h-c)/\\xi^3\\).",
+      "latex_explanation": "This mean value identity locates a negative fold when the area strictly drops between two ordered regular heights."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_tendsto_atRight_zero",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), \\(A_3(h)\\to+\\infty\\) as \\(h\\downarrow0\\).",
+      "latex_explanation": "The numerator tends to \\(\\lambda\\arccos(-1/\\lambda)+\\sqrt{\\lambda^2-1}/\\lambda>0\\), while the denominator tends to zero through positive values."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeFold_strictMonoOn",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), \\(F_3\\) is strictly increasing on \\((0,1)\\).",
+      "latex_explanation": "Its derivative is \\(16h^2K(q(h))>0\\); this controls the entire descending branch, not a chosen numerical slab."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeFold_zero_between_of_area_eq",
+      "category": "main",
+      "informal_statement": "If \\(\\lambda>1\\), \\(0<a<b\\leq1\\), and \\(A_3(a)=A_3(b)\\), then some \\(c\\in(a,b)\\) satisfies \\(F_3(c)=0\\).",
+      "latex_explanation": "Continuity of the area at the possible right endpoint and Rolle's theorem give an interior derivative zero, where the positive denominator can be cleared."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_root_le_of_fold_neg",
+      "category": "main",
+      "informal_statement": "A regular negative-fold root is the least root of its area level in \\((0,1]\\).",
+      "latex_explanation": "Precisely, if \\(\\lambda>1\\), \\(r\\in(0,1)\\), \\(y\\in(0,1]\\), \\(F_3(r)<0\\), and \\(A_3(y)=A_3(r)\\), then \\(r\\leq y\\); a smaller root would force an earlier fold zero."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\), a regular anchor \\(a\\) with \\(F_3(a)<0\\), and \\(V\\geq A_3(a)\\), there is exactly one regular \\(r\\) with \\(A_3(r)=V\\) and \\(F_3(r)<0\\).",
+      "latex_explanation": "Divergence at zero and strict descent produce a root at or below the anchor; the least-root property proves uniqueness among all negative-fold roots."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourFold_strictMonoOn",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), \\(F_4\\) is strictly increasing on \\((0,1)\\).",
+      "latex_explanation": "Its positive derivative gives uniqueness of any regular stationary curvature and the opposite derivative signs on either side."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourArea_deriv_neg_before_zero",
+      "category": "main",
+      "informal_statement": "If \\(s\\in(0,1)\\) satisfies \\(F_4(s)=0\\), then \\(A_4'(h)<0\\) for \\(0<h<s\\), assuming \\(\\lambda>1\\).",
+      "latex_explanation": "Strict fold monotonicity gives \\(F_4(h)<0\\), and division by \\(h^3>0\\) preserves the sign."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourArea_deriv_pos_after_zero",
+      "category": "main",
+      "informal_statement": "If \\(s\\in(0,1)\\) satisfies \\(F_4(s)=0\\), then \\(A_4'(h)>0\\) for \\(s<h<1\\), assuming \\(\\lambda>1\\).",
+      "latex_explanation": "This is the increasing side of the area profile after its unique fold."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourArea_fold_le",
+      "category": "main",
+      "informal_statement": "If \\(\\lambda>1\\), \\(s\\in(0,1)\\), and \\(F_4(s)=0\\), then \\(A_4(s)\\leq A_4(h)\\) for every \\(0<h\\leq1\\).",
+      "latex_explanation": "The regular derivative signs prove the minimum property; continuity of the finite area formula covers \\(h=1\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique_of_stationary_pair",
+      "category": "main",
+      "informal_statement": "A regular stationary equal-area pair with negative type-\\(\\mathrm{iii}\\) fold yields a unique descending type-\\(\\mathrm{iii}\\) equal-area root for each \\(0<h\\leq1\\).",
+      "latex_explanation": "Assume \\(\\lambda>1\\), \\(r,s\\in(0,1)\\), \\(A_3(r)=A_4(s)\\), \\(F_3(r)<0\\), and \\(F_4(s)=0\\). The type-\\(\\mathrm{iv}\\) minimum ensures every target area is at least the anchor area."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.StationaryEqualAreaPair",
+      "category": "main",
+      "informal_statement": "A stationary equal-area pair stores \\(1/2<r<1\\), \\(0<s<1\\), \\(A_3(r)=A_4(s)\\), and \\(F_4(s)=0\\).",
+      "latex_explanation": "The structure does not by itself assume \\(\\lambda>1\\), root order, negative type-\\(\\mathrm{iii}\\) fold, or a perimeter improvement; those are supplied or proved separately."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.equalArea_gap_identity",
+      "category": "supplement",
+      "informal_statement": "If \\(r,s\\ne0\\) and \\(A_3(r)=A_4(s)\\), then \\(P_3(r)-P_4(s)=4[(r-s)B(s)/s^2+(r/s)D(s)-D(q(r))]\\).",
+      "latex_explanation": "This algebraic identity eliminates the type-\\(\\mathrm{iii}\\) angle term using equal area. It imposes no density or regularity restriction beyond the stated nonzero denominators."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.stationaryEqualArea_gap_identity",
+      "category": "supplement",
+      "informal_statement": "If \\(r,s\\ne0\\), \\(A_3(r)=A_4(s)\\), and \\(F_4(s)=0\\), then \\(P_3(r)-P_4(s)=4G(r,s)\\).",
+      "latex_explanation": "Substitute the stationary relation for \\(B(s)\\) into the equal-area gap identity; the theorem is an exact algebraic reduction."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.stationaryEqualArea_typeThree_improves_iff",
+      "category": "supplement",
+      "informal_statement": "Under the same nonzero, equal-area, and stationary hypotheses, \\(P_3(r)<P_4(s)\\) is equivalent to \\(G(r,s)<0\\).",
+      "latex_explanation": "The exact factor relating the two gaps is four, so their strict signs agree."
+    },
+    {
+      "declaration": "ell",
+      "category": "main",
+      "informal_statement": "The normalized arc length on a unit chord is \\(\\ell(\\theta)=\\theta/\\sin\\theta\\).",
+      "latex_explanation": "For the geometric interval \\(0<\\theta<\\pi\\), chord-radius scaling gives the usual circular arc length; the real definition is total outside that interval."
+    },
+    {
+      "declaration": "area",
+      "category": "main",
+      "informal_statement": "The normalized cap area on a unit chord is \\(a(\\theta)=(\\theta-\\sin\\theta\\cos\\theta)/(4\\sin^2\\theta)\\).",
+      "latex_explanation": "Scaling the chord by \\(L\\) multiplies this area by \\(L^2\\); the geometric interpretation uses \\(0<\\theta<\\pi\\)."
+    },
+    {
+      "declaration": "area_pos",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\theta<\\pi\\), \\(a(\\theta)>0\\).",
+      "latex_explanation": "The circular-segment numerator and squared sine denominator are positive on the full minor-to-major angular interval."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_lt_typeFourArea",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\), \\(A_3(h)<A_4(h)\\).",
+      "latex_explanation": "The proof compares the area numerators using increasing angle and displacement functions and a positive endpoint-controlled margin; the negative shape case uses reflection identities."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourSupport",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iv}\\) support term is \\(S(x)=B(x)-xD(x)\\).",
+      "latex_explanation": "This is a scalar function, related by an exact identity to the difference of the two families' \\(P-hA\\) values."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourSupport_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<x<1\\), \\(S'(x)=-2D(x)\\).",
+      "latex_explanation": "Differentiating \\(B-xD\\) and simplifying the radicals cancels the other terms."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourSupport_concaveOn",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\), \\(S\\) is concave on \\([0,1]\\).",
+      "latex_explanation": "The displacement is increasing, so \\(S'=-2D\\) is nonincreasing; continuity extends the conclusion to both endpoints."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourSupport_one_gt_halfPi",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\), \\(S(1)>\\pi/2\\).",
+      "latex_explanation": "The excess is \\(\\lambda\\arccos(1/\\lambda)-\\sqrt{\\lambda^2-1}/\\lambda\\), positive by \\(\\sin\\theta<\\theta\\) at \\(\\theta=\\arccos(1/\\lambda)>0\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourSupport_midpoint",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(1/2<h<1\\), \\(S(2h-1)+S(1)\\leq2S(h)\\).",
+      "latex_explanation": "The curvature \\(h\\) is the midpoint of \\(2h-1\\) and one, both in the concavity interval."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.sameHeight_support_identity",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\) and \\(h\\ne0\\), \\(h[(P_3(h)-hA_3(h))-(P_4(h)-hA_4(h))]=S(2h-1)+\\pi/2-2S(h)\\).",
+      "latex_explanation": "This is a direct algebraic identity of the scalar definitions; density and regularity enter only when its sign is evaluated."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThree_support_lt_typeFour_support",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(1/2<h<1\\), \\(P_3(h)-hA_3(h)<P_4(h)-hA_4(h)\\).",
+      "latex_explanation": "Concavity at the exact midpoint and the strict endpoint margin make the support identity negative, and \\(h>0\\) preserves the sign."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_continuousAt_one",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\), the scalar function \\(A_3\\) is continuous at one.",
+      "latex_explanation": "Only the finite formula is asserted at this endpoint; no regular type-\\(\\mathrm{iii}\\) assembly or endpoint fold derivative is introduced."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_le_max_endpoints",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<a\\leq x\\leq b\\leq1\\), \\(A_3(x)\\leq\\max\\{A_3(a),A_3(b)\\}\\).",
+      "latex_explanation": "Increasing fold means the derivative can switch sign only from negative to positive; continuity permits the upper endpoint to be one."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeAreaSupport",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) area-support function at target \\(V\\) is \\(H_V(x)=P_3(x)+x(V-A_3(x))\\).",
+      "latex_explanation": "At an equal-area root its value is exactly the type-\\(\\mathrm{iii}\\) perimeter."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeAreaSupport_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\), real \\(V\\), and \\(0<x<1\\), \\(H_V'(x)=V-A_3(x)\\).",
+      "latex_explanation": "The derivative cancellation follows from \\(P_3'(x)=xA_3'(x)\\), turning an area sublevel bound into support monotonicity."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreePerimeter_lt_typeFourPerimeter_of_equalArea",
+      "category": "main",
+      "informal_statement": "If \\(\\lambda>1\\), \\(1/2<r<h<1\\), and \\(A_3(r)=A_4(h)\\), then \\(P_3(r)<P_4(h)\\).",
+      "latex_explanation": "The area endpoint bound makes \\(H_V\\) nondecreasing on \\([r,h]\\), while the same-height support comparison makes its final value strictly less than \\(P_4(h)\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeFold_neg_of_equalArea_of_lt",
+      "category": "main",
+      "informal_statement": "If \\(\\lambda>1\\), \\(0<r<h<1\\), and \\(A_3(r)=A_4(h)\\), then \\(F_3(r)<0\\).",
+      "latex_explanation": "The same-curvature area inequality gives \\(A_3(h)<A_3(r)\\); the mean value theorem and increasing fold force negativity already at \\(r\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_lt",
+      "category": "main",
+      "informal_statement": "If \\(\\lambda>1\\), \\(r\\in(0,1)\\), \\(0<h\\leq1\\), \\(F_3(r)<0\\), and \\(A_3(r)=A_4(h)\\), then \\(r<h\\).",
+      "latex_explanation": "If the source height were no larger than the root, descent of \\(A_3\\) before the root would contradict the strict same-curvature area comparison."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold",
+      "category": "main",
+      "informal_statement": "The cleared type-\\(\\mathrm{iv}\\) fold is \\(C(h)=h[\\sqrt{\\lambda^2-h^2}-\\lambda\\sqrt{1-h^2}]-B(h)\\sqrt{1-h^2}\\sqrt{\\lambda^2-h^2}\\).",
+      "latex_explanation": "Unlike the raw fold, this formula has no radical denominators and is continuous at the closure endpoint."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_continuous",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\), the cleared fold \\(C\\) is continuous on the real line.",
+      "latex_explanation": "The total real square-root and inverse-trigonometric functions are continuous; no division by a height-dependent radical remains."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_continuousOn",
+      "category": "supplement",
+      "informal_statement": "For every real \\(\\lambda\\), \\(C\\) is continuous on \\([9/10,1]\\).",
+      "latex_explanation": "This is the restriction of its global continuity to the interval used for the stationary-root intermediate value argument."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_eq_fold",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(C(h)=\\sqrt{1-h^2}\\sqrt{\\lambda^2-h^2}F_4(h)/4\\).",
+      "latex_explanation": "Clearing the two nonzero radical denominators gives the exact relation between the continuous extension and the actual fold."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_multiplier_pos",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), the multiplier \\(\\sqrt{1-h^2}\\sqrt{\\lambda^2-h^2}/4\\) is strictly positive.",
+      "latex_explanation": "Consequently zeros and signs of the cleared and raw folds agree throughout the regular domain."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_nine_tenths_neg",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), \\(C(9/10)<0\\).",
+      "latex_explanation": "At this fixed height, the positive term in the raw fold is less than \\(27/20\\), while \\(B(9/10)\\geq\\pi/2>27/20\\); the multiplier preserves strict negativity."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_one_pos",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), \\(C(1)>0\\).",
+      "latex_explanation": "The endpoint simplifies exactly to \\(\\sqrt{\\lambda^2-1}\\), which is positive without evaluating the raw fold there."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourFold_zero_exists",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), there exists \\(s\\in(9/10,1)\\) with \\(F_4(s)=0\\).",
+      "latex_explanation": "The intermediate value theorem applies to the cleared fold with opposite endpoint signs; positivity of its multiplier recovers a regular zero of the original fold."
+    },
+    {
+      "declaration": "TypeThreeAssembly",
+      "category": "main",
+      "informal_statement": "A regular type-\\(\\mathrm{iii}\\) assembly stores \\(\\lambda>1\\) and a curvature \\(0<h<1\\).",
+      "latex_explanation": "The strict curvature range gives radius \\(R=1/h>1\\), so the carrier is the regular branch-complete source geometry rather than the closure endpoint."
+    },
+    {
+      "declaration": "TypeThreeAssembly.radius",
+      "category": "supplement",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) assembly radius is \\(R=1/h\\).",
+      "latex_explanation": "The reciprocal-curvature convention is used for every circular component and is strictly positive on the regular domain."
+    },
+    {
+      "declaration": "TypeThreeAssembly.shapeParameter",
+      "category": "supplement",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) shape parameter is \\(q=2h-1\\).",
+      "latex_explanation": "For \\(0<h<1\\), it lies in \\((-1,1)\\), so the principal angles \\(\\arccos q\\) and \\(\\arccos(q/\\lambda)\\) are defined on their intended branches."
+    },
+    {
+      "declaration": "TypeThreeAssembly.innerAngle",
+      "category": "supplement",
+      "informal_statement": "The inner strip angle is \\(\\beta=\\arccos(2h-1)\\).",
+      "latex_explanation": "It is the principal angle whose cosine is the source shape parameter."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerArgument",
+      "category": "supplement",
+      "informal_statement": "The Snell-adjusted outer cosine argument is \\(q/\\lambda\\).",
+      "latex_explanation": "The density jump \\(\\lambda>1\\) keeps this argument in \\((-1,1)\\) whenever \\(q\\in(-1,1)\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerAngle",
+      "category": "supplement",
+      "informal_statement": "The exterior cap half-angle is \\(\\alpha=\\arccos(q/\\lambda)\\).",
+      "latex_explanation": "This is the principal branch selected by the density-scaled incidence relation."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideArcAngle",
+      "category": "supplement",
+      "informal_statement": "For a regular type-\\(\\mathrm{iii}\\) assembly with \\(\\beta=\\arccos(2h-1)\\), the side-arc angle is \\(\\gamma=\\pi-\\beta\\).",
+      "latex_explanation": "Here \\(\\gamma\\) is the full central-angle span of each individual clipped strip-side trace. It is the half-central angle of the auxiliary lower cap whose two congruent halves represent the two side traces; it is not the half-angle of an individual side trace."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideHalfWidth",
+      "category": "supplement",
+      "informal_statement": "The half-width of the bottom interface segment is \\(R(\\sin\\alpha-\\sin\\beta)\\).",
+      "latex_explanation": "Its nonnegativity and its zero exactly at \\(h=1/2\\) encode the branch transition and the possible degenerate bottom segment."
+    },
+    {
+      "declaration": "TypeThreeAssembly.leftCenter",
+      "category": "supplement",
+      "informal_statement": "For a regular type-\\(\\mathrm{iii}\\) assembly with radius \\(R\\) and half-width \\(w\\), the left side-circle center is \\((-w,R-1)\\).",
+      "latex_explanation": "The complete side circle need not lie inside the strip; for example its height is \\(R-1\\), which can exceed \\(1\\). Only the selected disk segment is clipped by \\(-1\\leq y\\leq1\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.rightCenter",
+      "category": "supplement",
+      "informal_statement": "The right side-circle center is \\((w,R-1)\\).",
+      "latex_explanation": "As on the left, the theorem concerns the full circle center; the right selected segment, rather than the full circle, is restricted to the strip."
+    },
+    {
+      "declaration": "TypeThreeAssembly.upperCenter",
+      "category": "supplement",
+      "informal_statement": "The upper exterior-circle center is \\((0,1-R\\cos\\alpha)\\).",
+      "latex_explanation": "This coordinate is determined by the upper cap base line, radius, and exterior half-central angle."
+    },
+    {
+      "declaration": "TypeThreeAssembly.rectangleCarrier",
+      "category": "supplement",
+      "informal_statement": "The central rectangular part of the type-\\(\\mathrm{iii}\\) core is \\(\\{(x,y):-w\\leq x\\leq w,\\ -1\\leq y\\leq1\\}\\).",
+      "latex_explanation": "This is a closed coordinate rectangle between the translated side segments."
+    },
+    {
+      "declaration": "TypeThreeAssembly.leftSegmentCarrier",
+      "category": "supplement",
+      "informal_statement": "The left core segment is \\(\\{(x,y):(x+w)^2+(y-(R-1))^2\\leq R^2,\\ x\\leq-w,\\ |y|\\leq1\\}\\).",
+      "latex_explanation": "The set is the left disk clipped both to the exterior side of the rectangle and to the closed strip; the full side circle is not asserted to be contained in the strip."
+    },
+    {
+      "declaration": "TypeThreeAssembly.rightSegmentCarrier",
+      "category": "supplement",
+      "informal_statement": "The right core segment is \\(\\{(x,y):(x-w)^2+(y-(R-1))^2\\leq R^2,\\ w\\leq x,\\ |y|\\leq1\\}\\).",
+      "latex_explanation": "This is the reflected right disk segment with the same explicit strip clipping."
+    },
+    {
+      "declaration": "TypeThreeAssembly.coreCarrier",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) core carrier is the union of the central rectangle, left clipped disk segment, and right clipped disk segment.",
+      "latex_explanation": "The definition forms the actual coordinate set inside the closed strip before the upper exterior cap is attached."
+    },
+    {
+      "declaration": "TypeThreeAssembly.leftArcTrace",
+      "category": "supplement",
+      "informal_statement": "The left side trace is \\(\\{(x,y):(x+w)^2+(y-(R-1))^2=R^2,\\ x\\leq-w,\\ -1\\leq y\\leq1\\}\\).",
+      "latex_explanation": "This is the exposed circular boundary of the left clipped segment, including its interface endpoints."
+    },
+    {
+      "declaration": "TypeThreeAssembly.rightArcTrace",
+      "category": "supplement",
+      "informal_statement": "The right side trace is \\(\\{(x,y):(x-w)^2+(y-(R-1))^2=R^2,\\ w\\leq x,\\ -1\\leq y\\leq1\\}\\).",
+      "latex_explanation": "This is the reflected exposed circular boundary of the right clipped segment."
+    },
+    {
+      "declaration": "TypeThreeAssembly.leftArcParam",
+      "category": "supplement",
+      "informal_statement": "The left signed-arclength map is \\[s\\longmapsto(-w+R\\sin(s/R),\\ R-1-R\\cos(s/R)).\\]",
+      "latex_explanation": "Its parameter interval later runs from the upper junction through the bottom point, and its image is the clipped left trace."
+    },
+    {
+      "declaration": "TypeThreeAssembly.rightArcParam",
+      "category": "supplement",
+      "informal_statement": "The right signed-arclength map is \\[s\\longmapsto(w+R\\sin(s/R),\\ R-1-R\\cos(s/R)).\\]",
+      "latex_explanation": "This reflected map runs from the bottom point to the upper right junction."
+    },
+    {
+      "declaration": "TypeThreeAssembly.bottomSegmentCarrier",
+      "category": "main",
+      "informal_statement": "The bottom segment carrier is \\(\\{(x,-1):|x|\\leq w\\}\\).",
+      "latex_explanation": "The definition includes the singleton \\(\\{(0,-1)\\}\\) when \\(w=0\\); it does not discard the degenerate boundary component."
+    },
+    {
+      "declaration": "TypeThreeAssembly.bottomChord",
+      "category": "main",
+      "informal_statement": "The bottom-segment length parameter is \\(2w\\).",
+      "latex_explanation": "It is nonnegative and vanishes exactly at the semicircular transition."
+    },
+    {
+      "declaration": "TypeThreeAssembly.radius_pos",
+      "category": "supplement",
+      "informal_statement": "Every regular type-\\(\\mathrm{iii}\\) assembly has \\(R>0\\).",
+      "latex_explanation": "This follows from the assembly hypothesis \\(h>0\\) and the reciprocal-radius definition."
+    },
+    {
+      "declaration": "TypeThreeAssembly.one_lt_radius",
+      "category": "supplement",
+      "informal_statement": "Every regular type-\\(\\mathrm{iii}\\) assembly has \\(R>1\\).",
+      "latex_explanation": "The strict curvature bound \\(h<1\\) gives a radius strictly larger than the strip half-height."
+    },
+    {
+      "declaration": "TypeThreeAssembly.shapeParameter_mem",
+      "category": "main",
+      "informal_statement": "For \\(0<h<1\\), the shape parameter \\(q=2h-1\\) satisfies \\(-1<q<1\\).",
+      "latex_explanation": "This places the principal inner angle in its nondegenerate arccosine domain."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerArgument_mem",
+      "category": "main",
+      "informal_statement": "For \\(\\lambda>1\\) and \\(-1<q<1\\), the exterior argument \\(q/\\lambda\\) satisfies \\(-1<q/\\lambda<1\\).",
+      "latex_explanation": "Positivity and strict largeness of the density parameter preserve the interior arccosine domain after division."
+    },
+    {
+      "declaration": "TypeThreeAssembly.innerAngle_pos",
+      "category": "supplement",
+      "informal_statement": "The principal inner angle \\(\\beta=\\arccos q\\) is positive.",
+      "latex_explanation": "The shape parameter is strictly below one."
+    },
+    {
+      "declaration": "TypeThreeAssembly.innerAngle_lt_pi",
+      "category": "supplement",
+      "informal_statement": "The principal inner angle satisfies \\(\\beta<\\pi\\).",
+      "latex_explanation": "The shape parameter is strictly above minus one."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerAngle_pos",
+      "category": "supplement",
+      "informal_statement": "The principal exterior angle \\(\\alpha=\\arccos(q/\\lambda)\\) is positive.",
+      "latex_explanation": "The exterior argument is strictly below one."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerAngle_lt_pi",
+      "category": "supplement",
+      "informal_statement": "The principal exterior angle satisfies \\(\\alpha<\\pi\\).",
+      "latex_explanation": "The exterior argument is strictly above minus one."
+    },
+    {
+      "declaration": "TypeThreeAssembly.cos_innerAngle",
+      "category": "main",
+      "informal_statement": "The principal inner angle satisfies \\(\\cos\\beta=q\\).",
+      "latex_explanation": "This is the principal arccosine identity on \\([-1,1]\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.cos_outerAngle",
+      "category": "main",
+      "informal_statement": "The principal exterior angle satisfies \\(\\cos\\alpha=q/\\lambda\\).",
+      "latex_explanation": "This is the corresponding principal arccosine identity for the Snell-adjusted argument."
+    },
+    {
+      "declaration": "TypeThreeAssembly.radius_mul_h",
+      "category": "main",
+      "informal_statement": "The reciprocal-radius normalization satisfies \\(Rh=1\\).",
+      "latex_explanation": "This identity is valid on the regular domain \\(h>0\\) and links curvature to the common radius."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerSin_pos",
+      "category": "supplement",
+      "informal_statement": "The exterior angle satisfies \\(\\sin\\alpha>0\\).",
+      "latex_explanation": "The angle lies strictly between zero and \\(\\pi\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.innerSin_pos",
+      "category": "supplement",
+      "informal_statement": "The inner angle satisfies \\(\\sin\\beta>0\\).",
+      "latex_explanation": "The same principal-angle bounds give strict positivity."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideArcAngle_pos",
+      "category": "supplement",
+      "informal_statement": "The side angle \\(\\gamma=\\pi-\\beta\\) is positive.",
+      "latex_explanation": "The inner angle is strictly below \\(\\pi\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideArcAngle_lt_pi",
+      "category": "supplement",
+      "informal_statement": "The side angle satisfies \\(\\gamma<\\pi\\).",
+      "latex_explanation": "The inner angle is strictly positive."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sin_sideArcAngle",
+      "category": "supplement",
+      "informal_statement": "\\(\\sin\\gamma=\\sin\\beta\\).",
+      "latex_explanation": "This is the sine complementary-angle identity for \\(\\gamma=\\pi-\\beta\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.cos_sideArcAngle",
+      "category": "supplement",
+      "informal_statement": "\\(\\cos\\gamma=-q\\).",
+      "latex_explanation": "This is the cosine identity for \\(\\gamma=\\pi-\\beta\\), using \\(\\cos\\beta=q\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideCap",
+      "category": "main",
+      "informal_statement": "The auxiliary side cap is the lower one-sided cap with chord \\(2R\\sin\\beta\\), half-central angle \\(\\gamma\\), midpoint \\((0,1)\\), and lower side.",
+      "latex_explanation": "Its major-cap allowance packages the two congruent translated strip-side arcs into one cap whose area and arc length equal their sums."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerCap",
+      "category": "main",
+      "informal_statement": "The exterior cap is the upper one-sided cap with chord \\(2R\\sin\\alpha\\), half-central angle \\(\\alpha\\), midpoint \\((0,1)\\), and upper side.",
+      "latex_explanation": "The open angle range \\(0<\\alpha<\\pi\\) permits minor, semicircular, and major branches of the upper cap."
+    },
+    {
+      "declaration": "TypeThreeAssembly.carrier",
+      "category": "main",
+      "informal_statement": "The complete type-\\(\\mathrm{iii}\\) carrier is the union of its core carrier and its upper exterior cap carrier.",
+      "latex_explanation": "This is the actual coordinate set whose area and complete frontier are used in the admissible competitor."
+    },
+    {
+      "declaration": "TypeThreeAssembly.WeightedArea",
+      "category": "main",
+      "informal_statement": "For a regular type-\\(\\mathrm{iii}\\) assembly with density \\(\\lambda>1\\), curvature \\(0<h<1\\), and coordinate carrier \\(E_3\\), the weighted area is the ambient Lebesgue integral\n\n\\[\nA_\\lambda(E_3)=\\int_{E_3} f_\\lambda\\,d\\mathcal L^2.\n\\]",
+      "latex_explanation": "The integration domain is the carrier \\(E_3\\), and the measure is two-dimensional Lebesgue measure restricted to that carrier. No frontier measure enters this definition. No scalar value is chosen independently of the carrier; the later area formula identifies this canonical quantity with \\(A_3(h)\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.WeightedPerimeter",
+      "category": "main",
+      "informal_statement": "For a regular type-\\(\\mathrm{iii}\\) assembly with density \\(\\lambda>1\\), curvature \\(0<h<1\\), and coordinate carrier \\(E_3\\), let \\(J\\) be the coordinate-preserving homeomorphism to the Euclidean realization. The weighted perimeter is the complete-frontier integral\n\n\\[\nP_\\lambda(E_3)=\\int_{\\partial J(E_3)}(f_\\lambda\\circ J^{-1})\\,d\\mathcal H^1.\n\\]",
+      "latex_explanation": "The boundary measure is Euclidean one-dimensional Hausdorff measure restricted to the complete topological frontier of \\(J(E_3)\\), transported back to the coordinate plane. No scalar value is chosen independently of the carrier; the later perimeter formula identifies this canonical quantity with \\(P_3(h)\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.rectangleArea",
+      "category": "main",
+      "informal_statement": "The rectangle contribution is \\(4w\\).",
+      "latex_explanation": "The rectangle has width \\(2w\\) and height \\(2\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.modeledWeightedArea",
+      "category": "main",
+      "informal_statement": "The modeled type-\\(\\mathrm{iii}\\) weighted area is the rectangle area plus the lower-side cap area plus \\(\\lambda\\) times the upper exterior-cap area.",
+      "latex_explanation": "This is an explicit scalar expression derived from the actual carrier components; the formula theorem later identifies it with the canonical integral."
+    },
+    {
+      "declaration": "TypeThreeAssembly.modeledWeightedPerimeter",
+      "category": "main",
+      "informal_statement": "The modeled type-\\(\\mathrm{iii}\\) perimeter is the lower side-cap arc length, \\(\\lambda\\) times the upper cap arc length, and the bottom chord length.",
+      "latex_explanation": "The bottom chord has density one and the exterior cap arc has density \\(\\lambda\\); the two strip-side arcs are represented by the side-cap contribution."
+    },
+    {
+      "declaration": "TypeThreeAssembly.angleTerm",
+      "category": "main",
+      "informal_statement": "The declaration defines the type-\\(\\mathrm{iii}\\) angle contribution \\(\\lambda\\alpha+\\pi-\\beta\\) or sine displacement \\(\\sin\\alpha-\\sin\\beta\\).",
+      "latex_explanation": "These are the two geometric combinations that enter the area and perimeter formulas."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sineGap",
+      "category": "main",
+      "informal_statement": "The declaration defines the type-\\(\\mathrm{iii}\\) angle contribution \\(\\lambda\\alpha+\\pi-\\beta\\) or sine displacement \\(\\sin\\alpha-\\sin\\beta\\).",
+      "latex_explanation": "These are the two geometric combinations that enter the area and perimeter formulas."
+    },
+    {
+      "declaration": "TypeThreeAssembly.scalarWeightedArea",
+      "category": "main",
+      "informal_statement": "The scalar type-\\(\\mathrm{iii}\\) weighted-area formula is \\[\\frac{\\lambda\\alpha+\\pi-\\beta+(q+2)(\\sin\\alpha-\\sin\\beta)}{h^2}.\\]",
+      "latex_explanation": "This definition is the geometric angle-and-displacement expression after substituting the assembly parameters."
+    },
+    {
+      "declaration": "TypeThreeAssembly.scalarWeightedPerimeter",
+      "category": "main",
+      "informal_statement": "The scalar type-\\(\\mathrm{iii}\\) weighted-perimeter formula is \\[\\frac{2\\bigl(\\lambda\\alpha+\\pi-\\beta+\\sin\\alpha-\\sin\\beta\\bigr)}{h}.\\]",
+      "latex_explanation": "The formula sums the two side traces, the density-weighted upper cap, and the bottom segment in the modeled normalization."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sin_inner_le_sin_outer",
+      "category": "main",
+      "informal_statement": "For every regular assembly, \\(\\sin\\beta\\leq\\sin\\alpha\\).",
+      "latex_explanation": "The density factor \\(\\lambda>1\\) contracts the arccosine argument in absolute value, and the principal sine formula gives the non-strict comparison."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sin_inner_lt_sin_outer",
+      "category": "main",
+      "informal_statement": "If \\(h\\ne1/2\\), then \\(\\sin\\beta<\\sin\\alpha\\).",
+      "latex_explanation": "At the only equality case the shape parameter is zero; excluding \\(h=1/2\\) makes the squared argument comparison strict."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideHalfWidth_nonneg",
+      "category": "main",
+      "informal_statement": "The side half-width satisfies \\(w\\geq0\\).",
+      "latex_explanation": "It is the positive radius multiplied by \\(\\sin\\alpha-\\sin\\beta\\geq0\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideHalfWidth_pos",
+      "category": "supplement",
+      "informal_statement": "If \\(h\\ne1/2\\), then \\(w>0\\).",
+      "latex_explanation": "The strict sine comparison and positive radius give a nondegenerate horizontal expansion away from the semicircular transition."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideHalfWidth_eq_zero_iff",
+      "category": "main",
+      "informal_statement": "\\(w=0\\) if and only if \\(h=1/2\\).",
+      "latex_explanation": "The positive radius reduces vanishing of the half-width to equality of the two principal sines, which occurs exactly at zero shape."
+    },
+    {
+      "declaration": "TypeThreeAssembly.bottomChord_nonneg",
+      "category": "supplement",
+      "informal_statement": "The bottom chord parameter satisfies \\(2w\\geq0\\).",
+      "latex_explanation": "This follows from nonnegativity of the side half-width."
+    },
+    {
+      "declaration": "TypeThreeAssembly.bottomChord_eq_zero_iff",
+      "category": "main",
+      "informal_statement": "\\(2w=0\\) if and only if \\(h=1/2\\).",
+      "latex_explanation": "The positive factor two preserves the exact vanishing condition for \\(w\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.bottomChord_pos",
+      "category": "supplement",
+      "informal_statement": "If \\(h\\ne1/2\\), then \\(2w>0\\).",
+      "latex_explanation": "The bottom segment is nondegenerate on both open branches."
+    },
+    {
+      "declaration": "TypeThreeAssembly.innerAngle_semicircular",
+      "category": "supplement",
+      "informal_statement": "If \\(h=1/2\\), then \\(\\beta=\\pi/2\\).",
+      "latex_explanation": "At the transition the shape parameter is zero."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerAngle_semicircular",
+      "category": "supplement",
+      "informal_statement": "If \\(h=1/2\\), then \\(\\alpha=\\pi/2\\).",
+      "latex_explanation": "The exterior argument is also zero at the same transition."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerCap_radius",
+      "category": "supplement",
+      "informal_statement": "The outer cap has radius \\(R\\).",
+      "latex_explanation": "Its chord is \\(2R\\sin\\alpha\\), so the cap radius formula cancels the positive sine factor."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideCap_radius",
+      "category": "supplement",
+      "informal_statement": "The side cap has radius \\(R\\).",
+      "latex_explanation": "Its chord is \\(2R\\sin\\beta\\), and \\(\\sin\\gamma=\\sin\\beta\\) makes the cap radius equal to the assembly radius."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideCap_center",
+      "category": "supplement",
+      "informal_statement": "The side cap center is \\((0,R-1)\\).",
+      "latex_explanation": "The lower-cap center formula with base line \\(y=1\\), angle \\(\\gamma\\), and radius \\(R\\) gives this coordinate."
+    },
+    {
+      "declaration": "TypeThreeAssembly.leftArcParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "The left arc parametrization maps \\([{-R\\gamma},0]\\) exactly onto the left arc trace.",
+      "latex_explanation": "The interval covers the upper junction through the bottom point on every branch, including the semicircular transition."
+    },
+    {
+      "declaration": "TypeThreeAssembly.rightArcParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "The right arc parametrization maps \\([0,R\\gamma]\\) exactly onto the right arc trace.",
+      "latex_explanation": "This is the reflected branch-complete parametrization from the bottom point to the upper junction."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideArcComplexIsometryMap",
+      "category": "supplement",
+      "informal_statement": "For a center \\(c\\), the side-arc complex map is \\(z\\mapsto(c_x+\\operatorname{Im}z,c_y-\\operatorname{Re}z)\\).",
+      "latex_explanation": "The map translates and rotates the standard complex circle into either side trace."
+    },
+    {
+      "declaration": "TypeThreeAssembly.isometry_sideArcComplexIsometryMap",
+      "category": "supplement",
+      "informal_statement": "For every center \\(c\\), the side-arc complex map is an isometry from \\(\\mathbb C\\) to the Euclidean plane.",
+      "latex_explanation": "The coordinate expression preserves Euclidean distance."
+    },
+    {
+      "declaration": "TypeThreeAssembly.realizedLeftArcParam",
+      "category": "supplement",
+      "informal_statement": "The realized left arc parametrization is \\(J(\\operatorname{leftArcParam}(s))\\).",
+      "latex_explanation": "This transports the coordinate side trace to the Euclidean metric space."
+    },
+    {
+      "declaration": "TypeThreeAssembly.realizedRightArcParam",
+      "category": "supplement",
+      "informal_statement": "The realized right arc parametrization is \\(J(\\operatorname{rightArcParam}(s))\\).",
+      "latex_explanation": "This is the corresponding definition for the right trace."
+    },
+    {
+      "declaration": "TypeThreeAssembly.realizedLeftArcParam_eq",
+      "category": "supplement",
+      "informal_statement": "The realized left parametrization equals the side-arc complex isometry at the left center applied to \\(\\gamma_R(s)\\).",
+      "latex_explanation": "The identity follows from the real and imaginary coordinates of the standard circle."
+    },
+    {
+      "declaration": "TypeThreeAssembly.realizedRightArcParam_eq",
+      "category": "supplement",
+      "informal_statement": "The realized right parametrization equals the side-arc complex isometry at the right center applied to \\(\\gamma_R(s)\\).",
+      "latex_explanation": "This is the reflected pointwise realization identity."
+    },
+    {
+      "declaration": "TypeThreeAssembly.continuous_realizedLeftArcParam",
+      "category": "supplement",
+      "informal_statement": "The realized left arc parametrization is continuous on \\(\\mathbb R\\).",
+      "latex_explanation": "It is the composition of a continuous standard circle map with an isometry."
+    },
+    {
+      "declaration": "TypeThreeAssembly.continuous_realizedRightArcParam",
+      "category": "supplement",
+      "informal_statement": "The realized right arc parametrization is continuous on \\(\\mathbb R\\).",
+      "latex_explanation": "The same composition argument applies to the right side."
+    },
+    {
+      "declaration": "TypeThreeAssembly.realizedLeftArcParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "The realized left arc image on \\([{-R\\gamma},0]\\) equals the Euclidean image of the left arc trace.",
+      "latex_explanation": "This is the homeomorphic transport of the coordinate image theorem."
+    },
+    {
+      "declaration": "TypeThreeAssembly.realizedRightArcParam_image_Icc",
+      "category": "supplement",
+      "informal_statement": "The realized right arc image on \\([0,R\\gamma]\\) equals the Euclidean image of the right arc trace.",
+      "latex_explanation": "This is the corresponding transported right-trace equality."
+    },
+    {
+      "declaration": "TypeThreeAssembly.measurableSet_euclidean_leftArcTrace",
+      "category": "supplement",
+      "informal_statement": "The Euclidean image of the left arc trace is measurable.",
+      "latex_explanation": "The exact image is the compact continuous image of a closed bounded parameter interval, hence Borel measurable."
+    },
+    {
+      "declaration": "TypeThreeAssembly.measurableSet_euclidean_rightArcTrace",
+      "category": "supplement",
+      "informal_statement": "The Euclidean image of the right arc trace is measurable.",
+      "latex_explanation": "The same compact-parametrization argument applies to the right trace."
+    },
+    {
+      "declaration": "TypeThreeAssembly.exact_euclidean_leftArcParam_hausdorffMeasure",
+      "category": "supplement",
+      "informal_statement": "The Euclidean left arc image has \\(\\mathcal H^1\\)-measure \\(\\operatorname{ofReal}(R\\gamma)\\).",
+      "latex_explanation": "The parametrization interval has length \\(R\\gamma\\), and the side-arc isometry preserves the exact Hausdorff mass."
+    },
+    {
+      "declaration": "TypeThreeAssembly.exact_euclidean_rightArcParam_hausdorffMeasure",
+      "category": "supplement",
+      "informal_statement": "The Euclidean right arc image has \\(\\mathcal H^1\\)-measure \\(\\operatorname{ofReal}(R\\gamma)\\).",
+      "latex_explanation": "The right trace has the same radius and angular span as the left trace."
+    },
+    {
+      "declaration": "TypeThreeAssembly.exact_euclidean_leftArcTrace_hausdorffMeasure",
+      "category": "supplement",
+      "informal_statement": "The Euclidean image of the left arc trace has \\(\\mathcal H^1\\)-measure \\(\\operatorname{ofReal}(R\\gamma)\\).",
+      "latex_explanation": "The image equality transfers the exact parametrized-arc measure to the trace set."
+    },
+    {
+      "declaration": "TypeThreeAssembly.exact_euclidean_rightArcTrace_hausdorffMeasure",
+      "category": "supplement",
+      "informal_statement": "The Euclidean image of the right arc trace has \\(\\mathcal H^1\\)-measure \\(\\operatorname{ofReal}(R\\gamma)\\).",
+      "latex_explanation": "This is the matching exact measure identity for the reflected trace."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideCap_euclideanArea",
+      "category": "main",
+      "informal_statement": "The side cap has Euclidean area \\[R^2\\bigl(\\gamma-\\sin\\gamma\\cos\\gamma\\bigr).\\]",
+      "latex_explanation": "The circular-segment area formula applies to the auxiliary cap with radius \\(R\\) and half-central angle \\(\\gamma\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerCap_euclideanArea",
+      "category": "main",
+      "informal_statement": "The outer cap has Euclidean area \\[R^2\\bigl(\\alpha-\\sin\\alpha\\cos\\alpha\\bigr).\\]",
+      "latex_explanation": "This is the circular-segment area for the upper exterior cap."
+    },
+    {
+      "declaration": "TypeThreeAssembly.sideCap_arcLength",
+      "category": "main",
+      "informal_statement": "The side cap arc length is \\(2R\\gamma\\).",
+      "latex_explanation": "The exact arc-length identity converts the side cap parameter to radius times central angle."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerCap_arcLength",
+      "category": "main",
+      "informal_statement": "The outer cap arc length is \\(2R\\alpha\\).",
+      "latex_explanation": "The same identity applies to the exterior cap."
+    },
+    {
+      "declaration": "TypeThreeAssembly.modeledWeightedArea_formula",
+      "category": "main",
+      "informal_statement": "The component modeled weighted area equals the scalar formula: \\(A_{\\mathrm{modeled}}=A_{\\mathrm{scalar}}\\).",
+      "latex_explanation": "The equality is the algebraic reduction of the rectangle, side-cap, and density-weighted outer-cap contributions."
+    },
+    {
+      "declaration": "TypeThreeAssembly.modeledWeightedPerimeter_formula",
+      "category": "main",
+      "informal_statement": "The component modeled weighted perimeter equals the scalar formula: \\(P_{\\mathrm{modeled}}=P_{\\mathrm{scalar}}\\).",
+      "latex_explanation": "The equality combines the two side traces, the density-weighted outer arc, and the bottom segment."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerCap_center",
+      "category": "main",
+      "informal_statement": "The outer cap center equals the upper center \\((0,1-R\\cos\\alpha)\\).",
+      "latex_explanation": "The cap constructor and the assembly center definition use the same radius, base line, and exterior angle."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerCap_leftEndpoint",
+      "category": "main",
+      "informal_statement": "The outer cap left endpoint is \\((-R\\sin\\alpha,1)\\).",
+      "latex_explanation": "The chord-radius relation converts the left endpoint formula to the displayed coordinate."
+    },
+    {
+      "declaration": "TypeThreeAssembly.outerCap_rightEndpoint",
+      "category": "main",
+      "informal_statement": "The outer cap right endpoint is \\((R\\sin\\alpha,1)\\).",
+      "latex_explanation": "This is the reflected right endpoint on the upper interface."
+    },
+    {
+      "declaration": "TypeThreeAssembly.leftUpperJunction",
+      "category": "main",
+      "informal_statement": "The left side-arc upper junction equals the outer-cap left endpoint: \\[(-w-R\\sin\\beta,1)=(-R\\sin\\alpha,1).\\]",
+      "latex_explanation": "The identity expresses the common interface junction using \\(w=R(\\sin\\alpha-\\sin\\beta)\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.rightUpperJunction",
+      "category": "main",
+      "informal_statement": "The right side-arc upper junction equals the outer-cap right endpoint: \\[(w+R\\sin\\beta,1)=(R\\sin\\alpha,1).\\]",
+      "latex_explanation": "This is the symmetric right-hand junction identity."
+    },
+    {
+      "declaration": "TypeThreeAssembly.bottomSegmentCarrier_subset_frontier",
+      "category": "main",
+      "informal_statement": "The entire bottom segment carrier is contained in the complete frontier of the type-\\(\\mathrm{iii}\\) carrier: \\[\\{(x,-1):|x|\\leq w\\}\\subseteq\\partial E_3.\\]",
+      "latex_explanation": "This is a frontier-inclusion theorem, including the singleton degenerate case at \\(w=0\\); it is not merely the definition of the bottom set."
+    },
+    {
+      "declaration": "TypeThreeAssembly.exact_euclidean_bottomSegmentCarrier_hausdorffMeasure",
+      "category": "main",
+      "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the type-\\(\\mathrm{iii}\\) bottom segment equals its chord length.",
+      "latex_explanation": "This includes the zero-length value at \\(h=1/2\\) and supplies the density-one boundary contribution in the perimeter formula."
+    },
+    {
+      "declaration": "TypeThreeAssembly.boundaryJoinSet",
+      "category": "supplement",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) boundary join set is \\[\\{(-R\\sin\\alpha,1),(R\\sin\\alpha,1),(-w,-1),(w,-1)\\}.\\]",
+      "latex_explanation": "These four points contain all possible pairwise intersections of the four primitive frontier traces, with the two bottom points coinciding when \\(w=0\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.boundaryJoinSet_finite",
+      "category": "supplement",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) boundary join set is finite.",
+      "latex_explanation": "It is explicitly a set of four displayed points, possibly with repetitions."
+    },
+    {
+      "declaration": "TypeThreeAssembly.pairwiseOverlap_subset_boundaryJoinSet",
+      "category": "supplement",
+      "informal_statement": "The pairwise overlap of the left trace, right trace, outer-cap trace, and bottom segment is contained in the boundary join set.",
+      "latex_explanation": "This is an assembly-specific geometric inclusion; it does not turn the unrestricted overlap definition into a finiteness theorem."
+    },
+    {
+      "declaration": "TypeThreeAssembly.pairwiseOverlap_h1_null",
+      "category": "supplement",
+      "informal_statement": "The Euclidean image of that type-\\(\\mathrm{iii}\\) pairwise overlap has zero one-dimensional Hausdorff measure.",
+      "latex_explanation": "The inclusion in a finite join set and finiteness of the join set imply the null-measure conclusion."
+    },
+    {
+      "declaration": "TypeThreeAssembly.isClosed_rectangleCarrier",
+      "category": "supplement",
+      "informal_statement": "The central rectangle carrier is closed.",
+      "latex_explanation": "All four coordinate inequalities are non-strict, so the rectangle is an intersection of closed half-spaces."
+    },
+    {
+      "declaration": "TypeThreeAssembly.isClosed_leftSegmentCarrier",
+      "category": "supplement",
+      "informal_statement": "The left circular segment carrier is closed.",
+      "latex_explanation": "It is an intersection of a closed disk with closed half-plane and strip constraints."
+    },
+    {
+      "declaration": "TypeThreeAssembly.isClosed_rightSegmentCarrier",
+      "category": "supplement",
+      "informal_statement": "The right circular segment carrier is closed.",
+      "latex_explanation": "It is the reflected closed disk segment with non-strict coordinate constraints."
+    },
+    {
+      "declaration": "TypeThreeAssembly.isClosed_coreCarrier",
+      "category": "supplement",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) core carrier is closed.",
+      "latex_explanation": "It is a finite union of the closed rectangle and the two closed circular segments."
+    },
+    {
+      "declaration": "TypeThreeAssembly.isClosed_carrier",
+      "category": "supplement",
+      "informal_statement": "The complete type-\\(\\mathrm{iii}\\) carrier is closed.",
+      "latex_explanation": "The core and exterior cap are closed, and their finite union is closed."
+    },
+    {
+      "declaration": "TypeThreeAssembly.measurableSet_carrier",
+      "category": "supplement",
+      "informal_statement": "The assembled type-\\(\\mathrm{iii}\\) carrier is measurable.",
+      "latex_explanation": "It is a finite union of closed coordinate-defined pieces, so it supports the weighted-area integral and the Euclidean frontier construction."
+    },
+    {
+      "declaration": "TypeThreeAssembly.coreCarrier_y_bounds",
+      "category": "supplement",
+      "informal_statement": "Every point of the type-\\(\\mathrm{iii}\\) core satisfies \\(\\lvert y\\rvert\\leq1\\).",
+      "latex_explanation": "The rectangle and both circular side segments are explicitly restricted to the closed strip; this makes their density identically one."
+    },
+    {
+      "declaration": "TypeThreeAssembly.volume_coreCarrier",
+      "category": "main",
+      "informal_statement": "The Euclidean planar volume of the type-\\(\\mathrm{iii}\\) core equals the rectangle area plus one side-cap area.",
+      "latex_explanation": "The two circular side pieces contribute the same segment area, while their overlaps with the rectangle and each other lie on planar-null joining sets; hence the core volume is \\(4w+a_{\\mathrm{side}}\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.core_weightedArea_formula",
+      "category": "main",
+      "informal_statement": "For a regular type-\\(\\mathrm{iii}\\) assembly, \\[A_\\lambda(E_{\\mathrm{core}})=4w+\\operatorname{Area}(\\mathrm{side\\ cap}).\\]",
+      "latex_explanation": "The core lies in the closed unit strip, where the density is one, so its weighted area is the rectangle contribution plus the two side-segment contribution."
+    },
+    {
+      "declaration": "TypeThreeAssembly.weightedArea_eq_modeledWeightedArea",
+      "category": "main",
+      "informal_statement": "The canonical weighted area of the type-\\(\\mathrm{iii}\\) carrier equals its rectangle-plus-cap modeled area expression.",
+      "latex_explanation": "The core density is one and the exterior cap density is \\(\\lambda\\) away from its interface chord; the carrier decomposition therefore agrees with the stored modeled calculation."
+    },
+    {
+      "declaration": "TypeThreeAssembly.weightedArea_formula",
+      "category": "main",
+      "informal_statement": "The canonical weighted area of the type-\\(\\mathrm{iii}\\) carrier equals its scalar area formula.",
+      "latex_explanation": "Substituting the angle term and sine gap into the geometric decomposition gives the analytic expression used as \\(A_3(h)\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.isClosed_bottomSegmentCarrier",
+      "category": "supplement",
+      "informal_statement": "The bottom segment carrier is closed.",
+      "latex_explanation": "It is defined by the equality \\(y=-1\\) and the closed bound \\(\\lvert x\\rvert\\leq w\\)."
+    },
+    {
+      "declaration": "TypeThreeAssembly.boundaryTrace",
+      "category": "main",
+      "informal_statement": "The declared boundary trace is the union of the two strip-side arc traces, the upper cap arc trace, and the bottom segment.",
+      "latex_explanation": "It is the candidate set for the complete frontier; the two inclusion theorems prove that it is exactly the topological frontier."
+    },
+    {
+      "declaration": "TypeThreeAssembly.frontier_carrier_subset_boundaryTrace",
+      "category": "supplement",
+      "informal_statement": "The complete frontier of the type-\\(\\mathrm{iii}\\) carrier is contained in the declared boundary trace.",
+      "latex_explanation": "No boundary component occurs outside the two side arcs, upper cap arc, and bottom segment."
+    },
+    {
+      "declaration": "TypeThreeAssembly.boundaryTrace_subset_frontier_carrier",
+      "category": "supplement",
+      "informal_statement": "Every declared type-\\(\\mathrm{iii}\\) boundary trace lies in the complete frontier.",
+      "latex_explanation": "Each circular or horizontal component contains points approached from both the carrier and its complement, including the degenerate-join convention."
+    },
+    {
+      "declaration": "TypeThreeAssembly.frontier_carrier",
+      "category": "main",
+      "informal_statement": "The complete frontier of the type-\\(\\mathrm{iii}\\) carrier equals its boundary trace.",
+      "latex_explanation": "Combining both inclusions gives the exact set-theoretic frontier needed for canonical perimeter."
+    },
+    {
+      "declaration": "TypeThreeAssembly.measurableSet_euclidean_bottomSegmentCarrier",
+      "category": "supplement",
+      "informal_statement": "The Euclidean realization of the bottom segment is measurable.",
+      "latex_explanation": "It is the image of a compact horizontal interval under the coordinate homeomorphism."
+    },
+    {
+      "declaration": "TypeThreeAssembly.euclidean_frontier",
+      "category": "main",
+      "informal_statement": "The Euclidean frontier of the realized type-\\(\\mathrm{iii}\\) carrier is the realization of those four boundary components.",
+      "latex_explanation": "The coordinate frontier equality transports through the homeomorphism and identifies the Euclidean Hausdorff-measure domain."
+    },
+    {
+      "declaration": "TypeThreeAssembly.weightedPerimeter_eq_modeledWeightedPerimeter",
+      "category": "main",
+      "informal_statement": "The canonical complete-frontier weighted perimeter of the type-\\(\\mathrm{iii}\\) carrier equals its modeled component perimeter.",
+      "latex_explanation": "The frontier decomposition, exact Hausdorff lengths, density integrals, and null finite joins show that no hidden chord or extra boundary is counted."
+    },
+    {
+      "declaration": "TypeThreeAssembly.weightedPerimeter_formula",
+      "category": "main",
+      "informal_statement": "The canonical weighted perimeter of the type-\\(\\mathrm{iii}\\) carrier equals its scalar perimeter formula.",
+      "latex_explanation": "The geometric expression becomes \\(P_3(h)\\) after the principal-angle identities and the common-radius relation are substituted."
+    },
+    {
+      "declaration": "TypeThreeAssembly.integrableOn_carrier",
+      "category": "main",
+      "informal_statement": "For every regular type-\\(\\mathrm{iii}\\) assembly with density \\(\\lambda>1\\), curvature \\(0<h<1\\), and coordinate carrier \\(E_3\\), the strip density is Lebesgue integrable on the carrier:\n\n\\[\nf_\\lambda\\in L^1(E_3,\\mathcal L^2).\n\\]",
+      "latex_explanation": "The carrier is the union of the strip core and the upper cap. The core has finite Lebesgue measure, so the bounded strip density is integrable there; cap integrability gives integrability on the union. This establishes that the carrier-derived weighted area is a genuine finite integral, not a formal scalar assignment. Integrability against the complete-frontier measure, needed for weighted perimeter, is a separate assertion."
+    },
+    {
+      "declaration": "TypeThreeAssembly.integrable_frontierMeasure",
+      "category": "main",
+      "informal_statement": "The strip density is integrable against the complete-frontier measure of the type-\\(\\mathrm{iii}\\) carrier.",
+      "latex_explanation": "The frontier is a finite union of measurable circular traces and a horizontal segment with finite Euclidean \\(\\mathcal H^1\\)-measure, so the bounded two-valued density has a finite integral."
+    },
+    {
+      "declaration": "TypeThreeAssembly.ModeledCompetitorRealization",
+      "category": "main",
+      "informal_statement": "A modeled competitor realization pairs an admissible competitor with proof that its carrier is exactly the type-\\(\\mathrm{iii}\\) carrier.",
+      "latex_explanation": "This structure prevents the scalar comparison from bypassing the carrier-based semantics of minimality."
+    },
+    {
+      "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor",
+      "category": "supplement",
+      "informal_statement": "Given an existing realization \\(\\mathcal R\\) containing an admissible competitor \\(F\\) with carrier \\(E_3\\), the extracted competitor is \\(\\mathcal R.\\operatorname{competitor}=F\\).",
+      "latex_explanation": "This declaration is an extraction from a supplied realization. It does not assert that a realization exists; existence is a separate proposition."
+    },
+    {
+      "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedArea",
+      "category": "main",
+      "informal_statement": "The realized admissible competitor has weighted area equal to the type-\\(\\mathrm{iii}\\) scalar area.",
+      "latex_explanation": "The carrier equality lets the common competitor definition use the geometric carrier integral, after which the area formula theorem applies."
+    },
+    {
+      "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedPerimeter",
+      "category": "main",
+      "informal_statement": "The realized admissible competitor has weighted perimeter equal to the type-\\(\\mathrm{iii}\\) scalar perimeter.",
+      "latex_explanation": "The same carrier equality and complete-frontier perimeter theorem transfer the geometric perimeter value to the admissible competitor."
+    },
+    {
+      "declaration": "TypeThreeAssembly.HasModeledCompetitor",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm{iii}\\) carrier has an admissible competitor realization with the same carrier and the stated scalar area and perimeter.",
+      "latex_explanation": "This is the bridge from the constructed coordinate set to the common admissible-competitor type used by the candidate minimality predicate."
+    },
+    {
+      "declaration": "TypeThreeAssembly.hasModeledCompetitor",
+      "category": "main",
+      "informal_statement": "Every regular type-\\(\\mathrm{iii}\\) assembly has an admissible competitor realization.",
+      "latex_explanation": "The carrier is measurable, the density is integrable over its area and frontier, and its carrier can therefore be packaged in the common admissible-competitor type."
+    },
+    {
+      "declaration": "FourArcCandidate.not_isWeightedPerimeterMinimizer_of_typeThree",
+      "category": "main",
+      "informal_statement": "An equal-area regular type-\\(\\mathrm{iii}\\) assembly with smaller scalar perimeter refutes minimality of the four-arc candidate.",
+      "latex_explanation": "The theorem instantiates the candidate's universal admissible-competitor quantifier with the realized type-\\(\\mathrm{iii}\\) carrier."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_half",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), \\(A_3(1/2)=2\\pi(\\lambda+1)\\).",
+      "latex_explanation": "The shape is zero, both relevant angles are semicircular, and the displacement vanishes, giving a finite exact endpoint for the bracketing argument."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.typeFourArea_one_lt_typeThreeArea_half",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), \\(A_4(1)<A_3(1/2)\\).",
+      "latex_explanation": "Bounding the outer angle by \\(\\pi\\) and the displacement by one gives \\(A_4(1)\\leq2\\lambda\\pi+\\pi+2<2\\pi(\\lambda+1)\\)."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.stationaryEqualAreaPair_of_typeFourFold_zero",
+      "category": "main",
+      "informal_statement": "Every stationary \\(s\\in(1/2,1)\\) at density \\(\\lambda>1\\) admits a stationary equal-area pair with type-\\(\\mathrm{iv}\\) member \\(s\\) and type-\\(\\mathrm{iii}\\) member \\(r<s\\).",
+      "latex_explanation": "The inequalities \\(A_3(s)<A_4(s)\\leq A_4(1)<A_3(1/2)\\) and continuity give \\(1/2<r<s\\) with exact equal area."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.stationaryEqualAreaPair_exists",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), there exists a stationary equal-area pair with \\(r<s\\).",
+      "latex_explanation": "Choose the regular fold zero in \\((9/10,1)\\), then apply the equal-area bracketing theorem."
+    },
+    {
+      "declaration": "LeanSuffixAnalytic.stationaryEqualAreaPair_strictImprovement_exists",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), some stationary equal-area pair satisfies \\(F_3(r)<0\\), \\(P_3(r)<P_4(s)\\), and \\(G(r,s)<0\\).",
+      "latex_explanation": "Root order gives the negative fold and strict perimeter comparison; the exact stationary gap identity gives the reduced-gap sign. No numerical density subdivision is required."
+    },
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one",
+      "category": "main",
+      "informal_statement": "For every \\(\\lambda>1\\), a modeled four-arc candidate satisfying the formal CMV hypotheses is not a weighted-perimeter minimizer.",
+      "latex_explanation": "The candidate has \\(0<h\\leq1\\), \\(0<\\alpha<\\pi/2\\), and \\(\\lambda\\cos\\alpha=h\\). The universal stationary pair and envelope provide an admissible regular type-\\(\\mathrm{iii}\\) carrier with equal weighted area and smaller complete-frontier weighted perimeter; source normalization and reduced-boundary compatibility are not conclusions."
+    }
+  ],
+  "generated_families": [],
+  "external_citations": [
+    {
+      "id": "CMV2010",
+      "author": "Antonio Cañete, Michele Miranda Jr., and Davide Vittone",
+      "title": "Some Isoperimetric Problems in Planes with Density",
+      "locator": "§3.2, Lemma 3.8, Conjecture 3.12, and equations (26)–(27)",
+      "url": "https://arxiv.org/abs/0906.1256"
+    },
+    {
+      "id": "Lean4CADE2021",
+      "author": "Leonardo de Moura and Sebastian Ullrich",
+      "title": "The Lean 4 Theorem Prover and Programming Language",
+      "locator": "CADE 28 (2021), pp. 625–635",
+      "url": "https://doi.org/10.1007/978-3-030-79876-5_37"
+    },
+    {
+      "id": "mathlib2020",
+      "author": "The mathlib Community",
+      "title": "The Lean Mathematical Library",
+      "locator": "CPP 2020, pp. 367–381",
+      "url": "https://doi.org/10.1145/3372885.3373824"
+    }
+  ]
+}

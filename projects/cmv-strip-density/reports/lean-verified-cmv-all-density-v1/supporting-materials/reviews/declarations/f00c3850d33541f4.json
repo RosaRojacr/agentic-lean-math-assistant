@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "continuous_realizedCapParam",
+  "domain_issues": [],
+  "informal_statement": "The indicated parametrization or cleared expression is continuous on its stated domain.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:442-450; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "439602ca8a442d23dec8f858626a27ca71e9723ce90b04b56ee6e94cd89590f1",
+  "symbol_mismatches": []
+}

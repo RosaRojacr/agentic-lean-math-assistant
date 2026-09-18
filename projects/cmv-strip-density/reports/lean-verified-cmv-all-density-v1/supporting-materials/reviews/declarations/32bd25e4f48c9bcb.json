@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.bottomSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "The bottom segment carrier is \\(\\{(x,-1):|x|\\leq w\\}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:132-135; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "18e70891a1386b33220d27cc96af45d0ffdcc88b970fd467c64035c04da589f5",
+  "symbol_mismatches": []
+}

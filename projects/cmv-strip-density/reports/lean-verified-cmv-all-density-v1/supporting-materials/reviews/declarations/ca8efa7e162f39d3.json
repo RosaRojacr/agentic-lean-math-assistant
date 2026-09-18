@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.radiusSquaredAt",
+  "domain_issues": [],
+  "informal_statement": "The squared distance of \\(p\\) from the cap center \\(c\\) is \\((p_1-c_1)^2+(p_2-c_2)^2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:142-145; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a1c0f970b426c7f0e6a013d8d8bbb613fbba3b5c253445dacecdb9b47cb6785a",
+  "symbol_mismatches": []
+}

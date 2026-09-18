@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.measurableSet_euclidean_bottomSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean realization of the bottom segment is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:2855-2860; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ac873340c9031353c9d26e2404b771c8a0ff1b638ea75b1a24ed627ed5bc802d",
+  "symbol_mismatches": []
+}

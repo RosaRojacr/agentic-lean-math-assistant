@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iv}\\) scalar perimeter is \\(P_4(h)=4B(h)/h\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:65-70; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad0bebbd79c17351c0f12ce6a7fdae3e930dba33de0077415a6116df1d1e6e25",
+  "symbol_mismatches": []
+}

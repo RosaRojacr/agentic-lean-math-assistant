@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one",
+  "domain_issues": [],
+  "informal_statement": "For every \\(\\lambda>1\\), a modeled four-arc candidate satisfying the formal CMV hypotheses is not a weighted-perimeter minimizer.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at UniversalStationaryPair.lean:146-158; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2bcc5fee077e8fcf68df34eb9a91b0e0249285ccf8a646ec28b5a30fbd597c99",
+  "symbol_mismatches": []
+}

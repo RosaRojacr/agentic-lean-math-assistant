@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.coreCarrier",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iii}\\) core carrier is the union of the central rectangle, left clipped disk segment, and right clipped disk segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:99-103; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5e82c9d38bf8a70ad9c2ae143c293bbf0238ee48148c3dd2d922c95471160878",
+  "symbol_mismatches": []
+}

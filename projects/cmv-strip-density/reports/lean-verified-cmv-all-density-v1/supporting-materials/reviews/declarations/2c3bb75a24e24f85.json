@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourClearedFold_one_pos",
+  "domain_issues": [],
+  "informal_statement": "For every \\(\\lambda>1\\), \\(C(1)>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeFourStationaryRoot.lean:125-131; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5b0cd6de2bd6df7214891200ea0e61cc8d389c1b1edf8e7a99120d747111a4bc",
+  "symbol_mismatches": []
+}

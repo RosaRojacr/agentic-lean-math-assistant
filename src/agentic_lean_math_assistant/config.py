@@ -29,6 +29,7 @@ _DEFAULT_ENVIRONMENT_ALLOW = (
     "HOME",
     "LANG",
     "LC_ALL",
+    "LEAN_NUM_THREADS",
     "PATH",
     "SSL_CERT_DIR",
     "SSL_CERT_FILE",

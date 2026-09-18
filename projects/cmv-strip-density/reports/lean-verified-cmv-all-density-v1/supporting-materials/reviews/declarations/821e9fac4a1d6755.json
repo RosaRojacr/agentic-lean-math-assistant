@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_verticalLine",
+  "domain_issues": [],
+  "informal_statement": "Every vertical line has zero planar Lebesgue measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2037-2046; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b32e9d96eca7ded1e8b5354b6d117e61bcda7b34c1fe056587cd14e1871da61b",
+  "symbol_mismatches": []
+}

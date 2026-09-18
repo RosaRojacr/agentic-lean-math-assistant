@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreePerimeter_lt_typeFourPerimeter_of_equalArea",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\), \\(1/2<r<h<1\\), and \\(A_3(r)=A_4(h)\\), then \\(P_3(r)<P_4(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:495-553; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e7b6d671984a991fd2b92d8c073a4e4e44f40679b3766f18a0ac3843895845e6",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_inner_le_sin_outer",
+  "domain_issues": [],
+  "informal_statement": "For every regular assembly, \\(\\sin\\beta\\leq\\sin\\alpha\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:303-311; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "def468198882d033570072298a83ae1d41fc003f0ecb9d0b4ee3a6b94e6a1d10",
+  "symbol_mismatches": []
+}

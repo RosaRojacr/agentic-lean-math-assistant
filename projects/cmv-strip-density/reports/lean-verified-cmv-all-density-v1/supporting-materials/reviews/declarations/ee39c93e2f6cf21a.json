@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\), a differentiable regular equal-area selection satisfies \\(\\Delta'(h)=(\\rho(h)-h)A_4'(h)\\) at every regular source height where it is differentiable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at EqualAreaEnvelope.lean:184-225; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "42f42f4f683c9b8ff6e876958c9ae3b87d6bfd1ebf63072c7e612401d7b5ee93",
+  "symbol_mismatches": []
+}

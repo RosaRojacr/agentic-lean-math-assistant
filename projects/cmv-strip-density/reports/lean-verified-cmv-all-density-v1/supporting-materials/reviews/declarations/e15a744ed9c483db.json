@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.coreCarrier_y_bounds",
+  "domain_issues": [],
+  "informal_statement": "Every point of the type-\\(\\mathrm{iii}\\) core satisfies \\(\\lvert y\\rvert\\leq1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:1447-1455; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a0a8c181bd45290d862033f8524f84e76d590a21a370fbbc0214aab783d9df85",
+  "symbol_mismatches": []
+}

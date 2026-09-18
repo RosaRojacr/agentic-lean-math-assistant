@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_le_fold",
+  "domain_issues": [],
+  "informal_statement": "For every descending envelope, \\(\\Delta(h)\\leq\\Delta(s)\\) for all \\(0<h\\leq1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at EqualAreaEnvelope.lean:632-644; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0bde810fe503972e30290f54b6517ae65288b7e84131b161bebac58ed0796e33",
+  "symbol_mismatches": []
+}

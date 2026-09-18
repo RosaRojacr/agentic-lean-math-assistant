@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair",
+  "domain_issues": [],
+  "informal_statement": "A stationary equal-area pair with \\(F_3(r)<0\\) and \\(P_3(r)<P_4(s)\\) excludes every CMV candidate at the same density.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVSuffixModel.lean:225-248; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6670f69ae0dd1a579233b44583ff3b5ab90f13ac210ff1ddaabbb1088c5b5e2",
+  "symbol_mismatches": []
+}

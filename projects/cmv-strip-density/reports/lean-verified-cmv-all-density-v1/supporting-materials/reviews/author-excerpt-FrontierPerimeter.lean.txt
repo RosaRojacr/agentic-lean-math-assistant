@@ -1,0 +1,441 @@
+[182] unitCircleArc (11-13)
+def unitCircleArc (r s : ℝ) : ℂ :=
+  (r : ℂ) * Complex.exp (Complex.I * (s / r : ℝ))
+
+[183] continuous_unitCircleArc (14-17)
+lemma continuous_unitCircleArc (r : ℝ) : Continuous (unitCircleArc r)
+
+[184] unitCircleArc_sub_factor (18-32)
+lemma unitCircleArc_sub_factor {r s t : ℝ} (_hr : r ≠ 0) :
+    unitCircleArc r s - unitCircleArc r t =
+      (r : ℂ) * Complex.exp (Complex.I * (t / r : ℝ)) *
+        (Complex.exp (Complex.I * ((s - t) / r : ℝ)) - 1)
+
+[185] lipschitzWith_unitCircleArc (33-54)
+lemma lipschitzWith_unitCircleArc {r : ℝ} (hr : 0 < r) :
+    LipschitzWith 1 (unitCircleArc r)
+
+[186] unitCircleArc_dist (55-66)
+lemma unitCircleArc_dist {r s t : ℝ} (hr : 0 < r) :
+    dist (unitCircleArc r s) (unitCircleArc r t) =
+      r * |2 * Real.sin (((s - t) / r) / 2)|
+
+[187] unitCircleArc_injOn (67-92)
+lemma unitCircleArc_injOn {r theta : ℝ} (hr : 0 < r)
+    (htheta : theta ∈ Ioo 0 Real.pi) :
+    Set.InjOn (unitCircleArc r) (Icc (-r * theta) (r * theta))
+
+[188] hausdorffMeasure_unitCircleArc_image_le (93-104)
+lemma hausdorffMeasure_unitCircleArc_image_le {r a b : ℝ} (hr : 0 < r) :
+    (μH[1] : Measure ℂ) (unitCircleArc r '' Icc a b) ≤
+      ENNReal.ofReal (b - a)
+
+[189] ofReal_dist_le_hausdorffMeasure_image_Icc (105-123)
+lemma ofReal_dist_le_hausdorffMeasure_image_Icc
+    {E : Type*} [MetricSpace E] [MeasurableSpace E] [BorelSpace E]
+    {f : ℝ → E} (hf : Continuous f) {u v : ℝ} (huv : u ≤ v) :
+    ENNReal.ofReal (dist (f u) (f v)) ≤
+      (μH[1] : Measure E) (f '' Icc u v)
+
+[190] image_Ico_eq_image_Icc_diff_endpoint (124-141)
+lemma image_Ico_eq_image_Icc_diff_endpoint
+    {α : Type*} {f : ℝ → α} {S : Set ℝ} (hf : Set.InjOn f S)
+    {u v : ℝ} (huv : u ≤ v) (hsub : Icc u v ⊆ S) :
+    f '' Ico u v = f '' Icc u v \ {f v}
+
+[191] hausdorffMeasure_image_Ico_eq_Icc (142-153)
+lemma hausdorffMeasure_image_Ico_eq_Icc
+    {E : Type*} [EMetricSpace E] [MeasurableSpace E] [BorelSpace E]
+    {f : ℝ → E} {S : Set ℝ} (hf : Set.InjOn f S)
+    {u v : ℝ} (huv : u ≤ v) (hsub : Icc u v ⊆ S) :
+    (μH[1] : Measure E) (f '' Ico u v) =
+      (μH[1] : Measure E) (f '' Icc u v)
+
+[192] capPartitionPoint (154-156)
+def capPartitionPoint (r theta : ℝ) (N i : ℕ) : ℝ :=
+  -r * theta + (i : ℝ) * (2 * r * theta / (N : ℝ))
+
+[193] capPartitionPoint_zero (157-160)
+lemma capPartitionPoint_zero (r theta : ℝ) (N : ℕ) :
+    capPartitionPoint r theta N 0 = -r * theta
+
+[194] capPartitionPoint_end (161-166)
+lemma capPartitionPoint_end {r theta : ℝ} {N : ℕ} (hN : 0 < N) :
+    capPartitionPoint r theta N N = r * theta
+
+[195] monotone_capPartitionPoint (167-174)
+lemma monotone_capPartitionPoint {r theta : ℝ} (hr : 0 < r) (htheta : 0 < theta)
+    {N : ℕ} (hN : 0 < N) : Monotone (capPartitionPoint r theta N)
+
+[196] capPartitionPoint_mem (175-184)
+lemma capPartitionPoint_mem {r theta : ℝ} (hr : 0 < r) (htheta : 0 < theta)
+    {N i : ℕ} (hN : 0 < N) (hi : i ≤ N) :
+    capPartitionPoint r theta N i ∈ Icc (-r * theta) (r * theta)
+
+[197] capPartitionPoint_dist (185-207)
+lemma capPartitionPoint_dist {r theta : ℝ} (hr : 0 < r)
+    (htheta : theta ∈ Ioo 0 Real.pi) {N i : ℕ} (hN : 0 < N) :
+    dist (unitCircleArc r (capPartitionPoint r theta N i))
+      (unitCircleArc r (capPartitionPoint r theta N (i + 1))) =
+        2 * r * Real.sin (theta / (N : ℝ))
+
+[198] cap_partition_polygon_lower (208-268)
+lemma cap_partition_polygon_lower {r theta : ℝ} (hr : 0 < r)
+    (htheta : theta ∈ Ioo 0 Real.pi) (N : ℕ) (hN : 0 < N) :
+    ENNReal.ofReal ((N : ℝ) * (2 * r * Real.sin (theta / (N : ℝ)))) ≤
+      (μH[1] : Measure ℂ)
+        (unitCircleArc r '' Icc (-r * theta) (r * theta))
+
+[199] tendsto_cap_polygon_length (269-293)
+lemma tendsto_cap_polygon_length {r theta : ℝ} (htheta : 0 < theta) :
+    Tendsto
+      (fun n : ℕ => ((n + 1 : ℕ) : ℝ) *
+        (2 * r * Real.sin (theta / ((n + 1 : ℕ) : ℝ))))
+      atTop (𝓝 (2 * r * theta))
+
+[200] hausdorffMeasure_unitCircleArc_image_eq (294-311)
+theorem hausdorffMeasure_unitCircleArc_image_eq {r theta : ℝ} (hr : 0 < r)
+    (htheta : theta ∈ Ioo 0 Real.pi) :
+    (μH[1] : Measure ℂ)
+        (unitCircleArc r '' Icc (-r * theta) (r * theta)) =
+      ENNReal.ofReal (2 * r * theta)
+
+[201] unitCircleArcRotation (312-314)
+noncomputable def unitCircleArcRotation (r m : ℝ) (z : ℂ) : ℂ :=
+  z * Complex.exp (Complex.I * (m / r : ℝ))
+
+[202] isometry_unitCircleArcRotation (315-322)
+lemma isometry_unitCircleArcRotation (r m : ℝ) :
+    Isometry (unitCircleArcRotation r m)
+
+[203] unitCircleArcRotation_apply (323-331)
+lemma unitCircleArcRotation_apply {r : ℝ} (hr : r ≠ 0) (m s : ℝ) :
+    unitCircleArcRotation r m (unitCircleArc r s) =
+      unitCircleArc r (s + m)
+
+[204] unitCircleArcRotation_image_Icc (332-349)
+lemma unitCircleArcRotation_image_Icc {r : ℝ} (hr : r ≠ 0)
+    (m u v : ℝ) :
+    unitCircleArcRotation r m '' (unitCircleArc r '' Icc u v) =
+      unitCircleArc r '' Icc (u + m) (v + m)
+
+[205] hausdorffMeasure_unitCircleArc_image_eq_of_span_lt_two_pi (350-389)
+theorem hausdorffMeasure_unitCircleArc_image_eq_of_span_lt_two_pi
+    {r u v : ℝ} (hr : 0 < r) (huv : u < v)
+    (hspan : v - u < 2 * Real.pi * r) :
+    (μH[1] : Measure ℂ) (unitCircleArc r '' Icc u v) =
+      ENNReal.ofReal (v - u)
+
+[206] capComplexIsometryMap (390-397)
+noncomputable def capComplexIsometryMap (c : OneSidedCircularCap) (z : ℂ) :
+    EuclideanPlane :=
+  match c.side with
+  | .upper => WithLp.toLp 2
+      (c.midpointX + z.im, c.baseY - c.radius * Real.cos c.theta + z.re)
+  | .lower => WithLp.toLp 2
+      (c.midpointX + z.im, c.baseY + c.radius * Real.cos c.theta - z.re)
+
+[207] isometry_capComplexIsometryMap (398-408)
+lemma isometry_capComplexIsometryMap (c : OneSidedCircularCap) :
+    Isometry (capComplexIsometryMap c)
+
+[208] unitCircleArc_eq (409-415)
+lemma unitCircleArc_eq (r s : ℝ) :
+    unitCircleArc r s =
+      (r : ℂ) * ((Real.cos (s / r) : ℂ) + (Real.sin (s / r) : ℂ) * Complex.I)
+
+[209] unitCircleArc_re (416-422)
+lemma unitCircleArc_re (r s : ℝ) :
+    (unitCircleArc r s).re = r * Real.cos (s / r)
+
+[210] unitCircleArc_im (423-429)
+lemma unitCircleArc_im (r s : ℝ) :
+    (unitCircleArc r s).im = r * Real.sin (s / r)
+
+[211] realizedCapParam (430-433)
+noncomputable def realizedCapParam (c : OneSidedCircularCap) (s : ℝ) :
+    EuclideanPlane :=
+  planeEuclideanHomeomorph (capParam c s)
+
+[212] realizedCapParam_eq (434-441)
+lemma realizedCapParam_eq (c : OneSidedCircularCap) (s : ℝ) :
+    realizedCapParam c s = capComplexIsometryMap c (unitCircleArc c.radius s)
+
+[213] continuous_realizedCapParam (442-450)
+lemma continuous_realizedCapParam (c : OneSidedCircularCap) :
+    Continuous (realizedCapParam c)
+
+[214] cap_arcLength_eq_two_radius_theta (451-456)
+lemma cap_arcLength_eq_two_radius_theta (c : OneSidedCircularCap) :
+    c.arcLength = 2 * c.radius * c.theta
+
+[215] exact_euclidean_capParam_hausdorffMeasure (457-483)
+theorem exact_euclidean_capParam_hausdorffMeasure (c : OneSidedCircularCap) :
+    (μH[1] : Measure EuclideanPlane)
+        (realizedCapParam c '' Icc (capStart c) (capEnd c)) =
+      ENNReal.ofReal c.arcLength
+
+[216] leftCoreParam_image_Icc (517-596)
+theorem leftCoreParam_image_Icc (c : StripCore) :
+    leftCoreParam c '' Icc (coreArcStart c) (coreArcEnd c) =
+      c.leftArcTrace
+
+[217] rightCoreParam_image_Icc (597-676)
+theorem rightCoreParam_image_Icc (c : StripCore) :
+    rightCoreParam c '' Icc (coreArcStart c) (coreArcEnd c) =
+      c.rightArcTrace
+
+[218] leftCoreComplexIsometryMap (677-680)
+noncomputable def leftCoreComplexIsometryMap (c : StripCore) (z : ℂ) :
+    EuclideanPlane :=
+  WithLp.toLp 2 (c.leftCenterX - z.re, z.im)
+
+[219] rightCoreComplexIsometryMap (681-684)
+noncomputable def rightCoreComplexIsometryMap (c : StripCore) (z : ℂ) :
+    EuclideanPlane :=
+  WithLp.toLp 2 (c.rightCenterX + z.re, z.im)
+
+[220] isometry_leftCoreComplexIsometryMap (685-695)
+lemma isometry_leftCoreComplexIsometryMap (c : StripCore) :
+    Isometry (leftCoreComplexIsometryMap c)
+
+[221] isometry_rightCoreComplexIsometryMap (696-704)
+lemma isometry_rightCoreComplexIsometryMap (c : StripCore) :
+    Isometry (rightCoreComplexIsometryMap c)
+
+[222] realizedLeftCoreParam (705-708)
+noncomputable def realizedLeftCoreParam (c : StripCore) (s : ℝ) :
+    EuclideanPlane :=
+  planeEuclideanHomeomorph (leftCoreParam c s)
+
+[223] realizedRightCoreParam (709-712)
+noncomputable def realizedRightCoreParam (c : StripCore) (s : ℝ) :
+    EuclideanPlane :=
+  planeEuclideanHomeomorph (rightCoreParam c s)
+
+[224] realizedLeftCoreParam_eq (713-719)
+lemma realizedLeftCoreParam_eq (c : StripCore) (s : ℝ) :
+    realizedLeftCoreParam c s =
+      leftCoreComplexIsometryMap c (unitCircleArc c.radius s)
+
+[225] realizedRightCoreParam_eq (720-726)
+lemma realizedRightCoreParam_eq (c : StripCore) (s : ℝ) :
+    realizedRightCoreParam c s =
+      rightCoreComplexIsometryMap c (unitCircleArc c.radius s)
+
+[226] continuous_realizedLeftCoreParam (727-735)
+lemma continuous_realizedLeftCoreParam (c : StripCore) :
+    Continuous (realizedLeftCoreParam c)
+
+[227] continuous_realizedRightCoreParam (736-744)
+lemma continuous_realizedRightCoreParam (c : StripCore) :
+    Continuous (realizedRightCoreParam c)
+
+[228] exact_euclidean_leftCoreParam_hausdorffMeasure (745-772)
+theorem exact_euclidean_leftCoreParam_hausdorffMeasure (c : StripCore) :
+    (μH[1] : Measure EuclideanPlane)
+      (realizedLeftCoreParam c '' Icc (coreArcStart c) (coreArcEnd c)) =
+      ENNReal.ofReal (coreArcEnd c - coreArcStart c)
+
+[229] exact_euclidean_rightCoreParam_hausdorffMeasure (773-800)
+theorem exact_euclidean_rightCoreParam_hausdorffMeasure (c : StripCore) :
+    (μH[1] : Measure EuclideanPlane)
+      (realizedRightCoreParam c '' Icc (coreArcStart c) (coreArcEnd c)) =
+      ENNReal.ofReal (coreArcEnd c - coreArcStart c)
+
+[230] realizedLeftCoreParam_image_Icc (801-810)
+theorem realizedLeftCoreParam_image_Icc (c : StripCore) :
+    realizedLeftCoreParam c '' Icc (coreArcStart c) (coreArcEnd c) =
+      planeEuclideanHomeomorph '' c.leftArcTrace
+
+[231] realizedRightCoreParam_image_Icc (811-820)
+theorem realizedRightCoreParam_image_Icc (c : StripCore) :
+    realizedRightCoreParam c '' Icc (coreArcStart c) (coreArcEnd c) =
+      planeEuclideanHomeomorph '' c.rightArcTrace
+
+[232] exact_euclidean_leftArcTrace_hausdorffMeasure (821-827)
+theorem exact_euclidean_leftArcTrace_hausdorffMeasure (c : StripCore) :
+    (μH[1] : Measure EuclideanPlane)
+      (planeEuclideanHomeomorph '' c.leftArcTrace) =
+      ENNReal.ofReal (coreArcEnd c - coreArcStart c)
+
+[233] exact_euclidean_rightArcTrace_hausdorffMeasure (828-834)
+theorem exact_euclidean_rightArcTrace_hausdorffMeasure (c : StripCore) :
+    (μH[1] : Measure EuclideanPlane)
+      (planeEuclideanHomeomorph '' c.rightArcTrace) =
+      ENNReal.ofReal (coreArcEnd c - coreArcStart c)
+
+[234] segmentParam_image_Icc (835-863)
+theorem segmentParam_image_Icc (seg : HorizontalSegment) :
+    segmentParam seg '' Icc (segmentStart seg) (segmentEnd seg) = seg.carrier
+
+[235] realizedSegmentParam (864-867)
+noncomputable def realizedSegmentParam (seg : HorizontalSegment) (s : ℝ) :
+    EuclideanPlane :=
+  planeEuclideanHomeomorph (segmentParam seg s)
+
+[236] realizedSegmentParam_image_affineSegment (873-912)
+theorem realizedSegmentParam_image_affineSegment (seg : HorizontalSegment) :
+    realizedSegmentParam seg '' Icc (segmentStart seg) (segmentEnd seg) =
+      affineSegment ℝ
+        (planeEuclideanHomeomorph seg.leftEndpoint)
+        (planeEuclideanHomeomorph seg.rightEndpoint)
+
+[237] realizedSegmentParam_image_carrier (913-922)
+theorem realizedSegmentParam_image_carrier (seg : HorizontalSegment) :
+    realizedSegmentParam seg '' Icc (segmentStart seg) (segmentEnd seg) =
+      planeEuclideanHomeomorph '' seg.carrier
+
+[238] segmentEndpoint_edist (923-936)
+lemma segmentEndpoint_edist (seg : HorizontalSegment) :
+    edist (planeEuclideanHomeomorph seg.leftEndpoint)
+      (planeEuclideanHomeomorph seg.rightEndpoint) =
+      ENNReal.ofReal seg.euclideanLength
+
+[239] exact_euclidean_segmentCarrier_hausdorffMeasure (937-946)
+theorem exact_euclidean_segmentCarrier_hausdorffMeasure
+    (seg : HorizontalSegment) :
+    (μH[1] : Measure EuclideanPlane)
+      (planeEuclideanHomeomorph '' seg.carrier) =
+      ENNReal.ofReal seg.euclideanLength
+
+[240] capParam_image_Icc_eq_arcTrace (947-1070)
+theorem capParam_image_Icc_eq_arcTrace (c : OneSidedCircularCap) :
+    capParam c '' Icc (capStart c) (capEnd c) = c.arcTrace
+
+[241] realizedCapParam_image_Icc (1071-1080)
+theorem realizedCapParam_image_Icc (c : OneSidedCircularCap) :
+    realizedCapParam c '' Icc (capStart c) (capEnd c) =
+      planeEuclideanHomeomorph '' c.arcTrace
+
+[242] exact_euclidean_capTrace_hausdorffMeasure (1081-1088)
+theorem exact_euclidean_capTrace_hausdorffMeasure
+    (c : OneSidedCircularCap) :
+    (μH[1] : Measure EuclideanPlane)
+      (planeEuclideanHomeomorph '' c.arcTrace) =
+      ENNReal.ofReal c.arcLength
+
+[243] measurableSet_euclidean_leftArcTrace (1089-1093)
+theorem measurableSet_euclidean_leftArcTrace (c : StripCore) :
+    MeasurableSet (planeEuclideanHomeomorph '' c.leftArcTrace)
+
+[244] measurableSet_euclidean_rightArcTrace (1094-1098)
+theorem measurableSet_euclidean_rightArcTrace (c : StripCore) :
+    MeasurableSet (planeEuclideanHomeomorph '' c.rightArcTrace)
+
+[245] measurableSet_euclidean_capTrace (1104-1109)
+theorem measurableSet_euclidean_capTrace (c : OneSidedCircularCap) :
+    MeasurableSet (planeEuclideanHomeomorph '' c.arcTrace)
+
+[246] pairwiseOverlap (1110-1114)
+def pairwiseOverlap (A B C D : Set PlanePoint) : Set PlanePoint :=
+  (A ∩ B) ∪ ((A ∩ C) ∪ ((A ∩ D) ∪
+    ((B ∩ C) ∪ ((B ∩ D) ∪ (C ∩ D)))))
+
+[247] joinSet (1115-1117)
+def joinSet (q : ℝ) : Set PlanePoint :=
+  {(-q / 2, 1), (q / 2, 1), (-q / 2, -1), (q / 2, -1)}
+
+[248] fourArc_pairwiseOverlap_subset_joinSet (1142-1195)
+theorem fourArc_pairwiseOverlap_subset_joinSet (a : FourArcAssembly) :
+    pairwiseOverlap
+      (StripCore.leftArcTrace a.core)
+      (StripCore.rightArcTrace a.core)
+      (OneSidedCircularCap.arcTrace a.upperCap)
+      (OneSidedCircularCap.arcTrace a.lowerCap) ⊆
+        joinSet a.core.chord
+
+[249] joinSet_finite (1253-1256)
+theorem joinSet_finite (q : ℝ) : (joinSet q).Finite
+
+[250] euclideanJoinSet (1257-1259)
+def euclideanJoinSet (q : ℝ) : Set EuclideanPlane :=
+  planeEuclideanHomeomorph '' joinSet q
+
+[251] euclideanJoinSet_finite (1260-1262)
+theorem euclideanJoinSet_finite (q : ℝ) : (euclideanJoinSet q).Finite
+
+[252] hausdorffMeasure_one_euclideanJoinSet (1263-1268)
+theorem hausdorffMeasure_one_euclideanJoinSet (q : ℝ) :
+    (μH[1] : Measure EuclideanPlane) (euclideanJoinSet q) = 0
+
+[253] fourArc_pairwiseOverlap_h1_null (1269-1279)
+theorem fourArc_pairwiseOverlap_h1_null (a : FourArcAssembly) :
+    (μH[1] : Measure EuclideanPlane)
+      (planeEuclideanHomeomorph '' pairwiseOverlap
+        (StripCore.leftArcTrace a.core)
+        (StripCore.rightArcTrace a.core)
+        (OneSidedCircularCap.arcTrace a.upperCap)
+        (OneSidedCircularCap.arcTrace a.lowerCap)) = 0
+
+[254] fourArc_euclidean_frontier (1338-1348)
+theorem fourArc_euclidean_frontier (a : FourArcAssembly) :
+    frontier (planeEuclideanHomeomorph '' a.carrier) =
+      (planeEuclideanHomeomorph '' StripCore.leftArcTrace a.core) ∪
+        ((planeEuclideanHomeomorph '' StripCore.rightArcTrace a.core) ∪
+          ((planeEuclideanHomeomorph ''
+              OneSidedCircularCap.arcTrace a.upperCap) ∪
+            (planeEuclideanHomeomorph ''
+              OneSidedCircularCap.arcTrace a.lowerCap)))
+
+[255] euclideanStripDensity (1389-1391)
+def euclideanStripDensity (lam : ℝ) (z : EuclideanPlane) : ℝ :=
+  StripDensity lam (planeEuclideanHomeomorph.symm z)
+
+[256] euclideanStripDensity_integrableOn_of_measure_ne_top (1404-1411)
+lemma euclideanStripDensity_integrableOn_of_measure_ne_top
+    (lam : ℝ) {s : Set EuclideanPlane}
+    (hs : (μH[1] : Measure EuclideanPlane) s ≠ ∞) :
+    IntegrableOn (euclideanStripDensity lam) s (μH[1] : Measure EuclideanPlane)
+
+[257] upper_cap_integral (1545-1552)
+theorem upper_cap_integral (lam : ℝ)
+    (c : OneSidedCircularCap) (hside : c.side = .upper)
+    (hbase : c.baseY = 1) :
+    (∫ z in planeEuclideanHomeomorph '' c.arcTrace,
+        euclideanStripDensity lam z ∂(μH[1] : Measure EuclideanPlane)) =
+      lam * c.arcLength
+
+[258] integral_four_union (1562-1590)
+theorem integral_four_union
+    {f : EuclideanPlane → ℝ} {A B C D : Set EuclideanPlane}
+    (hAB : AEDisjoint (μH[1] : Measure EuclideanPlane) A B)
+    (hAC : AEDisjoint (μH[1] : Measure EuclideanPlane) A C)
+    (hAD : AEDisjoint (μH[1] : Measure EuclideanPlane) A D)
+    (hBC : AEDisjoint (μH[1] : Measure EuclideanPlane) B C)
+    (hBD : AEDisjoint (μH[1] : Measure EuclideanPlane) B D)
+    (hCD : AEDisjoint (μH[1] : Measure EuclideanPlane) C D)
+    (hB : MeasurableSet B) (hC : MeasurableSet C) (hD : MeasurableSet D)
+    (hfA : IntegrableOn f A (μH[1] : Measure EuclideanPlane))
+    (hfB : IntegrableOn f B (μH[1] : Measure EuclideanPlane))
+    (hfC : IntegrableOn f C (μH[1] : Measure EuclideanPlane))
+    (hfD : IntegrableOn f D (μH[1] : Measure EuclideanPlane)) :
+    (∫ z in A ∪ (B ∪ (C ∪ D)), f z ∂(μH[1] : Measure EuclideanPlane)) =
+      (∫ z in A, f z ∂(μH[1] : Measure EuclideanPlane)) +
+        ((∫ z in B, f z ∂(μH[1] : Measure EuclideanPlane)) +
+          ((∫ z in C, f z ∂(μH[1] : Measure EuclideanPlane)) +
+            ∫ z in D, f z ∂(μH[1] : Measure EuclideanPlane)))
+
+[259] euclideanPairwiseOverlap (1591-1597)
+def euclideanPairwiseOverlap {α : Type*}
+    (A B C D : Set α) : Set α :=
+  (A ∩ B) ∪ ((A ∩ C) ∪ ((A ∩ D) ∪
+    ((B ∩ C) ∪ ((B ∩ D) ∪ (C ∩ D)))))
+
+[260] pairwise_aedisjoint_of_overlap_null (1598-1616)
+theorem pairwise_aedisjoint_of_overlap_null
+    {A B C D : Set EuclideanPlane}
+    (hnull : (μH[1] : Measure EuclideanPlane)
+      (euclideanPairwiseOverlap A B C D) = 0) :
+    AEDisjoint (μH[1] : Measure EuclideanPlane) A B ∧
+    AEDisjoint (μH[1] : Measure EuclideanPlane) A C ∧
+    AEDisjoint (μH[1] : Measure EuclideanPlane) A D ∧
+    AEDisjoint (μH[1] : Measure EuclideanPlane) B C ∧
+    AEDisjoint (μH[1] : Measure EuclideanPlane) B D ∧
+    AEDisjoint (μH[1] : Measure EuclideanPlane) C D
+
+[261] fourArc_frontier_weightedPerimeter_eq (1794-1844)
+theorem fourArc_frontier_weightedPerimeter_eq
+    (lam : ℝ) (assembly : FourArcAssembly) :
+    assembly.weightedPerimeter lam =
+      WeightedPerimeter lam (FrontierMeasure assembly.carrier)

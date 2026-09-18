@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeShape",
+  "domain_issues": [],
+  "informal_statement": "The shape function has derivative \\(q'(h)=2\\) for every real \\(h\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:146-153; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fc5b59d714869fde00b69f1950c83bd7a32c47524e01ad8d04455ff346c39d58",
+  "symbol_mismatches": []
+}

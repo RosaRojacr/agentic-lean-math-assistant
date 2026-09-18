@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FinitePerimeterRegion.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "The weighted area of a general modeled region is the weighted integral over its stored carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:83-85; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3892310b68bd795c4ddff8f1d276f58be0efcb96c1e8c4fad96ec7d73deea20a",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "isometry_capComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "The indicated coordinate-to-complex or rotation map preserves Euclidean distance.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:398-408; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5d4136606591a26f6abf24f8ba286ddba7154e77e9f96c81673196c1854009b0",
+  "symbol_mismatches": []
+}

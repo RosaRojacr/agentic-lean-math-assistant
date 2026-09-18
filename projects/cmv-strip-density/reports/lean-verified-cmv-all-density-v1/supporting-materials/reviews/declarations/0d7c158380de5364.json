@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.carrier",
+  "domain_issues": [],
+  "informal_statement": "The replacement carrier is the union of the core and its upper cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:3305-3309; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "36b80491dc0fecbf358d87c6bfe7194faf4bcad4ac91372874e8af60a30fd23e",
+  "symbol_mismatches": []
+}

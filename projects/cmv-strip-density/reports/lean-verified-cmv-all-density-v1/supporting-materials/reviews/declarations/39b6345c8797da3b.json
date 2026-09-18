@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.stationaryEqualAreaPair_strictImprovement_exists",
+  "domain_issues": [],
+  "informal_statement": "For every \\(\\lambda>1\\), some stationary equal-area pair satisfies \\(F_3(r)<0\\), \\(P_3(r)<P_4(s)\\), and \\(G(r,s)<0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at UniversalStationaryPair.lean:116-145; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1134a3b056794ea4a2511e4b1ea810f5acd87b2a3db5089871809393e30f50ab",
+  "symbol_mismatches": []
+}

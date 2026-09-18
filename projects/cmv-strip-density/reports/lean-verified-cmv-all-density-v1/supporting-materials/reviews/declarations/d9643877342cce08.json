@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.cos_sideAngle",
+  "domain_issues": [],
+  "informal_statement": "The identity \\(\\cos\\phi=\\sqrt{1-\\kappa^2}\\) holds for every strip core.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:478-481; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c26f39a6dccf790fede705362af68051955e479d2108518ff90a5d9985148ed",
+  "symbol_mismatches": []
+}

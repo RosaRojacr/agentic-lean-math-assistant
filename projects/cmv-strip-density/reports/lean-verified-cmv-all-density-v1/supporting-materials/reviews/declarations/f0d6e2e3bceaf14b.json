@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "lintegral_semicircle_translated",
+  "domain_issues": [],
+  "informal_statement": "The nonnegative integral of \\(2\\sqrt{r^2-(y-a)^2}\\) over \\([a+r\\cos\\theta,a+r]\\) equals \\(r^2(\\theta-\\sin\\theta\\cos\\theta)\\), for \\(r>0\\) and \\(0\\leq\\theta\\leq\\pi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1801-1819; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3c8e90cd635d133e832b64fe2731d46db4f68d0a1a341d292df3904cf66e67e8",
+  "symbol_mismatches": []
+}

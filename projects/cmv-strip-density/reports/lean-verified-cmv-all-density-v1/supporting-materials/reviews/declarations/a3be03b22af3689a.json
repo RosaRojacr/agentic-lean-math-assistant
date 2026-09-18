@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "The component modeled weighted perimeter equals the scalar formula: \\(P_{\\mathrm{modeled}}=P_{\\mathrm{scalar}}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:896-903; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb4c05a2ca2fd9d5b63be1b6ad16da716cc43497abcad228054765e6eaa2e39e",
+  "symbol_mismatches": []
+}

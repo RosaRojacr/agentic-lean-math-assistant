@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.TypeThreeAssembly.scalarWeightedArea_eq_typeThreeArea",
+  "domain_issues": [],
+  "informal_statement": "The scalar area of every regular type-\\(\\mathrm{iii}\\) assembly is \\(A_3(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVSuffixModel.lean:78-86; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "09eff0e6af5f2cf4916a82b585443109aad4f3e8bb020859b5a5f6526f9c2f0d",
+  "symbol_mismatches": []
+}

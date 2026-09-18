@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.rightArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The right core arc trace is \\((x-c_{\\mathrm R})^2+y^2=R^2\\), with \\(x\\geq L/2\\) and \\(\\lvert y\\rvert\\leq1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:767-770; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "059982ba84229cdd58242cd7f98720be73ad274e207529f914e522d73ba5cbeb",
+  "symbol_mismatches": []
+}

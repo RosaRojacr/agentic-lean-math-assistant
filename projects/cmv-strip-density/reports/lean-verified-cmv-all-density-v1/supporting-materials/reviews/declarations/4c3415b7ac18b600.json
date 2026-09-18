@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "For a cap \\(c\\), the Euclidean realization map sends \\(z\\in\\mathbb C\\) to \\((c_x+\\operatorname{Im}z,c_y-R\\cos\\theta+\\operatorname{Re}z)\\) on the upper side and to \\((c_x+\\operatorname{Im}z,c_y+R\\cos\\theta-\\operatorname{Re}z)\\) on the lower side.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:390-397; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3ed78deaf1597a91c6218ca8fe10519ba693355e7329e0301f17fcce226f5a43",
+  "symbol_mismatches": []
+}

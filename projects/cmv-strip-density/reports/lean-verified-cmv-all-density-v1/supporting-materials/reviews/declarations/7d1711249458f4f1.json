@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.boundaryArcLength",
+  "domain_issues": [],
+  "informal_statement": "The total length of the core's two curved sides is \\(4\\ell(\\phi)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:457-459; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "74e634700740d7651d4ed773b1cb3cb71b11c7eedacd0c71b6a84a0e6ec43665",
+  "symbol_mismatches": []
+}

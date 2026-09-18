@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_lower_external_density",
+  "domain_issues": [],
+  "informal_statement": "For a lower cap based on \\(y=-1\\), every interior arclength parameter has density \\(\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1341-1352; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "baaf83c56acf8edc18268269454b4946af9c7098831da004f1da856c3f80d9b2",
+  "symbol_mismatches": []
+}

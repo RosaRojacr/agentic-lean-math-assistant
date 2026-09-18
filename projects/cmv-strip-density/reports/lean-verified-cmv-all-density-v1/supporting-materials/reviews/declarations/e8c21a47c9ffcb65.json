@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_eq",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(r,s\\), \\[\\gamma_r(s)=r\\left(\\cos(s/r)+\\sin(s/r)\\,i\\right).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:409-415; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9342d6a8ed8b7dcd1fbce36251ddf6b271aeea6ec0298f5d467e178c8fbf9cec",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideArcAngle",
+  "domain_issues": [],
+  "informal_statement": "For a regular type-\\(\\mathrm{iii}\\) assembly with \\(\\beta=\\arccos(2h-1)\\), the side-arc angle is \\(\\gamma=\\pi-\\beta\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:64-65; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c68849312591ff361810874588f817eab8327b61ad9b815244ad1ab61a55597a",
+  "symbol_mismatches": []
+}

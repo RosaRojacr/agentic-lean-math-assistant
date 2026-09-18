@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourArea_deriv_neg_before_zero",
+  "domain_issues": [],
+  "informal_statement": "If \\(s\\in(0,1)\\) satisfies \\(F_4(s)=0\\), then \\(A_4'(h)<0\\) for \\(0<h<s\\), assuming \\(\\lambda>1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:1071-1082; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e504f043a30eb739ae5f3ba9174d0ca2cd6aa51665b8ee6815ad3b1b3ea9932b",
+  "symbol_mismatches": []
+}

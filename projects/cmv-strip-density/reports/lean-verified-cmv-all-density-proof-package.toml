@@ -1,0 +1,50 @@
+schema_version = 1
+
+[package]
+id = "lean-verified-cmv-all-density"
+version = "v1"
+title = "A Lean-Verified All-Density Exclusion for CMV Four-Arc Minimizers"
+author = "Rosa Pavlak"
+audience = "A mathematics professor or researcher who may have no prior Lean experience."
+informal_claim = "For the planar strip density equal to 1 on |y| ≤ 1 and to λ > 1 outside, every modeled regular type-(iv) four-arc candidate satisfying the formal CMV type-(iv) hypotheses fails to minimize weighted perimeter for every λ > 1."
+closing_scope = "Explain that this theorem subsumes the earlier λ ≥ 51/50 cutoff and closes the modeled interval 1 < λ < 51/50. State precisely that the root concerns modeled regular type-(iv) candidates. Do not claim the unqualified source-level CMV Conjecture 3.12: normalization of every source-defined type-(iv) region into the formal candidate and reduced-boundary versus complete-frontier perimeter compatibility remain separate. Also explain that universal classification of every arbitrary minimizer is stronger than the bridge needed for this modeled theorem."
+project = "../project.toml"
+output = "lean-verified-cmv-all-density-v1"
+canonical_pdf = "lean-verified-cmv-all-density.pdf"
+references = [
+  "lean-verified-cmv-cutoff.md",
+  "../references/references.bib",
+  "../references/Canete2010.pdf",
+]
+
+[lean]
+workspace = "../proof"
+lakefile = "lakefile.toml"
+support_files = ["lean-toolchain", "lake-manifest.json"]
+generated_globs = []
+forbidden_declarations = []
+build_command = ["lake", "build"]
+verification_commands = []
+allowed_axioms = ["propext", "Quot.sound", "Classical.choice"]
+timeout_seconds = 21600
+
+[[roots]]
+module = "UniversalStationaryPair"
+declaration = "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one"
+role = "primary"
+type = "∀ {lam : ℝ} (candidate : FourArcCandidate lam), 1 < lam → candidate.SatisfiesCMVTypeIVHypotheses → ¬ candidate.IsWeightedPerimeterMinimizer"
+informal_statement = "For every real density λ > 1 and every modeled four-arc candidate satisfying the formal CMV type-(iv) hypotheses, the candidate is not a weighted-perimeter minimizer."
+
+[models]
+author = "openai-codex/gpt-6-astra"
+reviewer = "openai-codex/gpt-6-astra"
+profile = "strict"
+thinking = "xhigh"
+timeout_seconds = 21600
+max_revisions = 5
+max_model_calls = 12
+
+[render]
+pandoc = "pandoc"
+chromium = "chromium-browser"
+timeout_seconds = 1800

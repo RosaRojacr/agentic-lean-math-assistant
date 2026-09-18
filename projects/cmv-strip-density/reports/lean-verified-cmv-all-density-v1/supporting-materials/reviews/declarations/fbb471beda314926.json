@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalArea_gap_identity",
+  "domain_issues": [],
+  "informal_statement": "If \\(r,s\\ne0\\) and \\(A_3(r)=A_4(s)\\), then \\(P_3(r)-P_4(s)=4[(r-s)B(s)/s^2+(r/s)D(s)-D(q(r))]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:1208-1220; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7a449a0d73201ece195743b096dbde5032c8598ab1748985129132f301a8ba9d",
+  "symbol_mismatches": []
+}

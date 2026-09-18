@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.weightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "The weighted area of a strip-core carrier equals its Euclidean scalar area, for every real \\(\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2315-2333; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "22039501f3884648956188fd011ab629e4d948f733db9c19194b8b310134e20a",
+  "symbol_mismatches": []
+}

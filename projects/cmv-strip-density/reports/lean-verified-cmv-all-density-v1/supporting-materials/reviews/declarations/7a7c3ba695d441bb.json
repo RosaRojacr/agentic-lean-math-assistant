@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.IsWeightedPerimeterMinimizer",
+  "domain_issues": [],
+  "informal_statement": "A candidate is a modeled minimizer when every admissible equal-area competitor has perimeter at least that of the candidate.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FourArcCandidate.lean:90-94; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f04b5c158c1a510cd5a8af38df8f99424aeed5e376f986e1d437f95e6a4cbe17",
+  "symbol_mismatches": []
+}

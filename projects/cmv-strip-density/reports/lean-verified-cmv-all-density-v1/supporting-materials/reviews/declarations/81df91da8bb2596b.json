@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_deriv_eq_explicit",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\) and \\(0<h<1\\), put \\(q=2h-1\\), \\[U=\\frac1{\\sqrt{1-q^2}}-\\frac{\\lambda}{\\sqrt{\\lambda^2-q^2}},\\qquad V=\\frac1{\\sqrt{1-q^2}}-\\frac1{\\lambda\\sqrt{\\lambda^2-q^2}}.\\] Then \\[A_3'(h)=\\frac{\\bigl(2(2U+2qV)h-2(B(q)+\\pi/2+D(q))\\bigr)}{h^3}.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:649-699; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ec96d74eb7c231919df47f4c5a7bcce391a0bf68733b2ba3385beb5c882b9ca6",
+  "symbol_mismatches": []
+}

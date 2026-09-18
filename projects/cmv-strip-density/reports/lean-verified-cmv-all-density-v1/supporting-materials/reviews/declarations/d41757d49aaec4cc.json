@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerAngle_semicircular",
+  "domain_issues": [],
+  "informal_statement": "If \\(h=1/2\\), then \\(\\beta=\\pi/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:370-373; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "136b95db3cfbe6ffba49a9d377637e6fd44e92cfd37653b368ff453e7d5af642",
+  "symbol_mismatches": []
+}

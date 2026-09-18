@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.carrier_y_bounds",
+  "domain_issues": [],
+  "informal_statement": "Every point of the strip-core carrier satisfies \\(\\lvert y\\rvert\\leq1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:482-490; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dfd3510aaac02f0e3230984bb1d2516c15f954b7d416fa7e30c71ad44efa3ab8",
+  "symbol_mismatches": []
+}

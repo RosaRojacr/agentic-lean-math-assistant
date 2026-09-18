@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.frontier_carrier_subset_boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "The complete frontier of a four-arc assembly is contained in its boundary trace.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2795-2819; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d72e7b21e3528564863313aa2366a2e4806e01c00a4772872911d424abf3cc5",
+  "symbol_mismatches": []
+}

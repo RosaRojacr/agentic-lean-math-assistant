@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourClearedFold",
+  "domain_issues": [],
+  "informal_statement": "The cleared type-\\(\\mathrm{iv}\\) fold is \\(C(h)=h[\\sqrt{\\lambda^2-h^2}-\\lambda\\sqrt{1-h^2}]-B(h)\\sqrt{1-h^2}\\sqrt{\\lambda^2-h^2}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeFourStationaryRoot.lean:24-28; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1266cefaf66b4dab37ed6ce0451a3ec8c8e11c97af24ed298db2b491c2b5e620",
+  "symbol_mismatches": []
+}

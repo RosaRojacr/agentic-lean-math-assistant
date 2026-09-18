@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_one_euclideanJoinSet",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(q\\), the Euclidean join set has zero one-dimensional Hausdorff measure: \\[\\mathcal H^1(J(\\operatorname{joinSet}(q)))=0.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1263-1268; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ebe8fae03ad531268ff769afa248cd1067ee674eba1a7f8bc77f36d3ab49ebc",
+  "symbol_mismatches": []
+}

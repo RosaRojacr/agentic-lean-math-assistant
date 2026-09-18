@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourClearedFold_continuous",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), the cleared fold \\(C\\) is continuous on the real line.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeFourStationaryRoot.lean:29-34; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c2810ce70b601a04bf730b7d74e237dfa7c31c5a16c6857177a5231549ec1ba2",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.TypeThreeAssembly.scalarWeightedPerimeter_eq_typeThreePerimeter",
+  "domain_issues": [],
+  "informal_statement": "The scalar perimeter of every regular type-\\(\\mathrm{iii}\\) assembly is \\(P_3(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVSuffixModel.lean:87-99; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1cbaa2764b23e5bf11163fb498e9653b454e16f1f8f6b84d752362e7a842718b",
+  "symbol_mismatches": []
+}

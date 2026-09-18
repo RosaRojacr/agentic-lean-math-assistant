@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaRoot_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "A continuous regular equal-area root at \\(h\\in(0,1)\\) with \\(A_3'(\\rho(h))\\ne0\\) has derivative \\(\\rho'(h)=A_4'(h)/A_3'(\\rho(h))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at EqualAreaEnvelope.lean:165-183; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4240cf112f1c537233001e48d7956d1d7de811e741deeb8b94332f375fdbb1f0",
+  "symbol_mismatches": []
+}

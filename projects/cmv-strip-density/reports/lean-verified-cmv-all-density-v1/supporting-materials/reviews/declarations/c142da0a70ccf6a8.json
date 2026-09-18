@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourSupport_concaveOn",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\), \\(S\\) is concave on \\([0,1]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at SameCurvatureArea.lean:293-311; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8ef0a051daef9d1f2bbdf8d2a9a39d0e0a16c808a777adfdd62560b57626cb9b",
+  "symbol_mismatches": []
+}

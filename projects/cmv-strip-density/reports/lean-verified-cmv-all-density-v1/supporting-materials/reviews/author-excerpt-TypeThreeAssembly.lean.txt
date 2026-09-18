@@ -1,0 +1,548 @@
+[331] TypeThreeAssembly (29-35)
+structure TypeThreeAssembly (lam : ℝ) where
+  h : ℝ
+  density_jump : 1 < lam
+  h_pos : 0 < h
+  h_lt_one : h < 1
+
+[332] TypeThreeAssembly.radius (47-49)
+def radius : ℝ := 1 / a.h
+
+[333] TypeThreeAssembly.shapeParameter (50-52)
+def shapeParameter : ℝ := 2 * a.h - 1
+
+[334] TypeThreeAssembly.innerAngle (53-55)
+def innerAngle : ℝ := arccos a.shapeParameter
+
+[335] TypeThreeAssembly.outerArgument (56-58)
+def outerArgument : ℝ := a.shapeParameter / lam
+
+[336] TypeThreeAssembly.outerAngle (59-63)
+def outerAngle : ℝ := arccos a.outerArgument
+
+[337] TypeThreeAssembly.sideArcAngle (64-65)
+def sideArcAngle : ℝ := π - a.innerAngle
+
+[338] TypeThreeAssembly.sideHalfWidth (66-69)
+def sideHalfWidth : ℝ :=
+  a.radius * (sin a.outerAngle - sin a.innerAngle)
+
+[339] TypeThreeAssembly.leftCenter (70-72)
+def leftCenter : PlanePoint := (-a.sideHalfWidth, a.radius - 1)
+
+[340] TypeThreeAssembly.rightCenter (73-75)
+def rightCenter : PlanePoint := (a.sideHalfWidth, a.radius - 1)
+
+[341] TypeThreeAssembly.upperCenter (76-79)
+def upperCenter : PlanePoint :=
+  (0, 1 - a.radius * cos a.outerAngle)
+
+[342] TypeThreeAssembly.rectangleCarrier (80-84)
+def rectangleCarrier : Set PlanePoint :=
+  ({p | -a.sideHalfWidth ≤ p.1} ∩ {p | p.1 ≤ a.sideHalfWidth}) ∩
+    ({p | (-1 : ℝ) ≤ p.2} ∩ {p | p.2 ≤ 1})
+
+[343] TypeThreeAssembly.leftSegmentCarrier (85-91)
+def leftSegmentCarrier : Set PlanePoint :=
+  {p | (p.1 - a.leftCenter.1) ^ 2 + (p.2 - a.leftCenter.2) ^ 2 ≤
+      a.radius ^ 2} ∩
+    ({p | p.1 ≤ a.leftCenter.1} ∩
+      ({p | (-1 : ℝ) ≤ p.2} ∩ {p | p.2 ≤ 1}))
+
+[344] TypeThreeAssembly.rightSegmentCarrier (92-98)
+def rightSegmentCarrier : Set PlanePoint :=
+  {p | (p.1 - a.rightCenter.1) ^ 2 + (p.2 - a.rightCenter.2) ^ 2 ≤
+      a.radius ^ 2} ∩
+    ({p | a.rightCenter.1 ≤ p.1} ∩
+      ({p | (-1 : ℝ) ≤ p.2} ∩ {p | p.2 ≤ 1}))
+
+[345] TypeThreeAssembly.coreCarrier (99-103)
+def coreCarrier : Set PlanePoint :=
+  a.rectangleCarrier ∪ a.leftSegmentCarrier ∪ a.rightSegmentCarrier
+
+[346] TypeThreeAssembly.leftArcTrace (104-110)
+def leftArcTrace : Set PlanePoint :=
+  {p | (p.1 - a.leftCenter.1) ^ 2 + (p.2 - a.leftCenter.2) ^ 2 =
+      a.radius ^ 2 ∧
+    p.1 ≤ a.leftCenter.1 ∧
+    (-1 : ℝ) ≤ p.2 ∧ p.2 ≤ 1}
+
+[347] TypeThreeAssembly.rightArcTrace (111-119)
+def rightArcTrace : Set PlanePoint :=
+  {p | (p.1 - a.rightCenter.1) ^ 2 + (p.2 - a.rightCenter.2) ^ 2 =
+      a.radius ^ 2 ∧
+    a.rightCenter.1 ≤ p.1 ∧
+    (-1 : ℝ) ≤ p.2 ∧ p.2 ≤ 1}
+
+[348] TypeThreeAssembly.leftArcParam (120-126)
+def leftArcParam (s : ℝ) : PlanePoint :=
+  (a.leftCenter.1 + a.radius * sin (s / a.radius),
+    a.leftCenter.2 - a.radius * cos (s / a.radius))
+
+[349] TypeThreeAssembly.rightArcParam (127-131)
+def rightArcParam (s : ℝ) : PlanePoint :=
+  (a.rightCenter.1 + a.radius * sin (s / a.radius),
+    a.rightCenter.2 - a.radius * cos (s / a.radius))
+
+[350] TypeThreeAssembly.bottomSegmentCarrier (132-135)
+def bottomSegmentCarrier : Set PlanePoint :=
+  {p | p.2 = -1} ∩ {p | |p.1| ≤ a.sideHalfWidth}
+
+[351] TypeThreeAssembly.bottomChord (136-139)
+def bottomChord : ℝ := 2 * a.sideHalfWidth
+
+[352] TypeThreeAssembly.radius_pos (145-147)
+theorem radius_pos : 0 < a.radius
+
+[353] TypeThreeAssembly.one_lt_radius (148-152)
+theorem one_lt_radius : 1 < a.radius
+
+[354] TypeThreeAssembly.shapeParameter_mem (153-155)
+theorem shapeParameter_mem : -1 < a.shapeParameter ∧ a.shapeParameter < 1
+
+[355] TypeThreeAssembly.outerArgument_mem (156-164)
+theorem outerArgument_mem : -1 < a.outerArgument ∧ a.outerArgument < 1
+
+[356] TypeThreeAssembly.innerAngle_pos (165-167)
+theorem innerAngle_pos : 0 < a.innerAngle
+
+[357] TypeThreeAssembly.innerAngle_lt_pi (168-170)
+theorem innerAngle_lt_pi : a.innerAngle < π
+
+[358] TypeThreeAssembly.outerAngle_pos (171-173)
+theorem outerAngle_pos : 0 < a.outerAngle
+
+[359] TypeThreeAssembly.outerAngle_lt_pi (174-177)
+theorem outerAngle_lt_pi : a.outerAngle < π
+
+[360] TypeThreeAssembly.cos_innerAngle (178-183)
+theorem cos_innerAngle : cos a.innerAngle = a.shapeParameter
+
+[361] TypeThreeAssembly.cos_outerAngle (184-188)
+theorem cos_outerAngle : cos a.outerAngle = a.outerArgument
+
+[362] TypeThreeAssembly.radius_mul_h (197-200)
+theorem radius_mul_h : a.radius * a.h = 1
+
+[363] TypeThreeAssembly.outerSin_pos (213-215)
+theorem outerSin_pos : 0 < sin a.outerAngle
+
+[364] TypeThreeAssembly.innerSin_pos (216-218)
+theorem innerSin_pos : 0 < sin a.innerAngle
+
+[365] TypeThreeAssembly.sideArcAngle_pos (219-222)
+theorem sideArcAngle_pos : 0 < a.sideArcAngle
+
+[366] TypeThreeAssembly.sideArcAngle_lt_pi (223-226)
+theorem sideArcAngle_lt_pi : a.sideArcAngle < π
+
+[367] TypeThreeAssembly.sin_sideArcAngle (227-230)
+theorem sin_sideArcAngle :
+    sin a.sideArcAngle = sin a.innerAngle
+
+[368] TypeThreeAssembly.cos_sideArcAngle (231-237)
+theorem cos_sideArcAngle :
+    cos a.sideArcAngle = -a.shapeParameter
+
+[369] TypeThreeAssembly.sideCap (238-250)
+def sideCap : OneSidedCircularCap where
+  chord := 2 * a.radius * sin a.innerAngle
+  theta := a.sideArcAngle
+  midpointX := 0
+  baseY := 1
+  side := .lower
+  chord_pos := mul_pos (mul_pos (by norm_num) a.radius_pos) a.innerSin_pos
+  theta_pos := a.sideArcAngle_pos
+  theta_lt_pi := a.sideArcAngle_lt_pi
+
+[370] TypeThreeAssembly.outerCap (251-261)
+def outerCap : OneSidedCircularCap where
+  chord := 2 * a.radius * sin a.outerAngle
+  theta := a.outerAngle
+  midpointX := 0
+  baseY := 1
+  side := .upper
+  chord_pos := mul_pos (mul_pos (by norm_num) a.radius_pos) a.outerSin_pos
+  theta_pos := a.outerAngle_pos
+  theta_lt_pi := a.outerAngle_lt_pi
+
+[371] TypeThreeAssembly.carrier (262-264)
+def carrier : Set PlanePoint := a.coreCarrier ∪ a.outerCap.carrier
+
+[372] TypeThreeAssembly.WeightedArea (265-268)
+def WeightedArea : ℝ := _root_.WeightedArea lam a.carrier
+
+[373] TypeThreeAssembly.WeightedPerimeter (269-272)
+def WeightedPerimeter : ℝ :=
+  _root_.WeightedPerimeter lam (FrontierMeasure a.carrier)
+
+[374] TypeThreeAssembly.rectangleArea (273-277)
+def rectangleArea : ℝ := 4 * a.sideHalfWidth
+
+[375] TypeThreeAssembly.modeledWeightedArea (278-284)
+def modeledWeightedArea : ℝ :=
+  a.rectangleArea + a.sideCap.euclideanArea +
+    lam * a.outerCap.euclideanArea
+
+[376] TypeThreeAssembly.modeledWeightedPerimeter (285-288)
+def modeledWeightedPerimeter : ℝ :=
+  a.sideCap.arcLength + lam * a.outerCap.arcLength + a.bottomChord
+
+[377] TypeThreeAssembly.angleTerm (289-291)
+def angleTerm : ℝ := lam * a.outerAngle + π - a.innerAngle
+
+[378] TypeThreeAssembly.sineGap (292-294)
+def sineGap : ℝ := sin a.outerAngle - sin a.innerAngle
+
+[379] TypeThreeAssembly.scalarWeightedArea (295-299)
+def scalarWeightedArea : ℝ :=
+  (a.angleTerm + (a.shapeParameter + 2) * a.sineGap) / a.h ^ 2
+
+[380] TypeThreeAssembly.scalarWeightedPerimeter (300-302)
+def scalarWeightedPerimeter : ℝ :=
+  2 * (a.angleTerm + a.sineGap) / a.h
+
+[381] TypeThreeAssembly.sin_inner_le_sin_outer (303-311)
+theorem sin_inner_le_sin_outer : sin a.innerAngle ≤ sin a.outerAngle
+
+[382] TypeThreeAssembly.sin_inner_lt_sin_outer (312-337)
+theorem sin_inner_lt_sin_outer (hh : a.h ≠ 1 / 2) :
+    sin a.innerAngle < sin a.outerAngle
+
+[383] TypeThreeAssembly.sideHalfWidth_nonneg (338-340)
+theorem sideHalfWidth_nonneg : 0 ≤ a.sideHalfWidth
+
+[384] TypeThreeAssembly.sideHalfWidth_pos (341-343)
+theorem sideHalfWidth_pos (hh : a.h ≠ 1 / 2) : 0 < a.sideHalfWidth
+
+[385] TypeThreeAssembly.sideHalfWidth_eq_zero_iff (344-351)
+theorem sideHalfWidth_eq_zero_iff : a.sideHalfWidth = 0 ↔ a.h = 1 / 2
+
+[386] TypeThreeAssembly.bottomChord_nonneg (352-354)
+theorem bottomChord_nonneg : 0 ≤ a.bottomChord
+
+[387] TypeThreeAssembly.bottomChord_eq_zero_iff (355-358)
+theorem bottomChord_eq_zero_iff : a.bottomChord = 0 ↔ a.h = 1 / 2
+
+[388] TypeThreeAssembly.bottomChord_pos (359-362)
+theorem bottomChord_pos (hh : a.h ≠ 1 / 2) : 0 < a.bottomChord
+
+[389] TypeThreeAssembly.innerAngle_semicircular (370-373)
+theorem innerAngle_semicircular (hh : a.h = 1 / 2) :
+    a.innerAngle = π / 2
+
+[390] TypeThreeAssembly.outerAngle_semicircular (374-377)
+theorem outerAngle_semicircular (hh : a.h = 1 / 2) :
+    a.outerAngle = π / 2
+
+[391] TypeThreeAssembly.outerCap_radius (419-422)
+theorem outerCap_radius : a.outerCap.radius = a.radius
+
+[392] TypeThreeAssembly.sideCap_radius (423-429)
+theorem sideCap_radius : a.sideCap.radius = a.radius
+
+[393] TypeThreeAssembly.sideCap_center (430-438)
+theorem sideCap_center :
+    a.sideCap.center = (0, a.radius - 1)
+
+[394] TypeThreeAssembly.leftArcParam_image_Icc (446-546)
+theorem leftArcParam_image_Icc :
+    a.leftArcParam ''
+        Icc (-a.radius * a.sideArcAngle) 0 = a.leftArcTrace
+
+[395] TypeThreeAssembly.rightArcParam_image_Icc (547-648)
+theorem rightArcParam_image_Icc :
+    a.rightArcParam ''
+        Icc 0 (a.radius * a.sideArcAngle) = a.rightArcTrace
+
+[396] TypeThreeAssembly.sideArcComplexIsometryMap (649-652)
+noncomputable def sideArcComplexIsometryMap
+    (center : PlanePoint) (z : ℂ) : EuclideanPlane :=
+  WithLp.toLp 2 (center.1 + z.im, center.2 - z.re)
+
+[397] TypeThreeAssembly.isometry_sideArcComplexIsometryMap (653-664)
+theorem isometry_sideArcComplexIsometryMap (center : PlanePoint) :
+    Isometry (sideArcComplexIsometryMap center)
+
+[398] TypeThreeAssembly.realizedLeftArcParam (665-668)
+noncomputable def realizedLeftArcParam (s : ℝ) : EuclideanPlane :=
+  planeEuclideanHomeomorph (a.leftArcParam s)
+
+[399] TypeThreeAssembly.realizedRightArcParam (669-671)
+noncomputable def realizedRightArcParam (s : ℝ) : EuclideanPlane :=
+  planeEuclideanHomeomorph (a.rightArcParam s)
+
+[400] TypeThreeAssembly.realizedLeftArcParam_eq (672-680)
+lemma realizedLeftArcParam_eq (s : ℝ) :
+    a.realizedLeftArcParam s =
+      sideArcComplexIsometryMap a.leftCenter
+        (unitCircleArc a.radius s)
+
+[401] TypeThreeAssembly.realizedRightArcParam_eq (681-689)
+lemma realizedRightArcParam_eq (s : ℝ) :
+    a.realizedRightArcParam s =
+      sideArcComplexIsometryMap a.rightCenter
+        (unitCircleArc a.radius s)
+
+[402] TypeThreeAssembly.continuous_realizedLeftArcParam (690-699)
+lemma continuous_realizedLeftArcParam :
+    Continuous a.realizedLeftArcParam
+
+[403] TypeThreeAssembly.continuous_realizedRightArcParam (700-709)
+lemma continuous_realizedRightArcParam :
+    Continuous a.realizedRightArcParam
+
+[404] TypeThreeAssembly.realizedLeftArcParam_image_Icc (710-720)
+theorem realizedLeftArcParam_image_Icc :
+    a.realizedLeftArcParam ''
+        Icc (-a.radius * a.sideArcAngle) 0 =
+      planeEuclideanHomeomorph '' a.leftArcTrace
+
+[405] TypeThreeAssembly.realizedRightArcParam_image_Icc (721-731)
+theorem realizedRightArcParam_image_Icc :
+    a.realizedRightArcParam ''
+        Icc 0 (a.radius * a.sideArcAngle) =
+      planeEuclideanHomeomorph '' a.rightArcTrace
+
+[406] TypeThreeAssembly.measurableSet_euclidean_leftArcTrace (732-736)
+theorem measurableSet_euclidean_leftArcTrace :
+    MeasurableSet (planeEuclideanHomeomorph '' a.leftArcTrace)
+
+[407] TypeThreeAssembly.measurableSet_euclidean_rightArcTrace (737-741)
+theorem measurableSet_euclidean_rightArcTrace :
+    MeasurableSet (planeEuclideanHomeomorph '' a.rightArcTrace)
+
+[408] TypeThreeAssembly.exact_euclidean_leftArcParam_hausdorffMeasure (742-778)
+theorem exact_euclidean_leftArcParam_hausdorffMeasure :
+    (μH[1] : Measure EuclideanPlane)
+        (a.realizedLeftArcParam ''
+          Icc (-a.radius * a.sideArcAngle) 0) =
+      ENNReal.ofReal (a.radius * a.sideArcAngle)
+
+[409] TypeThreeAssembly.exact_euclidean_rightArcParam_hausdorffMeasure (779-816)
+theorem exact_euclidean_rightArcParam_hausdorffMeasure :
+    (μH[1] : Measure EuclideanPlane)
+        (a.realizedRightArcParam ''
+          Icc 0 (a.radius * a.sideArcAngle)) =
+      ENNReal.ofReal (a.radius * a.sideArcAngle)
+
+[410] TypeThreeAssembly.exact_euclidean_leftArcTrace_hausdorffMeasure (817-824)
+theorem exact_euclidean_leftArcTrace_hausdorffMeasure :
+    (μH[1] : Measure EuclideanPlane)
+        (planeEuclideanHomeomorph '' a.leftArcTrace) =
+      ENNReal.ofReal (a.radius * a.sideArcAngle)
+
+[411] TypeThreeAssembly.exact_euclidean_rightArcTrace_hausdorffMeasure (825-832)
+theorem exact_euclidean_rightArcTrace_hausdorffMeasure :
+    (μH[1] : Measure EuclideanPlane)
+        (planeEuclideanHomeomorph '' a.rightArcTrace) =
+      ENNReal.ofReal (a.radius * a.sideArcAngle)
+
+[412] TypeThreeAssembly.sideCap_euclideanArea (833-850)
+theorem sideCap_euclideanArea :
+    a.sideCap.euclideanArea =
+      a.radius ^ 2 *
+        (a.sideArcAngle -
+          sin a.sideArcAngle * cos a.sideArcAngle)
+
+[413] TypeThreeAssembly.outerCap_euclideanArea (851-864)
+theorem outerCap_euclideanArea :
+    a.outerCap.euclideanArea =
+      a.radius ^ 2 *
+        (a.outerAngle - sin a.outerAngle * cos a.outerAngle)
+
+[414] TypeThreeAssembly.sideCap_arcLength (865-874)
+theorem sideCap_arcLength :
+    a.sideCap.arcLength = 2 * a.radius * a.sideArcAngle
+
+[415] TypeThreeAssembly.outerCap_arcLength (875-884)
+theorem outerCap_arcLength :
+    a.outerCap.arcLength = 2 * a.radius * a.outerAngle
+
+[416] TypeThreeAssembly.modeledWeightedArea_formula (885-895)
+theorem modeledWeightedArea_formula :
+    a.modeledWeightedArea = a.scalarWeightedArea
+
+[417] TypeThreeAssembly.modeledWeightedPerimeter_formula (896-903)
+theorem modeledWeightedPerimeter_formula :
+    a.modeledWeightedPerimeter = a.scalarWeightedPerimeter
+
+[418] TypeThreeAssembly.outerCap_center (929-933)
+theorem outerCap_center : a.outerCap.center = a.upperCenter
+
+[419] TypeThreeAssembly.outerCap_leftEndpoint (934-938)
+theorem outerCap_leftEndpoint :
+    a.outerCap.leftEndpoint = (-a.radius * sin a.outerAngle, 1)
+
+[420] TypeThreeAssembly.outerCap_rightEndpoint (939-945)
+theorem outerCap_rightEndpoint :
+    a.outerCap.rightEndpoint = (a.radius * sin a.outerAngle, 1)
+
+[421] TypeThreeAssembly.leftUpperJunction (946-957)
+theorem leftUpperJunction :
+    (a.leftCenter.1 - a.radius * sin a.innerAngle, 1) =
+      a.outerCap.leftEndpoint
+
+[422] TypeThreeAssembly.rightUpperJunction (958-968)
+theorem rightUpperJunction :
+    (a.rightCenter.1 + a.radius * sin a.innerAngle, 1) =
+      a.outerCap.rightEndpoint
+
+[423] TypeThreeAssembly.bottomSegmentCarrier_subset_frontier (1058-1079)
+theorem bottomSegmentCarrier_subset_frontier :
+    a.bottomSegmentCarrier ⊆ frontier a.carrier
+
+[424] TypeThreeAssembly.exact_euclidean_bottomSegmentCarrier_hausdorffMeasure (1101-1129)
+theorem exact_euclidean_bottomSegmentCarrier_hausdorffMeasure :
+    (μH[1] : Measure EuclideanPlane)
+        (planeEuclideanHomeomorph '' a.bottomSegmentCarrier) =
+      ENNReal.ofReal a.bottomChord
+
+[425] TypeThreeAssembly.boundaryJoinSet (1130-1135)
+def boundaryJoinSet : Set PlanePoint :=
+  {(-a.radius * sin a.outerAngle, 1),
+    (a.radius * sin a.outerAngle, 1),
+    (-a.sideHalfWidth, -1),
+    (a.sideHalfWidth, -1)}
+
+[426] TypeThreeAssembly.boundaryJoinSet_finite (1136-1141)
+theorem boundaryJoinSet_finite : a.boundaryJoinSet.Finite
+
+[427] TypeThreeAssembly.pairwiseOverlap_subset_boundaryJoinSet (1142-1257)
+theorem pairwiseOverlap_subset_boundaryJoinSet :
+    pairwiseOverlap a.leftArcTrace a.rightArcTrace
+      (OneSidedCircularCap.arcTrace a.outerCap)
+      a.bottomSegmentCarrier ⊆ a.boundaryJoinSet
+
+[428] TypeThreeAssembly.pairwiseOverlap_h1_null (1258-1273)
+theorem pairwiseOverlap_h1_null :
+    (μH[1] : Measure EuclideanPlane)
+      (planeEuclideanHomeomorph '' pairwiseOverlap
+        a.leftArcTrace a.rightArcTrace
+        (OneSidedCircularCap.arcTrace a.outerCap)
+        a.bottomSegmentCarrier) = 0
+
+[429] TypeThreeAssembly.isClosed_rectangleCarrier (1282-1288)
+theorem isClosed_rectangleCarrier : IsClosed a.rectangleCarrier
+
+[430] TypeThreeAssembly.isClosed_leftSegmentCarrier (1289-1295)
+theorem isClosed_leftSegmentCarrier : IsClosed a.leftSegmentCarrier
+
+[431] TypeThreeAssembly.isClosed_rightSegmentCarrier (1296-1302)
+theorem isClosed_rightSegmentCarrier : IsClosed a.rightSegmentCarrier
+
+[432] TypeThreeAssembly.isClosed_coreCarrier (1303-1306)
+theorem isClosed_coreCarrier : IsClosed a.coreCarrier
+
+[433] TypeThreeAssembly.isClosed_carrier (1307-1309)
+theorem isClosed_carrier : IsClosed a.carrier
+
+[434] TypeThreeAssembly.measurableSet_carrier (1310-1316)
+theorem measurableSet_carrier : MeasurableSet a.carrier
+
+[435] TypeThreeAssembly.coreCarrier_y_bounds (1447-1455)
+theorem coreCarrier_y_bounds {p : PlanePoint}
+    (hp : p ∈ a.coreCarrier) : |p.2| ≤ 1
+
+[436] TypeThreeAssembly.volume_coreCarrier (1481-1529)
+theorem volume_coreCarrier :
+    volume a.coreCarrier =
+      ENNReal.ofReal (a.rectangleArea + a.sideCap.euclideanArea)
+
+[437] TypeThreeAssembly.core_weightedArea_formula (1530-1550)
+theorem core_weightedArea_formula :
+    _root_.WeightedArea lam a.coreCarrier =
+      a.rectangleArea + a.sideCap.euclideanArea
+
+[438] TypeThreeAssembly.weightedArea_eq_modeledWeightedArea (1562-1583)
+theorem weightedArea_eq_modeledWeightedArea :
+    a.WeightedArea = a.modeledWeightedArea
+
+[439] TypeThreeAssembly.weightedArea_formula (1584-1588)
+theorem weightedArea_formula :
+    a.WeightedArea = a.scalarWeightedArea
+
+[440] TypeThreeAssembly.isClosed_bottomSegmentCarrier (1589-1594)
+theorem isClosed_bottomSegmentCarrier : IsClosed a.bottomSegmentCarrier
+
+[441] TypeThreeAssembly.boundaryTrace (1595-1599)
+def boundaryTrace : Set PlanePoint :=
+  a.leftArcTrace ∪
+    (a.rightArcTrace ∪
+      (OneSidedCircularCap.arcTrace a.outerCap ∪ a.bottomSegmentCarrier))
+
+[442] TypeThreeAssembly.frontier_carrier_subset_boundaryTrace (2443-2458)
+theorem frontier_carrier_subset_boundaryTrace :
+    frontier a.carrier ⊆ a.boundaryTrace
+
+[443] TypeThreeAssembly.boundaryTrace_subset_frontier_carrier (2840-2847)
+theorem boundaryTrace_subset_frontier_carrier :
+    a.boundaryTrace ⊆ frontier a.carrier
+
+[444] TypeThreeAssembly.frontier_carrier (2848-2854)
+theorem frontier_carrier :
+    frontier a.carrier = a.boundaryTrace
+
+[445] TypeThreeAssembly.measurableSet_euclidean_bottomSegmentCarrier (2855-2860)
+theorem measurableSet_euclidean_bottomSegmentCarrier :
+    MeasurableSet
+      (planeEuclideanHomeomorph '' a.bottomSegmentCarrier)
+
+[446] TypeThreeAssembly.euclidean_frontier (2937-2949)
+theorem euclidean_frontier :
+    frontier (planeEuclideanHomeomorph '' a.carrier) =
+      (planeEuclideanHomeomorph '' a.leftArcTrace) ∪
+        ((planeEuclideanHomeomorph '' a.rightArcTrace) ∪
+          ((planeEuclideanHomeomorph ''
+              OneSidedCircularCap.arcTrace a.outerCap) ∪
+            (planeEuclideanHomeomorph '' a.bottomSegmentCarrier)))
+
+[447] TypeThreeAssembly.weightedPerimeter_eq_modeledWeightedPerimeter (2950-2993)
+theorem weightedPerimeter_eq_modeledWeightedPerimeter :
+    a.WeightedPerimeter = a.modeledWeightedPerimeter
+
+[448] TypeThreeAssembly.weightedPerimeter_formula (2994-2999)
+theorem weightedPerimeter_formula :
+    a.WeightedPerimeter = a.scalarWeightedPerimeter
+
+[449] TypeThreeAssembly.integrableOn_carrier (3000-3011)
+theorem integrableOn_carrier :
+    IntegrableOn (StripDensity lam) a.carrier
+
+[450] TypeThreeAssembly.integrable_frontierMeasure (3012-3042)
+theorem integrable_frontierMeasure :
+    Integrable (StripDensity lam) (FrontierMeasure a.carrier)
+
+[451] TypeThreeAssembly.ModeledCompetitorRealization (3043-3052)
+structure ModeledCompetitorRealization where
+  competitor : AdmissibleCompetitor lam
+  carrier_eq : competitor.carrier = a.carrier
+
+[452] TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor (3053-3054)
+def asCompetitor : AdmissibleCompetitor lam := realization.competitor
+
+[453] TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedArea (3059-3064)
+theorem asCompetitor_weightedArea :
+    realization.asCompetitor.WeightedArea = a.scalarWeightedArea
+
+[454] TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedPerimeter (3065-3075)
+theorem asCompetitor_weightedPerimeter :
+    realization.asCompetitor.WeightedPerimeter =
+      a.scalarWeightedPerimeter
+
+[455] TypeThreeAssembly.HasModeledCompetitor (3076-3080)
+def HasModeledCompetitor : Prop :=
+  Nonempty (ModeledCompetitorRealization a)
+
+[456] TypeThreeAssembly.hasModeledCompetitor (3081-3100)
+theorem hasModeledCompetitor : a.HasModeledCompetitor
+
+[457] FourArcCandidate.not_isWeightedPerimeterMinimizer_of_typeThree (3101-3118)
+theorem not_isWeightedPerimeterMinimizer_of_typeThree
+    (a : TypeThreeAssembly lam)
+    (realization : TypeThreeAssembly.ModeledCompetitorRealization a)
+    (equalArea :
+      a.scalarWeightedArea = candidate.WeightedArea)
+    (strictPerimeter :
+      a.scalarWeightedPerimeter < candidate.WeightedPerimeter) :
+    ¬ candidate.IsWeightedPerimeterMinimizer

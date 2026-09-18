@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area",
+  "domain_issues": [],
+  "informal_statement": "The normalized cap area on a unit chord is \\(a(\\theta)=(\\theta-\\sin\\theta\\cos\\theta)/(4\\sin^2\\theta)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at MorgansArcFunction.lean:92-93; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8c44e8dff416b2208afe91aad54bf1678ad6f2299c75592fe1fed4f6cbf55dc2",
+  "symbol_mismatches": []
+}

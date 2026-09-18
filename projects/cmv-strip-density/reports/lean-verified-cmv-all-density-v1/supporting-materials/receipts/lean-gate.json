@@ -1,0 +1,972 @@
+{
+  "axiom_reports": [
+    {
+      "axioms": [
+        "Quot.sound",
+        "propext",
+        "Classical.choice"
+      ],
+      "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/home/rosa/.elan/bin/lake",
+        "build"
+      ],
+      "duration_seconds": 5.281,
+      "exit_code": 0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "80dd4221848139f26766b92774ff44b7694248766d87e5e6c5e66e4a474173c9"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": false,
+        "runtime_max_seconds": 21595,
+        "tasks_max": 128,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": ".lake/packages/Cli/lake-manifest.json",
+              "sha256": "f608bac5ccb22b59292584eb7fb4497c327e780a17e7afb8d584ce5d79ad0b70",
+              "size": 109
+            },
+            {
+              "path": ".lake/packages/Cli/lakefile.toml",
+              "sha256": "188aaec6ddb57f411c11b95c3ece85ff26ab9ae8085371fee47e1dc855c4e186",
+              "size": 182
+            },
+            {
+              "path": ".lake/packages/Cli/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/Gametheory/lake-manifest.json",
+              "sha256": "fc78de993a814062d625d1ef3753e9a42d2d37b6be754acb61d46a712dbc10b8",
+              "size": 3144
+            },
+            {
+              "path": ".lake/packages/Gametheory/lakefile.lean",
+              "sha256": "fcc3f28435e81690cf845c19785d2f958cc9354f4d120bc23690d72969ccc25a",
+              "size": 423
+            },
+            {
+              "path": ".lake/packages/Gametheory/lean-toolchain",
+              "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+              "size": 25
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lake-manifest.json",
+              "sha256": "a9b5fc5e76254f415e49b04b7049f58c6cb42e76a0e31b0aed2ddf4af6882033",
+              "size": 122
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lakefile.toml",
+              "sha256": "cb5d6c80c4ffd4b3be99294a911ebf2f6a2fee4eb9f840d96f0f813bd484c05d",
+              "size": 184
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/Qq/lake-manifest.json",
+              "sha256": "460e7ce76c58edfd8ba59428f23e908c5860e8bbca8883ff6c1262980e364d30",
+              "size": 108
+            },
+            {
+              "path": ".lake/packages/Qq/lakefile.toml",
+              "sha256": "42826e4e06221f41fcd863e19d937a0a68be7d54df90abd7800a3c09f4557a15",
+              "size": 135
+            },
+            {
+              "path": ".lake/packages/Qq/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/aesop/lake-manifest.json",
+              "sha256": "c70b1cb760ec9e1d9efeb4d4b6000713e7602d353c93d44ac2758639cdfa041f",
+              "size": 477
+            },
+            {
+              "path": ".lake/packages/aesop/lakefile.toml",
+              "sha256": "370a604edd90aa84c687fb8659819fd3a87acc9b595fda184d9ae9cfc8364e87",
+              "size": 402
+            },
+            {
+              "path": ".lake/packages/aesop/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/batteries/docs/lakefile.toml",
+              "sha256": "d7eb5ef29dac0133185b44e6187690388846462906a0cb9cb73258e5a0dae01c",
+              "size": 190
+            },
+            {
+              "path": ".lake/packages/batteries/lake-manifest.json",
+              "sha256": "67a8bbfcd0c742e05e198714b2d0f3602a3103d838e7427d773a5587555f88a2",
+              "size": 141
+            },
+            {
+              "path": ".lake/packages/batteries/lakefile.toml",
+              "sha256": "acadcd8beb13a53a4ac9399e6706c829309d2380f338d13b037886666f978015",
+              "size": 424
+            },
+            {
+              "path": ".lake/packages/batteries/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/importGraph/lake-manifest.json",
+              "sha256": "fa9c45f89d24deff0ef712948e08be176051a7848e5e574220bf425b42e90aed",
+              "size": 457
+            },
+            {
+              "path": ".lake/packages/importGraph/lakefile.toml",
+              "sha256": "daf75232ac4769bdd18994dfc95f744fc42c1ca73ef33451ac4c6b6075bfb8f1",
+              "size": 952
+            },
+            {
+              "path": ".lake/packages/importGraph/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/mathlib/DownstreamTest/lakefile.toml",
+              "sha256": "e183f87b90340d7ca496b1654ee28ebedbf9afac7fed8c3f3704dfb9d54f2781",
+              "size": 159
+            },
+            {
+              "path": ".lake/packages/mathlib/lake-manifest.json",
+              "sha256": "dda18c5b9f729cc6d564ccf555e2d7914439e6407b0df1cd26a91c0d8748c98f",
+              "size": 2815
+            },
+            {
+              "path": ".lake/packages/mathlib/lakefile.lean",
+              "sha256": "9618b4491ba2a0ce2edde2cd29a6ff12974ccec5b331773ad0ae679cbebbc857",
+              "size": 7130
+            },
+            {
+              "path": ".lake/packages/mathlib/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/mathlib/scripts/SideSkimmer/lakefile.lean",
+              "sha256": "293593d37d00946ccec94cd55b8031f0702211786b9e8f37cd4ddbada7ceb09a",
+              "size": 170
+            },
+            {
+              "path": ".lake/packages/plausible/lake-manifest.json",
+              "sha256": "99a17603b60cd9af445e5689b572b8441aaeaed149f3760dc52595a0c4b128db",
+              "size": 115
+            },
+            {
+              "path": ".lake/packages/plausible/lakefile.toml",
+              "sha256": "4147957012320a3afe8f041662202b7a3453c8a0df4311c1698da029a3b4834f",
+              "size": 167
+            },
+            {
+              "path": ".lake/packages/plausible/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lake-manifest.json",
+              "sha256": "cfa8a1535cd79fbd868bcc67eb22efdab57568248a437fa5dda567234f1f03e2",
+              "size": 118
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lakefile.lean",
+              "sha256": "0a319fffbf511dab4c3307dc105f8e8fdb4f6160020995cef5f442061cc0abca",
+              "size": 3486
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/proofwidgets/widget/package-lock.json",
+              "sha256": "3850e21b0823d6200db6da336ce1bd17a463db97ce314585ae47ed81a7327a7d",
+              "size": 172140
+            },
+            {
+              "path": "lake-manifest.json",
+              "sha256": "56e7f44196fed11e244a446db80c4f2e7c7c477b10190cdde1b287341475f2ff",
+              "size": 3497
+            },
+            {
+              "path": "lakefile.toml",
+              "sha256": "234947f87931e6dff24d7a69056da4aa979fc359325c3edd35e2259ea5d3c5a1",
+              "size": 871
+            },
+            {
+              "path": "lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/home/rosa/.elan/bin/lake",
+            "resolved_path": "/home/rosa/.elan/bin/lake",
+            "sha256": "840179e70803ef373c2ec53342d6a45ea7d022533e4145489fc1278b4f716385",
+            "size": 13183792
+          }
+        },
+        "unit": "campaign-3170756-73709d3ee718.service"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_truncated": false,
+      "stdout": "⚠ [8702/8715] Replayed CMVGeometry\nwarning: CMVGeometry.lean:694:17: This simp argument is unused:\n  OneSidedCircularCap.carrier\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hside]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:694:46: This simp argument is unused:\n  hside\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [OneSidedCircularCap.carrier]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:690:10: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.\n  hp\nPlease focus on the current goal, for instance using `·` (typed as \"\\.\").\n\nNote: This linter can be disabled with `set_option linter.style.multiGoal false`\nwarning: CMVGeometry.lean:690:2: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.\n  intro p hp\nPlease focus on the current goal, for instance using `·` (typed as \"\\.\").\n\nNote: This linter can be disabled with `set_option linter.style.multiGoal false`\nwarning: CMVGeometry.lean:691:2: The following tactic starts with 2 goals and ends with 1 goal, 1 of which is not operated on.\n  exact\n    ⟨hp.1.le, by\n      cases hside : c.side <;> simp only [OneSidedCircularCap.interiorCarrier, hside] at hp <;>\n          simp only [OneSidedCircularCap.carrier, hside] <;>\n        linarith [hp.2]⟩\nPlease focus on the current goal, for instance using `·` (typed as \"\\.\").\n\nNote: This linter can be disabled with `set_option linter.style.multiGoal false`\nwarning: CMVGeometry.lean:1195:8: The `show` tactic should only be used to indicate intermediate goal states for readability.\nHowever, this tactic invocation changed the goal. Please use `change` instead for these purposes.\n\nNote: This linter can be disabled with `set_option linter.style.show false`\nwarning: CMVGeometry.lean:1290:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: CMVGeometry.lean:1556:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: CMVGeometry.lean:1586:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1586:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1596:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1596:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1605:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1605:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1615:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1615:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:2065:33: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\nwarning: CMVGeometry.lean:3160:17: This simp argument is unused:\n  OneSidedCircularCap.arcTrace\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [upperCap] at this\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:3220:17: This simp argument is unused:\n  OneSidedCircularCap.arcTrace\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [lowerCap] at this\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n⚠ [8703/8715] Replayed FrontierPerimeter\nwarning: FrontierPerimeter.lean:149:2: Try this: \n  letI̵\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: FrontierPerimeter.lean:305:55: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: FrontierPerimeter.lean:323:43: Variable name `hr` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _hr\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: FrontierPerimeter.lean:528:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [leftCoreParam, Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:528:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [leftCoreParam, Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:536:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [leftCoreParam]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:608:33: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [rightCoreParam, Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:608:43: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [rightCoreParam, Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:616:33: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [rightCoreParam]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\ninfo: FrontierPerimeter.lean:2026:0: 'fourArc_frontier_weightedPerimeter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2027:0: 'replacement_frontier_weightedPerimeter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2028:0: 'exact_euclidean_capParam_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2029:0: 'capParam_image_Icc_eq_arcTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2030:0: 'exact_euclidean_capTrace_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2031:0: 'leftCoreParam_image_Icc' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2032:0: 'rightCoreParam_image_Icc' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2033:0: 'exact_euclidean_leftArcTrace_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2034:0: 'exact_euclidean_rightArcTrace_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2035:0: 'segmentParam_image_Icc' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2036:0: 'realizedSegmentParam_image_affineSegment' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2037:0: 'exact_euclidean_segmentCarrier_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2038:0: 'measurableSet_euclidean_leftArcTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2039:0: 'measurableSet_euclidean_rightArcTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2040:0: 'measurableSet_euclidean_segmentCarrier' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2041:0: 'measurableSet_euclidean_capTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2042:0: 'fourArc_pairwiseOverlap_subset_joinSet' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2043:0: 'replacement_pairwiseOverlap_subset_joinSet' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2044:0: 'fourArc_pairwiseOverlap_h1_null' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2045:0: 'replacement_pairwiseOverlap_h1_null' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2046:0: 'fourArc_euclidean_frontier' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2047:0: 'replacement_euclidean_frontier' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2048:0: 'replacement_euclidean_upper_interface' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2049:0: 'replacement_euclidean_strictUpperChord_subset_interior' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2050:0: 'replacement_euclidean_exposedLowerChord_subset_frontier' depends on axioms: [propext, Classical.choice, Quot.sound]\n⚠ [8705/8715] Replayed TypeThreeAssembly\ninfo: TypeThreeAssembly.lean:437:2: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nwarning: TypeThreeAssembly.lean:1471:32: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\nwarning: TypeThreeAssembly.lean:1891:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: TypeThreeAssembly.lean:1960:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nBuild completed successfully (8715 jobs).\n",
+      "stdout_sha256": "f04a429dbf730b8b42e5dd69f3d7d9864faabde63aacf9940fbddae95bf55d71",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "/home/rosa/.elan/bin/lake",
+        "env",
+        "which",
+        "lean"
+      ],
+      "duration_seconds": 3.505,
+      "exit_code": 0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "80dd4221848139f26766b92774ff44b7694248766d87e5e6c5e66e4a474173c9"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": false,
+        "runtime_max_seconds": 21590,
+        "tasks_max": 128,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": ".lake/packages/Cli/lake-manifest.json",
+              "sha256": "f608bac5ccb22b59292584eb7fb4497c327e780a17e7afb8d584ce5d79ad0b70",
+              "size": 109
+            },
+            {
+              "path": ".lake/packages/Cli/lakefile.toml",
+              "sha256": "188aaec6ddb57f411c11b95c3ece85ff26ab9ae8085371fee47e1dc855c4e186",
+              "size": 182
+            },
+            {
+              "path": ".lake/packages/Cli/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/Gametheory/lake-manifest.json",
+              "sha256": "fc78de993a814062d625d1ef3753e9a42d2d37b6be754acb61d46a712dbc10b8",
+              "size": 3144
+            },
+            {
+              "path": ".lake/packages/Gametheory/lakefile.lean",
+              "sha256": "fcc3f28435e81690cf845c19785d2f958cc9354f4d120bc23690d72969ccc25a",
+              "size": 423
+            },
+            {
+              "path": ".lake/packages/Gametheory/lean-toolchain",
+              "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+              "size": 25
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lake-manifest.json",
+              "sha256": "a9b5fc5e76254f415e49b04b7049f58c6cb42e76a0e31b0aed2ddf4af6882033",
+              "size": 122
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lakefile.toml",
+              "sha256": "cb5d6c80c4ffd4b3be99294a911ebf2f6a2fee4eb9f840d96f0f813bd484c05d",
+              "size": 184
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/Qq/lake-manifest.json",
+              "sha256": "460e7ce76c58edfd8ba59428f23e908c5860e8bbca8883ff6c1262980e364d30",
+              "size": 108
+            },
+            {
+              "path": ".lake/packages/Qq/lakefile.toml",
+              "sha256": "42826e4e06221f41fcd863e19d937a0a68be7d54df90abd7800a3c09f4557a15",
+              "size": 135
+            },
+            {
+              "path": ".lake/packages/Qq/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/aesop/lake-manifest.json",
+              "sha256": "c70b1cb760ec9e1d9efeb4d4b6000713e7602d353c93d44ac2758639cdfa041f",
+              "size": 477
+            },
+            {
+              "path": ".lake/packages/aesop/lakefile.toml",
+              "sha256": "370a604edd90aa84c687fb8659819fd3a87acc9b595fda184d9ae9cfc8364e87",
+              "size": 402
+            },
+            {
+              "path": ".lake/packages/aesop/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/batteries/docs/lakefile.toml",
+              "sha256": "d7eb5ef29dac0133185b44e6187690388846462906a0cb9cb73258e5a0dae01c",
+              "size": 190
+            },
+            {
+              "path": ".lake/packages/batteries/lake-manifest.json",
+              "sha256": "67a8bbfcd0c742e05e198714b2d0f3602a3103d838e7427d773a5587555f88a2",
+              "size": 141
+            },
+            {
+              "path": ".lake/packages/batteries/lakefile.toml",
+              "sha256": "acadcd8beb13a53a4ac9399e6706c829309d2380f338d13b037886666f978015",
+              "size": 424
+            },
+            {
+              "path": ".lake/packages/batteries/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/importGraph/lake-manifest.json",
+              "sha256": "fa9c45f89d24deff0ef712948e08be176051a7848e5e574220bf425b42e90aed",
+              "size": 457
+            },
+            {
+              "path": ".lake/packages/importGraph/lakefile.toml",
+              "sha256": "daf75232ac4769bdd18994dfc95f744fc42c1ca73ef33451ac4c6b6075bfb8f1",
+              "size": 952
+            },
+            {
+              "path": ".lake/packages/importGraph/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/mathlib/DownstreamTest/lakefile.toml",
+              "sha256": "e183f87b90340d7ca496b1654ee28ebedbf9afac7fed8c3f3704dfb9d54f2781",
+              "size": 159
+            },
+            {
+              "path": ".lake/packages/mathlib/lake-manifest.json",
+              "sha256": "dda18c5b9f729cc6d564ccf555e2d7914439e6407b0df1cd26a91c0d8748c98f",
+              "size": 2815
+            },
+            {
+              "path": ".lake/packages/mathlib/lakefile.lean",
+              "sha256": "9618b4491ba2a0ce2edde2cd29a6ff12974ccec5b331773ad0ae679cbebbc857",
+              "size": 7130
+            },
+            {
+              "path": ".lake/packages/mathlib/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/mathlib/scripts/SideSkimmer/lakefile.lean",
+              "sha256": "293593d37d00946ccec94cd55b8031f0702211786b9e8f37cd4ddbada7ceb09a",
+              "size": 170
+            },
+            {
+              "path": ".lake/packages/plausible/lake-manifest.json",
+              "sha256": "99a17603b60cd9af445e5689b572b8441aaeaed149f3760dc52595a0c4b128db",
+              "size": 115
+            },
+            {
+              "path": ".lake/packages/plausible/lakefile.toml",
+              "sha256": "4147957012320a3afe8f041662202b7a3453c8a0df4311c1698da029a3b4834f",
+              "size": 167
+            },
+            {
+              "path": ".lake/packages/plausible/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lake-manifest.json",
+              "sha256": "cfa8a1535cd79fbd868bcc67eb22efdab57568248a437fa5dda567234f1f03e2",
+              "size": 118
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lakefile.lean",
+              "sha256": "0a319fffbf511dab4c3307dc105f8e8fdb4f6160020995cef5f442061cc0abca",
+              "size": 3486
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/proofwidgets/widget/package-lock.json",
+              "sha256": "3850e21b0823d6200db6da336ce1bd17a463db97ce314585ae47ed81a7327a7d",
+              "size": 172140
+            },
+            {
+              "path": "lake-manifest.json",
+              "sha256": "56e7f44196fed11e244a446db80c4f2e7c7c477b10190cdde1b287341475f2ff",
+              "size": 3497
+            },
+            {
+              "path": "lakefile.toml",
+              "sha256": "234947f87931e6dff24d7a69056da4aa979fc359325c3edd35e2259ea5d3c5a1",
+              "size": 871
+            },
+            {
+              "path": "lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/home/rosa/.elan/bin/lake",
+            "resolved_path": "/home/rosa/.elan/bin/lake",
+            "sha256": "840179e70803ef373c2ec53342d6a45ea7d022533e4145489fc1278b4f716385",
+            "size": 13183792
+          }
+        },
+        "unit": "campaign-3170756-d4a87c23cbad.service"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_truncated": false,
+      "stdout": "/home/rosa/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean\n",
+      "stdout_sha256": "03fdf364ebb7dba810376967c328bc73ca4684fd0f6d6e2ebea684ae8f0a7b08",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "/home/rosa/.elan/bin/lake",
+        "env",
+        "lean",
+        "-R",
+        "/tmp/proof-builder-lean-audit-qc86nin7",
+        "-o",
+        "_ProofBuilderContract_5450794b3bada7b05c8a5d95.olean",
+        "/tmp/proof-builder-lean-audit-qc86nin7/_ProofBuilderContract_5450794b3bada7b05c8a5d95.lean"
+      ],
+      "duration_seconds": 8.722,
+      "exit_code": 0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "80dd4221848139f26766b92774ff44b7694248766d87e5e6c5e66e4a474173c9"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": false,
+        "runtime_max_seconds": 21586,
+        "tasks_max": 128,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": ".lake/packages/Cli/lake-manifest.json",
+              "sha256": "f608bac5ccb22b59292584eb7fb4497c327e780a17e7afb8d584ce5d79ad0b70",
+              "size": 109
+            },
+            {
+              "path": ".lake/packages/Cli/lakefile.toml",
+              "sha256": "188aaec6ddb57f411c11b95c3ece85ff26ab9ae8085371fee47e1dc855c4e186",
+              "size": 182
+            },
+            {
+              "path": ".lake/packages/Cli/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/Gametheory/lake-manifest.json",
+              "sha256": "fc78de993a814062d625d1ef3753e9a42d2d37b6be754acb61d46a712dbc10b8",
+              "size": 3144
+            },
+            {
+              "path": ".lake/packages/Gametheory/lakefile.lean",
+              "sha256": "fcc3f28435e81690cf845c19785d2f958cc9354f4d120bc23690d72969ccc25a",
+              "size": 423
+            },
+            {
+              "path": ".lake/packages/Gametheory/lean-toolchain",
+              "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+              "size": 25
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lake-manifest.json",
+              "sha256": "a9b5fc5e76254f415e49b04b7049f58c6cb42e76a0e31b0aed2ddf4af6882033",
+              "size": 122
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lakefile.toml",
+              "sha256": "cb5d6c80c4ffd4b3be99294a911ebf2f6a2fee4eb9f840d96f0f813bd484c05d",
+              "size": 184
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/Qq/lake-manifest.json",
+              "sha256": "460e7ce76c58edfd8ba59428f23e908c5860e8bbca8883ff6c1262980e364d30",
+              "size": 108
+            },
+            {
+              "path": ".lake/packages/Qq/lakefile.toml",
+              "sha256": "42826e4e06221f41fcd863e19d937a0a68be7d54df90abd7800a3c09f4557a15",
+              "size": 135
+            },
+            {
+              "path": ".lake/packages/Qq/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/aesop/lake-manifest.json",
+              "sha256": "c70b1cb760ec9e1d9efeb4d4b6000713e7602d353c93d44ac2758639cdfa041f",
+              "size": 477
+            },
+            {
+              "path": ".lake/packages/aesop/lakefile.toml",
+              "sha256": "370a604edd90aa84c687fb8659819fd3a87acc9b595fda184d9ae9cfc8364e87",
+              "size": 402
+            },
+            {
+              "path": ".lake/packages/aesop/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/batteries/docs/lakefile.toml",
+              "sha256": "d7eb5ef29dac0133185b44e6187690388846462906a0cb9cb73258e5a0dae01c",
+              "size": 190
+            },
+            {
+              "path": ".lake/packages/batteries/lake-manifest.json",
+              "sha256": "67a8bbfcd0c742e05e198714b2d0f3602a3103d838e7427d773a5587555f88a2",
+              "size": 141
+            },
+            {
+              "path": ".lake/packages/batteries/lakefile.toml",
+              "sha256": "acadcd8beb13a53a4ac9399e6706c829309d2380f338d13b037886666f978015",
+              "size": 424
+            },
+            {
+              "path": ".lake/packages/batteries/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/importGraph/lake-manifest.json",
+              "sha256": "fa9c45f89d24deff0ef712948e08be176051a7848e5e574220bf425b42e90aed",
+              "size": 457
+            },
+            {
+              "path": ".lake/packages/importGraph/lakefile.toml",
+              "sha256": "daf75232ac4769bdd18994dfc95f744fc42c1ca73ef33451ac4c6b6075bfb8f1",
+              "size": 952
+            },
+            {
+              "path": ".lake/packages/importGraph/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/mathlib/DownstreamTest/lakefile.toml",
+              "sha256": "e183f87b90340d7ca496b1654ee28ebedbf9afac7fed8c3f3704dfb9d54f2781",
+              "size": 159
+            },
+            {
+              "path": ".lake/packages/mathlib/lake-manifest.json",
+              "sha256": "dda18c5b9f729cc6d564ccf555e2d7914439e6407b0df1cd26a91c0d8748c98f",
+              "size": 2815
+            },
+            {
+              "path": ".lake/packages/mathlib/lakefile.lean",
+              "sha256": "9618b4491ba2a0ce2edde2cd29a6ff12974ccec5b331773ad0ae679cbebbc857",
+              "size": 7130
+            },
+            {
+              "path": ".lake/packages/mathlib/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/mathlib/scripts/SideSkimmer/lakefile.lean",
+              "sha256": "293593d37d00946ccec94cd55b8031f0702211786b9e8f37cd4ddbada7ceb09a",
+              "size": 170
+            },
+            {
+              "path": ".lake/packages/plausible/lake-manifest.json",
+              "sha256": "99a17603b60cd9af445e5689b572b8441aaeaed149f3760dc52595a0c4b128db",
+              "size": 115
+            },
+            {
+              "path": ".lake/packages/plausible/lakefile.toml",
+              "sha256": "4147957012320a3afe8f041662202b7a3453c8a0df4311c1698da029a3b4834f",
+              "size": 167
+            },
+            {
+              "path": ".lake/packages/plausible/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lake-manifest.json",
+              "sha256": "cfa8a1535cd79fbd868bcc67eb22efdab57568248a437fa5dda567234f1f03e2",
+              "size": 118
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lakefile.lean",
+              "sha256": "0a319fffbf511dab4c3307dc105f8e8fdb4f6160020995cef5f442061cc0abca",
+              "size": 3486
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/proofwidgets/widget/package-lock.json",
+              "sha256": "3850e21b0823d6200db6da336ce1bd17a463db97ce314585ae47ed81a7327a7d",
+              "size": 172140
+            },
+            {
+              "path": "lake-manifest.json",
+              "sha256": "56e7f44196fed11e244a446db80c4f2e7c7c477b10190cdde1b287341475f2ff",
+              "size": 3497
+            },
+            {
+              "path": "lakefile.toml",
+              "sha256": "234947f87931e6dff24d7a69056da4aa979fc359325c3edd35e2259ea5d3c5a1",
+              "size": 871
+            },
+            {
+              "path": "lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/home/rosa/.elan/bin/lake",
+            "resolved_path": "/home/rosa/.elan/bin/lake",
+            "sha256": "840179e70803ef373c2ec53342d6a45ea7d022533e4145489fc1278b4f716385",
+            "size": 13183792
+          }
+        },
+        "unit": "campaign-3170756-50aecf958560.service"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_truncated": false,
+      "stdout": "'CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+      "stdout_sha256": "ccfbd24d479259c962345d6d4f7cea6b98f0f5c5b0067d953904a3272fd56022",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "/home/rosa/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean",
+        "-R",
+        "/tmp/proof-builder-lean-audit-qc86nin7",
+        "--run",
+        "/tmp/proof-builder-lean-audit-qc86nin7/_ProofBuilderCertificateReader.lean",
+        "/tmp/proof-builder-lean-audit-qc86nin7/_ProofBuilderContract_5450794b3bada7b05c8a5d95.olean",
+        "ProofBuilderAudit_5450794b3bada7b05c8a5d95",
+        "--",
+        "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one"
+      ],
+      "duration_seconds": 3.398,
+      "exit_code": 0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "d3168f87fef89e83e9532bf74288918d45468c13a9af51a7136905864411d88b"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": false,
+        "runtime_max_seconds": 21578,
+        "tasks_max": 128,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": ".lake/packages/Cli/lake-manifest.json",
+              "sha256": "f608bac5ccb22b59292584eb7fb4497c327e780a17e7afb8d584ce5d79ad0b70",
+              "size": 109
+            },
+            {
+              "path": ".lake/packages/Cli/lakefile.toml",
+              "sha256": "188aaec6ddb57f411c11b95c3ece85ff26ab9ae8085371fee47e1dc855c4e186",
+              "size": 182
+            },
+            {
+              "path": ".lake/packages/Cli/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/Gametheory/lake-manifest.json",
+              "sha256": "fc78de993a814062d625d1ef3753e9a42d2d37b6be754acb61d46a712dbc10b8",
+              "size": 3144
+            },
+            {
+              "path": ".lake/packages/Gametheory/lakefile.lean",
+              "sha256": "fcc3f28435e81690cf845c19785d2f958cc9354f4d120bc23690d72969ccc25a",
+              "size": 423
+            },
+            {
+              "path": ".lake/packages/Gametheory/lean-toolchain",
+              "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+              "size": 25
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lake-manifest.json",
+              "sha256": "a9b5fc5e76254f415e49b04b7049f58c6cb42e76a0e31b0aed2ddf4af6882033",
+              "size": 122
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lakefile.toml",
+              "sha256": "cb5d6c80c4ffd4b3be99294a911ebf2f6a2fee4eb9f840d96f0f813bd484c05d",
+              "size": 184
+            },
+            {
+              "path": ".lake/packages/LeanSearchClient/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/Qq/lake-manifest.json",
+              "sha256": "460e7ce76c58edfd8ba59428f23e908c5860e8bbca8883ff6c1262980e364d30",
+              "size": 108
+            },
+            {
+              "path": ".lake/packages/Qq/lakefile.toml",
+              "sha256": "42826e4e06221f41fcd863e19d937a0a68be7d54df90abd7800a3c09f4557a15",
+              "size": 135
+            },
+            {
+              "path": ".lake/packages/Qq/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/aesop/lake-manifest.json",
+              "sha256": "c70b1cb760ec9e1d9efeb4d4b6000713e7602d353c93d44ac2758639cdfa041f",
+              "size": 477
+            },
+            {
+              "path": ".lake/packages/aesop/lakefile.toml",
+              "sha256": "370a604edd90aa84c687fb8659819fd3a87acc9b595fda184d9ae9cfc8364e87",
+              "size": 402
+            },
+            {
+              "path": ".lake/packages/aesop/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/batteries/docs/lakefile.toml",
+              "sha256": "d7eb5ef29dac0133185b44e6187690388846462906a0cb9cb73258e5a0dae01c",
+              "size": 190
+            },
+            {
+              "path": ".lake/packages/batteries/lake-manifest.json",
+              "sha256": "67a8bbfcd0c742e05e198714b2d0f3602a3103d838e7427d773a5587555f88a2",
+              "size": 141
+            },
+            {
+              "path": ".lake/packages/batteries/lakefile.toml",
+              "sha256": "acadcd8beb13a53a4ac9399e6706c829309d2380f338d13b037886666f978015",
+              "size": 424
+            },
+            {
+              "path": ".lake/packages/batteries/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/importGraph/lake-manifest.json",
+              "sha256": "fa9c45f89d24deff0ef712948e08be176051a7848e5e574220bf425b42e90aed",
+              "size": 457
+            },
+            {
+              "path": ".lake/packages/importGraph/lakefile.toml",
+              "sha256": "daf75232ac4769bdd18994dfc95f744fc42c1ca73ef33451ac4c6b6075bfb8f1",
+              "size": 952
+            },
+            {
+              "path": ".lake/packages/importGraph/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/mathlib/DownstreamTest/lakefile.toml",
+              "sha256": "e183f87b90340d7ca496b1654ee28ebedbf9afac7fed8c3f3704dfb9d54f2781",
+              "size": 159
+            },
+            {
+              "path": ".lake/packages/mathlib/lake-manifest.json",
+              "sha256": "dda18c5b9f729cc6d564ccf555e2d7914439e6407b0df1cd26a91c0d8748c98f",
+              "size": 2815
+            },
+            {
+              "path": ".lake/packages/mathlib/lakefile.lean",
+              "sha256": "9618b4491ba2a0ce2edde2cd29a6ff12974ccec5b331773ad0ae679cbebbc857",
+              "size": 7130
+            },
+            {
+              "path": ".lake/packages/mathlib/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/mathlib/scripts/SideSkimmer/lakefile.lean",
+              "sha256": "293593d37d00946ccec94cd55b8031f0702211786b9e8f37cd4ddbada7ceb09a",
+              "size": 170
+            },
+            {
+              "path": ".lake/packages/plausible/lake-manifest.json",
+              "sha256": "99a17603b60cd9af445e5689b572b8441aaeaed149f3760dc52595a0c4b128db",
+              "size": 115
+            },
+            {
+              "path": ".lake/packages/plausible/lakefile.toml",
+              "sha256": "4147957012320a3afe8f041662202b7a3453c8a0df4311c1698da029a3b4834f",
+              "size": 167
+            },
+            {
+              "path": ".lake/packages/plausible/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lake-manifest.json",
+              "sha256": "cfa8a1535cd79fbd868bcc67eb22efdab57568248a437fa5dda567234f1f03e2",
+              "size": 118
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lakefile.lean",
+              "sha256": "0a319fffbf511dab4c3307dc105f8e8fdb4f6160020995cef5f442061cc0abca",
+              "size": 3486
+            },
+            {
+              "path": ".lake/packages/proofwidgets/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            },
+            {
+              "path": ".lake/packages/proofwidgets/widget/package-lock.json",
+              "sha256": "3850e21b0823d6200db6da336ce1bd17a463db97ce314585ae47ed81a7327a7d",
+              "size": 172140
+            },
+            {
+              "path": "lake-manifest.json",
+              "sha256": "56e7f44196fed11e244a446db80c4f2e7c7c477b10190cdde1b287341475f2ff",
+              "size": 3497
+            },
+            {
+              "path": "lakefile.toml",
+              "sha256": "234947f87931e6dff24d7a69056da4aa979fc359325c3edd35e2259ea5d3c5a1",
+              "size": 871
+            },
+            {
+              "path": "lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/home/rosa/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean",
+            "resolved_path": "/home/rosa/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean",
+            "sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+            "size": 9024
+          }
+        },
+        "unit": "campaign-3170756-b2c0ab4c7a70.service"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_truncated": false,
+      "stdout": "{\"axioms\":[\"Quot.sound\",\"propext\",\"Classical.choice\"],\"declaration\":\"CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one\"}\n",
+      "stdout_sha256": "c17bd14e36fea4c130c4443fff015f83d48d6a17b562b9b15480bb12cd0234db",
+      "stdout_truncated": false
+    }
+  ],
+  "contract_name": "root-contract.lean",
+  "contract_sha256": "c384b4298eff610873949803f00d13944c6cde9b6178c402f398f775d4807206",
+  "deadline_expired": false,
+  "duration_seconds": 21.269,
+  "errors": [],
+  "rendered_contract_sha256": "c384b4298eff610873949803f00d13944c6cde9b6178c402f398f775d4807206",
+  "schema_version": 2,
+  "source_issues": [],
+  "status": "passed",
+  "substitutions": {},
+  "timeout_seconds": 21600
+}

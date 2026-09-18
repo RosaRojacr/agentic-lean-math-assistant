@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedRightCoreParam",
+  "domain_issues": [],
+  "informal_statement": "For every strip core \\(c\\) and real \\(s\\), the realized right core parametrization is \\(J(\\operatorname{rightParam}_c(s))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:709-712; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f8de565538cdbe799e2faf0a2d6452b4030fcfacd5b43a7347015b8e46924a9",
+  "symbol_mismatches": []
+}

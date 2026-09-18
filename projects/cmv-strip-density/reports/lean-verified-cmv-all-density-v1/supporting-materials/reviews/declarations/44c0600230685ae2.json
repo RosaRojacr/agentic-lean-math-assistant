@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_sub_factor",
+  "domain_issues": [],
+  "informal_statement": "If \\(r\\ne0\\), then for all real \\(s,t\\), \\[\\gamma_r(s)-\\gamma_r(t)=r\\exp(i t/r)\\bigl(\\exp(i(s-t)/r)-1\\bigr).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:18-32; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6c59e7f498e1352e21969a1c8084fa6600038a792db1172f4e5bd3b2836eece",
+  "symbol_mismatches": []
+}

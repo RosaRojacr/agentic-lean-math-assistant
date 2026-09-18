@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_root_le_of_fold_neg",
+  "domain_issues": [],
+  "informal_statement": "A regular negative-fold root is the least root of its area level in \\((0,1]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:954-973; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a9a71e3bf8960b5c96a8fc59bf3fe2a372f70aa365bd91817e7ca128cb8520b9",
+  "symbol_mismatches": []
+}

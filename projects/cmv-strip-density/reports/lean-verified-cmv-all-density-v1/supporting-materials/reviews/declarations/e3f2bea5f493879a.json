@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "The right core segment is \\(\\{(x,y):(x-w)^2+(y-(R-1))^2\\leq R^2,\\ w\\leq x,\\ |y|\\leq1\\}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:92-98; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "889596cedc4d7d957005581540478e3a458f9f3d1f37c9af6b1a713eee05b078",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCore_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "The weighted integral along the left core boundary measure is \\(2\\ell(\\phi)\\), for every real \\(\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1675-1694; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e333f475432d30c40456ab56a9f5187cebdb61288c7e07d5eec293804ac77f49",
+  "symbol_mismatches": []
+}

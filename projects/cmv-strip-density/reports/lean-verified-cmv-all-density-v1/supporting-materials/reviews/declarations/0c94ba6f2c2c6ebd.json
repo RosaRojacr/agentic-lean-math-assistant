@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "For a regular type-\\(\\mathrm{iii}\\) assembly with density \\(\\lambda>1\\), curvature \\(0<h<1\\), and coordinate carrier \\(E_3\\), let \\(J\\) be the coordinate-preserving homeomorphism to the Euclidean realization. The weighted perimeter is the complete-frontier integral\n\n\\[\nP_\\lambda(E_3)=\\int_{\\partial J(E_3)}(f_\\lambda\\circ J^{-1})\\,d\\mathcal H^1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:269-272; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ac2df4f2daf804e358c901d1a6b496eaadc35076745e389cd399733fc5dead10",
+  "symbol_mismatches": []
+}

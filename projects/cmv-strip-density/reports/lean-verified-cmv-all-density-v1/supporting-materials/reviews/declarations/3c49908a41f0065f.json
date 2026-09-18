@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "measurable_stripDensity",
+  "domain_issues": [],
+  "informal_statement": "The strip density is measurable for every real \\(\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1234-1240; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6fc908d8bba478440a5c35f7c75a94366dc691bdf7d2125848e2a8f512284af",
+  "symbol_mismatches": []
+}

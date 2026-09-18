@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.upperCap",
+  "domain_issues": [],
+  "informal_statement": "The assembly's upper cap has chord \\(L\\), half-angle \\(\\alpha\\), midpoint \\((0,1)\\), and upper side.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2499-2508; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3f084f0dbec6bee8992e556fe2ca304aae5eb8981815636bf15454a3b8e613f9",
+  "symbol_mismatches": []
+}

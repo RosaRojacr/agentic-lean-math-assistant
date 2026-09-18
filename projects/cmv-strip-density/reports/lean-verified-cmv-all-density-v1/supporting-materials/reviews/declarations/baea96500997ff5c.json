@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ell",
+  "domain_issues": [],
+  "informal_statement": "The normalized arc length on a unit chord is \\(\\ell(\\theta)=\\theta/\\sin\\theta\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at MorgansArcFunction.lean:89-91; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9adb32c6bf9324acec1e791c0ec46f0e17df835ffee7b3549cab07bdc3a760c9",
+  "symbol_mismatches": []
+}

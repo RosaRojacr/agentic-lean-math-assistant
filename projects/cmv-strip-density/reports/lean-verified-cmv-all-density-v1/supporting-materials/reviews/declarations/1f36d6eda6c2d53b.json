@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeFold_strictMonoOn",
+  "domain_issues": [],
+  "informal_statement": "For every \\(\\lambda>1\\), \\(F_3\\) is strictly increasing on \\((0,1)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:872-893; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "548db5145f9bcf2011e54d3648e735633b97c51f2514a21b4368c3304bb06a32",
+  "symbol_mismatches": []
+}

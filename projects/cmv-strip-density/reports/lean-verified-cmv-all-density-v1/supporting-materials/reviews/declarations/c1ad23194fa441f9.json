@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaRoot_continuousOn_of_compact_unique",
+  "domain_issues": [],
+  "informal_statement": "A selected equal-area root is continuous on \\(S\\subset(0,1]\\) if it lies in a compact \\(K\\subset(0,1)\\) and is the unique root in \\(K\\) for each source height.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at EqualAreaEnvelope.lean:71-107; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "58b73f54ea82a27e264112e64332402373c869c542bc7277160adca9dcc99fdd",
+  "symbol_mismatches": []
+}

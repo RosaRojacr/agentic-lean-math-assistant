@@ -35,6 +35,7 @@ def _fake_lake(path: Path) -> Path:
         path,
         r"""#!/usr/bin/env python3
 import json
+import os
 import pathlib
 import re
 import sys
@@ -53,6 +54,7 @@ elif sys.argv[1:] == ["build"] or (
 elif sys.argv[1:] == ["env", "which", "lean"]:
     print(pathlib.Path(sys.argv[0]).resolve())
 elif sys.argv[1:3] == ["env", "lean"] and sys.argv[-1] == "_ProofBuilderDependencies.lean":
+    assert os.environ.get("LEAN_NUM_THREADS") == "4"
     source = pathlib.Path(sys.argv[-1]).read_text(encoding="utf-8")
     output = pathlib.Path(
         json.loads(re.search(r'IO\.FS\.writeFile ("[^"]+") output', source).group(1))
@@ -426,6 +428,43 @@ def test_proof_builder_resumes_unfinalized_crash(
     assert result.status == "verified"
 
 
+def test_pdf_render_resume_recovers_unfinalized_review(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    manifest, omp, lake = _fixture(tmp_path)
+    original_render = proof_builder_module._render_all
+
+    def crash(*_args: object, **_kwargs: object) -> None:
+        raise ProofBuilderError("simulated render crash")
+
+    monkeypatch.setattr(proof_builder_module, "_render_all", crash)
+    with pytest.raises(ProofBuilderError, match="simulated render crash"):
+        build_proof_package(manifest, omp=str(omp), lake=str(lake))
+
+    package = manifest.parent / "fixture-proof-v1"
+    request_count = len(
+        tuple(
+            (package / "supporting-materials/receipts").glob("*.request.json")
+        )
+    )
+    monkeypatch.setattr(proof_builder_module, "_render_all", original_render)
+    result = resume_proof_package(
+        package,
+        lake=str(lake),
+        from_stage="pdf-render",
+    )
+
+    assert result.status == "verified"
+    assert (
+        len(
+            tuple(
+                (package / "supporting-materials/receipts").glob("*.request.json")
+            )
+        )
+        == request_count
+    )
+
+
 def test_cli_initializes_manifest_without_overwrite(tmp_path: Path) -> None:
     manifest = tmp_path / "proof-package.toml"
 
@@ -449,11 +488,45 @@ def test_math_markup_validation_rejects_plaintext_and_broken_latex() -> None:
         )
         == 2
     )
+    assert (
+        proof_builder_module._validate_math_markup(
+            "A. Cañete, M. Miranda Jr., and D. Vittone proved the source result.",
+            "valid bibliography",
+        )
+        == 0
+    )
+    assert (
+        proof_builder_module._validate_math_markup(
+            "See LeanSuffixAnalytic.typeFourArea_fold_le, "
+            "LeanSuffixAnalytic.lean:1115-1128.",
+            "valid Lean source references",
+        )
+        == 0
+    )
+    assert (
+        proof_builder_module._validate_math_markup(
+            "The declaration typeFourArea_fold_le supplies the endpoint argument.",
+            "valid Lean identifier",
+        )
+        == 0
+    )
+    assert (
+        proof_builder_module._validate_math_markup(
+            "The model’s universal predicate is negated.",
+            "valid possessive prose",
+        )
+        == 0
+    )
 
     with pytest.raises(ProofBuilderError, match="outside LaTeX delimiters"):
         proof_builder_module._validate_math_markup(
             "For x > 0, the result follows.",
             "plaintext manuscript",
+        )
+    with pytest.raises(ProofBuilderError, match="outside LaTeX delimiters"):
+        proof_builder_module._validate_math_markup(
+            "The coordinate x_i is positive.",
+            "scripted symbol manuscript",
         )
     with pytest.raises(ProofBuilderError, match="unbalanced LaTeX braces"):
         proof_builder_module._validate_math_markup(

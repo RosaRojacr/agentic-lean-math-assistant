@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.leftEndpoint",
+  "domain_issues": [],
+  "informal_statement": "The left endpoint of a cap is \\((m-L/2,b)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:134-137; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a193f337e9021d7e081f4666c9f784092558b2268ec0e9060f11b3d18dfc3c8d",
+  "symbol_mismatches": []
+}

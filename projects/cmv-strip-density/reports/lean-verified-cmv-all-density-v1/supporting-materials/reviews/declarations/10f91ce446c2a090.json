@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_injOn",
+  "domain_issues": [],
+  "informal_statement": "If \\(r>0\\) and \\(0<\\theta<\\pi\\), the map \\(\\gamma_r\\) is injective on \\([-r\\theta,r\\theta]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:67-92; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ceabbb1bd00ed7b3d5a248b0d9d8b4d41f8f1fc0af8194bd56a8092deed637e9",
+  "symbol_mismatches": []
+}

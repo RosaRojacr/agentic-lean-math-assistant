@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\theta<\\pi\\), \\(a(\\theta)>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at MorgansArcFunction.lean:148-157; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0af41b50988d0bace92fc2e638571302802d8538245a2c254bedb9f164463ede",
+  "symbol_mismatches": []
+}

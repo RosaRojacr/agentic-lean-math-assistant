@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftUpperJunction",
+  "domain_issues": [],
+  "informal_statement": "The left side-arc upper junction equals the outer-cap left endpoint: \\[(-w-R\\sin\\beta,1)=(-R\\sin\\alpha,1).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:946-957; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a660a79d351317f739116ce079a065c0c8bced856fae9b73442ad8d1339dd7ec",
+  "symbol_mismatches": []
+}

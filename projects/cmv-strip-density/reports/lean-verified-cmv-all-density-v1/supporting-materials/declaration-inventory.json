@@ -1,0 +1,4673 @@
+{
+  "declarations": [
+    {
+      "code_sha256": "b6c33ab7d9e6652b4833188977c0694ee665f31ebd07e572ea7a67ee7a8a0183",
+      "declaration": "PlanePoint",
+      "end_line": 33,
+      "generated_family": null,
+      "kind": "abbrev",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 30
+    },
+    {
+      "code_sha256": "dfa2db26da624a2b5333b886cff8c9cd3151218ea8aa3e3cb39c78359b32470e",
+      "declaration": "EuclideanPlane",
+      "end_line": 37,
+      "generated_family": null,
+      "kind": "abbrev",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 34
+    },
+    {
+      "code_sha256": "0cae97f48ab4c061d7f08a907381bf52e9560477df33ffb993c23c2cbbf11049",
+      "declaration": "planeEuclideanHomeomorph",
+      "end_line": 42,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 38
+    },
+    {
+      "code_sha256": "51e629a8115629e4652f417b9dcfc46beea6a584d8ebcb351e746df181f97ab1",
+      "declaration": "StripDensity",
+      "end_line": 54,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 43
+    },
+    {
+      "code_sha256": "959b5ddd7363861d4d0d79c211781b3b19e09df50087472690ae0581725b8c6d",
+      "declaration": "WeightedArea",
+      "end_line": 60,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 55
+    },
+    {
+      "code_sha256": "7323bb80c0a565daf410d27d199e2143ee33a0ecca0460c52504f2e7e50b48e2",
+      "declaration": "FrontierMeasure",
+      "end_line": 66,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 61
+    },
+    {
+      "code_sha256": "8d1f1a60a6d4c5ce03ccda31c1bc34ec4f837b6ce55275e4b0c06fe04e566dba",
+      "declaration": "WeightedPerimeter",
+      "end_line": 73,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 67
+    },
+    {
+      "code_sha256": "2efb7176d17b946809f4cd07b78237ddd03cd4197c405c38d08e97342106a1a0",
+      "declaration": "FinitePerimeterRegion",
+      "end_line": 82,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 74
+    },
+    {
+      "code_sha256": "3892310b68bd795c4ddff8f1d276f58be0efcb96c1e8c4fad96ec7d73deea20a",
+      "declaration": "FinitePerimeterRegion.weightedArea",
+      "end_line": 85,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 83
+    },
+    {
+      "code_sha256": "6863ffc025769eb8169e9582a3d673fe180025902f766c2557257f6937cc7a7e",
+      "declaration": "CapSide",
+      "end_line": 99,
+      "generated_family": null,
+      "kind": "inductive",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 92
+    },
+    {
+      "code_sha256": "a9dd2ba7ee653be367b6a2072de1384c3362b0214117e3aecceae763bc6f8403",
+      "declaration": "OneSidedCircularCap",
+      "end_line": 112,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 100
+    },
+    {
+      "code_sha256": "e898cc7066a75a606fdc3b1d1e563939ad569bdb0f66fd289569e58c7f4c44b8",
+      "declaration": "OneSidedCircularCap.radius",
+      "end_line": 116,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 113
+    },
+    {
+      "code_sha256": "58a018a3af71f1eb6c5aebb7ee395b60aab79f7b55a9d384d43694baace0d346",
+      "declaration": "OneSidedCircularCap.center",
+      "end_line": 123,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 117
+    },
+    {
+      "code_sha256": "2f12b44987266410d1b21333c27225fca467817287b4028245b465856f5540c3",
+      "declaration": "OneSidedCircularCap.arcPoint",
+      "end_line": 133,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 124
+    },
+    {
+      "code_sha256": "a193f337e9021d7e081f4666c9f784092558b2268ec0e9060f11b3d18dfc3c8d",
+      "declaration": "OneSidedCircularCap.leftEndpoint",
+      "end_line": 137,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 134
+    },
+    {
+      "code_sha256": "e83d4942af5a95dd72bd914bc15f416e046e239fc23caff7a851807f832f26a3",
+      "declaration": "OneSidedCircularCap.rightEndpoint",
+      "end_line": 141,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 138
+    },
+    {
+      "code_sha256": "a1c0f970b426c7f0e6a013d8d8bbb613fbba3b5c253445dacecdb9b47cb6785a",
+      "declaration": "OneSidedCircularCap.radiusSquaredAt",
+      "end_line": 145,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 142
+    },
+    {
+      "code_sha256": "e0644dd0b5f330958b79efbb3810eb1cc2f4356e5db251a95736b532b75bfcf1",
+      "declaration": "OneSidedCircularCap.carrier",
+      "end_line": 152,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 146
+    },
+    {
+      "code_sha256": "d9986ab2dd520dfd41d6ccb99ca9878df085185d6c10c136685b43549b4c4dc1",
+      "declaration": "OneSidedCircularCap.interiorCarrier",
+      "end_line": 159,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 153
+    },
+    {
+      "code_sha256": "0705736836c9203b120221cb0770c365bada15ab749e72d0791d55f58eba4c1e",
+      "declaration": "OneSidedCircularCap.chordCarrier",
+      "end_line": 163,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 160
+    },
+    {
+      "code_sha256": "5c476b88f35c9e9f6afcf55ed7ed9ef6be1395a7b5a3003452ff8691443c49da",
+      "declaration": "OneSidedCircularCap.euclideanArea",
+      "end_line": 166,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 164
+    },
+    {
+      "code_sha256": "60daa6fa20eb20410aecf4ceebd5a41e50c48a0eb958e6b55f1bcb20cd85ff25",
+      "declaration": "OneSidedCircularCap.arcLength",
+      "end_line": 170,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 167
+    },
+    {
+      "code_sha256": "8c22795350624813eb7b9aec2fdcda7bfc438d144ebb38b607db3cac77688583",
+      "declaration": "OneSidedCircularCap.sin_theta_pos",
+      "end_line": 209,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 207
+    },
+    {
+      "code_sha256": "7bcdcf3411946f45cb3c854e76728bf4e1477fc16c0bd8673b5d0f6f904d6adf",
+      "declaration": "OneSidedCircularCap.radius_pos",
+      "end_line": 212,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 210
+    },
+    {
+      "code_sha256": "3902ccdc9eb3694014c5a47aad3179ebe09a3fd3cddb066b9c4c1ca933463218",
+      "declaration": "OneSidedCircularCap.euclideanArea_pos",
+      "end_line": 215,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 213
+    },
+    {
+      "code_sha256": "88c4230a8ce8dbe3ed5e64385c18de0588039e6c242ead1e2df6299d087f0ad8",
+      "declaration": "OneSidedCircularCap.ell_theta_pos",
+      "end_line": 219,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 216
+    },
+    {
+      "code_sha256": "615464c0ac73967d872be72b9e5d931fb0644d2db70b6e9168ad1dd7c81aa184",
+      "declaration": "OneSidedCircularCap.arcLength_pos",
+      "end_line": 222,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 220
+    },
+    {
+      "code_sha256": "4b800b6287f8bc78c34b40f39fff02ab7d25631ad2fd22f8819095ceda60143e",
+      "declaration": "OneSidedCircularCap.radius_mul_sin",
+      "end_line": 227,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 223
+    },
+    {
+      "code_sha256": "4e22ae8901c6f895322d9f1591e370b613671c823882adf707a5fac1ae750287",
+      "declaration": "OneSidedCircularCap.arcPoint_left",
+      "end_line": 232,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 228
+    },
+    {
+      "code_sha256": "ba639553cc75debbcac47cb7f164b0cdee0e14e9586cdc6d1cf857f7fa27f21b",
+      "declaration": "OneSidedCircularCap.arcPoint_right",
+      "end_line": 239,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 233
+    },
+    {
+      "code_sha256": "4692c99be4beede3a58f1e164acd1cfe21db7a9160da63340de9490acd46c184",
+      "declaration": "OneSidedCircularCap.arcPoint_in_closed_side",
+      "end_line": 252,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 240
+    },
+    {
+      "code_sha256": "3dbf6a865d1d6331f9c3406c05af249acf00d7c487349d982b588394a814d697",
+      "declaration": "OneSidedCircularCap.arcPoint_in_open_side",
+      "end_line": 266,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 253
+    },
+    {
+      "code_sha256": "424261710f758c71ebe7e57dd13ebd11ffc59cb51b840ff8fc86319890ddae19",
+      "declaration": "OneSidedCircularCap.mem_chordCarrier_of_mem_carrier_of_eq_base",
+      "end_line": 310,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 291
+    },
+    {
+      "code_sha256": "a35dcecd8fd218da748131deaec9b02f5328c1034952ad269b6ba1f5b686d947",
+      "declaration": "OneSidedCircularCap.chordCarrier_subset_carrier",
+      "end_line": 334,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 311
+    },
+    {
+      "code_sha256": "e0f551f525fbf0409babb736205ec484e0a0c2ff7039ce55de1e7a7fc5595a27",
+      "declaration": "OneSidedCircularCap.measurableSet_carrier",
+      "end_line": 363,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 335
+    },
+    {
+      "code_sha256": "d757ff8cbf988a97323a1f1c27dc667eab9b6475f2eb7d1c16beffa82e3009a4",
+      "declaration": "OneSidedCircularCap.isClosed_carrier",
+      "end_line": 391,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 364
+    },
+    {
+      "code_sha256": "e7bebca91d2e392d80b21e5e8b5487591a5477fe10be16627e5b6180dd120506",
+      "declaration": "HorizontalSegment",
+      "end_line": 399,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 392
+    },
+    {
+      "code_sha256": "d64f9e0ea48cfbbc1b06bed874068659f0011957eca2b8226c738430113a0615",
+      "declaration": "HorizontalSegment.leftEndpoint",
+      "end_line": 402,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 400
+    },
+    {
+      "code_sha256": "a14791633639531ab0cb8801c8e0e16383dd7712b7d5730aa7f0d9178c83e5da",
+      "declaration": "HorizontalSegment.rightEndpoint",
+      "end_line": 405,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 403
+    },
+    {
+      "code_sha256": "094b96b3006204081e6d336250f56e63f6b337cc71255210b9bae8ae3b894041",
+      "declaration": "HorizontalSegment.carrier",
+      "end_line": 408,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 406
+    },
+    {
+      "code_sha256": "c965c7e2ff7089171e9318c88e3733eb9629da0051af6a9aad082bf1ad5a5aef",
+      "declaration": "HorizontalSegment.euclideanLength",
+      "end_line": 415,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 409
+    },
+    {
+      "code_sha256": "a32ba501747725a0a1307cf7bd2abbffd387c8bc9d810f24cf348c7c04513aad",
+      "declaration": "StripCore",
+      "end_line": 425,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 416
+    },
+    {
+      "code_sha256": "f23d45618cc8f0a402155f6b0b9c9bed86df54007d8b97c4f4027753ebfcd373",
+      "declaration": "StripCore.radius",
+      "end_line": 428,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 426
+    },
+    {
+      "code_sha256": "4f6b6599037149db7ce42f881c45d0eb7f35fbc43f124df7507d6a83a6d6e15b",
+      "declaration": "StripCore.sideAngle",
+      "end_line": 430,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 429
+    },
+    {
+      "code_sha256": "01fd3b14ca7e8a9d341e71e2fb86b773a9bea051016f7f6499489c3b65bab474",
+      "declaration": "StripCore.leftCenterX",
+      "end_line": 433,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 431
+    },
+    {
+      "code_sha256": "ff1acc9e9b3ef170758d23460b0f614f6eb1c034ebd024b460f189e9f303f923",
+      "declaration": "StripCore.rightCenterX",
+      "end_line": 436,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 434
+    },
+    {
+      "code_sha256": "5204ba429abcba2c9a7bfd26b44272d1068d5b57b8a97a88331831661e9408f9",
+      "declaration": "StripCore.rectangleCarrier",
+      "end_line": 439,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 437
+    },
+    {
+      "code_sha256": "2ca301cf56be587995c60fad814a6021c666b20d0f45e1fa3f2964b23f678cbc",
+      "declaration": "StripCore.leftCapCarrier",
+      "end_line": 443,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 440
+    },
+    {
+      "code_sha256": "0f7231f5e97656f30e8e5131e2afc098206a3ff9953e2cd02ae8207ac4d54b12",
+      "declaration": "StripCore.rightCapCarrier",
+      "end_line": 448,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 444
+    },
+    {
+      "code_sha256": "05f714bedd5ca3f09fd1dac168964dc190e4830b8099d994e590458d8167e259",
+      "declaration": "StripCore.carrier",
+      "end_line": 452,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 449
+    },
+    {
+      "code_sha256": "d05ac0be663f49bfb5425917ab3d2dcdd3367e8ef25ec467ccc3d1ef4ccf07a7",
+      "declaration": "StripCore.euclideanArea",
+      "end_line": 456,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 453
+    },
+    {
+      "code_sha256": "74e634700740d7651d4ed773b1cb3cb71b11c7eedacd0c71b6a84a0e6ec43665",
+      "declaration": "StripCore.boundaryArcLength",
+      "end_line": 459,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 457
+    },
+    {
+      "code_sha256": "754f25da7343b067aca1ccf07fea956e09bfd461a16a072435b6b938ea98f462",
+      "declaration": "StripCore.radius_pos",
+      "end_line": 462,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 460
+    },
+    {
+      "code_sha256": "20886da5ba412dbc0666239218b14d32a1bad68cf7a0f4837b3f6216a46aefbd",
+      "declaration": "StripCore.sideAngle_pos",
+      "end_line": 465,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 463
+    },
+    {
+      "code_sha256": "0c0857ab96c23693b4448efce2e70a6069dda6f460cf0118b7e365f0f1074987",
+      "declaration": "StripCore.sideAngle_le_pi_div_two",
+      "end_line": 469,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 466
+    },
+    {
+      "code_sha256": "4d165924e20daf34cd0cd3a93af12e6637e356347b723990beb9d1a85af59a9e",
+      "declaration": "StripCore.sideAngle_lt_pi",
+      "end_line": 473,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 470
+    },
+    {
+      "code_sha256": "e85f9cb3c0c2b22c1ce74fdc60660033205e7a0821e76cfdd7248571352ea184",
+      "declaration": "StripCore.sin_sideAngle",
+      "end_line": 477,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 474
+    },
+    {
+      "code_sha256": "5c26f39a6dccf790fede705362af68051955e479d2108518ff90a5d9985148ed",
+      "declaration": "StripCore.cos_sideAngle",
+      "end_line": 481,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 478
+    },
+    {
+      "code_sha256": "dfd3510aaac02f0e3230984bb1d2516c15f954b7d416fa7e30c71ad44efa3ab8",
+      "declaration": "StripCore.carrier_y_bounds",
+      "end_line": 490,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 482
+    },
+    {
+      "code_sha256": "c4a110b00efc328d9afc36bfb523f064a5cb69170025121ec86c0022fc798171",
+      "declaration": "StripCore.measurableSet_carrier",
+      "end_line": 551,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 500
+    },
+    {
+      "code_sha256": "5e3edb81f4f16ef8dbff7c15d5756a176b1f99c3bd5fb86ce703134a0a727a89",
+      "declaration": "OneSidedCircularCap.arcTrace",
+      "end_line": 661,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 656
+    },
+    {
+      "code_sha256": "ec8c11c26c05148d770698c167cdecd56869de41dc90864a365cf2514de87bc1",
+      "declaration": "OneSidedCircularCap.isOpen_interiorCarrier",
+      "end_line": 686,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 662
+    },
+    {
+      "code_sha256": "e055c7441e3e2230b6bd3c3989fc3043eb631862e9cdc4e7fe3a7963b0242ddc",
+      "declaration": "OneSidedCircularCap.interiorCarrier_subset_interior",
+      "end_line": 696,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 687
+    },
+    {
+      "code_sha256": "d9cb2c749721b51457faae17a95033cf908527d3fdc652ebedacfbb2292d579d",
+      "declaration": "OneSidedCircularCap.frontier_carrier",
+      "end_line": 761,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 697
+    },
+    {
+      "code_sha256": "702872b40533619867ab566579d52d3f6a44e812910796d96106d1c50acbbfc2",
+      "declaration": "StripCore.leftArcTrace",
+      "end_line": 766,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 762
+    },
+    {
+      "code_sha256": "059982ba84229cdd58242cd7f98720be73ad274e207529f914e522d73ba5cbeb",
+      "declaration": "StripCore.rightArcTrace",
+      "end_line": 770,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 767
+    },
+    {
+      "code_sha256": "71db3f396f38ac0c4ed32b75273f08b0092359d4c0fdd7bc77976000e7791fb0",
+      "declaration": "StripCore.upperChordTrace",
+      "end_line": 773,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 771
+    },
+    {
+      "code_sha256": "faa702d9afdff2eed044fad4474692be94c38bb3a9868779993853eb74445596",
+      "declaration": "StripCore.lowerChordTrace",
+      "end_line": 776,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 774
+    },
+    {
+      "code_sha256": "d28fca8c993d5d2b9aa0b2ebe7f3f0372ebdd951a5cda90d26adf748bface0e4",
+      "declaration": "StripCore.isClosed_carrier",
+      "end_line": 843,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 805
+    },
+    {
+      "code_sha256": "34bdf246812f32ba3d6167bf3b3ff5fea490b0816170740d97a7d77e703585bf",
+      "declaration": "StripCore.frontier_carrier",
+      "end_line": 1199,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1088
+    },
+    {
+      "code_sha256": "366d70f2307ddf912f8fe8519c486284fdacdab2c9bb76f371f9a65dd8ee807d",
+      "declaration": "intervalPushforward",
+      "end_line": 1202,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1200
+    },
+    {
+      "code_sha256": "b6fc908d8bba478440a5c35f7c75a94366dc691bdf7d2125848e2a8f512284af",
+      "declaration": "measurable_stripDensity",
+      "end_line": 1240,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1234
+    },
+    {
+      "code_sha256": "d80d6cd5283176fe8b29770f039d1135a8892539144575a4bc1d9962ad427168",
+      "declaration": "capParam",
+      "end_line": 1243,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1241
+    },
+    {
+      "code_sha256": "594eb6e2bbf3cbc7a2397b6af7a93506027168fa75ecf7f70b7012b2fc6e208a",
+      "declaration": "capStart",
+      "end_line": 1245,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1244
+    },
+    {
+      "code_sha256": "a140ca726638df619aef507f8019eb9f7ca9503d3231f8bfa8f0a64feb377161",
+      "declaration": "capEnd",
+      "end_line": 1248,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1246
+    },
+    {
+      "code_sha256": "5dbd12f9bc57860ad2ce92a638514e0e8d15006685aca7388e2fa2e1689504cd",
+      "declaration": "capBoundaryMeasure",
+      "end_line": 1251,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1249
+    },
+    {
+      "code_sha256": "0d4d779bde08a636e8536f594b78dfa9705a31925f9d2e9248d0d62fdf5aa11a",
+      "declaration": "cap_upper_external_density",
+      "end_line": 1340,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1329
+    },
+    {
+      "code_sha256": "baaf83c56acf8edc18268269454b4946af9c7098831da004f1da856c3f80d9b2",
+      "declaration": "cap_lower_external_density",
+      "end_line": 1352,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1341
+    },
+    {
+      "code_sha256": "45644ff66dcb2be9e3cb6c626527848bf909f532df9be34ffa1977e24d25b8f4",
+      "declaration": "cap_upper_weightedIntegral",
+      "end_line": 1372,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1353
+    },
+    {
+      "code_sha256": "5575ee03ce1e095004c86962659c2bcf1dde6c0b1ad90b439220173f4e11e7fc",
+      "declaration": "cap_lower_weightedIntegral",
+      "end_line": 1394,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1373
+    },
+    {
+      "code_sha256": "ba8ed6bbc5cd19b9c405036bea7c221ae24e5c76ea0f6ef5cc2d62c327ae1dc5",
+      "declaration": "segmentParam",
+      "end_line": 1397,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1395
+    },
+    {
+      "code_sha256": "e90adf884523aab9d2e3af449adbc9d655d375051a612c0b4970a212a5dca61f",
+      "declaration": "segmentStart",
+      "end_line": 1399,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1398
+    },
+    {
+      "code_sha256": "161abc8655ce59212c511d028e178416823adf64c523c73dae6b889ae03ed1f4",
+      "declaration": "segmentEnd",
+      "end_line": 1402,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1400
+    },
+    {
+      "code_sha256": "4c395d23f09d7608737696a9d4043f61933ddaffbb62953e4470c1085d950b4e",
+      "declaration": "coreArcStart",
+      "end_line": 1473,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1472
+    },
+    {
+      "code_sha256": "7ee06e3535f2fd49529132649f006dc8125adff906e2bb1c8e325a0ca4b835a4",
+      "declaration": "coreArcEnd",
+      "end_line": 1476,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1474
+    },
+    {
+      "code_sha256": "80f940fe52c510e69a283605275f10b49a7ca369836a80a40ece896dbbf606db",
+      "declaration": "leftCoreParam",
+      "end_line": 1481,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1477
+    },
+    {
+      "code_sha256": "38ea0d845e704b5d320adc3936a1b6a5fba52e17ce5fb320da7c20200afa9e4d",
+      "declaration": "rightCoreParam",
+      "end_line": 1486,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1482
+    },
+    {
+      "code_sha256": "e243bfd8c440c79be3e701f3e1ba7f0b4af716d3ad6d1c3de2eb88023b1a30c8",
+      "declaration": "leftCoreBoundaryMeasure",
+      "end_line": 1490,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1487
+    },
+    {
+      "code_sha256": "33cbc13fa6fcd71207ac7e5dfb0579966744c8887bb1c9af1b95e6c688f55ea8",
+      "declaration": "rightCoreBoundaryMeasure",
+      "end_line": 1493,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1491
+    },
+    {
+      "code_sha256": "3222d64a655ce3af15a638606821b923e89c31ae75558031c08763aeb76b72b6",
+      "declaration": "leftCore_strip_density",
+      "end_line": 1667,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1662
+    },
+    {
+      "code_sha256": "d879e18591ac7ff00f0a228fad33d85d1e290fb3c77820aaf80c672ec9411662",
+      "declaration": "rightCore_strip_density",
+      "end_line": 1674,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1668
+    },
+    {
+      "code_sha256": "e333f475432d30c40456ab56a9f5187cebdb61288c7e07d5eec293804ac77f49",
+      "declaration": "leftCore_weightedIntegral",
+      "end_line": 1694,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1675
+    },
+    {
+      "code_sha256": "12c65212e5417b38acb8560f789f61c31ede351c3de6efe2b847438f7d6cf718",
+      "declaration": "rightCore_weightedIntegral",
+      "end_line": 1714,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1695
+    },
+    {
+      "code_sha256": "e4a969c6c1b67c6f267db8fb9582c7cd96174fa24489265c840c646c3085a52a",
+      "declaration": "integral_sqrt_one_sub_sq_from_cos",
+      "end_line": 1758,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1729
+    },
+    {
+      "code_sha256": "fe66bbeed922271b7cf0e4043f58e6b4f6651310c0d02aa776383ac42b18240d",
+      "declaration": "integral_semicircle_scaled",
+      "end_line": 1791,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1759
+    },
+    {
+      "code_sha256": "06721e5dc911d180205234ff69b820e369a8d82b66f142e17c0a1377b9b27f8d",
+      "declaration": "integral_semicircle_translated",
+      "end_line": 1800,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1792
+    },
+    {
+      "code_sha256": "3c8e90cd635d133e832b64fe2731d46db4f68d0a1a341d292df3904cf66e67e8",
+      "declaration": "lintegral_semicircle_translated",
+      "end_line": 1819,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1801
+    },
+    {
+      "code_sha256": "d23f6efcc432aaa58959c64bfa3f6f589362c33546093657b1717ec5dbfb1b34",
+      "declaration": "volume_upper_circular_segment",
+      "end_line": 1944,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1820
+    },
+    {
+      "code_sha256": "2301e25d7ced8d1d9e2c23a9b63e02ba7c6e8f9ea615112d4c41d15aeb777045",
+      "declaration": "volume_lower_circular_segment",
+      "end_line": 1995,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1945
+    },
+    {
+      "code_sha256": "0d51f9d06b45af9eac50b2062d616aee51a260200ad5a2e96d2ecbe8e98be85c",
+      "declaration": "OneSidedCircularCap.volume_carrier",
+      "end_line": 2028,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 1996
+    },
+    {
+      "code_sha256": "ea745db5e4b12e1d05fe0934ca3c81eb24b84ea87dd522e3aa6824c86d1a2dce",
+      "declaration": "volume_horizontalLine",
+      "end_line": 2036,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2029
+    },
+    {
+      "code_sha256": "b32e9d96eca7ded1e8b5354b6d117e61bcda7b34c1fe056587cd14e1871da61b",
+      "declaration": "volume_verticalLine",
+      "end_line": 2046,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2037
+    },
+    {
+      "code_sha256": "b2c1d8716422a2e0169b6aacae489790c14b0594bc75f1e77b6bbec1349d5110",
+      "declaration": "StripCore.volume_rectangleCarrier",
+      "end_line": 2075,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2060
+    },
+    {
+      "code_sha256": "ee7dbe308fa5b9feabca0b7d1f31d2c91cdf7e530a43dcc64a52dce7563fb7b8",
+      "declaration": "StripCore.volume_leftCapCarrier",
+      "end_line": 2138,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2076
+    },
+    {
+      "code_sha256": "7bc214af5d8d445665e416853a1fab80112ca5fe1116500de0e9b2b6285dfdf7",
+      "declaration": "StripCore.volume_rightCapCarrier",
+      "end_line": 2201,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2139
+    },
+    {
+      "code_sha256": "a426f0908aec7b73455f4a0093170232e841cf46ab8f580ee2fe442ff66a7997",
+      "declaration": "StripCore.volume_carrier",
+      "end_line": 2242,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2202
+    },
+    {
+      "code_sha256": "6315c9471ea2031d23e0cb4552b23f2812fe90938358c371a246f04d7f2d8095",
+      "declaration": "stripDensity_integrable_intervalPushforward",
+      "end_line": 2259,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2243
+    },
+    {
+      "code_sha256": "0065afd47de261467dd963dc3f68bd9fc5e9eab2c424cfffb1d00f2e7c2919a7",
+      "declaration": "capBoundaryMeasure_integrable",
+      "end_line": 2267,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2260
+    },
+    {
+      "code_sha256": "efdd79d96b8f43a7c478608fb7242070e102fd586af27d2826a566f07542e0a9",
+      "declaration": "leftCoreBoundaryMeasure_integrable",
+      "end_line": 2281,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2275
+    },
+    {
+      "code_sha256": "63cd5ea28e72c7cf39aef8bfd2e698b16940d7ae74acc20f074d60c55994913c",
+      "declaration": "rightCoreBoundaryMeasure_integrable",
+      "end_line": 2288,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2282
+    },
+    {
+      "code_sha256": "d26957a576fdcc692079b92ac5054cbbeda2a914af15d77e6d70ad1d418d20fd",
+      "declaration": "stripDensity_integrableOn_of_volume_ne_top",
+      "end_line": 2302,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2289
+    },
+    {
+      "code_sha256": "bbc4a1a9af0d45bee6aa1c1152d956e0e945a869f3550ca289ef7022556292ef",
+      "declaration": "cap_integrableOn",
+      "end_line": 2308,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2303
+    },
+    {
+      "code_sha256": "ebecbc727d05931a9afed5e77aa787703ada65169aa70e3f372bec6e04bddcac",
+      "declaration": "core_integrableOn",
+      "end_line": 2314,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2309
+    },
+    {
+      "code_sha256": "22039501f3884648956188fd011ab629e4d948f733db9c19194b8b310134e20a",
+      "declaration": "StripCore.weightedArea_formula",
+      "end_line": 2333,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2315
+    },
+    {
+      "code_sha256": "2f2165b544886739ec40b854c29666e67f06c7a423bd046c04eb224a5c6ee0ce",
+      "declaration": "cap_upper_weightedArea",
+      "end_line": 2359,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2334
+    },
+    {
+      "code_sha256": "af4bcab3c0cdacd24a9ba22f365ac164c96fd2be59faf0a944ca162de8e4ada2",
+      "declaration": "cap_lower_weightedArea",
+      "end_line": 2389,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2360
+    },
+    {
+      "code_sha256": "1ac9185bddaf1e6a0074fb39d1e29417262cc431ccce861d3c65ec2e5216fdb1",
+      "declaration": "FourArcAssembly",
+      "end_line": 2498,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2491
+    },
+    {
+      "code_sha256": "3f084f0dbec6bee8992e556fe2ca304aae5eb8981815636bf15454a3b8e613f9",
+      "declaration": "FourArcAssembly.upperCap",
+      "end_line": 2508,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2499
+    },
+    {
+      "code_sha256": "a60a9393b363872f08f12dbab41380b51afefa746b9504c5841f28d389091bfe",
+      "declaration": "FourArcAssembly.lowerCap",
+      "end_line": 2518,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2509
+    },
+    {
+      "code_sha256": "a55616796db22264c4fe11d48e20ab173ecb661c3bdced26752617ea90d1f816",
+      "declaration": "FourArcAssembly.carrier",
+      "end_line": 2524,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2519
+    },
+    {
+      "code_sha256": "a07e8d5b98aab97a737c50d9ee9eae871142e1adb2b58a3132be8c4b6a093cce",
+      "declaration": "FourArcAssembly.boundaryMeasure",
+      "end_line": 2529,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2525
+    },
+    {
+      "code_sha256": "ad43970e4ac79b935baed41701092f4d901053e35bb88583dcbd5a9003db13a3",
+      "declaration": "FourArcAssembly.weightedArea",
+      "end_line": 2545,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2541
+    },
+    {
+      "code_sha256": "df8ef218db7076c4681d4506265ae824cfa4b1a2ec872c320aeb4f283b25493b",
+      "declaration": "FourArcAssembly.weightedPerimeter",
+      "end_line": 2548,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2546
+    },
+    {
+      "code_sha256": "839e3c1d7a83b5801ac118ef77feb57b415f9e5a71dfa154b8987ba3b91118a0",
+      "declaration": "FourArcAssembly.weightedArea_formula",
+      "end_line": 2602,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2554
+    },
+    {
+      "code_sha256": "43ff4cdbd6774032399c0e7d7f5767a18500986a522e0ace1e470e2035290acd",
+      "declaration": "FourArcAssembly.weightedPerimeter_formula",
+      "end_line": 2624,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2603
+    },
+    {
+      "code_sha256": "d8944f364e38eaa5c7b77ce182d417bec91ac425efc229739d886be00ad658c6",
+      "declaration": "FourArcAssembly.boundaryTrace",
+      "end_line": 2630,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2625
+    },
+    {
+      "code_sha256": "0d72e7b21e3528564863313aa2366a2e4806e01c00a4772872911d424abf3cc5",
+      "declaration": "FourArcAssembly.frontier_carrier_subset_boundaryTrace",
+      "end_line": 2819,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 2795
+    },
+    {
+      "code_sha256": "160385ee99b171abc63b7cc7cb5ade687af8d5249c1ab26a5150be49b8c4654b",
+      "declaration": "FourArcAssembly.boundaryTrace_subset_frontier_carrier",
+      "end_line": 3251,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3244
+    },
+    {
+      "code_sha256": "7da383d241cb3cc30fc9da784ef7200d9bb87d82e25006745acf6f7f7d86a78f",
+      "declaration": "FourArcAssembly.frontier_carrier",
+      "end_line": 3259,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3252
+    },
+    {
+      "code_sha256": "e0b73790946058b82b8d6a4bdde47ad7560092e26acf3d58cb0c91dc0cfa445f",
+      "declaration": "ReplacementAssembly",
+      "end_line": 3288,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3281
+    },
+    {
+      "code_sha256": "b30d86506333a29d0fea0a0c213d5ab5e404eb8902dd90c6019d57dad3b8f56f",
+      "declaration": "ReplacementAssembly.upperCap",
+      "end_line": 3298,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3289
+    },
+    {
+      "code_sha256": "36b80491dc0fecbf358d87c6bfe7194faf4bcad4ac91372874e8af60a30fd23e",
+      "declaration": "ReplacementAssembly.carrier",
+      "end_line": 3309,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3305
+    },
+    {
+      "code_sha256": "30517c93164485b2476e45ea547b19187ad53db44a33af2bf70144ca4c93c662",
+      "declaration": "ReplacementAssembly.weightedArea",
+      "end_line": 3329,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3326
+    },
+    {
+      "code_sha256": "52c3c4597213ca5cc7d4e12b21ad852ff148bcb8179b3f52a9c03b7d3665311b",
+      "declaration": "AdmissibleCompetitor",
+      "end_line": 3960,
+      "generated_family": null,
+      "kind": "inductive",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3952
+    },
+    {
+      "code_sha256": "b57d4c4c33776a05ffbbbc22f1b363a7f356aa7cd089d7c2b3335ead1bb65644",
+      "declaration": "AdmissibleCompetitor.carrier",
+      "end_line": 3967,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3961
+    },
+    {
+      "code_sha256": "d58b51a28690771d1b404e9048905bb6eae43f08f6798b27166b1234f3251f5e",
+      "declaration": "AdmissibleCompetitor.WeightedArea",
+      "end_line": 3975,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3968
+    },
+    {
+      "code_sha256": "17b5c5914d38bc0479d502c48cde9715c303aa7070585ade87ba56d307321437",
+      "declaration": "AdmissibleCompetitor.WeightedPerimeter",
+      "end_line": 3980,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3976
+    },
+    {
+      "code_sha256": "bf49ad5d7ddb4e090057dafec5dba684f6e36be017290e55451b4a9c6cfabce1",
+      "declaration": "AdmissibleCompetitor.weightedArea_eq_carrier",
+      "end_line": 3990,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVGeometry.lean",
+      "source_sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "start_line": 3981
+    },
+    {
+      "code_sha256": "fe9ab761a6d7819237c18cc5b6d5b714cc699cb312b84007d27510fce813ca50",
+      "declaration": "CMVSuffixModel.TypeThreeAssembly.angleTerm_eq_typeThreeAngle",
+      "end_line": 52,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 42
+    },
+    {
+      "code_sha256": "0b54dd8dd926b7670949326ff7f7fb7d21250d76068f1da2eb207447216f1aac",
+      "declaration": "CMVSuffixModel.TypeThreeAssembly.sineGap_eq_typeThreeDelta",
+      "end_line": 77,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 53
+    },
+    {
+      "code_sha256": "09eff0e6af5f2cf4916a82b585443109aad4f3e8bb020859b5a5f6526f9c2f0d",
+      "declaration": "CMVSuffixModel.TypeThreeAssembly.scalarWeightedArea_eq_typeThreeArea",
+      "end_line": 86,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 78
+    },
+    {
+      "code_sha256": "1cbaa2764b23e5bf11163fb498e9653b454e16f1f8f6b84d752362e7a842718b",
+      "declaration": "CMVSuffixModel.TypeThreeAssembly.scalarWeightedPerimeter_eq_typeThreePerimeter",
+      "end_line": 99,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 87
+    },
+    {
+      "code_sha256": "48c010f5756d8d71b74c4c11f50c789619d79d3e32a79f62433bedf4290ea164",
+      "declaration": "CMVSuffixModel.FourArcCandidate.regular_weightedArea_eq_typeFourArea",
+      "end_line": 149,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 142
+    },
+    {
+      "code_sha256": "7c7abd9d4131a70966d7ee06757ae9000eb6c0370ad6826014e6939680589328",
+      "declaration": "CMVSuffixModel.FourArcCandidate.regular_weightedPerimeter_eq_typeFourPerimeter",
+      "end_line": 158,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 150
+    },
+    {
+      "code_sha256": "1d3c440482f713868366732790a87ef12add8058ecc71af2e6fb07df04bb3b83",
+      "declaration": "CMVSuffixModel.FourArcCandidate.endpoint_weightedArea_eq_typeFourArea",
+      "end_line": 166,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 159
+    },
+    {
+      "code_sha256": "9a9144c9e0869ee21b16e09b6aad1d31570ea82a7d5d876263c80c006e5e5661",
+      "declaration": "CMVSuffixModel.FourArcCandidate.endpoint_weightedPerimeter_eq_typeFourPerimeter",
+      "end_line": 176,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 167
+    },
+    {
+      "code_sha256": "e8473928799276d8ba026ded04a5483fef2171ee9679b0cfa48b5117289324b3",
+      "declaration": "CMVSuffixModel.FourArcCandidate.weightedArea_eq_typeFourArea",
+      "end_line": 186,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 177
+    },
+    {
+      "code_sha256": "c47649486a6e39478b2697659276a1423a248517e94449da31be1eb9b63be5ce",
+      "declaration": "CMVSuffixModel.FourArcCandidate.weightedPerimeter_eq_typeFourPerimeter",
+      "end_line": 200,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 187
+    },
+    {
+      "code_sha256": "99c923b45cbc09e9ba012e383efbf5a498fe0a194180526cbe54c89d50a0f151",
+      "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_analytic_typeThree",
+      "end_line": 224,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 201
+    },
+    {
+      "code_sha256": "d6670f69ae0dd1a579233b44583ff3b5ab90f13ac210ff1ddaabbb1088c5b5e2",
+      "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair",
+      "end_line": 248,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVSuffixModel.lean",
+      "source_sha256": "c6ecf74e2ece3f1e822e9f77ac3fc46d589efff056e1ff113dd7f6149b91c903",
+      "start_line": 225
+    },
+    {
+      "code_sha256": "e8643a1549a791c31f1d0a91f7cb9b302d6832ce9c0d1d8e354d9c3e22351fcb",
+      "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap",
+      "end_line": 39,
+      "generated_family": null,
+      "kind": "def",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 34
+    },
+    {
+      "code_sha256": "58b73f54ea82a27e264112e64332402373c869c542bc7277160adca9dcc99fdd",
+      "declaration": "LeanSuffixAnalytic.equalAreaRoot_continuousOn_of_compact_unique",
+      "end_line": 107,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 71
+    },
+    {
+      "code_sha256": "fd210f8a463759cd45da345eae2826fb3a7bdf59d29239656d68c8efc64fb7fc",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc",
+      "end_line": 123,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 108
+    },
+    {
+      "code_sha256": "1b1d7870499bdaf74cbcd036814fc1cce139b4cf2463cce4ba39b71ae55024b7",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_strictAntiOn_Icc_of_fold_neg_right",
+      "end_line": 138,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 124
+    },
+    {
+      "code_sha256": "4240cf112f1c537233001e48d7956d1d7de811e741deeb8b94332f375fdbb1f0",
+      "declaration": "LeanSuffixAnalytic.equalAreaRoot_hasDerivAt",
+      "end_line": 183,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 165
+    },
+    {
+      "code_sha256": "42f42f4f683c9b8ff6e876958c9ae3b87d6bfd1ebf63072c7e612401d7b5ee93",
+      "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_hasDerivAt",
+      "end_line": 225,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 184
+    },
+    {
+      "code_sha256": "ee2db888cf8e5e37251e350d2425fb86808e5c1f7d808208572e20c0e3ea40a9",
+      "declaration": "LeanSuffixAnalytic.DescendingEqualAreaEnvelope",
+      "end_line": 300,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 279
+    },
+    {
+      "code_sha256": "e0a51358d0910c8fb2dd4ffa9d95125b8210328ea93cd0771ca9e9c1138b2ced",
+      "declaration": "LeanSuffixAnalytic.FoldGapNegative",
+      "end_line": 581,
+      "generated_family": null,
+      "kind": "def",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 577
+    },
+    {
+      "code_sha256": "1a0b26ad0e4af7fdd933118930486f792fc517471c75bd1495b190e7f97f3420",
+      "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_lt_fold",
+      "end_line": 631,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 582
+    },
+    {
+      "code_sha256": "0bde810fe503972e30290f54b6517ae65288b7e84131b161bebac58ed0796e33",
+      "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap_le_fold",
+      "end_line": 644,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 632
+    },
+    {
+      "code_sha256": "c4f7d83c3e3a4e728eb9be863cb4e20b5d04c133005f9a44bb6548808441f1ae",
+      "declaration": "LeanSuffixAnalytic.allCurvature_typeThreeImprovement_of_envelope",
+      "end_line": 658,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "EqualAreaEnvelope.lean",
+      "source_sha256": "d9b06553a5a1cd6ffc3fa0cef75fdc1cb8c1eb5273e1b1c36c59e0ed2addcb1b",
+      "start_line": 645
+    },
+    {
+      "code_sha256": "24dc0ff22e0918bdb2c7f16fab0da52bc08326d88e5cb8e1d2e8a8f7ec2bee62",
+      "declaration": "FourArcCandidate",
+      "end_line": 35,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 23
+    },
+    {
+      "code_sha256": "f3520601e601026585d5024a59c3bee3be514d265897b65e66919a9d3ea7fd1e",
+      "declaration": "FourArcCandidate.beta",
+      "end_line": 41,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 39
+    },
+    {
+      "code_sha256": "c09aa141e8bbabbe7279bce2473dd47aa931f875442fe1fc79d759685536fb1e",
+      "declaration": "FourArcCandidate.capChord",
+      "end_line": 44,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 42
+    },
+    {
+      "code_sha256": "eb6c25ab8d5e1e4d2ce589b98fc3af2d04e58bd682ad273d1b07834426ee23d0",
+      "declaration": "FourArcCandidate.capArea",
+      "end_line": 49,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 45
+    },
+    {
+      "code_sha256": "66aff9e1eb934bbbeeb8dd09a1a68a4c23aef3ee09735d3ba9bc12eadb4664ee",
+      "declaration": "FourArcCandidate.stripCore",
+      "end_line": 65,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 53
+    },
+    {
+      "code_sha256": "ca67fddb2d167afab63544438387902bb645349ebfde9d83c7a2719a2277c941",
+      "declaration": "FourArcCandidate.assembly",
+      "end_line": 72,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 66
+    },
+    {
+      "code_sha256": "8ab9f84c197a1a6dbe90236469e9ff5cc2696f04e42133db44cdf34546558b75",
+      "declaration": "FourArcCandidate.region",
+      "end_line": 75,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 73
+    },
+    {
+      "code_sha256": "8256dd516e32d853aaed6a85d09fdb0b62411bd0bf67f1df7ffd123e47baed99",
+      "declaration": "FourArcCandidate.WeightedArea",
+      "end_line": 78,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 76
+    },
+    {
+      "code_sha256": "d649676f2fd717389a6e9a17a385fe854bc399e17ecfdad24bd8a7bcc9a36521",
+      "declaration": "FourArcCandidate.WeightedPerimeter",
+      "end_line": 83,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 79
+    },
+    {
+      "code_sha256": "c09b9c7180b6131040333c0b3c2623f3c89af7f54fe8ab0b9f6a41be873ca0dc",
+      "declaration": "FourArcCandidate.SatisfiesCMVTypeIVHypotheses",
+      "end_line": 89,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 84
+    },
+    {
+      "code_sha256": "f04b5c158c1a510cd5a8af38df8f99424aeed5e376f986e1d437f95e6a4cbe17",
+      "declaration": "FourArcCandidate.IsWeightedPerimeterMinimizer",
+      "end_line": 94,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 90
+    },
+    {
+      "code_sha256": "b92e14d3743fcaa1d6c447d96c6334ba3f5f129152aa26ff47b97d6fd8de2e28",
+      "declaration": "FourArcCandidate.sin_alpha_pos",
+      "end_line": 98,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 95
+    },
+    {
+      "code_sha256": "0e9545ae1662d69d55500dc9264e42c4c5b03b78571f6473a85822aca53c6073",
+      "declaration": "FourArcCandidate.capArea_eq_chord_sq_mul_area",
+      "end_line": 109,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 104
+    },
+    {
+      "code_sha256": "63eb34459de3e09e8c932883edd9446c50efc2cc1a148ef60c5c77cbd56d7496",
+      "declaration": "FourArcCandidate.upperCap_euclideanArea",
+      "end_line": 158,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 153
+    },
+    {
+      "code_sha256": "14a860cf99daaf759c3fa7838aed86edfb2879de1a5a3f6f7d84f9996c7da155",
+      "declaration": "FourArcCandidate.lowerCap_euclideanArea",
+      "end_line": 166,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 159
+    },
+    {
+      "code_sha256": "46219b8ad0fc6b679968f8972242a6ad511174ce969ce84539a4054206de6595",
+      "declaration": "FourArcCandidate.alpha_eq_arccos",
+      "end_line": 292,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 276
+    },
+    {
+      "code_sha256": "a639bd8c9eef40f2c4f87fdb62b671cf7db0ce41013e7d923721f6f472bc8cf1",
+      "declaration": "FourArcCandidate.side_caps_area_formula",
+      "end_line": 363,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 351
+    },
+    {
+      "code_sha256": "654554fba4e2f4847eae4f853550061afa29cf158da02de52109cffacefd702e",
+      "declaration": "FourArcCandidate.weightedArea_components",
+      "end_line": 373,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 364
+    },
+    {
+      "code_sha256": "d02953cec6a51d470b1b940fa2318bbd5c86354d0e420d179322c86356c9434a",
+      "declaration": "FourArcCandidate.weightedPerimeter_components",
+      "end_line": 390,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 374
+    },
+    {
+      "code_sha256": "b4949bdc7019f429151f2faf734db8466461943a33be006f4c104caebb493fe0",
+      "declaration": "FourArcCandidate.candidate_perimeter_formula",
+      "end_line": 409,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 391
+    },
+    {
+      "code_sha256": "b6d944ecc5d4bab77cadf263520f194142a9d6855088a9b98e5873be144ab8cc",
+      "declaration": "FourArcCandidate.candidate_area_formula",
+      "end_line": 430,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FourArcCandidate.lean",
+      "source_sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "start_line": 410
+    },
+    {
+      "code_sha256": "6865b0b68c07403ee39252efa35feb9b50850a4644c2bf915fb506723c7a07c7",
+      "declaration": "unitCircleArc",
+      "end_line": 13,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 11
+    },
+    {
+      "code_sha256": "343bc4472a64687ca829ebbf897c060cb6c7c3cad3716259e96fb84cf091470c",
+      "declaration": "continuous_unitCircleArc",
+      "end_line": 17,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 14
+    },
+    {
+      "code_sha256": "d6c59e7f498e1352e21969a1c8084fa6600038a792db1172f4e5bd3b2836eece",
+      "declaration": "unitCircleArc_sub_factor",
+      "end_line": 32,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 18
+    },
+    {
+      "code_sha256": "6ddc026dd017d7b20d15e385a48bc34f5bcbfcad3796885aedaeb1fd06730313",
+      "declaration": "lipschitzWith_unitCircleArc",
+      "end_line": 54,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 33
+    },
+    {
+      "code_sha256": "1c583965a8663dcd3d0483716b4801199d867b2ff4cbe96f04d4cbeb57ff9c08",
+      "declaration": "unitCircleArc_dist",
+      "end_line": 66,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 55
+    },
+    {
+      "code_sha256": "ceabbb1bd00ed7b3d5a248b0d9d8b4d41f8f1fc0af8194bd56a8092deed637e9",
+      "declaration": "unitCircleArc_injOn",
+      "end_line": 92,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 67
+    },
+    {
+      "code_sha256": "07ee598762aa4a7964c4db549c22833ebf32ee2d325dcc190dd9a72212015319",
+      "declaration": "hausdorffMeasure_unitCircleArc_image_le",
+      "end_line": 104,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 93
+    },
+    {
+      "code_sha256": "272ec4c298bc0f3582f8dd04d91ee8113b10ec4ec1c37538e792ec5391cc0936",
+      "declaration": "ofReal_dist_le_hausdorffMeasure_image_Icc",
+      "end_line": 123,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 105
+    },
+    {
+      "code_sha256": "c4fb0e64c0405d8f9fa3cb2429d9a9bc01ac95be8aba1e08560d1aeae3f939e9",
+      "declaration": "image_Ico_eq_image_Icc_diff_endpoint",
+      "end_line": 141,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 124
+    },
+    {
+      "code_sha256": "1c850c9b7ca6e169808ebfb87cac4902c44102258f4c3ba0c9b6433987f2a5de",
+      "declaration": "hausdorffMeasure_image_Ico_eq_Icc",
+      "end_line": 153,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 142
+    },
+    {
+      "code_sha256": "49ac6ecbe67b9040843eeee672d7b0f08055016781814c3ce0fa4e7d31ff805a",
+      "declaration": "capPartitionPoint",
+      "end_line": 156,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 154
+    },
+    {
+      "code_sha256": "1714782661300a21ee2d4243c7e4fbe79e1e97ce545ea187699c13d709db2db9",
+      "declaration": "capPartitionPoint_zero",
+      "end_line": 160,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 157
+    },
+    {
+      "code_sha256": "b5d0e986af4c921461bd13ce89490a41fdc02991eaadda7d26f70db465413519",
+      "declaration": "capPartitionPoint_end",
+      "end_line": 166,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 161
+    },
+    {
+      "code_sha256": "62e77199a2eb7f24e5f93307536675c49f368eab2d84be96574f544f2152a857",
+      "declaration": "monotone_capPartitionPoint",
+      "end_line": 174,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 167
+    },
+    {
+      "code_sha256": "8f26d09621c071ac8a6a1935a21253dfb29cb269e0ec21dc71e59a40f0529e9f",
+      "declaration": "capPartitionPoint_mem",
+      "end_line": 184,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 175
+    },
+    {
+      "code_sha256": "6b90645e53e16e3855618b966b04af3ee0f15439043926ba1133c583e65b5a00",
+      "declaration": "capPartitionPoint_dist",
+      "end_line": 207,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 185
+    },
+    {
+      "code_sha256": "4dc7fcd936b6c56a4643f00c8d67c38ce24d6351f625a8873960fc070d61a446",
+      "declaration": "cap_partition_polygon_lower",
+      "end_line": 268,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 208
+    },
+    {
+      "code_sha256": "32d7803e3d290677cdac6cd7bd331241d0a1e99888d3a8665e326de2ca241a11",
+      "declaration": "tendsto_cap_polygon_length",
+      "end_line": 293,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 269
+    },
+    {
+      "code_sha256": "f4746d8c9b2c6ef1416bccca1f814590cdef08c393e10b7189ff167eb0402ab3",
+      "declaration": "hausdorffMeasure_unitCircleArc_image_eq",
+      "end_line": 311,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 294
+    },
+    {
+      "code_sha256": "cfdc45400ed0d08a69b42a215854d1f81999a500771f48a7f18476aafefe48ef",
+      "declaration": "unitCircleArcRotation",
+      "end_line": 314,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 312
+    },
+    {
+      "code_sha256": "0390b164e94132c53e908a7960b31f68dc786e7272a9a9f6482fa79cade88362",
+      "declaration": "isometry_unitCircleArcRotation",
+      "end_line": 322,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 315
+    },
+    {
+      "code_sha256": "dcedc37c9428c0a722c5bf130023e2389a83c7faa4036432847247c3401f6b9b",
+      "declaration": "unitCircleArcRotation_apply",
+      "end_line": 331,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 323
+    },
+    {
+      "code_sha256": "6bbfe5bd6af2f20e278e2e30ff5adc9fe7c0761359113d169ea5baae1f20d6a2",
+      "declaration": "unitCircleArcRotation_image_Icc",
+      "end_line": 349,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 332
+    },
+    {
+      "code_sha256": "a5a68294ffad2a36064599c08079161b28ea03171c66437e00e8f24eba632c26",
+      "declaration": "hausdorffMeasure_unitCircleArc_image_eq_of_span_lt_two_pi",
+      "end_line": 389,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 350
+    },
+    {
+      "code_sha256": "3ed78deaf1597a91c6218ca8fe10519ba693355e7329e0301f17fcce226f5a43",
+      "declaration": "capComplexIsometryMap",
+      "end_line": 397,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 390
+    },
+    {
+      "code_sha256": "5d4136606591a26f6abf24f8ba286ddba7154e77e9f96c81673196c1854009b0",
+      "declaration": "isometry_capComplexIsometryMap",
+      "end_line": 408,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 398
+    },
+    {
+      "code_sha256": "9342d6a8ed8b7dcd1fbce36251ddf6b271aeea6ec0298f5d467e178c8fbf9cec",
+      "declaration": "unitCircleArc_eq",
+      "end_line": 415,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 409
+    },
+    {
+      "code_sha256": "238aa74976048276575d89eb69760ceb968a224b5358a1775e61818ec60df916",
+      "declaration": "unitCircleArc_re",
+      "end_line": 422,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 416
+    },
+    {
+      "code_sha256": "0666e8d860656cd1bc24ade42af99acdafd9034497a0ba0f27acf44cddcd77e5",
+      "declaration": "unitCircleArc_im",
+      "end_line": 429,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 423
+    },
+    {
+      "code_sha256": "95b1661a30d7b5d3f17854c6eabbe1a4da9d944d9ad542e596607c6cb4fd12b0",
+      "declaration": "realizedCapParam",
+      "end_line": 433,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 430
+    },
+    {
+      "code_sha256": "9c421cce21d93c49e9d419ecc30c8d31de995d391da25f034d29cf3f0bd85599",
+      "declaration": "realizedCapParam_eq",
+      "end_line": 441,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 434
+    },
+    {
+      "code_sha256": "439602ca8a442d23dec8f858626a27ca71e9723ce90b04b56ee6e94cd89590f1",
+      "declaration": "continuous_realizedCapParam",
+      "end_line": 450,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 442
+    },
+    {
+      "code_sha256": "edad6e24948a1499ce1a66a5efdc84d9c8f7899f5c52d6551716312e95163fb3",
+      "declaration": "cap_arcLength_eq_two_radius_theta",
+      "end_line": 456,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 451
+    },
+    {
+      "code_sha256": "ce3a2c8ff8b380f7da5859563d117de2848052560e457ef5f88e25aa88808f43",
+      "declaration": "exact_euclidean_capParam_hausdorffMeasure",
+      "end_line": 483,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 457
+    },
+    {
+      "code_sha256": "01c2af95d70e04d0bac530bc681fda34196e33e841f34e26466b4a3a9c6ecd18",
+      "declaration": "leftCoreParam_image_Icc",
+      "end_line": 596,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 517
+    },
+    {
+      "code_sha256": "78bb53ade5c270538e82ae914ea314e16857498de0ee3dfc73dde7468e65c773",
+      "declaration": "rightCoreParam_image_Icc",
+      "end_line": 676,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 597
+    },
+    {
+      "code_sha256": "c0385e604fc62ea1f5b752f17a4538ba2edeedf20e52cbfb6848b3b966b2ab57",
+      "declaration": "leftCoreComplexIsometryMap",
+      "end_line": 680,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 677
+    },
+    {
+      "code_sha256": "24206b125ec8e6de86a054126e34b32568c5cb9c365728de42d394ff9cc0ede6",
+      "declaration": "rightCoreComplexIsometryMap",
+      "end_line": 684,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 681
+    },
+    {
+      "code_sha256": "a61c4ab4c222e88c43376bf46386ccf7697c506b7a23f81458ff102288a9e14a",
+      "declaration": "isometry_leftCoreComplexIsometryMap",
+      "end_line": 695,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 685
+    },
+    {
+      "code_sha256": "2857926ac4225e60a51ede217224fdfda63879d202e0be14411ea5c13b2fc6bf",
+      "declaration": "isometry_rightCoreComplexIsometryMap",
+      "end_line": 704,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 696
+    },
+    {
+      "code_sha256": "854e6d1ea17e2b2d6576f273610fd43051ac61c0bb7e75c185b3d3aa821f7da4",
+      "declaration": "realizedLeftCoreParam",
+      "end_line": 708,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 705
+    },
+    {
+      "code_sha256": "4f8de565538cdbe799e2faf0a2d6452b4030fcfacd5b43a7347015b8e46924a9",
+      "declaration": "realizedRightCoreParam",
+      "end_line": 712,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 709
+    },
+    {
+      "code_sha256": "e2c0026193d6fa0dd58c252b75c6df1a108616049c60130059ddb93311c0b2a0",
+      "declaration": "realizedLeftCoreParam_eq",
+      "end_line": 719,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 713
+    },
+    {
+      "code_sha256": "4aab5f14bc5465771d4021be2ff0ba59e74b69eeaba0b9a9c834bd0bf72ed625",
+      "declaration": "realizedRightCoreParam_eq",
+      "end_line": 726,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 720
+    },
+    {
+      "code_sha256": "4dc1fbf3a43e8117f791c26e28bd5a2a2466716abc2324d51a2522841ccc46bf",
+      "declaration": "continuous_realizedLeftCoreParam",
+      "end_line": 735,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 727
+    },
+    {
+      "code_sha256": "db06971d2e0a6e54b3ce1b2cb1ffe296cb5ed7ac07495118f10c8f5f82bfe132",
+      "declaration": "continuous_realizedRightCoreParam",
+      "end_line": 744,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 736
+    },
+    {
+      "code_sha256": "e0211c9e8b0941bc0bbeb3bd977afe28d78688025726aac98a4d738bf7f180e9",
+      "declaration": "exact_euclidean_leftCoreParam_hausdorffMeasure",
+      "end_line": 772,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 745
+    },
+    {
+      "code_sha256": "5b9d17b9e5921b7fba027be4ebfa3845e68c3c43a92a67ce9d4854bf1b244db0",
+      "declaration": "exact_euclidean_rightCoreParam_hausdorffMeasure",
+      "end_line": 800,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 773
+    },
+    {
+      "code_sha256": "43b7188db3ec73adee2747ff0dc65e5368084e5e17965fa7fdaa8f3c9301ccd7",
+      "declaration": "realizedLeftCoreParam_image_Icc",
+      "end_line": 810,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 801
+    },
+    {
+      "code_sha256": "e28432904f0d4f1c849ed6ed56e30bdae00185a8e05f01ccceab8ef89d16f29b",
+      "declaration": "realizedRightCoreParam_image_Icc",
+      "end_line": 820,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 811
+    },
+    {
+      "code_sha256": "f6b756b038d2dd53ff9e214034534494d6216a6823376bb73c389a754a1ad0d9",
+      "declaration": "exact_euclidean_leftArcTrace_hausdorffMeasure",
+      "end_line": 827,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 821
+    },
+    {
+      "code_sha256": "47e43c0cab0cb015904a2fe672eeec0720a25537d058b25dd2b767b05bcf1d39",
+      "declaration": "exact_euclidean_rightArcTrace_hausdorffMeasure",
+      "end_line": 834,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 828
+    },
+    {
+      "code_sha256": "78cfdac8328c8d0308b83fecd45a7d72c3a0a830edb6a3f41f9bd2da54db0f76",
+      "declaration": "segmentParam_image_Icc",
+      "end_line": 863,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 835
+    },
+    {
+      "code_sha256": "4c1728c18c2df9a1da871e357fce4f6439c6307fe654c71c273fe06b8caaa0fd",
+      "declaration": "realizedSegmentParam",
+      "end_line": 867,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 864
+    },
+    {
+      "code_sha256": "c3be9a5bc2d447d5c5665690a46411881b4f0933eb5c3cf50deaa41a88946c72",
+      "declaration": "realizedSegmentParam_image_affineSegment",
+      "end_line": 912,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 873
+    },
+    {
+      "code_sha256": "fc21a65690cb2d00a27cb6aebde20046f1dffbc15b7f30d3caf58ac1aefd1725",
+      "declaration": "realizedSegmentParam_image_carrier",
+      "end_line": 922,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 913
+    },
+    {
+      "code_sha256": "667e4fe55a19b902ccd7cc29782bd67f737d862a1bddf625b46565ed0a83a1cd",
+      "declaration": "segmentEndpoint_edist",
+      "end_line": 936,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 923
+    },
+    {
+      "code_sha256": "f2e6ec79942c7df8c258fab2922138cb782506dbaa0184c81a94b12e6e9b9896",
+      "declaration": "exact_euclidean_segmentCarrier_hausdorffMeasure",
+      "end_line": 946,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 937
+    },
+    {
+      "code_sha256": "f412e9294ab946fde4ef494447fa75b0b57b0600c2bd61007639df1bb35c0e9e",
+      "declaration": "capParam_image_Icc_eq_arcTrace",
+      "end_line": 1070,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 947
+    },
+    {
+      "code_sha256": "a37b40496e1e5c2ae0b778fe01e7fee7a91557ce9473bf6e0b7755afebbd941b",
+      "declaration": "realizedCapParam_image_Icc",
+      "end_line": 1080,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1071
+    },
+    {
+      "code_sha256": "8a0602f46d010a0d38a019d5e1052cfe4c5d69fc3db5988eaac8c5dbcc5c5e1c",
+      "declaration": "exact_euclidean_capTrace_hausdorffMeasure",
+      "end_line": 1088,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1081
+    },
+    {
+      "code_sha256": "a31ed55013e95ae690ffcc5bab6587c2933302f4970b8b673a167e6c53e1b7f8",
+      "declaration": "measurableSet_euclidean_leftArcTrace",
+      "end_line": 1093,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1089
+    },
+    {
+      "code_sha256": "771198ca90f5054f065ccd16a46e41b5fce0886173f7b3c654e6b61824be845e",
+      "declaration": "measurableSet_euclidean_rightArcTrace",
+      "end_line": 1098,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1094
+    },
+    {
+      "code_sha256": "345ff49d99187e89c9b6a7558ffa41e164108dfd32b3dc525b699de014a17b5a",
+      "declaration": "measurableSet_euclidean_capTrace",
+      "end_line": 1109,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1104
+    },
+    {
+      "code_sha256": "f2051dcd764bb55c1f4c980a58c56ba3f51d928d6141df3262dbdd919f1b5fbd",
+      "declaration": "pairwiseOverlap",
+      "end_line": 1114,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1110
+    },
+    {
+      "code_sha256": "613dcfda543c5255d80175237d7db38b3386ce55bc3215682252569ce26c42d5",
+      "declaration": "joinSet",
+      "end_line": 1117,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1115
+    },
+    {
+      "code_sha256": "eea91f9cc72f6aabac972107df3b4a4acd7547fe5fa392689f59302f202356a4",
+      "declaration": "fourArc_pairwiseOverlap_subset_joinSet",
+      "end_line": 1195,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1142
+    },
+    {
+      "code_sha256": "c95df1795c640672a88890bc658373f829154b7fa3a2361c967c14e17f22b551",
+      "declaration": "joinSet_finite",
+      "end_line": 1256,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1253
+    },
+    {
+      "code_sha256": "96d51d86f6c32a7f1c31ecb0290be17bec48e5d48a1aa38fdfbae4457025d389",
+      "declaration": "euclideanJoinSet",
+      "end_line": 1259,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1257
+    },
+    {
+      "code_sha256": "9539ffd4336468eab518f7e951c9dc4db7ee2d6bd08f0fa98bbda9dcf0817f38",
+      "declaration": "euclideanJoinSet_finite",
+      "end_line": 1262,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1260
+    },
+    {
+      "code_sha256": "7ebe8fae03ad531268ff769afa248cd1067ee674eba1a7f8bc77f36d3ab49ebc",
+      "declaration": "hausdorffMeasure_one_euclideanJoinSet",
+      "end_line": 1268,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1263
+    },
+    {
+      "code_sha256": "01eb58d468da4075ed5a4b3c4808bf8deddca98be0f05ef720c74c5a64fd9f4f",
+      "declaration": "fourArc_pairwiseOverlap_h1_null",
+      "end_line": 1279,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1269
+    },
+    {
+      "code_sha256": "748ff0ec3e12377aa952eabaefbf59718df5bc069c8651bdcd45a9c687a1d41d",
+      "declaration": "fourArc_euclidean_frontier",
+      "end_line": 1348,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1338
+    },
+    {
+      "code_sha256": "3d074997fd7c2f4c47fc25c7e8a9a39259d6fd4628b103b9b3e4da77e1679848",
+      "declaration": "euclideanStripDensity",
+      "end_line": 1391,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1389
+    },
+    {
+      "code_sha256": "509b7e5c9b45ab61b5e958fce825f92bda813640616ddf5c7591ac420818c5d2",
+      "declaration": "euclideanStripDensity_integrableOn_of_measure_ne_top",
+      "end_line": 1411,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1404
+    },
+    {
+      "code_sha256": "447beffafa9faf9c0047e982aa709b3b243852770c1fde70cc3c6676215458bf",
+      "declaration": "upper_cap_integral",
+      "end_line": 1552,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1545
+    },
+    {
+      "code_sha256": "8b3fbc02eae74d84636263a1b0bedcffb91c58bcc3410ac92807b51d54cc9ea4",
+      "declaration": "integral_four_union",
+      "end_line": 1590,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1562
+    },
+    {
+      "code_sha256": "c1559aa1737fb404d99a3376b70fbd4f0ff514e71a947a7d30b01a1ce4c1177e",
+      "declaration": "euclideanPairwiseOverlap",
+      "end_line": 1597,
+      "generated_family": null,
+      "kind": "def",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1591
+    },
+    {
+      "code_sha256": "4b46ea8bfc070cb38c17e38f03c2486a1eb119281a4706f7a55c5da843e21d49",
+      "declaration": "pairwise_aedisjoint_of_overlap_null",
+      "end_line": 1616,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1598
+    },
+    {
+      "code_sha256": "e95ee1864c7bc7d9bc3a3ec2659625a510c6cefccdafe0cd2efab0e2d93e1067",
+      "declaration": "fourArc_frontier_weightedPerimeter_eq",
+      "end_line": 1844,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "FrontierPerimeter.lean",
+      "source_sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "start_line": 1794
+    },
+    {
+      "code_sha256": "9ef91461acc972465b98decfe31d601788f1354eb0ffbb8d094be6f5c46ca593",
+      "declaration": "LeanSuffixAnalytic.typeThreeShape",
+      "end_line": 34,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 32
+    },
+    {
+      "code_sha256": "fb7617b8b745792c6f019f3cbcf3c26d5e54f1fc7dd47bb69cec919c712d110a",
+      "declaration": "LeanSuffixAnalytic.typeThreeAngle",
+      "end_line": 38,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 35
+    },
+    {
+      "code_sha256": "f96722ed089f4e5911c6013a0aa601eb4080090036491702cd0fa78e3e31113f",
+      "declaration": "LeanSuffixAnalytic.typeThreeDelta",
+      "end_line": 43,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 39
+    },
+    {
+      "code_sha256": "63d13d5879252e16ac6f53a2d4449b4f511e353d6016e98158793484dcfaa8f7",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea",
+      "end_line": 48,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 44
+    },
+    {
+      "code_sha256": "22e35e36f9c0930c9f9233f0004c686c48f6f282298a578def5a6e6bba11f34e",
+      "declaration": "LeanSuffixAnalytic.typeThreePerimeter",
+      "end_line": 52,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 49
+    },
+    {
+      "code_sha256": "94e6a9f5b491cb7ca4802d89fba1fa7ccb864bbe777d6e41d89b1d6bf892bdd0",
+      "declaration": "LeanSuffixAnalytic.typeFourAngle",
+      "end_line": 56,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 53
+    },
+    {
+      "code_sha256": "a4c8b30971f59f8f04626dbddf49af92c98dbfa9126bf3766c0be8b6472cbfb3",
+      "declaration": "LeanSuffixAnalytic.typeFourDelta",
+      "end_line": 60,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 57
+    },
+    {
+      "code_sha256": "775f7921b66716563dd5e0e4c35562d880f5cef2a71b40cef616cd10eb9488d2",
+      "declaration": "LeanSuffixAnalytic.typeFourArea",
+      "end_line": 64,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 61
+    },
+    {
+      "code_sha256": "ad0bebbd79c17351c0f12ce6a7fdae3e930dba33de0077415a6116df1d1e6e25",
+      "declaration": "LeanSuffixAnalytic.typeFourPerimeter",
+      "end_line": 70,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 65
+    },
+    {
+      "code_sha256": "de466d8508a0def3484419e5a98402f15940017ff9d116432fb67c21c1d22c86",
+      "declaration": "LeanSuffixAnalytic.typeThreeFold",
+      "end_line": 77,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 71
+    },
+    {
+      "code_sha256": "e492724315b735482cab607f768694fcd028864cb336800b7469d841099293ee",
+      "declaration": "LeanSuffixAnalytic.typeFourFold",
+      "end_line": 82,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 78
+    },
+    {
+      "code_sha256": "90c9f564cc40a2e05814e95c52b8ea113ecc45335e828ff2a54c8e9f2caf08b3",
+      "declaration": "LeanSuffixAnalytic.reducedFoldGap",
+      "end_line": 92,
+      "generated_family": null,
+      "kind": "def",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 83
+    },
+    {
+      "code_sha256": "9e16c64246998ba49ad719b4074913f0337c8612efed42e98f32935fcd55a3e5",
+      "declaration": "LeanSuffixAnalytic.centered_meanValue_exists",
+      "end_line": 129,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 93
+    },
+    {
+      "code_sha256": "309f9c361ad038b7eae75200b2b081130c71a155a43f2f07c9ad2ae282ce68ff",
+      "declaration": "LeanSuffixAnalytic.typeThreeAngle_add_halfPi",
+      "end_line": 138,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 130
+    },
+    {
+      "code_sha256": "fc5b59d714869fde00b69f1950c83bd7a32c47524e01ad8d04455ff346c39d58",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeShape",
+      "end_line": 153,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 146
+    },
+    {
+      "code_sha256": "6ec918819525fbc766cbbf40969985e480000f0bcbcf23d536b033e9e80b6380",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeAngle",
+      "end_line": 205,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 154
+    },
+    {
+      "code_sha256": "6a259e36542b424c2657b96b59d66f9d38d054281073fe5c590c3110a33522c8",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeDelta",
+      "end_line": 240,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 206
+    },
+    {
+      "code_sha256": "ed3b0f3804a218b0cd68be6333d68c33832835819c8ca12dd83eb68bae07439d",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourAngle",
+      "end_line": 278,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 241
+    },
+    {
+      "code_sha256": "71475be52cec7e059c20046cff749d550fce2a4275677924c383af205dd192c8",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourDelta",
+      "end_line": 305,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 279
+    },
+    {
+      "code_sha256": "ed04fbfe0d2a5c8c68ae2429d8da8593a273f2471a8fcc329e85c97a6780176d",
+      "declaration": "LeanSuffixAnalytic.radicalCubeGap_pos",
+      "end_line": 374,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 349
+    },
+    {
+      "code_sha256": "c8c79d60a2ba5a7f202a48aa5b5851e2b132f448f609c9f5925a2a8edab62ee5",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeFold",
+      "end_line": 456,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 375
+    },
+    {
+      "code_sha256": "df765bf2b71951f20ce86d7897c71befd43183478a79e7706b6061a82ade97f0",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourFold",
+      "end_line": 495,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 457
+    },
+    {
+      "code_sha256": "406477265a826e873557d3950f02d636becf1dd68c773947e69154fec9631e9e",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeFourArea",
+      "end_line": 553,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 496
+    },
+    {
+      "code_sha256": "727f5f60431aed129e76617edde1e3ccdf8d18a1ae71fbf80ca33147d09b9cfa",
+      "declaration": "LeanSuffixAnalytic.typeThree_variational_hasDerivAt",
+      "end_line": 639,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 554
+    },
+    {
+      "code_sha256": "7607f8124dad06702d520d2b8e20b8eab5117f85a2007d935f98d72479aad4e2",
+      "declaration": "LeanSuffixAnalytic.typeThreePerimeter_deriv_eq_height_mul_area_deriv",
+      "end_line": 648,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 640
+    },
+    {
+      "code_sha256": "ec96d74eb7c231919df47f4c5a7bcce391a0bf68733b2ba3385beb5c882b9ca6",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_deriv_eq_explicit",
+      "end_line": 699,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 649
+    },
+    {
+      "code_sha256": "7e0c0da90901c546a8edb152b4ed9a40769e6bd51ef8318f50390135bcace455",
+      "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeArea",
+      "end_line": 724,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 700
+    },
+    {
+      "code_sha256": "be216789e3804b1c530f202d3470319a386e5c80dc03952cfaf3ebc685f27297",
+      "declaration": "LeanSuffixAnalytic.typeFour_variational_hasDerivAt",
+      "end_line": 753,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 733
+    },
+    {
+      "code_sha256": "0495f3e7854574a7754a0b63ac7fd008229aa9ba79f907c1f5c180c5d5dea354",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_centered_meanValue",
+      "end_line": 789,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 778
+    },
+    {
+      "code_sha256": "e82ffa97f750ea7c64d3d22eebba58e03fe2fc0f731297b9787ae711ded5a49a",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_tendsto_atRight_zero",
+      "end_line": 871,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 828
+    },
+    {
+      "code_sha256": "548db5145f9bcf2011e54d3648e735633b97c51f2514a21b4368c3304bb06a32",
+      "declaration": "LeanSuffixAnalytic.typeThreeFold_strictMonoOn",
+      "end_line": 893,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 872
+    },
+    {
+      "code_sha256": "314dbeb5db22bb018c3bb2b871eb2f76a4711df985ead7c117e1cc5036bed173",
+      "declaration": "LeanSuffixAnalytic.typeThreeFold_zero_between_of_area_eq",
+      "end_line": 925,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 905
+    },
+    {
+      "code_sha256": "a9a71e3bf8960b5c96a8fc59bf3fe2a372f70aa365bd91817e7ca128cb8520b9",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_root_le_of_fold_neg",
+      "end_line": 973,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 954
+    },
+    {
+      "code_sha256": "15660b04d9615f11056408ab4ae99cb03c7fde3d8d26f5056c89e742987b7edb",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique",
+      "end_line": 1039,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1013
+    },
+    {
+      "code_sha256": "16af12c38f3bb1c629d7204f781995879e693ae4c65a0b5d7c3475b2043d0222",
+      "declaration": "LeanSuffixAnalytic.typeFourFold_strictMonoOn",
+      "end_line": 1070,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1056
+    },
+    {
+      "code_sha256": "e504f043a30eb739ae5f3ba9174d0ca2cd6aa51665b8ee6815ad3b1b3ea9932b",
+      "declaration": "LeanSuffixAnalytic.typeFourArea_deriv_neg_before_zero",
+      "end_line": 1082,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1071
+    },
+    {
+      "code_sha256": "574cf814295ee9aa4cb9406582955f50506dd66296979a4f903f27b9ae8e2667",
+      "declaration": "LeanSuffixAnalytic.typeFourArea_deriv_pos_after_zero",
+      "end_line": 1094,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1083
+    },
+    {
+      "code_sha256": "00808b809e3e67ecf06ff39be8e712a367908c043a9c526b98df7d97ff33901d",
+      "declaration": "LeanSuffixAnalytic.typeFourArea_fold_le",
+      "end_line": 1129,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1095
+    },
+    {
+      "code_sha256": "f368bc947db4d0b119fefc4c63c0de6d0d14cb14db7e5a28faa26c535eb880b8",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_existsUnique_of_stationary_pair",
+      "end_line": 1149,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1130
+    },
+    {
+      "code_sha256": "865710967f267b9ec6707c5d925cd799ff4862bc66ec64cf0a22afce00862eef",
+      "declaration": "LeanSuffixAnalytic.StationaryEqualAreaPair",
+      "end_line": 1188,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1177
+    },
+    {
+      "code_sha256": "7a449a0d73201ece195743b096dbde5032c8598ab1748985129132f301a8ba9d",
+      "declaration": "LeanSuffixAnalytic.equalArea_gap_identity",
+      "end_line": 1220,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1208
+    },
+    {
+      "code_sha256": "7ca190ef8d3e84eb702882d4666162a0576db626556bb2591b0ba437f522132f",
+      "declaration": "LeanSuffixAnalytic.stationaryEqualArea_gap_identity",
+      "end_line": 1238,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1221
+    },
+    {
+      "code_sha256": "d313a9a9b483a140c805abe01de0a03576005db4ae69b2c417e95c5e91300b63",
+      "declaration": "LeanSuffixAnalytic.stationaryEqualArea_typeThree_improves_iff",
+      "end_line": 1252,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "LeanSuffixAnalytic.lean",
+      "source_sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "start_line": 1239
+    },
+    {
+      "code_sha256": "9adb32c6bf9324acec1e791c0ec46f0e17df835ffee7b3549cab07bdc3a760c9",
+      "declaration": "ell",
+      "end_line": 91,
+      "generated_family": null,
+      "kind": "def",
+      "source": "MorgansArcFunction.lean",
+      "source_sha256": "9df5df0307cbdcbd84c9cd2848c0499f91fe6d7a5dac627f2c1c2c9c664cf9c1",
+      "start_line": 89
+    },
+    {
+      "code_sha256": "8c44e8dff416b2208afe91aad54bf1678ad6f2299c75592fe1fed4f6cbf55dc2",
+      "declaration": "area",
+      "end_line": 93,
+      "generated_family": null,
+      "kind": "def",
+      "source": "MorgansArcFunction.lean",
+      "source_sha256": "9df5df0307cbdcbd84c9cd2848c0499f91fe6d7a5dac627f2c1c2c9c664cf9c1",
+      "start_line": 92
+    },
+    {
+      "code_sha256": "0af41b50988d0bace92fc2e638571302802d8538245a2c254bedb9f164463ede",
+      "declaration": "area_pos",
+      "end_line": 157,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "MorgansArcFunction.lean",
+      "source_sha256": "9df5df0307cbdcbd84c9cd2848c0499f91fe6d7a5dac627f2c1c2c9c664cf9c1",
+      "start_line": 148
+    },
+    {
+      "code_sha256": "292616e61180882b74b7405ba97fd168e8ed5d3653115a72ad0fa3e78e338f65",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_lt_typeFourArea",
+      "end_line": 265,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 225
+    },
+    {
+      "code_sha256": "fdeb0489b7e6f5e26dfa807a57579da3ecea22f44d0bba90cd5fa78c0744aa33",
+      "declaration": "LeanSuffixAnalytic.typeFourSupport",
+      "end_line": 269,
+      "generated_family": null,
+      "kind": "def",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 266
+    },
+    {
+      "code_sha256": "7ec9ad85e9c92ae246dffaf1ad5a0c048a08bd6754c8a63a3be2760ea37a093f",
+      "declaration": "LeanSuffixAnalytic.typeFourSupport_hasDerivAt",
+      "end_line": 292,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 270
+    },
+    {
+      "code_sha256": "8ef0a051daef9d1f2bbdf8d2a9a39d0e0a16c808a777adfdd62560b57626cb9b",
+      "declaration": "LeanSuffixAnalytic.typeFourSupport_concaveOn",
+      "end_line": 311,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 293
+    },
+    {
+      "code_sha256": "0c5ddb44fb627a6e8b09e47012b025857f4fe02fa3598a05502fda2e5e2e8921",
+      "declaration": "LeanSuffixAnalytic.typeFourSupport_one_gt_halfPi",
+      "end_line": 320,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 312
+    },
+    {
+      "code_sha256": "fc169235755eca8de1ba9408de035c749430eb621ef56b64e6fdfcdc4766386f",
+      "declaration": "LeanSuffixAnalytic.typeFourSupport_midpoint",
+      "end_line": 347,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 321
+    },
+    {
+      "code_sha256": "dfaacd20b555a53066a164daf8f9b4ebb1dbcc86f6d564ed5188ef405330e787",
+      "declaration": "LeanSuffixAnalytic.sameHeight_support_identity",
+      "end_line": 361,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 348
+    },
+    {
+      "code_sha256": "3b4307e15a93ff15bacde69d80f20dc52b17ba9ab4d81965f114554585e3a373",
+      "declaration": "LeanSuffixAnalytic.typeThree_support_lt_typeFour_support",
+      "end_line": 383,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 362
+    },
+    {
+      "code_sha256": "b82ff69676ab90ec4fb13d857723ab9b2dd80ce0482e1e3d55da8f2320d7eef0",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_continuousAt_one",
+      "end_line": 393,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 384
+    },
+    {
+      "code_sha256": "f271402f8f772a214053257391493497c3abc162da11014d954aaf909e4fe1d5",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_le_max_endpoints",
+      "end_line": 463,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 394
+    },
+    {
+      "code_sha256": "59983bd94c5b2c86b0a792e561e5d858c16e3c1a5d5652441772674daa8dcfc8",
+      "declaration": "LeanSuffixAnalytic.typeThreeAreaSupport",
+      "end_line": 466,
+      "generated_family": null,
+      "kind": "def",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 464
+    },
+    {
+      "code_sha256": "84f5f511ccfd2c66897b9ce22e970b7b5810edf0c56f08f711aad8e54224205e",
+      "declaration": "LeanSuffixAnalytic.typeThreeAreaSupport_hasDerivAt",
+      "end_line": 480,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 467
+    },
+    {
+      "code_sha256": "e7b6d671984a991fd2b92d8c073a4e4e44f40679b3766f18a0ac3843895845e6",
+      "declaration": "LeanSuffixAnalytic.typeThreePerimeter_lt_typeFourPerimeter_of_equalArea",
+      "end_line": 553,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 495
+    },
+    {
+      "code_sha256": "b45c2e12676c7119b05c3219fa4f0e77bf807a7780d13de5a358f0b41a3fa64d",
+      "declaration": "LeanSuffixAnalytic.typeThreeFold_neg_of_equalArea_of_lt",
+      "end_line": 585,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 554
+    },
+    {
+      "code_sha256": "f0218743e3c66d2b3ba1e5bdde4d44d6f7c58ed79dc9416fb8fb18d852a14824",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_descending_root_lt",
+      "end_line": 622,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "SameCurvatureArea.lean",
+      "source_sha256": "006d0d8464dfa0cf4469db5659d0989f5b0603c27b73c118f12862a74d82caf7",
+      "start_line": 586
+    },
+    {
+      "code_sha256": "1266cefaf66b4dab37ed6ce0451a3ec8c8e11c97af24ed298db2b491c2b5e620",
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold",
+      "end_line": 28,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeFourStationaryRoot.lean",
+      "source_sha256": "f232ed24591c14c3fae33a5f6234bbbe329460838cfa59793a21cfba67de7cdf",
+      "start_line": 24
+    },
+    {
+      "code_sha256": "c2810ce70b601a04bf730b7d74e237dfa7c31c5a16c6857177a5231549ec1ba2",
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_continuous",
+      "end_line": 34,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeFourStationaryRoot.lean",
+      "source_sha256": "f232ed24591c14c3fae33a5f6234bbbe329460838cfa59793a21cfba67de7cdf",
+      "start_line": 29
+    },
+    {
+      "code_sha256": "aad0d8aa37abd7a9983d9c3fef33a66d571f8cc007154660095f3a1d473e9d30",
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_continuousOn",
+      "end_line": 40,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeFourStationaryRoot.lean",
+      "source_sha256": "f232ed24591c14c3fae33a5f6234bbbe329460838cfa59793a21cfba67de7cdf",
+      "start_line": 35
+    },
+    {
+      "code_sha256": "45ea307682f4ec267ee71b675163dd61e82ecf847d6e7f8bf8dbc13d2cb15e17",
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_eq_fold",
+      "end_line": 54,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeFourStationaryRoot.lean",
+      "source_sha256": "f232ed24591c14c3fae33a5f6234bbbe329460838cfa59793a21cfba67de7cdf",
+      "start_line": 41
+    },
+    {
+      "code_sha256": "da4a3633659e62178714586a00f2c1bd42b925fbeadbc151bdee7d46c4c36171",
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_multiplier_pos",
+      "end_line": 61,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeFourStationaryRoot.lean",
+      "source_sha256": "f232ed24591c14c3fae33a5f6234bbbe329460838cfa59793a21cfba67de7cdf",
+      "start_line": 55
+    },
+    {
+      "code_sha256": "08d09dc1047004d87702d12abfa5bdbdcddf35bfb88c89bf559151153a6e642e",
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_nine_tenths_neg",
+      "end_line": 124,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeFourStationaryRoot.lean",
+      "source_sha256": "f232ed24591c14c3fae33a5f6234bbbe329460838cfa59793a21cfba67de7cdf",
+      "start_line": 112
+    },
+    {
+      "code_sha256": "5b0cd6de2bd6df7214891200ea0e61cc8d389c1b1edf8e7a99120d747111a4bc",
+      "declaration": "LeanSuffixAnalytic.typeFourClearedFold_one_pos",
+      "end_line": 131,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeFourStationaryRoot.lean",
+      "source_sha256": "f232ed24591c14c3fae33a5f6234bbbe329460838cfa59793a21cfba67de7cdf",
+      "start_line": 125
+    },
+    {
+      "code_sha256": "d603264a772d81bf55a0dad7fb9b6a0704e412d433e0051ac8f104d2554f1f15",
+      "declaration": "LeanSuffixAnalytic.typeFourFold_zero_exists",
+      "end_line": 167,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeFourStationaryRoot.lean",
+      "source_sha256": "f232ed24591c14c3fae33a5f6234bbbe329460838cfa59793a21cfba67de7cdf",
+      "start_line": 132
+    },
+    {
+      "code_sha256": "ba80fb031079587a301c08eeb69ef793b83ab9e2bcde30a061c829264b7e1959",
+      "declaration": "TypeThreeAssembly",
+      "end_line": 35,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 29
+    },
+    {
+      "code_sha256": "44bdb144ee33a0fe634670e914d151b3f9a50f2b2f7db8da7c3fad23bdffb70e",
+      "declaration": "TypeThreeAssembly.radius",
+      "end_line": 49,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 47
+    },
+    {
+      "code_sha256": "29190b0ec0676db3ee8da889fc7b1e078bce75188f6b4271945e3fee045f2920",
+      "declaration": "TypeThreeAssembly.shapeParameter",
+      "end_line": 52,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 50
+    },
+    {
+      "code_sha256": "bb9acabc2bc9f5427d7041305c401b4e2793720759dd063e3153448db0793dd9",
+      "declaration": "TypeThreeAssembly.innerAngle",
+      "end_line": 55,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 53
+    },
+    {
+      "code_sha256": "d6cfc025aa1368c77ccefa6b050dbf8bfa113c35569b4434625ec2d735b91f41",
+      "declaration": "TypeThreeAssembly.outerArgument",
+      "end_line": 58,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 56
+    },
+    {
+      "code_sha256": "0e2ff2070394fdda5b4ec09824f47ed543dabdfe101c076ad378e0c92be2ff47",
+      "declaration": "TypeThreeAssembly.outerAngle",
+      "end_line": 63,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 59
+    },
+    {
+      "code_sha256": "c68849312591ff361810874588f817eab8327b61ad9b815244ad1ab61a55597a",
+      "declaration": "TypeThreeAssembly.sideArcAngle",
+      "end_line": 65,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 64
+    },
+    {
+      "code_sha256": "c1a6374b950f6fdf60b58062fd5753e6cafd953a8fbac46cb6164191b66af1b3",
+      "declaration": "TypeThreeAssembly.sideHalfWidth",
+      "end_line": 69,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 66
+    },
+    {
+      "code_sha256": "ae634544d50a625f2da0ab83dddef536c2004aefe8a002e19ec3ff792534bdf2",
+      "declaration": "TypeThreeAssembly.leftCenter",
+      "end_line": 72,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 70
+    },
+    {
+      "code_sha256": "c1d50740a1dfb76a9c424f19f6e78589f8a8ab930ab1727da5282aecd42c3f25",
+      "declaration": "TypeThreeAssembly.rightCenter",
+      "end_line": 75,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 73
+    },
+    {
+      "code_sha256": "6dabb1e2d2dfee1af758b047dfb6728a97191f4c64742b75a35f102c81c1c3c1",
+      "declaration": "TypeThreeAssembly.upperCenter",
+      "end_line": 79,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 76
+    },
+    {
+      "code_sha256": "d451775e4018b5bae444c6a8ed6911c5adcc23db4a0efc68ab71c655f2933477",
+      "declaration": "TypeThreeAssembly.rectangleCarrier",
+      "end_line": 84,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 80
+    },
+    {
+      "code_sha256": "7a6b1fb5a536fc1614b926138e279c79369045c2b292e00c145e1a0e699dbced",
+      "declaration": "TypeThreeAssembly.leftSegmentCarrier",
+      "end_line": 91,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 85
+    },
+    {
+      "code_sha256": "889596cedc4d7d957005581540478e3a458f9f3d1f37c9af6b1a713eee05b078",
+      "declaration": "TypeThreeAssembly.rightSegmentCarrier",
+      "end_line": 98,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 92
+    },
+    {
+      "code_sha256": "5e82c9d38bf8a70ad9c2ae143c293bbf0238ee48148c3dd2d922c95471160878",
+      "declaration": "TypeThreeAssembly.coreCarrier",
+      "end_line": 103,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 99
+    },
+    {
+      "code_sha256": "cfb74d8a54830ee4e695b37318a8d8c8a086063cc569f3e8d4fa167da3d5d0b9",
+      "declaration": "TypeThreeAssembly.leftArcTrace",
+      "end_line": 110,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 104
+    },
+    {
+      "code_sha256": "828cebab0c56e67a2a3cfaae9e912a8a76f497287dcea6b589e1a22a40edd616",
+      "declaration": "TypeThreeAssembly.rightArcTrace",
+      "end_line": 119,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 111
+    },
+    {
+      "code_sha256": "4f29c060ae66edf060cbefb1375e17d2584dc8c159343c7bce4a1ff009d7632c",
+      "declaration": "TypeThreeAssembly.leftArcParam",
+      "end_line": 126,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 120
+    },
+    {
+      "code_sha256": "74515bd4fc474dfa2c52a14662b8cc34aa0f40ef9d8185819e05d1de94ccf588",
+      "declaration": "TypeThreeAssembly.rightArcParam",
+      "end_line": 131,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 127
+    },
+    {
+      "code_sha256": "18e70891a1386b33220d27cc96af45d0ffdcc88b970fd467c64035c04da589f5",
+      "declaration": "TypeThreeAssembly.bottomSegmentCarrier",
+      "end_line": 135,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 132
+    },
+    {
+      "code_sha256": "08cc63d3aedc396b5efa9b27fd1bac931beb8b7d14cbce558e5fde942be277c2",
+      "declaration": "TypeThreeAssembly.bottomChord",
+      "end_line": 139,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 136
+    },
+    {
+      "code_sha256": "a610fc617d9a92f1154e4b9627bb16a0d909464945f9e22ccb900c975acb2c7d",
+      "declaration": "TypeThreeAssembly.radius_pos",
+      "end_line": 147,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 145
+    },
+    {
+      "code_sha256": "4e892eef63bc8252d5a243e2b5495e748b55fa956d516b3510c9e5289ec264d9",
+      "declaration": "TypeThreeAssembly.one_lt_radius",
+      "end_line": 152,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 148
+    },
+    {
+      "code_sha256": "018fe2d07fb99b9420ec19a75327dc616f0119968b1c22fb83265de47b1261df",
+      "declaration": "TypeThreeAssembly.shapeParameter_mem",
+      "end_line": 155,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 153
+    },
+    {
+      "code_sha256": "fc2a8b1032448c01ece41eff0bcd5d748f70ee556d5721867bb36b59d56ce63a",
+      "declaration": "TypeThreeAssembly.outerArgument_mem",
+      "end_line": 164,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 156
+    },
+    {
+      "code_sha256": "e78599ffc8793999ca239c142df39a815df5b9220a19bd2bd882d169b85658b5",
+      "declaration": "TypeThreeAssembly.innerAngle_pos",
+      "end_line": 167,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 165
+    },
+    {
+      "code_sha256": "31385b2dc48409bb1698d05b2b8cedcea6151f9ce4bedc38534228b77f838b5c",
+      "declaration": "TypeThreeAssembly.innerAngle_lt_pi",
+      "end_line": 170,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 168
+    },
+    {
+      "code_sha256": "760f9b90fd549c278aa760178ec027d7c643f8b5bd6d4bf942c86f6a65bb0e28",
+      "declaration": "TypeThreeAssembly.outerAngle_pos",
+      "end_line": 173,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 171
+    },
+    {
+      "code_sha256": "ce135b6a3dc191fb33efd487aab9da31365b8ec038647a624b62a436ba911d34",
+      "declaration": "TypeThreeAssembly.outerAngle_lt_pi",
+      "end_line": 177,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 174
+    },
+    {
+      "code_sha256": "e774d0a2578a71402d098d5ac027f2d6d1dbb90425ca111832168cfb9f013412",
+      "declaration": "TypeThreeAssembly.cos_innerAngle",
+      "end_line": 183,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 178
+    },
+    {
+      "code_sha256": "3eb066bbadef1d5d0722d2c322b7cfe8bce8e1eb62204f2872b1f8f1bbb41a24",
+      "declaration": "TypeThreeAssembly.cos_outerAngle",
+      "end_line": 188,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 184
+    },
+    {
+      "code_sha256": "e90d4095fef5e1e089527a179a53736b5dbf462b6149abecb5375e96b7380078",
+      "declaration": "TypeThreeAssembly.radius_mul_h",
+      "end_line": 200,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 197
+    },
+    {
+      "code_sha256": "feedd827e6203dedcb21f4f474b9fea36ae3ea708b33b644b944093c5f958959",
+      "declaration": "TypeThreeAssembly.outerSin_pos",
+      "end_line": 215,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 213
+    },
+    {
+      "code_sha256": "88694b992a38f1dff3c67f32d082f4eb742c98f01874e62941887bfa3c13f04d",
+      "declaration": "TypeThreeAssembly.innerSin_pos",
+      "end_line": 218,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 216
+    },
+    {
+      "code_sha256": "fb3e4cdd6ff568be2285a238c6293705a5d18ec17ca0000cf9fc5fd3be6f53e2",
+      "declaration": "TypeThreeAssembly.sideArcAngle_pos",
+      "end_line": 222,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 219
+    },
+    {
+      "code_sha256": "27c4b01d9c8710ab675792367c9a16f3b7952720c452f471c97b46d487e08c08",
+      "declaration": "TypeThreeAssembly.sideArcAngle_lt_pi",
+      "end_line": 226,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 223
+    },
+    {
+      "code_sha256": "41165bd4a88985079154632e1304282b8868bb98cc6b1d97bb3ea19faaebe0dd",
+      "declaration": "TypeThreeAssembly.sin_sideArcAngle",
+      "end_line": 230,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 227
+    },
+    {
+      "code_sha256": "a8f9a8c72dcee4cc4dc59b4da10f2ae6d2741d7865a4b2faca10168fa17cc76a",
+      "declaration": "TypeThreeAssembly.cos_sideArcAngle",
+      "end_line": 237,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 231
+    },
+    {
+      "code_sha256": "62a5fb2c6003ebc71ae1cea156d819929dd2061bdfd35d03ac33c3bf896e8fd0",
+      "declaration": "TypeThreeAssembly.sideCap",
+      "end_line": 250,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 238
+    },
+    {
+      "code_sha256": "5482055613f2ec0454ddd9c71d722bea04494543bc659e447732870c662eb86f",
+      "declaration": "TypeThreeAssembly.outerCap",
+      "end_line": 261,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 251
+    },
+    {
+      "code_sha256": "0849c97e398a59f917657f18205fab9ffd6aa8e524ee751befd78f1c4735a4ff",
+      "declaration": "TypeThreeAssembly.carrier",
+      "end_line": 264,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 262
+    },
+    {
+      "code_sha256": "5d054747c494e793da416a19e2d895420eb9e121366a5645e79b7ab53a0c3c7f",
+      "declaration": "TypeThreeAssembly.WeightedArea",
+      "end_line": 268,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 265
+    },
+    {
+      "code_sha256": "ac2df4f2daf804e358c901d1a6b496eaadc35076745e389cd399733fc5dead10",
+      "declaration": "TypeThreeAssembly.WeightedPerimeter",
+      "end_line": 272,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 269
+    },
+    {
+      "code_sha256": "3314187b7b48ab958a7d8415bcf10afdb2dd85317d354dfd049f5344c2569e90",
+      "declaration": "TypeThreeAssembly.rectangleArea",
+      "end_line": 277,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 273
+    },
+    {
+      "code_sha256": "35499fdca0a3bbed11909d6dec0bbb1c83123d6ea5cb0599717ee289f567e87e",
+      "declaration": "TypeThreeAssembly.modeledWeightedArea",
+      "end_line": 284,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 278
+    },
+    {
+      "code_sha256": "76198be6eb5b8790a4af34449bf29c4b963314e1e4bd268b4d3c9cdb2e69ea0d",
+      "declaration": "TypeThreeAssembly.modeledWeightedPerimeter",
+      "end_line": 288,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 285
+    },
+    {
+      "code_sha256": "8089feb5fd033f48e23e1ab4579cce22afbbbfde128400123f3b8b2b2a245332",
+      "declaration": "TypeThreeAssembly.angleTerm",
+      "end_line": 291,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 289
+    },
+    {
+      "code_sha256": "e9d7a7074e27fe28a23aa0db9c4cf9b0ef4e5f2181f1cfab6098f7cc2e240ecb",
+      "declaration": "TypeThreeAssembly.sineGap",
+      "end_line": 294,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 292
+    },
+    {
+      "code_sha256": "195fdb382725116907cc721bab689c5c6f6f34b356a442f900ba649d89b62b9c",
+      "declaration": "TypeThreeAssembly.scalarWeightedArea",
+      "end_line": 299,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 295
+    },
+    {
+      "code_sha256": "fcbac6602a2b133a8e714c37e1ef51bfb698ab0ae754dcd7eca0cb6e9c49204d",
+      "declaration": "TypeThreeAssembly.scalarWeightedPerimeter",
+      "end_line": 302,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 300
+    },
+    {
+      "code_sha256": "def468198882d033570072298a83ae1d41fc003f0ecb9d0b4ee3a6b94e6a1d10",
+      "declaration": "TypeThreeAssembly.sin_inner_le_sin_outer",
+      "end_line": 311,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 303
+    },
+    {
+      "code_sha256": "b3a6348544f17baf0cf9a8d51663f5b8b6187359294117163fc5d2afba78dd58",
+      "declaration": "TypeThreeAssembly.sin_inner_lt_sin_outer",
+      "end_line": 337,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 312
+    },
+    {
+      "code_sha256": "be70cb71b25ed2f43754461915097af9183cc7aac3504655dda98d8a67b605ec",
+      "declaration": "TypeThreeAssembly.sideHalfWidth_nonneg",
+      "end_line": 340,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 338
+    },
+    {
+      "code_sha256": "a769284707d6bf25198d747cd5846bae22f2f394cc9d09e601cfcab854579d7a",
+      "declaration": "TypeThreeAssembly.sideHalfWidth_pos",
+      "end_line": 343,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 341
+    },
+    {
+      "code_sha256": "aa31042682af8c9fc65e3a19a4a9ce7dc71ed7e2ad3e807732dcfcc2da35644f",
+      "declaration": "TypeThreeAssembly.sideHalfWidth_eq_zero_iff",
+      "end_line": 351,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 344
+    },
+    {
+      "code_sha256": "bbe5a0b68c27b1eab70889a99796728aff04d58c47eda0333c16191c78a8f12a",
+      "declaration": "TypeThreeAssembly.bottomChord_nonneg",
+      "end_line": 354,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 352
+    },
+    {
+      "code_sha256": "1b82dffbe772075bcb5095c9dc075644068e9232dc927ae0cd23919b863062dd",
+      "declaration": "TypeThreeAssembly.bottomChord_eq_zero_iff",
+      "end_line": 358,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 355
+    },
+    {
+      "code_sha256": "5deb1da8ce95e59329d432d4f1484bad3b915566f05bd8a9e6b37a69ad4de177",
+      "declaration": "TypeThreeAssembly.bottomChord_pos",
+      "end_line": 362,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 359
+    },
+    {
+      "code_sha256": "136b95db3cfbe6ffba49a9d377637e6fd44e92cfd37653b368ff453e7d5af642",
+      "declaration": "TypeThreeAssembly.innerAngle_semicircular",
+      "end_line": 373,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 370
+    },
+    {
+      "code_sha256": "9ff26a1092e7089058ecf98f24fecce78972031b475870c0e4d30009e831f8ee",
+      "declaration": "TypeThreeAssembly.outerAngle_semicircular",
+      "end_line": 377,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 374
+    },
+    {
+      "code_sha256": "f107696210fe89f5a746d54584303c70da482f05587bc229f2d37aaa9494b57f",
+      "declaration": "TypeThreeAssembly.outerCap_radius",
+      "end_line": 422,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 419
+    },
+    {
+      "code_sha256": "860b391d38da56536b3934963761766a28238619240605477033823fc900d1af",
+      "declaration": "TypeThreeAssembly.sideCap_radius",
+      "end_line": 429,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 423
+    },
+    {
+      "code_sha256": "5c32cc16475c4c5293c8fcbce19421c65fe608e9916172122a7cb5ff16d6b389",
+      "declaration": "TypeThreeAssembly.sideCap_center",
+      "end_line": 438,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 430
+    },
+    {
+      "code_sha256": "a53d3bd58a5cf0ca117ca4045079faea921dc67e709030e1bc93b3bc04963479",
+      "declaration": "TypeThreeAssembly.leftArcParam_image_Icc",
+      "end_line": 546,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 446
+    },
+    {
+      "code_sha256": "d47f88fb5eadc69e4f4bc7ce3bc201dc34d60ad570f34d3d29c4d0184ef0f8f1",
+      "declaration": "TypeThreeAssembly.rightArcParam_image_Icc",
+      "end_line": 648,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 547
+    },
+    {
+      "code_sha256": "2d2b0ae6442b1aeb7779e0e2c761b53071a3b1948418645b546ba443dcc3b322",
+      "declaration": "TypeThreeAssembly.sideArcComplexIsometryMap",
+      "end_line": 652,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 649
+    },
+    {
+      "code_sha256": "5f9f98564eebaed09c3cd958295e743ceabd92f2b665793225e0fb64c4812ba4",
+      "declaration": "TypeThreeAssembly.isometry_sideArcComplexIsometryMap",
+      "end_line": 664,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 653
+    },
+    {
+      "code_sha256": "51fbf9517aa10415de53dc106db635c5f70b9c39860ba75778e696cdebf2d6c3",
+      "declaration": "TypeThreeAssembly.realizedLeftArcParam",
+      "end_line": 668,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 665
+    },
+    {
+      "code_sha256": "8a963395af5bf096a9c5748471f90364728d8fe511c4e2cc0591bd2068d9e016",
+      "declaration": "TypeThreeAssembly.realizedRightArcParam",
+      "end_line": 671,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 669
+    },
+    {
+      "code_sha256": "538a7925bd9a6977d5e74933bd5f951885abb82dc534e3d102db01bf6aa01a1e",
+      "declaration": "TypeThreeAssembly.realizedLeftArcParam_eq",
+      "end_line": 680,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 672
+    },
+    {
+      "code_sha256": "3339fa9296e8c62289cd021c3334658bb86b73401d06cffbaa790d7423ffd93e",
+      "declaration": "TypeThreeAssembly.realizedRightArcParam_eq",
+      "end_line": 689,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 681
+    },
+    {
+      "code_sha256": "5aa13a8e0a54ece98427e269f77eefa81d89485ad9d1f32dde5c0e6f344ef9b4",
+      "declaration": "TypeThreeAssembly.continuous_realizedLeftArcParam",
+      "end_line": 699,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 690
+    },
+    {
+      "code_sha256": "3d9c0740b38c1fa009799b8c35785a0cb767211b94d4ca0bc37637a119a58afd",
+      "declaration": "TypeThreeAssembly.continuous_realizedRightArcParam",
+      "end_line": 709,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 700
+    },
+    {
+      "code_sha256": "06e6662a39cd836487840418c7224db9c1b8779c37aa295aab4e1109503a76c7",
+      "declaration": "TypeThreeAssembly.realizedLeftArcParam_image_Icc",
+      "end_line": 720,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 710
+    },
+    {
+      "code_sha256": "9469dc298ecad88323016b9907111e322a864f0831a991b637ca11824881af16",
+      "declaration": "TypeThreeAssembly.realizedRightArcParam_image_Icc",
+      "end_line": 731,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 721
+    },
+    {
+      "code_sha256": "791dc1e2fe6e2d0cb10c51a3bd4f4018c5ee53a25eeef24b22bc0d4e6f0f1192",
+      "declaration": "TypeThreeAssembly.measurableSet_euclidean_leftArcTrace",
+      "end_line": 736,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 732
+    },
+    {
+      "code_sha256": "64197e0a340a1643ad8bc1525fe961f5b8792a0e7cb9321824fa2436e9d02bb4",
+      "declaration": "TypeThreeAssembly.measurableSet_euclidean_rightArcTrace",
+      "end_line": 741,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 737
+    },
+    {
+      "code_sha256": "c6dc496bb93e612df391bdcd13229ada6ddb03a05f7a4a85318498972631a8fc",
+      "declaration": "TypeThreeAssembly.exact_euclidean_leftArcParam_hausdorffMeasure",
+      "end_line": 778,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 742
+    },
+    {
+      "code_sha256": "f1f573c6c931308699d4611129bc237b3c89fe21d3a82fbb640a2bcaf452f054",
+      "declaration": "TypeThreeAssembly.exact_euclidean_rightArcParam_hausdorffMeasure",
+      "end_line": 816,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 779
+    },
+    {
+      "code_sha256": "9b484f3710815971495ad59b2a292d470a94ac2f3cadc3edb96b8870979733b3",
+      "declaration": "TypeThreeAssembly.exact_euclidean_leftArcTrace_hausdorffMeasure",
+      "end_line": 824,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 817
+    },
+    {
+      "code_sha256": "82deac992e3b3149a73b5a9867d35c880f6af8171bd8434cc5a883788eaac184",
+      "declaration": "TypeThreeAssembly.exact_euclidean_rightArcTrace_hausdorffMeasure",
+      "end_line": 832,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 825
+    },
+    {
+      "code_sha256": "b6b94a03ab653ee46e011e7fa757125fdbdfe26f1473cd6911d9100fe92583e4",
+      "declaration": "TypeThreeAssembly.sideCap_euclideanArea",
+      "end_line": 850,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 833
+    },
+    {
+      "code_sha256": "3c7709918bd2e08d7c7ea431b339d946f2eb6c3c9d1138f4304b6afe64a153c2",
+      "declaration": "TypeThreeAssembly.outerCap_euclideanArea",
+      "end_line": 864,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 851
+    },
+    {
+      "code_sha256": "0735084a84605f457abd29f126bfc3b41f13fe2e361355b34befa71a89121ae9",
+      "declaration": "TypeThreeAssembly.sideCap_arcLength",
+      "end_line": 874,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 865
+    },
+    {
+      "code_sha256": "e4c6a09e492a4c9395262e1c277f2cd0b185e72ae34042a7f14138b12c6b4c19",
+      "declaration": "TypeThreeAssembly.outerCap_arcLength",
+      "end_line": 884,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 875
+    },
+    {
+      "code_sha256": "b0e70e8aeaefad1e18dbaff1d3d6364f544c6042f48ce97bebd3fa5c6cc8e74e",
+      "declaration": "TypeThreeAssembly.modeledWeightedArea_formula",
+      "end_line": 895,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 885
+    },
+    {
+      "code_sha256": "bb4c05a2ca2fd9d5b63be1b6ad16da716cc43497abcad228054765e6eaa2e39e",
+      "declaration": "TypeThreeAssembly.modeledWeightedPerimeter_formula",
+      "end_line": 903,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 896
+    },
+    {
+      "code_sha256": "1057a7a30ad6e7558c1c0e586fc0147d20f1fc01e6c3e508acda901e55191c4c",
+      "declaration": "TypeThreeAssembly.outerCap_center",
+      "end_line": 933,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 929
+    },
+    {
+      "code_sha256": "369e532ae6bbe742ee13471a1a8cc638a185e8c74c4f29cdde432417763b0fdb",
+      "declaration": "TypeThreeAssembly.outerCap_leftEndpoint",
+      "end_line": 938,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 934
+    },
+    {
+      "code_sha256": "0bf0b00b58f0396d9b9b8bc9e08617bcd76cf3f0b76937e23b52dec1f9b5fe12",
+      "declaration": "TypeThreeAssembly.outerCap_rightEndpoint",
+      "end_line": 945,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 939
+    },
+    {
+      "code_sha256": "a660a79d351317f739116ce079a065c0c8bced856fae9b73442ad8d1339dd7ec",
+      "declaration": "TypeThreeAssembly.leftUpperJunction",
+      "end_line": 957,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 946
+    },
+    {
+      "code_sha256": "ae6c6a14cc5b76c0f3aa60155a1fb16c629e4d67ae173c7593aa69c135bbff39",
+      "declaration": "TypeThreeAssembly.rightUpperJunction",
+      "end_line": 968,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 958
+    },
+    {
+      "code_sha256": "82d466e4484f4553cdf0fe29df6958b297f06ff314377fa09237775f676763e1",
+      "declaration": "TypeThreeAssembly.bottomSegmentCarrier_subset_frontier",
+      "end_line": 1079,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1058
+    },
+    {
+      "code_sha256": "56949577898a4e9f1638a1a8bab2c43a8263ea9e6cf0976fce47fbff56b3fe00",
+      "declaration": "TypeThreeAssembly.exact_euclidean_bottomSegmentCarrier_hausdorffMeasure",
+      "end_line": 1129,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1101
+    },
+    {
+      "code_sha256": "4d107bd731d106706191e0cc66c1eb6e52b0ad83df797a9379d71e46e9ea68c7",
+      "declaration": "TypeThreeAssembly.boundaryJoinSet",
+      "end_line": 1135,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1130
+    },
+    {
+      "code_sha256": "fb8b2d3307f8905b1616f7f8934468dae8dc2d1df098e8fa72f92f5a3759db5d",
+      "declaration": "TypeThreeAssembly.boundaryJoinSet_finite",
+      "end_line": 1141,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1136
+    },
+    {
+      "code_sha256": "f8736f4dd5a67fc4149e15b1ed3e3f21030a49e12643cd517b41158566d4664f",
+      "declaration": "TypeThreeAssembly.pairwiseOverlap_subset_boundaryJoinSet",
+      "end_line": 1257,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1142
+    },
+    {
+      "code_sha256": "545b8d3e4922237126e7364ee9bb07b444cf8cada72b02e8afca89501d2f79b3",
+      "declaration": "TypeThreeAssembly.pairwiseOverlap_h1_null",
+      "end_line": 1273,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1258
+    },
+    {
+      "code_sha256": "a040fbd7853bc5d56529ed0d45def53a17db2084e9e6f891db5067b23f32a560",
+      "declaration": "TypeThreeAssembly.isClosed_rectangleCarrier",
+      "end_line": 1288,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1282
+    },
+    {
+      "code_sha256": "9a06aa24438ad23f7c7f01c4c87ea6fc01e48b3ecec4d358799e726bea34abb1",
+      "declaration": "TypeThreeAssembly.isClosed_leftSegmentCarrier",
+      "end_line": 1295,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1289
+    },
+    {
+      "code_sha256": "97ec89af687cf23451a62fdd3fb4816f90150533b2e6c5aca3fc7cb1fe8e300f",
+      "declaration": "TypeThreeAssembly.isClosed_rightSegmentCarrier",
+      "end_line": 1302,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1296
+    },
+    {
+      "code_sha256": "c084bdc57b0172b2f03efa14200c62e0c7ef9b7e0265bac3ea60cec5c75fc390",
+      "declaration": "TypeThreeAssembly.isClosed_coreCarrier",
+      "end_line": 1306,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1303
+    },
+    {
+      "code_sha256": "86d49c14fed38ff9d123ec7002dc853d7ab13d112817308f4d1ef5ac7d463980",
+      "declaration": "TypeThreeAssembly.isClosed_carrier",
+      "end_line": 1309,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1307
+    },
+    {
+      "code_sha256": "25696aa660c5c71e8ce3e6a179a069d25633bc99ff664ad8e93ea6e319cb501f",
+      "declaration": "TypeThreeAssembly.measurableSet_carrier",
+      "end_line": 1316,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1310
+    },
+    {
+      "code_sha256": "a0a8c181bd45290d862033f8524f84e76d590a21a370fbbc0214aab783d9df85",
+      "declaration": "TypeThreeAssembly.coreCarrier_y_bounds",
+      "end_line": 1455,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1447
+    },
+    {
+      "code_sha256": "e422839d8a82e578aa8619bf8a6d240c5dc840fd4d4e1880ecc09a0307558380",
+      "declaration": "TypeThreeAssembly.volume_coreCarrier",
+      "end_line": 1529,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1481
+    },
+    {
+      "code_sha256": "5a80fac760bbad4e64452fa4d575b54c924b85ffbad6442cb8801547dabcbba7",
+      "declaration": "TypeThreeAssembly.core_weightedArea_formula",
+      "end_line": 1550,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1530
+    },
+    {
+      "code_sha256": "5f7913f0171c133683a735330062b186a060d0e518987c5488549de7bfd06347",
+      "declaration": "TypeThreeAssembly.weightedArea_eq_modeledWeightedArea",
+      "end_line": 1583,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1562
+    },
+    {
+      "code_sha256": "53616c2c25615a95257aa4773c87d4c69464dc905650e6ed5b53696dc5f08570",
+      "declaration": "TypeThreeAssembly.weightedArea_formula",
+      "end_line": 1588,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1584
+    },
+    {
+      "code_sha256": "4502cfa8cbb9cfeeb9921da9cbccfe0b4a2a7c969d9473aede4beb6ee9ada554",
+      "declaration": "TypeThreeAssembly.isClosed_bottomSegmentCarrier",
+      "end_line": 1594,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1589
+    },
+    {
+      "code_sha256": "77ded3af26dffe034b843162e20202cd8e868c69330a0cb95819f9e3b2a0bbf5",
+      "declaration": "TypeThreeAssembly.boundaryTrace",
+      "end_line": 1599,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 1595
+    },
+    {
+      "code_sha256": "e4a9f2900fa53b9204f0a28ca553872a35240978918b3cf32712160073f759cb",
+      "declaration": "TypeThreeAssembly.frontier_carrier_subset_boundaryTrace",
+      "end_line": 2458,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 2443
+    },
+    {
+      "code_sha256": "daeda01e39ff76764527644f12850660eec76e1d4031dd8579c24a3b55dda6ba",
+      "declaration": "TypeThreeAssembly.boundaryTrace_subset_frontier_carrier",
+      "end_line": 2847,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 2840
+    },
+    {
+      "code_sha256": "0ce2b73ef2aba31ce763d170404d962fb774d3c494bf5afe10757388adbfbd30",
+      "declaration": "TypeThreeAssembly.frontier_carrier",
+      "end_line": 2854,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 2848
+    },
+    {
+      "code_sha256": "ac873340c9031353c9d26e2404b771c8a0ff1b638ea75b1a24ed627ed5bc802d",
+      "declaration": "TypeThreeAssembly.measurableSet_euclidean_bottomSegmentCarrier",
+      "end_line": 2860,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 2855
+    },
+    {
+      "code_sha256": "5e03c2ded7f93ebce1b77460290c9d90f4e5be41990287351d94b69c624d60ea",
+      "declaration": "TypeThreeAssembly.euclidean_frontier",
+      "end_line": 2949,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 2937
+    },
+    {
+      "code_sha256": "3dd334c8f3cff9146f23a5d90e6da2520151c567d49c8604446b90aa7a9f4d2b",
+      "declaration": "TypeThreeAssembly.weightedPerimeter_eq_modeledWeightedPerimeter",
+      "end_line": 2993,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 2950
+    },
+    {
+      "code_sha256": "c6f51109b06f9f61cbbcb63e9d6e1d950e5a79c8decdcf76b0e2fc3f366f8eca",
+      "declaration": "TypeThreeAssembly.weightedPerimeter_formula",
+      "end_line": 2999,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 2994
+    },
+    {
+      "code_sha256": "f50bce5009ef96b4081db29960a7e72186fb76edbfedf9fa6fd538bc59ab8c22",
+      "declaration": "TypeThreeAssembly.integrableOn_carrier",
+      "end_line": 3011,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3000
+    },
+    {
+      "code_sha256": "242285e9e93302048576853114a4bc7f6ca16cdc917f22c33a2fe025def880a8",
+      "declaration": "TypeThreeAssembly.integrable_frontierMeasure",
+      "end_line": 3042,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3012
+    },
+    {
+      "code_sha256": "7461e543281be1bed3a7575ad4267ecf1122dd3b3edd989aadf4754226aea410",
+      "declaration": "TypeThreeAssembly.ModeledCompetitorRealization",
+      "end_line": 3052,
+      "generated_family": null,
+      "kind": "structure",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3043
+    },
+    {
+      "code_sha256": "6c62dc13fbd8bcc95bc9815a8c9dace231a72bb0614d3ccc231b26790b97baab",
+      "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor",
+      "end_line": 3054,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3053
+    },
+    {
+      "code_sha256": "ac19f7d26c088671b4dd0552d598cd1124637e2815ea1238d0d5daf917f4ca9b",
+      "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedArea",
+      "end_line": 3064,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3059
+    },
+    {
+      "code_sha256": "c73f289c45ecd5870b19789b66c484f95d8c8aad15bb42c8e172d87d107523d8",
+      "declaration": "TypeThreeAssembly.ModeledCompetitorRealization.asCompetitor_weightedPerimeter",
+      "end_line": 3075,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3065
+    },
+    {
+      "code_sha256": "6f62c793e9d706d4618e398ebe39871915cbb898f90f26305f1f8dad0a496a66",
+      "declaration": "TypeThreeAssembly.HasModeledCompetitor",
+      "end_line": 3080,
+      "generated_family": null,
+      "kind": "def",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3076
+    },
+    {
+      "code_sha256": "6010bc1b92d07ee7af37566e925a969f227d520e7144371bb334d772b94b8386",
+      "declaration": "TypeThreeAssembly.hasModeledCompetitor",
+      "end_line": 3100,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3081
+    },
+    {
+      "code_sha256": "6807359794d5b2629c85ed715f93a0b06f1e0f5dc3b504c99a54401226562f55",
+      "declaration": "FourArcCandidate.not_isWeightedPerimeterMinimizer_of_typeThree",
+      "end_line": 3118,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "TypeThreeAssembly.lean",
+      "source_sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "start_line": 3101
+    },
+    {
+      "code_sha256": "315087e4cfd2ae0e85b582525152b7d3311b9e9d14e2dc9c72058614a85c134f",
+      "declaration": "LeanSuffixAnalytic.typeThreeArea_half",
+      "end_line": 37,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "UniversalStationaryPair.lean",
+      "source_sha256": "e90ff48af9275614e8db8609bffd8149af2ee714e4d6eaa555b87bbf9fd57eb4",
+      "start_line": 27
+    },
+    {
+      "code_sha256": "10ba0ee6421be27f2e3c7dd8f7b1b5dc586c66d90118dd94301a5307188face6",
+      "declaration": "LeanSuffixAnalytic.typeFourArea_one_lt_typeThreeArea_half",
+      "end_line": 61,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "UniversalStationaryPair.lean",
+      "source_sha256": "e90ff48af9275614e8db8609bffd8149af2ee714e4d6eaa555b87bbf9fd57eb4",
+      "start_line": 38
+    },
+    {
+      "code_sha256": "87c6601c0e4b1d865832811725296f245fb9e4dc0b97693804d443361bf40752",
+      "declaration": "LeanSuffixAnalytic.stationaryEqualAreaPair_of_typeFourFold_zero",
+      "end_line": 106,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "UniversalStationaryPair.lean",
+      "source_sha256": "e90ff48af9275614e8db8609bffd8149af2ee714e4d6eaa555b87bbf9fd57eb4",
+      "start_line": 62
+    },
+    {
+      "code_sha256": "2bd42d07c65a61210061f6c5531a6ba1c7c3d14d12463bb14fd552e96e5e36b6",
+      "declaration": "LeanSuffixAnalytic.stationaryEqualAreaPair_exists",
+      "end_line": 115,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "UniversalStationaryPair.lean",
+      "source_sha256": "e90ff48af9275614e8db8609bffd8149af2ee714e4d6eaa555b87bbf9fd57eb4",
+      "start_line": 107
+    },
+    {
+      "code_sha256": "1134a3b056794ea4a2511e4b1ea810f5acd87b2a3db5089871809393e30f50ab",
+      "declaration": "LeanSuffixAnalytic.stationaryEqualAreaPair_strictImprovement_exists",
+      "end_line": 145,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "UniversalStationaryPair.lean",
+      "source_sha256": "e90ff48af9275614e8db8609bffd8149af2ee714e4d6eaa555b87bbf9fd57eb4",
+      "start_line": 116
+    },
+    {
+      "code_sha256": "2bcc5fee077e8fcf68df34eb9a91b0e0249285ccf8a646ec28b5a30fbd597c99",
+      "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one",
+      "end_line": 158,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "UniversalStationaryPair.lean",
+      "source_sha256": "e90ff48af9275614e8db8609bffd8149af2ee714e4d6eaa555b87bbf9fd57eb4",
+      "start_line": 146
+    }
+  ],
+  "dependency_declaration_count": 464,
+  "entry_modules": [
+    "UniversalStationaryPair"
+  ],
+  "module_closure": [
+    "CMVGeometry",
+    "CMVSuffixModel",
+    "CandidateExclusion",
+    "CapReplacement",
+    "Certificate",
+    "EqualAreaEnvelope",
+    "FourArcCandidate",
+    "FrontierPerimeter",
+    "GFunction",
+    "GeometricBridge",
+    "LeanSuffixAnalytic",
+    "Minimiser",
+    "MinimumValue",
+    "MorgansArcFunction",
+    "SameCurvatureArea",
+    "TypeFourStationaryRoot",
+    "TypeThreeAssembly",
+    "UniversalStationaryPair"
+  ],
+  "roots": [
+    "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one"
+  ],
+  "schema_version": 1,
+  "source_declaration_count": 937
+}

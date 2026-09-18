@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVSuffixModel.FourArcCandidate.regular_weightedArea_eq_typeFourArea",
+  "domain_issues": [],
+  "informal_statement": "For a CMV candidate with \\(h<1\\), its weighted area equals \\(A_4(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVSuffixModel.lean:142-149; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "48c010f5756d8d71b74c4c11f50c789619d79d3e32a79f62433bedf4290ea164",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_tendsto_atRight_zero",
+  "domain_issues": [],
+  "informal_statement": "For every \\(\\lambda>1\\), \\(A_3(h)\\to+\\infty\\) as \\(h\\downarrow0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:828-871; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e82ffa97f750ea7c64d3d22eebba58e03fe2fc0f731297b9787ae711ded5a49a",
+  "symbol_mismatches": []
+}

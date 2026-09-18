@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.equalAreaPerimeterGap",
+  "domain_issues": [],
+  "informal_statement": "For a selected root function \\(\\rho\\), the equal-area perimeter gap is \\(\\Delta(h)=P_3(\\rho(h))-P_4(h)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at EqualAreaEnvelope.lean:34-39; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e8643a1549a791c31f1d0a91f7cb9b302d6832ce9c0d1d8e354d9c3e22351fcb",
+  "symbol_mismatches": []
+}

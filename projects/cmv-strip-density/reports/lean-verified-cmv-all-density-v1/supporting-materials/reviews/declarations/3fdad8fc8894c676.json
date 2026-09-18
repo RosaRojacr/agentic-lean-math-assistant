@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "fourArc_pairwiseOverlap_subset_joinSet",
+  "domain_issues": [],
+  "informal_statement": "The pairwise overlaps of the displayed boundary pieces are contained in a finite set and therefore have zero Euclidean one-dimensional Hausdorff measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1142-1195; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eea91f9cc72f6aabac972107df3b4a4acd7547fe5fa392689f59302f202356a4",
+  "symbol_mismatches": []
+}

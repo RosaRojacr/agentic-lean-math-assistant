@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_sqrt_one_sub_sq_from_cos",
+  "domain_issues": [],
+  "informal_statement": "For \\(0\\leq\\theta\\leq\\pi\\), \\(\\int_{\\cos\\theta}^{1}\\sqrt{1-x^2}\\,dx=(\\theta-\\sin\\theta\\cos\\theta)/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1729-1758; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e4a969c6c1b67c6f267db8fb9582c7cd96174fa24489265c840c646c3085a52a",
+  "symbol_mismatches": []
+}

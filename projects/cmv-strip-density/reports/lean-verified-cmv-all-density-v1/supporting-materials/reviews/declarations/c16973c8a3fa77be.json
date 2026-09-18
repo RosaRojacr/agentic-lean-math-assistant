@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.stationaryEqualArea_typeThree_improves_iff",
+  "domain_issues": [],
+  "informal_statement": "Under the same nonzero, equal-area, and stationary hypotheses, \\(P_3(r)<P_4(s)\\) is equivalent to \\(G(r,s)<0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:1239-1252; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d313a9a9b483a140c805abe01de0a03576005db4ae69b2c417e95c5e91300b63",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_in_closed_side",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lvert t\\rvert\\leq\\theta\\), the cap arc lies in its chosen closed half-plane.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:240-252; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4692c99be4beede3a58f1e164acd1cfe21db7a9160da63340de9490acd46c184",
+  "symbol_mismatches": []
+}

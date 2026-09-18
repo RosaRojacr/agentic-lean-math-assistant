@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "PlanePoint",
+  "domain_issues": [],
+  "informal_statement": "The coordinate point space is \\(\\mathbb R\\times\\mathbb R\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:30-33; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6c33ab7d9e6652b4833188977c0694ee665f31ebd07e572ea7a67ee7a8a0183",
+  "symbol_mismatches": []
+}

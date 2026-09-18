@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor.WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "Every competitor's weighted perimeter is the density integral against the frontier measure of its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:3976-3980; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "17b5c5914d38bc0479d502c48cde9715c303aa7070585ade87ba56d307321437",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sideAngle_le_pi_div_two",
+  "domain_issues": [],
+  "informal_statement": "The strip-core side angle satisfies \\(\\phi\\leq\\pi/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:466-469; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0c0857ab96c23693b4448efce2e70a6069dda6f460cf0118b7e365f0f1074987",
+  "symbol_mismatches": []
+}

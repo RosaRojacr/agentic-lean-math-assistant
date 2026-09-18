@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.radius_pos",
+  "domain_issues": [],
+  "informal_statement": "The strip-core radius is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:460-462; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "754f25da7343b067aca1ccf07fea956e09bfd461a16a072435b6b938ea98f462",
+  "symbol_mismatches": []
+}

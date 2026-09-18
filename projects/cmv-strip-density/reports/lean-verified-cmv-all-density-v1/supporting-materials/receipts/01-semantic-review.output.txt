@@ -1,0 +1,1 @@
+Wrote `supporting-materials/reviews/reviewer-01.json`. Verdict: `mismatch`. Reviewed all 464 declarations; strict JSON, coverage, hashes, and exact statement preservation validated.

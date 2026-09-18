@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.upperCenter",
+  "domain_issues": [],
+  "informal_statement": "The upper exterior-circle center is \\((0,1-R\\cos\\alpha)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:76-79; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6dabb1e2d2dfee1af758b047dfb6728a97191f4c64742b75a35f102c81c1c3c1",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.bottomChord_nonneg",
+  "domain_issues": [],
+  "informal_statement": "The bottom chord parameter satisfies \\(2w\\geq0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:352-354; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bbe5a0b68c27b1eab70889a99796728aff04d58c47eda0333c16191c78a8f12a",
+  "symbol_mismatches": []
+}

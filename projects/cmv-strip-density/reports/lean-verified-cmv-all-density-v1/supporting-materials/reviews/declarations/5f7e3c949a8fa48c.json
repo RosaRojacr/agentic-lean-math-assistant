@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_unitCircleArc_image_le",
+  "domain_issues": [],
+  "informal_statement": "If \\(r>0\\), then for all real \\(a,b\\), \\[\\mathcal H^1\\!\\left(\\gamma_r([a,b])\\right)\\leq\\max\\{b-a,0\\}.\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:93-104; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "07ee598762aa4a7964c4db549c22833ebf32ee2d325dcc190dd9a72212015319",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArcRotation_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "If \\(r\\ne0\\), then for all real \\(m,u,v\\), \\[R_{r,m}(\\gamma_r([u,v]))=\\gamma_r([u+m,v+m]).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:332-349; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6bbfe5bd6af2f20e278e2e30ff5adc9fe7c0761359113d169ea5baae1f20d6a2",
+  "symbol_mismatches": []
+}

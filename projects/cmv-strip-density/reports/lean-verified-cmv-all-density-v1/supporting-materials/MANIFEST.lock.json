@@ -1,0 +1,46 @@
+{
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "generated_at": "2026-09-18T05:16:50Z",
+  "lean_build_threads": 4,
+  "lean_toolchain_sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+  "models": {
+    "author": {
+      "model": "gpt-6-astra",
+      "provider": "openai-codex",
+      "revision": "gpt-6-astra",
+      "route": "openai-codex/gpt-6-astra"
+    },
+    "fallback_policy": "disabled",
+    "isolation": "fresh no-session invocations",
+    "max_model_calls": 8,
+    "max_revisions": 3,
+    "review_profile": "strict",
+    "semantic_reviewer": {
+      "model": "gpt-5.6-terra",
+      "provider": "openai-codex",
+      "revision": "gpt-5.6-terra",
+      "route": "openai-codex/gpt-5.6-terra"
+    },
+    "thinking": "xhigh"
+  },
+  "package_id": "lean-verified-cmv-all-density",
+  "project_manifest": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/project.toml",
+  "proof_builder_version": "1.4.2",
+  "roots": [
+    {
+      "declaration": "CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one",
+      "informal_statement": "For every real density λ > 1 and every modeled four-arc candidate satisfying the formal CMV type-(iv) hypotheses, the candidate is not a weighted-perimeter minimizer.",
+      "module": "UniversalStationaryPair",
+      "role": "primary",
+      "type": "∀ {lam : ℝ} (candidate : FourArcCandidate lam), 1 < lam → candidate.SatisfiesCMVTypeIVHypotheses → ¬ candidate.IsWeightedPerimeterMinimizer"
+    }
+  ],
+  "schema_version": 1,
+  "source_commit": "b51652bf328813dc767b9c9ea865736efa7ff5b8",
+  "source_manifest": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-proof-package.toml",
+  "version": "v1"
+}

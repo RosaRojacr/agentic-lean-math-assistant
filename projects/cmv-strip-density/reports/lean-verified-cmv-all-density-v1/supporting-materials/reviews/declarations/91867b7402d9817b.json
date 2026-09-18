@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.leftCapCarrier",
+  "domain_issues": [],
+  "informal_statement": "The left core piece is the disk \\((x-c_{\\mathrm L})^2+y^2\\leq R^2\\) restricted to \\(x\\leq-L/2\\) and \\(\\lvert y\\rvert\\leq1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:440-443; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2ca301cf56be587995c60fad814a6021c666b20d0f45e1fa3f2964b23f678cbc",
+  "symbol_mismatches": []
+}

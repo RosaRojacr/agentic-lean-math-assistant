@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.lowerCap",
+  "domain_issues": [],
+  "informal_statement": "The assembly's lower cap has chord \\(L\\), half-angle \\(\\alpha\\), midpoint \\((0,-1)\\), and lower side.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:2509-2518; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a60a9393b363872f08f12dbab41380b51afefa746b9504c5841f28d389091bfe",
+  "symbol_mismatches": []
+}

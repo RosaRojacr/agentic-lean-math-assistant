@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourArea",
+  "domain_issues": [],
+  "informal_statement": "The type-\\(\\mathrm{iv}\\) scalar area is \\(A_4(h)=2[B(h)+hD(h)]/h^2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at LeanSuffixAnalytic.lean:61-64; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "775f7921b66716563dd5e0e4c35562d880f5cef2a71b40cef616cd10eb9488d2",
+  "symbol_mismatches": []
+}

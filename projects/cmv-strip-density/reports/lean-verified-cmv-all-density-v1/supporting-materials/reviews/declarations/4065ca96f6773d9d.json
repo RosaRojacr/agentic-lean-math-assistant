@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedLeftArcParam_eq",
+  "domain_issues": [],
+  "informal_statement": "The realized left parametrization equals the side-arc complex isometry at the left center applied to \\(\\gamma_R(s)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:672-680; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "538a7925bd9a6977d5e74933bd5f951885abb82dc534e3d102db01bf6aa01a1e",
+  "symbol_mismatches": []
+}

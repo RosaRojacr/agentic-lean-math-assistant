@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "WeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The weighted area of a carrier \\(E\\) is \\(A_\\lambda(E)=\\int_E f_\\lambda\\,d\\mathcal L^2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:55-60; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "959b5ddd7363861d4d0d79c211781b3b19e09df50087472690ae0581725b8c6d",
+  "symbol_mismatches": []
+}

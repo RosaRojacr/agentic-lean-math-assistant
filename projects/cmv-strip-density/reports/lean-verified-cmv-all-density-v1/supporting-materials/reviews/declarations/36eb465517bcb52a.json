@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerAngle_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "The principal exterior angle satisfies \\(\\alpha<\\pi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at TypeThreeAssembly.lean:174-177; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ce135b6a3dc191fb33efd487aab9da31365b8ec038647a624b62a436ba911d34",
+  "symbol_mismatches": []
+}

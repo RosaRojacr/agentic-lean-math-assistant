@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sideAngle",
+  "domain_issues": [],
+  "informal_statement": "The strip-core side angle is \\(\\phi=\\arcsin\\kappa\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:429-430; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f6b6599037149db7ce42f881c45d0eb7f35fbc43f124df7507d6a83a6d6e15b",
+  "symbol_mismatches": []
+}

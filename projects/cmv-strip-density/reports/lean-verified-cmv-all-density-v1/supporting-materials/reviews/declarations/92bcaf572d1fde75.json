@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_unitCircleArc_image_eq_of_span_lt_two_pi",
+  "domain_issues": [],
+  "informal_statement": "An injective circular arc whose signed-arclength span is less than \\(2\\pi r\\) has Euclidean \\(\\mathcal H^1\\)-measure equal to its parameter span.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:350-389; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a5a68294ffad2a36064599c08079161b28ea03171c66437e00e8f24eba632c26",
+  "symbol_mismatches": []
+}

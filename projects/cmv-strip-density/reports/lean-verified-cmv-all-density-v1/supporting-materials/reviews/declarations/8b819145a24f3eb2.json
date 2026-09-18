@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_partition_polygon_lower",
+  "domain_issues": [],
+  "informal_statement": "If \\(r>0\\), \\(0<\\theta<\\pi\\), and \\(N>0\\), then \\[\\operatorname{ofReal}\\!\\left(N\\,2r\\sin(\\theta/N)\\right)\\leq\\mathcal H^1\\!\\left(\\gamma_r([-r\\theta,r\\theta])\\right).\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:208-268; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4dc7fcd936b6c56a4643f00c8d67c38ce24d6351f625a8873960fc070d61a446",
+  "symbol_mismatches": []
+}

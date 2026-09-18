@@ -1,0 +1,77 @@
+[138] CMVSuffixModel.TypeThreeAssembly.angleTerm_eq_typeThreeAngle (42-52)
+theorem angleTerm_eq_typeThreeAngle :
+    a.angleTerm = LeanSuffixAnalytic.typeThreeAngle lam a.h + π / 2
+
+[139] CMVSuffixModel.TypeThreeAssembly.sineGap_eq_typeThreeDelta (53-77)
+theorem sineGap_eq_typeThreeDelta :
+    a.sineGap = LeanSuffixAnalytic.typeThreeDelta lam a.h
+
+[140] CMVSuffixModel.TypeThreeAssembly.scalarWeightedArea_eq_typeThreeArea (78-86)
+theorem scalarWeightedArea_eq_typeThreeArea :
+    a.scalarWeightedArea = LeanSuffixAnalytic.typeThreeArea lam a.h
+
+[141] CMVSuffixModel.TypeThreeAssembly.scalarWeightedPerimeter_eq_typeThreePerimeter (87-99)
+theorem scalarWeightedPerimeter_eq_typeThreePerimeter :
+    a.scalarWeightedPerimeter =
+      LeanSuffixAnalytic.typeThreePerimeter lam a.h
+
+[142] CMVSuffixModel.FourArcCandidate.regular_weightedArea_eq_typeFourArea (142-149)
+theorem regular_weightedArea_eq_typeFourArea
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses)
+    (_hregular : candidate.h < 1) :
+    candidate.WeightedArea =
+      LeanSuffixAnalytic.typeFourArea lam candidate.h
+
+[143] CMVSuffixModel.FourArcCandidate.regular_weightedPerimeter_eq_typeFourPerimeter (150-158)
+theorem regular_weightedPerimeter_eq_typeFourPerimeter
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses)
+    (_hregular : candidate.h < 1) :
+    candidate.WeightedPerimeter =
+      LeanSuffixAnalytic.typeFourPerimeter lam candidate.h
+
+[144] CMVSuffixModel.FourArcCandidate.endpoint_weightedArea_eq_typeFourArea (159-166)
+theorem endpoint_weightedArea_eq_typeFourArea
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses)
+    (_hendpoint : candidate.h = 1) :
+    candidate.WeightedArea =
+      LeanSuffixAnalytic.typeFourArea lam candidate.h
+
+[145] CMVSuffixModel.FourArcCandidate.endpoint_weightedPerimeter_eq_typeFourPerimeter (167-176)
+theorem endpoint_weightedPerimeter_eq_typeFourPerimeter
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses)
+    (_hendpoint : candidate.h = 1) :
+    candidate.WeightedPerimeter =
+      LeanSuffixAnalytic.typeFourPerimeter lam candidate.h
+
+[146] CMVSuffixModel.FourArcCandidate.weightedArea_eq_typeFourArea (177-186)
+theorem weightedArea_eq_typeFourArea
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) :
+    candidate.WeightedArea =
+      LeanSuffixAnalytic.typeFourArea lam candidate.h
+
+[147] CMVSuffixModel.FourArcCandidate.weightedPerimeter_eq_typeFourPerimeter (187-200)
+theorem weightedPerimeter_eq_typeFourPerimeter
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses) :
+    candidate.WeightedPerimeter =
+      LeanSuffixAnalytic.typeFourPerimeter lam candidate.h
+
+[148] CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_analytic_typeThree (201-224)
+theorem not_isWeightedPerimeterMinimizer_of_analytic_typeThree
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses)
+    {h₃ : ℝ} (hh₃ : 0 < h₃) (hh₃_one : h₃ < 1)
+    (equalArea : LeanSuffixAnalytic.typeThreeArea lam h₃ =
+      LeanSuffixAnalytic.typeFourArea lam candidate.h)
+    (strictPerimeter : LeanSuffixAnalytic.typeThreePerimeter lam h₃ <
+      LeanSuffixAnalytic.typeFourPerimeter lam candidate.h) :
+    ¬ candidate.IsWeightedPerimeterMinimizer
+
+[149] CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair (225-248)
+theorem not_isWeightedPerimeterMinimizer_of_stationaryEqualAreaPair
+    (hcandidate : candidate.SatisfiesCMVTypeIVHypotheses)
+    (pair : LeanSuffixAnalytic.StationaryEqualAreaPair lam)
+    (hfoldThree :
+      LeanSuffixAnalytic.typeThreeFold lam pair.h₃ < 0)
+    (hperimeter :
+      LeanSuffixAnalytic.typeThreePerimeter lam pair.h₃ <
+        LeanSuffixAnalytic.typeFourPerimeter lam pair.h₄) :
+    ¬ candidate.IsWeightedPerimeterMinimizer

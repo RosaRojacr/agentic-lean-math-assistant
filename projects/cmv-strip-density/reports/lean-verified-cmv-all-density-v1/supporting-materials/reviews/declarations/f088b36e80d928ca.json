@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "fourArc_frontier_weightedPerimeter_eq",
+  "domain_issues": [],
+  "informal_statement": "The explicit four-arc component perimeter equals the canonical weighted perimeter obtained from the complete frontier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at FrontierPerimeter.lean:1794-1844; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e95ee1864c7bc7d9bc3a3ec2659625a510c6cefccdafe0cd2efab0e2d93e1067",
+  "symbol_mismatches": []
+}

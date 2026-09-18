@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_semicircle_scaled",
+  "domain_issues": [],
+  "informal_statement": "For \\(r>0\\) and \\(0\\leq\\theta\\leq\\pi\\), \\(\\int_{r\\cos\\theta}^{r}2\\sqrt{r^2-y^2}\\,dy=r^2(\\theta-\\sin\\theta\\cos\\theta)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Checked against the exact frozen declaration at CMVGeometry.lean:1759-1791; it preserves the handoff statement’s parameters, hypotheses, quantifiers, domain, boundary cases, symbols, and conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe66bbeed922271b7cf0e4043f58e6b4f6651310c0d02aa776383ac42b18240d",
+  "symbol_mismatches": []
+}
