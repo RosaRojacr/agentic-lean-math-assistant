@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBAreaAtRadius",
+  "domain_issues": [],
+  "informal_statement": "The radius-coordinate type-(B) area is \\(R^2(\\pi-S(\\beta_\\lambda(R)))+S(\\beta_\\lambda(R)+\\arccos\\lambda)-(1-\\lambda)\\pi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:326-334: Expanding S gives precisely the two trigonometric segment terms and -(1-lam)*pi in Lean. The density correction is for the entire unit disk, consistent with the source's type-(B) geometry.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "302ee62cf6614993146d2f898718e7b4c35270995d17efc0e3fbe06584054ba3",
+  "symbol_mismatches": []
+}

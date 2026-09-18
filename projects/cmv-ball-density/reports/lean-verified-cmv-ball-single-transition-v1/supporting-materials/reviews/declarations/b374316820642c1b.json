@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.exists_typeCRadius_at_area",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), some \\(R>0\\) satisfies \\(A_{\\mathrm{C}}(R)=v\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1020-1067: The formal existence domain is v>lam*pi and the radius is strictly positive. The proof brackets v between the area at R=lam and a large positive radius, avoiding the totalized R=0 expression exactly as explained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63e6ea9666dcdbe0cc4e7fdc659230e14fd24f25f1cdeb2756c507b3e9eb7e2f",
+  "symbol_mismatches": []
+}

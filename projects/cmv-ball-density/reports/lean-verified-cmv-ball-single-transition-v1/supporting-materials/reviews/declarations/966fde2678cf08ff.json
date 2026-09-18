@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_at_one",
+  "domain_issues": [],
+  "informal_statement": "\\(H(c,1)/c\\) tends to zero as \\(c\\) tends to one from below.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1695-1725: There are no free density or radius hypotheses: R is exactly one and density tends to one from below. The source squeezes (1-c)beta_c(1) rather than evaluating the singular chart, exactly the boundary argument given by the author.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "72d28fc306e34fd07f9a091bc1f04b99fa14efc650ed4c7075d01cf65333b270",
+  "symbol_mismatches": []
+}

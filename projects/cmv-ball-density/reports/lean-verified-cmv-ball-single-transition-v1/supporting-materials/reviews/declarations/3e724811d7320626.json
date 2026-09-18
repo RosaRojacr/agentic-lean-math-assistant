@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtRadius_zero",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), \\(P_{\\mathrm{B}}(0)=2\\lambda\\pi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:759-766: The formal value is 2*lam*pi. The endpoint chart and vanishing exterior radius leave the full weighted unit-circle boundary, exactly as explained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4a8b3af699ffc34588703cbf0b3dfa0fe068d5c1e0ebc207f5e62ad1f86bcb22",
+  "symbol_mismatches": []
+}

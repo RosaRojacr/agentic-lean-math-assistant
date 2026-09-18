@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBAreaAtRadius_continuous",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), the total function \\(R\\mapsto A_{\\mathrm{B}}(R)\\) is continuous on the real line.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:693-697: Lean has no density condition and concludes Continuous on all real radii. Division by a fixed real constant is continuous even when totalized at zero; the author explicitly explains this wider algebraic scope.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "654d93958fa1cc148933f3dbe93ac2d4925ccbef30b42f7a8afd01edc8ef532d",
+  "symbol_mismatches": []
+}

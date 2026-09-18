@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBRadius_nonneg",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), every admissible type-(B) candidate has nonnegative radius.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:232-240: The proof divides the nonnegative sine of alpha by the positive sine of beta. Lean and the author both conclude nonnegativity, preserving the possible zero-radius endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3582dff45831f2e7f5c8a52df6dd4d3c3ab5060e81b548fb6a841a2254794a31",
+  "symbol_mismatches": []
+}

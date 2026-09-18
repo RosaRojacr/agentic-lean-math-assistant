@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.betaAtRadius",
+  "domain_issues": [],
+  "informal_statement": "The type-(B) inverse chart is \\(\\beta_\\lambda(R)=\\pi/2-\\arctan((R-\\lambda)/\\sqrt{1-\\lambda^2})\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:127-130: The displayed arctangent formula agrees term for term with the total real definition. The explanation restricts its geometric inverse meaning to admissible density and nonnegative radii, without dropping the obtuse-angle branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a3124126d7f948e4397701451937e291db6bb2593b860fca2145e77ec6602177",
+  "symbol_mismatches": []
+}

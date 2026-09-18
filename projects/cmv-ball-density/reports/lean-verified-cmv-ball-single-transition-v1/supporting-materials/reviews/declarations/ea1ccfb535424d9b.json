@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.arcSegment_pos",
+  "domain_issues": [],
+  "informal_statement": "\\(S(x)>0\\) whenever \\(0<x<\\pi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:610-622: The formal interval is 0<x<pi. The proof splits on the sign of cosine and uses sin(x)<x in the positive-cosine case, giving strict positivity throughout the stated interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4edb95bb9a7ef1f46aba008febfd569d56f56863cb28cc1fdf213082055ae376",
+  "symbol_mismatches": []
+}

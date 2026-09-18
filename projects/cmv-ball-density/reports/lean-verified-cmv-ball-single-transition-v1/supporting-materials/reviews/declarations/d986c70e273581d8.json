@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.cot_strictAntiOn_Ioo_zero_pi",
+  "domain_issues": [],
+  "informal_statement": "Cotangent is strictly decreasing on \\((0,\\pi)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:92-102: The formal interval is the entire (0,pi), not just acute angles. Complementation transports its pairs to the principal tangent interval and reverses order, exactly as explained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ace6f8c9441fb437f575beea814ae69da33538450d13d0301b36483ea0bd1558",
+  "symbol_mismatches": []
+}

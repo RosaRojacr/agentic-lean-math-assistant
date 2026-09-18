@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBRadius_strictAntiOn",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), the type-(B) radius is strictly decreasing on its whole admissible angular domain.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:103-119: The formal set is all BAdmissible angles, including beta=pi-arccos(lam). The proof combines the global cotangent identity with a positive square-root coefficient; the author's whole-domain strict decrease is exact.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d474e75d38db799e62e6a1fd3b84d82959bcc51226ab32f06c71df9e248314af",
+  "symbol_mismatches": []
+}

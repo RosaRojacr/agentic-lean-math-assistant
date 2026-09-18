@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.betaAtRadius_le_pi_div_two",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and \\(\\lambda\\leq R\\), \\(\\beta_\\lambda(R)\\leq\\pi/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:148-156: The non-strict hypothesis lam<=R makes the arctangent argument nonnegative. The conclusion beta<=pi/2 is likewise non-strict and includes R=lam, exactly as stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6d70e241c44c4fc39707fea591fb93e2c57b4830b8617af8a63dd5d2033c3256",
+  "symbol_mismatches": []
+}

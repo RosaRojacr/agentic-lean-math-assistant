@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeterValuesAtArea",
+  "domain_issues": [],
+  "informal_statement": "This is the set of all type-(C) perimeter values from admissible angles of area exactly \\(v\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1074-1079: The formal set ranges over every CAdmissible angle of area v and collects its actual perimeter. The explanation correctly includes the full open angular domain and no selected inverse branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cb485477b22802c53c6af448371d844cdb35a1ad16956ed8dcc86d1d34b9f786",
+  "symbol_mismatches": []
+}

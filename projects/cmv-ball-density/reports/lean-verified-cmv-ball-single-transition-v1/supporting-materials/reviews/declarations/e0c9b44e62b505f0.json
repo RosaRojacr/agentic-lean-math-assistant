@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_le",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\) and \\(0<R\\leq\\lambda\\), then \\(H(\\lambda,R)>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1386-1399: The formal assumptions are 0<lam<1 and 0<R<=lam. The first term of H is nonnegative and the next two are positive, including the equality case R=lam, exactly as stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "70db5ffdb68d856e4b264b6a6571be92f1d5430fbe1f89edab30d115fd2ca0a8",
+  "symbol_mismatches": []
+}

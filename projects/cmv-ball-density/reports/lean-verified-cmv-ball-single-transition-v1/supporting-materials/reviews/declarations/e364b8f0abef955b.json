@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_continuousAt",
+  "domain_issues": [],
+  "informal_statement": "For any real \\(R\\) and \\(0<c<1\\), the function \\(x\\mapsto H(x,R)/x\\) is continuous at \\(c\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1660-1664: The source assumes 0<c<1 and arbitrary real R and obtains continuity from the density derivative. The author preserves this unrestricted radius scope and correctly uses continuity at c=R only when 0<R<1.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63a18ea3889cd159ace5ef02e45f92fdd7d2a7fad2bca6f2d3d6f49921156755",
+  "symbol_mismatches": []
+}

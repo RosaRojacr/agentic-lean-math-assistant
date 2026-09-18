@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeC_dominance_persists",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(\\lambda,v_0,v\\) with \\(0<\\lambda<1\\) and \\(\\lambda\\pi<v_0<v\\), \\(I_{\\mathrm{C}}(v_0)\\leq I_{\\mathrm{B}}(v_0)\\) implies \\(I_{\\mathrm{C}}(v)<I_{\\mathrm{B}}(v)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:2423-2448: The universally quantified real lam,v0,v and all five hypotheses match the frozen root exactly: 0<lam<1, lam*pi<v0<v, and weak initial dominance. The proof obtains I_B(v0)<I_B(v), then a strictly negative later common-perimeter gap and strict later dominance, without assuming a crossing or geometric classification.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f5ada2cd0133c47ab6c9f8734b2bc2a998e82cc392fe14d449f57858a255b00e",
+  "symbol_mismatches": []
+}

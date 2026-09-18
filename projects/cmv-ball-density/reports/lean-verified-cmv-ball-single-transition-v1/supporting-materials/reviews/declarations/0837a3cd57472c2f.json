@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusD_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(D(\\lambda,R)>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1364-1369: The two density hypotheses imply 1-lam^2>0, and the squared radius difference is nonnegative for every real R. The author's unrestricted-radius positivity claim exactly matches Lean.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ab40250bb6c14fc69fd59cdf3f0cdb3baf9f85a08aed8a6aea9a5ea02fc5cf9a",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,46 @@
+{
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "generated_at": "2026-09-18T00:57:27Z",
+  "lean_build_threads": 4,
+  "lean_toolchain_sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+  "models": {
+    "author": {
+      "model": "gpt-6-astra",
+      "provider": "openai-codex",
+      "revision": "gpt-6-astra",
+      "route": "openai-codex/gpt-6-astra"
+    },
+    "fallback_policy": "disabled",
+    "isolation": "fresh no-session invocations",
+    "max_model_calls": 12,
+    "max_revisions": 3,
+    "review_profile": "strict",
+    "semantic_reviewer": {
+      "model": "gpt-6-astra",
+      "provider": "openai-codex",
+      "revision": "gpt-6-astra",
+      "route": "openai-codex/gpt-6-astra"
+    },
+    "thinking": "xhigh"
+  },
+  "package_id": "lean-verified-cmv-ball-single-transition",
+  "project_manifest": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/project.toml",
+  "proof_builder_version": "1.4.2",
+  "roots": [
+    {
+      "declaration": "CMVBallCase.typeC_dominance_persists",
+      "informal_statement": "For every density 0 < λ < 1 and weighted areas λπ < v₀ < v, once the type-(C) equal-area perimeter profile is no larger than the type-(B) profile at v₀, type (C) has strictly smaller perimeter than type (B) at v.",
+      "module": "CMVBallCase",
+      "role": "primary",
+      "type": "∀ {lam v₀ v : ℝ}, 0 < lam → lam < 1 → lam * Real.pi < v₀ → v₀ < v → CMVBallCase.typeCPerimeterAtArea lam v₀ ≤ CMVBallCase.typeBPerimeterAtArea lam v₀ → CMVBallCase.typeCPerimeterAtArea lam v < CMVBallCase.typeBPerimeterAtArea lam v"
+    }
+  ],
+  "schema_version": 1,
+  "source_commit": "92dd01f4d3f93d94704aa800c93b509975a16308",
+  "source_manifest": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-proof-package.toml",
+  "version": "v1"
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusL_neg",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\) and \\(\\lambda<R\\), then \\(L(\\lambda,R)<0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1630-1639: The source requires lam<R in addition to the two density bounds. Its complete split at R=1 and at N=0 proves strict negativity only on that stated domain, as the author expressly emphasizes.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7412414d7e4f71205db23e4c7a9ba2c16e8de6f3ee9f630908e2c9dd59858948",
+  "symbol_mismatches": []
+}

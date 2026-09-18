@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.betaAtRadius_eq_arctan_reciprocal",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\) and \\(\\lambda<R\\), then \\(\\beta_\\lambda(R)=\\arctan(\\sqrt{1-\\lambda^2}/(R-\\lambda))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1508-1514: The formal additional hypothesis lam<R ensures a positive arctangent argument. The complementary arctangent identity then gives the stated reciprocal formula, with no illegitimate extension to the obtuse-angle branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1b10b001ba78b0255df00a8213bf477e9519c5b01dc94215f4dab6c80ce5263f",
+  "symbol_mismatches": []
+}

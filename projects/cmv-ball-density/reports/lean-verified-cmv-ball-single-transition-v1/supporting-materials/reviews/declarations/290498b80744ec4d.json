@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtRadius_agrees",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(P_{\\mathrm{B}}(R)\\) equals the angular type-(B) perimeter at \\(\\beta_\\lambda(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:345-351: Both density bounds and R>=0 occur in Lean. Substitution of typeBRadius_betaAtRadius identifies the radius perimeter with the angular perimeter, including the zero endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fc3ebabe5ff5963057732d5c2e6cb24a284b9bf252ebb2ffea0fa55fa6ac0813",
+  "symbol_mismatches": []
+}

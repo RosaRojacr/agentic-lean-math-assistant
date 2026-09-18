@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.BAdmissible",
+  "domain_issues": [],
+  "informal_statement": "A type-(B) angle is admissible precisely when \\(0<\\beta\\leq\\pi-\\arccos\\lambda\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:18-22: The definition is precisely the conjunction 0 < beta and beta <= pi - arccos(lam). The explanation correctly separates this total predicate from the density hypothesis and retains the zero-radius endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e044429fd7ffa85e0d7057933c7cab810b11565444bcff740b4688861a6b8c0d",
+  "symbol_mismatches": []
+}

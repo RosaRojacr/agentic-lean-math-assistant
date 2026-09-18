@@ -1,0 +1,50 @@
+schema_version = 1
+
+[package]
+id = "lean-verified-cmv-ball-single-transition"
+version = "v1"
+title = "A Lean-Verified Single-Transition Theorem for CMV Ball Density"
+author = "Rosa Pavlak"
+audience = "A mathematics professor or researcher who may have no prior Lean experience."
+informal_claim = "For the planar unit-ball density equal to λ inside the closed unit disk and 1 outside, with 0 < λ < 1, if the type-(C) equal-area perimeter profile is no larger than the type-(B) profile at some weighted area v₀ > λπ, then the type-(C) profile is strictly smaller at every weighted area v > v₀."
+closing_scope = "Explain that the formal theorem proves persistence of type-(C) dominance over the faithful all-candidate type-(B)/(C) profiles. State that the paper-level conclusion v₁ = v₂ follows only when combined with the finite-perimeter existence, regularity, connectedness, and exhaustive candidate-classification premises of Proposition 3.22 and Theorem 3.23, which are not formalized in this package. Distinguish the verified analytic profile theorem from those source-level geometric-measure-theory premises."
+project = "../project.toml"
+output = "lean-verified-cmv-ball-single-transition-v1"
+canonical_pdf = "lean-verified-cmv-ball-single-transition.pdf"
+references = [
+  "../problem.md",
+  "../references/Canete2010.bib",
+  "../../cmv-strip-density/references/Canete2010.pdf",
+]
+
+[lean]
+workspace = "../proof"
+lakefile = "lakefile.toml"
+support_files = ["lean-toolchain", "lake-manifest.json"]
+generated_globs = []
+forbidden_declarations = []
+build_command = ["lake", "build"]
+verification_commands = []
+allowed_axioms = ["propext", "Quot.sound", "Classical.choice"]
+timeout_seconds = 21600
+
+[[roots]]
+module = "CMVBallCase"
+declaration = "CMVBallCase.typeC_dominance_persists"
+role = "primary"
+type = "∀ {lam v₀ v : ℝ}, 0 < lam → lam < 1 → lam * Real.pi < v₀ → v₀ < v → CMVBallCase.typeCPerimeterAtArea lam v₀ ≤ CMVBallCase.typeBPerimeterAtArea lam v₀ → CMVBallCase.typeCPerimeterAtArea lam v < CMVBallCase.typeBPerimeterAtArea lam v"
+informal_statement = "For every density 0 < λ < 1 and weighted areas λπ < v₀ < v, once the type-(C) equal-area perimeter profile is no larger than the type-(B) profile at v₀, type (C) has strictly smaller perimeter than type (B) at v."
+
+[models]
+author = "openai-codex/gpt-6-astra"
+reviewer = "openai-codex/gpt-6-astra"
+profile = "strict"
+thinking = "xhigh"
+timeout_seconds = 21600
+max_revisions = 5
+max_model_calls = 12
+
+[render]
+pandoc = "pandoc"
+chromium = "chromium-browser"
+timeout_seconds = 1800

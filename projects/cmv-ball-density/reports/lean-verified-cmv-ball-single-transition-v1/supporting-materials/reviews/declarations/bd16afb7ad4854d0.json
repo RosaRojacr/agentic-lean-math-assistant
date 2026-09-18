@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBAlpha_sin_nonneg",
+  "domain_issues": [],
+  "informal_statement": "For every admissible type-(B) angle \\(\\beta\\), \\(\\sin(\\beta+\\arccos\\lambda)\\) is nonnegative, without a separate density assumption.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:72-80: Lean has only BAdmissible lam beta, without density bounds. The proof uses global nonnegativity of arccos to put beta+arccos(lam) in [0,pi]; the author explicitly preserves this wider density domain and non-strict conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "84b0b6514b1ce040ec07e3234a2e8730ab3f09c5e1a14930d078033a2d70a73f",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusN_density_derivative_identity",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(\\lambda\\) and \\(R\\), the density derivative of \\(N\\) at \\(\\lambda\\) is \\(-(4(R-1/2)^2+1+4R(1-\\lambda))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1370-1379: Lean proves HasDerivAt in the density variable for arbitrary real lam and R. Differentiating the polynomial gives -4R^2+4R*lam-2, equal to the completed-square expression displayed by the author.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80b7c6ee3bbac239cfec59bac30eb2868a417e75a97013642551d21b2c7f23ee",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusL_density_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), the density derivative of \\(L\\) is \\(-\\lambda N(\\lambda,R)/(\\sqrt{1-\\lambda^2}D(\\lambda,R)^2)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1462-1479: Lean proves the density derivative -lam*N/(sqrt(1-lam^2)*D^2) for arbitrary R under 0<lam<1. Its proof uses the positive denominator and square-root-square identity, and the explanation preserves the exact coefficient and scope.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "db1661fbfdaeefec8e9d4f2e678214b5a54356b68cb7f3953f8533e10e578e7d",
+  "symbol_mismatches": []
+}

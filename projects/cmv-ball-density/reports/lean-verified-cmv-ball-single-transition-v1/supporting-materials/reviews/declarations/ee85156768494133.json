@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCArea",
+  "domain_issues": [],
+  "informal_statement": "The angular type-(C) weighted area is \\((\\pi-(1-\\lambda)(\\beta-\\sin\\beta\\cos\\beta))/\\tan^2\\beta-(1-\\lambda)(\\pi/2-\\beta-\\sin\\beta\\cos\\beta)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallDefinitions.lean:37-43: The source quotient and final subtracted term agree exactly with the author. The identity S(pi/2-beta)=pi/2-beta-sin(beta)cos(beta) confirms the lens correction and its coefficient (1-lam), with no factor-of-two error.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1c838263bf547723f2086f0226358db55c1fd829ed4addfba436f74cda3734ab",
+  "symbol_mismatches": []
+}

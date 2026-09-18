@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.bAtRadius_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "At each nonzero real \\(R\\), \\(b\\) has derivative \\(-1/(1+R^2)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:393-402: The source requires R!=0, not positivity. The quotient and arctangent chain rules give -1/(1+R^2), and the author correctly includes negative nonzero inputs.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1653427eb62cf98e802e2428e9d6de180448223da78362c5f886faa270cd5aad",
+  "symbol_mismatches": []
+}

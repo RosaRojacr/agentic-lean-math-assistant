@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtRadius_hasStrictDerivAt",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(P_{\\mathrm{B}}\\) has strict derivative \\(2Q_{\\mathrm{B}}(R)\\) at \\(R\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:2072-2089: Lean asserts HasStrictDerivAt with coefficient 2Q_B for arbitrary real R under admissible density. The explanation correctly defines strict differentiability as a two-point limit, not positivity, and derives it from the continuous ordinary derivative.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "89c1125258117d39f6582f2d8c1a2115de855d8212c426a1e171fed0a408f19b",
+  "symbol_mismatches": []
+}

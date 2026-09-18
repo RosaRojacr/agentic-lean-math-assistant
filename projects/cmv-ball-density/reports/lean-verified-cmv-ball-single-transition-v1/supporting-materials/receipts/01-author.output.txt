@@ -1,0 +1,1 @@
+Wrote `supporting-materials/reviews/author-01.json`. Validated strict JSON, all 153 classifications, and root citations; preserved the frozen theorem contract and conditional geometric-classification scope.

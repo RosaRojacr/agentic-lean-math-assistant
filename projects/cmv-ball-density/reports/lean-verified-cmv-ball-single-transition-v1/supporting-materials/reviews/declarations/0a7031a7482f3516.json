@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBArea",
+  "domain_issues": [],
+  "informal_statement": "The angular type-(B) weighted area is \\(r^2(\\pi-\\beta+\\sin\\beta\\cos\\beta)+\\alpha-\\sin\\alpha\\cos\\alpha-(1-\\lambda)\\pi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallDefinitions.lean:22-29: The source expression and the author's displayed formula agree term by term. Using S(pi-beta)=pi-beta+sin(beta)cos(beta), the two segment areas and full-unit-disk density deficit reproduce the cited CMV formula.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c81a1639e7c0ba21669318475c1f246edae8a287721cbc51038eb28187feccf8",
+  "symbol_mismatches": []
+}

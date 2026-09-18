@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusN_strictAntiOn",
+  "domain_issues": [],
+  "informal_statement": "For each \\(R>0\\), the function \\(c\\mapsto N(c,R)\\) is strictly decreasing on \\((-\\infty,1]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1418-1427: For R>0 Lean proves strict decrease on Iic 1, including density one and all negative densities. Continuity of the polynomial and strict interior derivative negativity justify exactly the author's domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "25b0b9b9ea43f5e32fc07e9659bfab1ecf97131d024c9759e860808c59663501",
+  "symbol_mismatches": []
+}

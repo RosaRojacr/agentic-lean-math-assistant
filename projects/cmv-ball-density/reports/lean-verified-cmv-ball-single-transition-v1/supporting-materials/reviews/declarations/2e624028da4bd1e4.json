@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCRadius_strictAntiOn",
+  "domain_issues": [],
+  "informal_statement": "The type-(C) radius is strictly decreasing on \\((0,\\pi/2)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:36-47: StrictAntiOn quantifies over every ordered pair in (0,pi/2). The proof uses strict increase and positivity of tangent, giving the stated strict reciprocal inequality throughout that interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5aff3dac04279f6fbf34d1285134552fc7dd876dc06d4b5558e36e5ba717c3c1",
+  "symbol_mismatches": []
+}

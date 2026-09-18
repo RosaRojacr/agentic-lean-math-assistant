@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.sq_sqrt_one_sub_sq",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), the square of \\(\\sqrt{1-\\lambda^2}\\) is \\(1-\\lambda^2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:58-62: Under the stated open density bounds, Real.sq_sqrt identifies the squared square root with 1-lam^2. No sign choice or radius hypothesis occurs.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "398e78a14ca43373831b820093b0241c39626cd64fae57944b26894a61e0287e",
+  "symbol_mismatches": []
+}

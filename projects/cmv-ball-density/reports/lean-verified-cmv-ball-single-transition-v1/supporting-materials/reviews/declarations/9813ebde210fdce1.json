@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeC_values_eq_singleton",
+  "domain_issues": [],
+  "informal_statement": "If \\(b\\) is the unique admissible type-(C) angle of area \\(v\\), its perimeter is the sole element of the value set.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1111-1123: The formal universal uniqueness condition ranges over all admissible angles of area v. Along with the given candidate, it proves exactly the stated singleton equality, not independent existence or uniqueness.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "afcbdbc6bce67fe83c6357fe4f5677ffc4fb903b985aa4822c1eef450d8ed5ce",
+  "symbol_mismatches": []
+}

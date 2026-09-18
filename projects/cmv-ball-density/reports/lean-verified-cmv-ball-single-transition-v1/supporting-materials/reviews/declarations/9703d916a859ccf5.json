@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtArea_eq_radius",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), \\(R>0\\), and \\(A_{\\mathrm{B}}(R)=v\\), the all-candidate profile satisfies \\(I_{\\mathrm{B}}(v)=P_{\\mathrm{B}}(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1165-1182: Lean assumes positive R with A_B(R)=v and admissible density, but no separate v>lam*pi hypothesis. The proof establishes uniqueness of every admissible angular candidate through area and radius injectivity, exactly as explained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "28e93575ceb4de605bf1e8801ce418243463ddd89e855c02916af6db2f66c59d",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,1547 @@
+{
+  "declarations": [
+    {
+      "code_sha256": "e044429fd7ffa85e0d7057933c7cab810b11565444bcff740b4688861a6b8c0d",
+      "declaration": "CMVBallCase.BAdmissible",
+      "end_line": 22,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 18
+    },
+    {
+      "code_sha256": "0caecffaa369b9ef07b21d623e4e6c06f6a3df2ac3a26609e00159b4e2dad1f5",
+      "declaration": "CMVBallCase.CAdmissible",
+      "end_line": 27,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 23
+    },
+    {
+      "code_sha256": "1a7173c1755709ae7faf95a9a6109b9e8aa56a4449eb1eeb91c7af81f092911c",
+      "declaration": "CMVBallCase.typeCRadius_pos",
+      "end_line": 35,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 28
+    },
+    {
+      "code_sha256": "5aff3dac04279f6fbf34d1285134552fc7dd876dc06d4b5558e36e5ba717c3c1",
+      "declaration": "CMVBallCase.typeCRadius_strictAntiOn",
+      "end_line": 47,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 36
+    },
+    {
+      "code_sha256": "c8f101f2d5546c0e443cf5cbb59e42ff32eecef077bdf0c84c0da4896e2b3865",
+      "declaration": "CMVBallCase.typeCRadius_injective_on_admissible",
+      "end_line": 52,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 48
+    },
+    {
+      "code_sha256": "0bd6d03a5431ddb7e353eee713defc6c88eb6f034d3e70eb881f76b26abc6488",
+      "declaration": "CMVBallCase.sqrt_one_sub_sq_pos",
+      "end_line": 57,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 53
+    },
+    {
+      "code_sha256": "398e78a14ca43373831b820093b0241c39626cd64fae57944b26894a61e0287e",
+      "declaration": "CMVBallCase.sq_sqrt_one_sub_sq",
+      "end_line": 62,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 58
+    },
+    {
+      "code_sha256": "778d4c7a3220c8e895cdffc64fd5909fe596a22442647d2cfb4c145e12e3651e",
+      "declaration": "CMVBallCase.typeB_sin_pos",
+      "end_line": 71,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 63
+    },
+    {
+      "code_sha256": "84b0b6514b1ce040ec07e3234a2e8730ab3f09c5e1a14930d078033a2d70a73f",
+      "declaration": "CMVBallCase.typeBAlpha_sin_nonneg",
+      "end_line": 80,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 72
+    },
+    {
+      "code_sha256": "3eb7e5731012db737e7b336d5d6d605bb445d1c2a4e8d3c0f094ba10820bb6da",
+      "declaration": "CMVBallCase.typeBRadius_eq_add_sqrt_mul_cot",
+      "end_line": 91,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 81
+    },
+    {
+      "code_sha256": "ace6f8c9441fb437f575beea814ae69da33538450d13d0301b36483ea0bd1558",
+      "declaration": "CMVBallCase.cot_strictAntiOn_Ioo_zero_pi",
+      "end_line": 102,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 92
+    },
+    {
+      "code_sha256": "d474e75d38db799e62e6a1fd3b84d82959bcc51226ab32f06c71df9e248314af",
+      "declaration": "CMVBallCase.typeBRadius_strictAntiOn",
+      "end_line": 119,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 103
+    },
+    {
+      "code_sha256": "0f30bd9be41461ee8fad9222c1b7b1550f99309779ba29cd8036dd728bb91efb",
+      "declaration": "CMVBallCase.typeBRadius_injective_on_admissible",
+      "end_line": 126,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 120
+    },
+    {
+      "code_sha256": "a3124126d7f948e4397701451937e291db6bb2593b860fca2145e77ec6602177",
+      "declaration": "CMVBallCase.betaAtRadius",
+      "end_line": 130,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 127
+    },
+    {
+      "code_sha256": "4e3efb2ab3dd0b9f28df9260c5b5c743c4b28ba5b46ff3289c5cef1736b7d246",
+      "declaration": "CMVBallCase.bAtRadius",
+      "end_line": 132,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 131
+    },
+    {
+      "code_sha256": "9bec3a5f14c974a03f3298e5c5d48fc6f60c6514fa386f2e0d0afaa8a38cf980",
+      "declaration": "CMVBallCase.betaAtRadius_pos",
+      "end_line": 138,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 133
+    },
+    {
+      "code_sha256": "6d70e241c44c4fc39707fea591fb93e2c57b4830b8617af8a63dd5d2033c3256",
+      "declaration": "CMVBallCase.betaAtRadius_le_pi_div_two",
+      "end_line": 156,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 148
+    },
+    {
+      "code_sha256": "b6035ec4d3398844c66860e34566e7cf25d89bc622f0a05527f8328bc5c348c9",
+      "declaration": "CMVBallCase.cot_betaAtRadius",
+      "end_line": 162,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 157
+    },
+    {
+      "code_sha256": "ae6498b57a7901ab66208434683619d4fcd6fd2d5539929922be1071e5b55472",
+      "declaration": "CMVBallCase.arctan_neg_lam_div_sqrt_eq_arccos_sub_pi_div_two",
+      "end_line": 182,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 163
+    },
+    {
+      "code_sha256": "24ebcc1a37c0cdea1e90d38794d7abdbb4d018ce1729c36cafdfb499f7fb0029",
+      "declaration": "CMVBallCase.betaAtRadius_admissible",
+      "end_line": 199,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 183
+    },
+    {
+      "code_sha256": "e66b10b3d091fb706b8fab34231c42e11270bceb8fc1f4044acdab9ecdf216f5",
+      "declaration": "CMVBallCase.typeBRadius_betaAtRadius",
+      "end_line": 211,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 200
+    },
+    {
+      "code_sha256": "3582dff45831f2e7f5c8a52df6dd4d3c3ab5060e81b548fb6a841a2254794a31",
+      "declaration": "CMVBallCase.typeBRadius_nonneg",
+      "end_line": 240,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 232
+    },
+    {
+      "code_sha256": "2b33f238d62a297b2ebc523e21829901b4443f725ae563fae3e91de57dabbcb4",
+      "declaration": "CMVBallCase.betaAtRadius_typeBRadius",
+      "end_line": 259,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 249
+    },
+    {
+      "code_sha256": "2b9379d0da8b78ab25eb062b33cc303712c06916a5c942063bd420dc473f31ab",
+      "declaration": "CMVBallCase.betaAtRadius_zero",
+      "end_line": 277,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 272
+    },
+    {
+      "code_sha256": "22146b3bf286e99a897eee49e1b29bb2805a205fd3eb8650ff9bf77fc6595ab6",
+      "declaration": "CMVBallCase.typeBRadius_endpoint_zero",
+      "end_line": 283,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 278
+    },
+    {
+      "code_sha256": "f75ea7649633f8c47ad6d1362804bff9e3318e36e14147c0e5b256b30829c2cc",
+      "declaration": "CMVBallCase.bAtRadius_admissible",
+      "end_line": 289,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 284
+    },
+    {
+      "code_sha256": "6e7442e12b01ef5ceace4300d1d77efe39044855122de67c6d01f583bea0c6a8",
+      "declaration": "CMVBallCase.typeCRadius_bAtRadius",
+      "end_line": 295,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 290
+    },
+    {
+      "code_sha256": "79019d0015f2e75012a056920022fbe8538d02c8a466b649dea10f1677f1855a",
+      "declaration": "CMVBallCase.bAtRadius_typeCRadius",
+      "end_line": 303,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 296
+    },
+    {
+      "code_sha256": "c9c0993d1f5fbe4ba58debefa9858ea8f0b24ef4559a978342fbbc737aa8f2ff",
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius",
+      "end_line": 325,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 321
+    },
+    {
+      "code_sha256": "302ee62cf6614993146d2f898718e7b4c35270995d17efc0e3fbe06584054ba3",
+      "declaration": "CMVBallCase.typeBAreaAtRadius",
+      "end_line": 334,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 326
+    },
+    {
+      "code_sha256": "5bfe6bbb6f40601afee63cea3bd361fb5c2ec4e0cae513f610cfd4255fe4ae2f",
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius",
+      "end_line": 338,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 335
+    },
+    {
+      "code_sha256": "348b519a27228df7e22a823dc6b7c50b1974e565424be0185003a97e07856f1d",
+      "declaration": "CMVBallCase.typeCAreaAtRadius",
+      "end_line": 344,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 339
+    },
+    {
+      "code_sha256": "fc3ebabe5ff5963057732d5c2e6cb24a284b9bf252ebb2ffea0fa55fa6ac0813",
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_agrees",
+      "end_line": 351,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 345
+    },
+    {
+      "code_sha256": "c9cf34f1eb5dafbc32c5b2d81a1f3960d3e2a3fa29468cbef2fa5572ed5aa637",
+      "declaration": "CMVBallCase.typeBAreaAtRadius_agrees",
+      "end_line": 357,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 352
+    },
+    {
+      "code_sha256": "07f1596dce2184a5c103c4a465e9a7f508c9fbe84d173c9f12c79dc46e54a1a2",
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_agrees",
+      "end_line": 366,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 358
+    },
+    {
+      "code_sha256": "ef9487e571bf7a8e9ecfdce2224335bbe39d0b9603b9c566eb6c213c2b58a4f8",
+      "declaration": "CMVBallCase.typeCAreaAtRadius_agrees",
+      "end_line": 377,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 367
+    },
+    {
+      "code_sha256": "7bfaeb583b2974229111c194bad221441e7cff9af27728eb440c5e3349f59cc9",
+      "declaration": "CMVBallCase.betaAtRadius_hasDerivAt",
+      "end_line": 392,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 378
+    },
+    {
+      "code_sha256": "1653427eb62cf98e802e2428e9d6de180448223da78362c5f886faa270cd5aad",
+      "declaration": "CMVBallCase.bAtRadius_hasDerivAt",
+      "end_line": 402,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 393
+    },
+    {
+      "code_sha256": "e81216d3d0ee48ad5f9aec6192ac30e08e48ebe31d1c00ea3a7ac17be472a58d",
+      "declaration": "CMVBallCase.sin_betaAtRadius_mul_cos",
+      "end_line": 423,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 403
+    },
+    {
+      "code_sha256": "10fbbcdf677fa47ab4e65fa4fcec664bfcee9cb8b5e893c8c90bb4f234de0fd3",
+      "declaration": "CMVBallCase.sin_bAtRadius_mul_cos",
+      "end_line": 440,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 424
+    },
+    {
+      "code_sha256": "a36eb5dc07528a5ef5ac5c46d69519b24cf266609e428cac791aefeae3d159fc",
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_hasDerivAt",
+      "end_line": 464,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 441
+    },
+    {
+      "code_sha256": "f5d2c7b26d784940465bfecd68ce738beed977fd9837beb85c6df684f2f89412",
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_hasDerivAt",
+      "end_line": 487,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 465
+    },
+    {
+      "code_sha256": "a0f37e78a16fab57786c18fa0ca15e0aec499e6edf77b3e0d77a98c1a7c7cdec",
+      "declaration": "CMVBallCase.arcSegment",
+      "end_line": 489,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 488
+    },
+    {
+      "code_sha256": "32a91ac001b703b525fd39e1c6017868329abe912be28a6cd8b30291e39dfc4d",
+      "declaration": "CMVBallCase.arcSegment_hasDerivAt",
+      "end_line": 512,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 490
+    },
+    {
+      "code_sha256": "6ddcb65dd46c70fb4136025d8ae05d542b93e1cc2d2cac116509821e0248fdb0",
+      "declaration": "CMVBallCase.sin_typeBAlpha_betaAtRadius",
+      "end_line": 523,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 513
+    },
+    {
+      "code_sha256": "809c57b3c3abce1f1b8d70a94abd2bbd7102bca4c59fe3ebbe305dbaa59362d5",
+      "declaration": "CMVBallCase.cos_bAtRadius_eq_radius_mul_sin",
+      "end_line": 534,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 524
+    },
+    {
+      "code_sha256": "e5d44f049460bf59353073b4b5ae0475e767191b44bc8056fa589b30ce308ada",
+      "declaration": "CMVBallCase.typeBAreaAtRadius_hasDerivAt",
+      "end_line": 571,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 535
+    },
+    {
+      "code_sha256": "b473b5e3212cdaca79ca31990e26c74cf5808e134b828057b642784ffa2747a8",
+      "declaration": "CMVBallCase.typeCAreaAtRadius_hasDerivAt",
+      "end_line": 609,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 572
+    },
+    {
+      "code_sha256": "4edb95bb9a7ef1f46aba008febfd569d56f56863cb28cc1fdf213082055ae376",
+      "declaration": "CMVBallCase.arcSegment_pos",
+      "end_line": 622,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 610
+    },
+    {
+      "code_sha256": "ac194654106ebe6db799026b01d031f3446dcc24e3fc1b5dfd81512dcf10bc66",
+      "declaration": "CMVBallCase.typeB_perimeter_factor_pos",
+      "end_line": 643,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 623
+    },
+    {
+      "code_sha256": "c725d934df891e67e5699ac456ab0db215e125103ab9c675b3e231a6c66930e3",
+      "declaration": "CMVBallCase.typeC_perimeter_factor_pos",
+      "end_line": 662,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 644
+    },
+    {
+      "code_sha256": "4fcb16a2eb66bac06f3aac56a18581ba3fae227c21397173be1ab0d712a98430",
+      "declaration": "CMVBallCase.typeBAreaAtRadius_deriv_pos",
+      "end_line": 669,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 663
+    },
+    {
+      "code_sha256": "5b0c9033c9a26a0f21e15311d7c9b43d1a45758e4340fc63a1e1040bf167f9d8",
+      "declaration": "CMVBallCase.typeCAreaAtRadius_deriv_pos",
+      "end_line": 676,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 670
+    },
+    {
+      "code_sha256": "10de2cba5f52d44c61da385e12b1e3a912b33e8b23dd2e310115984cf7543ad2",
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_deriv_pos",
+      "end_line": 684,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 677
+    },
+    {
+      "code_sha256": "0a0f4d788d01de74c363719e0d086cb74d4be34b638c450f00b59a31d9f27b99",
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_deriv_pos",
+      "end_line": 692,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 685
+    },
+    {
+      "code_sha256": "654d93958fa1cc148933f3dbe93ac2d4925ccbef30b42f7a8afd01edc8ef532d",
+      "declaration": "CMVBallCase.typeBAreaAtRadius_continuous",
+      "end_line": 697,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 693
+    },
+    {
+      "code_sha256": "bb5bba6b7941dc1416656ad77a30a9cf4928feec80267c75bbd92466dad64edc",
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_continuous",
+      "end_line": 702,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 698
+    },
+    {
+      "code_sha256": "c92a0518d3bc80f606df13b4b6f5c21e7bd9c2747515397578edebe4a4433736",
+      "declaration": "CMVBallCase.typeCAreaAtRadius_continuousOn",
+      "end_line": 707,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 703
+    },
+    {
+      "code_sha256": "8ba982df91d14a4376354beb85fd26540d8e9d0d83b34015727e5932cb96b536",
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_continuousOn",
+      "end_line": 712,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 708
+    },
+    {
+      "code_sha256": "ab4db7494426ac1cdccec00e6e10d30da1a1b7a3f1a760b845607901df77bbd3",
+      "declaration": "CMVBallCase.typeBAreaAtRadius_strictMonoOn",
+      "end_line": 721,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 713
+    },
+    {
+      "code_sha256": "bbc5de3a1bc43d4360f2a79a6c274beccf88985cbfcb7b993a4fe30a532f86a2",
+      "declaration": "CMVBallCase.typeCAreaAtRadius_strictMonoOn",
+      "end_line": 730,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 722
+    },
+    {
+      "code_sha256": "bcb0c4329c9e367c3237ca68300c9a926c8d4b286caa51d477c1d94e742ff2e8",
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_strictMonoOn",
+      "end_line": 739,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 731
+    },
+    {
+      "code_sha256": "ebda1658a94a124439fef17a703088753a165f7a75d443b97607309192ac577f",
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_strictMonoOn",
+      "end_line": 748,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 740
+    },
+    {
+      "code_sha256": "6d532317078066c3097d5d0410644fac9c192ee7d6af6804f7e2c0d6a360b53d",
+      "declaration": "CMVBallCase.typeBAreaAtRadius_zero",
+      "end_line": 758,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 749
+    },
+    {
+      "code_sha256": "4a8b3af699ffc34588703cbf0b3dfa0fe068d5c1e0ebc207f5e62ad1f86bcb22",
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_zero",
+      "end_line": 766,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 759
+    },
+    {
+      "code_sha256": "7f8e1ec7190e9bd71f5255f6b427e61d471c4bb1d11fb61e4053360c07533a98",
+      "declaration": "CMVBallCase.arcSegment_lt_self",
+      "end_line": 775,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 767
+    },
+    {
+      "code_sha256": "984106fd2f39d9277591bc5e64a6ef86b070468729c98368039d0fdaf7f7e0f5",
+      "declaration": "CMVBallCase.arcSegment_nonneg",
+      "end_line": 783,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 776
+    },
+    {
+      "code_sha256": "141341249a38db9c1c4d40b1c1642f4101a23d6266b432cbe39ad76a061df4b3",
+      "declaration": "CMVBallCase.typeBAreaAtRadius_large_lower",
+      "end_line": 809,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 784
+    },
+    {
+      "code_sha256": "a7ac56a00483dd17c810d49f7f3b39998e96e24cbcc05612f96aba66e39e49b6",
+      "declaration": "CMVBallCase.typeCAreaAtRadius_lt_full",
+      "end_line": 832,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 810
+    },
+    {
+      "code_sha256": "b45b5794cbb45181f9541a2d6aaedfb79df716a6e045c02aa69ba8995a958442",
+      "declaration": "CMVBallCase.typeCAreaAtRadius_large_lower",
+      "end_line": 865,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 833
+    },
+    {
+      "code_sha256": "2eb4d55fd6e17591ebc46f3f94a245862a68631d4afc013b3f0eb27bc15ab111",
+      "declaration": "CMVBallCase.exists_typeBRadius_at_area",
+      "end_line": 1019,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 993
+    },
+    {
+      "code_sha256": "63e6ea9666dcdbe0cc4e7fdc659230e14fd24f25f1cdeb2756c507b3e9eb7e2f",
+      "declaration": "CMVBallCase.exists_typeCRadius_at_area",
+      "end_line": 1067,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1020
+    },
+    {
+      "code_sha256": "7ffddd7593a4f7f71be09ace34b7c0443247b4c6e896e8cebb972d294f5834b0",
+      "declaration": "CMVBallCase.typeBPerimeterValuesAtArea",
+      "end_line": 1073,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1068
+    },
+    {
+      "code_sha256": "cb485477b22802c53c6af448371d844cdb35a1ad16956ed8dcc86d1d34b9f786",
+      "declaration": "CMVBallCase.typeCPerimeterValuesAtArea",
+      "end_line": 1079,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1074
+    },
+    {
+      "code_sha256": "98f0853f0439181bac4c27175769bb69c6bb2e98d9167f9ffa0f7bf07436ebdd",
+      "declaration": "CMVBallCase.typeBPerimeterAtArea",
+      "end_line": 1084,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1080
+    },
+    {
+      "code_sha256": "2e3dfe31281e09c4e4e68ab71c76cfa596f35e20fe535735ebbe9fcbb7c59fc8",
+      "declaration": "CMVBallCase.typeCPerimeterAtArea",
+      "end_line": 1087,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1085
+    },
+    {
+      "code_sha256": "ab1cda17a1dd925edbcd6476abecb0e519a6fb9430ca150e790c745fb1bfa2ae",
+      "declaration": "CMVBallCase.typeBPerimeter_mem_values",
+      "end_line": 1092,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1088
+    },
+    {
+      "code_sha256": "ad514705a9dc71bb1959ff8334149fb5759b7a8f9d6bb4f82c2b59f07695ab1c",
+      "declaration": "CMVBallCase.typeCPerimeter_mem_values",
+      "end_line": 1097,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1093
+    },
+    {
+      "code_sha256": "0aaa46dd0b8b451605797b9ef606b1e37cf80fd960f4abcc25d735f41934d431",
+      "declaration": "CMVBallCase.typeB_values_eq_singleton",
+      "end_line": 1110,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1098
+    },
+    {
+      "code_sha256": "afcbdbc6bce67fe83c6357fe4f5677ffc4fb903b985aa4822c1eef450d8ed5ce",
+      "declaration": "CMVBallCase.typeC_values_eq_singleton",
+      "end_line": 1123,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1111
+    },
+    {
+      "code_sha256": "57097d90269686a2eff890ae3d5ae1d3b35601393a261dbde597136f7ab0b41c",
+      "declaration": "CMVBallCase.typeBPerimeterAtArea_eq",
+      "end_line": 1130,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1124
+    },
+    {
+      "code_sha256": "910202180ff5ab8baae5e253008da92ce732b62fac764c99dfe1e8b67dffc4a3",
+      "declaration": "CMVBallCase.typeCPerimeterAtArea_eq",
+      "end_line": 1137,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1131
+    },
+    {
+      "code_sha256": "28e93575ceb4de605bf1e8801ce418243463ddd89e855c02916af6db2f66c59d",
+      "declaration": "CMVBallCase.typeBPerimeterAtArea_eq_radius",
+      "end_line": 1182,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1165
+    },
+    {
+      "code_sha256": "67e8363dd82abecb62d39098aa381615d4943a0c48b8f9f5ecc2be957cbd9e7a",
+      "declaration": "CMVBallCase.typeCPerimeterAtArea_eq_radius",
+      "end_line": 1200,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1183
+    },
+    {
+      "code_sha256": "c3d6e28ec8a214fad8521a957798e0d4a463a65ea8d06f253bc35c5c42925728",
+      "declaration": "CMVBallCase.typeBPerimeterAtArea_strictMonoOn",
+      "end_line": 1219,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1201
+    },
+    {
+      "code_sha256": "7109dcf6ef8b06b1460afe81b7d4dc3cd06804fef3b67f56231578b2334248e2",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap",
+      "end_line": 1244,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1240
+    },
+    {
+      "code_sha256": "4e15dd87d6e310dd5beb90b522db2cdea3c545a1ce486ef9aaa593aa1c201858",
+      "declaration": "CMVBallCase.fixedRadiusD",
+      "end_line": 1248,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1245
+    },
+    {
+      "code_sha256": "f9ee2e168349ec1a77b121c311033b4f50ae517f2839c175c84616e6784fbea2",
+      "declaration": "CMVBallCase.fixedRadiusL",
+      "end_line": 1253,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1249
+    },
+    {
+      "code_sha256": "c72277ca17b4cfcd6ad9cc4b941bef23e2a9af37be01cd916422a0b4b63e81c1",
+      "declaration": "CMVBallCase.fixedRadiusN",
+      "end_line": 1363,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1361
+    },
+    {
+      "code_sha256": "ab40250bb6c14fc69fd59cdf3f0cdb3baf9f85a08aed8a6aea9a5ea02fc5cf9a",
+      "declaration": "CMVBallCase.fixedRadiusD_pos",
+      "end_line": 1369,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1364
+    },
+    {
+      "code_sha256": "80b7c6ee3bbac239cfec59bac30eb2868a417e75a97013642551d21b2c7f23ee",
+      "declaration": "CMVBallCase.fixedRadiusN_density_derivative_identity",
+      "end_line": 1379,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1370
+    },
+    {
+      "code_sha256": "8b62e7839212847fab2541e10be82a3d8159e4fde430a8284b2a3ed1383c3a75",
+      "declaration": "CMVBallCase.perimeter_gap_eq_two_mul_halfGap",
+      "end_line": 1385,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1380
+    },
+    {
+      "code_sha256": "70db5ffdb68d856e4b264b6a6571be92f1d5430fbe1f89edab30d115fd2ca0a8",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_le",
+      "end_line": 1399,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1386
+    },
+    {
+      "code_sha256": "5dd1341e2c387a274bfb506d761e3f1b5f27cc70f720d3f55540418d8785332e",
+      "declaration": "CMVBallCase.sameRadius_typeB_gt_typeC_of_le",
+      "end_line": 1406,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1400
+    },
+    {
+      "code_sha256": "0a45acd25d263bfc0ab66ae247903b4ac172086632c9ab50764b1204d06b8751",
+      "declaration": "CMVBallCase.fixedRadiusN_density_derivative_neg",
+      "end_line": 1412,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1407
+    },
+    {
+      "code_sha256": "1e28106ded58409dc99d7ec87ff622e35ba249710e63bf8dc7c272196b448794",
+      "declaration": "CMVBallCase.fixedRadiusN_diagonal",
+      "end_line": 1417,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1413
+    },
+    {
+      "code_sha256": "25b0b9b9ea43f5e32fc07e9659bfab1ecf97131d024c9759e860808c59663501",
+      "declaration": "CMVBallCase.fixedRadiusN_strictAntiOn",
+      "end_line": 1427,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1418
+    },
+    {
+      "code_sha256": "1f9fdbe32f5f9bb2811002baeba3f0bd3fa1478086f09a6412852133afef60cf",
+      "declaration": "CMVBallCase.sqrt_one_sub_sq_hasDerivAt",
+      "end_line": 1436,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1428
+    },
+    {
+      "code_sha256": "81dbbf3b42fcfbd5c1dad2e201bd766325c3f6f4bbc9066d7c22e79ab478c30f",
+      "declaration": "CMVBallCase.betaAtRadius_density_hasDerivAt",
+      "end_line": 1454,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1437
+    },
+    {
+      "code_sha256": "8c046ed0856b99b8d7465ed1688893c4d60d5bff0186da511b6237c36d6dc073",
+      "declaration": "CMVBallCase.fixedRadiusD_density_hasDerivAt",
+      "end_line": 1461,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1455
+    },
+    {
+      "code_sha256": "db1661fbfdaeefec8e9d4f2e678214b5a54356b68cb7f3953f8533e10e578e7d",
+      "declaration": "CMVBallCase.fixedRadiusL_density_hasDerivAt",
+      "end_line": 1479,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1462
+    },
+    {
+      "code_sha256": "8201756840d20049cb38f7556cdc3b5c84839cfb60b6a731c3c4da0399a6d421",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_hasDerivAt",
+      "end_line": 1500,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1480
+    },
+    {
+      "code_sha256": "29c562fbf4f67e14b5c469f6f6f6dcfe57423601de3464b20c18a1c168e35d8e",
+      "declaration": "CMVBallCase.fixedRadiusL_zero",
+      "end_line": 1507,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1501
+    },
+    {
+      "code_sha256": "1b10b001ba78b0255df00a8213bf477e9519c5b01dc94215f4dab6c80ce5263f",
+      "declaration": "CMVBallCase.betaAtRadius_eq_arctan_reciprocal",
+      "end_line": 1514,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1508
+    },
+    {
+      "code_sha256": "d2266e6ab3843cad1067d095c347fbf2258071549d62313f18f286686d040702",
+      "declaration": "CMVBallCase.fixedRadiusL_continuousAt_zero",
+      "end_line": 1535,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1515
+    },
+    {
+      "code_sha256": "13ea5fd875867d8d70d1cab8b12f6ea2839f979405c944fc74ef550ef86c0035",
+      "declaration": "CMVBallCase.fixedRadiusL_tendsto_one",
+      "end_line": 1570,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1536
+    },
+    {
+      "code_sha256": "e7586227d8c6bfcd2ebb1b0a33219042c5b328676e83c2a41deeaf131c44f22f",
+      "declaration": "CMVBallCase.fixedRadiusL_neg_of_N_nonneg",
+      "end_line": 1594,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1571
+    },
+    {
+      "code_sha256": "02c15b97515cc50c1a2b220426d81b6aedc3b955c8b35761b70257e60ada615f",
+      "declaration": "CMVBallCase.fixedRadiusN_pos_of_radius_le_one",
+      "end_line": 1603,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1595
+    },
+    {
+      "code_sha256": "7e62014feed7939abad45447e00b04f292d440a21f48f2f7d10485082ddd4696",
+      "declaration": "CMVBallCase.fixedRadiusL_neg_of_N_neg",
+      "end_line": 1629,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1604
+    },
+    {
+      "code_sha256": "7412414d7e4f71205db23e4c7a9ba2c16e8de6f3ee9f630908e2c9dd59858948",
+      "declaration": "CMVBallCase.fixedRadiusL_neg",
+      "end_line": 1639,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1630
+    },
+    {
+      "code_sha256": "2f0edd3e2968d32be31b213f6dbe635d46d10fd277b8e4e89a8b9f3fd3a0d39e",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_strictAntiOn",
+      "end_line": 1654,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1640
+    },
+    {
+      "code_sha256": "63a18ea3889cd159ace5ef02e45f92fdd7d2a7fad2bca6f2d3d6f49921156755",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_continuousAt",
+      "end_line": 1664,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1660
+    },
+    {
+      "code_sha256": "ec5c31b64505c09d08c58f3f1b7efe55ef00bdd5aad235b9e99482e73cfe7914",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_of_gt",
+      "end_line": 1694,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1665
+    },
+    {
+      "code_sha256": "72d28fc306e34fd07f9a091bc1f04b99fa14efc650ed4c7075d01cf65333b270",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_at_one",
+      "end_line": 1725,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1695
+    },
+    {
+      "code_sha256": "38b39009304f9c27c735560f1daa9451bc247788bdacf9b12a22ee47421536b1",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one",
+      "end_line": 1733,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1726
+    },
+    {
+      "code_sha256": "fbe9df98337f6aceb7cf9c5bfeb2a39837777085850f68cc2b9e8dfc133753b5",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_lt_radius_lt_one",
+      "end_line": 1753,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1734
+    },
+    {
+      "code_sha256": "e873740cbb342f72d438af00f9b3a7382b645a81e5e013505d7f0ed284853138",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_one_le_radius",
+      "end_line": 1772,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1754
+    },
+    {
+      "code_sha256": "fe2e7d9f4b2c9b099c9f8b560428cb8beb3d38b8a8d99f10c67f26ccbe96aa81",
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_gt",
+      "end_line": 1782,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1773
+    },
+    {
+      "code_sha256": "9c6c3244ad6f03f01ef9a5860148ac78a1967d0c98c4165b638dc559db07fdf5",
+      "declaration": "CMVBallCase.sameRadius_typeB_gt_typeC",
+      "end_line": 1799,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1783
+    },
+    {
+      "code_sha256": "e2043ced3f49efd166f38b27622f70ea021fb2c91e44ee48e02ae0fb32781041",
+      "declaration": "CMVBallCase.CommonPerimeter",
+      "end_line": 1840,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1832
+    },
+    {
+      "code_sha256": "096d139a89edea080509b072e5206625c2521a1d0213be4b9a082a2bd82369f3",
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_gt_pi_mul_radius",
+      "end_line": 1852,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1841
+    },
+    {
+      "code_sha256": "b6f0fa2f243c3e91136c9bd09e3537e769591131b17de77172ce5ad85508eb6b",
+      "declaration": "CMVBallCase.existsUnique_typeBRadius_at_perimeter",
+      "end_line": 1884,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1853
+    },
+    {
+      "code_sha256": "bd2558a1451eb56264500c5c5fcf17b65bf2502c53fb9be537238e05e61eadd9",
+      "declaration": "CMVBallCase.existsUnique_typeCRadius_at_perimeter",
+      "end_line": 1922,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1885
+    },
+    {
+      "code_sha256": "641ef25025d32c528f2e106a8f3ebc604806525be72db2a80847283bc6cc25ee",
+      "declaration": "CMVBallCase.typeBRadiusAtPerimeter",
+      "end_line": 1930,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1923
+    },
+    {
+      "code_sha256": "a58a803701a0a2d5cf3a9913ddb7c5b645d75bedddb7e49e42f7c5d55ebc49a7",
+      "declaration": "CMVBallCase.typeCRadiusAtPerimeter",
+      "end_line": 1936,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1931
+    },
+    {
+      "code_sha256": "35f84c501e62b1b673fd6a9b793e1ea9f012ba0b179ed229e723b724fe0b5365",
+      "declaration": "CMVBallCase.typeBRadiusAtPerimeter_pos",
+      "end_line": 1941,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1937
+    },
+    {
+      "code_sha256": "6d7f4a31d01f4556bf0e8a9719b79bf61ccb4965c124289a537df2d839c9fd39",
+      "declaration": "CMVBallCase.typeCRadiusAtPerimeter_pos",
+      "end_line": 1946,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1942
+    },
+    {
+      "code_sha256": "8c6523ab6857fea0ddfb73478b78aea70dd1ba779a838fdf73e197a8305abde2",
+      "declaration": "CMVBallCase.typeBPerimeterAt_typeBRadiusAtPerimeter",
+      "end_line": 1951,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1947
+    },
+    {
+      "code_sha256": "97f0a09e977f148c1547234ee78701dc58ab72d702573d3d019190ba9b227ce1",
+      "declaration": "CMVBallCase.typeCPerimeterAt_typeCRadiusAtPerimeter",
+      "end_line": 1957,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1952
+    },
+    {
+      "code_sha256": "45ce1f082ef5383bd43764a4e1518cd8d4004f8b048ca23100637518a3e785ee",
+      "declaration": "CMVBallCase.typeBRadiusAtPerimeter_unique",
+      "end_line": 1965,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1958
+    },
+    {
+      "code_sha256": "6d0bba8a25476b26089b665ae685627f40cb11720cbb717de9b249a9d0e5a11c",
+      "declaration": "CMVBallCase.typeCRadiusAtPerimeter_unique",
+      "end_line": 1974,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1966
+    },
+    {
+      "code_sha256": "37fe08774ef3026b52e3131542e0b473bbc2fb7ecab7c6ff79923246a9265841",
+      "declaration": "CMVBallCase.typeBRadiusAtPerimeter_lt_typeCRadiusAtPerimeter",
+      "end_line": 1991,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 1975
+    },
+    {
+      "code_sha256": "89c1125258117d39f6582f2d8c1a2115de855d8212c426a1e171fed0a408f19b",
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_hasStrictDerivAt",
+      "end_line": 2089,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2072
+    },
+    {
+      "code_sha256": "3e2b1b6740838724efc3c00deba8f2d16532a3855f0a5cf96b2667b1a8855fae",
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_hasStrictDerivAt",
+      "end_line": 2107,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2090
+    },
+    {
+      "code_sha256": "71b55c7b076991056eaa30f6760e5f80aa24222bb5abfcebe16ad3020d3377f0",
+      "declaration": "CMVBallCase.commonPerimeterAreaGap",
+      "end_line": 2116,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2108
+    },
+    {
+      "code_sha256": "8ac1ee8e9903b31ca5fa31187a2831b990514e5786275449b934fb9522a630a5",
+      "declaration": "CMVBallCase.commonPerimeterAreaGap_local_hasDerivAt",
+      "end_line": 2222,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2117
+    },
+    {
+      "code_sha256": "4b4d169c7aed59d327b47ade1e0c9f86cfd6aa971b1e181dd947fb1ce217487c",
+      "declaration": "CMVBallCase.commonPerimeterClamp",
+      "end_line": 2226,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2223
+    },
+    {
+      "code_sha256": "e3584ce3c3e58723599d9275ac8d07529840c51ccaf5b4e38a9fb3ce88756176",
+      "declaration": "CMVBallCase.commonPerimeterClamp_eq",
+      "end_line": 2234,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2227
+    },
+    {
+      "code_sha256": "e2b63b71cf44b62491a0ebd0b8526e6a8332a7c063ef2fe57ee5f88f8d32ce4f",
+      "declaration": "CMVBallCase.commonPerimeterAreaGapAbove",
+      "end_line": 2238,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2235
+    },
+    {
+      "code_sha256": "2420c176e6ebf43330a3d88b7b4b75bdaec4c565775a067f362c214f4599e5c2",
+      "declaration": "CMVBallCase.commonPerimeterAreaGapAbove_hasDerivWithinAt",
+      "end_line": 2266,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2239
+    },
+    {
+      "code_sha256": "91f23a2fb97afb962a3fafd5eb5a6db4289103e7ba32d905aa7120164cb1c340",
+      "declaration": "CMVBallCase.commonPerimeterAreaGap_strictAnti",
+      "end_line": 2320,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2267
+    },
+    {
+      "code_sha256": "1bc2f925dd32fdc3436ba53a34596445576e91faa97e786b1962cb23ce1fbf2b",
+      "declaration": "CMVBallCase.typeBPerimeterAtArea_gt_commonEndpoint",
+      "end_line": 2333,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2321
+    },
+    {
+      "code_sha256": "455cce8a30fd3fea9935e7a342738957b15a2a9f4b562858dc267332ef60912f",
+      "declaration": "CMVBallCase.commonPerimeterAreaGap_at_typeBProfile_nonpos",
+      "end_line": 2377,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2334
+    },
+    {
+      "code_sha256": "6ed9af03cd6961ea327cfb3f5237fc3e86432b34c2cd4ca2282daeb7016ccc0a",
+      "declaration": "CMVBallCase.typeCPerimeterAtArea_lt_of_commonPerimeterAreaGap_neg",
+      "end_line": 2422,
+      "generated_family": null,
+      "kind": "lemma",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2378
+    },
+    {
+      "code_sha256": "f5ada2cd0133c47ab6c9f8734b2bc2a998e82cc392fe14d449f57858a255b00e",
+      "declaration": "CMVBallCase.typeC_dominance_persists",
+      "end_line": 2448,
+      "generated_family": null,
+      "kind": "theorem",
+      "source": "CMVBallCase.lean",
+      "source_sha256": "39128082baa81effd26e6198a45108e09c25e1ba2782be7dbd8f9ff2f8bc0eda",
+      "start_line": 2423
+    },
+    {
+      "code_sha256": "4e2cd6052fa41c3d2768e49b680c9466bd3d9e7beae3a567c7ebfa8e5256a410",
+      "declaration": "CMVBallCase.AdmissibleDensity",
+      "end_line": 10,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallDefinitions.lean",
+      "source_sha256": "4fb0e7c6bc7af10185c3323fe12dbccbd02fee54aa03c291620d6f2660614bbf",
+      "start_line": 8
+    },
+    {
+      "code_sha256": "b162ed041fbf8301c033d26810d7ba715023e6c12a98223c2a0238ca585853e2",
+      "declaration": "CMVBallCase.typeBAlpha",
+      "end_line": 13,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallDefinitions.lean",
+      "source_sha256": "4fb0e7c6bc7af10185c3323fe12dbccbd02fee54aa03c291620d6f2660614bbf",
+      "start_line": 11
+    },
+    {
+      "code_sha256": "495dd878203ed375c56ea0dbe5c390a5dfde6e2a9e8eec96e771b8ebff636634",
+      "declaration": "CMVBallCase.typeBRadius",
+      "end_line": 17,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallDefinitions.lean",
+      "source_sha256": "4fb0e7c6bc7af10185c3323fe12dbccbd02fee54aa03c291620d6f2660614bbf",
+      "start_line": 14
+    },
+    {
+      "code_sha256": "3f47b16460dd98ef1ba0cd3846453bf4afaacfb39faf78478473722bd9ce0388",
+      "declaration": "CMVBallCase.typeBPerimeter",
+      "end_line": 21,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallDefinitions.lean",
+      "source_sha256": "4fb0e7c6bc7af10185c3323fe12dbccbd02fee54aa03c291620d6f2660614bbf",
+      "start_line": 18
+    },
+    {
+      "code_sha256": "c81a1639e7c0ba21669318475c1f246edae8a287721cbc51038eb28187feccf8",
+      "declaration": "CMVBallCase.typeBArea",
+      "end_line": 29,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallDefinitions.lean",
+      "source_sha256": "4fb0e7c6bc7af10185c3323fe12dbccbd02fee54aa03c291620d6f2660614bbf",
+      "start_line": 22
+    },
+    {
+      "code_sha256": "a418ec9c9727a88b5945a9e22b827624dc661a72d7ca8532d18c95ff79188dd8",
+      "declaration": "CMVBallCase.typeCRadius",
+      "end_line": 32,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallDefinitions.lean",
+      "source_sha256": "4fb0e7c6bc7af10185c3323fe12dbccbd02fee54aa03c291620d6f2660614bbf",
+      "start_line": 30
+    },
+    {
+      "code_sha256": "dae34722c1182356b6a588c3b1c13561ad7e927882e5ef9397cd8e01e6fe4454",
+      "declaration": "CMVBallCase.typeCPerimeter",
+      "end_line": 36,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallDefinitions.lean",
+      "source_sha256": "4fb0e7c6bc7af10185c3323fe12dbccbd02fee54aa03c291620d6f2660614bbf",
+      "start_line": 33
+    },
+    {
+      "code_sha256": "1c838263bf547723f2086f0226358db55c1fd829ed4addfba436f74cda3734ab",
+      "declaration": "CMVBallCase.typeCArea",
+      "end_line": 43,
+      "generated_family": null,
+      "kind": "def",
+      "source": "CMVBallDefinitions.lean",
+      "source_sha256": "4fb0e7c6bc7af10185c3323fe12dbccbd02fee54aa03c291620d6f2660614bbf",
+      "start_line": 37
+    }
+  ],
+  "dependency_declaration_count": 153,
+  "entry_modules": [
+    "CMVBallCase"
+  ],
+  "module_closure": [
+    "CMVBallCase",
+    "CMVBallDefinitions"
+  ],
+  "roots": [
+    "CMVBallCase.typeC_dominance_persists"
+  ],
+  "schema_version": 1,
+  "source_declaration_count": 178
+}

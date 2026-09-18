@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.bAtRadius",
+  "domain_issues": [],
+  "informal_statement": "The type-(C) inverse chart is \\(b(R)=\\arctan(1/R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:131-132: Lean defines arctan(1/R) as a total real expression. The author uses inverse-chart language only for R>0 and correctly avoids attributing geometric meaning to the value at zero.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4e3efb2ab3dd0b9f28df9260c5b5c743c4b28ba5b46ff3289c5cef1736b7d246",
+  "symbol_mismatches": []
+}

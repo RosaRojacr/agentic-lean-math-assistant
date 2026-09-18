@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeterAtArea_eq_radius",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), \\(R>0\\), and \\(A_{\\mathrm{C}}(R)=v\\), the all-candidate profile satisfies \\(I_{\\mathrm{C}}(v)=P_{\\mathrm{C}}(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1183-1200: The formal assumptions are admissible density, R>0, and A_C(R)=v. All other admissible angles are shown to have the same positive radius and angle; the profile evaluation is exact without an extra lower bound on v.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "67e8363dd82abecb62d39098aa381615d4943a0c48b8f9f5ecc2be957cbd9e7a",
+  "symbol_mismatches": []
+}

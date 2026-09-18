@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.sameRadius_typeB_gt_typeC",
+  "domain_issues": [],
+  "informal_statement": "For every \\(0<\\lambda<1\\) and \\(R>0\\), \\(P_{\\mathrm{C}}(R)<P_{\\mathrm{B}}(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1783-1799: Lean asserts P_C(R)<P_B(R) for all admissible densities and every R>0. The proof combines R<=lam with R>lam via the half-gap identity; the author correctly identifies this as equal-radius, not equal-area, comparison.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9c6c3244ad6f03f01ef9a5860148ac78a1967d0c98c4165b638dc559db07fdf5",
+  "symbol_mismatches": []
+}

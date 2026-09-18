@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.sin_typeBAlpha_betaAtRadius",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(\\sin(\\beta_\\lambda(R)+\\arccos\\lambda)=R\\sin\\beta_\\lambda(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:513-523: Under admissible density and R>=0, multiplying the radius equation by the nonzero sin(beta) gives sin(beta+a)=R sin(beta). This is the cancellation used in the type-(B) area derivative.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6ddcb65dd46c70fb4136025d8ae05d542b93e1cc2d2cac116509821e0248fdb0",
+  "symbol_mismatches": []
+}

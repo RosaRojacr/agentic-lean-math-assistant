@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeterAtRadius_agrees",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and \\(R>0\\), \\(P_{\\mathrm{C}}(R)\\) equals the angular type-(C) perimeter at \\(b(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:358-366: Lean assumes only R>0 and allows arbitrary real lam. The explanation preserves that domain and uses the reciprocal tangent identity to obtain exact perimeter equality.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "07f1596dce2184a5c103c4a465e9a7f508c9fbe84d173c9f12c79dc46e54a1a2",
+  "symbol_mismatches": []
+}

@@ -144,6 +144,29 @@ def solved_outcome() -> dict[str, object]:
     return value
 
 
+def unsolved_outcome() -> dict[str, object]:
+    value: dict[str, object] = {
+        "schema_version": 2,
+        "status": "unsolved",
+        "summary": "The campaign did not recognize its retained proof.",
+        "evidence": [],
+        "limitations": [],
+        "obligation_dispositions": [],
+        "knowledge_promotions": [],
+        "strategies": [
+            {
+                "id": "continue",
+                "title": "Continue",
+                "rationale": "Try another campaign.",
+                "next_prompt": "Continue proving the target.",
+                "recommended": True,
+            }
+        ],
+    }
+    CampaignOutcome.parse(value)
+    return value
+
+
 def test_project_parses_success_contract_and_overlays_compute_profile(
     tmp_path: Path,
 ) -> None:
@@ -262,6 +285,65 @@ def test_success_validation_checks_named_theorem_and_axioms(
         "#print axioms auxiliary_contract\n"
     )
     assert observed[2] == ("python", "verify.py")
+
+
+def test_unsolved_campaign_is_accepted_when_local_contract_passes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = ProjectSpec.load(write_autonomy_project(tmp_path))
+
+    class FakeRegimeRunner:
+        def __init__(self, selected: ProjectSpec, options: RegimeOptions) -> None:
+            self.project = selected
+            self.options = options
+            self.run_dir: Path | None = None
+
+        def run(self) -> Path:
+            run = self.project.runs_dir / "candidate"
+            proof = run / "workspace" / "proof"
+            shutil.copytree(self.project.inputs[0].source, proof)
+            (proof / "CMVConjecture.lean").write_text(
+                "theorem cmv_conjecture_3_12 : True := by trivial\n",
+                encoding="utf-8",
+            )
+            (run / "state.json").write_text(
+                json.dumps({"schema_version": 1, "status": "complete"}),
+                encoding="utf-8",
+            )
+            (run / "outcome.json").write_text(
+                json.dumps(unsolved_outcome()), encoding="utf-8"
+            )
+            self.run_dir = run
+            return run
+
+        def resume(self, run_dir: Path) -> Path:
+            self.run_dir = run_dir
+            return run_dir
+
+    def validate(
+        active_runner: AutonomyRunner, campaign_run: Path, index: int
+    ) -> SuccessValidation:
+        receipt = active_runner._round_dir(index) / "success-validation.json"
+        receipt.parent.mkdir(parents=True, exist_ok=True)
+        receipt.write_text(json.dumps({"passed": True}), encoding="utf-8")
+        return SuccessValidation(
+            True, "kernel-checked success contract passed", receipt
+        )
+
+    monkeypatch.setattr(
+        "agentic_lean_math_assistant.autonomy.RegimeRunner", FakeRegimeRunner
+    )
+    monkeypatch.setattr(AutonomyRunner, "_validate_success", validate)
+
+    runner = AutonomyRunner(project, AutonomyRuntimeOptions())
+    session = runner.run()
+    state = json.loads((session / "state.json").read_text(encoding="utf-8"))
+
+    assert state["status"] == "solved"
+    assert len(state["rounds"]) == 1
+    assert state["rounds"][0]["campaign_outcome"] == "unsolved"
+    assert state["rounds"][0]["status"] == "solved"
+    assert state["result"]["summary"] == "kernel-checked success contract passed"
 
 
 def test_axiom_audit_requires_one_report_per_theorem(tmp_path: Path) -> None:

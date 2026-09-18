@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusHalfGap",
+  "domain_issues": [],
+  "informal_statement": "\\(H(\\lambda,R)\\) is \\((\\lambda-R)\\beta_\\lambda(R)+\\lambda\\arccos\\lambda+(1-\\lambda)R b(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1240-1244: The definition agrees term by term with H, including the sign lam-R and the coefficient (1-lam)R of b. Its total algebraic meaning and later restricted positivity claims are correctly separated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7109dcf6ef8b06b1460afe81b7d4dc3cd06804fef3b67f56231578b2334248e2",
+  "symbol_mismatches": []
+}

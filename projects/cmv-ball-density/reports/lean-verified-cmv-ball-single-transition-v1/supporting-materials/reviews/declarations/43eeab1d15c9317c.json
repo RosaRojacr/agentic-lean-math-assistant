@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusL_zero",
+  "domain_issues": [],
+  "informal_statement": "For every \\(R>0\\), \\(L(0,R)=0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1501-1507: For R>0 the positive reciprocal arctangent identity gives beta_0(R)=b(R), while the correction term vanishes. The source and author both assert exactly L(0,R)=0 on this positive-radius domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "29c562fbf4f67e14b5c469f6f6f6dcfe57423601de3464b20c18a1c168e35d8e",
+  "symbol_mismatches": []
+}

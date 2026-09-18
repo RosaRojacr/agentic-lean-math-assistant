@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeterAtRadius_deriv_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), every positive \\(R\\) satisfies \\(P_{\\mathrm{C}}'(R)>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:685-692: The formal implication assumes positive radius in addition to admissible density. The proof obtains deriv P_C=2Q_C>0, exactly the nonvanishing used for inversion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0a0f4d788d01de74c363719e0d086cb74d4be34b638c450f00b59a31d9f27b99",
+  "symbol_mismatches": []
+}

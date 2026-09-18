@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBAreaAtRadius_deriv_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), the derivative of \\(A_{\\mathrm{B}}\\) at \\(R\\) is positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:663-669: The formal conclusion is positivity of deriv A_B at positive R. The proof rewrites the established derivative and uses R>0 and Q_B>0, matching the explanation without asserting positivity at zero.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4fcb16a2eb66bac06f3aac56a18581ba3fae227c21397173be1ab0d712a98430",
+  "symbol_mismatches": []
+}

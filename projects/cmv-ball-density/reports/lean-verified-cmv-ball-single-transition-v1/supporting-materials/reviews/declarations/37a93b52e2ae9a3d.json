@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.existsUnique_typeCRadius_at_perimeter",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), there is exactly one \\(R\\) with \\(R>0\\) and \\(P_{\\mathrm{C}}(R)=p\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1885-1922: The formal quantified condition is R>0 and P_C(R)=p on the genuine common-perimeter domain. The proof brackets the perimeter using R=lam and a larger positive radius, so the author correctly avoids evaluation at R=0.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bd2558a1451eb56264500c5c5fcf17b65bf2502c53fb9be537238e05e61eadd9",
+  "symbol_mismatches": []
+}

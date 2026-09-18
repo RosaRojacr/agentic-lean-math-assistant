@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtRadius_strictMonoOn",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), \\(P_{\\mathrm{B}}\\) is strictly increasing on \\([0,\\infty)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:731-739: Lean proves strict increase on [0,infinity), using continuity at zero and interior derivative positivity. The author preserves the closed endpoint essential to the common-perimeter threshold.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bcb0c4329c9e367c3237ca68300c9a926c8d4b286caa51d477c1d94e742ff2e8",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBRadius_eq_add_sqrt_mul_cot",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and admissible \\(\\beta\\), the type-(B) radius equals \\(\\lambda+\\sqrt{1-\\lambda^2}\\cot\\beta\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:81-91: The sine addition formula, cos(arccos(lam))=lam, and positive sin(beta) give lam+sqrt(1-lam^2)*cot(beta). Both density hypotheses and angular admissibility are present in the translation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3eb7e5731012db737e7b336d5d6d605bb445d1c2a4e8d3c0f094ba10820bb6da",
+  "symbol_mismatches": []
+}

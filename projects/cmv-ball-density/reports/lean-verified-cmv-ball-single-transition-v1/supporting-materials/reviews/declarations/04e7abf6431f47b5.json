@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBRadiusAtPerimeter_unique",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), \\(R>0\\), and \\(P_{\\mathrm{B}}(R)=p\\), then \\(r_{\\mathrm{B}}(p)=R\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1958-1965: The source additionally requires R>0 and P_B(R)=p.1, and concludes the chosen inverse equals R. Existence-and-uniqueness supplies this equality in the stated orientation, used to identify local inverses.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "45ce1f082ef5383bd43764a4e1518cd8d4004f8b048ca23100637518a3e785ee",
+  "symbol_mismatches": []
+}

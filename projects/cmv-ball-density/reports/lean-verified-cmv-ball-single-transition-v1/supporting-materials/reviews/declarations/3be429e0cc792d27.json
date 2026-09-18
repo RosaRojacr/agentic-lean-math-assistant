@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeB_values_eq_singleton",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\beta\\) is the unique admissible type-(B) angle of area \\(v\\), its perimeter is the sole element of the value set.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1098-1110: Lean assumes an admissible beta of area v and a universal implication identifying every other admissible angle of that area with beta. The author's uniqueness wording and conditional set equality preserve all these hypotheses.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0aaa46dd0b8b451605797b9ef606b1e37cf80fd960f4abcc25d735f41934d431",
+  "symbol_mismatches": []
+}

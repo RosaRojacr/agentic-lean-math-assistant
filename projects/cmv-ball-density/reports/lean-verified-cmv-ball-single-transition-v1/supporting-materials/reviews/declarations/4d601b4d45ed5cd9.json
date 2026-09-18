@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeterAtRadius_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and \\(R>0\\), \\(P_{\\mathrm{C}}\\) has derivative \\(2Q_{\\mathrm{C}}(R)\\) at \\(R\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:465-487: The source assumes R>0 but no density bounds. Its coefficient is exactly 2Q_C, and the author separates this derivative identity from the later positivity theorem.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f5d2c7b26d784940465bfecd68ce738beed977fd9837beb85c6df684f2f89412",
+  "symbol_mismatches": []
+}

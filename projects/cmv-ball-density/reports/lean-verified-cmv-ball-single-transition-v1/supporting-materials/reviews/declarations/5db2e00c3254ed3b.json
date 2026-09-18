@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusD",
+  "domain_issues": [],
+  "informal_statement": "\\(D(\\lambda,R)\\) is \\((R-\\lambda)^2+(1-\\lambda^2)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1245-1248: The source defines (R-lam)^2+(1-lam^2). Expansion gives R^2-2R*lam+1, exactly the alternate expression in the explanation, with positivity asserted only later under density bounds.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4e15dd87d6e310dd5beb90b522db2cdea3c545a1ce486ef9aaa593aa1c201858",
+  "symbol_mismatches": []
+}

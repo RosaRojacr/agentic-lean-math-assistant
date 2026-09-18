@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtRadius_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(P_{\\mathrm{B}}\\) has derivative \\(2Q_{\\mathrm{B}}(R)\\) at \\(R\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:441-464: Lean proves an ordinary derivative for all real R under 0<lam<1. Expanding Q_B gives exactly its displayed derivative coefficient; the explanation correctly uses cancellation of the chart derivative terms.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a36eb5dc07528a5ef5ac5c46d69519b24cf266609e428cac791aefeae3d159fc",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusL_continuousAt_zero",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\), the function \\(c\\mapsto L(c,R)\\) is continuous at \\(c=0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1515-1535: Lean assumes R>0 and proves ordinary continuity in density at zero. The proof checks the two denominators there are nonzero; the author's explanation identifies them correctly and does not claim a derivative at zero.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d2266e6ab3843cad1067d095c347fbf2258071549d62313f18f286686d040702",
+  "symbol_mismatches": []
+}

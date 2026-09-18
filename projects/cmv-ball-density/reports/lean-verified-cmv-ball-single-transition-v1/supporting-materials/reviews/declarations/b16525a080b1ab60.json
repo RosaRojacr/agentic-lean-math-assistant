@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_lt_radius_lt_one",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<R<1\\), then \\(H(\\lambda,R)>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1734-1753: Lean assumes 0<lam<R<1, proves strict decrease on the half-closed interval (0,R], and uses the positive diagonal ratio. The author's strict comparison with c=R is thus justified, not inferred from continuity alone.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fbe9df98337f6aceb7cf9c5bfeb2a39837777085850f68cc2b9e8dfc133753b5",
+  "symbol_mismatches": []
+}

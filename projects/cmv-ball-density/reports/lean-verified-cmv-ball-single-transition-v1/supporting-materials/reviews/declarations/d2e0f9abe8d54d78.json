@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.perimeter_gap_eq_two_mul_halfGap",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(\\lambda\\) and \\(R\\), \\(P_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1380-1385: The source is an unconditional identity for all real lam and R, proved by expansion and ring algebra. The author preserves the orientation P_B-P_C and the factor 2.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8b62e7839212847fab2541e10be82a3d8159e4fde430a8284b2a3ed1383c3a75",
+  "symbol_mismatches": []
+}

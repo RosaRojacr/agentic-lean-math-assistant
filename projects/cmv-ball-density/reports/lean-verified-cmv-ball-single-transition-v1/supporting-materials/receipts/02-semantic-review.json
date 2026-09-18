@@ -1,0 +1,97 @@
+{
+  "attempt": 2,
+  "command": [
+    "omp",
+    "--mode=text",
+    "--print",
+    "--no-session",
+    "--auto-approve",
+    "--max-time=21600",
+    "--cwd=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1",
+    "--tools=read,grep,glob,bash,write",
+    "--model=openai-codex/gpt-6-astra",
+    "--thinking=xhigh",
+    "@/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/prompts/02-semantic-review.md"
+  ],
+  "completed_at": "2026-09-18T01:51:46Z",
+  "duration_seconds": 562.901,
+  "empty_output_retries": 1,
+  "error": null,
+  "exit_code": 0,
+  "failure_class": null,
+  "handoff": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/reviews/reviewer-02.json",
+  "handoff_available": true,
+  "invocations": [
+    {
+      "duration_seconds": 562.894,
+      "effective_max_time": 21600,
+      "error": null,
+      "exit_code": 0,
+      "failure_class": null,
+      "global_model_call": null,
+      "ordinal": 1,
+      "resource_wait_seconds": 0.0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "d2431ae54ddccb27020cebc29a30a6f1628a887c0b5421542ed8c889dcaeccd4"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": true,
+        "runtime_max_seconds": 21660,
+        "tasks_max": 128,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": "supporting-materials/lean/lake-manifest.json",
+              "sha256": "9a717fd0f399b907e60560787f9fb943910ec42a93d4c7eed48bad8f22bda7bb",
+              "size": 3156
+            },
+            {
+              "path": "supporting-materials/lean/lakefile.toml",
+              "sha256": "e805a5fe85039866ce74112de7ab37ec2f933a888ceb047eb0376fd7c4e6f284",
+              "size": 416
+            },
+            {
+              "path": "supporting-materials/lean/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/home/rosa/.local/bin/omp",
+            "resolved_path": "/home/rosa/.local/bin/omp",
+            "sha256": "e91d5598ee47e1d4099fd8686dc9f61c9b755f2ea077d5f1774aba1072321f9e",
+            "size": 200099296
+          }
+        },
+        "unit": "campaign-1986232-2169a4fcbcde.service"
+      },
+      "status": "succeeded",
+      "stderr_truncated": false,
+      "stdout_truncated": false
+    }
+  ],
+  "output": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/receipts/02-semantic-review.output.txt",
+  "role_id": "proof-builder-semantic-review",
+  "schema_version": 1,
+  "started_at": "2026-09-18T01:42:23Z",
+  "status": "succeeded",
+  "stderr_log": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/receipts/02-semantic-review.stderr.log",
+  "stderr_truncated": false,
+  "stdout_log": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/receipts/02-semantic-review.stdout.log",
+  "stdout_truncated": false
+}

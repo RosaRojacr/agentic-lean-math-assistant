@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.bAtRadius_admissible",
+  "domain_issues": [],
+  "informal_statement": "Every positive radius \\(R\\) gives an admissible type-(C) angle \\(b(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:284-289: The sole hypothesis R>0 makes 1/R positive; arctangent is positive and strictly below pi/2. The statement exactly identifies the open type-(C) angular domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f75ea7649633f8c47ad6d1362804bff9e3318e36e14147c0e5b256b30829c2cc",
+  "symbol_mismatches": []
+}

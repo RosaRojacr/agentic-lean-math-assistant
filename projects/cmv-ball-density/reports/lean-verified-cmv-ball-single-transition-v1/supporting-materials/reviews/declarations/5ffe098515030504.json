@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.commonPerimeterClamp_eq",
+  "domain_issues": [],
+  "informal_statement": "If \\(p>2\\lambda\\pi\\) and \\(q\\geq p\\), clamping \\(q\\) at \\(p\\) leaves \\(q\\) unchanged.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:2227-2234: For q>=p.1, Lean proves equality of the clamped subtype with q equipped with its genuine-domain proof. The author's unchanged-value assertion correctly includes q=p and preserves the absence of an admissible-density requirement.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e3584ce3c3e58723599d9275ac8d07529840c51ccaf5b4e38a9fb3ce88756176",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCAreaAtRadius_agrees",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)\\) equals the angular type-(C) area at \\(b(R)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:367-377: For R>0 and arbitrary lam, the proof converts the inverse square of tangent into R^2. The displayed equality and lack of a density restriction agree with Lean.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ef9487e571bf7a8e9ecfdce2224335bbe39d0b9603b9c566eb6c213c2b58a4f8",
+  "symbol_mismatches": []
+}

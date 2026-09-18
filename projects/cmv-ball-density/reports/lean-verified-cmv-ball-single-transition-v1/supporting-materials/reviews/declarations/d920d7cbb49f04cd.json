@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusL_tendsto_one",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>1\\), \\(L(c,R)\\) tends to \\(-b(R)\\) as \\(c\\) tends to one from below.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1536-1570: The source limit is along nhdsWithin 1 (Iio 1), with the strict hypothesis R>1. The reciprocal chart and D(1,R)=(R-1)^2 give -b(R); the author correctly excludes R=1 and does not substitute the totalized value at density one.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "13ea5fd875867d8d70d1cab8b12f6ea2839f979405c944fc74ef550ef86c0035",
+  "symbol_mismatches": []
+}

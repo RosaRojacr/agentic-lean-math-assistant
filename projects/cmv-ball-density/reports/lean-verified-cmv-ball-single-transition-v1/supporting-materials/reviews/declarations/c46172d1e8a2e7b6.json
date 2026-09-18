@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeterAtArea_lt_of_commonPerimeterAreaGap_neg",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\), \\(v>\\lambda\\pi\\), and \\(G(I_{\\mathrm{B}}(v))<0\\), then \\(I_{\\mathrm{C}}(v)<I_{\\mathrm{B}}(v)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:2378-2422: The formal strict premise G(I_B(v))<0 means A_C at that common perimeter exceeds v. Strict area and perimeter monotonicity give I_C(v)<I_B(v); all density and area-domain hypotheses are preserved.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6ed9af03cd6961ea327cfb3f5237fc3e86432b34c2cd4ca2282daeb7016ccc0a",
+  "symbol_mismatches": []
+}

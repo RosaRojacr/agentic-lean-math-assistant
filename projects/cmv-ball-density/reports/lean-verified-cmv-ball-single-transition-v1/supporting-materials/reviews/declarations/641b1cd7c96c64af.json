@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_of_gt",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>1\\), \\(H(c,R)/c\\) tends to zero as \\(c\\) tends to one from below.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1665-1694: The formal statement is a left density limit to zero for each fixed R>1. The proof replaces the chart by its reciprocal near one and takes the quotient limit with nonzero limiting denominator, as explained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ec5c31b64505c09d08c58f3f1b7efe55ef00bdd5aad235b9e99482e73cfe7914",
+  "symbol_mismatches": []
+}

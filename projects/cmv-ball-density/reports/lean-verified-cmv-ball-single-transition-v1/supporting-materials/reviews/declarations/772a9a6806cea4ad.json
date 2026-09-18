@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeterAtRadius_continuousOn",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), \\(P_{\\mathrm{C}}\\) is continuous on \\((0,\\infty)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:708-712: For every real lam the formal domain is (0,infinity). The proof uses ordinary differentiability at positive radii; the translation preserves precisely that asserted domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8ba982df91d14a4376354beb85fd26540d8e9d0d83b34015727e5932cb96b536",
+  "symbol_mismatches": []
+}

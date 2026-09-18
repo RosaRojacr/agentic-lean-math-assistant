@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtArea_eq",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\beta\\) is the unique admissible type-(B) angle of area \\(v\\), then \\(I_{\\mathrm{B}}(v)=\\mathsf P_{\\mathrm{B}}(\\beta)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1124-1130: The statement has the candidate's admissibility, area equality, and universal angular uniqueness as hypotheses. The proof applies the singleton-set lemma and csInf_singleton, justifying the author's conditional profile evaluation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "57097d90269686a2eff890ae3d5ae1d3b35601393a261dbde597136f7ab0b41c",
+  "symbol_mismatches": []
+}

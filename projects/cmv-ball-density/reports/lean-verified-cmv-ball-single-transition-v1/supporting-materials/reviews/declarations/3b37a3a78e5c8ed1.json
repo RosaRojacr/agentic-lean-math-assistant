@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_one_le_radius",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\) and \\(R\\geq1\\), then \\(H(\\lambda,R)>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1754-1772: Under admissible density and R>=1, the proof first obtains nonnegativity at a larger interior density from the endpoint limit, then uses strict decrease to get strict positivity at lam. The author preserves this essential intermediate-point step.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e873740cbb342f72d438af00f9b3a7382b645a81e5e013505d7f0ed284853138",
+  "symbol_mismatches": []
+}

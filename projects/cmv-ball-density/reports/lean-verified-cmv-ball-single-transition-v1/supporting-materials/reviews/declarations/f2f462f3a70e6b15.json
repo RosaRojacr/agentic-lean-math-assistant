@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCAreaAtRadius_lt_full",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)<\\pi R^2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:810-832: The formal result is A_C(R)<pi*R^2 for admissible density and R>0. Both overlap segments and their density deficit are positive, exactly the geometric/algebraic explanation given.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a7ac56a00483dd17c810d49f7f3b39998e96e24cbcc05612f96aba66e39e49b6",
+  "symbol_mismatches": []
+}

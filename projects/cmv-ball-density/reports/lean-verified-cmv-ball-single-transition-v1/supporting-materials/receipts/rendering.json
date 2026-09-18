@@ -1,0 +1,119 @@
+[
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/MainProof.md",
+      "--from=markdown+fenced_divs",
+      "--standalone",
+      "--embed-resources",
+      "--mathml",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/proof-package-main.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/MainProof.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/MainProof.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/MainProof.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "325262 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/MainProof.pdf\n",
+    "stderr_sha256": "6de7a2745ea2f8c651f5a4c68f988e7163e5c284b57b5be1354deb0156c1b788",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/LemmaSupplement.md",
+      "--from=markdown+fenced_divs",
+      "--standalone",
+      "--embed-resources",
+      "--mathml",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/proof-package-technical.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/LemmaSupplement.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/LemmaSupplement.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/LemmaSupplement.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "1028631 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/LemmaSupplement.pdf\n",
+    "stderr_sha256": "fe82fe8b691600a7852f3860fb9714e31ae277b0f2fa60b56563cc268fca70b3",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/mnt/games/Anaconda/anaconda3/bin/pandoc",
+      "/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/SemanticAudit.md",
+      "--from=markdown+fenced_divs",
+      "--standalone",
+      "--embed-resources",
+      "--mathml",
+      "--css=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/proof-package-technical.css",
+      "--output=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/SemanticAudit.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/usr/lib64/chromium-browser/chromium-browser.sh",
+      "--headless",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--no-pdf-header-footer",
+      "--print-to-pdf=/mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/SemanticAudit.pdf",
+      "file:///mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/supporting-materials/manuscripts/SemanticAudit.html"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "638169 bytes written to file /mnt/games/Math_Project/LeanExperiment/projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/SemanticAudit.pdf\n",
+    "stderr_sha256": "200d249b7f2d6c4f68943d9f5a468c668e0b2c081c716dc33524a3a238db07ae",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_truncated": false
+  }
+]

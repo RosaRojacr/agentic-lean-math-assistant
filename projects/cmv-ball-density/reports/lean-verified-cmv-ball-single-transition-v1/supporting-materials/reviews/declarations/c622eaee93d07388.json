@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtRadius_deriv_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), every positive \\(R\\) satisfies \\(P_{\\mathrm{B}}'(R)>0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:677-684: Lean places R>0 as an implication after the density assumptions; the author's equivalent quantified wording preserves it. The proof rewrites deriv P_B to 2Q_B and uses factor positivity.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "10de2cba5f52d44c61da385e12b1e3a912b33e8b23dd2e310115984cf7543ad2",
+  "symbol_mismatches": []
+}

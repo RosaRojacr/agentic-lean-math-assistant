@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCAreaAtRadius",
+  "domain_issues": [],
+  "informal_statement": "The radius-coordinate type-(C) area is \\(R^2(\\pi-(1-\\lambda)S(b(R)))-(1-\\lambda)S(\\pi/2-b(R))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:339-344: S(pi/2-b)=pi/2-b-sin(b)cos(b), so the author's segment notation is algebraically identical to Lean's last term. The overlap correction and both coefficients are exact.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "348b519a27228df7e22a823dc6b7c50b1974e565424be0185003a97e07856f1d",
+  "symbol_mismatches": []
+}

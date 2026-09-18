@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.arctan_neg_lam_div_sqrt_eq_arccos_sub_pi_div_two",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\), \\(\\arctan(-\\lambda/\\sqrt{1-\\lambda^2})=\\arccos\\lambda-\\pi/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:163-182: The proof checks that arccos(lam)-pi/2 lies in the principal arctangent interval and computes its tangent. The translated identity has the correct sign, denominator, and density bounds.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ae6498b57a7901ab66208434683619d4fcd6fd2d5539929922be1071e5b55472",
+  "symbol_mismatches": []
+}

@@ -453,7 +453,13 @@ class AutonomyRunner:
         state["consecutive_failures"] = 0
 
         validation: SuccessValidation | None = None
-        if outcome.status == "solved":
+        candidate_available = self._success_candidate_available(campaign_run)
+        if outcome.status == "solved" or candidate_available:
+            if candidate_available and outcome.status != "solved":
+                self._emit(
+                    "candidate proof artifacts found; running deterministic "
+                    "local success validation"
+                )
             validation = self._validate_success(campaign_run, index)
             active["success_validation"] = str(validation.receipt)
             if validation.passed:
@@ -469,7 +475,9 @@ class AutonomyRunner:
                 state["error"] = None
                 self._save_state(state, f"autonomy:round-{index}:solved")
                 return
-            synthetic = "repair-success-validation"
+            synthetic = (
+                "repair-success-validation" if outcome.status == "solved" else None
+            )
         else:
             synthetic = None
         self._save_state(state, f"autonomy:round-{index}:assessed")
@@ -612,6 +620,19 @@ class AutonomyRunner:
             if candidate.exists() and not candidate.is_symlink():
                 result[item.target] = str(candidate.resolve())
         return result
+
+    def _success_candidate_available(self, campaign_run: Path) -> bool:
+        """Return whether a campaign retained every artifact needed for validation."""
+
+        success = self.base_project.autonomy.success
+        assert success is not None
+        cwd = campaign_run / "workspace" / success.workspace
+        if not cwd.is_dir() or cwd.is_symlink():
+            return False
+        return all(
+            (cwd / relative).is_file() and not (cwd / relative).is_symlink()
+            for relative in success.required_artifacts
+        )
 
     def _validate_success(self, campaign_run: Path, index: int) -> SuccessValidation:
         assert self.session_dir is not None

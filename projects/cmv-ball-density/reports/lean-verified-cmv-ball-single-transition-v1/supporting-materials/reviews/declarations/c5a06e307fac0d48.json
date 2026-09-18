@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeterAtArea_gt_commonEndpoint",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), then \\(I_{\\mathrm{B}}(v)>2\\lambda\\pi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:2321-2333: For v>lam*pi and admissible density, a positive area radius and strict perimeter increase from R=0 prove 2lam*pi<I_B(v). The statement gives precisely the domain proof needed for G(I_B(v)).",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1bc2f925dd32fdc3436ba53a34596445576e91faa97e786b1962cb23ce1fbf2b",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeterAtRadius",
+  "domain_issues": [],
+  "informal_statement": "The radius-coordinate type-(C) perimeter is \\(2R(\\pi-(1-\\lambda)b(R))\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:335-338: The definition is exactly 2*R*(pi-(1-lam)*bAtRadius(R)). The explanation correctly obtains it from the full circumference by subtracting the density deficit of the inner arc.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5bfe6bbb6f40601afee63cea3bd361fb5c2ec4e0cae513f610cfd4255fe4ae2f",
+  "symbol_mismatches": []
+}

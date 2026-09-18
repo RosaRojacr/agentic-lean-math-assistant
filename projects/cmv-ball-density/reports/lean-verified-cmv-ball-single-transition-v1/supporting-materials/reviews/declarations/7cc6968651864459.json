@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCPerimeter_mem_values",
+  "domain_issues": [],
+  "informal_statement": "An admissible type-(C) angle of area \\(v\\) contributes its perimeter to the type-(C) value set at \\(v\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1093-1097: The source requires CAdmissible and the area equation and concludes membership of that same angle's perimeter. The direct existential witness and unrestricted density scope are faithfully explained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad514705a9dc71bb1959ff8334149fb5759b7a8f9d6bb4f82c2b59f07695ab1c",
+  "symbol_mismatches": []
+}

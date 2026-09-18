@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeBPerimeter_mem_values",
+  "domain_issues": [],
+  "informal_statement": "An admissible type-(B) angle of area \\(v\\) contributes its perimeter to the type-(B) value set at \\(v\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1088-1092: The only hypotheses are angular admissibility and the area equation. The angle itself is the existential witness for its perimeter's membership; no density or uniqueness hypothesis is added.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ab1cda17a1dd925edbcd6476abecb0e519a6fb9430ca150e790c745fb1bfa2ae",
+  "symbol_mismatches": []
+}

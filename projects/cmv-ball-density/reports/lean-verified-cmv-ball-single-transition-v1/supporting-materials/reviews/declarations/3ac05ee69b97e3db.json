@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.CommonPerimeter",
+  "domain_issues": [],
+  "informal_statement": "For a real \\(\\lambda\\), the common-perimeter domain consists of the real \\(p\\) with \\(p>2\\lambda\\pi\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1832-1840: The formal type is the subtype of real p satisfying 2*lam*pi<p. The author's open interval description is exact for arbitrary lam; positive-radius solvability and inverses are subsequently restricted to admissible density.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e2043ced3f49efd166f38b27622f70ea021fb2c91e44ee48e02ae0fb32781041",
+  "symbol_mismatches": []
+}

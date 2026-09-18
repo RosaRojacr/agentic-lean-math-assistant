@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCRadius_pos",
+  "domain_issues": [],
+  "informal_statement": "Every admissible type-(C) angle has positive radius.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:28-35: The sole hypothesis is CAdmissible beta. The proof takes the reciprocal of the positive tangent on (0,pi/2); the informal statement adds no density condition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1a7173c1755709ae7faf95a9a6109b9e8aa56a4449eb1eeb91c7af81f092911c",
+  "symbol_mismatches": []
+}

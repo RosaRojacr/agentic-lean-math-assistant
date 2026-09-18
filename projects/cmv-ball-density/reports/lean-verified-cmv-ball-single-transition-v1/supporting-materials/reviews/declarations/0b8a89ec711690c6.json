@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCRadiusAtPerimeter_unique",
+  "domain_issues": [],
+  "informal_statement": "If \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), \\(R>0\\), and \\(P_{\\mathrm{C}}(R)=p\\), then \\(r_{\\mathrm{C}}(p)=R\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:1966-1974: The formal candidate is positive and solves the same perimeter equation as the subtype inverse. Uniqueness gives r_C(p)=R under precisely the translated hypotheses.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6d0bba8a25476b26089b665ae685627f40cb11720cbb717de9b249a9d0e5a11c",
+  "symbol_mismatches": []
+}

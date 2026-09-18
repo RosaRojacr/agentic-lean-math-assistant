@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVBallCase.typeCAreaAtRadius_large_lower",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)>\\lambda\\pi R^2-\\pi/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "CMVBallCase.lean:833-865: The coefficient of R^2 is greater than lam*pi and the last deficit is less than pi/2. The stated strict quadratic lower bound, density assumptions, and positive-radius domain all match Lean.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b45b5794cbb45181f9541a2d6aaedfb79df716a6e045c02aa69ba8995a958442",
+  "symbol_mismatches": []
+}
