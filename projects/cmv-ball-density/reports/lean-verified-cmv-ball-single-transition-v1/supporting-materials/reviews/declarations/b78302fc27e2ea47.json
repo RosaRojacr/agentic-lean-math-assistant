@@ -7,7 +7,7 @@
   "informal_statement": "For \\(R>0\\), \\(c\\mapsto H(c,R)/c\\) is strictly decreasing on \\((0,\\min(1,R))\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1640-1654: For fixed R>0 the formal density interval is exactly (0,min(1,R)). The factor R/c^2 is positive and L negative there; the author neither includes density zero nor extends beyond c<R.",
+  "reason": "`CMVBallCase.lean:1640-1654`: For fixed \\(R>0\\) the formal density interval is exactly \\((0,\\min (1,R))\\). The factor \\(R/c^2\\) is positive and \\(L\\) negative there; the author neither includes density zero nor extends beyond \\(c<R\\).",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "2f0edd3e2968d32be31b213f6dbe635d46d10fd277b8e4e89a8b9f3fd3a0d39e",

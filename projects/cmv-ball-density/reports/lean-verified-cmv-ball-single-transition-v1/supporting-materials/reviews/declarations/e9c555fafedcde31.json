@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\), \\(P_{\\mathrm{C}}\\) is strictly increasing on \\((0,\\infty)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:740-748: The formal statement is StrictMonoOn on (0,infinity), with both density bounds. The explanation correctly transports strict order using the mean value theorem on positive-radius intervals.",
+  "reason": "`CMVBallCase.lean:740-748`: The formal statement is `StrictMonoOn` on \\((0,\\infty )\\), with both density bounds. The explanation correctly transports strict order using the mean value theorem on positive-radius intervals.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "ebda1658a94a124439fef17a703088753a165f7a75d443b97607309192ac577f",

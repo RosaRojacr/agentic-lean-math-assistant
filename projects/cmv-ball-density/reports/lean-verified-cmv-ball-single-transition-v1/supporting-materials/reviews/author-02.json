@@ -1,164 +1,935 @@
 {
   "schema_version": 1,
-  "main_markdown": "## The candidate comparison\n\nCañete, Miranda Jr., and Vittone study the planar isoperimetric problem with density\n\n\\[\nf_\\lambda(x)=\\begin{cases}\n\\lambda,&|x|\\leq 1,\\\\\n1,&|x|>1,\n\\end{cases}\n\\qquad 0<\\lambda<1.\n\\]\n\nWeighted area is the integral of this density over a region; weighted perimeter uses the same density on its boundary. In particular, an arc on the unit circle has weight \\(\\lambda\\). The relevant candidates are regions of type (B), bounded by an arc of the unit circle and an exterior circular arc meeting it at angle \\(\\arccos\\lambda\\), and balls of type (C), whose boundaries meet the unit circle orthogonally. The source classification and candidate formulas are in [CMV, Proposition 3.22, pp. 32–33, and Theorem 3.23, pp. 34–36]. We prove an analytic comparison of these two complete candidate families. Its application to arbitrary finite-perimeter minimizers requires the source-level geometric premises discussed at the end.\n\nFor a weighted area \\(v\\), let \\(\\mathcal P_{\\mathrm B}(v)\\) and \\(\\mathcal P_{\\mathrm C}(v)\\) be the sets of weighted perimeters of all admissible candidates of the indicated type having area exactly \\(v\\), and define\n\n\\[\nI_{\\mathrm B}(v)=\\inf\\mathcal P_{\\mathrm B}(v),\n\\qquad I_{\\mathrm C}(v)=\\inf\\mathcal P_{\\mathrm C}(v).\n\\]\n\nThe admissible parameter domains and formulas are specified below. On the domain \\(v>\\lambda\\pi\\) used here, both sets are nonempty singletons; thus these definitions neither select a favorable branch nor depend on the value assigned to an empty infimum. [@lean:CMVBallCase.typeBPerimeterValuesAtArea] [@lean:CMVBallCase.typeCPerimeterValuesAtArea] [@lean:CMVBallCase.typeBPerimeterAtArea] [@lean:CMVBallCase.typeCPerimeterAtArea] [@lean:CMVBallCase.exists_typeBRadius_at_area] [@lean:CMVBallCase.exists_typeCRadius_at_area] [@lean:CMVBallCase.typeBPerimeterAtArea_eq_radius] [@lean:CMVBallCase.typeCPerimeterAtArea_eq_radius]\n\n**Theorem.** Let \\(0<\\lambda<1\\) and \\(\\lambda\\pi<v_0<v\\). If\n\n\\[\nI_{\\mathrm C}(v_0)\\leq I_{\\mathrm B}(v_0),\n\\]\n\nthen\n\n\\[\nI_{\\mathrm C}(v)<I_{\\mathrm B}(v).\n\\]\n\nThus weak dominance of type (C) at one such area becomes strict dominance at every larger area. This is the formal persistence theorem, not an unconditional classification of isoperimetric regions. [@lean:CMVBallCase.typeC_dominance_persists]\n\n## Candidate formulas and global parameters\n\nFix \\(0<\\lambda<1\\) throughout the proof, and put\n\n\\[\na=\\arccos\\lambda,\\qquad s=\\sqrt{1-\\lambda^2},\\qquad\nS(t)=t-\\sin t\\cos t.\n\\]\n\nFor a unit circle, \\(S(t)\\) is the area of the circular segment with central angle \\(2t\\), for \\(0\\leq t\\leq\\pi\\). For type (B), take\n\n\\[\n0<\\beta\\leq\\pi-a,\\qquad \\alpha=\\beta+a,\\qquad\nr=\\frac{\\sin\\alpha}{\\sin\\beta}.\n\\]\n\nThe two boundary arcs have lengths \\(2r(\\pi-\\beta)\\) and \\(2\\alpha\\). The region contains the unit disk. Its Euclidean area is the sum of the two circular segments cut by their common chord; subtracting \\((1-\\lambda)\\pi\\) gives its weighted area. Consequently the formulas in [CMV, p. 34, Figure 19 on p. 35] are\n\n\\[\n\\begin{aligned}\n\\mathsf P_{\\mathrm B}(\\beta)&=2\\bigl((\\pi-\\beta)r+\\lambda\\alpha\\bigr),\\\\\n\\mathsf A_{\\mathrm B}(\\beta)&=r^2\\bigl(\\pi-\\beta+\\sin\\beta\\cos\\beta\\bigr)\n +S(\\alpha)-(1-\\lambda)\\pi.\n\\end{aligned}\n\\]\n\nThe endpoint \\(\\beta=\\pi-a\\) is retained: it has \\(r=0\\) and represents the unit disk. The endpoint \\(\\beta=0\\) printed in the source is an infinite-radius limit, not a finite candidate. [@lean:CMVBallCase.BAdmissible] [@lean:CMVBallCase.typeBAlpha] [@lean:CMVBallCase.typeBRadius] [@lean:CMVBallCase.typeBPerimeter] [@lean:CMVBallCase.typeBArea] [@lean:CMVBallCase.typeBRadius_endpoint_zero] [@lean:CMVBallCase.arcSegment]\n\nFor type (C), let \\(0<b<\\pi/2\\), and set \\(R=\\cot b\\). The inner and outer boundary arcs have lengths \\(2Rb\\) and \\(2R(\\pi-b)\\). Orthogonality gives an overlap with the unit disk consisting of segments of areas \\(R^2S(b)\\) and \\(S(\\pi/2-b)\\). Hence [CMV, p. 35]\n\n\\[\n\\begin{aligned}\n\\mathsf P_{\\mathrm C}(b)&=2R\\bigl(\\pi-(1-\\lambda)b\\bigr),\\\\\n\\mathsf A_{\\mathrm C}(b)&=R^2\\bigl(\\pi-(1-\\lambda)S(b)\\bigr)\n -(1-\\lambda)S(\\pi/2-b).\n\\end{aligned}\n\\]\n\nThese are exactly the source's formulas with \\(R=1/\\tan b\\). Both angular endpoints are excluded degenerations. The elementary geometric descriptions explain the formulas; the formal objects are the explicit real-valued formulas, not sets equipped with a formalized perimeter measure. [@lean:CMVBallCase.CAdmissible] [@lean:CMVBallCase.typeCRadius] [@lean:CMVBallCase.typeCPerimeter] [@lean:CMVBallCase.typeCArea]\n\nUse radius as a global parameter. The identity and inverse charts are\n\n\\[\nr=\\lambda+s\\cot\\beta,\\qquad\n\\beta_\\lambda(R)=\\frac\\pi2-\\arctan\\frac{R-\\lambda}{s},\\qquad\nb(R)=\\arctan\\frac1R.\n\\]\n\nThe first chart is a bijection between the finite type-(B) angle domain and \\(R\\geq0\\); the second is a bijection between \\(0<b<\\pi/2\\) and \\(R>0\\). The radius maps are strictly decreasing in their angle parameters, and the displayed inverses work on their entire domains. In particular, the type-(B) chart includes \\(R<\\lambda\\), where \\(\\beta_\\lambda(R)>\\pi/2\\), as well as \\(R\\geq\\lambda\\); no quadrant is discarded. [@lean:CMVBallCase.typeBRadius_eq_add_sqrt_mul_cot] [@lean:CMVBallCase.betaAtRadius] [@lean:CMVBallCase.bAtRadius] [@lean:CMVBallCase.typeBRadius_strictAntiOn] [@lean:CMVBallCase.typeCRadius_strictAntiOn] [@lean:CMVBallCase.betaAtRadius_admissible] [@lean:CMVBallCase.typeBRadius_betaAtRadius] [@lean:CMVBallCase.betaAtRadius_typeBRadius] [@lean:CMVBallCase.bAtRadius_admissible] [@lean:CMVBallCase.typeCRadius_bAtRadius] [@lean:CMVBallCase.bAtRadius_typeCRadius]\n\nWrite \\(P_{\\mathrm B}(R),A_{\\mathrm B}(R)\\) for the type-(B) formulas evaluated at \\(\\beta_\\lambda(R)\\), and \\(P_{\\mathrm C}(R),A_{\\mathrm C}(R)\\) for the type-(C) formulas evaluated at \\(b(R)\\). Thus\n\n\\[\n\\begin{aligned}\nP_{\\mathrm B}(R)&=2\\bigl((\\pi-\\beta_\\lambda(R))R+\\lambda(\\beta_\\lambda(R)+a)\\bigr),\\\\\nA_{\\mathrm B}(R)&=R^2\\bigl(\\pi-S(\\beta_\\lambda(R))\\bigr)\n +S(\\beta_\\lambda(R)+a)-(1-\\lambda)\\pi,\\\\\nP_{\\mathrm C}(R)&=2R\\bigl(\\pi-(1-\\lambda)b(R)\\bigr),\\\\\nA_{\\mathrm C}(R)&=R^2\\bigl(\\pi-(1-\\lambda)S(b(R))\\bigr)\n -(1-\\lambda)S(\\pi/2-b(R)).\n\\end{aligned}\n\\]\n\nThe radius formulas agree with the angular formulas for every admissible radius. [@lean:CMVBallCase.typeBPerimeterAtRadius] [@lean:CMVBallCase.typeBAreaAtRadius] [@lean:CMVBallCase.typeCPerimeterAtRadius] [@lean:CMVBallCase.typeCAreaAtRadius] [@lean:CMVBallCase.typeBPerimeterAtRadius_agrees] [@lean:CMVBallCase.typeBAreaAtRadius_agrees] [@lean:CMVBallCase.typeCPerimeterAtRadius_agrees] [@lean:CMVBallCase.typeCAreaAtRadius_agrees]\n\n## Area and perimeter monotonicity\n\nDifferentiation, using \\(S'(t)=2\\sin^2t\\), gives, for \\(R>0\\),\n\n\\[\n\\begin{aligned}\nP_{\\mathrm B}'(R)&=2\\bigl(\\pi-S(\\beta_\\lambda(R))\\bigr),\n& A_{\\mathrm B}'(R)&=R P_{\\mathrm B}'(R),\\\\\nP_{\\mathrm C}'(R)&=2\\bigl(\\pi-(1-\\lambda)S(b(R))\\bigr),\n& A_{\\mathrm C}'(R)&=R P_{\\mathrm C}'(R).\n\\end{aligned}\n\\]\n\nBoth perimeter derivatives are positive. Indeed, the first factor is \\(S(\\pi-\\beta_\\lambda(R))>0\\), while \\(0<S(b(R))<b(R)<\\pi/2\\) makes the second factor positive. Thus area and perimeter are strictly increasing in radius: on \\([0,\\infty)\\) for type (B), and on \\((0,\\infty)\\) for type (C). Continuity at the type-(B) endpoint supplies the closed endpoint assertion. [@lean:CMVBallCase.arcSegment_hasDerivAt] [@lean:CMVBallCase.arcSegment_pos] [@lean:CMVBallCase.arcSegment_lt_self] [@lean:CMVBallCase.typeBPerimeterAtRadius_hasDerivAt] [@lean:CMVBallCase.typeCPerimeterAtRadius_hasDerivAt] [@lean:CMVBallCase.typeBAreaAtRadius_hasDerivAt] [@lean:CMVBallCase.typeCAreaAtRadius_hasDerivAt] [@lean:CMVBallCase.typeB_perimeter_factor_pos] [@lean:CMVBallCase.typeC_perimeter_factor_pos] [@lean:CMVBallCase.typeBAreaAtRadius_strictMonoOn] [@lean:CMVBallCase.typeCAreaAtRadius_strictMonoOn] [@lean:CMVBallCase.typeBPerimeterAtRadius_strictMonoOn] [@lean:CMVBallCase.typeCPerimeterAtRadius_strictMonoOn]\n\nThe relevant area ranges follow without an arbitrary inverse choice. For type (B),\n\n\\[\nA_{\\mathrm B}(0)=\\lambda\\pi,\\qquad P_{\\mathrm B}(0)=2\\lambda\\pi,\\qquad\nA_{\\mathrm B}(R)>\\frac\\pi2R^2-\\pi\\quad(R\\geq\\lambda).\n\\]\n\nFor type (C), the useful bounds are\n\n\\[\n\\lambda\\pi R^2-\\frac\\pi2<A_{\\mathrm C}(R)<\\pi R^2\\quad(R>0).\n\\]\n\nIn particular, \\(A_{\\mathrm C}(\\lambda)<\\pi\\lambda^2<\\lambda\\pi\\), and its lower bound tends to infinity. The intermediate value theorem and strict monotonicity therefore give a unique positive radius of each type at every area \\(v>\\lambda\\pi\\). The inverse angle charts show that every admissible angular candidate of that area has this radius and this angle. Consequently the all-candidate perimeter sets are singletons and the infima are their actual perimeter values. Moreover, \\(I_{\\mathrm B}\\) is strictly increasing on \\((\\lambda\\pi,\\infty)\\), and \\(I_{\\mathrm B}(v)>2\\lambda\\pi\\) there. [@lean:CMVBallCase.typeBAreaAtRadius_zero] [@lean:CMVBallCase.typeBPerimeterAtRadius_zero] [@lean:CMVBallCase.typeBAreaAtRadius_large_lower] [@lean:CMVBallCase.typeCAreaAtRadius_lt_full] [@lean:CMVBallCase.typeCAreaAtRadius_large_lower] [@lean:CMVBallCase.exists_typeBRadius_at_area] [@lean:CMVBallCase.exists_typeCRadius_at_area] [@lean:CMVBallCase.typeB_values_eq_singleton] [@lean:CMVBallCase.typeC_values_eq_singleton] [@lean:CMVBallCase.typeBPerimeterAtArea_eq_radius] [@lean:CMVBallCase.typeCPerimeterAtArea_eq_radius] [@lean:CMVBallCase.typeBPerimeterAtArea_strictMonoOn] [@lean:CMVBallCase.typeBPerimeterAtArea_gt_commonEndpoint]\n\n## The fixed-radius comparison\n\nWe next prove the decisive inequality\n\n\\[\nP_{\\mathrm C}(R)<P_{\\mathrm B}(R)\\qquad(R>0).\n\\]\n\nThis is a comparison at equal radii, not at equal areas. Half the perimeter difference is\n\n\\[\nH(\\lambda,R)=(\\lambda-R)\\beta_\\lambda(R)\n +\\lambda\\arccos\\lambda+(1-\\lambda)R b(R).\n\\]\n\nFor \\(0<R\\leq\\lambda\\), the first term is nonnegative and the other two are positive, so \\(H(\\lambda,R)>0\\). [@lean:CMVBallCase.fixedRadiusHalfGap] [@lean:CMVBallCase.perimeter_gap_eq_two_mul_halfGap] [@lean:CMVBallCase.fixedRadiusHalfGap_pos_of_le]\n\nFor the remaining region \\(R>\\lambda\\), vary the density while keeping \\(R\\) fixed. For \\(0<c<1\\), define\n\n\\[\n\\begin{aligned}\nD(c,R)&=(R-c)^2+1-c^2,\\\\\nL(c,R)&=\\beta_c(R)-b(R)-\\frac{c\\sqrt{1-c^2}}{D(c,R)},\\\\\nN(c,R)&=R^3-4R^2c+2Rc^2+3R-2c.\n\\end{aligned}\n\\]\n\nHere \\(D(c,R)>0\\), and direct differentiation yields\n\n\\[\n\\frac{\\partial}{\\partial c}\\frac{H(c,R)}c=\\frac R{c^2}L(c,R),\n\\qquad\n\\frac{\\partial L}{\\partial c}(c,R)=\n-\\frac{cN(c,R)}{\\sqrt{1-c^2}D(c,R)^2}.\n\\]\n\nThe polynomial has the particularly useful derivative and diagonal value\n\n\\[\n\\frac{\\partial N}{\\partial c}(c,R)=\n-\\bigl(4(R-\\tfrac12)^2+1+4R(1-c)\\bigr)<0\n\\quad(R>0,\\ c<1),\n\\qquad N(R,R)=R(1-R^2).\n\\]\n\nThus \\(N(\\cdot,R)\\) is strictly decreasing on \\(( -\\infty,1]\\). [@lean:CMVBallCase.fixedRadiusD] [@lean:CMVBallCase.fixedRadiusL] [@lean:CMVBallCase.fixedRadiusN] [@lean:CMVBallCase.fixedRadiusD_pos] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_hasDerivAt] [@lean:CMVBallCase.fixedRadiusL_density_hasDerivAt] [@lean:CMVBallCase.fixedRadiusN_density_derivative_identity] [@lean:CMVBallCase.fixedRadiusN_density_derivative_neg] [@lean:CMVBallCase.fixedRadiusN_diagonal] [@lean:CMVBallCase.fixedRadiusN_strictAntiOn]\n\nWe claim \\(L(c,R)<0\\) for \\(0<c<\\min(1,R)\\). First, \\(L(0,R)=0\\), and \\(L(\\cdot,R)\\) is continuous at zero. If \\(N(c,R)\\geq0\\), then \\(N(t,R)>0\\) for \\(0<t<c\\). Hence \\(L\\) strictly decreases from zero on \\([0,c]\\), proving the claim, including the case \\(N(c,R)=0\\). If \\(R\\leq1\\), this case always applies, because\n\n\\[\nN(c,R)>N(R,R)=R(1-R^2)\\geq0.\n\\]\n\nIf instead \\(N(c,R)<0\\), necessarily \\(R>1\\). For every \\(c<t<1\\), we have \\(N(t,R)<0\\), so \\(L\\) is strictly increasing to its left limit at one. The reciprocal angle formula\n\n\\[\n\\beta_t(R)=\\arctan\\frac{\\sqrt{1-t^2}}{R-t}\\qquad(t<R)\n\\]\n\nshows that this limit is \\(-b(R)<0\\). Therefore \\(L(c,R)\\leq-b(R)<0\\) in this case as well. The restriction \\(c<R\\) is essential to this argument. [@lean:CMVBallCase.fixedRadiusL_zero] [@lean:CMVBallCase.fixedRadiusL_continuousAt_zero] [@lean:CMVBallCase.fixedRadiusL_neg_of_N_nonneg] [@lean:CMVBallCase.fixedRadiusN_pos_of_radius_le_one] [@lean:CMVBallCase.betaAtRadius_eq_arctan_reciprocal] [@lean:CMVBallCase.fixedRadiusL_tendsto_one] [@lean:CMVBallCase.fixedRadiusL_neg_of_N_neg] [@lean:CMVBallCase.fixedRadiusL_neg]\n\nIt follows that \\(H(c,R)/c\\) is strictly decreasing for \\(0<c<\\min(1,R)\\). If \\(\\lambda<R<1\\), continuity at \\(c=R\\) and the already proved case of equal density and radius give\n\n\\[\n\\frac{H(\\lambda,R)}\\lambda>\\frac{H(R,R)}R>0.\n\\]\n\nIf \\(R\\geq1\\), then\n\n\\[\n\\lim_{c\\uparrow1}\\frac{H(c,R)}c=0.\n\\]\n\nFor \\(R>1\\) this follows from the reciprocal angle formula. For \\(R=1\\), the bound \\(0<\\beta_c(1)\\leq\\pi/2\\) makes \\((1-c)\\beta_c(1)\\to0\\), while the remaining terms tend to zero. Strict decrease and this limit imply \\(H(\\lambda,R)/\\lambda>0\\): choose an intermediate density \\(\\lambda<c<1\\), whose ratio is nonnegative by the limit, and compare strictly with it. Together with the case \\(R\\leq\\lambda\\), this proves the fixed-radius inequality for every \\(R>0\\). [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_strictAntiOn] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_continuousAt] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_of_gt] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_at_one] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one] [@lean:CMVBallCase.fixedRadiusHalfGap_pos_of_lt_radius_lt_one] [@lean:CMVBallCase.fixedRadiusHalfGap_pos_of_one_le_radius] [@lean:CMVBallCase.fixedRadiusHalfGap_pos_of_gt] [@lean:CMVBallCase.sameRadius_typeB_gt_typeC]\n\n## Common perimeter and persistence\n\nFor \\(p>2\\lambda\\pi\\), let \\(r_{\\mathrm B}(p)\\) and \\(r_{\\mathrm C}(p)\\) be the unique positive radii satisfying\n\n\\[\nP_{\\mathrm B}(r_{\\mathrm B}(p))=p,\\qquad\nP_{\\mathrm C}(r_{\\mathrm C}(p))=p.\n\\]\n\nTo see existence, note that \\(P_{\\mathrm B}(0)=2\\lambda\\pi\\), \\(P_{\\mathrm C}(\\lambda)<2\\lambda\\pi\\), and\n\n\\[\n\\pi R<P_{\\mathrm C}(R)<P_{\\mathrm B}(R)\\qquad(R>0).\n\\]\n\nContinuity supplies the required radii, and strict monotonicity supplies uniqueness. The same-radius comparison then implies\n\n\\[\nr_{\\mathrm B}(p)<r_{\\mathrm C}(p):\n\\]\n\notherwise monotonicity of \\(P_{\\mathrm C}\\) would give \\(p\\leq P_{\\mathrm C}(r_{\\mathrm B}(p))<p\\). These inverses are used only on the genuine open common-perimeter domain. [@lean:CMVBallCase.CommonPerimeter] [@lean:CMVBallCase.typeCPerimeterAtRadius_gt_pi_mul_radius] [@lean:CMVBallCase.existsUnique_typeBRadius_at_perimeter] [@lean:CMVBallCase.existsUnique_typeCRadius_at_perimeter] [@lean:CMVBallCase.typeBRadiusAtPerimeter] [@lean:CMVBallCase.typeCRadiusAtPerimeter] [@lean:CMVBallCase.typeBRadiusAtPerimeter_lt_typeCRadiusAtPerimeter]\n\nDefine the area difference at common perimeter by\n\n\\[\nG(p)=A_{\\mathrm B}(r_{\\mathrm B}(p))\n      -A_{\\mathrm C}(r_{\\mathrm C}(p)).\n\\]\n\nThe perimeter derivatives are continuous and positive at positive radii, so the one-dimensional inverse function theorem applies locally. Using \\(A_{\\mathrm B}'=R P_{\\mathrm B}'\\) and \\(A_{\\mathrm C}'=R P_{\\mathrm C}'\\), the chain rule gives\n\n\\[\n\\frac{d}{dp}A_{\\mathrm B}(r_{\\mathrm B}(p))=r_{\\mathrm B}(p),\\qquad\n\\frac{d}{dp}A_{\\mathrm C}(r_{\\mathrm C}(p))=r_{\\mathrm C}(p).\n\\]\n\nConsequently\n\n\\[\nG'(p)=r_{\\mathrm B}(p)-r_{\\mathrm C}(p)<0.\n\\]\n\nThe mean value theorem on each compact subinterval of \\((2\\lambda\\pi,\\infty)\\) makes \\(G\\) strictly decreasing throughout that domain. This is the monotone quantity used in the proof; no monotonicity of \\(I_{\\mathrm B}-I_{\\mathrm C}\\) is assumed. [@lean:CMVBallCase.commonPerimeterAreaGap] [@lean:CMVBallCase.typeBPerimeterAtRadius_hasStrictDerivAt] [@lean:CMVBallCase.typeCPerimeterAtRadius_hasStrictDerivAt] [@lean:CMVBallCase.commonPerimeterAreaGap_local_hasDerivAt] [@lean:CMVBallCase.commonPerimeterAreaGap_strictAnti]\n\nNow suppose \\(\\lambda\\pi<v_0<v\\) and \\(I_{\\mathrm C}(v_0)\\leq I_{\\mathrm B}(v_0)\\). Put \\(p_0=I_{\\mathrm B}(v_0)\\). At this perimeter the type-(B) area is \\(v_0\\). The type-(C) radius realizing area \\(v_0\\) has perimeter at most \\(p_0\\), so monotonicity of its perimeter and area maps gives\n\n\\[\nA_{\\mathrm C}(r_{\\mathrm C}(p_0))\\geq v_0,\\qquad G(p_0)\\leq0.\n\\]\n\nBecause \\(I_{\\mathrm B}\\) is strictly increasing, \\(p=I_{\\mathrm B}(v)>p_0\\). Hence\n\n\\[\nG(p)<G(p_0)\\leq0,\\qquad\nA_{\\mathrm C}(r_{\\mathrm C}(p))>v.\n\\]\n\nThe unique type-(C) radius of area \\(v\\) is therefore strictly less than \\(r_{\\mathrm C}(p)\\); its perimeter is strictly less than \\(p=I_{\\mathrm B}(v)\\). This proves the theorem. [@lean:CMVBallCase.commonPerimeterAreaGap_at_typeBProfile_nonpos] [@lean:CMVBallCase.typeCPerimeterAtArea_lt_of_commonPerimeterAreaGap_neg] [@lean:CMVBallCase.typeC_dominance_persists]\n\n## Geometric scope\n\nThe verified result is persistence of type-(C) dominance over the faithful all-candidate type-(B)/(C) profiles. The formal argument establishes the full finite parameter domains, equality with the source formulas, existence and uniqueness at the required areas and perimeters, and the strict common-perimeter comparison. It does not itself establish existence or regularity of finite-perimeter minimizers, their connectedness, or the exhaustiveness of the geometric candidate classification. Nor does the persistence implication alone assert that a crossing exists.\n\nThe paper-level conclusion \\(v_1=v_2\\), proposed in the remark after [CMV, Theorem 3.23, p. 34], follows only when this analytic theorem is combined with the finite-perimeter existence, regularity, connectedness, and exhaustive candidate-classification premises underlying Proposition 3.22 and Theorem 3.23, together with the latter theorem's small- and large-area alternatives. Under those external premises, above \\(\\lambda\\pi\\) every minimizer is of type (B) or (C), type (B) wins near that endpoint, and type (C) wins for sufficiently large areas. The continuous candidate profiles therefore meet; at their meeting both types are optimal, and persistence excludes any later return of type (B). Thus the transition thresholds can be taken equal. These geometric-measure-theory premises and this global minimizer classification are not formalized in this package; they are distinct from the verified analytic profile theorem.\n\n## Bibliography\n\n[CMV] Antonio Cañete, Michele Miranda Jr., and Davide Vittone, *Some isoperimetric problems in planes with density*, arXiv:0906.1256v1 [math.DG], 8 June 2009. Relevant locators: Proposition 3.22, pp. 32–33; Theorem 3.23 and its following remark, pp. 34–36; candidate formulas and Figure 19, pp. 34–35.",
+  "main_markdown": "## The candidate comparison\n\nCañete, Miranda Jr., and Vittone study the planar isoperimetric problem with density\n\n\\[\nf_\\lambda(x)=\\begin{cases}\n\\lambda,&|x|\\leq 1,\\\\\n1,&|x|>1,\n\\end{cases}\n\\qquad 0<\\lambda<1.\n\\]\n\nWeighted area is the integral of this density over a region; weighted perimeter uses the same density on its boundary. In particular, an arc on the unit circle has weight \\(\\lambda\\). The relevant candidates are regions of type \\(\\mathrm B\\), bounded by an arc of the unit circle and an exterior circular arc meeting it at angle \\(\\arccos\\lambda\\), and balls of type \\(\\mathrm C\\), whose boundaries meet the unit circle orthogonally. The source classification and candidate formulas are in [CMV, Proposition 3.22, pp. 32–33, and Theorem 3.23, pp. 34–36]. We prove an analytic comparison of these two complete candidate families. Its application to arbitrary finite-perimeter minimizers requires the source-level geometric premises discussed at the end.\n\nFor a weighted area \\(v\\), let \\(\\mathcal P_{\\mathrm B}(v)\\) and \\(\\mathcal P_{\\mathrm C}(v)\\) be the sets of weighted perimeters of all admissible candidates of the indicated type having area exactly \\(v\\), and define\n\n\\[\nI_{\\mathrm B}(v)=\\inf\\mathcal P_{\\mathrm B}(v),\n\\qquad I_{\\mathrm C}(v)=\\inf\\mathcal P_{\\mathrm C}(v).\n\\]\n\nThe admissible parameter domains and formulas are specified below. On the domain \\(v>\\lambda\\pi\\) used here, both sets are nonempty singletons; thus these definitions neither select a favorable branch nor depend on the value assigned to an empty infimum. [@lean:CMVBallCase.typeBPerimeterValuesAtArea] [@lean:CMVBallCase.typeCPerimeterValuesAtArea] [@lean:CMVBallCase.typeBPerimeterAtArea] [@lean:CMVBallCase.typeCPerimeterAtArea] [@lean:CMVBallCase.exists_typeBRadius_at_area] [@lean:CMVBallCase.exists_typeCRadius_at_area] [@lean:CMVBallCase.typeBPerimeterAtArea_eq_radius] [@lean:CMVBallCase.typeCPerimeterAtArea_eq_radius]\n\n**Theorem.** Let \\(0<\\lambda<1\\) and \\(\\lambda\\pi<v_0<v\\). If\n\n\\[\nI_{\\mathrm C}(v_0)\\leq I_{\\mathrm B}(v_0),\n\\]\n\nthen\n\n\\[\nI_{\\mathrm C}(v)<I_{\\mathrm B}(v).\n\\]\n\nThus weak dominance of type \\(\\mathrm C\\) at one such area becomes strict dominance at every larger area. This is the formal persistence theorem, not an unconditional classification of isoperimetric regions. [@lean:CMVBallCase.typeC_dominance_persists]\n\n## Candidate formulas and global parameters\n\nFix \\(0<\\lambda<1\\) throughout the proof, and put\n\n\\[\na=\\arccos\\lambda,\\qquad s=\\sqrt{1-\\lambda^2},\\qquad\nS(t)=t-\\sin t\\cos t.\n\\]\n\nFor a unit circle, \\(S(t)\\) is the area of the circular segment with central angle \\(2t\\), for \\(0\\leq t\\leq\\pi\\). For type \\(\\mathrm B\\), take\n\n\\[\n0<\\beta\\leq\\pi-a,\\qquad \\alpha=\\beta+a,\\qquad\nr=\\frac{\\sin\\alpha}{\\sin\\beta}.\n\\]\n\nThe two boundary arcs have lengths \\(2r(\\pi-\\beta)\\) and \\(2\\alpha\\). The region contains the unit disk. Its Euclidean area is the sum of the two circular segments cut by their common chord; subtracting \\((1-\\lambda)\\pi\\) gives its weighted area. Consequently the formulas in [CMV, p. 34, Figure 19 on p. 35] are\n\n\\[\n\\begin{aligned}\n\\mathsf P_{\\mathrm B}(\\beta)&=2\\bigl((\\pi-\\beta)r+\\lambda\\alpha\\bigr),\\\\\n\\mathsf A_{\\mathrm B}(\\beta)&=r^2\\bigl(\\pi-\\beta+\\sin\\beta\\cos\\beta\\bigr)\n +S(\\alpha)-(1-\\lambda)\\pi.\n\\end{aligned}\n\\]\n\nThe endpoint \\(\\beta=\\pi-a\\) is retained: it has \\(r=0\\) and represents the unit disk. The endpoint \\(\\beta=0\\) printed in the source is an infinite-radius limit, not a finite candidate. [@lean:CMVBallCase.BAdmissible] [@lean:CMVBallCase.typeBAlpha] [@lean:CMVBallCase.typeBRadius] [@lean:CMVBallCase.typeBPerimeter] [@lean:CMVBallCase.typeBArea] [@lean:CMVBallCase.typeBRadius_endpoint_zero] [@lean:CMVBallCase.arcSegment]\n\nFor type \\(\\mathrm C\\), let \\(0<b<\\pi/2\\), and set \\(R=\\cot b\\). The inner and outer boundary arcs have lengths \\(2Rb\\) and \\(2R(\\pi-b)\\). Orthogonality gives an overlap with the unit disk consisting of segments of areas \\(R^2S(b)\\) and \\(S(\\pi/2-b)\\). Hence [CMV, p. 35]\n\n\\[\n\\begin{aligned}\n\\mathsf P_{\\mathrm C}(b)&=2R\\bigl(\\pi-(1-\\lambda)b\\bigr),\\\\\n\\mathsf A_{\\mathrm C}(b)&=R^2\\bigl(\\pi-(1-\\lambda)S(b)\\bigr)\n -(1-\\lambda)S(\\pi/2-b).\n\\end{aligned}\n\\]\n\nThese are exactly the source's formulas with \\(R=1/\\tan b\\). Both angular endpoints are excluded degenerations. The elementary geometric descriptions explain the formulas; the formal objects are the explicit real-valued formulas, not sets equipped with a formalized perimeter measure. [@lean:CMVBallCase.CAdmissible] [@lean:CMVBallCase.typeCRadius] [@lean:CMVBallCase.typeCPerimeter] [@lean:CMVBallCase.typeCArea]\n\nUse radius as a global parameter. The identity and inverse charts are\n\n\\[\nr=\\lambda+s\\cot\\beta,\\qquad\n\\beta_\\lambda(R)=\\frac\\pi2-\\arctan\\frac{R-\\lambda}{s},\\qquad\nb(R)=\\arctan\\frac1R.\n\\]\n\nThe first chart is a bijection between the finite type-\\(\\mathrm B\\) angle domain and \\(R\\geq0\\); the second is a bijection between \\(0<b<\\pi/2\\) and \\(R>0\\). The radius maps are strictly decreasing in their angle parameters, and the displayed inverses work on their entire domains. In particular, the type-\\(\\mathrm B\\) chart includes \\(R<\\lambda\\), where \\(\\beta_\\lambda(R)>\\pi/2\\), as well as \\(R\\geq\\lambda\\); no quadrant is discarded. [@lean:CMVBallCase.typeBRadius_eq_add_sqrt_mul_cot] [@lean:CMVBallCase.betaAtRadius] [@lean:CMVBallCase.bAtRadius] [@lean:CMVBallCase.typeBRadius_strictAntiOn] [@lean:CMVBallCase.typeCRadius_strictAntiOn] [@lean:CMVBallCase.betaAtRadius_admissible] [@lean:CMVBallCase.typeBRadius_betaAtRadius] [@lean:CMVBallCase.betaAtRadius_typeBRadius] [@lean:CMVBallCase.bAtRadius_admissible] [@lean:CMVBallCase.typeCRadius_bAtRadius] [@lean:CMVBallCase.bAtRadius_typeCRadius]\n\nWrite \\(P_{\\mathrm B}(R),A_{\\mathrm B}(R)\\) for the type-\\(\\mathrm B\\) formulas evaluated at \\(\\beta_\\lambda(R)\\), and \\(P_{\\mathrm C}(R),A_{\\mathrm C}(R)\\) for the type-\\(\\mathrm C\\) formulas evaluated at \\(b(R)\\). Thus\n\n\\[\n\\begin{aligned}\nP_{\\mathrm B}(R)&=2\\bigl((\\pi-\\beta_\\lambda(R))R+\\lambda(\\beta_\\lambda(R)+a)\\bigr),\\\\\nA_{\\mathrm B}(R)&=R^2\\bigl(\\pi-S(\\beta_\\lambda(R))\\bigr)\n +S(\\beta_\\lambda(R)+a)-(1-\\lambda)\\pi,\\\\\nP_{\\mathrm C}(R)&=2R\\bigl(\\pi-(1-\\lambda)b(R)\\bigr),\\\\\nA_{\\mathrm C}(R)&=R^2\\bigl(\\pi-(1-\\lambda)S(b(R))\\bigr)\n -(1-\\lambda)S(\\pi/2-b(R)).\n\\end{aligned}\n\\]\n\nThe radius formulas agree with the angular formulas for every admissible radius. [@lean:CMVBallCase.typeBPerimeterAtRadius] [@lean:CMVBallCase.typeBAreaAtRadius] [@lean:CMVBallCase.typeCPerimeterAtRadius] [@lean:CMVBallCase.typeCAreaAtRadius] [@lean:CMVBallCase.typeBPerimeterAtRadius_agrees] [@lean:CMVBallCase.typeBAreaAtRadius_agrees] [@lean:CMVBallCase.typeCPerimeterAtRadius_agrees] [@lean:CMVBallCase.typeCAreaAtRadius_agrees]\n\n## Area and perimeter monotonicity\n\nDifferentiation, using \\(S'(t)=2\\sin^2t\\), gives, for \\(R>0\\),\n\n\\[\n\\begin{aligned}\nP_{\\mathrm B}'(R)&=2\\bigl(\\pi-S(\\beta_\\lambda(R))\\bigr),\n& A_{\\mathrm B}'(R)&=R P_{\\mathrm B}'(R),\\\\\nP_{\\mathrm C}'(R)&=2\\bigl(\\pi-(1-\\lambda)S(b(R))\\bigr),\n& A_{\\mathrm C}'(R)&=R P_{\\mathrm C}'(R).\n\\end{aligned}\n\\]\n\nBoth perimeter derivatives are positive. Indeed, the first factor is \\(S(\\pi-\\beta_\\lambda(R))>0\\), while \\(0<S(b(R))<b(R)<\\pi/2\\) makes the second factor positive. Thus area and perimeter are strictly increasing in radius: on \\([0,\\infty)\\) for type \\(\\mathrm B\\), and on \\((0,\\infty)\\) for type \\(\\mathrm C\\). Continuity at the type-\\(\\mathrm B\\) endpoint supplies the closed endpoint assertion. [@lean:CMVBallCase.arcSegment_hasDerivAt] [@lean:CMVBallCase.arcSegment_pos] [@lean:CMVBallCase.arcSegment_lt_self] [@lean:CMVBallCase.typeBPerimeterAtRadius_hasDerivAt] [@lean:CMVBallCase.typeCPerimeterAtRadius_hasDerivAt] [@lean:CMVBallCase.typeBAreaAtRadius_hasDerivAt] [@lean:CMVBallCase.typeCAreaAtRadius_hasDerivAt] [@lean:CMVBallCase.typeB_perimeter_factor_pos] [@lean:CMVBallCase.typeC_perimeter_factor_pos] [@lean:CMVBallCase.typeBAreaAtRadius_strictMonoOn] [@lean:CMVBallCase.typeCAreaAtRadius_strictMonoOn] [@lean:CMVBallCase.typeBPerimeterAtRadius_strictMonoOn] [@lean:CMVBallCase.typeCPerimeterAtRadius_strictMonoOn]\n\nThe relevant area ranges follow without an arbitrary inverse choice. For type \\(\\mathrm B\\),\n\n\\[\nA_{\\mathrm B}(0)=\\lambda\\pi,\\qquad P_{\\mathrm B}(0)=2\\lambda\\pi,\\qquad\nA_{\\mathrm B}(R)>\\frac\\pi2R^2-\\pi\\quad(R\\geq\\lambda).\n\\]\n\nFor type \\(\\mathrm C\\), the useful bounds are\n\n\\[\n\\lambda\\pi R^2-\\frac\\pi2<A_{\\mathrm C}(R)<\\pi R^2\\quad(R>0).\n\\]\n\nIn particular, \\(A_{\\mathrm C}(\\lambda)<\\pi\\lambda^2<\\lambda\\pi\\), and its lower bound is unbounded above. The intermediate value theorem and strict monotonicity therefore give a unique positive radius of each type at every area \\(v>\\lambda\\pi\\). The inverse angle charts show that every admissible angular candidate of that area has this radius and this angle. Consequently the all-candidate perimeter sets are singletons and the infima are their actual perimeter values. Moreover, \\(I_{\\mathrm B}\\) is strictly increasing on \\((\\lambda\\pi,\\infty)\\), and \\(I_{\\mathrm B}(v)>2\\lambda\\pi\\) there. [@lean:CMVBallCase.typeBAreaAtRadius_zero] [@lean:CMVBallCase.typeBPerimeterAtRadius_zero] [@lean:CMVBallCase.typeBAreaAtRadius_large_lower] [@lean:CMVBallCase.typeCAreaAtRadius_lt_full] [@lean:CMVBallCase.typeCAreaAtRadius_large_lower] [@lean:CMVBallCase.exists_typeBRadius_at_area] [@lean:CMVBallCase.exists_typeCRadius_at_area] [@lean:CMVBallCase.typeB_values_eq_singleton] [@lean:CMVBallCase.typeC_values_eq_singleton] [@lean:CMVBallCase.typeBPerimeterAtArea_eq_radius] [@lean:CMVBallCase.typeCPerimeterAtArea_eq_radius] [@lean:CMVBallCase.typeBPerimeterAtArea_strictMonoOn] [@lean:CMVBallCase.typeBPerimeterAtArea_gt_commonEndpoint]\n\n## The fixed-radius comparison\n\nWe next prove the decisive inequality\n\n\\[\nP_{\\mathrm C}(R)<P_{\\mathrm B}(R)\\qquad(R>0).\n\\]\n\nThis is a comparison at equal radii, not at equal areas. Half the perimeter difference is\n\n\\[\nH(\\lambda,R)=(\\lambda-R)\\beta_\\lambda(R)\n +\\lambda\\arccos\\lambda+(1-\\lambda)R b(R).\n\\]\n\nFor \\(0<R\\leq\\lambda\\), the first term is nonnegative and the other two are positive, so \\(H(\\lambda,R)>0\\). [@lean:CMVBallCase.fixedRadiusHalfGap] [@lean:CMVBallCase.perimeter_gap_eq_two_mul_halfGap] [@lean:CMVBallCase.fixedRadiusHalfGap_pos_of_le]\n\nFor the remaining region \\(R>\\lambda\\), vary the density while keeping \\(R\\) fixed. For \\(0<c<1\\), define\n\n\\[\n\\begin{aligned}\nD(c,R)&=(R-c)^2+1-c^2,\\\\\nL(c,R)&=\\beta_c(R)-b(R)-\\frac{c\\sqrt{1-c^2}}{D(c,R)},\\\\\nN(c,R)&=R^3-4R^2c+2Rc^2+3R-2c.\n\\end{aligned}\n\\]\n\nHere \\(D(c,R)>0\\), and direct differentiation yields\n\n\\[\n\\frac{\\partial}{\\partial c}\\frac{H(c,R)}c=\\frac R{c^2}L(c,R),\n\\qquad\n\\frac{\\partial L}{\\partial c}(c,R)=\n-\\frac{cN(c,R)}{\\sqrt{1-c^2}D(c,R)^2}.\n\\]\n\nThe polynomial has the particularly useful derivative and diagonal value\n\n\\[\n\\frac{\\partial N}{\\partial c}(c,R)=\n-\\bigl(4(R-\\tfrac12)^2+1+4R(1-c)\\bigr)<0\n\\quad(R>0,\\ c<1),\n\\qquad N(R,R)=R(1-R^2).\n\\]\n\nThus \\(N(\\cdot,R)\\) is strictly decreasing on \\(( -\\infty,1]\\). [@lean:CMVBallCase.fixedRadiusD] [@lean:CMVBallCase.fixedRadiusL] [@lean:CMVBallCase.fixedRadiusN] [@lean:CMVBallCase.fixedRadiusD_pos] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_hasDerivAt] [@lean:CMVBallCase.fixedRadiusL_density_hasDerivAt] [@lean:CMVBallCase.fixedRadiusN_density_derivative_identity] [@lean:CMVBallCase.fixedRadiusN_density_derivative_neg] [@lean:CMVBallCase.fixedRadiusN_diagonal] [@lean:CMVBallCase.fixedRadiusN_strictAntiOn]\n\nWe claim \\(L(c,R)<0\\) for \\(0<c<\\min(1,R)\\). First, \\(L(0,R)=0\\), and \\(L(\\cdot,R)\\) is continuous at zero. If \\(N(c,R)\\geq0\\), then \\(N(t,R)>0\\) for \\(0<t<c\\). Hence \\(L\\) strictly decreases from zero on \\([0,c]\\), proving the claim, including the case \\(N(c,R)=0\\). If \\(R\\leq1\\), this case always applies, because\n\n\\[\nN(c,R)>N(R,R)=R(1-R^2)\\geq0.\n\\]\n\nIf instead \\(N(c,R)<0\\), necessarily \\(R>1\\). For every \\(c<t<1\\), we have \\(N(t,R)<0\\), so \\(L\\) is strictly increasing to its left limit at one. The reciprocal angle formula\n\n\\[\n\\beta_t(R)=\\arctan\\frac{\\sqrt{1-t^2}}{R-t}\\qquad(t<R)\n\\]\n\nshows that this limit is \\(-b(R)<0\\). Therefore \\(L(c,R)\\leq-b(R)<0\\) in this case as well. The restriction \\(c<R\\) is essential to this argument. [@lean:CMVBallCase.fixedRadiusL_zero] [@lean:CMVBallCase.fixedRadiusL_continuousAt_zero] [@lean:CMVBallCase.fixedRadiusL_neg_of_N_nonneg] [@lean:CMVBallCase.fixedRadiusN_pos_of_radius_le_one] [@lean:CMVBallCase.betaAtRadius_eq_arctan_reciprocal] [@lean:CMVBallCase.fixedRadiusL_tendsto_one] [@lean:CMVBallCase.fixedRadiusL_neg_of_N_neg] [@lean:CMVBallCase.fixedRadiusL_neg]\n\nIt follows that \\(H(c,R)/c\\) is strictly decreasing for \\(0<c<\\min(1,R)\\). If \\(\\lambda<R<1\\), continuity at \\(c=R\\) and the already proved case of equal density and radius give\n\n\\[\n\\frac{H(\\lambda,R)}\\lambda>\\frac{H(R,R)}R>0.\n\\]\n\nIf \\(R\\geq1\\), then\n\n\\[\n\\lim_{c\\uparrow1}\\frac{H(c,R)}c=0.\n\\]\n\nFor \\(R>1\\) this follows from the reciprocal angle formula. For \\(R=1\\), the bound \\(0<\\beta_c(1)\\leq\\pi/2\\) makes \\((1-c)\\beta_c(1)\\to0\\), while the remaining terms tend to zero. Strict decrease and this limit imply \\(H(\\lambda,R)/\\lambda>0\\): choose an intermediate density \\(\\lambda<c<1\\), whose ratio is nonnegative by the limit, and compare strictly with it. Together with the case \\(R\\leq\\lambda\\), this proves the fixed-radius inequality for every \\(R>0\\). [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_strictAntiOn] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_continuousAt] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_of_gt] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_at_one] [@lean:CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one] [@lean:CMVBallCase.fixedRadiusHalfGap_pos_of_lt_radius_lt_one] [@lean:CMVBallCase.fixedRadiusHalfGap_pos_of_one_le_radius] [@lean:CMVBallCase.fixedRadiusHalfGap_pos_of_gt] [@lean:CMVBallCase.sameRadius_typeB_gt_typeC]\n\n## Common perimeter and persistence\n\nFor \\(p>2\\lambda\\pi\\), let \\(r_{\\mathrm B}(p)\\) and \\(r_{\\mathrm C}(p)\\) be the unique positive radii satisfying\n\n\\[\nP_{\\mathrm B}(r_{\\mathrm B}(p))=p,\\qquad\nP_{\\mathrm C}(r_{\\mathrm C}(p))=p.\n\\]\n\nTo see existence, note that \\(P_{\\mathrm B}(0)=2\\lambda\\pi\\), \\(P_{\\mathrm C}(\\lambda)<2\\lambda\\pi\\), and\n\n\\[\n\\pi R<P_{\\mathrm C}(R)<P_{\\mathrm B}(R)\\qquad(R>0).\n\\]\n\nContinuity supplies the required radii, and strict monotonicity supplies uniqueness. The same-radius comparison then implies\n\n\\[\nr_{\\mathrm B}(p)<r_{\\mathrm C}(p):\n\\]\n\notherwise monotonicity of \\(P_{\\mathrm C}\\) would give \\(p\\leq P_{\\mathrm C}(r_{\\mathrm B}(p))<p\\). These inverses are used only on the genuine open common-perimeter domain. [@lean:CMVBallCase.CommonPerimeter] [@lean:CMVBallCase.typeCPerimeterAtRadius_gt_pi_mul_radius] [@lean:CMVBallCase.existsUnique_typeBRadius_at_perimeter] [@lean:CMVBallCase.existsUnique_typeCRadius_at_perimeter] [@lean:CMVBallCase.typeBRadiusAtPerimeter] [@lean:CMVBallCase.typeCRadiusAtPerimeter] [@lean:CMVBallCase.typeBRadiusAtPerimeter_lt_typeCRadiusAtPerimeter]\n\nDefine the area difference at common perimeter by\n\n\\[\nG(p)=A_{\\mathrm B}(r_{\\mathrm B}(p))\n      -A_{\\mathrm C}(r_{\\mathrm C}(p)).\n\\]\n\nThe perimeter derivatives are continuous and positive at positive radii, so the one-dimensional inverse function theorem applies locally. Using \\(A_{\\mathrm B}'=R P_{\\mathrm B}'\\) and \\(A_{\\mathrm C}'=R P_{\\mathrm C}'\\), the chain rule gives\n\n\\[\n\\frac{d}{dp}A_{\\mathrm B}(r_{\\mathrm B}(p))=r_{\\mathrm B}(p),\\qquad\n\\frac{d}{dp}A_{\\mathrm C}(r_{\\mathrm C}(p))=r_{\\mathrm C}(p).\n\\]\n\nConsequently\n\n\\[\nG'(p)=r_{\\mathrm B}(p)-r_{\\mathrm C}(p)<0.\n\\]\n\nThe mean value theorem on each compact subinterval of \\((2\\lambda\\pi,\\infty)\\) makes \\(G\\) strictly decreasing throughout that domain. This is the monotone quantity used in the proof; no monotonicity of \\(I_{\\mathrm B}-I_{\\mathrm C}\\) is assumed. [@lean:CMVBallCase.commonPerimeterAreaGap] [@lean:CMVBallCase.typeBPerimeterAtRadius_hasStrictDerivAt] [@lean:CMVBallCase.typeCPerimeterAtRadius_hasStrictDerivAt] [@lean:CMVBallCase.commonPerimeterAreaGap_local_hasDerivAt] [@lean:CMVBallCase.commonPerimeterAreaGap_strictAnti]\n\nNow suppose \\(\\lambda\\pi<v_0<v\\) and \\(I_{\\mathrm C}(v_0)\\leq I_{\\mathrm B}(v_0)\\). Put \\(p_0=I_{\\mathrm B}(v_0)\\). At this perimeter the type-\\(\\mathrm B\\) area is \\(v_0\\). The type-\\(\\mathrm C\\) radius realizing area \\(v_0\\) has perimeter at most \\(p_0\\), so monotonicity of its perimeter and area maps gives\n\n\\[\nA_{\\mathrm C}(r_{\\mathrm C}(p_0))\\geq v_0,\\qquad G(p_0)\\leq0.\n\\]\n\nBecause \\(I_{\\mathrm B}\\) is strictly increasing, \\(p=I_{\\mathrm B}(v)>p_0\\). Hence\n\n\\[\nG(p)<G(p_0)\\leq0,\\qquad\nA_{\\mathrm C}(r_{\\mathrm C}(p))>v.\n\\]\n\nThe unique type-\\(\\mathrm C\\) radius of area \\(v\\) is therefore strictly less than \\(r_{\\mathrm C}(p)\\); its perimeter is strictly less than \\(p=I_{\\mathrm B}(v)\\). This proves the theorem. [@lean:CMVBallCase.commonPerimeterAreaGap_at_typeBProfile_nonpos] [@lean:CMVBallCase.typeCPerimeterAtArea_lt_of_commonPerimeterAreaGap_neg] [@lean:CMVBallCase.typeC_dominance_persists]\n\n## Geometric scope\n\nThe verified result is persistence of type-\\(\\mathrm C\\) dominance over the faithful all-candidate type-\\(\\mathrm B\\)/\\(\\mathrm C\\) profiles. The formal argument establishes the full finite parameter domains, equality with the source formulas, existence and uniqueness at the required areas and perimeters, and the strict common-perimeter comparison. It does not itself establish existence or regularity of finite-perimeter minimizers, their connectedness, or the exhaustiveness of the geometric candidate classification. Nor does the persistence implication alone assert that a crossing exists.\n\nThe paper-level conclusion \\(v_1=v_2\\), proposed in the remark after [CMV, Theorem 3.23, p. 34], follows only when this analytic theorem is combined with the finite-perimeter existence, regularity, connectedness, and exhaustive candidate-classification premises underlying Proposition 3.22 and Theorem 3.23, together with the latter theorem's small- and large-area alternatives. Under those external premises, above \\(\\lambda\\pi\\) every minimizer is of type \\(\\mathrm B\\) or \\(\\mathrm C\\), type \\(\\mathrm B\\) wins near that endpoint, and type \\(\\mathrm C\\) wins for sufficiently large areas. The continuous candidate profiles therefore meet; at their meeting both types are optimal, and persistence excludes any later return of type \\(\\mathrm B\\). Thus the transition thresholds can be taken equal. These geometric-measure-theory premises and this global minimizer classification are not formalized in this package; they are distinct from the verified analytic profile theorem.\n\n## Bibliography\n\n[CMV] Antonio Cañete, Michele Miranda Jr., and Davide Vittone, *Some isoperimetric problems in planes with density*, arXiv:0906.1256v1 [math.DG], 8 June 2009. Relevant locators: Proposition 3.22, pp. 32–33; Theorem 3.23 and its following remark, pp. 34–36; candidate formulas and Figure 19, pp. 34–35.",
   "supplement_introduction": "The entries give the mathematical content of each declaration in the publication closure. Declarations classified as main support the conventional proof; supplement entries record the elementary trigonometric identities, algebra, continuity facts, and domain-transport details used to implement it. Each entry states its mathematical hypotheses and conclusion separately from the source metadata and Lean code supplied with it. There are no configured generated families and no generated declarations in this inventory, so no family representatives or computational certificate ledger are required.\n\nUse the main proof's notation: \\(S(t)=t-\\sin t\\cos t\\), \\(a=\\arccos\\lambda\\), \\(s=\\sqrt{1-\\lambda^2}\\), \\(\\beta_\\lambda(R)=\\pi/2-\\arctan((R-\\lambda)/s)\\), and \\(b(R)=\\arctan(1/R)\\). Angular area and perimeter functions are denoted by \\(\\mathsf A,\\mathsf P\\); their radius versions by \\(A,P\\); and the equal-area profiles by \\(I\\). Write \\(Q_{\\mathrm B}(R)=\\pi-S(\\beta_\\lambda(R))\\) and \\(Q_{\\mathrm C}(R)=\\pi-(1-\\lambda)S(b(R))\\). The functions \\(H,D,L,N\\), common-perimeter inverses \\(r_{\\mathrm B},r_{\\mathrm C}\\), and area difference \\(G\\) are those defined in the main proof. Density dependence is suppressed in this notation except when density is the differentiation variable.\n\nThe formulas are total real-valued expressions in the source, but their geometric interpretation is restricted to the stated admissible domains. In particular, no geometric meaning is assigned here to a totalized division at an excluded endpoint. A derivative described as strict is the two-point derivative limit used by the inverse function theorem; it is not an assertion that the derivative is strictly positive. Common-perimeter inverses are defined only for \\(p>2\\lambda\\pi\\). The auxiliary clamping operation merely realizes their area difference as an ordinary real function on a fixed upper interval. It does not change a candidate family or extend an inverse to an inadmissible perimeter. The supplement supplies analytic details, not the unformalized geometric classification discussed at the close of the main proof.",
   "classifications": [
-    {"declaration":"CMVBallCase.BAdmissible","category":"main","informal_statement":"A type-(B) angle is admissible precisely when \\(0<\\beta\\leq\\pi-\\arccos\\lambda\\).","latex_explanation":"The predicate is\n\n\\[\n0<\\beta\\quad\\text{and}\\quad\\beta\\leq\\pi-\\arccos\\lambda.\n\\]\n\nFor \\(0<\\lambda<1\\) it retains the zero-radius endpoint and excludes the infinite-radius limit \\(\\beta=0\\). The predicate itself does not impose the density hypothesis."},
-    {"declaration":"CMVBallCase.CAdmissible","category":"main","informal_statement":"A type-(C) angle is admissible precisely when \\(0<\\beta<\\pi/2\\).","latex_explanation":"The domain is the open interval\n\n\\[\n0<\\beta<\\frac\\pi2.\n\\]\n\nIts endpoints correspond to infinite and zero radius, respectively, and neither is a finite positive-radius candidate."},
-    {"declaration":"CMVBallCase.typeCRadius_pos","category":"main","informal_statement":"Every admissible type-(C) angle has positive radius.","latex_explanation":"For \\(0<\\beta<\\pi/2\\), \\(\\tan\\beta>0\\), hence \\(1/\\tan\\beta>0\\). This places every angular candidate in the positive radius chart."},
-    {"declaration":"CMVBallCase.typeCRadius_strictAntiOn","category":"main","informal_statement":"The type-(C) radius is strictly decreasing on \\((0,\\pi/2)\\).","latex_explanation":"If \\(0<\\beta<\\beta'<\\pi/2\\), then\n\n\\[\n0<\\frac1{\\tan\\beta'}<\\frac1{\\tan\\beta}.\n\\]\n\nStrict increase of tangent and positivity justify taking reciprocals."},
-    {"declaration":"CMVBallCase.typeCRadius_injective_on_admissible","category":"main","informal_statement":"Two admissible type-(C) angles with equal radii are equal.","latex_explanation":"The restriction \\(\\beta\\mapsto\\cot\\beta\\) to \\((0,\\pi/2)\\) is injective by strict decrease. Thus no second angular branch can have the same positive radius."},
-    {"declaration":"CMVBallCase.sqrt_one_sub_sq_pos","category":"supplement","informal_statement":"If \\(0<\\lambda<1\\), then \\(\\sqrt{1-\\lambda^2}>0\\).","latex_explanation":"The density hypotheses give \\(1-\\lambda^2>0\\). Taking its nonnegative square root gives a strictly positive coefficient, allowing division in the type-(B) chart."},
-    {"declaration":"CMVBallCase.sq_sqrt_one_sub_sq","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\), the square of \\(\\sqrt{1-\\lambda^2}\\) is \\(1-\\lambda^2\\).","latex_explanation":"Nonnegativity of the radicand gives the identity\n\n\\[\ns^2=1-\\lambda^2.\n\\]\n\nIt is used to simplify rational derivative formulas without changing their domains."},
-    {"declaration":"CMVBallCase.typeB_sin_pos","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and an admissible type-(B) angle \\(\\beta\\), \\(\\sin\\beta>0\\).","latex_explanation":"Since \\(0<\\arccos\\lambda\\), admissibility implies \\(0<\\beta<\\pi\\). Hence \\(\\sin\\beta>0\\), so the defining radius quotient has a nonzero denominator."},
-    {"declaration":"CMVBallCase.typeBAlpha_sin_nonneg","category":"supplement","informal_statement":"For every admissible type-(B) angle \\(\\beta\\), \\(\\sin(\\beta+\\arccos\\lambda)\\) is nonnegative, without a separate density assumption.","latex_explanation":"No separate density assumption is required: admissibility and \\(\\arccos\\lambda\\geq0\\) put \\(\\alpha=\\beta+\\arccos\\lambda\\) in \\([0,\\pi]\\). Its sine is nonnegative, including the endpoint \\(\\alpha=\\pi\\)."},
-    {"declaration":"CMVBallCase.typeBRadius_eq_add_sqrt_mul_cot","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and admissible \\(\\beta\\), the type-(B) radius equals \\(\\lambda+\\sqrt{1-\\lambda^2}\\cot\\beta\\).","latex_explanation":"Expanding \\(\\sin(\\beta+\\arccos\\lambda)\\) and dividing by the positive \\(\\sin\\beta\\) gives\n\n\\[\nr=\\lambda+s\\cot\\beta.\n\\]\n\nThis identity supplies a global inverse without a quadrant-dependent inverse tangent."},
-    {"declaration":"CMVBallCase.cot_strictAntiOn_Ioo_zero_pi","category":"supplement","informal_statement":"Cotangent is strictly decreasing on \\((0,\\pi)\\).","latex_explanation":"For \\(0<x<y<\\pi\\), \\(\\cot y<\\cot x\\). The proof uses \\(\\cot x=\\tan(\\pi/2-x)\\) and strict increase of tangent on \\((-\\pi/2,\\pi/2)\\)."},
-    {"declaration":"CMVBallCase.typeBRadius_strictAntiOn","category":"main","informal_statement":"For \\(0<\\lambda<1\\), the type-(B) radius is strictly decreasing on its whole admissible angular domain.","latex_explanation":"On \\(0<\\beta\\leq\\pi-a\\), \\(r=\\lambda+s\\cot\\beta\\) with \\(s>0\\). Strict decrease of cotangent gives strict decrease of radius, including comparisons with the zero-radius endpoint."},
-    {"declaration":"CMVBallCase.typeBRadius_injective_on_admissible","category":"main","informal_statement":"For \\(0<\\lambda<1\\), equal radii of admissible type-(B) angles imply equal angles.","latex_explanation":"Injectivity follows from strict decrease on \\((0,\\pi-a]\\). This is the uniqueness statement needed to recover every angular candidate from the global radius chart."},
-    {"declaration":"CMVBallCase.betaAtRadius","category":"main","informal_statement":"The type-(B) inverse chart is \\(\\beta_\\lambda(R)=\\pi/2-\\arctan((R-\\lambda)/\\sqrt{1-\\lambda^2})\\).","latex_explanation":"The defining formula is\n\n\\[\n\\beta_\\lambda(R)=\\frac\\pi2-\\arctan\\frac{R-\\lambda}{\\sqrt{1-\\lambda^2}}.\n\\]\n\nIt is defined for all real inputs as a total real expression. Its inverse-chart interpretation uses \\(0<\\lambda<1\\) and \\(R\\geq0\\); it covers angles on both sides of \\(\\pi/2\\)."},
-    {"declaration":"CMVBallCase.bAtRadius","category":"main","informal_statement":"The type-(C) inverse chart is \\(b(R)=\\arctan(1/R)\\).","latex_explanation":"The defining formula is\n\n\\[\nb(R)=\\arctan\\frac1R.\n\\]\n\nFor \\(R>0\\), this lies in \\((0,\\pi/2)\\) and solves \\(\\cot b=R\\). The source defines a total expression, but only positive radii are used geometrically."},
-    {"declaration":"CMVBallCase.betaAtRadius_pos","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and every real \\(R\\), \\(\\beta_\\lambda(R)>0\\).","latex_explanation":"The real arctangent is strictly below \\(\\pi/2\\), so its difference from \\(\\pi/2\\) is positive. No nonnegativity assumption on \\(R\\) is needed for this bound."},
-    {"declaration":"CMVBallCase.betaAtRadius_le_pi_div_two","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(\\lambda\\leq R\\), \\(\\beta_\\lambda(R)\\leq\\pi/2\\).","latex_explanation":"The quotient \\((R-\\lambda)/s\\) is nonnegative, hence so is its arctangent. This bound is used in the large-radius estimates and at the corner \\(R=1\\) of the density limit."},
-    {"declaration":"CMVBallCase.cot_betaAtRadius","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and all real \\(R\\), \\(\\cot\\beta_\\lambda(R)=(R-\\lambda)/\\sqrt{1-\\lambda^2}\\).","latex_explanation":"The complementary-angle identity turns the cotangent into the tangent of an arctangent, giving\n\n\\[\n\\cot\\beta_\\lambda(R)=\\frac{R-\\lambda}{\\sqrt{1-\\lambda^2}}.\n\\]\n\nThis exact identity is valid on the entire real radius expression, before imposing the geometric radius domain."},
-    {"declaration":"CMVBallCase.arctan_neg_lam_div_sqrt_eq_arccos_sub_pi_div_two","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\), \\(\\arctan(-\\lambda/\\sqrt{1-\\lambda^2})=\\arccos\\lambda-\\pi/2\\).","latex_explanation":"Both sides of\n\n\\[\n\\arctan\\frac{-\\lambda}{\\sqrt{1-\\lambda^2}}=\\arccos\\lambda-\\frac\\pi2\n\\]\n\nlie in the principal arctangent interval and have tangent \\(-\\lambda/s\\). The identity identifies the inverse chart's value at radius zero without a branch ambiguity."},
-    {"declaration":"CMVBallCase.betaAtRadius_admissible","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(\\beta_\\lambda(R)\\) is an admissible type-(B) angle.","latex_explanation":"The chart satisfies\n\n\\[\n0<\\beta_\\lambda(R)\\leq\\pi-a.\n\\]\n\nThe upper bound follows by comparing its arctangent argument with the argument at \\(R=0\\)."},
-    {"declaration":"CMVBallCase.typeBRadius_betaAtRadius","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R\\geq0\\), the radius of \\(\\beta_\\lambda(R)\\) is exactly \\(R\\).","latex_explanation":"Substitute \\(\\cot\\beta_\\lambda(R)=(R-\\lambda)/s\\) into the radius formula to obtain\n\n\\[\n\\lambda+s\\cot\\beta_\\lambda(R)=R.\n\\]\n\nPositivity of \\(s\\) legitimizes cancellation and establishes surjectivity onto all nonnegative radii."},
-    {"declaration":"CMVBallCase.typeBRadius_nonneg","category":"main","informal_statement":"For \\(0<\\lambda<1\\), every admissible type-(B) candidate has nonnegative radius.","latex_explanation":"In \\(r=\\sin\\alpha/\\sin\\beta\\), the numerator is nonnegative and the denominator positive. The zero value is allowed at the retained angular endpoint."},
-    {"declaration":"CMVBallCase.betaAtRadius_typeBRadius","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and admissible \\(\\beta\\), applying \\(\\beta_\\lambda\\) to the type-(B) radius of \\(\\beta\\) recovers \\(\\beta\\).","latex_explanation":"The original radius is nonnegative, so the inverse chart produces an admissible angle with the same radius. Injectivity of the angular radius map gives\n\n\\[\n\\beta_\\lambda\\!\\left(\\frac{\\sin(\\beta+a)}{\\sin\\beta}\\right)=\\beta.\n\\]"},
-    {"declaration":"CMVBallCase.betaAtRadius_zero","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(\\beta_\\lambda(0)=\\pi-\\arccos\\lambda\\).","latex_explanation":"The zero-radius chart value is\n\n\\[\n\\beta_\\lambda(0)=\\pi-\\arccos\\lambda.\n\\]\n\nThis is the actual type-(B) angular endpoint, not an arbitrary value chosen to define an inverse outside its range."},
-    {"declaration":"CMVBallCase.typeBRadius_endpoint_zero","category":"main","informal_statement":"For every real \\(\\lambda\\), the type-(B) radius formula at \\(\\beta=\\pi-\\arccos\\lambda\\) equals zero.","latex_explanation":"At this input \\(\\alpha=\\pi\\), so the defining quotient evaluates to\n\n\\[\n\\frac{\\sin((\\pi-\\arccos\\lambda)+\\arccos\\lambda)}{\\sin(\\pi-\\arccos\\lambda)}=0.\n\\]\n\nThe identity holds for the total real expression; its geometric interpretation is used only for \\(0<\\lambda<1\\)."},
-    {"declaration":"CMVBallCase.bAtRadius_admissible","category":"main","informal_statement":"Every positive radius \\(R\\) gives an admissible type-(C) angle \\(b(R)\\).","latex_explanation":"For \\(R>0\\), \\(1/R>0\\), so\n\n\\[\n0<b(R)=\\arctan(1/R)<\\frac\\pi2.\n\\]\n\nThis supplies the angular representative of every positive radius."},
-    {"declaration":"CMVBallCase.typeCRadius_bAtRadius","category":"main","informal_statement":"For \\(R>0\\), the type-(C) radius of \\(b(R)\\) equals \\(R\\).","latex_explanation":"The identity \\(\\tan(\\arctan(1/R))=1/R\\), followed by reciprocal cancellation, proves\n\n\\[\n\\cot b(R)=R.\n\\]\n\nPositivity excludes division at zero."},
-    {"declaration":"CMVBallCase.bAtRadius_typeCRadius","category":"main","informal_statement":"For every admissible type-(C) angle \\(\\beta\\), applying \\(b\\) to its radius recovers \\(\\beta\\).","latex_explanation":"The radius is positive, and the reconstructed angle is admissible with the same radius. Injectivity of cotangent on \\((0,\\pi/2)\\) proves\n\n\\[\nb(1/\\tan\\beta)=\\beta.\n\\]"},
-    {"declaration":"CMVBallCase.typeBPerimeterAtRadius","category":"main","informal_statement":"The radius-coordinate type-(B) perimeter is \\(2((\\pi-\\beta_\\lambda(R))R+\\lambda(\\beta_\\lambda(R)+\\arccos\\lambda))\\).","latex_explanation":"The definition is\n\n\\[\nP_{\\mathrm{B}}(R)=2\\bigl((\\pi-\\beta_\\lambda(R))R+\\lambda(\\beta_\\lambda(R)+\\arccos\\lambda)\\bigr).\n\\]\n\nIt weights the exterior arc by one and the unit-circle arc by \\(\\lambda\\); equality with the angular perimeter is proved for \\(0<\\lambda<1\\), \\(R\\geq0\\)."},
-    {"declaration":"CMVBallCase.typeBAreaAtRadius","category":"main","informal_statement":"The radius-coordinate type-(B) area is \\(R^2(\\pi-S(\\beta_\\lambda(R)))+S(\\beta_\\lambda(R)+\\arccos\\lambda)-(1-\\lambda)\\pi\\).","latex_explanation":"With \\(S(t)=t-\\sin t\\cos t\\), the definition is\n\n\\[\nA_{\\mathrm{B}}(R)=R^2\\bigl(\\pi-S(\\beta_\\lambda(R))\\bigr)+S(\\beta_\\lambda(R)+\\arccos\\lambda)-(1-\\lambda)\\pi.\n\\]\n\nThe final subtraction accounts for the density deficit on the entire unit disk contained in the candidate."},
-    {"declaration":"CMVBallCase.typeCPerimeterAtRadius","category":"main","informal_statement":"The radius-coordinate type-(C) perimeter is \\(2R(\\pi-(1-\\lambda)b(R))\\).","latex_explanation":"The definition is\n\n\\[\nP_{\\mathrm{C}}(R)=2R\\bigl(\\pi-(1-\\lambda)b(R)\\bigr).\n\\]\n\nStarting with circumference \\(2\\pi R\\), the expression subtracts \\((1-\\lambda)\\) times the inner arc length \\(2Rb(R)\\)."},
-    {"declaration":"CMVBallCase.typeCAreaAtRadius","category":"main","informal_statement":"The radius-coordinate type-(C) area is \\(R^2(\\pi-(1-\\lambda)S(b(R)))-(1-\\lambda)S(\\pi/2-b(R))\\).","latex_explanation":"The definition is\n\n\\[\nA_{\\mathrm{C}}(R)=R^2\\bigl(\\pi-(1-\\lambda)S(b(R))\\bigr)-(1-\\lambda)S(\\pi/2-b(R)).\n\\]\n\nThe overlap lens has area \\(R^2S(b(R))+S(\\pi/2-b(R))\\); subtracting its density deficit from \\(\\pi R^2\\) yields the formula."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtRadius_agrees","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(P_{\\mathrm{B}}(R)\\) equals the angular type-(B) perimeter at \\(\\beta_\\lambda(R)\\).","latex_explanation":"Substituting the exact radius inverse gives\n\n\\[\nP_{\\mathrm{B}}(R)=\\mathsf P_{\\mathrm{B}}(\\beta_\\lambda(R)).\n\\]\n\nThe equality includes the zero-radius endpoint."},
-    {"declaration":"CMVBallCase.typeBAreaAtRadius_agrees","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(A_{\\mathrm{B}}(R)\\) equals the angular type-(B) area at \\(\\beta_\\lambda(R)\\).","latex_explanation":"Substitution gives\n\n\\[\nA_{\\mathrm{B}}(R)=\\mathsf A_{\\mathrm{B}}(\\beta_\\lambda(R)),\n\\]\n\nwith exactly the same density correction. Thus radius coordinates do not change the area constraint."},
-    {"declaration":"CMVBallCase.typeCPerimeterAtRadius_agrees","category":"main","informal_statement":"For every real \\(\\lambda\\) and \\(R>0\\), \\(P_{\\mathrm{C}}(R)\\) equals the angular type-(C) perimeter at \\(b(R)\\).","latex_explanation":"Using \\(1/\\tan b(R)=R\\) gives\n\n\\[\nP_{\\mathrm{C}}(R)=\\mathsf P_{\\mathrm{C}}(b(R)).\n\\]\n\nThe algebraic equality does not require an admissible density."},
-    {"declaration":"CMVBallCase.typeCAreaAtRadius_agrees","category":"main","informal_statement":"For every real \\(\\lambda\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)\\) equals the angular type-(C) area at \\(b(R)\\).","latex_explanation":"The inverse-chart identity replaces \\(1/\\tan^2 b(R)\\) by \\(R^2\\), giving\n\n\\[\nA_{\\mathrm{C}}(R)=\\mathsf A_{\\mathrm{C}}(b(R)).\n\\]\n\nThe equality is exact for all \\(\\lambda\\), although only \\(0<\\lambda<1\\) is used geometrically."},
-    {"declaration":"CMVBallCase.betaAtRadius_hasDerivAt","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and every real \\(R\\), \\(\\beta_\\lambda\\) has derivative \\(-s/((R-\\lambda)^2+s^2)\\) at \\(R\\).","latex_explanation":"Differentiate \\(\\pi/2-\\arctan((R-\\lambda)/s)\\), holding \\(\\lambda\\) fixed, to obtain\n\n\\[\n\\beta_\\lambda'(R)=-\\frac{s}{(R-\\lambda)^2+s^2}.\n\\]\n\nSince \\(s>0\\), the denominator never vanishes."},
-    {"declaration":"CMVBallCase.bAtRadius_hasDerivAt","category":"supplement","informal_statement":"At each nonzero real \\(R\\), \\(b\\) has derivative \\(-1/(1+R^2)\\).","latex_explanation":"The chain rule for \\(\\arctan(1/R)\\) gives\n\n\\[\nb'(R)=-\\frac1{1+R^2}.\n\\]\n\nThe hypothesis is \\(R\\ne0\\), not merely positive radius, because the total expression is also differentiable at negative radii."},
-    {"declaration":"CMVBallCase.sin_betaAtRadius_mul_cos","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and all real \\(R\\), \\(\\sin\\beta_\\lambda(R)\\cos\\beta_\\lambda(R)=(R-\\lambda)s/((R-\\lambda)^2+s^2)\\).","latex_explanation":"Complementary-angle and arctangent identities give\n\n\\[\n\\sin\\beta_\\lambda(R)\\cos\\beta_\\lambda(R)=\\frac{(R-\\lambda)s}{(R-\\lambda)^2+s^2}.\n\\]\n\nThis rational expression supplies the cancellation in the type-(B) perimeter derivative."},
-    {"declaration":"CMVBallCase.sin_bAtRadius_mul_cos","category":"supplement","informal_statement":"For every nonzero real \\(R\\), \\(\\sin b(R)\\cos b(R)=R/(1+R^2)\\).","latex_explanation":"The sine and cosine formulas for \\(\\arctan(1/R)\\) have a common square-root denominator. Multiplying and simplifying gives\n\n\\[\n\\sin b(R)\\cos b(R)=\\frac{R}{1+R^2},\n\\]\n\nfor either sign of nonzero \\(R\\)."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtRadius_hasDerivAt","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and every real \\(R\\), \\(P_{\\mathrm{B}}\\) has derivative \\(2Q_{\\mathrm{B}}(R)\\) at \\(R\\).","latex_explanation":"Here \\(Q_{\\mathrm{B}}(R)=\\pi-\\beta_\\lambda(R)+\\sin\\beta_\\lambda(R)\\cos\\beta_\\lambda(R)\\). Differentiating the perimeter and substituting the chart derivative gives\n\n\\[\nP_{\\mathrm{B}}'(R)=2Q_{\\mathrm{B}}(R).\n\\]"},
-    {"declaration":"CMVBallCase.typeCPerimeterAtRadius_hasDerivAt","category":"main","informal_statement":"For every real \\(\\lambda\\) and \\(R>0\\), \\(P_{\\mathrm{C}}\\) has derivative \\(2Q_{\\mathrm{C}}(R)\\) at \\(R\\).","latex_explanation":"The derivative identity is\n\n\\[\nP_{\\mathrm{C}}'(R)=2Q_{\\mathrm{C}}(R)=2\\bigl[\\pi-(1-\\lambda)(b(R)-\\sin b(R)\\cos b(R))\\bigr].\n\\]\n\nIt is a derivative formula for arbitrary density; positivity is asserted separately under \\(0<\\lambda<1\\)."},
-    {"declaration":"CMVBallCase.arcSegment","category":"main","informal_statement":"\\(S(x)\\) is defined as \\(x-\\sin x\\cos x\\).","latex_explanation":"The definition is\n\n\\[\nS(x)=x-\\sin x\\cos x.\n\\]\n\nFor \\(0\\leq x\\leq\\pi\\), this is the unit-radius segment area with central angle \\(2x\\): sector area \\(x\\) minus signed triangle area \\(\\sin x\\cos x\\). It is not twice that segment area."},
-    {"declaration":"CMVBallCase.arcSegment_hasDerivAt","category":"main","informal_statement":"If \\(f\\) has derivative \\(f'\\) at \\(x\\), then \\(S\\circ f\\) has derivative \\(2\\sin^2(f(x))f'\\) there.","latex_explanation":"Differentiate \\(S(t)=t-\\sin t\\cos t\\) and apply the chain rule to obtain\n\n\\[\nS'(t)=2\\sin^2t,\\qquad (S\\circ f)'(x)=2\\sin^2(f(x))f'.\n\\]\n\nNo angular-domain restriction is required."},
-    {"declaration":"CMVBallCase.sin_typeBAlpha_betaAtRadius","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(\\sin(\\beta_\\lambda(R)+\\arccos\\lambda)=R\\sin\\beta_\\lambda(R)\\).","latex_explanation":"Multiply the defining radius equation by its nonzero denominator to obtain\n\n\\[\n\\sin(\\beta_\\lambda(R)+a)=R\\sin\\beta_\\lambda(R).\n\\]\n\nThis cancels the angular terms in the area derivative."},
-    {"declaration":"CMVBallCase.cos_bAtRadius_eq_radius_mul_sin","category":"supplement","informal_statement":"For \\(R>0\\), \\(\\cos b(R)=R\\sin b(R)\\).","latex_explanation":"The inverse equation \\(\\cot b(R)=R\\) and positive sine give\n\n\\[\n\\cos b(R)=R\\sin b(R).\n\\]\n\nIts square identifies the two segment contributions in the derivative of the overlap area."},
-    {"declaration":"CMVBallCase.typeBAreaAtRadius_hasDerivAt","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{B}}\\) has derivative \\(2R Q_{\\mathrm{B}}(R)\\) at \\(R\\).","latex_explanation":"After differentiating the two segment terms, \\(\\sin(\\beta_\\lambda(R)+a)=R\\sin\\beta_\\lambda(R)\\) cancels their angular derivatives. Thus\n\n\\[\nA_{\\mathrm{B}}'(R)=2R Q_{\\mathrm{B}}(R)=R P_{\\mathrm{B}}'(R).\n\\]"},
-    {"declaration":"CMVBallCase.typeCAreaAtRadius_hasDerivAt","category":"main","informal_statement":"For every real \\(\\lambda\\) and \\(R>0\\), \\(A_{\\mathrm{C}}\\) has derivative \\(2R Q_{\\mathrm{C}}(R)\\) at \\(R\\).","latex_explanation":"The relation \\(\\cos b(R)=R\\sin b(R)\\) cancels the derivatives of the two overlap segments. The remaining expression is\n\n\\[\nA_{\\mathrm{C}}'(R)=2R Q_{\\mathrm{C}}(R)=R P_{\\mathrm{C}}'(R),\n\\]\n\nwithout a density restriction."},
-    {"declaration":"CMVBallCase.arcSegment_pos","category":"main","informal_statement":"\\(S(x)>0\\) whenever \\(0<x<\\pi\\).","latex_explanation":"If \\(\\cos x\\leq0\\), then \\(S(x)\\geq x>0\\). Otherwise \\(\\sin x\\cos x\\leq\\sin x<x\\). These cases cover the full interval, not only acute angles."},
-    {"declaration":"CMVBallCase.typeB_perimeter_factor_pos","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R>0\\), \\(Q_{\\mathrm{B}}(R)>0\\).","latex_explanation":"The factor has the form\n\n\\[\nQ_{\\mathrm{B}}(R)=S(\\pi-\\beta_\\lambda(R))>0.\n\\]\n\nThe complementary angle lies in \\((0,\\pi)\\), so segment positivity proves the strict sign."},
-    {"declaration":"CMVBallCase.typeC_perimeter_factor_pos","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R>0\\), \\(Q_{\\mathrm{C}}(R)>0\\).","latex_explanation":"Since \\(0<S(b(R))<b(R)<\\pi/2\\) and \\(0<1-\\lambda<1\\), the factor satisfies\n\n\\[\nQ_{\\mathrm{C}}(R)=\\pi-(1-\\lambda)S(b(R))>0.\n\\]"},
-    {"declaration":"CMVBallCase.typeBAreaAtRadius_deriv_pos","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R>0\\), the derivative of \\(A_{\\mathrm{B}}\\) at \\(R\\) is positive.","latex_explanation":"The derivative \\(2R Q_{\\mathrm{B}}(R)\\) is a product of positive factors. This establishes strict area growth away from the zero-radius endpoint."},
-    {"declaration":"CMVBallCase.typeCAreaAtRadius_deriv_pos","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R>0\\), the derivative of \\(A_{\\mathrm{C}}\\) at \\(R\\) is positive.","latex_explanation":"The identity \\(A_{\\mathrm{C}}'(R)=2R Q_{\\mathrm{C}}(R)\\) and the factor positivity prove the result. It excludes multiple positive radii of the same area."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtRadius_deriv_pos","category":"main","informal_statement":"For \\(0<\\lambda<1\\), every positive \\(R\\) satisfies \\(P_{\\mathrm{B}}'(R)>0\\).","latex_explanation":"The derivative equals \\(2Q_{\\mathrm{B}}(R)>0\\). Its nonvanishing is also the hypothesis required for the local inverse function theorem."},
-    {"declaration":"CMVBallCase.typeCPerimeterAtRadius_deriv_pos","category":"main","informal_statement":"For \\(0<\\lambda<1\\), every positive \\(R\\) satisfies \\(P_{\\mathrm{C}}'(R)>0\\).","latex_explanation":"The derivative equals \\(2Q_{\\mathrm{C}}(R)>0\\). This proves perimeter monotonicity and permits inversion at each genuine common perimeter."},
-    {"declaration":"CMVBallCase.typeBAreaAtRadius_continuous","category":"main","informal_statement":"For every real \\(\\lambda\\), the total function \\(R\\mapsto A_{\\mathrm{B}}(R)\\) is continuous on the real line.","latex_explanation":"For fixed \\(\\lambda\\), the denominator \\(\\sqrt{1-\\lambda^2}\\) is a constant in the total real expression. Continuity of arctangent, trigonometric functions, and algebraic operations proves global continuity, including \\(R=0\\)."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtRadius_continuous","category":"main","informal_statement":"For every real \\(\\lambda\\), the total function \\(R\\mapsto P_{\\mathrm{B}}(R)\\) is continuous on the real line.","latex_explanation":"The perimeter is formed from the continuous radius angle \\(\\beta_\\lambda\\) and polynomial operations in \\(R\\). The result supplies continuity at the retained type-(B) endpoint."},
-    {"declaration":"CMVBallCase.typeCAreaAtRadius_continuousOn","category":"main","informal_statement":"For every real \\(\\lambda\\), \\(A_{\\mathrm{C}}\\) is continuous on \\((0,\\infty)\\).","latex_explanation":"The derivative formula at each \\(R>0\\) implies continuity there. No claim about the value of the totalized expression at \\(R=0\\) is made."},
-    {"declaration":"CMVBallCase.typeCPerimeterAtRadius_continuousOn","category":"main","informal_statement":"For every real \\(\\lambda\\), \\(P_{\\mathrm{C}}\\) is continuous on \\((0,\\infty)\\).","latex_explanation":"Differentiability at positive radii gives continuity on the geometric radius domain. This is enough for intermediate-value arguments on compact positive-radius intervals."},
-    {"declaration":"CMVBallCase.typeBAreaAtRadius_strictMonoOn","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(A_{\\mathrm{B}}\\) is strictly increasing on \\([0,\\infty)\\).","latex_explanation":"Positive derivative on \\((0,\\infty)\\), together with continuity at zero, gives strict increase on the closed half-line by the mean value theorem. Thus even the retained endpoint introduces no area branch."},
-    {"declaration":"CMVBallCase.typeCAreaAtRadius_strictMonoOn","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(A_{\\mathrm{C}}\\) is strictly increasing on \\((0,\\infty)\\).","latex_explanation":"The positive derivative and continuity imply \\(A_{\\mathrm{C}}(R)<A_{\\mathrm{C}}(T)\\) whenever \\(0<R<T\\). The result is restricted to the genuine positive-radius chart."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtRadius_strictMonoOn","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(P_{\\mathrm{B}}\\) is strictly increasing on \\([0,\\infty)\\).","latex_explanation":"Continuity and positivity of the derivative in the interior yield strict increase, including comparisons with \\(P_{\\mathrm{B}}(0)=2\\lambda\\pi\\). This makes the common-perimeter inverse unique."},
-    {"declaration":"CMVBallCase.typeCPerimeterAtRadius_strictMonoOn","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(P_{\\mathrm{C}}\\) is strictly increasing on \\((0,\\infty)\\).","latex_explanation":"The mean value theorem applied between any two positive radii gives strict increase. This transports perimeter inequalities to radius inequalities and conversely."},
-    {"declaration":"CMVBallCase.typeBAreaAtRadius_zero","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(A_{\\mathrm{B}}(0)=\\lambda\\pi\\).","latex_explanation":"At radius zero, \\(\\beta_\\lambda(0)+a=\\pi\\). The radius term vanishes and the remaining area is\n\n\\[\nA_{\\mathrm{B}}(0)=S(\\pi)-(1-\\lambda)\\pi=\\lambda\\pi.\n\\]"},
-    {"declaration":"CMVBallCase.typeBPerimeterAtRadius_zero","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(P_{\\mathrm{B}}(0)=2\\lambda\\pi\\).","latex_explanation":"Only the weighted unit-circle arc remains at the type-(B) endpoint. Its angle is \\(2\\pi\\), hence its weighted length is\n\n\\[\nP_{\\mathrm{B}}(0)=2\\lambda\\pi.\n\\]"},
-    {"declaration":"CMVBallCase.arcSegment_lt_self","category":"main","informal_statement":"If \\(0<x<\\pi/2\\), then \\(S(x)<x\\).","latex_explanation":"Both sine and cosine are positive on this interval. Thus subtracting \\(\\sin x\\cos x\\) from \\(x\\) gives a strictly smaller value, as required in the type-(C) estimates."},
-    {"declaration":"CMVBallCase.arcSegment_nonneg","category":"supplement","informal_statement":"\\(S(x)\\geq0\\) for \\(0\\leq x\\leq\\pi\\).","latex_explanation":"Interior positivity combines with \\(S(0)=0\\) and \\(S(\\pi)=\\pi\\). This closed-interval version allows the type-(B) area estimate to include its segment endpoint."},
-    {"declaration":"CMVBallCase.typeBAreaAtRadius_large_lower","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R\\geq\\lambda\\), \\(A_{\\mathrm{B}}(R)>(\\pi/2)R^2-\\pi\\).","latex_explanation":"Here \\(\\beta_\\lambda(R)\\leq\\pi/2\\), so \\(\\pi-S(\\beta_\\lambda(R))\\geq\\pi/2\\); the other segment area is nonnegative. The density correction is strictly less than \\(\\pi\\), giving\n\n\\[\nA_{\\mathrm{B}}(R)>\\frac\\pi2R^2-\\pi.\n\\]\n\nThe bound proves unbounded growth."},
-    {"declaration":"CMVBallCase.typeCAreaAtRadius_lt_full","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)<\\pi R^2\\).","latex_explanation":"The weighted area subtracts \\((1-\\lambda)\\) times two strictly positive overlap-segment areas from the full disk area. Therefore\n\n\\[\nA_{\\mathrm{C}}(R)<\\pi R^2.\n\\]\n\nAt \\(R=\\lambda\\), this places \\(A_{\\mathrm{C}}(\\lambda)\\) below \\(\\lambda\\pi\\)."},
-    {"declaration":"CMVBallCase.typeCAreaAtRadius_large_lower","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)>\\lambda\\pi R^2-\\pi/2\\).","latex_explanation":"Both overlap angles lie in \\((0,\\pi/2)\\), with segment areas smaller than their angles. The coefficient of \\(R^2\\) is greater than \\(\\lambda\\pi\\), and the final subtracted term is less than \\(\\pi/2\\). Hence\n\n\\[\nA_{\\mathrm{C}}(R)>\\lambda\\pi R^2-\\frac\\pi2.\n\\]"},
-    {"declaration":"CMVBallCase.exists_typeBRadius_at_area","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), some \\(R>0\\) satisfies \\(A_{\\mathrm{B}}(R)=v\\).","latex_explanation":"The area starts at \\(\\lambda\\pi\\), is continuous, and exceeds every prescribed value at sufficiently large radius. The intermediate value theorem gives a radius, and the strict area inequality excludes zero."},
-    {"declaration":"CMVBallCase.exists_typeCRadius_at_area","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), some \\(R>0\\) satisfies \\(A_{\\mathrm{C}}(R)=v\\).","latex_explanation":"Use the lower comparison\n\n\\[\nA_{\\mathrm{C}}(\\lambda)<\\pi\\lambda^2<\\lambda\\pi<v\n\\]\n\nand the quadratic lower bound at a large positive radius. Continuity between these radii gives the required candidate without evaluating the formula at zero."},
-    {"declaration":"CMVBallCase.typeBPerimeterValuesAtArea","category":"main","informal_statement":"This is the set of all type-(B) perimeter values from admissible angles of area exactly \\(v\\).","latex_explanation":"Precisely,\n\n\\[\n\\mathcal P_{\\mathrm{B}}(v)=\\{p:\\exists\\beta,\\ 0<\\beta\\leq\\pi-a,\\ \\mathsf A_{\\mathrm{B}}(\\beta)=v,\\ \\mathsf P_{\\mathrm{B}}(\\beta)=p\\}.\n\\]\n\nNo minimizing branch or perimeter ordering is built into this definition."},
-    {"declaration":"CMVBallCase.typeCPerimeterValuesAtArea","category":"main","informal_statement":"This is the set of all type-(C) perimeter values from admissible angles of area exactly \\(v\\).","latex_explanation":"Precisely,\n\n\\[\n\\mathcal P_{\\mathrm{C}}(v)=\\{p:\\exists b,\\ 0<b<\\pi/2,\\ \\mathsf A_{\\mathrm{C}}(b)=v,\\ \\mathsf P_{\\mathrm{C}}(b)=p\\}.\n\\]\n\nEvery angle in the complete finite domain is quantified."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtArea","category":"main","informal_statement":"The equal-area type-(B) profile is the real infimum of its all-candidate perimeter set.","latex_explanation":"The definition is\n\n\\[\nI_{\\mathrm{B}}(v)=\\inf\\mathcal P_{\\mathrm{B}}(v),\n\\]\n\nimplemented by the total real infimum operation. On \\(0<\\lambda<1\\), \\(v>\\lambda\\pi\\), the set is proved to be a nonempty singleton, so no empty-set convention affects the theorem."},
-    {"declaration":"CMVBallCase.typeCPerimeterAtArea","category":"main","informal_statement":"The equal-area type-(C) profile is the real infimum of its all-candidate perimeter set.","latex_explanation":"The definition is\n\n\\[\nI_{\\mathrm{C}}(v)=\\inf\\mathcal P_{\\mathrm{C}}(v).\n\\]\n\nThe proof identifies this infimum with an actual candidate perimeter throughout the theorem's area domain, rather than relying on a totalized default."},
-    {"declaration":"CMVBallCase.typeBPerimeter_mem_values","category":"supplement","informal_statement":"An admissible type-(B) angle of area \\(v\\) contributes its perimeter to the type-(B) value set at \\(v\\).","latex_explanation":"If \\(\\beta\\) is admissible and \\(\\mathsf A_{\\mathrm B}(\\beta)=v\\), then \\(\\mathsf P_{\\mathrm B}(\\beta)\\in\\mathcal P_{\\mathrm B}(v)\\). This is the direct existential witness, with no density assumption."},
-    {"declaration":"CMVBallCase.typeCPerimeter_mem_values","category":"supplement","informal_statement":"An admissible type-(C) angle of area \\(v\\) contributes its perimeter to the type-(C) value set at \\(v\\).","latex_explanation":"If \\(0<b<\\pi/2\\) and \\(\\mathsf A_{\\mathrm C}(b)=v\\), the angle \\(b\\) witnesses \\(\\mathsf P_{\\mathrm C}(b)\\in\\mathcal P_{\\mathrm C}(v)\\). No uniqueness hypothesis is used here."},
-    {"declaration":"CMVBallCase.typeB_values_eq_singleton","category":"main","informal_statement":"If \\(\\beta\\) is the unique admissible type-(B) angle of area \\(v\\), its perimeter is the sole element of the value set.","latex_explanation":"Assume admissibility, \\(\\mathsf A_{\\mathrm{B}}(\\beta)=v\\), and that every admissible angle of that area equals \\(\\beta\\). Then\n\n\\[\n\\mathcal P_{\\mathrm{B}}(v)=\\{\\mathsf P_{\\mathrm{B}}(\\beta)\\}.\n\\]\n\nThe lemma takes uniqueness as a hypothesis; the radius argument supplies it in the application."},
-    {"declaration":"CMVBallCase.typeC_values_eq_singleton","category":"main","informal_statement":"If \\(b\\) is the unique admissible type-(C) angle of area \\(v\\), its perimeter is the sole element of the value set.","latex_explanation":"Given admissibility, the area equation, and uniqueness among all admissible angles of that area,\n\n\\[\n\\mathcal P_{\\mathrm{C}}(v)=\\{\\mathsf P_{\\mathrm{C}}(b)\\}.\n\\]\n\nThis is a conditional set identity, not an independent existence theorem."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtArea_eq","category":"main","informal_statement":"If \\(\\beta\\) is the unique admissible type-(B) angle of area \\(v\\), then \\(I_{\\mathrm{B}}(v)=\\mathsf P_{\\mathrm{B}}(\\beta)\\).","latex_explanation":"Under the admissibility, area, and angular uniqueness hypotheses, the value set is a singleton. Its real infimum is its sole element, proving\n\n\\[\nI_{\\mathrm{B}}(v)=\\mathsf P_{\\mathrm{B}}(\\beta).\n\\]"},
-    {"declaration":"CMVBallCase.typeCPerimeterAtArea_eq","category":"main","informal_statement":"If \\(b\\) is the unique admissible type-(C) angle of area \\(v\\), then \\(I_{\\mathrm{C}}(v)=\\mathsf P_{\\mathrm{C}}(b)\\).","latex_explanation":"The specified candidate and uniqueness hypotheses identify \\(\\mathcal P_{\\mathrm{C}}(v)\\) with its perimeter singleton. Taking the infimum gives\n\n\\[\nI_{\\mathrm{C}}(v)=\\mathsf P_{\\mathrm{C}}(b),\n\\]\n\nwithout a branch choice."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtArea_eq_radius","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(R>0\\), and \\(A_{\\mathrm{B}}(R)=v\\), the all-candidate profile satisfies \\(I_{\\mathrm{B}}(v)=P_{\\mathrm{B}}(R)\\).","latex_explanation":"Any admissible angle of area \\(v\\) has a nonnegative radius; strict area monotonicity forces that radius to be \\(R\\), and angular injectivity forces the angle to be \\(\\beta_\\lambda(R)\\). The infimum is therefore this genuine perimeter:\n\n\\[\nI_{\\mathrm{B}}(v)=P_{\\mathrm{B}}(R).\n\\]"},
-    {"declaration":"CMVBallCase.typeCPerimeterAtArea_eq_radius","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(R>0\\), and \\(A_{\\mathrm{C}}(R)=v\\), the all-candidate profile satisfies \\(I_{\\mathrm{C}}(v)=P_{\\mathrm{C}}(R)\\).","latex_explanation":"Every admissible type-(C) angle has positive radius. Strict area monotonicity and the inverse chart make the candidate of area \\(v\\) unique, so its perimeter is the infimum over all candidates:\n\n\\[\nI_{\\mathrm{C}}(v)=P_{\\mathrm{C}}(R).\n\\]"},
-    {"declaration":"CMVBallCase.typeBPerimeterAtArea_strictMonoOn","category":"main","informal_statement":"For \\(0<\\lambda<1\\), \\(I_{\\mathrm{B}}\\) is strictly increasing on \\((\\lambda\\pi,\\infty)\\).","latex_explanation":"If \\(\\lambda\\pi<v<w\\), the unique area radii satisfy \\(R_v<R_w\\) by strict area increase. Strict perimeter increase and the profile evaluation identities give\n\n\\[\nI_{\\mathrm{B}}(v)<I_{\\mathrm{B}}(w).\n\\]"},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap","category":"main","informal_statement":"\\(H(\\lambda,R)\\) is \\((\\lambda-R)\\beta_\\lambda(R)+\\lambda\\arccos\\lambda+(1-\\lambda)R b(R)\\).","latex_explanation":"The defining expression is\n\n\\[\nH(\\lambda,R)=(\\lambda-R)\\beta_\\lambda(R)+\\lambda\\arccos\\lambda+(1-\\lambda)R b(R).\n\\]\n\nThis total expression is half the difference of the two radius-coordinate perimeters. Its sign is proved by a direct argument for \\(R\\leq\\lambda\\) and by density differentiation for \\(R>\\lambda\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusD","category":"main","informal_statement":"\\(D(\\lambda,R)\\) is \\((R-\\lambda)^2+(1-\\lambda^2)\\).","latex_explanation":"The defining and expanded expressions are\n\n\\[\nD(\\lambda,R)=(R-\\lambda)^2+1-\\lambda^2=R^2-2R\\lambda+1.\n\\]\n\nThe sum-of-squares form shows it is positive for \\(0<\\lambda<1\\), and the expanded form makes its density derivative simple."},
-    {"declaration":"CMVBallCase.fixedRadiusL","category":"main","informal_statement":"\\(L(\\lambda,R)\\) is \\(\\beta_\\lambda(R)-b(R)-\\lambda\\sqrt{1-\\lambda^2}/D(\\lambda,R)\\).","latex_explanation":"The definition is\n\n\\[\nL(\\lambda,R)=\\beta_\\lambda(R)-b(R)-\\frac{\\lambda\\sqrt{1-\\lambda^2}}{D(\\lambda,R)}.\n\\]\n\nThis is the derivative factor in \\(\\partial_\\lambda(H/\\lambda)=R L/\\lambda^2\\). The sign needed in the proof is established only for \\(0<\\lambda<1\\) and \\(R>\\lambda\\), not for all positive radii."},
-    {"declaration":"CMVBallCase.fixedRadiusN","category":"main","informal_statement":"\\(N(\\lambda,R)\\) is \\(R^3-4R^2\\lambda+2R\\lambda^2+3R-2\\lambda\\).","latex_explanation":"The polynomial is defined by\n\n\\[\nN(\\lambda,R)=R^3-4R^2\\lambda+2R\\lambda^2+3R-2\\lambda.\n\\]\n\nIt controls the density derivative of \\(L\\) through \\(\\partial_\\lambda L=-\\lambda N/(\\sqrt{1-\\lambda^2}D^2)\\). Its strict decrease in density makes the sign analysis global rather than numerical."},
-    {"declaration":"CMVBallCase.fixedRadiusD_pos","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and every real \\(R\\), \\(D(\\lambda,R)>0\\).","latex_explanation":"The term \\((R-\\lambda)^2\\) is nonnegative and \\(1-\\lambda^2\\) is positive. Thus the denominators in the density calculation do not vanish anywhere in the admissible density interval."},
-    {"declaration":"CMVBallCase.fixedRadiusN_density_derivative_identity","category":"main","informal_statement":"For all real \\(\\lambda\\) and \\(R\\), the density derivative of \\(N\\) at \\(\\lambda\\) is \\(-(4(R-1/2)^2+1+4R(1-\\lambda))\\).","latex_explanation":"Differentiation and completing the square give\n\n\\[\n\\left.\\frac{d}{dc}N(c,R)\\right|_{c=\\lambda}=-4R^2+4R\\lambda-2=-\\bigl(4(R-\\tfrac12)^2+1+4R(1-\\lambda)\\bigr).\n\\]\n\nThe sign is transparent for \\(R>0\\), \\(\\lambda<1\\)."},
-    {"declaration":"CMVBallCase.perimeter_gap_eq_two_mul_halfGap","category":"main","informal_statement":"For all real \\(\\lambda\\) and \\(R\\), \\(P_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R)\\).","latex_explanation":"Expand both perimeter definitions and cancel the common term \\(2\\pi R\\). The remaining terms give the exact identity\n\n\\[\nP_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R).\n\\]\n\nNo inequalities or domain assumptions enter this identity."},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_pos_of_le","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(0<R\\leq\\lambda\\), then \\(H(\\lambda,R)>0\\).","latex_explanation":"The factor \\(\\lambda-R\\) and angle \\(\\beta_\\lambda(R)\\) make the first term nonnegative. Both \\(\\lambda\\arccos\\lambda\\) and \\((1-\\lambda)R b(R)\\) are positive, proving a strictly positive sum."},
-    {"declaration":"CMVBallCase.sameRadius_typeB_gt_typeC_of_le","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(0<R\\leq\\lambda\\), then \\(P_{\\mathrm{C}}(R)<P_{\\mathrm{B}}(R)\\).","latex_explanation":"In the low-radius region the gap identity and positivity of \\(H\\) give\n\n\\[\nP_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R)>0.\n\\]\n\nThis treats that entire region without invoking the density-derivative sign lemma."},
-    {"declaration":"CMVBallCase.fixedRadiusN_density_derivative_neg","category":"main","informal_statement":"If \\(\\lambda<1\\) and \\(R>0\\), then \\(-(4(R-1/2)^2+1+4R(1-\\lambda))<0\\).","latex_explanation":"The square term is nonnegative, the constant is positive, and \\(4R(1-\\lambda)>0\\). Thus\n\n\\[\n-\\bigl(4(R-\\tfrac12)^2+1+4R(1-\\lambda)\\bigr)<0.\n\\]\n\nNo lower bound on \\(\\lambda\\) is needed for this derivative sign."},
-    {"declaration":"CMVBallCase.fixedRadiusN_diagonal","category":"main","informal_statement":"For every real \\(R\\), \\(N(R,R)=R(1-R^2)\\).","latex_explanation":"Substitute the radius as the density variable in the polynomial and collect terms to obtain\n\n\\[\nN(R,R)=R(1-R^2).\n\\]\n\nFor \\(0<R\\leq1\\), this supplies a nonnegative comparison value at the upper end of the density interval \\(c<R\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusN_strictAntiOn","category":"main","informal_statement":"For each \\(R>0\\), the function \\(c\\mapsto N(c,R)\\) is strictly decreasing on \\((-\\infty,1]\\).","latex_explanation":"The polynomial is continuous on the closed half-line and has negative derivative at every interior point \\(c<1\\). The mean value theorem therefore proves strict decrease up to and including \\(c=1\\)."},
-    {"declaration":"CMVBallCase.sqrt_one_sub_sq_hasDerivAt","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\), \\(c\\mapsto\\sqrt{1-c^2}\\) has derivative \\(-\\lambda/\\sqrt{1-\\lambda^2}\\) at \\(\\lambda\\).","latex_explanation":"The radicand is strictly positive at \\(\\lambda\\), so differentiating the square root gives\n\n\\[\n\\left.\\frac{d}{dc}\\sqrt{1-c^2}\\right|_{c=\\lambda}=-\\frac{\\lambda}{\\sqrt{1-\\lambda^2}}.\n\\]\n\nThis is the elementary chain-rule input for density derivatives of the angle and gap."},
-    {"declaration":"CMVBallCase.betaAtRadius_density_hasDerivAt","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and every real \\(R\\), the density derivative of \\(\\beta_\\lambda(R)\\) is \\((1-\\lambda R)/(\\sqrt{1-\\lambda^2}D(\\lambda,R))\\).","latex_explanation":"Differentiate the quotient \\((R-c)/\\sqrt{1-c^2}\\) inside the arctangent, holding \\(R\\) fixed. Simplification using \\(s^2=1-\\lambda^2\\) yields\n\n\\[\n\\left.\\frac{d}{dc}\\beta_c(R)\\right|_{c=\\lambda}=\\frac{1-\\lambda R}{\\sqrt{1-\\lambda^2}D(\\lambda,R)}.\n\\]"},
-    {"declaration":"CMVBallCase.fixedRadiusD_density_hasDerivAt","category":"supplement","informal_statement":"For all real \\(\\lambda\\) and \\(R\\), \\(c\\mapsto D(c,R)\\) has derivative \\(-2R\\) at \\(\\lambda\\).","latex_explanation":"The expanded expression and its derivative are\n\n\\[\nD(c,R)=R^2-2Rc+1,\\qquad \\frac{d}{dc}D(c,R)=-2R.\n\\]\n\nThus its density derivative is constant, even though the unexpanded expression contains two quadratic terms."},
-    {"declaration":"CMVBallCase.fixedRadiusL_density_hasDerivAt","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and every real \\(R\\), the density derivative of \\(L\\) is \\(-\\lambda N(\\lambda,R)/(\\sqrt{1-\\lambda^2}D(\\lambda,R)^2)\\).","latex_explanation":"Differentiate \\(\\beta_\\lambda(R)-b(R)-\\lambda s/D\\), using the chart, square-root, and denominator derivatives. Exact algebra gives\n\n\\[\n\\left.\\frac{d}{dc}L(c,R)\\right|_{c=\\lambda}=-\\frac{\\lambda N(\\lambda,R)}{\\sqrt{1-\\lambda^2}D(\\lambda,R)^2}.\n\\]\n\nThe sign depends only on \\(-N\\) when \\(\\lambda>0\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_density_ratio_hasDerivAt","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and every real \\(R\\), the derivative of \\(c\\mapsto H(c,R)/c\\) at \\(\\lambda\\) is \\(R L(\\lambda,R)/\\lambda^2\\).","latex_explanation":"Apply product and quotient rules to the explicit expression for \\(H\\). The resulting identity is\n\n\\[\n\\left.\\frac{d}{dc}\\frac{H(c,R)}c\\right|_{c=\\lambda}=\\frac{R}{\\lambda^2}L(\\lambda,R).\n\\]\n\nIts strict negative sign additionally requires \\(R>\\lambda\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusL_zero","category":"main","informal_statement":"For every \\(R>0\\), \\(L(0,R)=0\\).","latex_explanation":"The correction term vanishes and \\(\\pi/2-\\arctan R=\\arctan(1/R)=b(R)\\). Hence\n\n\\[\nL(0,R)=0.\n\\]\n\nThis zero-density endpoint anchors the decreasing part of the sign argument."},
-    {"declaration":"CMVBallCase.betaAtRadius_eq_arctan_reciprocal","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(\\lambda<R\\), then \\(\\beta_\\lambda(R)=\\arctan(\\sqrt{1-\\lambda^2}/(R-\\lambda))\\).","latex_explanation":"The argument \\((R-\\lambda)/s\\) is positive, so the complementary arctangent identity gives\n\n\\[\n\\beta_\\lambda(R)=\\arctan\\frac{\\sqrt{1-\\lambda^2}}{R-\\lambda}.\n\\]\n\nThe restriction \\(R>\\lambda\\) prevents using this acute-angle chart in the other quadrant."},
-    {"declaration":"CMVBallCase.fixedRadiusL_continuousAt_zero","category":"main","informal_statement":"For \\(R>0\\), the function \\(c\\mapsto L(c,R)\\) is continuous at \\(c=0\\).","latex_explanation":"At zero density the square-root denominator is one and \\(D(0,R)=R^2+1>0\\). Ordinary continuity rules therefore apply, justifying comparison with \\(L(0,R)=0\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusL_tendsto_one","category":"main","informal_statement":"For \\(R>1\\), \\(L(c,R)\\) tends to \\(-b(R)\\) as \\(c\\) tends to one from below.","latex_explanation":"The reciprocal chart gives \\(\\beta_c(R)\\to0\\), while \\(c\\sqrt{1-c^2}/D(c,R)\\to0\\) because \\(D(1,R)=(R-1)^2>0\\). Therefore\n\n\\[\n\\lim_{c\\uparrow1}L(c,R)=-b(R).\n\\]\n\nThe claim deliberately excludes \\(R=1\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusL_neg_of_N_nonneg","category":"main","informal_statement":"If \\(0<\\lambda<1\\), \\(\\lambda<R\\), and \\(N(\\lambda,R)\\geq0\\), then \\(L(\\lambda,R)<0\\).","latex_explanation":"Strict decrease of \\(N(\\cdot,R)\\) gives \\(N(c,R)>0\\) for \\(0<c<\\lambda\\), even when \\(N(\\lambda,R)=0\\). Hence \\(L\\) strictly decreases from its continuous zero value on \\([0,\\lambda]\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusN_pos_of_radius_le_one","category":"main","informal_statement":"If \\(0<\\lambda<R\\leq1\\), then \\(N(\\lambda,R)>0\\).","latex_explanation":"Strict density decrease and the diagonal identity give\n\n\\[\nN(\\lambda,R)>N(R,R)=R(1-R^2)\\geq0,\n\\]\n\nincluding \\(R=1\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusL_neg_of_N_neg","category":"main","informal_statement":"If \\(0<\\lambda<1<R\\) and \\(N(\\lambda,R)<0\\), then \\(L(\\lambda,R)<0\\).","latex_explanation":"For \\(\\lambda<c<1\\), the polynomial remains negative, so \\(L\\) increases on \\([\\lambda,1)\\). Its left limit is \\(-b(R)<0\\); therefore\n\n\\[\nL(\\lambda,R)\\leq-b(R)<0.\n\\]"},
-    {"declaration":"CMVBallCase.fixedRadiusL_neg","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(\\lambda<R\\), then \\(L(\\lambda,R)<0\\).","latex_explanation":"For \\(R\\leq1\\), positivity of \\(N\\) applies. For \\(R>1\\), split according to \\(N\\geq0\\) or \\(N<0\\), using the zero-density or unit-density endpoint respectively. No sign is claimed outside \\(R>\\lambda\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_density_ratio_strictAntiOn","category":"main","informal_statement":"For \\(R>0\\), \\(c\\mapsto H(c,R)/c\\) is strictly decreasing on \\((0,\\min(1,R))\\).","latex_explanation":"On that interval, \\(L(c,R)<0\\) and \\(R/c^2>0\\), so\n\n\\[\n\\frac{d}{dc}\\frac{H(c,R)}c=\\frac{R}{c^2}L(c,R)<0.\n\\]\n\nThe mean value theorem yields strict decrease."},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_density_ratio_continuousAt","category":"main","informal_statement":"For any real \\(R\\) and \\(0<c<1\\), the function \\(x\\mapsto H(x,R)/x\\) is continuous at \\(c\\).","latex_explanation":"Its established density derivative implies continuity. In particular, for \\(0<R<1\\), this allows comparison with the finite endpoint \\(c=R\\) of the decreasing interval."},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_of_gt","category":"main","informal_statement":"For \\(R>1\\), \\(H(c,R)/c\\) tends to zero as \\(c\\) tends to one from below.","latex_explanation":"Use the reciprocal chart: \\(\\beta_c(R)\\to0\\), \\(\\arccos c\\to0\\), and \\(1-c\\to0\\), while \\(c\\to1\\). Every term in the quotient tends to zero, giving\n\n\\[\n\\lim_{c\\uparrow1}\\frac{H(c,R)}c=0.\n\\]"},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_at_one","category":"main","informal_statement":"\\(H(c,1)/c\\) tends to zero as \\(c\\) tends to one from below.","latex_explanation":"At this corner, use the bound\n\n\\[\n0\\leq(1-c)\\beta_c(1)\\leq(1-c)\\frac\\pi2\\qquad(0<c<1).\n\\]\n\nThis product tends to zero without assigning an endpoint angle to the singular chart; the arccosine and remaining weighted term also vanish. Consequently\n\n\\[\n\\lim_{c\\uparrow1}\\frac{H(c,1)}c=0.\n\\]"},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one","category":"main","informal_statement":"For every \\(R\\geq1\\), \\(H(c,R)/c\\) tends to zero as \\(c\\) tends to one from below.","latex_explanation":"The proof separates \\(R=1\\), handled by a squeeze estimate, from \\(R>1\\), handled by the reciprocal chart. In both cases,\n\n\\[\n\\lim_{c\\uparrow1}\\frac{H(c,R)}c=0.\n\\]\n\nThis is a pointwise limit for each radius, with no uniform-radius assertion."},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_pos_of_lt_radius_lt_one","category":"main","informal_statement":"If \\(0<\\lambda<R<1\\), then \\(H(\\lambda,R)>0\\).","latex_explanation":"The ratio extends continuously to \\(c=R\\) and is strictly decreasing on \\((0,R]\\). Hence\n\n\\[\n\\frac{H(\\lambda,R)}\\lambda>\\frac{H(R,R)}R>0,\n\\]\n\nwhere the endpoint positivity comes from the direct \\(R\\leq c\\) case."},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_pos_of_one_le_radius","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(R\\geq1\\), then \\(H(\\lambda,R)>0\\).","latex_explanation":"The ratio strictly decreases on \\((0,1)\\) and tends to zero at one. Comparing \\(\\lambda\\) with any larger interior density, whose ratio is nonnegative by the endpoint limit, yields strict positivity at \\(\\lambda\\)."},
-    {"declaration":"CMVBallCase.fixedRadiusHalfGap_pos_of_gt","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(R>\\lambda\\), then \\(H(\\lambda,R)>0\\).","latex_explanation":"Split into \\(R<1\\) and \\(R\\geq1\\). The finite diagonal comparison and the unit-density limit, respectively, cover all radii in this region, including radii arbitrarily close to \\(\\lambda\\)."},
-    {"declaration":"CMVBallCase.sameRadius_typeB_gt_typeC","category":"main","informal_statement":"For every \\(0<\\lambda<1\\) and \\(R>0\\), \\(P_{\\mathrm{C}}(R)<P_{\\mathrm{B}}(R)\\).","latex_explanation":"The gap identity reduces the conclusion to positivity of \\(H\\):\n\n\\[\nP_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R)>0.\n\\]\n\nThe cases \\(R\\leq\\lambda\\) and \\(R>\\lambda\\) prove it over the complete positive radius domain."},
-    {"declaration":"CMVBallCase.CommonPerimeter","category":"main","informal_statement":"For a real \\(\\lambda\\), the common-perimeter domain consists of the real \\(p\\) with \\(p>2\\lambda\\pi\\).","latex_explanation":"The domain is\n\n\\[\nJ_\\lambda=(2\\lambda\\pi,\\infty).\n\\]\n\nPackaging the inequality with \\(p\\) ensures that inverse radii are defined only where both positive-radius perimeter equations are proved solvable."},
-    {"declaration":"CMVBallCase.typeCPerimeterAtRadius_gt_pi_mul_radius","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(R>0\\), then \\(P_{\\mathrm{C}}(R)>\\pi R\\).","latex_explanation":"Since \\((1-\\lambda)b(R)<\\pi/2\\), the factor \\(\\pi-(1-\\lambda)b(R)\\) is greater than \\(\\pi/2\\). Multiplication by \\(2R>0\\) gives\n\n\\[\nP_{\\mathrm{C}}(R)>\\pi R,\n\\]\n\nproving unbounded perimeter growth."},
-    {"declaration":"CMVBallCase.existsUnique_typeBRadius_at_perimeter","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), there is exactly one \\(R\\) with \\(R>0\\) and \\(P_{\\mathrm{B}}(R)=p\\).","latex_explanation":"Start with \\(P_{\\mathrm{B}}(0)=2\\lambda\\pi<p\\), and use\n\n\\[\nP_{\\mathrm{B}}(R)>P_{\\mathrm{C}}(R)>\\pi R\n\\]\n\nat a large radius. Continuity gives existence and strict perimeter increase gives uniqueness among positive radii."},
-    {"declaration":"CMVBallCase.existsUnique_typeCRadius_at_perimeter","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), there is exactly one \\(R\\) with \\(R>0\\) and \\(P_{\\mathrm{C}}(R)=p\\).","latex_explanation":"The radius \\(R=\\lambda\\) has perimeter less than \\(2\\lambda\\pi\\); sufficiently large radii have perimeter greater than \\(p\\). The intermediate value theorem and strict increase give existence and uniqueness without evaluating at radius zero."},
-    {"declaration":"CMVBallCase.typeBRadiusAtPerimeter","category":"main","informal_statement":"For an admissible density and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{B}}(p)\\) is the unique positive radius with \\(P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p\\).","latex_explanation":"The source chooses the witness from the proved existence-and-uniqueness theorem, retaining its characterization\n\n\\[\nr_{\\mathrm{B}}(p)>0,\\qquad P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p.\n\\]\n\nNo inverse value is specified at or below the endpoint."},
-    {"declaration":"CMVBallCase.typeCRadiusAtPerimeter","category":"main","informal_statement":"For an admissible density and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{C}}(p)\\) is the unique positive radius with \\(P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p\\).","latex_explanation":"The definition selects the uniquely characterized positive solution and carries its defining equation:\n\n\\[\nr_{\\mathrm{C}}(p)>0,\\qquad P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p.\n\\]\n\nThe use of choice here does not choose among competing geometric branches, since uniqueness has already been proved."},
-    {"declaration":"CMVBallCase.typeBRadiusAtPerimeter_pos","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{B}}(p)>0\\).","latex_explanation":"This extracts the positivity already contained in the inverse radius definition. It permits applying derivative and monotonicity results on the positive radius chart."},
-    {"declaration":"CMVBallCase.typeCRadiusAtPerimeter_pos","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{C}}(p)>0\\).","latex_explanation":"Positivity is part of the defining characterization of the chosen inverse. The lemma exposes it for subsequent uses of the positive-radius analytic formulas."},
-    {"declaration":"CMVBallCase.typeBPerimeterAt_typeBRadiusAtPerimeter","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p\\).","latex_explanation":"The defining perimeter equation of the inverse is\n\n\\[\nP_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p.\n\\]\n\nIt is extracted from the stored characterization and is an exact equality at a genuine common perimeter."},
-    {"declaration":"CMVBallCase.typeCPerimeterAt_typeCRadiusAtPerimeter","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p\\).","latex_explanation":"The existence theorem used to define \\(r_{\\mathrm{C}}\\) supplies the equation\n\n\\[\nP_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p.\n\\]\n\nIt identifies the actual perimeter of the radius selected by the inverse."},
-    {"declaration":"CMVBallCase.typeBRadiusAtPerimeter_unique","category":"supplement","informal_statement":"If \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), \\(R>0\\), and \\(P_{\\mathrm{B}}(R)=p\\), then \\(r_{\\mathrm{B}}(p)=R\\).","latex_explanation":"Both radii solve the same positive-radius perimeter equation. Uniqueness gives\n\n\\[\nr_{\\mathrm{B}}(p)=R,\n\\]\n\nidentifying the chosen global inverse with any local inverse or explicit positive candidate satisfying that equation."},
-    {"declaration":"CMVBallCase.typeCRadiusAtPerimeter_unique","category":"supplement","informal_statement":"If \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), \\(R>0\\), and \\(P_{\\mathrm{C}}(R)=p\\), then \\(r_{\\mathrm{C}}(p)=R\\).","latex_explanation":"Uniqueness of the positive solution at perimeter \\(p\\) gives\n\n\\[\nr_{\\mathrm{C}}(p)=R.\n\\]\n\nIt is used to identify the local inverse supplied by calculus with the genuine common-perimeter inverse."},
-    {"declaration":"CMVBallCase.typeBRadiusAtPerimeter_lt_typeCRadiusAtPerimeter","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{B}}(p)<r_{\\mathrm{C}}(p)\\).","latex_explanation":"If \\(r_{\\mathrm{C}}(p)\\leq r_{\\mathrm{B}}(p)\\), monotonicity and the equal-radius comparison would give\n\n\\[\np=P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\leq P_{\\mathrm{C}}(r_{\\mathrm{B}}(p))<P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p.\n\\]\n\nThis contradiction proves strict radius order."},
-    {"declaration":"CMVBallCase.typeBPerimeterAtRadius_hasStrictDerivAt","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and every real \\(R\\), \\(P_{\\mathrm{B}}\\) has strict derivative \\(2Q_{\\mathrm{B}}(R)\\) at \\(R\\).","latex_explanation":"Strict differentiability means the two-point limit\n\n\\[\n\\lim_{\\substack{x,y\\to R\\\\x\\ne y}}\\frac{P_{\\mathrm{B}}(x)-P_{\\mathrm{B}}(y)}{x-y}=2Q_{\\mathrm{B}}(R).\n\\]\n\nThe ordinary derivative formula is continuous, so strict differentiability follows; at positive radii its nonzero value allows local inversion."},
-    {"declaration":"CMVBallCase.typeCPerimeterAtRadius_hasStrictDerivAt","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(R>0\\), \\(P_{\\mathrm{C}}\\) has strict derivative \\(2Q_{\\mathrm{C}}(R)\\) at \\(R\\).","latex_explanation":"The derivative formula is continuous in a neighborhood of every positive radius. Therefore the two-point derivative limit holds:\n\n\\[\n\\lim_{\\substack{x,y\\to R\\\\x\\ne y}}\\frac{P_{\\mathrm{C}}(x)-P_{\\mathrm{C}}(y)}{x-y}=2Q_{\\mathrm{C}}(R).\n\\]\n\nThis provides the strict differentiability required by the inverse function theorem."},
-    {"declaration":"CMVBallCase.commonPerimeterAreaGap","category":"main","informal_statement":"For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(G(p)\\) is \\(A_{\\mathrm{B}}(r_{\\mathrm{B}}(p))-A_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\).","latex_explanation":"The definition is\n\n\\[\nG(p)=A_{\\mathrm{B}}(r_{\\mathrm{B}}(p))-A_{\\mathrm{C}}(r_{\\mathrm{C}}(p)).\n\\]\n\nBoth radii realize the same genuine perimeter \\(p\\). The gap is defined on this open perimeter domain, not on all real perimeters and not as a difference of equal-area profiles."},
-    {"declaration":"CMVBallCase.commonPerimeterAreaGap_local_hasDerivAt","category":"main","informal_statement":"For an admissible density and each \\(p>2\\lambda\\pi\\), there is a real function agreeing locally with \\(G\\) on its domain and having derivative \\(r_{\\mathrm{B}}(p)-r_{\\mathrm{C}}(p)\\) at \\(p\\).","latex_explanation":"The statement supplies \\(g:\\mathbb R\\to\\mathbb R\\) and a neighborhood \\(U\\) of \\(p\\) such that\n\n\\[\ng'(p)=r_{\\mathrm{B}}(p)-r_{\\mathrm{C}}(p),\\qquad g(q)=G(q)\\quad(q\\in U,\\ q>2\\lambda\\pi).\n\\]\n\nLocal inverse derivatives and \\(A'=RP'\\) give the formula; no global off-domain inverse is introduced."},
-    {"declaration":"CMVBallCase.commonPerimeterClamp","category":"supplement","informal_statement":"For \\(p>2\\lambda\\pi\\) and real \\(q\\), the clamped common perimeter is \\(\\max(q,p)\\).","latex_explanation":"The clamped value satisfies\n\n\\[\n\\max(q,p)\\geq p>2\\lambda\\pi.\n\\]\n\nThis transports a function on the constrained perimeter domain to an ordinary real argument for interval calculus."},
-    {"declaration":"CMVBallCase.commonPerimeterClamp_eq","category":"supplement","informal_statement":"If \\(p>2\\lambda\\pi\\) and \\(q\\geq p\\), clamping \\(q\\) at \\(p\\) leaves \\(q\\) unchanged.","latex_explanation":"Under \\(p\\leq q\\),\n\n\\[\n\\max(q,p)=q.\n\\]\n\nThis also identifies the corresponding constrained-domain values, so clamping does not alter the gap anywhere on the interval used by the mean value theorem."},
-    {"declaration":"CMVBallCase.commonPerimeterAreaGapAbove","category":"supplement","informal_statement":"For an admissible density and \\(p>2\\lambda\\pi\\), the real function \\(G_p(q)\\) is \\(G(\\max(q,p))\\).","latex_explanation":"The definition is\n\n\\[\nG_p(q)=G(\\max(q,p)).\n\\]\n\nIt is a constant extension below \\(p\\) and agrees with \\(G\\) for \\(q\\geq p\\). Only its restriction to that upper interval is used; it does not assign inverse radii to inadmissible perimeters."},
-    {"declaration":"CMVBallCase.commonPerimeterAreaGapAbove_hasDerivWithinAt","category":"supplement","informal_statement":"For \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), and \\(q\\geq p\\), \\(G_p\\) has derivative within \\([p,\\infty)\\) equal to \\(r_{\\mathrm{B}}(q)-r_{\\mathrm{C}}(q)\\).","latex_explanation":"Local agreement with a differentiable representative of \\(G\\) proves the relative derivative formula\n\n\\[\n\\lim_{\\substack{x\\to q,\\ x\\geq p\\\\x\\ne q}}\\frac{G_p(x)-G_p(q)}{x-q}=r_{\\mathrm{B}}(q)-r_{\\mathrm{C}}(q).\n\\]\n\nAt \\(q=p\\) this is a one-sided derivative, not a claim of ordinary differentiability across the clamping point."},
-    {"declaration":"CMVBallCase.commonPerimeterAreaGap_strictAnti","category":"main","informal_statement":"For every \\(0<\\lambda<1\\), \\(G\\) is strictly decreasing on the common-perimeter domain \\((2\\lambda\\pi,\\infty)\\).","latex_explanation":"For \\(2\\lambda\\pi<p<q\\), use the continuous clamped representative on \\([p,q]\\). Its interior derivative is \\(r_{\\mathrm{B}}-r_{\\mathrm{C}}<0\\), so the mean value theorem gives\n\n\\[\nG(q)<G(p).\n\\]"},
-    {"declaration":"CMVBallCase.typeBPerimeterAtArea_gt_commonEndpoint","category":"main","informal_statement":"If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), then \\(I_{\\mathrm{B}}(v)>2\\lambda\\pi\\).","latex_explanation":"The type-(B) area \\(v\\) is realized at a positive radius \\(R\\). Strict perimeter increase gives\n\n\\[\nI_{\\mathrm{B}}(v)=P_{\\mathrm{B}}(R)>P_{\\mathrm{B}}(0)=2\\lambda\\pi,\n\\]\n\nmaking the profile perimeter a valid argument of the common-perimeter gap."},
-    {"declaration":"CMVBallCase.commonPerimeterAreaGap_at_typeBProfile_nonpos","category":"main","informal_statement":"If \\(0<\\lambda<1\\), \\(v>\\lambda\\pi\\), and \\(I_{\\mathrm{C}}(v)\\leq I_{\\mathrm{B}}(v)\\), then \\(G(I_{\\mathrm{B}}(v))\\leq0\\).","latex_explanation":"At \\(p=I_{\\mathrm{B}}(v)\\), the type-(B) area is \\(v\\). The type-(C) area radius has perimeter at most \\(p\\), hence is at most \\(r_{\\mathrm{C}}(p)\\). Area monotonicity gives\n\n\\[\nA_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\geq v,\\qquad G(p)=v-A_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\leq0.\n\\]"},
-    {"declaration":"CMVBallCase.typeCPerimeterAtArea_lt_of_commonPerimeterAreaGap_neg","category":"main","informal_statement":"If \\(0<\\lambda<1\\), \\(v>\\lambda\\pi\\), and \\(G(I_{\\mathrm{B}}(v))<0\\), then \\(I_{\\mathrm{C}}(v)<I_{\\mathrm{B}}(v)\\).","latex_explanation":"At \\(p=I_{\\mathrm{B}}(v)\\), negativity says\n\n\\[\nA_{\\mathrm{C}}(r_{\\mathrm{C}}(p))>v.\n\\]\n\nThe unique type-(C) radius of area \\(v\\) is strictly smaller, so its strictly increasing perimeter gives\n\n\\[\nI_{\\mathrm{C}}(v)<p=I_{\\mathrm{B}}(v).\n\\]"},
-    {"declaration":"CMVBallCase.typeC_dominance_persists","category":"main","informal_statement":"For all real \\(\\lambda,v_0,v\\) with \\(0<\\lambda<1\\) and \\(\\lambda\\pi<v_0<v\\), \\(I_{\\mathrm{C}}(v_0)\\leq I_{\\mathrm{B}}(v_0)\\) implies \\(I_{\\mathrm{C}}(v)<I_{\\mathrm{B}}(v)\\).","latex_explanation":"Set \\(p_0=I_{\\mathrm{B}}(v_0)\\) and \\(p=I_{\\mathrm{B}}(v)\\). Strict profile increase and initial dominance give\n\n\\[\np_0<p,\\qquad G(p)<G(p_0)\\leq0.\n\\]\n\nThe final bridge yields\n\n\\[\nI_{\\mathrm{C}}(v)<I_{\\mathrm{B}}(v).\n\\]\n\nThis is the exact primary root and has no hypothesis asserting geometric classification or prior strict dominance."},
-    {"declaration":"CMVBallCase.AdmissibleDensity","category":"main","informal_statement":"An admissible density parameter is a real \\(\\lambda\\) satisfying \\(0<\\lambda\\) and \\(\\lambda<1\\).","latex_explanation":"The predicate abbreviates exactly\n\n\\[\n0<\\lambda<1.\n\\]\n\nIt excludes both constant-density endpoints and adds no condition about candidate optimality or minimizer classification."},
-    {"declaration":"CMVBallCase.typeBAlpha","category":"main","informal_statement":"The type-(B) auxiliary angle is \\(\\alpha=\\beta+\\arccos\\lambda\\).","latex_explanation":"The definition is\n\n\\[\n\\alpha=\\beta+\\arccos\\lambda.\n\\]\n\nThis is the half-angle of the unit-circle boundary arc in the source parametrization. On the admissible density and angle domain, \\(0<\\alpha\\leq\\pi\\)."},
-    {"declaration":"CMVBallCase.typeBRadius","category":"main","informal_statement":"The type-(B) exterior-circle radius is \\(\\sin(\\beta+\\arccos\\lambda)/\\sin\\beta\\).","latex_explanation":"The common chord gives \\(r\\sin\\beta=\\sin\\alpha\\), so\n\n\\[\nr=\\frac{\\sin\\alpha}{\\sin\\beta}=\\frac{\\sin(\\beta+\\arccos\\lambda)}{\\sin\\beta}.\n\\]\n\nAdmissibility for \\(0<\\lambda<1\\) ensures the denominator is positive and the radius nonnegative."},
-    {"declaration":"CMVBallCase.typeBPerimeter","category":"main","informal_statement":"The angular type-(B) weighted perimeter is \\(2((\\pi-\\beta)r+\\lambda\\alpha)\\), with \\(\\alpha=\\beta+\\arccos\\lambda\\) and \\(r=\\sin\\alpha/\\sin\\beta\\).","latex_explanation":"The exterior arc has length \\(2r(\\pi-\\beta)\\) and density one; the unit-circle arc has length \\(2\\alpha\\) and density \\(\\lambda\\). Their weighted sum is\n\n\\[\n\\mathsf P_{\\mathrm{B}}(\\beta)=2\\bigl((\\pi-\\beta)r+\\lambda\\alpha\\bigr).\n\\]"},
-    {"declaration":"CMVBallCase.typeBArea","category":"main","informal_statement":"The angular type-(B) weighted area is \\(r^2(\\pi-\\beta+\\sin\\beta\\cos\\beta)+\\alpha-\\sin\\alpha\\cos\\alpha-(1-\\lambda)\\pi\\).","latex_explanation":"The two chord segments have areas \\(r^2S(\\pi-\\beta)\\) and \\(S(\\alpha)\\). Their sum is the Euclidean region area; subtract \\((1-\\lambda)\\pi\\) because the region contains the entire unit disk. Thus, with \\(\\alpha=\\beta+\\arccos\\lambda\\) and \\(r=\\sin\\alpha/\\sin\\beta\\),\n\n\\[\n\\mathsf A_{\\mathrm{B}}(\\beta)=r^2(\\pi-\\beta+\\sin\\beta\\cos\\beta)+\\alpha-\\sin\\alpha\\cos\\alpha-(1-\\lambda)\\pi.\n\\]"},
-    {"declaration":"CMVBallCase.typeCRadius","category":"main","informal_statement":"The angular type-(C) radius is \\(1/\\tan\\beta\\).","latex_explanation":"Orthogonality gives\n\n\\[\nR=\\frac1{\\tan\\beta}=\\cot\\beta\\qquad(0<\\beta<\\pi/2).\n\\]\n\nThe total real formula is not interpreted as a finite geometric radius at either excluded endpoint."},
-    {"declaration":"CMVBallCase.typeCPerimeter","category":"main","informal_statement":"The angular type-(C) weighted perimeter is \\(2(\\pi-(1-\\lambda)\\beta)/\\tan\\beta\\).","latex_explanation":"With \\(R=1/\\tan\\beta\\), subtract the density deficit \\((1-\\lambda)2R\\beta\\) of the inner arc from the full circumference \\(2\\pi R\\). The source formula is\n\n\\[\n\\mathsf P_{\\mathrm{C}}(\\beta)=\\frac{2\\bigl(\\pi-(1-\\lambda)\\beta\\bigr)}{\\tan\\beta}.\n\\]"},
-    {"declaration":"CMVBallCase.typeCArea","category":"main","informal_statement":"The angular type-(C) weighted area is \\((\\pi-(1-\\lambda)(\\beta-\\sin\\beta\\cos\\beta))/\\tan^2\\beta-(1-\\lambda)(\\pi/2-\\beta-\\sin\\beta\\cos\\beta)\\).","latex_explanation":"With \\(R=\\cot\\beta\\), the formula is\n\n\\[\n\\begin{aligned}\n\\mathsf A_{\\mathrm{C}}(\\beta)&=R^2\\pi-(1-\\lambda)\\bigl[R^2S(\\beta)+S(\\pi/2-\\beta)\\bigr]\\\\\n&=\\frac{\\pi-(1-\\lambda)(\\beta-\\sin\\beta\\cos\\beta)}{\\tan^2\\beta}-(1-\\lambda)(\\pi/2-\\beta-\\sin\\beta\\cos\\beta).\n\\end{aligned}\n\\]\n\nThe bracket is the overlap lens area, so the expression uses exactly the same density deficit as the geometric model."}
+    {
+      "declaration": "CMVBallCase.BAdmissible",
+      "category": "main",
+      "informal_statement": "A type-\\(\\mathrm B\\) angle is admissible precisely when \\(0<\\beta\\leq\\pi-\\arccos\\lambda\\).",
+      "latex_explanation": "The predicate is\n\n\\[\n0<\\beta\\quad\\text{and}\\quad\\beta\\leq\\pi-\\arccos\\lambda.\n\\]\n\nFor \\(0<\\lambda<1\\) it retains the zero-radius endpoint and excludes the infinite-radius limit \\(\\beta=0\\). The predicate itself does not impose the density hypothesis."
+    },
+    {
+      "declaration": "CMVBallCase.CAdmissible",
+      "category": "main",
+      "informal_statement": "A type-\\(\\mathrm C\\) angle is admissible precisely when \\(0<\\beta<\\pi/2\\).",
+      "latex_explanation": "The domain is the open interval\n\n\\[\n0<\\beta<\\frac\\pi2.\n\\]\n\nIts endpoints correspond to infinite and zero radius, respectively, and neither is a finite positive-radius candidate."
+    },
+    {
+      "declaration": "CMVBallCase.typeCRadius_pos",
+      "category": "main",
+      "informal_statement": "Every admissible type-\\(\\mathrm C\\) angle has positive radius.",
+      "latex_explanation": "For \\(0<\\beta<\\pi/2\\), \\(\\tan\\beta>0\\), hence \\(1/\\tan\\beta>0\\). This places every angular candidate in the positive radius chart."
+    },
+    {
+      "declaration": "CMVBallCase.typeCRadius_strictAntiOn",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm C\\) radius is strictly decreasing on \\((0,\\pi/2)\\).",
+      "latex_explanation": "If \\(0<\\beta<\\beta'<\\pi/2\\), then\n\n\\[\n0<\\frac1{\\tan\\beta'}<\\frac1{\\tan\\beta}.\n\\]\n\nStrict increase of tangent and positivity justify taking reciprocals."
+    },
+    {
+      "declaration": "CMVBallCase.typeCRadius_injective_on_admissible",
+      "category": "main",
+      "informal_statement": "Two admissible type-\\(\\mathrm C\\) angles with equal radii are equal.",
+      "latex_explanation": "The restriction \\(\\beta\\mapsto\\cot\\beta\\) to \\((0,\\pi/2)\\) is injective by strict decrease. Thus no second angular branch can have the same positive radius."
+    },
+    {
+      "declaration": "CMVBallCase.sqrt_one_sub_sq_pos",
+      "category": "supplement",
+      "informal_statement": "If \\(0<\\lambda<1\\), then \\(\\sqrt{1-\\lambda^2}>0\\).",
+      "latex_explanation": "The density hypotheses give \\(1-\\lambda^2>0\\). Taking its nonnegative square root gives a strictly positive coefficient, allowing division in the type-\\(\\mathrm B\\) chart."
+    },
+    {
+      "declaration": "CMVBallCase.sq_sqrt_one_sub_sq",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\), the square of \\(\\sqrt{1-\\lambda^2}\\) is \\(1-\\lambda^2\\).",
+      "latex_explanation": "Nonnegativity of the radicand gives the identity\n\n\\[\ns^2=1-\\lambda^2.\n\\]\n\nIt is used to simplify rational derivative formulas without changing their domains."
+    },
+    {
+      "declaration": "CMVBallCase.typeB_sin_pos",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and an admissible type-\\(\\mathrm B\\) angle \\(\\beta\\), \\(\\sin\\beta>0\\).",
+      "latex_explanation": "Since \\(0<\\arccos\\lambda\\), admissibility implies \\(0<\\beta<\\pi\\). Hence \\(\\sin\\beta>0\\), so the defining radius quotient has a nonzero denominator."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAlpha_sin_nonneg",
+      "category": "supplement",
+      "informal_statement": "For every admissible type-\\(\\mathrm B\\) angle \\(\\beta\\), \\(\\sin(\\beta+\\arccos\\lambda)\\) is nonnegative, without a separate density assumption.",
+      "latex_explanation": "No separate density assumption is required: admissibility and \\(\\arccos\\lambda\\geq0\\) put \\(\\alpha=\\beta+\\arccos\\lambda\\) in \\([0,\\pi]\\). Its sine is nonnegative, including the endpoint \\(\\alpha=\\pi\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadius_eq_add_sqrt_mul_cot",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and admissible \\(\\beta\\), the type-\\(\\mathrm B\\) radius equals \\(\\lambda+\\sqrt{1-\\lambda^2}\\cot\\beta\\).",
+      "latex_explanation": "Expanding \\(\\sin(\\beta+\\arccos\\lambda)\\) and dividing by the positive \\(\\sin\\beta\\) gives\n\n\\[\nr=\\lambda+s\\cot\\beta.\n\\]\n\nThis identity supplies a global inverse without a quadrant-dependent inverse tangent."
+    },
+    {
+      "declaration": "CMVBallCase.cot_strictAntiOn_Ioo_zero_pi",
+      "category": "supplement",
+      "informal_statement": "Cotangent is strictly decreasing on \\((0,\\pi)\\).",
+      "latex_explanation": "For \\(0<x<y<\\pi\\), \\(\\cot y<\\cot x\\). The proof uses \\(\\cot x=\\tan(\\pi/2-x)\\) and strict increase of tangent on \\((-\\pi/2,\\pi/2)\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadius_strictAntiOn",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), the type-\\(\\mathrm B\\) radius is strictly decreasing on its whole admissible angular domain.",
+      "latex_explanation": "On \\(0<\\beta\\leq\\pi-a\\), \\(r=\\lambda+s\\cot\\beta\\) with \\(s>0\\). Strict decrease of cotangent gives strict decrease of radius, including comparisons with the zero-radius endpoint."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadius_injective_on_admissible",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), equal radii of admissible type-\\(\\mathrm B\\) angles imply equal angles.",
+      "latex_explanation": "Injectivity follows from strict decrease on \\((0,\\pi-a]\\). This is the uniqueness statement needed to recover every angular candidate from the global radius chart."
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm B\\) inverse chart is \\(\\beta_\\lambda(R)=\\pi/2-\\arctan((R-\\lambda)/\\sqrt{1-\\lambda^2})\\).",
+      "latex_explanation": "The defining formula is\n\n\\[\n\\beta_\\lambda(R)=\\frac\\pi2-\\arctan\\frac{R-\\lambda}{\\sqrt{1-\\lambda^2}}.\n\\]\n\nIt is defined for all real inputs as a total real expression. Its inverse-chart interpretation uses \\(0<\\lambda<1\\) and \\(R\\geq0\\); it covers angles on both sides of \\(\\pi/2\\)."
+    },
+    {
+      "declaration": "CMVBallCase.bAtRadius",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm C\\) inverse chart is \\(b(R)=\\arctan(1/R)\\).",
+      "latex_explanation": "The defining formula is\n\n\\[\nb(R)=\\arctan\\frac1R.\n\\]\n\nFor \\(R>0\\), this lies in \\((0,\\pi/2)\\) and solves \\(\\cot b=R\\). The source defines a total expression, but only positive radii are used geometrically."
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius_pos",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(\\beta_\\lambda(R)>0\\).",
+      "latex_explanation": "The real arctangent is strictly below \\(\\pi/2\\), so its difference from \\(\\pi/2\\) is positive. No nonnegativity assumption on \\(R\\) is needed for this bound."
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius_le_pi_div_two",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(\\lambda\\leq R\\), \\(\\beta_\\lambda(R)\\leq\\pi/2\\).",
+      "latex_explanation": "The quotient \\((R-\\lambda)/s\\) is nonnegative, hence so is its arctangent. This bound is used in the large-radius estimates and at the corner \\(R=1\\) of the density limit."
+    },
+    {
+      "declaration": "CMVBallCase.cot_betaAtRadius",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and all real \\(R\\), \\(\\cot\\beta_\\lambda(R)=(R-\\lambda)/\\sqrt{1-\\lambda^2}\\).",
+      "latex_explanation": "The complementary-angle identity turns the cotangent into the tangent of an arctangent, giving\n\n\\[\n\\cot\\beta_\\lambda(R)=\\frac{R-\\lambda}{\\sqrt{1-\\lambda^2}}.\n\\]\n\nThis exact identity is valid on the entire real radius expression, before imposing the geometric radius domain."
+    },
+    {
+      "declaration": "CMVBallCase.arctan_neg_lam_div_sqrt_eq_arccos_sub_pi_div_two",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(\\arctan(-\\lambda/\\sqrt{1-\\lambda^2})=\\arccos\\lambda-\\pi/2\\).",
+      "latex_explanation": "Both sides of\n\n\\[\n\\arctan\\frac{-\\lambda}{\\sqrt{1-\\lambda^2}}=\\arccos\\lambda-\\frac\\pi2\n\\]\n\nlie in the principal arctangent interval and have tangent \\(-\\lambda/s\\). The identity identifies the inverse chart's value at radius zero without a branch ambiguity."
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius_admissible",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(\\beta_\\lambda(R)\\) is an admissible type-\\(\\mathrm B\\) angle.",
+      "latex_explanation": "The chart satisfies\n\n\\[\n0<\\beta_\\lambda(R)\\leq\\pi-a.\n\\]\n\nThe upper bound follows by comparing its arctangent argument with the argument at \\(R=0\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadius_betaAtRadius",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq0\\), the radius of \\(\\beta_\\lambda(R)\\) is exactly \\(R\\).",
+      "latex_explanation": "Substitute \\(\\cot\\beta_\\lambda(R)=(R-\\lambda)/s\\) into the radius formula to obtain\n\n\\[\n\\lambda+s\\cot\\beta_\\lambda(R)=R.\n\\]\n\nPositivity of \\(s\\) legitimizes cancellation and establishes surjectivity onto all nonnegative radii."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadius_nonneg",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), every admissible type-\\(\\mathrm B\\) candidate has nonnegative radius.",
+      "latex_explanation": "In \\(r=\\sin\\alpha/\\sin\\beta\\), the numerator is nonnegative and the denominator positive. The zero value is allowed at the retained angular endpoint."
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius_typeBRadius",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and admissible \\(\\beta\\), applying \\(\\beta_\\lambda\\) to the type-\\(\\mathrm B\\) radius of \\(\\beta\\) recovers \\(\\beta\\).",
+      "latex_explanation": "The original radius is nonnegative, so the inverse chart produces an admissible angle with the same radius. Injectivity of the angular radius map gives\n\n\\[\n\\beta_\\lambda\\!\\left(\\frac{\\sin(\\beta+a)}{\\sin\\beta}\\right)=\\beta.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius_zero",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(\\beta_\\lambda(0)=\\pi-\\arccos\\lambda\\).",
+      "latex_explanation": "The zero-radius chart value is\n\n\\[\n\\beta_\\lambda(0)=\\pi-\\arccos\\lambda.\n\\]\n\nThis is the actual type-\\(\\mathrm B\\) angular endpoint, not an arbitrary value chosen to define an inverse outside its range."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadius_endpoint_zero",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\), the type-\\(\\mathrm B\\) radius formula at \\(\\beta=\\pi-\\arccos\\lambda\\) equals zero.",
+      "latex_explanation": "At this input \\(\\alpha=\\pi\\), so the defining quotient evaluates to\n\n\\[\n\\frac{\\sin((\\pi-\\arccos\\lambda)+\\arccos\\lambda)}{\\sin(\\pi-\\arccos\\lambda)}=0.\n\\]\n\nThe identity holds for the total real expression; its geometric interpretation is used only for \\(0<\\lambda<1\\)."
+    },
+    {
+      "declaration": "CMVBallCase.bAtRadius_admissible",
+      "category": "main",
+      "informal_statement": "Every positive radius \\(R\\) gives an admissible type-\\(\\mathrm C\\) angle \\(b(R)\\).",
+      "latex_explanation": "For \\(R>0\\), \\(1/R>0\\), so\n\n\\[\n0<b(R)=\\arctan(1/R)<\\frac\\pi2.\n\\]\n\nThis supplies the angular representative of every positive radius."
+    },
+    {
+      "declaration": "CMVBallCase.typeCRadius_bAtRadius",
+      "category": "main",
+      "informal_statement": "For \\(R>0\\), the type-\\(\\mathrm C\\) radius of \\(b(R)\\) equals \\(R\\).",
+      "latex_explanation": "The identity \\(\\tan(\\arctan(1/R))=1/R\\), followed by reciprocal cancellation, proves\n\n\\[\n\\cot b(R)=R.\n\\]\n\nPositivity excludes division at zero."
+    },
+    {
+      "declaration": "CMVBallCase.bAtRadius_typeCRadius",
+      "category": "main",
+      "informal_statement": "For every admissible type-\\(\\mathrm C\\) angle \\(\\beta\\), applying \\(b\\) to its radius recovers \\(\\beta\\).",
+      "latex_explanation": "The radius is positive, and the reconstructed angle is admissible with the same radius. Injectivity of cotangent on \\((0,\\pi/2)\\) proves\n\n\\[\nb(1/\\tan\\beta)=\\beta.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius",
+      "category": "main",
+      "informal_statement": "The radius-coordinate type-\\(\\mathrm B\\) perimeter is \\(2((\\pi-\\beta_\\lambda(R))R+\\lambda(\\beta_\\lambda(R)+\\arccos\\lambda))\\).",
+      "latex_explanation": "The definition is\n\n\\[\nP_{\\mathrm{B}}(R)=2\\bigl((\\pi-\\beta_\\lambda(R))R+\\lambda(\\beta_\\lambda(R)+\\arccos\\lambda)\\bigr).\n\\]\n\nIt weights the exterior arc by one and the unit-circle arc by \\(\\lambda\\); equality with the angular perimeter is proved for \\(0<\\lambda<1\\), \\(R\\geq0\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAreaAtRadius",
+      "category": "main",
+      "informal_statement": "The radius-coordinate type-\\(\\mathrm B\\) area is \\(R^2(\\pi-S(\\beta_\\lambda(R)))+S(\\beta_\\lambda(R)+\\arccos\\lambda)-(1-\\lambda)\\pi\\).",
+      "latex_explanation": "With \\(S(t)=t-\\sin t\\cos t\\), the definition is\n\n\\[\nA_{\\mathrm{B}}(R)=R^2\\bigl(\\pi-S(\\beta_\\lambda(R))\\bigr)+S(\\beta_\\lambda(R)+\\arccos\\lambda)-(1-\\lambda)\\pi.\n\\]\n\nThe final subtraction accounts for the density deficit on the entire unit disk contained in the candidate."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius",
+      "category": "main",
+      "informal_statement": "The radius-coordinate type-\\(\\mathrm C\\) perimeter is \\(2R(\\pi-(1-\\lambda)b(R))\\).",
+      "latex_explanation": "The definition is\n\n\\[\nP_{\\mathrm{C}}(R)=2R\\bigl(\\pi-(1-\\lambda)b(R)\\bigr).\n\\]\n\nStarting with circumference \\(2\\pi R\\), the expression subtracts \\((1-\\lambda)\\) times the inner arc length \\(2Rb(R)\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeCAreaAtRadius",
+      "category": "main",
+      "informal_statement": "The radius-coordinate type-\\(\\mathrm C\\) area is \\(R^2(\\pi-(1-\\lambda)S(b(R)))-(1-\\lambda)S(\\pi/2-b(R))\\).",
+      "latex_explanation": "The definition is\n\n\\[\nA_{\\mathrm{C}}(R)=R^2\\bigl(\\pi-(1-\\lambda)S(b(R))\\bigr)-(1-\\lambda)S(\\pi/2-b(R)).\n\\]\n\nThe overlap lens has area \\(R^2S(b(R))+S(\\pi/2-b(R))\\); subtracting its density deficit from \\(\\pi R^2\\) yields the formula."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_agrees",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(P_{\\mathrm{B}}(R)\\) equals the angular type-\\(\\mathrm B\\) perimeter at \\(\\beta_\\lambda(R)\\).",
+      "latex_explanation": "Substituting the exact radius inverse gives\n\n\\[\nP_{\\mathrm{B}}(R)=\\mathsf P_{\\mathrm{B}}(\\beta_\\lambda(R)).\n\\]\n\nThe equality includes the zero-radius endpoint."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAreaAtRadius_agrees",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(A_{\\mathrm{B}}(R)\\) equals the angular type-\\(\\mathrm B\\) area at \\(\\beta_\\lambda(R)\\).",
+      "latex_explanation": "Substitution gives\n\n\\[\nA_{\\mathrm{B}}(R)=\\mathsf A_{\\mathrm{B}}(\\beta_\\lambda(R)),\n\\]\n\nwith exactly the same density correction. Thus radius coordinates do not change the area constraint."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_agrees",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\) and \\(R>0\\), \\(P_{\\mathrm{C}}(R)\\) equals the angular type-\\(\\mathrm C\\) perimeter at \\(b(R)\\).",
+      "latex_explanation": "Using \\(1/\\tan b(R)=R\\) gives\n\n\\[\nP_{\\mathrm{C}}(R)=\\mathsf P_{\\mathrm{C}}(b(R)).\n\\]\n\nThe algebraic equality does not require an admissible density."
+    },
+    {
+      "declaration": "CMVBallCase.typeCAreaAtRadius_agrees",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)\\) equals the angular type-\\(\\mathrm C\\) area at \\(b(R)\\).",
+      "latex_explanation": "The inverse-chart identity replaces \\(1/\\tan^2 b(R)\\) by \\(R^2\\), giving\n\n\\[\nA_{\\mathrm{C}}(R)=\\mathsf A_{\\mathrm{C}}(b(R)).\n\\]\n\nThe equality is exact for all \\(\\lambda\\), although only \\(0<\\lambda<1\\) is used geometrically."
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius_hasDerivAt",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(\\beta_\\lambda\\) has derivative \\(-s/((R-\\lambda)^2+s^2)\\) at \\(R\\).",
+      "latex_explanation": "Differentiate \\(\\pi/2-\\arctan((R-\\lambda)/s)\\), holding \\(\\lambda\\) fixed, to obtain\n\n\\[\n\\beta_\\lambda'(R)=-\\frac{s}{(R-\\lambda)^2+s^2}.\n\\]\n\nSince \\(s>0\\), the denominator never vanishes."
+    },
+    {
+      "declaration": "CMVBallCase.bAtRadius_hasDerivAt",
+      "category": "supplement",
+      "informal_statement": "At each nonzero real \\(R\\), \\(b\\) has derivative \\(-1/(1+R^2)\\).",
+      "latex_explanation": "The chain rule for \\(\\arctan(1/R)\\) gives\n\n\\[\nb'(R)=-\\frac1{1+R^2}.\n\\]\n\nThe hypothesis is \\(R\\ne0\\), not merely positive radius, because the total expression is also differentiable at negative radii."
+    },
+    {
+      "declaration": "CMVBallCase.sin_betaAtRadius_mul_cos",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and all real \\(R\\), \\(\\sin\\beta_\\lambda(R)\\cos\\beta_\\lambda(R)=(R-\\lambda)s/((R-\\lambda)^2+s^2)\\).",
+      "latex_explanation": "Complementary-angle and arctangent identities give\n\n\\[\n\\sin\\beta_\\lambda(R)\\cos\\beta_\\lambda(R)=\\frac{(R-\\lambda)s}{(R-\\lambda)^2+s^2}.\n\\]\n\nThis rational expression supplies the cancellation in the type-\\(\\mathrm B\\) perimeter derivative."
+    },
+    {
+      "declaration": "CMVBallCase.sin_bAtRadius_mul_cos",
+      "category": "supplement",
+      "informal_statement": "For every nonzero real \\(R\\), \\(\\sin b(R)\\cos b(R)=R/(1+R^2)\\).",
+      "latex_explanation": "The sine and cosine formulas for \\(\\arctan(1/R)\\) have a common square-root denominator. Multiplying and simplifying gives\n\n\\[\n\\sin b(R)\\cos b(R)=\\frac{R}{1+R^2},\n\\]\n\nfor either sign of nonzero \\(R\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(P_{\\mathrm{B}}\\) has derivative \\(2Q_{\\mathrm{B}}(R)\\) at \\(R\\).",
+      "latex_explanation": "Here \\(Q_{\\mathrm{B}}(R)=\\pi-\\beta_\\lambda(R)+\\sin\\beta_\\lambda(R)\\cos\\beta_\\lambda(R)\\). Differentiating the perimeter and substituting the chart derivative gives\n\n\\[\nP_{\\mathrm{B}}'(R)=2Q_{\\mathrm{B}}(R).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\) and \\(R>0\\), \\(P_{\\mathrm{C}}\\) has derivative \\(2Q_{\\mathrm{C}}(R)\\) at \\(R\\).",
+      "latex_explanation": "The derivative identity is\n\n\\[\nP_{\\mathrm{C}}'(R)=2Q_{\\mathrm{C}}(R)=2\\bigl[\\pi-(1-\\lambda)(b(R)-\\sin b(R)\\cos b(R))\\bigr].\n\\]\n\nIt is a derivative formula for arbitrary density; positivity is asserted separately under \\(0<\\lambda<1\\)."
+    },
+    {
+      "declaration": "CMVBallCase.arcSegment",
+      "category": "main",
+      "informal_statement": "\\(S(x)\\) is defined as \\(x-\\sin x\\cos x\\).",
+      "latex_explanation": "The definition is\n\n\\[\nS(x)=x-\\sin x\\cos x.\n\\]\n\nFor \\(0\\leq x\\leq\\pi\\), this is the unit-radius segment area with central angle \\(2x\\): sector area \\(x\\) minus signed triangle area \\(\\sin x\\cos x\\). It is not twice that segment area."
+    },
+    {
+      "declaration": "CMVBallCase.arcSegment_hasDerivAt",
+      "category": "main",
+      "informal_statement": "If \\(f\\) has derivative \\(f'\\) at \\(x\\), then \\(S\\circ f\\) has derivative \\(2\\sin^2(f(x))f'\\) there.",
+      "latex_explanation": "Differentiate \\(S(t)=t-\\sin t\\cos t\\) and apply the chain rule to obtain\n\n\\[\nS'(t)=2\\sin^2t,\\qquad (S\\circ f)'(x)=2\\sin^2(f(x))f'.\n\\]\n\nNo angular-domain restriction is required."
+    },
+    {
+      "declaration": "CMVBallCase.sin_typeBAlpha_betaAtRadius",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq0\\), \\(\\sin(\\beta_\\lambda(R)+\\arccos\\lambda)=R\\sin\\beta_\\lambda(R)\\).",
+      "latex_explanation": "Multiply the defining radius equation by its nonzero denominator to obtain\n\n\\[\n\\sin(\\beta_\\lambda(R)+a)=R\\sin\\beta_\\lambda(R).\n\\]\n\nThis cancels the angular terms in the area derivative."
+    },
+    {
+      "declaration": "CMVBallCase.cos_bAtRadius_eq_radius_mul_sin",
+      "category": "supplement",
+      "informal_statement": "For \\(R>0\\), \\(\\cos b(R)=R\\sin b(R)\\).",
+      "latex_explanation": "The inverse equation \\(\\cot b(R)=R\\) and positive sine give\n\n\\[\n\\cos b(R)=R\\sin b(R).\n\\]\n\nIts square identifies the two segment contributions in the derivative of the overlap area."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAreaAtRadius_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{B}}\\) has derivative \\(2R Q_{\\mathrm{B}}(R)\\) at \\(R\\).",
+      "latex_explanation": "After differentiating the two segment terms, \\(\\sin(\\beta_\\lambda(R)+a)=R\\sin\\beta_\\lambda(R)\\) cancels their angular derivatives. Thus\n\n\\[\nA_{\\mathrm{B}}'(R)=2R Q_{\\mathrm{B}}(R)=R P_{\\mathrm{B}}'(R).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeCAreaAtRadius_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\) and \\(R>0\\), \\(A_{\\mathrm{C}}\\) has derivative \\(2R Q_{\\mathrm{C}}(R)\\) at \\(R\\).",
+      "latex_explanation": "The relation \\(\\cos b(R)=R\\sin b(R)\\) cancels the derivatives of the two overlap segments. The remaining expression is\n\n\\[\nA_{\\mathrm{C}}'(R)=2R Q_{\\mathrm{C}}(R)=R P_{\\mathrm{C}}'(R),\n\\]\n\nwithout a density restriction."
+    },
+    {
+      "declaration": "CMVBallCase.arcSegment_pos",
+      "category": "main",
+      "informal_statement": "\\(S(x)>0\\) whenever \\(0<x<\\pi\\).",
+      "latex_explanation": "If \\(\\cos x\\leq0\\), then \\(S(x)\\geq x>0\\). Otherwise \\(\\sin x\\cos x\\leq\\sin x<x\\). These cases cover the full interval, not only acute angles."
+    },
+    {
+      "declaration": "CMVBallCase.typeB_perimeter_factor_pos",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(Q_{\\mathrm{B}}(R)>0\\).",
+      "latex_explanation": "The factor has the form\n\n\\[\nQ_{\\mathrm{B}}(R)=S(\\pi-\\beta_\\lambda(R))>0.\n\\]\n\nThe complementary angle lies in \\((0,\\pi)\\), so segment positivity proves the strict sign."
+    },
+    {
+      "declaration": "CMVBallCase.typeC_perimeter_factor_pos",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(Q_{\\mathrm{C}}(R)>0\\).",
+      "latex_explanation": "Since \\(0<S(b(R))<b(R)<\\pi/2\\) and \\(0<1-\\lambda<1\\), the factor satisfies\n\n\\[\nQ_{\\mathrm{C}}(R)=\\pi-(1-\\lambda)S(b(R))>0.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeBAreaAtRadius_deriv_pos",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), the derivative of \\(A_{\\mathrm{B}}\\) at \\(R\\) is positive.",
+      "latex_explanation": "The derivative \\(2R Q_{\\mathrm{B}}(R)\\) is a product of positive factors. This establishes strict area growth away from the zero-radius endpoint."
+    },
+    {
+      "declaration": "CMVBallCase.typeCAreaAtRadius_deriv_pos",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), the derivative of \\(A_{\\mathrm{C}}\\) at \\(R\\) is positive.",
+      "latex_explanation": "The identity \\(A_{\\mathrm{C}}'(R)=2R Q_{\\mathrm{C}}(R)\\) and the factor positivity prove the result. It excludes multiple positive radii of the same area."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_deriv_pos",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), every positive \\(R\\) satisfies \\(P_{\\mathrm{B}}'(R)>0\\).",
+      "latex_explanation": "The derivative equals \\(2Q_{\\mathrm{B}}(R)>0\\). Its nonvanishing is also the hypothesis required for the local inverse function theorem."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_deriv_pos",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), every positive \\(R\\) satisfies \\(P_{\\mathrm{C}}'(R)>0\\).",
+      "latex_explanation": "The derivative equals \\(2Q_{\\mathrm{C}}(R)>0\\). This proves perimeter monotonicity and permits inversion at each genuine common perimeter."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAreaAtRadius_continuous",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\), the total function \\(R\\mapsto A_{\\mathrm{B}}(R)\\) is continuous on the real line.",
+      "latex_explanation": "For fixed \\(\\lambda\\), the denominator \\(\\sqrt{1-\\lambda^2}\\) is a constant in the total real expression. Continuity of arctangent, trigonometric functions, and algebraic operations proves global continuity, including \\(R=0\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_continuous",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\), the total function \\(R\\mapsto P_{\\mathrm{B}}(R)\\) is continuous on the real line.",
+      "latex_explanation": "The perimeter is formed from the continuous radius angle \\(\\beta_\\lambda\\) and polynomial operations in \\(R\\). The result supplies continuity at the retained type-\\(\\mathrm B\\) endpoint."
+    },
+    {
+      "declaration": "CMVBallCase.typeCAreaAtRadius_continuousOn",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\), \\(A_{\\mathrm{C}}\\) is continuous on \\((0,\\infty)\\).",
+      "latex_explanation": "The derivative formula at each \\(R>0\\) implies continuity there. No claim about the value of the totalized expression at \\(R=0\\) is made."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_continuousOn",
+      "category": "main",
+      "informal_statement": "For every real \\(\\lambda\\), \\(P_{\\mathrm{C}}\\) is continuous on \\((0,\\infty)\\).",
+      "latex_explanation": "Differentiability at positive radii gives continuity on the geometric radius domain. This is enough for intermediate-value arguments on compact positive-radius intervals."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAreaAtRadius_strictMonoOn",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(A_{\\mathrm{B}}\\) is strictly increasing on \\([0,\\infty)\\).",
+      "latex_explanation": "Positive derivative on \\((0,\\infty)\\), together with continuity at zero, gives strict increase on the closed half-line by the mean value theorem. Thus even the retained endpoint introduces no area branch."
+    },
+    {
+      "declaration": "CMVBallCase.typeCAreaAtRadius_strictMonoOn",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(A_{\\mathrm{C}}\\) is strictly increasing on \\((0,\\infty)\\).",
+      "latex_explanation": "The positive derivative and continuity imply \\(A_{\\mathrm{C}}(R)<A_{\\mathrm{C}}(T)\\) whenever \\(0<R<T\\). The result is restricted to the genuine positive-radius chart."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_strictMonoOn",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(P_{\\mathrm{B}}\\) is strictly increasing on \\([0,\\infty)\\).",
+      "latex_explanation": "Continuity and positivity of the derivative in the interior yield strict increase, including comparisons with \\(P_{\\mathrm{B}}(0)=2\\lambda\\pi\\). This makes the common-perimeter inverse unique."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_strictMonoOn",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(P_{\\mathrm{C}}\\) is strictly increasing on \\((0,\\infty)\\).",
+      "latex_explanation": "The mean value theorem applied between any two positive radii gives strict increase. This transports perimeter inequalities to radius inequalities and conversely."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAreaAtRadius_zero",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(A_{\\mathrm{B}}(0)=\\lambda\\pi\\).",
+      "latex_explanation": "At radius zero, \\(\\beta_\\lambda(0)+a=\\pi\\). The radius term vanishes and the remaining area is\n\n\\[\nA_{\\mathrm{B}}(0)=S(\\pi)-(1-\\lambda)\\pi=\\lambda\\pi.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_zero",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(P_{\\mathrm{B}}(0)=2\\lambda\\pi\\).",
+      "latex_explanation": "Only the weighted unit-circle arc remains at the type-\\(\\mathrm B\\) endpoint. Its angle is \\(2\\pi\\), hence its weighted length is\n\n\\[\nP_{\\mathrm{B}}(0)=2\\lambda\\pi.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.arcSegment_lt_self",
+      "category": "main",
+      "informal_statement": "If \\(0<x<\\pi/2\\), then \\(S(x)<x\\).",
+      "latex_explanation": "Both sine and cosine are positive on this interval. Thus subtracting \\(\\sin x\\cos x\\) from \\(x\\) gives a strictly smaller value, as required in the type-\\(\\mathrm C\\) estimates."
+    },
+    {
+      "declaration": "CMVBallCase.arcSegment_nonneg",
+      "category": "supplement",
+      "informal_statement": "\\(S(x)\\geq0\\) for \\(0\\leq x\\leq\\pi\\).",
+      "latex_explanation": "Interior positivity combines with \\(S(0)=0\\) and \\(S(\\pi)=\\pi\\). This closed-interval version allows the type-\\(\\mathrm B\\) area estimate to include its segment endpoint."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAreaAtRadius_large_lower",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq\\lambda\\), \\(A_{\\mathrm{B}}(R)>(\\pi/2)R^2-\\pi\\).",
+      "latex_explanation": "Here \\(\\beta_\\lambda(R)\\leq\\pi/2\\), so \\(\\pi-S(\\beta_\\lambda(R))\\geq\\pi/2\\); the other segment area is nonnegative. The density correction is strictly less than \\(\\pi\\), giving\n\n\\[\nA_{\\mathrm{B}}(R)>\\frac\\pi2R^2-\\pi.\n\\]\n\nThe bound proves unbounded growth."
+    },
+    {
+      "declaration": "CMVBallCase.typeCAreaAtRadius_lt_full",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)<\\pi R^2\\).",
+      "latex_explanation": "The weighted area subtracts \\((1-\\lambda)\\) times two strictly positive overlap-segment areas from the full disk area. Therefore\n\n\\[\nA_{\\mathrm{C}}(R)<\\pi R^2.\n\\]\n\nAt \\(R=\\lambda\\), this places \\(A_{\\mathrm{C}}(\\lambda)\\) below \\(\\lambda\\pi\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeCAreaAtRadius_large_lower",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{C}}(R)>\\lambda\\pi R^2-\\pi/2\\).",
+      "latex_explanation": "Both overlap angles lie in \\((0,\\pi/2)\\), with segment areas smaller than their angles. The coefficient of \\(R^2\\) is greater than \\(\\lambda\\pi\\), and the final subtracted term is less than \\(\\pi/2\\). Hence\n\n\\[\nA_{\\mathrm{C}}(R)>\\lambda\\pi R^2-\\frac\\pi2.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.exists_typeBRadius_at_area",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), some \\(R>0\\) satisfies \\(A_{\\mathrm{B}}(R)=v\\).",
+      "latex_explanation": "The area starts at \\(\\lambda\\pi\\), is continuous, and exceeds every prescribed value at sufficiently large radius. The intermediate value theorem gives a radius, and the strict area inequality excludes zero."
+    },
+    {
+      "declaration": "CMVBallCase.exists_typeCRadius_at_area",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), some \\(R>0\\) satisfies \\(A_{\\mathrm{C}}(R)=v\\).",
+      "latex_explanation": "Use the lower comparison\n\n\\[\nA_{\\mathrm{C}}(\\lambda)<\\pi\\lambda^2<\\lambda\\pi<v\n\\]\n\nand the quadratic lower bound at a large positive radius. Continuity between these radii gives the required candidate without evaluating the formula at zero."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterValuesAtArea",
+      "category": "main",
+      "informal_statement": "This is the set of all type-\\(\\mathrm B\\) perimeter values from admissible angles of area exactly \\(v\\).",
+      "latex_explanation": "Precisely,\n\n\\[\n\\mathcal P_{\\mathrm{B}}(v)=\\{p:\\exists\\beta,\\ 0<\\beta\\leq\\pi-a,\\ \\mathsf A_{\\mathrm{B}}(\\beta)=v,\\ \\mathsf P_{\\mathrm{B}}(\\beta)=p\\}.\n\\]\n\nNo minimizing branch or perimeter ordering is built into this definition."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterValuesAtArea",
+      "category": "main",
+      "informal_statement": "This is the set of all type-\\(\\mathrm C\\) perimeter values from admissible angles of area exactly \\(v\\).",
+      "latex_explanation": "Precisely,\n\n\\[\n\\mathcal P_{\\mathrm{C}}(v)=\\{p:\\exists b,\\ 0<b<\\pi/2,\\ \\mathsf A_{\\mathrm{C}}(b)=v,\\ \\mathsf P_{\\mathrm{C}}(b)=p\\}.\n\\]\n\nEvery angle in the complete finite domain is quantified."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtArea",
+      "category": "main",
+      "informal_statement": "The equal-area type-\\(\\mathrm B\\) profile is the real infimum of its all-candidate perimeter set.",
+      "latex_explanation": "The definition is\n\n\\[\nI_{\\mathrm{B}}(v)=\\inf\\mathcal P_{\\mathrm{B}}(v),\n\\]\n\nimplemented by the total real infimum operation. On \\(0<\\lambda<1\\), \\(v>\\lambda\\pi\\), the set is proved to be a nonempty singleton, so no empty-set convention affects the theorem."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtArea",
+      "category": "main",
+      "informal_statement": "The equal-area type-\\(\\mathrm C\\) profile is the real infimum of its all-candidate perimeter set.",
+      "latex_explanation": "The definition is\n\n\\[\nI_{\\mathrm{C}}(v)=\\inf\\mathcal P_{\\mathrm{C}}(v).\n\\]\n\nThe proof identifies this infimum with an actual candidate perimeter throughout the theorem's area domain, rather than relying on a totalized default."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeter_mem_values",
+      "category": "supplement",
+      "informal_statement": "An admissible type-\\(\\mathrm B\\) angle of area \\(v\\) contributes its perimeter to the type-\\(\\mathrm B\\) value set at \\(v\\).",
+      "latex_explanation": "If \\(\\beta\\) is admissible and \\(\\mathsf A_{\\mathrm B}(\\beta)=v\\), then \\(\\mathsf P_{\\mathrm B}(\\beta)\\in\\mathcal P_{\\mathrm B}(v)\\). This is the direct existential witness, with no density assumption."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeter_mem_values",
+      "category": "supplement",
+      "informal_statement": "An admissible type-\\(\\mathrm C\\) angle of area \\(v\\) contributes its perimeter to the type-\\(\\mathrm C\\) value set at \\(v\\).",
+      "latex_explanation": "If \\(0<b<\\pi/2\\) and \\(\\mathsf A_{\\mathrm C}(b)=v\\), the angle \\(b\\) witnesses \\(\\mathsf P_{\\mathrm C}(b)\\in\\mathcal P_{\\mathrm C}(v)\\). No uniqueness hypothesis is used here."
+    },
+    {
+      "declaration": "CMVBallCase.typeB_values_eq_singleton",
+      "category": "main",
+      "informal_statement": "If \\(\\beta\\) is the unique admissible type-\\(\\mathrm B\\) angle of area \\(v\\), its perimeter is the sole element of the value set.",
+      "latex_explanation": "Assume admissibility, \\(\\mathsf A_{\\mathrm{B}}(\\beta)=v\\), and that every admissible angle of that area equals \\(\\beta\\). Then\n\n\\[\n\\mathcal P_{\\mathrm{B}}(v)=\\{\\mathsf P_{\\mathrm{B}}(\\beta)\\}.\n\\]\n\nThe lemma takes uniqueness as a hypothesis; the radius argument supplies it in the application."
+    },
+    {
+      "declaration": "CMVBallCase.typeC_values_eq_singleton",
+      "category": "main",
+      "informal_statement": "If \\(b\\) is the unique admissible type-\\(\\mathrm C\\) angle of area \\(v\\), its perimeter is the sole element of the value set.",
+      "latex_explanation": "Given admissibility, the area equation, and uniqueness among all admissible angles of that area,\n\n\\[\n\\mathcal P_{\\mathrm{C}}(v)=\\{\\mathsf P_{\\mathrm{C}}(b)\\}.\n\\]\n\nThis is a conditional set identity, not an independent existence theorem."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtArea_eq",
+      "category": "main",
+      "informal_statement": "If \\(\\beta\\) is the unique admissible type-\\(\\mathrm B\\) angle of area \\(v\\), then \\(I_{\\mathrm{B}}(v)=\\mathsf P_{\\mathrm{B}}(\\beta)\\).",
+      "latex_explanation": "Under the admissibility, area, and angular uniqueness hypotheses, the value set is a singleton. Its real infimum is its sole element, proving\n\n\\[\nI_{\\mathrm{B}}(v)=\\mathsf P_{\\mathrm{B}}(\\beta).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtArea_eq",
+      "category": "main",
+      "informal_statement": "If \\(b\\) is the unique admissible type-\\(\\mathrm C\\) angle of area \\(v\\), then \\(I_{\\mathrm{C}}(v)=\\mathsf P_{\\mathrm{C}}(b)\\).",
+      "latex_explanation": "The specified candidate and uniqueness hypotheses identify \\(\\mathcal P_{\\mathrm{C}}(v)\\) with its perimeter singleton. Taking the infimum gives\n\n\\[\nI_{\\mathrm{C}}(v)=\\mathsf P_{\\mathrm{C}}(b),\n\\]\n\nwithout a branch choice."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtArea_eq_radius",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(R>0\\), and \\(A_{\\mathrm{B}}(R)=v\\), the all-candidate profile satisfies \\(I_{\\mathrm{B}}(v)=P_{\\mathrm{B}}(R)\\).",
+      "latex_explanation": "Any admissible angle of area \\(v\\) has a nonnegative radius; strict area monotonicity forces that radius to be \\(R\\), and angular injectivity forces the angle to be \\(\\beta_\\lambda(R)\\). The infimum is therefore this genuine perimeter:\n\n\\[\nI_{\\mathrm{B}}(v)=P_{\\mathrm{B}}(R).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtArea_eq_radius",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(R>0\\), and \\(A_{\\mathrm{C}}(R)=v\\), the all-candidate profile satisfies \\(I_{\\mathrm{C}}(v)=P_{\\mathrm{C}}(R)\\).",
+      "latex_explanation": "Every admissible type-\\(\\mathrm C\\) angle has positive radius. Strict area monotonicity and the inverse chart make the candidate of area \\(v\\) unique, so its perimeter is the infimum over all candidates:\n\n\\[\nI_{\\mathrm{C}}(v)=P_{\\mathrm{C}}(R).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtArea_strictMonoOn",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(I_{\\mathrm{B}}\\) is strictly increasing on \\((\\lambda\\pi,\\infty)\\).",
+      "latex_explanation": "If \\(\\lambda\\pi<v<w\\), the unique area radii satisfy \\(R_v<R_w\\) by strict area increase. Strict perimeter increase and the profile evaluation identities give\n\n\\[\nI_{\\mathrm{B}}(v)<I_{\\mathrm{B}}(w).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap",
+      "category": "main",
+      "informal_statement": "\\(H(\\lambda,R)\\) is \\((\\lambda-R)\\beta_\\lambda(R)+\\lambda\\arccos\\lambda+(1-\\lambda)R b(R)\\).",
+      "latex_explanation": "The defining expression is\n\n\\[\nH(\\lambda,R)=(\\lambda-R)\\beta_\\lambda(R)+\\lambda\\arccos\\lambda+(1-\\lambda)R b(R).\n\\]\n\nThis total expression is half the difference of the two radius-coordinate perimeters. Its sign is proved by a direct argument for \\(R\\leq\\lambda\\) and by density differentiation for \\(R>\\lambda\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusD",
+      "category": "main",
+      "informal_statement": "\\(D(\\lambda,R)\\) is \\((R-\\lambda)^2+(1-\\lambda^2)\\).",
+      "latex_explanation": "The defining and expanded expressions are\n\n\\[\nD(\\lambda,R)=(R-\\lambda)^2+1-\\lambda^2=R^2-2R\\lambda+1.\n\\]\n\nThe sum-of-squares form shows it is positive for \\(0<\\lambda<1\\), and the expanded form makes its density derivative simple."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusL",
+      "category": "main",
+      "informal_statement": "\\(L(\\lambda,R)\\) is \\(\\beta_\\lambda(R)-b(R)-\\lambda\\sqrt{1-\\lambda^2}/D(\\lambda,R)\\).",
+      "latex_explanation": "The definition is\n\n\\[\nL(\\lambda,R)=\\beta_\\lambda(R)-b(R)-\\frac{\\lambda\\sqrt{1-\\lambda^2}}{D(\\lambda,R)}.\n\\]\n\nThis is the derivative factor in \\(\\partial_\\lambda(H/\\lambda)=R L/\\lambda^2\\). The sign needed in the proof is established only for \\(0<\\lambda<1\\) and \\(R>\\lambda\\), not for all positive radii."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusN",
+      "category": "main",
+      "informal_statement": "\\(N(\\lambda,R)\\) is \\(R^3-4R^2\\lambda+2R\\lambda^2+3R-2\\lambda\\).",
+      "latex_explanation": "The polynomial is defined by\n\n\\[\nN(\\lambda,R)=R^3-4R^2\\lambda+2R\\lambda^2+3R-2\\lambda.\n\\]\n\nIt controls the density derivative of \\(L\\) through \\(\\partial_\\lambda L=-\\lambda N/(\\sqrt{1-\\lambda^2}D^2)\\). Its strict decrease in density makes the sign analysis global rather than numerical."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusD_pos",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(D(\\lambda,R)>0\\).",
+      "latex_explanation": "The term \\((R-\\lambda)^2\\) is nonnegative and \\(1-\\lambda^2\\) is positive. Thus the denominators in the density calculation do not vanish anywhere in the admissible density interval."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusN_density_derivative_identity",
+      "category": "main",
+      "informal_statement": "For all real \\(\\lambda\\) and \\(R\\), the density derivative of \\(N\\) at \\(\\lambda\\) is \\(-(4(R-1/2)^2+1+4R(1-\\lambda))\\).",
+      "latex_explanation": "Differentiation and completing the square give\n\n\\[\n\\left.\\frac{d}{dc}N(c,R)\\right|_{c=\\lambda}=-4R^2+4R\\lambda-2=-\\bigl(4(R-\\tfrac12)^2+1+4R(1-\\lambda)\\bigr).\n\\]\n\nThe sign is transparent for \\(R>0\\), \\(\\lambda<1\\)."
+    },
+    {
+      "declaration": "CMVBallCase.perimeter_gap_eq_two_mul_halfGap",
+      "category": "main",
+      "informal_statement": "For all real \\(\\lambda\\) and \\(R\\), \\(P_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R)\\).",
+      "latex_explanation": "Expand both perimeter definitions and cancel the common term \\(2\\pi R\\). The remaining terms give the exact identity\n\n\\[\nP_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R).\n\\]\n\nNo inequalities or domain assumptions enter this identity."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_le",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(0<R\\leq\\lambda\\), then \\(H(\\lambda,R)>0\\).",
+      "latex_explanation": "The factor \\(\\lambda-R\\) and angle \\(\\beta_\\lambda(R)\\) make the first term nonnegative. Both \\(\\lambda\\arccos\\lambda\\) and \\((1-\\lambda)R b(R)\\) are positive, proving a strictly positive sum."
+    },
+    {
+      "declaration": "CMVBallCase.sameRadius_typeB_gt_typeC_of_le",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(0<R\\leq\\lambda\\), then \\(P_{\\mathrm{C}}(R)<P_{\\mathrm{B}}(R)\\).",
+      "latex_explanation": "In the low-radius region the gap identity and positivity of \\(H\\) give\n\n\\[\nP_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R)>0.\n\\]\n\nThis treats that entire region without invoking the density-derivative sign lemma."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusN_density_derivative_neg",
+      "category": "main",
+      "informal_statement": "If \\(\\lambda<1\\) and \\(R>0\\), then \\(-(4(R-1/2)^2+1+4R(1-\\lambda))<0\\).",
+      "latex_explanation": "The square term is nonnegative, the constant is positive, and \\(4R(1-\\lambda)>0\\). Thus\n\n\\[\n-\\bigl(4(R-\\tfrac12)^2+1+4R(1-\\lambda)\\bigr)<0.\n\\]\n\nNo lower bound on \\(\\lambda\\) is needed for this derivative sign."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusN_diagonal",
+      "category": "main",
+      "informal_statement": "For every real \\(R\\), \\(N(R,R)=R(1-R^2)\\).",
+      "latex_explanation": "Substitute the radius as the density variable in the polynomial and collect terms to obtain\n\n\\[\nN(R,R)=R(1-R^2).\n\\]\n\nFor \\(0<R\\leq1\\), this supplies a nonnegative comparison value at the upper end of the density interval \\(c<R\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusN_strictAntiOn",
+      "category": "main",
+      "informal_statement": "For each \\(R>0\\), the function \\(c\\mapsto N(c,R)\\) is strictly decreasing on \\((-\\infty,1]\\).",
+      "latex_explanation": "The polynomial is continuous on the closed half-line and has negative derivative at every interior point \\(c<1\\). The mean value theorem therefore proves strict decrease up to and including \\(c=1\\)."
+    },
+    {
+      "declaration": "CMVBallCase.sqrt_one_sub_sq_hasDerivAt",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(c\\mapsto\\sqrt{1-c^2}\\) has derivative \\(-\\lambda/\\sqrt{1-\\lambda^2}\\) at \\(\\lambda\\).",
+      "latex_explanation": "The radicand is strictly positive at \\(\\lambda\\), so differentiating the square root gives\n\n\\[\n\\left.\\frac{d}{dc}\\sqrt{1-c^2}\\right|_{c=\\lambda}=-\\frac{\\lambda}{\\sqrt{1-\\lambda^2}}.\n\\]\n\nThis is the elementary chain-rule input for density derivatives of the angle and gap."
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius_density_hasDerivAt",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), the density derivative of \\(\\beta_\\lambda(R)\\) is \\((1-\\lambda R)/(\\sqrt{1-\\lambda^2}D(\\lambda,R))\\).",
+      "latex_explanation": "Differentiate the quotient \\((R-c)/\\sqrt{1-c^2}\\) inside the arctangent, holding \\(R\\) fixed. Simplification using \\(s^2=1-\\lambda^2\\) yields\n\n\\[\n\\left.\\frac{d}{dc}\\beta_c(R)\\right|_{c=\\lambda}=\\frac{1-\\lambda R}{\\sqrt{1-\\lambda^2}D(\\lambda,R)}.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusD_density_hasDerivAt",
+      "category": "supplement",
+      "informal_statement": "For all real \\(\\lambda\\) and \\(R\\), \\(c\\mapsto D(c,R)\\) has derivative \\(-2R\\) at \\(\\lambda\\).",
+      "latex_explanation": "The expanded expression and its derivative are\n\n\\[\nD(c,R)=R^2-2Rc+1,\\qquad \\frac{d}{dc}D(c,R)=-2R.\n\\]\n\nThus its density derivative is constant, even though the unexpanded expression contains two quadratic terms."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusL_density_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), the density derivative of \\(L\\) is \\(-\\lambda N(\\lambda,R)/(\\sqrt{1-\\lambda^2}D(\\lambda,R)^2)\\).",
+      "latex_explanation": "Differentiate \\(\\beta_\\lambda(R)-b(R)-\\lambda s/D\\), using the chart, square-root, and denominator derivatives. Exact algebra gives\n\n\\[\n\\left.\\frac{d}{dc}L(c,R)\\right|_{c=\\lambda}=-\\frac{\\lambda N(\\lambda,R)}{\\sqrt{1-\\lambda^2}D(\\lambda,R)^2}.\n\\]\n\nThe sign depends only on \\(-N\\) when \\(\\lambda>0\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), the derivative of \\(c\\mapsto H(c,R)/c\\) at \\(\\lambda\\) is \\(R L(\\lambda,R)/\\lambda^2\\).",
+      "latex_explanation": "Apply product and quotient rules to the explicit expression for \\(H\\). The resulting identity is\n\n\\[\n\\left.\\frac{d}{dc}\\frac{H(c,R)}c\\right|_{c=\\lambda}=\\frac{R}{\\lambda^2}L(\\lambda,R).\n\\]\n\nIts strict negative sign additionally requires \\(R>\\lambda\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusL_zero",
+      "category": "main",
+      "informal_statement": "For every \\(R>0\\), \\(L(0,R)=0\\).",
+      "latex_explanation": "The correction term vanishes and \\(\\pi/2-\\arctan R=\\arctan(1/R)=b(R)\\). Hence\n\n\\[\nL(0,R)=0.\n\\]\n\nThis zero-density endpoint anchors the decreasing part of the sign argument."
+    },
+    {
+      "declaration": "CMVBallCase.betaAtRadius_eq_arctan_reciprocal",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(\\lambda<R\\), then \\(\\beta_\\lambda(R)=\\arctan(\\sqrt{1-\\lambda^2}/(R-\\lambda))\\).",
+      "latex_explanation": "The argument \\((R-\\lambda)/s\\) is positive, so the complementary arctangent identity gives\n\n\\[\n\\beta_\\lambda(R)=\\arctan\\frac{\\sqrt{1-\\lambda^2}}{R-\\lambda}.\n\\]\n\nThe restriction \\(R>\\lambda\\) prevents using this acute-angle chart in the other quadrant."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusL_continuousAt_zero",
+      "category": "main",
+      "informal_statement": "For \\(R>0\\), the function \\(c\\mapsto L(c,R)\\) is continuous at \\(c=0\\).",
+      "latex_explanation": "At zero density the square-root denominator is one and \\(D(0,R)=R^2+1>0\\). Ordinary continuity rules therefore apply, justifying comparison with \\(L(0,R)=0\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusL_tendsto_one",
+      "category": "main",
+      "informal_statement": "For \\(R>1\\), \\(L(c,R)\\) tends to \\(-b(R)\\) as \\(c\\) tends to one from below.",
+      "latex_explanation": "The reciprocal chart gives \\(\\beta_c(R)\\to0\\), while \\(c\\sqrt{1-c^2}/D(c,R)\\to0\\) because \\(D(1,R)=(R-1)^2>0\\). Therefore\n\n\\[\n\\lim_{c\\uparrow1}L(c,R)=-b(R).\n\\]\n\nThe claim deliberately excludes \\(R=1\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusL_neg_of_N_nonneg",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\), \\(\\lambda<R\\), and \\(N(\\lambda,R)\\geq0\\), then \\(L(\\lambda,R)<0\\).",
+      "latex_explanation": "Strict decrease of \\(N(\\cdot,R)\\) gives \\(N(c,R)>0\\) for \\(0<c<\\lambda\\), even when \\(N(\\lambda,R)=0\\). Hence \\(L\\) strictly decreases from its continuous zero value on \\([0,\\lambda]\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusN_pos_of_radius_le_one",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<R\\leq1\\), then \\(N(\\lambda,R)>0\\).",
+      "latex_explanation": "Strict density decrease and the diagonal identity give\n\n\\[\nN(\\lambda,R)>N(R,R)=R(1-R^2)\\geq0,\n\\]\n\nincluding \\(R=1\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusL_neg_of_N_neg",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1<R\\) and \\(N(\\lambda,R)<0\\), then \\(L(\\lambda,R)<0\\).",
+      "latex_explanation": "For \\(\\lambda<c<1\\), the polynomial remains negative, so \\(L\\) increases on \\([\\lambda,1)\\). Its left limit is \\(-b(R)<0\\); therefore\n\n\\[\nL(\\lambda,R)\\leq-b(R)<0.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusL_neg",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(\\lambda<R\\), then \\(L(\\lambda,R)<0\\).",
+      "latex_explanation": "For \\(R\\leq1\\), positivity of \\(N\\) applies. For \\(R>1\\), split according to \\(N\\geq0\\) or \\(N<0\\), using the zero-density or unit-density endpoint respectively. No sign is claimed outside \\(R>\\lambda\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_strictAntiOn",
+      "category": "main",
+      "informal_statement": "For \\(R>0\\), \\(c\\mapsto H(c,R)/c\\) is strictly decreasing on \\((0,\\min(1,R))\\).",
+      "latex_explanation": "On that interval, \\(L(c,R)<0\\) and \\(R/c^2>0\\), so\n\n\\[\n\\frac{d}{dc}\\frac{H(c,R)}c=\\frac{R}{c^2}L(c,R)<0.\n\\]\n\nThe mean value theorem yields strict decrease."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_continuousAt",
+      "category": "main",
+      "informal_statement": "For any real \\(R\\) and \\(0<c<1\\), the function \\(x\\mapsto H(x,R)/x\\) is continuous at \\(c\\).",
+      "latex_explanation": "Its established density derivative implies continuity. In particular, for \\(0<R<1\\), this allows comparison with the finite endpoint \\(c=R\\) of the decreasing interval."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_of_gt",
+      "category": "main",
+      "informal_statement": "For \\(R>1\\), \\(H(c,R)/c\\) tends to zero as \\(c\\) tends to one from below.",
+      "latex_explanation": "Use the reciprocal chart: \\(\\beta_c(R)\\to0\\), \\(\\arccos c\\to0\\), and \\(1-c\\to0\\), while \\(c\\to1\\). Every term in the quotient tends to zero, giving\n\n\\[\n\\lim_{c\\uparrow1}\\frac{H(c,R)}c=0.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one_at_one",
+      "category": "main",
+      "informal_statement": "\\(H(c,1)/c\\) tends to zero as \\(c\\) tends to one from below.",
+      "latex_explanation": "At this corner, use the bound\n\n\\[\n0\\leq(1-c)\\beta_c(1)\\leq(1-c)\\frac\\pi2\\qquad(0<c<1).\n\\]\n\nThis product tends to zero without assigning an endpoint angle to the singular chart; the arccosine and remaining weighted term also vanish. Consequently\n\n\\[\n\\lim_{c\\uparrow1}\\frac{H(c,1)}c=0.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_density_ratio_tendsto_one",
+      "category": "main",
+      "informal_statement": "For every \\(R\\geq1\\), \\(H(c,R)/c\\) tends to zero as \\(c\\) tends to one from below.",
+      "latex_explanation": "The proof separates \\(R=1\\), handled by a squeeze estimate, from \\(R>1\\), handled by the reciprocal chart. In both cases,\n\n\\[\n\\lim_{c\\uparrow1}\\frac{H(c,R)}c=0.\n\\]\n\nThis is a pointwise limit for each radius, with no uniform-radius assertion."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_lt_radius_lt_one",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<R<1\\), then \\(H(\\lambda,R)>0\\).",
+      "latex_explanation": "The ratio extends continuously to \\(c=R\\) and is strictly decreasing on \\((0,R]\\). Hence\n\n\\[\n\\frac{H(\\lambda,R)}\\lambda>\\frac{H(R,R)}R>0,\n\\]\n\nwhere the endpoint positivity comes from the direct \\(R\\leq c\\) case."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_one_le_radius",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(R\\geq1\\), then \\(H(\\lambda,R)>0\\).",
+      "latex_explanation": "The ratio strictly decreases on \\((0,1)\\) and tends to zero at one. Comparing \\(\\lambda\\) with any larger interior density, whose ratio is nonnegative by the endpoint limit, yields strict positivity at \\(\\lambda\\)."
+    },
+    {
+      "declaration": "CMVBallCase.fixedRadiusHalfGap_pos_of_gt",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(R>\\lambda\\), then \\(H(\\lambda,R)>0\\).",
+      "latex_explanation": "Split into \\(R<1\\) and \\(R\\geq1\\). The finite diagonal comparison and the unit-density limit, respectively, cover all radii in this region, including radii arbitrarily close to \\(\\lambda\\)."
+    },
+    {
+      "declaration": "CMVBallCase.sameRadius_typeB_gt_typeC",
+      "category": "main",
+      "informal_statement": "For every \\(0<\\lambda<1\\) and \\(R>0\\), \\(P_{\\mathrm{C}}(R)<P_{\\mathrm{B}}(R)\\).",
+      "latex_explanation": "The gap identity reduces the conclusion to positivity of \\(H\\):\n\n\\[\nP_{\\mathrm{B}}(R)-P_{\\mathrm{C}}(R)=2H(\\lambda,R)>0.\n\\]\n\nThe cases \\(R\\leq\\lambda\\) and \\(R>\\lambda\\) prove it over the complete positive radius domain."
+    },
+    {
+      "declaration": "CMVBallCase.CommonPerimeter",
+      "category": "main",
+      "informal_statement": "For a real \\(\\lambda\\), the common-perimeter domain consists of the real \\(p\\) with \\(p>2\\lambda\\pi\\).",
+      "latex_explanation": "The domain is\n\n\\[\nJ_\\lambda=(2\\lambda\\pi,\\infty).\n\\]\n\nPackaging the inequality with \\(p\\) ensures that inverse radii are defined only where both positive-radius perimeter equations are proved solvable."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_gt_pi_mul_radius",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(R>0\\), then \\(P_{\\mathrm{C}}(R)>\\pi R\\).",
+      "latex_explanation": "Since \\((1-\\lambda)b(R)<\\pi/2\\), the factor \\(\\pi-(1-\\lambda)b(R)\\) is greater than \\(\\pi/2\\). Multiplication by \\(2R>0\\) gives\n\n\\[\nP_{\\mathrm{C}}(R)>\\pi R,\n\\]\n\nproving unbounded perimeter growth."
+    },
+    {
+      "declaration": "CMVBallCase.existsUnique_typeBRadius_at_perimeter",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), there is exactly one \\(R\\) with \\(R>0\\) and \\(P_{\\mathrm{B}}(R)=p\\).",
+      "latex_explanation": "Start with \\(P_{\\mathrm{B}}(0)=2\\lambda\\pi<p\\), and use\n\n\\[\nP_{\\mathrm{B}}(R)>P_{\\mathrm{C}}(R)>\\pi R\n\\]\n\nat a large radius. Continuity gives existence and strict perimeter increase gives uniqueness among positive radii."
+    },
+    {
+      "declaration": "CMVBallCase.existsUnique_typeCRadius_at_perimeter",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), there is exactly one \\(R\\) with \\(R>0\\) and \\(P_{\\mathrm{C}}(R)=p\\).",
+      "latex_explanation": "The radius \\(R=\\lambda\\) has perimeter less than \\(2\\lambda\\pi\\); sufficiently large radii have perimeter greater than \\(p\\). The intermediate value theorem and strict increase give existence and uniqueness without evaluating at radius zero."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadiusAtPerimeter",
+      "category": "main",
+      "informal_statement": "For an admissible density and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{B}}(p)\\) is the unique positive radius with \\(P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p\\).",
+      "latex_explanation": "The source chooses the witness from the proved existence-and-uniqueness theorem, retaining its characterization\n\n\\[\nr_{\\mathrm{B}}(p)>0,\\qquad P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p.\n\\]\n\nNo inverse value is specified at or below the endpoint."
+    },
+    {
+      "declaration": "CMVBallCase.typeCRadiusAtPerimeter",
+      "category": "main",
+      "informal_statement": "For an admissible density and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{C}}(p)\\) is the unique positive radius with \\(P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p\\).",
+      "latex_explanation": "The definition selects the uniquely characterized positive solution and carries its defining equation:\n\n\\[\nr_{\\mathrm{C}}(p)>0,\\qquad P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p.\n\\]\n\nThe use of choice here does not choose among competing geometric branches, since uniqueness has already been proved."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadiusAtPerimeter_pos",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{B}}(p)>0\\).",
+      "latex_explanation": "This extracts the positivity already contained in the inverse radius definition. It permits applying derivative and monotonicity results on the positive radius chart."
+    },
+    {
+      "declaration": "CMVBallCase.typeCRadiusAtPerimeter_pos",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{C}}(p)>0\\).",
+      "latex_explanation": "Positivity is part of the defining characterization of the chosen inverse. The lemma exposes it for subsequent uses of the positive-radius analytic formulas."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAt_typeBRadiusAtPerimeter",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p\\).",
+      "latex_explanation": "The defining perimeter equation of the inverse is\n\n\\[\nP_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p.\n\\]\n\nIt is extracted from the stored characterization and is an exact equality at a genuine common perimeter."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAt_typeCRadiusAtPerimeter",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p\\).",
+      "latex_explanation": "The existence theorem used to define \\(r_{\\mathrm{C}}\\) supplies the equation\n\n\\[\nP_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p.\n\\]\n\nIt identifies the actual perimeter of the radius selected by the inverse."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadiusAtPerimeter_unique",
+      "category": "supplement",
+      "informal_statement": "If \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), \\(R>0\\), and \\(P_{\\mathrm{B}}(R)=p\\), then \\(r_{\\mathrm{B}}(p)=R\\).",
+      "latex_explanation": "Both radii solve the same positive-radius perimeter equation. Uniqueness gives\n\n\\[\nr_{\\mathrm{B}}(p)=R,\n\\]\n\nidentifying the chosen global inverse with any local inverse or explicit positive candidate satisfying that equation."
+    },
+    {
+      "declaration": "CMVBallCase.typeCRadiusAtPerimeter_unique",
+      "category": "supplement",
+      "informal_statement": "If \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), \\(R>0\\), and \\(P_{\\mathrm{C}}(R)=p\\), then \\(r_{\\mathrm{C}}(p)=R\\).",
+      "latex_explanation": "Uniqueness of the positive solution at perimeter \\(p\\) gives\n\n\\[\nr_{\\mathrm{C}}(p)=R.\n\\]\n\nIt is used to identify the local inverse supplied by calculus with the genuine common-perimeter inverse."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadiusAtPerimeter_lt_typeCRadiusAtPerimeter",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{B}}(p)<r_{\\mathrm{C}}(p)\\).",
+      "latex_explanation": "If \\(r_{\\mathrm{C}}(p)\\leq r_{\\mathrm{B}}(p)\\), monotonicity and the equal-radius comparison would give\n\n\\[\np=P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\leq P_{\\mathrm{C}}(r_{\\mathrm{B}}(p))<P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p.\n\\]\n\nThis contradiction proves strict radius order."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtRadius_hasStrictDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(P_{\\mathrm{B}}\\) has strict derivative \\(2Q_{\\mathrm{B}}(R)\\) at \\(R\\).",
+      "latex_explanation": "Strict differentiability means the two-point limit\n\n\\[\n\\lim_{\\substack{x,y\\to R\\\\x\\ne y}}\\frac{P_{\\mathrm{B}}(x)-P_{\\mathrm{B}}(y)}{x-y}=2Q_{\\mathrm{B}}(R).\n\\]\n\nThe ordinary derivative formula is continuous, so strict differentiability follows; at positive radii its nonzero value allows local inversion."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtRadius_hasStrictDerivAt",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(P_{\\mathrm{C}}\\) has strict derivative \\(2Q_{\\mathrm{C}}(R)\\) at \\(R\\).",
+      "latex_explanation": "The derivative formula is continuous in a neighborhood of every positive radius. Therefore the two-point derivative limit holds:\n\n\\[\n\\lim_{\\substack{x,y\\to R\\\\x\\ne y}}\\frac{P_{\\mathrm{C}}(x)-P_{\\mathrm{C}}(y)}{x-y}=2Q_{\\mathrm{C}}(R).\n\\]\n\nThis provides the strict differentiability required by the inverse function theorem."
+    },
+    {
+      "declaration": "CMVBallCase.commonPerimeterAreaGap",
+      "category": "main",
+      "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(G(p)\\) is \\(A_{\\mathrm{B}}(r_{\\mathrm{B}}(p))-A_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\).",
+      "latex_explanation": "The definition is\n\n\\[\nG(p)=A_{\\mathrm{B}}(r_{\\mathrm{B}}(p))-A_{\\mathrm{C}}(r_{\\mathrm{C}}(p)).\n\\]\n\nBoth radii realize the same genuine perimeter \\(p\\). The gap is defined on this open perimeter domain, not on all real perimeters and not as a difference of equal-area profiles."
+    },
+    {
+      "declaration": "CMVBallCase.commonPerimeterAreaGap_local_hasDerivAt",
+      "category": "main",
+      "informal_statement": "For an admissible density and each \\(p>2\\lambda\\pi\\), there is a real function agreeing locally with \\(G\\) on its domain and having derivative \\(r_{\\mathrm{B}}(p)-r_{\\mathrm{C}}(p)\\) at \\(p\\).",
+      "latex_explanation": "The statement supplies \\(g:\\mathbb R\\to\\mathbb R\\) and a neighborhood \\(U\\) of \\(p\\) such that\n\n\\[\ng'(p)=r_{\\mathrm{B}}(p)-r_{\\mathrm{C}}(p),\\qquad g(q)=G(q)\\quad(q\\in U,\\ q>2\\lambda\\pi).\n\\]\n\nLocal inverse derivatives and \\(A'=RP'\\) give the formula; no global off-domain inverse is introduced."
+    },
+    {
+      "declaration": "CMVBallCase.commonPerimeterClamp",
+      "category": "supplement",
+      "informal_statement": "For \\(p>2\\lambda\\pi\\) and real \\(q\\), the clamped common perimeter is \\(\\max(q,p)\\).",
+      "latex_explanation": "The clamped value satisfies\n\n\\[\n\\max(q,p)\\geq p>2\\lambda\\pi.\n\\]\n\nThis transports a function on the constrained perimeter domain to an ordinary real argument for interval calculus."
+    },
+    {
+      "declaration": "CMVBallCase.commonPerimeterClamp_eq",
+      "category": "supplement",
+      "informal_statement": "If \\(p>2\\lambda\\pi\\) and \\(q\\geq p\\), clamping \\(q\\) at \\(p\\) leaves \\(q\\) unchanged.",
+      "latex_explanation": "Under \\(p\\leq q\\),\n\n\\[\n\\max(q,p)=q.\n\\]\n\nThis also identifies the corresponding constrained-domain values, so clamping does not alter the gap anywhere on the interval used by the mean value theorem."
+    },
+    {
+      "declaration": "CMVBallCase.commonPerimeterAreaGapAbove",
+      "category": "supplement",
+      "informal_statement": "For an admissible density and \\(p>2\\lambda\\pi\\), the real function \\(G_p(q)\\) is \\(G(\\max(q,p))\\).",
+      "latex_explanation": "The definition is\n\n\\[\nG_p(q)=G(\\max(q,p)).\n\\]\n\nIt is a constant extension below \\(p\\) and agrees with \\(G\\) for \\(q\\geq p\\). Only its restriction to that upper interval is used; it does not assign inverse radii to inadmissible perimeters."
+    },
+    {
+      "declaration": "CMVBallCase.commonPerimeterAreaGapAbove_hasDerivWithinAt",
+      "category": "supplement",
+      "informal_statement": "For \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), and \\(q\\geq p\\), \\(G_p\\) has derivative within \\([p,\\infty)\\) equal to \\(r_{\\mathrm{B}}(q)-r_{\\mathrm{C}}(q)\\).",
+      "latex_explanation": "Local agreement with a differentiable representative of \\(G\\) proves the relative derivative formula\n\n\\[\n\\lim_{\\substack{x\\to q,\\ x\\geq p\\\\x\\ne q}}\\frac{G_p(x)-G_p(q)}{x-q}=r_{\\mathrm{B}}(q)-r_{\\mathrm{C}}(q).\n\\]\n\nAt \\(q=p\\) this is a one-sided derivative, not a claim of ordinary differentiability across the clamping point."
+    },
+    {
+      "declaration": "CMVBallCase.commonPerimeterAreaGap_strictAnti",
+      "category": "main",
+      "informal_statement": "For every \\(0<\\lambda<1\\), \\(G\\) is strictly decreasing on the common-perimeter domain \\((2\\lambda\\pi,\\infty)\\).",
+      "latex_explanation": "For \\(2\\lambda\\pi<p<q\\), use the continuous clamped representative on \\([p,q]\\). Its interior derivative is \\(r_{\\mathrm{B}}-r_{\\mathrm{C}}<0\\), so the mean value theorem gives\n\n\\[\nG(q)<G(p).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeterAtArea_gt_commonEndpoint",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), then \\(I_{\\mathrm{B}}(v)>2\\lambda\\pi\\).",
+      "latex_explanation": "The type-\\(\\mathrm B\\) area \\(v\\) is realized at a positive radius \\(R\\). Strict perimeter increase gives\n\n\\[\nI_{\\mathrm{B}}(v)=P_{\\mathrm{B}}(R)>P_{\\mathrm{B}}(0)=2\\lambda\\pi,\n\\]\n\nmaking the profile perimeter a valid argument of the common-perimeter gap."
+    },
+    {
+      "declaration": "CMVBallCase.commonPerimeterAreaGap_at_typeBProfile_nonpos",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\), \\(v>\\lambda\\pi\\), and \\(I_{\\mathrm{C}}(v)\\leq I_{\\mathrm{B}}(v)\\), then \\(G(I_{\\mathrm{B}}(v))\\leq0\\).",
+      "latex_explanation": "At \\(p=I_{\\mathrm{B}}(v)\\), the type-\\(\\mathrm B\\) area is \\(v\\). The type-\\(\\mathrm C\\) area radius has perimeter at most \\(p\\), hence is at most \\(r_{\\mathrm{C}}(p)\\). Area monotonicity gives\n\n\\[\nA_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\geq v,\\qquad G(p)=v-A_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\leq0.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeterAtArea_lt_of_commonPerimeterAreaGap_neg",
+      "category": "main",
+      "informal_statement": "If \\(0<\\lambda<1\\), \\(v>\\lambda\\pi\\), and \\(G(I_{\\mathrm{B}}(v))<0\\), then \\(I_{\\mathrm{C}}(v)<I_{\\mathrm{B}}(v)\\).",
+      "latex_explanation": "At \\(p=I_{\\mathrm{B}}(v)\\), negativity says\n\n\\[\nA_{\\mathrm{C}}(r_{\\mathrm{C}}(p))>v.\n\\]\n\nThe unique type-\\(\\mathrm C\\) radius of area \\(v\\) is strictly smaller, so its strictly increasing perimeter gives\n\n\\[\nI_{\\mathrm{C}}(v)<p=I_{\\mathrm{B}}(v).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeC_dominance_persists",
+      "category": "main",
+      "informal_statement": "For all real \\(\\lambda,v_0,v\\) with \\(0<\\lambda<1\\) and \\(\\lambda\\pi<v_0<v\\), \\(I_{\\mathrm{C}}(v_0)\\leq I_{\\mathrm{B}}(v_0)\\) implies \\(I_{\\mathrm{C}}(v)<I_{\\mathrm{B}}(v)\\).",
+      "latex_explanation": "Set \\(p_0=I_{\\mathrm{B}}(v_0)\\) and \\(p=I_{\\mathrm{B}}(v)\\). Strict profile increase and initial dominance give\n\n\\[\np_0<p,\\qquad G(p)<G(p_0)\\leq0.\n\\]\n\nThe final bridge yields\n\n\\[\nI_{\\mathrm{C}}(v)<I_{\\mathrm{B}}(v).\n\\]\n\nThis is the exact primary root and has no hypothesis asserting geometric classification or prior strict dominance."
+    },
+    {
+      "declaration": "CMVBallCase.AdmissibleDensity",
+      "category": "main",
+      "informal_statement": "An admissible density parameter is a real \\(\\lambda\\) satisfying \\(0<\\lambda\\) and \\(\\lambda<1\\).",
+      "latex_explanation": "The predicate abbreviates exactly\n\n\\[\n0<\\lambda<1.\n\\]\n\nIt excludes both constant-density endpoints and adds no condition about candidate optimality or minimizer classification."
+    },
+    {
+      "declaration": "CMVBallCase.typeBAlpha",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm B\\) auxiliary angle is \\(\\alpha=\\beta+\\arccos\\lambda\\).",
+      "latex_explanation": "The definition is\n\n\\[\n\\alpha=\\beta+\\arccos\\lambda.\n\\]\n\nThis is the half-angle of the unit-circle boundary arc in the source parametrization. On the admissible density and angle domain, \\(0<\\alpha\\leq\\pi\\)."
+    },
+    {
+      "declaration": "CMVBallCase.typeBRadius",
+      "category": "main",
+      "informal_statement": "The type-\\(\\mathrm B\\) exterior-circle radius is \\(\\sin(\\beta+\\arccos\\lambda)/\\sin\\beta\\).",
+      "latex_explanation": "The common chord gives \\(r\\sin\\beta=\\sin\\alpha\\), so\n\n\\[\nr=\\frac{\\sin\\alpha}{\\sin\\beta}=\\frac{\\sin(\\beta+\\arccos\\lambda)}{\\sin\\beta}.\n\\]\n\nAdmissibility for \\(0<\\lambda<1\\) ensures the denominator is positive and the radius nonnegative."
+    },
+    {
+      "declaration": "CMVBallCase.typeBPerimeter",
+      "category": "main",
+      "informal_statement": "The angular type-\\(\\mathrm B\\) weighted perimeter is \\(2((\\pi-\\beta)r+\\lambda\\alpha)\\), with \\(\\alpha=\\beta+\\arccos\\lambda\\) and \\(r=\\sin\\alpha/\\sin\\beta\\).",
+      "latex_explanation": "The exterior arc has length \\(2r(\\pi-\\beta)\\) and density one; the unit-circle arc has length \\(2\\alpha\\) and density \\(\\lambda\\). Their weighted sum is\n\n\\[\n\\mathsf P_{\\mathrm{B}}(\\beta)=2\\bigl((\\pi-\\beta)r+\\lambda\\alpha\\bigr).\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeBArea",
+      "category": "main",
+      "informal_statement": "The angular type-\\(\\mathrm B\\) weighted area is \\(r^2(\\pi-\\beta+\\sin\\beta\\cos\\beta)+\\alpha-\\sin\\alpha\\cos\\alpha-(1-\\lambda)\\pi\\).",
+      "latex_explanation": "The two chord segments have areas \\(r^2S(\\pi-\\beta)\\) and \\(S(\\alpha)\\). Their sum is the Euclidean region area; subtract \\((1-\\lambda)\\pi\\) because the region contains the entire unit disk. Thus, with \\(\\alpha=\\beta+\\arccos\\lambda\\) and \\(r=\\sin\\alpha/\\sin\\beta\\),\n\n\\[\n\\mathsf A_{\\mathrm{B}}(\\beta)=r^2(\\pi-\\beta+\\sin\\beta\\cos\\beta)+\\alpha-\\sin\\alpha\\cos\\alpha-(1-\\lambda)\\pi.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeCRadius",
+      "category": "main",
+      "informal_statement": "The angular type-\\(\\mathrm C\\) radius is \\(1/\\tan\\beta\\).",
+      "latex_explanation": "Orthogonality gives\n\n\\[\nR=\\frac1{\\tan\\beta}=\\cot\\beta\\qquad(0<\\beta<\\pi/2).\n\\]\n\nThe total real formula is not interpreted as a finite geometric radius at either excluded endpoint."
+    },
+    {
+      "declaration": "CMVBallCase.typeCPerimeter",
+      "category": "main",
+      "informal_statement": "The angular type-\\(\\mathrm C\\) weighted perimeter is \\(2(\\pi-(1-\\lambda)\\beta)/\\tan\\beta\\).",
+      "latex_explanation": "With \\(R=1/\\tan\\beta\\), subtract the density deficit \\((1-\\lambda)2R\\beta\\) of the inner arc from the full circumference \\(2\\pi R\\). The source formula is\n\n\\[\n\\mathsf P_{\\mathrm{C}}(\\beta)=\\frac{2\\bigl(\\pi-(1-\\lambda)\\beta\\bigr)}{\\tan\\beta}.\n\\]"
+    },
+    {
+      "declaration": "CMVBallCase.typeCArea",
+      "category": "main",
+      "informal_statement": "The angular type-\\(\\mathrm C\\) weighted area is \\((\\pi-(1-\\lambda)(\\beta-\\sin\\beta\\cos\\beta))/\\tan^2\\beta-(1-\\lambda)(\\pi/2-\\beta-\\sin\\beta\\cos\\beta)\\).",
+      "latex_explanation": "With \\(R=\\cot\\beta\\), the formula is\n\n\\[\n\\begin{aligned}\n\\mathsf A_{\\mathrm{C}}(\\beta)&=R^2\\pi-(1-\\lambda)\\bigl[R^2S(\\beta)+S(\\pi/2-\\beta)\\bigr]\\\\\n&=\\frac{\\pi-(1-\\lambda)(\\beta-\\sin\\beta\\cos\\beta)}{\\tan^2\\beta}-(1-\\lambda)(\\pi/2-\\beta-\\sin\\beta\\cos\\beta).\n\\end{aligned}\n\\]\n\nThe bracket is the overlap lens area, so the expression uses exactly the same density deficit as the geometric model."
+    }
   ],
   "generated_families": [],
   "external_citations": [
-    {"id":"CMV","author":"Antonio Cañete; Michele Miranda Jr.; Davide Vittone","title":"Some isoperimetric problems in planes with density","locator":"arXiv:0906.1256v1 [math.DG], 8 June 2009; Proposition 3.22, pp. 32–33; Theorem 3.23 and following remark, pp. 34–36; candidate formulas and Figure 19, pp. 34–35","url":"https://arxiv.org/abs/0906.1256v1"}
+    {
+      "id": "CMV",
+      "author": "Antonio Cañete; Michele Miranda Jr.; Davide Vittone",
+      "title": "Some isoperimetric problems in planes with density",
+      "locator": "arXiv:0906.1256v1 [math.DG], 8 June 2009; Proposition 3.22, pp. 32–33; Theorem 3.23 and following remark, pp. 34–36; candidate formulas and Figure 19, pp. 34–35",
+      "url": "https://arxiv.org/abs/0906.1256v1"
+    }
   ]
 }

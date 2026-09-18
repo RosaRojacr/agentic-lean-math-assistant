@@ -7,7 +7,7 @@
   "informal_statement": "For every real \\(\\lambda\\), \\(A_{\\mathrm{C}}\\) is continuous on \\((0,\\infty)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:703-707: The source permits arbitrary lam and asserts continuity only on Ioi 0. It derives this from positive-radius differentiability; the author does not incorrectly extend it across the totalized zero input.",
+  "reason": "`CMVBallCase.lean:703-707`: The source permits arbitrary \\(\\lambda\\) and asserts continuity only on `Ioi 0`. It derives this from positive-radius differentiability; the author does not incorrectly extend it across the totalized zero input.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "c92a0518d3bc80f606df13b4b6f5c21e7bd9c2747515397578edebe4a4433736",

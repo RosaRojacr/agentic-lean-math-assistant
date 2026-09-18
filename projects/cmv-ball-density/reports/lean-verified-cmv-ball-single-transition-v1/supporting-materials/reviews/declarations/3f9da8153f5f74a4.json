@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(Q_{\\mathrm{C}}(R)>0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:644-662: The formal coefficient is Q_C. Acute-angle sine/cosine positivity bounds S(b) between zero and b<pi/2, and 0<1-lam<1 proves strict positivity under the stated hypotheses.",
+  "reason": "`CMVBallCase.lean:644-662`: The formal coefficient is \\(Q_{\\mathrm{C}}\\). Acute-angle sine/cosine positivity bounds \\(S(b)\\) between zero and \\(b<\\pi /2\\), and \\(0<1-\\lambda <1\\) proves strict positivity under the stated hypotheses.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "c725d934df891e67e5699ac456ab0db215e125103ab9c675b3e231a6c66930e3",

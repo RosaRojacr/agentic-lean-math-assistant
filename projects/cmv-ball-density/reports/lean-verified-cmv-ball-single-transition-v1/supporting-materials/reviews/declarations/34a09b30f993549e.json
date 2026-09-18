@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), the derivative of \\(A_{\\mathrm{C}}\\) at \\(R\\) is positive.",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:670-676: Admissible density and positive R make the established derivative 2R Q_C strictly positive. The translation has exactly these hypotheses and the same ordinary derivative conclusion.",
+  "reason": "`CMVBallCase.lean:670-676`: Admissible density and positive \\(R\\) make the established derivative \\(2R Q_{\\mathrm{C}}\\) strictly positive. The translation has exactly these hypotheses and the same ordinary derivative conclusion.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "5b0c9033c9a26a0f21e15311d7c9b43d1a45758e4340fc63a1e1040bf167f9d8",

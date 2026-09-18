@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<1<R\\) and \\(N(\\lambda,R)<0\\), then \\(L(\\lambda,R)<0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1604-1629: The formal assumptions are 0<lam<1, R>1, and N(lam,R)<0. The proof makes L increase to its negative left limit, yielding the author's bound L(lam,R)<=-b(R)<0 with correct direction.",
+  "reason": "`CMVBallCase.lean:1604-1629`: The formal assumptions are \\(0<\\lambda <1, R>1\\), and \\(N(\\lambda ,R)<0\\). The proof makes \\(L\\) increase to its negative left limit, yielding the author's bound \\(L(\\lambda ,R)\\leq -b(R)<0\\) with correct direction.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "7e62014feed7939abad45447e00b04f292d440a21f48f2f7d10485082ddd4696",

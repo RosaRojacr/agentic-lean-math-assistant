@@ -15,6 +15,10 @@
   campaign retains every required proof artifact, allowing the controller to
   accept a kernel-checked proof even when an agent incorrectly reports the
   campaign as unsolved or blocked.
+- Made Proof Builder fail closed on exposed plaintext notation, unmatched LaTeX
+  delimiters, malformed braces or environments, Pandoc math-conversion warnings,
+  and missing MathML output; single-backslash inline and display mathematics now
+  render correctly and each PDF records matching source/rendered math counts.
 
 ### CMV Question 2
 

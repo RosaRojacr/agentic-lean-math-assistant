@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\), \\(c\\mapsto\\sqrt{1-c^2}\\) has derivative \\(-\\lambda/\\sqrt{1-\\lambda^2}\\) at \\(\\lambda\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1428-1436: At 0<lam<1 the positive radicand permits square-root differentiation, with coefficient -lam/sqrt(1-lam^2). The source and explanation differentiate density, not radius, and impose the same bounds.",
+  "reason": "`CMVBallCase.lean:1428-1436`: At \\(0<\\lambda <1\\) the positive radicand permits square-root differentiation, with coefficient \\(-\\lambda /\\sqrt{1-\\lambda ^2}\\). The source and explanation differentiate density, not radius, and impose the same bounds.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "1f9fdbe32f5f9bb2811002baeba3f0bd3fa1478086f09a6412852133afef60cf",

@@ -7,7 +7,7 @@
   "informal_statement": "\\(S(x)\\) is defined as \\(x-\\sin x\\cos x\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:488-489: The definition is x-sin(x)cos(x), exactly S. For a unit circle and angle 2x the sector-minus-signed-triangle calculation is S itself, not twice S; the reader-facing explanation uses the correct normalization.",
+  "reason": "`CMVBallCase.lean:488-489`: The definition is \\(x-\\sin (x)\\cos (x)\\), exactly \\(S\\). For a unit circle and angle \\(2x\\) the sector-minus-signed-triangle calculation is \\(S\\) itself, not twice \\(S\\); the reader-facing explanation uses the correct normalization.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "a0f37e78a16fab57786c18fa0ca15e0aec499e6edf77b3e0d77a98c1a7c7cdec",

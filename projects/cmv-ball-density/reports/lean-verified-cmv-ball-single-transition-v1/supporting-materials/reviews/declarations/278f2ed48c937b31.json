@@ -7,7 +7,7 @@
   "informal_statement": "An admissible density parameter is a real \\(\\lambda\\) satisfying \\(0<\\lambda\\) and \\(\\lambda<1\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallDefinitions.lean:8-10: The definition is exactly 0<lam and lam<1, with no geometric or optimality premise. The author's open-interval description preserves both excluded constant-density endpoints.",
+  "reason": "`CMVBallDefinitions.lean:8-10`: The definition is exactly \\(0<\\lambda\\) and \\(\\lambda <1\\), with no geometric or optimality premise. The author's open-interval description preserves both excluded constant-density endpoints.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "4e2cd6052fa41c3d2768e49b680c9466bd3d9e7beae3a567c7ebfa8e5256a410",

@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1947-1951: The source equality is the stored type-(B) perimeter equation at p.1. Under the stated density and perimeter domain, this is exactly P_B(r_B(p))=p, not an approximate inverse equation.",
+  "reason": "`CMVBallCase.lean:1947-1951`: The source equality is the stored type \\(\\mathrm{B}\\) perimeter equation at `p.1`. Under the stated density and perimeter domain, this is exactly \\(P_{\\mathrm{B}}(r_{\\mathrm{B}}(p))=p\\), not an approximate inverse equation.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "8c6523ab6857fea0ddfb73478b78aea70dd1ba779a838fdf73e197a8305abde2",

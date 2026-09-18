@@ -7,7 +7,7 @@
   "informal_statement": "\\(S(x)\\geq0\\) for \\(0\\leq x\\leq\\pi\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:776-783: The formal domain is [0,pi]. The proof treats 0 and pi explicitly and invokes interior positivity elsewhere, matching the author's closed-interval statement.",
+  "reason": "`CMVBallCase.lean:776-783`: The formal domain is \\([0,\\pi ]\\). The proof treats \\(0\\) and \\(\\pi\\) explicitly and invokes interior positivity elsewhere, matching the author's closed-interval statement.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "984106fd2f39d9277591bc5e64a6ef86b070468729c98368039d0fdaf7f7e0f5",

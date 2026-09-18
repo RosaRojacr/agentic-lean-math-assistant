@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(G(p)\\) is \\(A_{\\mathrm{B}}(r_{\\mathrm{B}}(p))-A_{\\mathrm{C}}(r_{\\mathrm{C}}(p))\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:2108-2116: The definition is A_B at the type-(B) common-perimeter inverse minus A_C at the type-(C) inverse. The author's sign, common-perimeter argument, and restricted domain are exact; this is not I_B-I_C at equal area.",
+  "reason": "`CMVBallCase.lean:2108-2116`: The definition is \\(A_{\\mathrm{B}}\\) at the type \\(\\mathrm{B}\\) common-perimeter inverse minus \\(A_{\\mathrm{C}}\\) at the type \\(\\mathrm{C}\\) inverse. The author's sign, common-perimeter argument, and restricted domain are exact; this is not \\(I_{\\mathrm{B}}-I_{\\mathrm{C}}\\) at equal area.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "71b55c7b076991056eaa30f6760e5f80aa24222bb5abfcebe16ad3020d3377f0",

@@ -7,7 +7,7 @@
   "informal_statement": "For every \\(R\\geq1\\), \\(H(c,R)/c\\) tends to zero as \\(c\\) tends to one from below.",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1726-1733: The source combines R=1 and R>1 to prove the pointwise left limit for all R>=1. The explanation correctly disclaims any uniformity in R.",
+  "reason": "`CMVBallCase.lean:1726-1733`: The source combines \\(R=1\\) and \\(R>1\\) to prove the pointwise left limit for all \\(R\\geq 1\\). The explanation correctly disclaims any uniformity in \\(R\\).",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "38b39009304f9c27c735560f1daa9451bc247788bdacf9b12a22ee47421536b1",

@@ -10,6 +10,7 @@ import shutil
 import tempfile
 import tomllib
 from dataclasses import dataclass, replace
+from html.parser import HTMLParser
 from pathlib import Path, PurePosixPath
 from typing import Any, Literal, Self
 
@@ -47,6 +48,37 @@ _IMPORT = re.compile(r"^[ \t]*import[ \t]+(?P<modules>[^\n-]+)", re.MULTILINE)
 _CITATION = re.compile(r"\[@lean:(?P<name>(?!\d)\w[\w']*(?:\.(?!\d)\w[\w']*)*)\]")
 _SAFE_ID = re.compile(r"[a-z][a-z0-9-]*")
 _LEAN_NAME = re.compile(r"(?!\d)\w[\w']*(?:\.(?!\d)\w[\w']*)*")
+_RAW_MATH_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("TeX command", re.compile(r"\\(?:[A-Za-z]+|[^A-Za-z\s])")),
+    (
+        "mathematical symbol",
+        re.compile(r"[≤≥≠≈∞∈∉⊂⊆∧∨¬⇒⇔→↦∂∫∑∏√α-ωΑ-Ω]"),
+    ),
+    (
+        "comparison or equality",
+        re.compile(
+            r"(?<![\w`])(?:-?\d+(?:\.\d+)?|[A-Za-z]\w*(?:\([^()\n]*\))?)"
+            r"\s*(?:<=|>=|!=|=|<|>)\s*(?:-?\d|[A-Za-z(])"
+        ),
+    ),
+    (
+        "mathematical function",
+        re.compile(
+            r"\b(?:sin|cos|tan|cot|arcsin|arccos|arctan|sqrt|lim|inf|sup|min|max)"
+            r"\s*\("
+        ),
+    ),
+    ("scripted symbol", re.compile(r"\b[A-Za-z]\w*(?:_|\^)[A-Za-z0-9{]")),
+    ("parenthesized symbol", re.compile(r"\([A-Za-z](?:_[^()\s]+)?\)")),
+    (
+        "named mathematical symbol",
+        re.compile(r"\b(?:lam|lambda|alpha|beta|pi|infinity)\b", re.IGNORECASE),
+    ),
+    (
+        "single-letter mathematical symbol",
+        re.compile(r"(?<![\w`'])(?:[B-HJ-Z]|[bcfghpqrstuvxyz])(?![\w`'])"),
+    ),
+)
 
 
 class ProofBuilderError(RuntimeError):
@@ -1267,7 +1299,7 @@ def _invoke_model(
 
 
 _PUBLICATION_FORMAT_GUIDE = """
-Publication-format contract for author-supplied reader-facing body content:
+Publication-format contract for all reader-facing body content:
 
 - Write for a mathematically expert reader who may know no Lean. Prefer a
   conventional theorem-proof narrative over a build log or declaration dump.
@@ -1281,10 +1313,16 @@ Publication-format contract for author-supplied reader-facing body content:
 - Use restrained mathematical-paper prose: short paragraphs, descriptive section
   headings, no conversational filler, no raw URLs in the argument, and no claims
   stronger than the frozen roots.
-- Typeset mathematics with LaTeX. Put consequential identities, inequalities,
-  definitions, and case splits in display math. Keep a display with its lead-in;
-  use `aligned` only for genuine multi-line alignment, never to strand a final
-  inequality on its own line. Use roman text for descriptive subscripts.
+- Typeset every mathematical symbol, variable, candidate label, expression,
+  interval, relation, and operator with LaTeX, except exact Lean references inside
+  inline or fenced code. Use only `\\(...\\)` for inline mathematics and
+  `\\[...\\]` for display mathematics; dollar delimiters are forbidden. Thus write
+  `type \\(\\mathrm B\\)`, not `type (B)`, and never leave formulas as plaintext.
+  Put consequential identities, inequalities, definitions, and case splits in
+  display math. Keep a display with its lead-in; use `aligned` only for genuine
+  multi-line alignment, never to strand a final inequality on its own line. Use
+  roman text for descriptive subscripts. Every handoff is checked for unmatched
+  delimiters, malformed braces/environments, and exposed mathematical notation.
 - Cite Lean with exact `[@lean:Fully.Qualified.Name]` tokens at the end of the
   paragraph they support. Do not write `(audit)` or construct PDF links. The
   renderer converts tokens into neutral Lean-reference blocks grouped by source
@@ -1419,6 +1457,153 @@ def _nonempty_json_text(value: object, label: str) -> str:
     return value.strip()
 
 
+def _without_markdown_code(markdown: str) -> str:
+    prose = re.sub(
+        r"(?ms)^[ \t]*(```+|~~~+)[^\n]*\n.*?^[ \t]*\1[ \t]*$",
+        " ",
+        markdown,
+    )
+    prose = _CITATION.sub(" ", prose)
+    prose = re.sub(r"(?is)<code(?:\s[^>]*)?>.*?</code>", " ", prose)
+    prose = re.sub(r"`[^`\n]*`", " ", prose)
+    return re.sub(r"\bpp?\.\s*\d+(?:[–—-]\d+)?", " ", prose)
+
+
+def _validate_tex_fragment(fragment: str, label: str) -> None:
+    if not fragment.strip():
+        raise ProofBuilderError(f"{label} contains empty LaTeX")
+    depth = 0
+    for index, character in enumerate(fragment):
+        escaped = index > 0 and fragment[index - 1] == "\\"
+        if character == "{" and not escaped:
+            depth += 1
+        elif character == "}" and not escaped:
+            depth -= 1
+            if depth < 0:
+                raise ProofBuilderError(f"{label} contains unbalanced LaTeX braces")
+    if depth:
+        raise ProofBuilderError(f"{label} contains unbalanced LaTeX braces")
+    environments: list[str] = []
+    for match in re.finditer(r"\\(begin|end)\{([^{}]+)\}", fragment):
+        action, environment = match.groups()
+        if action == "begin":
+            environments.append(environment)
+        elif not environments or environments.pop() != environment:
+            raise ProofBuilderError(
+                f"{label} contains mismatched LaTeX environment {environment!r}"
+            )
+    if environments:
+        raise ProofBuilderError(
+            f"{label} contains unclosed LaTeX environment {environments[-1]!r}"
+        )
+
+
+def _validate_math_markup(markdown: str, label: str) -> int:
+    prose = _without_markdown_code(markdown)
+    outside: list[str] = []
+    math_count = 0
+    index = 0
+    while index < len(prose):
+        opener = next(
+            (
+                candidate
+                for candidate in (r"\(", r"\[")
+                if prose.startswith(candidate, index)
+            ),
+            None,
+        )
+        if opener is not None:
+            closer = r"\)" if opener == r"\(" else r"\]"
+            end = prose.find(closer, index + 2)
+            if end < 0:
+                raise ProofBuilderError(
+                    f"{label} contains unclosed LaTeX delimiter {opener}"
+                )
+            fragment = prose[index + 2 : end]
+            if r"\(" in fragment or r"\[" in fragment:
+                raise ProofBuilderError(f"{label} contains nested LaTeX delimiters")
+            _validate_tex_fragment(fragment, label)
+            math_count += 1
+            outside.extend(" " for _ in range(end + 2 - index))
+            index = end + 2
+            continue
+        if prose.startswith((r"\)", r"\]"), index):
+            raise ProofBuilderError(
+                f"{label} contains an unmatched LaTeX closing delimiter"
+            )
+        outside.append(prose[index])
+        index += 1
+    plain = re.sub(
+        r"</?(?:a|div|span|strong)(?:\s+[^>\n]*)?>", " ", "".join(outside)
+    )
+    if "$" in plain:
+        raise ProofBuilderError(
+            f"{label} uses dollar-delimited mathematics; use \\(...\\) or \\[...\\]"
+        )
+    for kind, pattern in _RAW_MATH_PATTERNS:
+        match = pattern.search(plain)
+        if match is not None:
+            start = max(0, match.start() - 32)
+            end = min(len(plain), match.end() + 32)
+            snippet = " ".join(plain[start:end].split())
+            raise ProofBuilderError(
+                f"{label} contains {kind} outside LaTeX delimiters near {snippet!r}"
+            )
+    return math_count
+
+
+class _RenderedMathInspector(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.math_count = 0
+        self.math_depth = 0
+        self.ignored_depth = 0
+        self.errors: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        del attrs
+        if tag in ("code", "pre"):
+            self.ignored_depth += 1
+        if tag == "math":
+            self.math_count += 1
+            self.math_depth += 1
+        elif tag == "merror":
+            self.errors.append("MathML contains an merror element")
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in ("code", "pre") and self.ignored_depth:
+            self.ignored_depth -= 1
+        if tag == "math" and self.math_depth:
+            self.math_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if (
+            self.math_depth == 0
+            and self.ignored_depth == 0
+            and re.search(r"\\[\(\)\[\]]", data)
+        ):
+            self.errors.append("rendered prose contains a raw LaTeX delimiter")
+
+
+def _validate_rendered_math(html: Path, expected_math: int) -> int:
+    inspector = _RenderedMathInspector()
+    inspector.feed(html.read_text(encoding="utf-8"))
+    inspector.close()
+    if inspector.math_depth:
+        inspector.errors.append("rendered HTML contains an unclosed math element")
+    if inspector.math_count != expected_math:
+        inspector.errors.append(
+            "rendered math count differs from source "
+            f"({inspector.math_count} != {expected_math})"
+        )
+    if inspector.errors:
+        raise ProofBuilderError(
+            f"{html.name} failed mathematical rendering validation: "
+            + "; ".join(inspector.errors)
+        )
+    return inspector.math_count
+
+
 def _validate_author(
     path: Path, spec: ProofPackageSpec, records: tuple[DeclarationRecord, ...]
 ) -> dict[str, Any]:
@@ -1437,7 +1622,11 @@ def _validate_author(
     if root["schema_version"] != 1:
         raise ProofBuilderError("author model handoff schema_version must be 1")
     main = _nonempty_json_text(root["main_markdown"], "main_markdown")
-    _nonempty_json_text(root["supplement_introduction"], "supplement_introduction")
+    supplement_introduction = _nonempty_json_text(
+        root["supplement_introduction"], "supplement_introduction"
+    )
+    _validate_math_markup(main, "main_markdown")
+    _validate_math_markup(supplement_introduction, "supplement_introduction")
     conceptual = {
         record.declaration: record
         for record in records
@@ -1460,15 +1649,19 @@ def _validate_author(
             raise ProofBuilderError(f"duplicate author classification: {declaration}")
         if item["category"] not in ("main", "supplement"):
             raise ProofBuilderError(f"invalid author classification for {declaration}")
+        informal_statement = _nonempty_json_text(
+            item["informal_statement"], f"{declaration}.informal_statement"
+        )
+        latex_explanation = _nonempty_json_text(
+            item["latex_explanation"], f"{declaration}.latex_explanation"
+        )
+        _validate_math_markup(informal_statement, f"{declaration}.informal_statement")
+        _validate_math_markup(latex_explanation, f"{declaration}.latex_explanation")
         classifications[declaration] = {
             "declaration": declaration,
             "category": item["category"],
-            "informal_statement": _nonempty_json_text(
-                item["informal_statement"], f"{declaration}.informal_statement"
-            ),
-            "latex_explanation": _nonempty_json_text(
-                item["latex_explanation"], f"{declaration}.latex_explanation"
-            ),
+            "informal_statement": informal_statement,
+            "latex_explanation": latex_explanation,
         }
     if set(classifications) != set(conceptual):
         raise ProofBuilderError(
@@ -1541,11 +1734,13 @@ def _validate_author(
             raise ProofBuilderError(
                 f"duplicate generated family classification: {glob}"
             )
+        description = _nonempty_json_text(
+            item["description"], f"generated family {glob} description"
+        )
+        _validate_math_markup(description, f"generated family {glob} description")
         families[glob] = {
             "glob": glob,
-            "description": _nonempty_json_text(
-                item["description"], f"generated family {glob} description"
-            ),
+            "description": description,
             "representatives": list(representatives),
         }
     if set(families) != expected_families:
@@ -1828,7 +2023,10 @@ contain a specific issue. Return a brief completion line on stdout.
 def _issue_texts(value: object, label: str) -> tuple[str, ...]:
     if not isinstance(value, list):
         raise ProofBuilderError(f"{label} must be an array")
-    return tuple(_nonempty_json_text(item, f"{label} entry") for item in value)
+    result = tuple(_nonempty_json_text(item, f"{label} entry") for item in value)
+    for index, item in enumerate(result):
+        _validate_math_markup(item, f"{label}[{index}]")
+    return result
 
 
 def _validate_reviewer(
@@ -1865,7 +2063,8 @@ def _validate_reviewer(
     }
     if root["package_relation"] not in allowed_relations:
         raise ProofBuilderError("reviewer package_relation is invalid")
-    _nonempty_json_text(root["audit_markdown"], "audit_markdown")
+    audit_markdown = _nonempty_json_text(root["audit_markdown"], "audit_markdown")
+    _validate_math_markup(audit_markdown, "audit_markdown")
     global_issues = (
         *_issue_texts(root["critical_errors"], "critical_errors"),
         *_issue_texts(root["main_proof_critical_errors"], "main_proof_critical_errors"),
@@ -1916,9 +2115,25 @@ def _validate_reviewer(
             raise ProofBuilderError(
                 f"review changed the author's statement: {declaration}"
             )
+        reason = _nonempty_json_text(item["reason"], f"reviews[{index}].reason")
+        _validate_math_markup(reason, f"{declaration}.review_reason")
+        for issue_key in (
+            "added_hypotheses",
+            "omitted_hypotheses",
+            "quantifier_issues",
+            "domain_issues",
+            "boundary_issues",
+            "symbol_mismatches",
+            "critical_errors",
+        ):
+            _issue_texts(item[issue_key], f"{declaration}.{issue_key}")
         semantic_payload = {
             "schema_version": 1,
-            **{key: value for key, value in item.items() if key != "source_sha256"},
+            **{
+                key: reason if key == "reason" else value
+                for key, value in item.items()
+                if key != "source_sha256"
+            },
         }
         filename = (
             hashlib.sha256(declaration.encode("utf-8")).hexdigest()[:16] + ".json"
@@ -1968,13 +2183,13 @@ def _validate_reviewer(
             )
         if glob in family_reviews:
             raise ProofBuilderError(f"duplicate generated family review: {glob}")
+        reason = _nonempty_json_text(item["reason"], f"generated family {glob} reason")
+        _validate_math_markup(reason, f"generated family {glob} reason")
         family_reviews[glob] = {
             "glob": glob,
             "relation": relation,
             "issues": list(issues),
-            "reason": _nonempty_json_text(
-                item["reason"], f"generated family {glob} reason"
-            ),
+            "reason": reason,
         }
     if set(family_reviews) != set(spec.generated_globs):
         raise ProofBuilderError("generated family review coverage mismatch")
@@ -2117,6 +2332,9 @@ def _render_pdf(
     package: Path,
     chromium: str,
 ) -> tuple[dict[str, object], dict[str, object]]:
+    expected_math = _validate_math_markup(
+        markdown.read_text(encoding="utf-8"), markdown.name
+    )
     manuscripts = markdown.parent
     if markdown.stem == "MainProof":
         css = manuscripts / "proof-package-main.css"
@@ -2131,10 +2349,12 @@ def _render_pdf(
     pandoc_argv = (
         str(Path(pandoc).resolve()),
         str(markdown),
-        "--from=markdown+fenced_divs",
+        "--from=markdown+fenced_divs+tex_math_single_backslash",
         "--standalone",
         "--embed-resources",
+        f"--metadata=pagetitle:{markdown.stem}",
         "--mathml",
+        "--fail-if-warnings",
         f"--css={css}",
         f"--output={html}",
     )
@@ -2147,6 +2367,7 @@ def _render_pdf(
     )
     if pandoc_result.exit_code != 0 or not html.is_file():
         raise ProofBuilderError(f"Pandoc failed while rendering {markdown.name}")
+    rendered_math = _validate_rendered_math(html, expected_math)
     chromium_argv = (
         chromium,
         "--headless",
@@ -2169,9 +2390,13 @@ def _render_pdf(
         or output.stat().st_size == 0
     ):
         raise ProofBuilderError(f"Chromium failed while rendering {output.name}")
-    return _command_receipt(pandoc_result, pandoc_argv), _command_receipt(
-        chromium_result, chromium_argv
-    )
+    pandoc_receipt = _command_receipt(pandoc_result, pandoc_argv)
+    pandoc_receipt["math_validation"] = {
+        "status": "passed",
+        "source_math_fragments": expected_math,
+        "rendered_math_elements": rendered_math,
+    }
+    return pandoc_receipt, _command_receipt(chromium_result, chromium_argv)
 
 
 def _render_all(spec: ProofPackageSpec, package: Path) -> None:

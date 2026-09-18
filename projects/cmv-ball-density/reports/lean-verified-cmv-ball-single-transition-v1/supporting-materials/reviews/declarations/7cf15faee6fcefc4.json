@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), the density derivative of \\(\\beta_\\lambda(R)\\) is \\((1-\\lambda R)/(\\sqrt{1-\\lambda^2}D(\\lambda,R))\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1437-1454: With R fixed but arbitrary, differentiating density gives (1-lam*R)/(sqrt(1-lam^2)*D). The author's formula, variable, and admissible-density hypotheses match the exact source coefficient.",
+  "reason": "`CMVBallCase.lean:1437-1454`: With \\(R\\) fixed but arbitrary, differentiating density gives \\((1-\\lambda \\cdot R)/(\\sqrt{1-\\lambda ^2}\\cdot D)\\). The author's formula, variable, and admissible-density hypotheses match the exact source coefficient.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "81dbbf3b42fcfbd5c1dad2e201bd766325c3f6f4bbc9066d7c22e79ab478c30f",

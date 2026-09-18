@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<1\\), \\(\\lambda<R\\), and \\(N(\\lambda,R)\\geq0\\), then \\(L(\\lambda,R)<0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1571-1594: All formal hypotheses, including lam<R and N(lam,R)>=0, appear in the translation. The proof uses N(c,R)>0 strictly to the left and continuity at zero, so its strict conclusion remains valid when N(lam,R)=0.",
+  "reason": "`CMVBallCase.lean:1571-1594`: All formal hypotheses, including \\(\\lambda <R\\) and \\(N(\\lambda ,R)\\geq 0\\), appear in the translation. The proof uses \\(N(c,R)>0\\) strictly to the left and continuity at zero, so its strict conclusion remains valid when \\(N(\\lambda ,R)=0\\).",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "e7586227d8c6bfcd2ebb1b0a33219042c5b328676e83c2a41deeaf131c44f22f",

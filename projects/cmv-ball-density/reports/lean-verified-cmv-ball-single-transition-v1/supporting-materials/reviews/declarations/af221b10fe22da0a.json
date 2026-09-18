@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), there is exactly one \\(R\\) with \\(R>0\\) and \\(P_{\\mathrm{B}}(R)=p\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1853-1884: Lean's existential uniqueness ranges over radii satisfying R>0 and P_B(R)=p, with p>2lam*pi and admissible density. Its intermediate-value and strict-monotonicity proof matches the author's existence and uniqueness argument.",
+  "reason": "`CMVBallCase.lean:1853-1884`: Lean's existential uniqueness ranges over radii satisfying \\(R>0\\) and \\(P_{\\mathrm{B}}(R)=p\\), with \\(p>2\\lambda \\cdot \\pi\\) and admissible density. Its intermediate-value and strict-monotonicity proof matches the author's existence and uniqueness argument.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "b6f0fa2f243c3e91136c9bd09e3537e769591131b17de77172ce5ad85508eb6b",

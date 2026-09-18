@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and all real \\(R\\), \\(\\cot\\beta_\\lambda(R)=(R-\\lambda)/\\sqrt{1-\\lambda^2}\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:157-162: For the stated density bounds and arbitrary real R, complementary angles and tan(arctan(x))=x give the displayed quotient. No hidden R>=0 condition is introduced.",
+  "reason": "`CMVBallCase.lean:157-162`: For the stated density bounds and arbitrary real \\(R\\), complementary angles and \\(\\tan (\\arctan (x))=x\\) give the displayed quotient. No hidden \\(R\\geq 0\\) condition is introduced.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "b6035ec4d3398844c66860e34566e7cf25d89bc622f0a05527f8328bc5c348c9",

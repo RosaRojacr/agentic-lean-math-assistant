@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\), \\(A_{\\mathrm{B}}(0)=\\lambda\\pi\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:749-758: The proof reduces the angular endpoint to alpha=pi and radius zero, giving pi-(1-lam)pi=lam*pi. The statement preserves admissible density and the exact endpoint area.",
+  "reason": "`CMVBallCase.lean:749-758`: The proof reduces the angular endpoint to \\(\\alpha =\\pi\\) and radius zero, giving \\(\\pi -(1-\\lambda )\\pi =\\lambda \\cdot \\pi\\). The statement preserves admissible density and the exact endpoint area.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "6d532317078066c3097d5d0410644fac9c192ee7d6af6804f7e2c0d6a360b53d",

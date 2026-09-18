@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\), \\(I_{\\mathrm{B}}\\) is strictly increasing on \\((\\lambda\\pi,\\infty)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1201-1219: The formal area domain is (lam*pi,infinity). Area existence, strict area ordering of radii, and strict perimeter increase give the stated strict profile increase; no monotonicity of the difference of profiles is inferred.",
+  "reason": "`CMVBallCase.lean:1201-1219`: The formal area domain is \\((\\lambda \\cdot \\pi ,\\infty )\\). Area existence, strict area ordering of radii, and strict perimeter increase give the stated strict profile increase; no monotonicity of the difference of profiles is inferred.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "c3d6e28ec8a214fad8521a957798e0d4a463a65ea8d06f253bc35c5c42925728",

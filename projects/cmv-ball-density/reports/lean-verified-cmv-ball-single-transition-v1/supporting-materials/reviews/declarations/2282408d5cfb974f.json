@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), the derivative of \\(c\\mapsto H(c,R)/c\\) at \\(\\lambda\\) is \\(R L(\\lambda,R)/\\lambda^2\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1480-1500: The source proves the ordinary density derivative (R/lam^2)*L for every real R under the two density bounds. The author correctly separates this identity from the additional R>lam condition needed for negativity.",
+  "reason": "`CMVBallCase.lean:1480-1500`: The source proves the ordinary density derivative \\((R/\\lambda ^2)\\cdot L\\) for every real \\(R\\) under the two density bounds. The author correctly separates this identity from the additional \\(R>\\lambda\\) condition needed for negativity.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "8201756840d20049cb38f7556cdc3b5c84839cfb60b6a731c3c4da0399a6d421",

@@ -7,7 +7,7 @@
   "informal_statement": "If \\(f\\) has derivative \\(f'\\) at \\(x\\), then \\(S\\circ f\\) has derivative \\(2\\sin^2(f(x))f'\\) there.",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:490-512: The source quantifies over arbitrary real f, f', and x with HasDerivAt f f' x. Its conclusion is the chain rule coefficient 2*sin(f(x))^2*f', exactly the author's statement, with no angle restriction.",
+  "reason": "`CMVBallCase.lean:490-512`: The source quantifies over arbitrary real \\(f, f'\\), and \\(x\\) with `HasDerivAt f f' x`. Its conclusion is the chain rule coefficient \\(2\\cdot \\sin (f(x))^2\\cdot f'\\), exactly the author's statement, with no angle restriction.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "32a91ac001b703b525fd39e1c6017868329abe912be28a6cd8b30291e39dfc4d",

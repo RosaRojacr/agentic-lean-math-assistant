@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(A_{\\mathrm{B}}\\) has derivative \\(2R Q_{\\mathrm{B}}(R)\\) at \\(R\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:535-571: The formal hypotheses are 0<lam<1 and R>0. The proof cancels the two angle-derivative contributions using sin(beta+a)=R sin(beta), leaving R*(2Q_B), equivalent to 2R Q_B and R P_B'.",
+  "reason": "`CMVBallCase.lean:535-571`: The formal hypotheses are \\(0<\\lambda <1\\) and \\(R>0\\). The proof cancels the two angle-derivative contributions using \\(\\sin (\\beta +a)=R \\sin (\\beta )\\), leaving \\(R\\cdot (2Q_{\\mathrm{B}})\\), equivalent to \\(2R Q_{\\mathrm{B}}\\) and \\(R P_{\\mathrm{B}}'\\).",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "e5d44f049460bf59353073b4b5ae0475e767191b44bc8056fa589b30ce308ada",

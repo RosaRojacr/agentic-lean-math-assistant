@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{B}}(p)>0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1937-1941: For admissible density and a genuine common perimeter, the formal conclusion extracts strict positivity from the inverse's codomain. The author's ordinary real notation faithfully suppresses only subtype packaging.",
+  "reason": "`CMVBallCase.lean:1937-1941`: For admissible density and a genuine common perimeter, the formal conclusion extracts strict positivity from the inverse's codomain. The author's ordinary real notation faithfully suppresses only subtype packaging.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "35f84c501e62b1b673fd6a9b793e1ea9f012ba0b179ed229e723b724fe0b5365",

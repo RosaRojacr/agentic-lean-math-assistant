@@ -7,7 +7,7 @@
   "informal_statement": "For all real \\(\\lambda\\) and \\(R\\), \\(c\\mapsto D(c,R)\\) has derivative \\(-2R\\) at \\(\\lambda\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1455-1461: The formal derivative is -2*R for all real lam,R. The expanded polynomial cancels both quadratic density terms, justifying the author's constant derivative without domain restrictions.",
+  "reason": "`CMVBallCase.lean:1455-1461`: The formal derivative is \\(-2\\cdot R\\) for all real \\(\\lambda ,R\\). The expanded polynomial cancels both quadratic density terms, justifying the author's constant derivative without domain restrictions.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "8c046ed0856b99b8d7465ed1688893c4d60d5bff0186da511b6237c36d6dc073",

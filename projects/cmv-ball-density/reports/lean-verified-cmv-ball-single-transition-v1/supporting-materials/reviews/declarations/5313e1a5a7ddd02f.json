@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(R>0\\), \\(Q_{\\mathrm{B}}(R)>0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:623-643: Under admissible density and R>0, the complementary angle pi-beta lies strictly in (0,pi). Its segment area is exactly Q_B, giving the strict sign used in derivatives.",
+  "reason": "`CMVBallCase.lean:623-643`: Under admissible density and \\(R>0\\), the complementary angle \\(\\pi -\\beta\\) lies strictly in \\((0,\\pi )\\). Its segment area is exactly \\(Q_{\\mathrm{B}}\\), giving the strict sign used in derivatives.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "ac194654106ebe6db799026b01d031f3446dcc24e3fc1b5dfd81512dcf10bc66",

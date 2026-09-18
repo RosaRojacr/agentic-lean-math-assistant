@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{C}}(p)>0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1942-1946: The inverse's stored characterization gives a strictly positive real radius for every admissible input. The author preserves both the density and open-perimeter hypotheses.",
+  "reason": "`CMVBallCase.lean:1942-1946`: The inverse's stored characterization gives a strictly positive real radius for every admissible input. The author preserves both the density and open-perimeter hypotheses.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "6d7f4a31d01f4556bf0e8a9719b79bf61ccb4965c124289a537df2d839c9fd39",

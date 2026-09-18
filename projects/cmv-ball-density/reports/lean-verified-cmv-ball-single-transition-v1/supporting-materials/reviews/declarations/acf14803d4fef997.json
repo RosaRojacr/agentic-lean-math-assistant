@@ -7,7 +7,7 @@
   "informal_statement": "For every real \\(R\\), \\(N(R,R)=R(1-R^2)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1413-1417: Substituting lam=R gives R-R^3=R(1-R^2) for every real R. The nonnegative comparison at 0<R<=1 is a stated use, not an additional hypothesis of the identity.",
+  "reason": "`CMVBallCase.lean:1413-1417`: Substituting \\(\\lambda =R\\) gives \\(R-R^3=R(1-R^2)\\) for every real \\(R\\). The nonnegative comparison at \\(0<R\\leq 1\\) is a stated use, not an additional hypothesis of the identity.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "1e28106ded58409dc99d7ec87ff622e35ba249710e63bf8dc7c272196b448794",

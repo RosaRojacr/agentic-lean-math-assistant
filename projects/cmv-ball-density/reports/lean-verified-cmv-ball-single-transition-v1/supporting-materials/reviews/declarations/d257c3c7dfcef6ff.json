@@ -7,7 +7,7 @@
   "informal_statement": "For an admissible density and \\(p>2\\lambda\\pi\\), the real function \\(G_p(q)\\) is \\(G(\\max(q,p))\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:2235-2238: The definition composes G with commonPerimeterClamp. The author's real function G_p(q)=G(max(q,p)) is exact and remains a composition using only genuine inverse arguments even below p.",
+  "reason": "`CMVBallCase.lean:2235-2238`: The definition composes \\(G\\) with `commonPerimeterClamp`. The author's real function \\(G_p(q)=G(\\max (q,p))\\) is exact and remains a composition using only genuine inverse arguments even below \\(p\\).",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "e2b63b71cf44b62491a0ebd0b8526e6a8332a7c063ef2fe57ee5f88f8d32ce4f",

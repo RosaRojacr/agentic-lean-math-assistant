@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(r_{\\mathrm{B}}(p)<r_{\\mathrm{C}}(p)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1975-1991: The source proves strict order for every admissible density and genuine common perimeter. Assuming the reverse weak order contradicts P_C(r_B)<P_B(r_B)=p, exactly the author's argument.",
+  "reason": "`CMVBallCase.lean:1975-1991`: The source proves strict order for every admissible density and genuine common perimeter. Assuming the reverse weak order contradicts \\(P_{\\mathrm{C}}(r_{\\mathrm{B}})<P_{\\mathrm{B}}(r_{\\mathrm{B}})=p\\), exactly the author's argument.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "37fe08774ef3026b52e3131542e0b473bbc2fb7ecab7c6ff79923246a9265841",

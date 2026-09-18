@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(p>2\\lambda\\pi\\), \\(P_{\\mathrm{C}}(r_{\\mathrm{C}}(p))=p\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1952-1957: The formal equality projects the perimeter component of the chosen type-(C) radius's characterization. The author's equation and admissible input domain match exactly.",
+  "reason": "`CMVBallCase.lean:1952-1957`: The formal equality projects the perimeter component of the chosen type \\(\\mathrm{C}\\) radius's characterization. The author's equation and admissible input domain match exactly.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "97f0a09e977f148c1547234ee78701dc58ab72d702573d3d019190ba9b227ce1",

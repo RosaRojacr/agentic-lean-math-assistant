@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<1\\) and \\(0<R\\leq\\lambda\\), then \\(P_{\\mathrm{C}}(R)<P_{\\mathrm{B}}(R)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1400-1406: Under the same low-radius hypotheses, positivity of H and the identity P_B-P_C=2H give P_C<P_B. The author correctly presents this as a restricted equal-radius comparison.",
+  "reason": "`CMVBallCase.lean:1400-1406`: Under the same low-radius hypotheses, positivity of \\(H\\) and the identity \\(P_{\\mathrm{B}}-P_{\\mathrm{C}}=2H\\) give \\(P_{\\mathrm{C}}<P_{\\mathrm{B}}\\). The author correctly presents this as a restricted equal-radius comparison.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "5dd1341e2c387a274bfb506d761e3f1b5f27cc70f720d3f55540418d8785332e",

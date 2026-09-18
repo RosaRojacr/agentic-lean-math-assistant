@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<1\\) and \\(v>\\lambda\\pi\\), some \\(R>0\\) satisfies \\(A_{\\mathrm{B}}(R)=v\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:993-1019: Lean asserts existence, not independently uniqueness, of a positive radius for each v>lam*pi under admissible density. The intermediate value proof starts at A_B(0)=lam*pi and excludes zero by the strict area hypothesis, as stated.",
+  "reason": "`CMVBallCase.lean:993-1019`: Lean asserts existence, not independently uniqueness, of a positive radius for each \\(v>\\lambda \\cdot \\pi\\) under admissible density. The intermediate value proof starts at \\(A_{\\mathrm{B}}(0)=\\lambda \\cdot \\pi\\) and excludes zero by the strict area hypothesis, as stated.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "2eb4d55fd6e17591ebc46f3f94a245862a68631d4afc013b3f0eb27bc15ab111",

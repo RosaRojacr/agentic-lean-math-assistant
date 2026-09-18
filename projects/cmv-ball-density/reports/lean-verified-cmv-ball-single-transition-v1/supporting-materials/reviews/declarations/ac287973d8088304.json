@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<1\\), then \\(\\sqrt{1-\\lambda^2}>0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:53-57: The two Lean hypotheses are exactly 0 < lam and lam < 1. They imply a strictly positive radicand, and Real.sqrt_pos supplies the asserted positive square root used in cancellations.",
+  "reason": "`CMVBallCase.lean:53-57`: The two Lean hypotheses are exactly \\(0 < \\lambda\\) and \\(\\lambda  < 1\\). They imply a strictly positive radicand, and `Real.sqrt_pos` supplies the asserted positive square root used in cancellations.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "0bd6d03a5431ddb7e353eee713defc6c88eb6f034d3e70eb881f76b26abc6488",

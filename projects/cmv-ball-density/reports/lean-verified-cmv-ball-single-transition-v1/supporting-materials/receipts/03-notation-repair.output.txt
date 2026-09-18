@@ -1,0 +1,1 @@
+Wrote `supporting-materials/reviews/reviewer-03.json`. All 153 reviews, source hashes, relations, and issue arrays preserved; author statements copied exactly and notation validation passed.

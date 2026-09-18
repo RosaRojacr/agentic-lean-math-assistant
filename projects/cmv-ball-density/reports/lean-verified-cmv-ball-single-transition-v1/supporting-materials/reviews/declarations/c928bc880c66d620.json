@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq\\lambda\\), \\(A_{\\mathrm{B}}(R)>(\\pi/2)R^2-\\pi\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:784-809: The source assumes lam<=R and 0<lam<1 and concludes R^2*(pi/2)-pi<A_B(R). The author preserves strictness and the lower radius restriction; nonnegative segment terms and a strictly smaller-than-pi density correction justify the bound.",
+  "reason": "`CMVBallCase.lean:784-809`: The source assumes \\(\\lambda \\leq R\\) and \\(0<\\lambda <1\\) and concludes \\(R^2\\cdot (\\pi /2)-\\pi <A_{\\mathrm{B}}(R)\\). The author preserves strictness and the lower radius restriction; nonnegative segment terms and a strictly smaller-than-\\(\\pi\\) density correction justify the bound.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "141341249a38db9c1c4d40b1c1642f4101a23d6266b432cbe39ad76a061df4b3",

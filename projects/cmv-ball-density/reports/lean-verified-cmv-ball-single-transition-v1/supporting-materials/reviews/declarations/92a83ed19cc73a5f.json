@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<x<\\pi/2\\), then \\(S(x)<x\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:767-775: Lean assumes 0<x<pi/2 and concludes the strict inequality S(x)<x. Positivity of both sine and cosine proves it; no non-strict endpoint claim is substituted.",
+  "reason": "`CMVBallCase.lean:767-775`: Lean assumes \\(0<x<\\pi /2\\) and concludes the strict inequality \\(S(x)<x\\). Positivity of both sine and cosine proves it; no non-strict endpoint claim is substituted.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "7f8e1ec7190e9bd71f5255f6b427e61d471c4bb1d11fb61e4053360c07533a98",

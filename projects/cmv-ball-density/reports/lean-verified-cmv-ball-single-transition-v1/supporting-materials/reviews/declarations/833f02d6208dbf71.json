@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<1\\) and \\(R>0\\), then \\(P_{\\mathrm{C}}(R)>\\pi R\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1841-1852: The source assumes 0<lam<1 and R>0. Its coefficient bound pi/2<pi-(1-lam)b(R) gives pi*R<P_C(R), preserving the strict lower bound and unbounded-growth use in the explanation.",
+  "reason": "`CMVBallCase.lean:1841-1852`: The source assumes \\(0<\\lambda <1\\) and \\(R>0\\). Its coefficient bound \\(\\pi /2<\\pi -(1-\\lambda )b(R)\\) gives \\(\\pi \\cdot R<P_{\\mathrm{C}}(R)\\), preserving the strict lower bound and unbounded-growth use in the explanation.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "096d139a89edea080509b072e5206625c2521a1d0213be4b9a082a2bd82369f3",

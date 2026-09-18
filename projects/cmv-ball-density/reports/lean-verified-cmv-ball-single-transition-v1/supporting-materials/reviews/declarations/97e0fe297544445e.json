@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(\\beta_\\lambda\\) has derivative \\(-s/((R-\\lambda)^2+s^2)\\) at \\(R\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:378-392: The formal derivative is -sqrt(1-lam^2)/((R-lam)^2+sqrt(1-lam^2)^2) for every real R under the two density bounds. With s as defined, the author's formula and fixed-density differentiation variable are exact.",
+  "reason": "`CMVBallCase.lean:378-392`: The formal derivative is \\(-\\sqrt{1-\\lambda ^2}/((R-\\lambda )^2+\\sqrt{1-\\lambda ^2}^2)\\) for every real \\(R\\) under the two density bounds. With \\(s\\) as defined, the author's formula and fixed-density differentiation variable are exact.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "7bfaeb583b2974229111c194bad221441e7cff9af27728eb440c5e3349f59cc9",

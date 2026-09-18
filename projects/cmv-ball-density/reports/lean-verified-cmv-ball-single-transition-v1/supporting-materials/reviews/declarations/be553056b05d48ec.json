@@ -7,7 +7,7 @@
   "informal_statement": "\\(L(\\lambda,R)\\) is \\(\\beta_\\lambda(R)-b(R)-\\lambda\\sqrt{1-\\lambda^2}/D(\\lambda,R)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1249-1253: The formal expression is betaAtRadius-bAtRadius-lam*sqrt(1-lam^2)/D. The author has the correct minus sign and explicitly limits the negative-sign theorem to R>lam rather than all positive radii.",
+  "reason": "`CMVBallCase.lean:1249-1253`: The formal expression is `betaAtRadius` \\(-\\) `bAtRadius` \\(-\\lambda\\sqrt{1-\\lambda^2}/D\\). The author has the correct minus sign and explicitly limits the negative-sign theorem to \\(R>\\lambda\\) rather than all positive radii.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "f9ee2e168349ec1a77b121c311033b4f50ae517f2839c175c84616e6784fbea2",

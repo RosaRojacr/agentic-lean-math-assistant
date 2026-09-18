@@ -7,7 +7,7 @@
   "informal_statement": "For an admissible density and each \\(p>2\\lambda\\pi\\), there is a real function agreeing locally with \\(G\\) on its domain and having derivative \\(r_{\\mathrm{B}}(p)-r_{\\mathrm{C}}(p)\\) at \\(p\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:2117-2222: Lean quantifies for each admissible density and p first over a real representative gap, then gives its derivative at p and eventual agreement for every nearby admissible q. The author's neighborhood formulation preserves that quantifier order and does not assert a preselected global off-domain inverse.",
+  "reason": "`CMVBallCase.lean:2117-2222`: Lean quantifies for each admissible density and \\(p\\) first over a real representative gap, then gives its derivative at \\(p\\) and eventual agreement for every nearby admissible \\(q\\). The author's neighborhood formulation preserves that quantifier order and does not assert a preselected global off-domain inverse.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "8ac1ee8e9903b31ca5fa31187a2831b990514e5786275449b934fb9522a630a5",

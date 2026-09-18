@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\), \\(\\beta_\\lambda(0)=\\pi-\\arccos\\lambda\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:272-277: Under 0<lam<1 the inverse chart evaluates to pi-arccos(lam). The proof uses the principal-angle identity rather than an arbitrary off-range inverse value.",
+  "reason": "`CMVBallCase.lean:272-277`: Under \\(0<\\lambda <1\\) the inverse chart evaluates to \\(\\pi -\\arccos (\\lambda )\\). The proof uses the principal-angle identity rather than an arbitrary off-range inverse value.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "2b9379d0da8b78ab25eb062b33cc303712c06916a5c942063bd420dc473f31ab",

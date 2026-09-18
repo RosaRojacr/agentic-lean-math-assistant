@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<1\\), \\(v>\\lambda\\pi\\), and \\(I_{\\mathrm{C}}(v)\\leq I_{\\mathrm{B}}(v)\\), then \\(G(I_{\\mathrm{B}}(v))\\leq0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:2334-2377: The formal premises are admissible density, v>lam*pi, and weak C-profile dominance. They imply the C area radius is no larger than the C common-perimeter radius, yielding G(I_B(v))<=0 with exactly the sign stated.",
+  "reason": "`CMVBallCase.lean:2334-2377`: The formal premises are admissible density, \\(v>\\lambda \\cdot \\pi\\), and weak type \\(\\mathrm{C}\\) profile dominance. They imply the type \\(\\mathrm{C}\\) area radius is no larger than the type \\(\\mathrm{C}\\) common-perimeter radius, yielding \\(G(I_{\\mathrm{B}}(v))\\leq 0\\) with exactly the sign stated.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "455cce8a30fd3fea9935e7a342738957b15a2a9f4b562858dc267332ef60912f",

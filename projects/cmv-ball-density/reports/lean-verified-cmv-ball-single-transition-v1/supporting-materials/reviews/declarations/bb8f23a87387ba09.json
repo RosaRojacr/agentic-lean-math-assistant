@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and all real \\(R\\), \\(\\sin\\beta_\\lambda(R)\\cos\\beta_\\lambda(R)=(R-\\lambda)s/((R-\\lambda)^2+s^2)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:403-423: For admissible density and arbitrary R, complementary-angle identities and the arctangent sine/cosine formulas give (R-lam)*s/((R-lam)^2+s^2). The author preserves the possibly negative numerator and unrestricted radius domain.",
+  "reason": "`CMVBallCase.lean:403-423`: For admissible density and arbitrary \\(R\\), complementary-angle identities and the arctangent sine/cosine formulas give \\((R-\\lambda )\\cdot s/((R-\\lambda )^2+s^2)\\). The author preserves the possibly negative numerator and unrestricted radius domain.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "e81216d3d0ee48ad5f9aec6192ac30e08e48ebe31d1c00ea3a7ac17be472a58d",

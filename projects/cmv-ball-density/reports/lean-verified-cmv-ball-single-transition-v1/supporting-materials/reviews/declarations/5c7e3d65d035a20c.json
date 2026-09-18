@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\), \\(p>2\\lambda\\pi\\), and \\(q\\geq p\\), \\(G_p\\) has derivative within \\([p,\\infty)\\) equal to \\(r_{\\mathrm{B}}(q)-r_{\\mathrm{C}}(q)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:2239-2266: The formal derivative is within Ici p.1 at q>=p.1, with coefficient r_B(q)-r_C(q). The explanation faithfully states the one-sided endpoint interpretation and does not claim ordinary differentiability of the clamped function across q=p.",
+  "reason": "`CMVBallCase.lean:2239-2266`: The formal derivative is within `Ici p.1` at \\(q\\geq\\) `p.1`, with coefficient \\(r_{\\mathrm{B}}(q)-r_{\\mathrm{C}}(q)\\). The explanation faithfully states the one-sided endpoint interpretation and does not claim ordinary differentiability of the clamped function across \\(q=p\\).",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "2420c176e6ebf43330a3d88b7b4b75bdaec4c565775a067f362c214f4599e5c2",

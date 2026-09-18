@@ -7,7 +7,7 @@
   "informal_statement": "For every \\(0<\\lambda<1\\), \\(G\\) is strictly decreasing on the common-perimeter domain \\((2\\lambda\\pi,\\infty)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:2267-2320: StrictAnti is on the ordered CommonPerimeter subtype, equivalent to strict decrease on (2lam*pi,infinity). The proof uses a continuous clamped representative and negative interior derivative on each [p,q], exactly the explanation's mean-value argument.",
+  "reason": "`CMVBallCase.lean:2267-2320`: `StrictAnti` is on the ordered `CommonPerimeter` subtype, equivalent to strict decrease on \\((2\\lambda \\cdot \\pi ,\\infty )\\). The proof uses a continuous clamped representative and negative interior derivative on each \\([p,q]\\), exactly the explanation's mean-value argument.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "91f23a2fb97afb962a3fafd5eb5a6db4289103e7ba32d905aa7120164cb1c340",

@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and \\(R\\geq0\\), the radius of \\(\\beta_\\lambda(R)\\) is exactly \\(R\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:200-211: The source assumes admissible density and R>=0, then cancels the positive square root in the cotangent formula. The exact inverse identity and endpoint coverage are faithfully stated.",
+  "reason": "`CMVBallCase.lean:200-211`: The source assumes admissible density and \\(R\\geq 0\\), then cancels the positive square root in the cotangent formula. The exact inverse identity and endpoint coverage are faithfully stated.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "e66b10b3d091fb706b8fab34231c42e11270bceb8fc1f4044acdab9ecdf216f5",

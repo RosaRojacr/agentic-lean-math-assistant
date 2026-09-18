@@ -7,7 +7,7 @@
   "informal_statement": "For every real \\(\\lambda\\) and \\(R>0\\), \\(A_{\\mathrm{C}}\\) has derivative \\(2R Q_{\\mathrm{C}}(R)\\) at \\(R\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:572-609: Lean requires only R>0 and permits all real lam. The complementary-angle identity and cos(b)=R sin(b) cancel the overlap derivatives, yielding R*(2Q_C), as translated.",
+  "reason": "`CMVBallCase.lean:572-609`: Lean requires only \\(R>0\\) and permits all real \\(\\lambda\\). The complementary-angle identity and \\(\\cos (b)=R \\sin (b)\\) cancel the overlap derivatives, yielding \\(R\\cdot (2Q_{\\mathrm{C}})\\), as translated.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "b473b5e3212cdaca79ca31990e26c74cf5808e134b828057b642784ffa2747a8",

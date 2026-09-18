@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\) and every real \\(R\\), \\(\\beta_\\lambda(R)>0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:133-138: Lean retains both open density hypotheses but places no condition on R. The upper bound arctan(x)<pi/2 proves the asserted positivity for every real radius expression.",
+  "reason": "`CMVBallCase.lean:133-138`: Lean retains both open density hypotheses but places no condition on \\(R\\). The upper bound \\(\\arctan (x)<\\pi /2\\) proves the asserted positivity for every real radius expression.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "9bec3a5f14c974a03f3298e5c5d48fc6f60c6514fa386f2e0d0afaa8a38cf980",

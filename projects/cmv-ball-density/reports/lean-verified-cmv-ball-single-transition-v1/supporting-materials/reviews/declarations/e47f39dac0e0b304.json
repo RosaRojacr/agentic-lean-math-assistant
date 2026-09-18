@@ -7,7 +7,7 @@
   "informal_statement": "For \\(p>2\\lambda\\pi\\) and real \\(q\\), the clamped common perimeter is \\(\\max(q,p)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:2223-2226: The source value is max q p.1, with its domain proof from max q p.1>=p.1>2lam*pi. The author states the same clamping operation for arbitrary real q without adding density bounds.",
+  "reason": "`CMVBallCase.lean:2223-2226`: The source value is `max q p.1`, with its domain proof from `max q p.1` \\(\\geq\\) `p.1` \\(>2\\lambda\\pi\\). The author states the same clamping operation for arbitrary real \\(q\\) without adding density bounds.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "4b4d169c7aed59d327b47ade1e0c9f86cfd6aa971b1e181dd947fb1ce217487c",

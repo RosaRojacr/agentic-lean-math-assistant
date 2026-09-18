@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\), \\(A_{\\mathrm{B}}\\) is strictly increasing on \\([0,\\infty)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:713-721: The formal domain is the closed half-line Ici 0 under 0<lam<1. Continuity there and positive derivative on its interior justify the mean-value argument, including comparisons with zero.",
+  "reason": "`CMVBallCase.lean:713-721`: The formal domain is the closed half-line `Ici 0` under \\(0<\\lambda <1\\). Continuity there and positive derivative on its interior justify the mean-value argument, including comparisons with zero.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "ab4db7494426ac1cdccec00e6e10d30da1a1b7a3f1a760b845607901df77bbd3",

@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<R\\leq1\\), then \\(N(\\lambda,R)>0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1595-1603: The source assumes 0<lam<R<=1; lam<1 follows and is not separately required. Strict decrease of N compared with the nonnegative diagonal value gives the stated strict positivity, including R=1.",
+  "reason": "`CMVBallCase.lean:1595-1603`: The source assumes \\(0<\\lambda <R\\leq 1\\); \\(\\lambda <1\\) follows and is not separately required. Strict decrease of \\(N\\) compared with the nonnegative diagonal value gives the stated strict positivity, including \\(R=1\\).",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "02c15b97515cc50c1a2b220426d81b6aedc3b955c8b35761b70257e60ada615f",

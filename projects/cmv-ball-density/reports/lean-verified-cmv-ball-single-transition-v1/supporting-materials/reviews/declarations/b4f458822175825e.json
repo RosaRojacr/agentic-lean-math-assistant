@@ -7,7 +7,7 @@
   "informal_statement": "For every real \\(\\lambda\\), the total function \\(R\\mapsto P_{\\mathrm{B}}(R)\\) is continuous on the real line.",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:698-702: The formal theorem asserts global continuity for arbitrary real lam. With lam fixed, the chart and perimeter expression are continuous in R, including R=0, as stated.",
+  "reason": "`CMVBallCase.lean:698-702`: The formal theorem asserts global continuity for arbitrary real \\(\\lambda\\). With \\(\\lambda\\) fixed, the chart and perimeter expression are continuous in \\(R\\), including \\(R=0\\), as stated.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "bb5bba6b7941dc1416656ad77a30a9cf4928feec80267c75bbd92466dad64edc",

@@ -124,7 +124,7 @@ if prompt.startswith("# Isolated proof-package author pass"):
             "declaration": item["declaration"],
             "category": "main",
             "informal_statement": "The proposition True is inhabited.",
-            "latex_explanation": "The conclusion is $\\mathrm{True}$, witnessed directly.",
+            "latex_explanation": "The conclusion is \\(\\mathrm{True}\\), witnessed directly.",
         } for item in conceptual],
         "generated_families": [],
         "external_citations": [],
@@ -173,9 +173,12 @@ def _fake_pandoc(path: Path) -> Path:
         path,
         r"""#!/usr/bin/env python3
 import pathlib
+import re
 import sys
 output = next(value.split("=", 1)[1] for value in sys.argv if value.startswith("--output="))
 source = pathlib.Path(sys.argv[1]).read_text(encoding="utf-8")
+source = re.sub(r"\\\[(.*?)\\\]", r'<math display="block">\1</math>', source, flags=re.DOTALL)
+source = re.sub(r"\\\((.*?)\\\)", r"<math>\1</math>", source, flags=re.DOTALL)
 pathlib.Path(output).write_text("<html><body>" + source + "</body></html>", encoding="utf-8")
 """,
     )
@@ -337,6 +340,22 @@ def test_proof_builder_creates_clean_reviewed_package(tmp_path: Path) -> None:
     rendered_arguments = {
         argument for receipt in rendering for argument in receipt["argv"]
     }
+    assert any(
+        value == "--from=markdown+fenced_divs+tex_math_single_backslash"
+        for value in rendered_arguments
+    )
+    assert "--fail-if-warnings" in rendered_arguments
+    math_validation = [
+        receipt["math_validation"]
+        for receipt in rendering
+        if "math_validation" in receipt
+    ]
+    assert len(math_validation) == 3
+    assert all(item["status"] == "passed" for item in math_validation)
+    assert all(
+        item["source_math_fragments"] == item["rendered_math_elements"]
+        for item in math_validation
+    )
     assert any("proof-package-main.css" in value for value in rendered_arguments)
     assert any("proof-package-technical.css" in value for value in rendered_arguments)
     assert "Other" not in (
@@ -420,6 +439,32 @@ def test_declaration_anchors_preserve_case_sensitive_identity() -> None:
     assert proof_builder_module._anchor("Namespace.rootProjection") != (
         proof_builder_module._anchor("Namespace.RootProjection")
     )
+
+
+def test_math_markup_validation_rejects_plaintext_and_broken_latex() -> None:
+    assert (
+        proof_builder_module._validate_math_markup(
+            "For \\(x>0\\), define\n\n\\[\nF(x)=x^2.\n\\]",
+            "valid manuscript",
+        )
+        == 2
+    )
+
+    with pytest.raises(ProofBuilderError, match="outside LaTeX delimiters"):
+        proof_builder_module._validate_math_markup(
+            "For x > 0, the result follows.",
+            "plaintext manuscript",
+        )
+    with pytest.raises(ProofBuilderError, match="unbalanced LaTeX braces"):
+        proof_builder_module._validate_math_markup(
+            "The value is \\(\\frac{1}{2\\).",
+            "broken manuscript",
+        )
+    with pytest.raises(ProofBuilderError, match="outside LaTeX delimiters"):
+        proof_builder_module._validate_math_markup(
+            "The type-(B) candidate is admissible.",
+            "candidate manuscript",
+        )
 
 
 def test_planning_preflight_discovery_and_preview_are_model_free(

@@ -7,7 +7,7 @@
   "informal_statement": "For every nonzero real \\(R\\), \\(\\sin b(R)\\cos b(R)=R/(1+R^2)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:424-440: The formal hypothesis is only R!=0. The arctangent product simplifies to R/(1+R^2), with the correct sign at negative R, as the explanation states.",
+  "reason": "`CMVBallCase.lean:424-440`: The formal hypothesis is only \\(R\\ne 0\\). The arctangent product simplifies to \\(R/(1+R^2)\\), with the correct sign at negative \\(R\\), as the explanation states.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "10fbbcdf677fa47ab4e65fa4fcec664bfcee9cb8b5e893c8c90bb4f234de0fd3",

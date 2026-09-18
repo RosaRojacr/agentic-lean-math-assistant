@@ -7,7 +7,7 @@
   "informal_statement": "If \\(0<\\lambda<1\\) and \\(R>\\lambda\\), then \\(H(\\lambda,R)>0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1773-1782: The formal hypotheses are admissible density and R>lam. The proof splits R<1 versus R>=1 with no missing equality case, exactly the author's complete high-radius region.",
+  "reason": "`CMVBallCase.lean:1773-1782`: The formal hypotheses are admissible density and \\(R>\\lambda\\). The proof splits \\(R<1\\) versus \\(R\\geq 1\\) with no missing equality case, exactly the author's complete high-radius region.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "fe2e7d9f4b2c9b099c9f8b560428cb8beb3d38b8a8d99f10c67f26ccbe96aa81",

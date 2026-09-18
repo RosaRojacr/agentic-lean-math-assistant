@@ -7,7 +7,7 @@
   "informal_statement": "If \\(\\lambda<1\\) and \\(R>0\\), then \\(-(4(R-1/2)^2+1+4R(1-\\lambda))<0\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1407-1412: The source assumes lam<1 and R>0, with no lower bound on lam. Its completed-square coefficient is strictly negative because of the positive constant and nonnegative square; the author preserves this wider density domain.",
+  "reason": "`CMVBallCase.lean:1407-1412`: The source assumes \\(\\lambda <1\\) and \\(R>0\\), with no lower bound on \\(\\lambda\\). Its completed-square coefficient is strictly negative because of the positive constant and nonnegative square; the author preserves this wider density domain.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "0a45acd25d263bfc0ab66ae247903b4ac172086632c9ab50764b1204d06b8751",

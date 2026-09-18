@@ -7,7 +7,7 @@
   "informal_statement": "For \\(0<\\lambda<1\\), \\(A_{\\mathrm{C}}\\) is strictly increasing on \\((0,\\infty)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:722-730: The source domain is the open positive half-line. The positive derivative and continuity prove strict area increase between any two positive radii, with no assertion at zero.",
+  "reason": "`CMVBallCase.lean:722-730`: The source domain is the open positive half-line. The positive derivative and continuity prove strict area increase between any two positive radii, with no assertion at zero.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "bbc5de3a1bc43d4360f2a79a6c274beccf88985cbfcb7b993a4fe30a532f86a2",

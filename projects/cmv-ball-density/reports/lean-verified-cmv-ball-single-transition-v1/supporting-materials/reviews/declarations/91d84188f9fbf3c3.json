@@ -7,7 +7,7 @@
   "informal_statement": "For \\(R>0\\), \\(\\cos b(R)=R\\sin b(R)\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:524-534: For R>0, cot(b(R))=R and positive sin(b(R)) imply cos(b(R))=R sin(b(R)). The author's equation and its use in the overlap-area derivative are exact.",
+  "reason": "`CMVBallCase.lean:524-534`: For \\(R>0, \\cot (b(R))=R\\) and positive \\(\\sin (b(R))\\) imply \\(\\cos (b(R))=R \\sin (b(R))\\). The author's equation and its use in the overlap-area derivative are exact.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "809c57b3c3abce1f1b8d70a94abd2bbd7102bca4c59fe3ebbe305dbaa59362d5",

@@ -7,7 +7,7 @@
   "informal_statement": "\\(N(\\lambda,R)\\) is \\(R^3-4R^2\\lambda+2R\\lambda^2+3R-2\\lambda\\).",
   "omitted_hypotheses": [],
   "quantifier_issues": [],
-  "reason": "CMVBallCase.lean:1361-1363: The polynomial coefficients, density variable, and radius variable match Lean exactly. The explanation correctly relates it to -lam*N/(sqrt(1-lam^2)*D^2), not to N with the opposite sign.",
+  "reason": "`CMVBallCase.lean:1361-1363`: The polynomial coefficients, density variable, and radius variable match Lean exactly. The explanation correctly relates it to \\(-\\lambda \\cdot N/(\\sqrt{1-\\lambda ^2}\\cdot D^2)\\), not to \\(N\\) with the opposite sign.",
   "relation": "equivalent",
   "schema_version": 1,
   "source_sha256": "c72277ca17b4cfcd6ad9cc4b941bef23e2a9af37be01cd916422a0b4b63e81c1",
