@@ -113,27 +113,47 @@ proof-package/
 - **SemanticAudit.pdf** records an isolated adversarial review of hypotheses, quantifiers, domains, inequalities, boundary cases, symbols, generated families, and citations.
 - **supporting-materials/** retains the executable Lean closure, pinned toolchain and dependencies, manifest, prompts, model requests, model handoffs, review records, command receipts, source provenance, references, and SHA-256 ledger.
 
-### A complete example: the Lean-verified 51/50 proof
+### A complete example: the Lean-verified all-density CMV strip proof
 
-Version 2 of the CMV 51/50 publication is the repository’s end-to-end Proof Builder example:
+The repository’s primary end-to-end Proof Builder example is the all-density
+CMV strip package. It addresses one of two problems from Cañete, Miranda Jr.,
+and Vittone’s 2010 paper *Some Isoperimetric Problems in Planes with Density*.
+The strip problem and the paper’s separate ball-density transition problem
+remained unsolved for 16 years.
 
 | Output | Purpose |
 |---|---|
-| [Package README](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v2/README.md) | Status, exact claim, trust boundary, and cross-platform reproduction instructions |
-| [MainProof.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v2/MainProof.pdf) | Professor-facing proof of the published 51/50 cutoff |
-| [LemmaSupplement.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v2/LemmaSupplement.pdf) | Declaration-level explanations and complete generated-family ledger |
-| [SemanticAudit.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-51-50-v2/SemanticAudit.pdf) | Independent semantic-equivalence review and declaration-by-declaration findings |
-| [proof-package.toml](projects/cmv-strip-density/reports/lean-verified-cmv-cutoff-proof-package.toml) | Reusable publication contract that produced the package |
+| [Package README](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/README.md) | Verified status, exact modeled claim, trust boundary, and cross-platform reproduction instructions |
+| [MainProof.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/MainProof.pdf) | Professor-facing proof of the all-density modeled exclusion |
+| [LemmaSupplement.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/LemmaSupplement.pdf) | Mathematical explanations and frozen Lean source for all 464 retained declarations |
+| [SemanticAudit.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/SemanticAudit.pdf) | Strict independent review with 464 equivalent declaration judgments and no unresolved findings |
+| [proof-package.toml](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-proof-package.toml) | Reusable publication contract that produced the package |
+| [Canonical PDF](projects/cmv-strip-density/reports/lean-verified-cmv-all-density.pdf) | Stable copy of the accepted main proof |
 
 The published root is:
 
 ```lean
-CMVPublishedCutoff51_50.candidate_not_isWeightedPerimeterMinimizer_from_51_50
+CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one
 ```
 
-It states that for every real density $\lambda\ge 51/50$, every modeled regular type-(iv) four-arc candidate satisfying the formal CMV type-(iv) hypotheses is not a weighted-perimeter minimizer. The package retains the exact-rational 1,139-cell certificate across $[51/50,9/7]$, the formal cap replacement above $9/7$, the complete dependency-closed Lean source, and the allowed-axiom audit.
+It states that for every real density $\lambda>1$, every modeled regular
+type-(iv) four-arc candidate satisfying the formal CMV type-(iv) hypotheses is
+not a weighted-perimeter minimizer. This subsumes the earlier
+$\lambda\ge51/50$ certificate and closes the modeled interval
+$1<\lambda<51/50$. The frozen package retains the dependency-closed Lean
+sources, exact theorem contract, allowed-axiom audit, strict semantic review,
+three rendered PDFs, and standalone checksum-and-rebuild verifier.
 
-This is an independently useful certificate path. The living CMV proof tree now proves a stronger modeled result for every $\lambda>1$; the v2 package intentionally publishes the narrower frozen 51/50 claim and does not imply an unconditional proof of the full CMV conjecture.
+The scope remains explicit: this is the complete verified modeled theorem, not
+an unconditional proof of CMV Conjecture 3.12. Normalizing every source-defined
+type-(iv) region into the formal candidate and reconciling reduced-boundary
+perimeter with the model’s complete-frontier perimeter are separate obligations.
+
+The companion result for the second 16-year problem is the
+[Lean-verified CMV ball-density package](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/README.md);
+its [main proof](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/MainProof.pdf)
+and [canonical PDF](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition.pdf)
+prove the single-transition theorem for the faithful type-(B)/(C) profiles.
 
 ## How Proof Builder works
 
@@ -342,11 +362,17 @@ proof-builder verify --package reports/example-proof-v2 --quiet
 
 `--no-network` requires the normal Linux containment dependencies and a locally available pinned Lake dependency closure.
 
-## CMV case study
+## CMV case studies: two 16-year problems from one paper
 
-The canonical project studies the Cañete–Miranda–Vittone strip-density isoperimetry problem. The density is 1 on $|y|\le1$ and $\lambda>1$ outside.
+This repository studies two problems from Cañete, Miranda Jr., and Vittone’s
+2010 paper *Some Isoperimetric Problems in Planes with Density*. The strip- and
+ball-density problems remained unsolved for 16 years and now have separate,
+source-faithful Lean developments and independently reviewed proof packages.
 
-The current proof has three scope levels:
+### CMV Question 1: strip density
+
+The density is 1 on $|y|\le1$ and $\lambda>1$ outside. The current proof has
+three scope levels:
 
 | Level | Current result |
 |---|---|
@@ -356,10 +382,9 @@ The current proof has three scope levels:
 
 Principal modules:
 
-- [`CMVModeledCutoff.lean`](projects/cmv-strip-density/proof/CMVModeledCutoff.lean) contains the modeled all-$\lambda>1$ exclusion.
+- [`UniversalStationaryPair.lean`](projects/cmv-strip-density/proof/UniversalStationaryPair.lean) contains the frozen all-$\lambda>1$ modeled publication root.
 - [`CMVTypeThreeSourceExclusion.lean`](projects/cmv-strip-density/proof/CMVTypeThreeSourceExclusion.lean) contains checked source-carrier exclusions.
 - [`CMVSourceClassification.lean`](projects/cmv-strip-density/proof/CMVSourceClassification.lean) separates closed geometry from density and Snell-law data.
-- [`CMVPublishedCutoff51_50.lean`](projects/cmv-strip-density/proof/CMVPublishedCutoff51_50.lean) is the frozen root for the independent v2 Proof Builder example.
 
 The project does not claim an unconditional proof of CMV Conjecture 3.12. The remaining obligation is geometric and measure-theoretic classification: bilateral symmetry, common-circle geometry, configuration enumeration, and exact or almost-everywhere carrier identification must still be derived for arbitrary relevant source minimizers.
 
@@ -375,13 +400,21 @@ The broader frontier paper is available as [PDF](projects/cmv-strip-density/repo
 
 ### CMV Question 2
 
-[`projects/cmv-ball-density/`](projects/cmv-ball-density/) targets the paper's
-separate ball-density question for $0<\lambda<1$. Its formal contract asks for
-the single-transition theorem left open after Theorem 3.23: once the
-equal-area type-(C) orthogonal ball is no worse than the type-(B) two-arc
-candidate, type (B) cannot become optimal again at a larger weighted area.
-The project starts from source-faithful Lean definitions of the two candidate
-area and perimeter formulas; it does not reuse the strip-density result.
+[`projects/cmv-ball-density/`](projects/cmv-ball-density/) addresses the same
+paper’s separate ball-density question for $0<\lambda<1$. Its verified formal
+contract proves the single-transition theorem left open after Theorem 3.23:
+once the equal-area type-(C) orthogonal-ball profile is no worse than the
+type-(B) two-arc profile, type (B) cannot become optimal again at a larger
+weighted area.
+
+Read the [ball-density package](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/README.md),
+the professor-facing [MainProof.pdf](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/MainProof.pdf),
+or the stable [canonical PDF](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition.pdf).
+The package starts from source-faithful definitions of both candidate profiles
+and does not reuse the strip-density result. Its explicit trust boundary leaves
+the paper’s finite-perimeter existence, regularity, connectedness, and
+exhaustive candidate-classification premises outside the formalized analytic
+theorem.
 
 
 ## Research controller
