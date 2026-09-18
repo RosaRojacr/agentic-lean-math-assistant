@@ -1542,9 +1542,7 @@ def _validate_math_markup(markdown: str, label: str) -> int:
             )
         outside.append(prose[index])
         index += 1
-    plain = re.sub(
-        r"</?(?:a|div|span|strong)(?:\s+[^>\n]*)?>", " ", "".join(outside)
-    )
+    plain = re.sub(r"</?(?:a|div|span|strong)(?:\s+[^>\n]*)?>", " ", "".join(outside))
     if "$" in plain:
         raise ProofBuilderError(
             f"{label} uses dollar-delimited mathematics; use \\(...\\) or \\[...\\]"
@@ -3863,10 +3861,7 @@ def resume_proof_package(
         author_handoff = authors[-1]
         attempts = int(author_handoff.stem.rsplit("-", 1)[1])
         reviewer_handoff = (
-            root
-            / "supporting-materials"
-            / "reviews"
-            / f"reviewer-{attempts:02d}.json"
+            root / "supporting-materials" / "reviews" / f"reviewer-{attempts:02d}.json"
         )
         if not reviewer_handoff.is_file():
             raise ProofBuilderError(

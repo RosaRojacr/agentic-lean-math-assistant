@@ -443,9 +443,7 @@ def test_pdf_render_resume_recovers_unfinalized_review(
 
     package = manifest.parent / "fixture-proof-v1"
     request_count = len(
-        tuple(
-            (package / "supporting-materials/receipts").glob("*.request.json")
-        )
+        tuple((package / "supporting-materials/receipts").glob("*.request.json"))
     )
     monkeypatch.setattr(proof_builder_module, "_render_all", original_render)
     result = resume_proof_package(
@@ -456,11 +454,7 @@ def test_pdf_render_resume_recovers_unfinalized_review(
 
     assert result.status == "verified"
     assert (
-        len(
-            tuple(
-                (package / "supporting-materials/receipts").glob("*.request.json")
-            )
-        )
+        len(tuple((package / "supporting-materials/receipts").glob("*.request.json")))
         == request_count
     )
 
