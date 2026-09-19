@@ -30,6 +30,20 @@
   supplement, semantic audit, executable Lean closure, and checksum ledger.
 
 
+## 1.4.3 — 2026-09-19
+
+### Sandboxed autorun reporting
+
+- Fixed recurring `frozen conductor identity does not match the current
+  invocation` failures when `autorun-report` runs in a private PID namespace.
+  The reporter no longer probes the host controller's PID with `kill(pid, 0)`;
+  it requires a valid controller PID, the matching held controller lock, a
+  fresh heartbeat, and the unchanged frozen invocation identity.
+- Added real Bubblewrap CLI coverage and deterministic namespace regressions,
+  retaining rejection of stale or foreign identities, invalid controller PIDs,
+  modified prompts, released locks, and exited controllers.
+- Historical reports, adjudications, and checkpoint credit are not rewritten.
+
 ## 1.4.2 — 2026-09-15
 
 ### Solve restart isolation

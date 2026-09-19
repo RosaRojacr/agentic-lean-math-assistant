@@ -2581,16 +2581,20 @@ def conductor_claim_marker(
 
     state = AutoRunRunner._read_state_from(run_dir)
     strategy = state.get("active_strategy")
+    # The reporter's PID namespace cannot probe the host controller with kill(0).
+    # Its matching, held lock and fresh heartbeat establish invocation liveness.
+    controller_pid = state.get("pid")
     if (
         state.get("session_id") != session_id
         or state.get("status") != "running"
         or state.get("active_round") != attempt
         or state.get("attempt_count") != attempt
         or state.get("active_prompt") != str(prompt_path)
+        or type(controller_pid) is not int
+        or controller_pid <= 0
         or not campaign_run_lock_is_held(
-            run_dir / "controller", owner_pid=state.get("pid")
+            run_dir / "controller", owner_pid=controller_pid
         )
-        or not _pid_is_alive(state.get("pid"))
         or not _heartbeat_is_fresh(state.get("heartbeat_at"))
         or not isinstance(strategy, dict)
         or strategy.get("status") != "active"

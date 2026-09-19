@@ -1,6 +1,6 @@
 """Public API for the deterministic Agentic Lean Math Assistant."""
 
-__version__ = "1.4.2"
+__version__ = "1.4.3"
 
 from .autonomy import (
     AutonomyError,

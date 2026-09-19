@@ -497,11 +497,16 @@ Optional regression backend:
 uv sync --locked --extra ml
 ```
 
-The package version is `1.4.2`. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
+The package version is `1.4.3`. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Execution containment
 
 Generic campaigns default to a fail-closed Linux sandbox. Bubblewrap supplies private mount, PID, and network namespaces. A transient user-systemd cgroup enforces elapsed time, memory, swap, CPU, task-count, and file-size limits. Sandbox creation has no automatic unsandboxed fallback.
+
+`autorun-report` validates its frozen invocation against the active session,
+matching held controller lock, and fresh heartbeat. It does not probe the host
+controller's PID from inside the reporter's private PID namespace. Stale,
+foreign, modified, or unlocked invocations remain rejected.
 
 Agent invocations are admitted through a crash-released host resource lease. Cgroup OOM, exit 137, abort, Bun panic, and segmentation-fault outcomes are terminal and bypass blank-output retries. Receipts retain the effective containment policy and admission wait.
 

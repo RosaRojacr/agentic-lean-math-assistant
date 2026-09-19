@@ -4,6 +4,9 @@ import hashlib
 import io
 import json
 import os
+import shutil
+import subprocess
+import sys
 from contextlib import nullcontext
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -788,14 +791,28 @@ def _write_active_conductor_request(
     return request
 
 
+@pytest.mark.parametrize("controller_pid_visible", [True, False])
 def test_autorun_report_cli_emits_one_strict_bound_marker(
-    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+    controller_pid_visible: bool,
 ) -> None:
     request = _write_active_conductor_request(tmp_path)
     state_path = request.parents[2] / "state.json"
     request_before = request.read_bytes()
     state_before = state_path.read_bytes()
 
+    if not controller_pid_visible:
+        host_pid = os.getpid()
+        real_kill = os.kill
+
+        def namespace_kill(pid: int, signal: int) -> None:
+            if pid == host_pid and signal == 0:
+                raise ProcessLookupError(pid)
+            real_kill(pid, signal)
+
+        monkeypatch.setattr(os, "kill", namespace_kill)
     with campaign_run_lock(request.parents[2] / "controller"):
         assert (
             cli_main(
@@ -843,6 +860,105 @@ def test_autorun_report_cli_emits_one_strict_bound_marker(
     }
     assert request.read_bytes() == request_before
     assert state_path.read_bytes() == state_before
+
+
+def test_autorun_report_cli_from_private_pid_namespace(tmp_path: Path) -> None:
+    bubblewrap = shutil.which("bwrap")
+    if bubblewrap is None:
+        pytest.skip("bubblewrap is not installed")
+    sandbox = [
+        bubblewrap,
+        "--die-with-parent",
+        "--unshare-all",
+        "--ro-bind",
+        "/",
+        "/",
+        "--bind",
+        str(tmp_path),
+        str(tmp_path),
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--",
+    ]
+    probe = subprocess.run(
+        [*sandbox, sys.executable, "-c", "pass"],
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=False,
+    )
+    if probe.returncode != 0:
+        pytest.skip(f"bubblewrap namespaces are unavailable: {probe.stderr.strip()}")
+
+    request = _write_active_conductor_request(tmp_path)
+    host_pid = os.getpid()
+    # Check visibility in the same namespace that will execute the canonical CLI.
+    launch = (
+        "import os, sys\n"
+        "from pathlib import Path\n"
+        "host_pid = int(sys.argv[1])\n"
+        "assert not Path(f'/proc/{host_pid}').exists()\n"
+        "try:\n"
+        "    os.kill(host_pid, 0)\n"
+        "except ProcessLookupError:\n"
+        "    pass\n"
+        "else:\n"
+        "    raise AssertionError('host controller PID is visible')\n"
+        "os.execv(sys.executable, [sys.executable, '-m', "
+        "'agentic_lean_math_assistant', *sys.argv[2:]])\n"
+    )
+    with campaign_run_lock(request.parents[2] / "controller"):
+        completed = subprocess.run(
+            [
+                *sandbox,
+                sys.executable,
+                "-c",
+                launch,
+                str(host_pid),
+                "autorun-report",
+                "--request",
+                str(request),
+                "--checkpoint-id",
+                "first_check",
+                "--progress-class",
+                "meaningful",
+                "--summary",
+                "The retained consumer was verified.",
+                "--evidence",
+                "proof/retained-consumer",
+            ],
+            env={
+                **os.environ,
+                "PYTHONPATH": str(Path(autorun_module.__file__).resolve().parents[1]),
+            },
+            capture_output=True,
+            text=True,
+            timeout=30,
+            check=False,
+        )
+
+    assert completed.returncode == 0, completed.stderr
+    lines = completed.stdout.splitlines()
+    assert len(lines) == 1
+    claim = AutoRunRunner._parse_conductor_claim(lines[0])
+    assert claim == {
+        "schema_version": 1,
+        "strategy_id": "strategy-00001",
+        "strategy_revision": 1,
+        "checkpoint_id": "first_check",
+        "progress_class": "meaningful",
+        "summary": "The retained consumer was verified.",
+        "evidence": "proof/retained-consumer",
+    }
+    receipt = json.loads(
+        (request.parent / "conductor-claim-emission.json").read_text(encoding="utf-8")
+    )
+    assert receipt["claim"] == claim
+    assert (
+        receipt["marker_sha256"] == hashlib.sha256(lines[0].encode("utf-8")).hexdigest()
+    )
 
 
 def test_controller_accepts_strict_claim_without_emission_receipt(
@@ -933,11 +1049,19 @@ def test_identity_mismatched_report_retains_drift_adjudication(
     [
         "stale_revision",
         "foreign_strategy",
+        "foreign_session",
         "foreign_round",
         "modified_prompt",
         "dead_controller",
         "stale_heartbeat",
         "missing_controller_lock",
+        "unlocked_controller_lock",
+        "missing_controller_pid",
+        "null_controller_pid",
+        "boolean_controller_pid",
+        "zero_controller_pid",
+        "negative_controller_pid",
+        "string_controller_pid",
         "future_heartbeat",
         "foreign_lock_owner",
     ],
@@ -956,6 +1080,8 @@ def test_autorun_report_rejects_noncurrent_frozen_invocation(
         state["active_strategy"]["revision"] = 2
     elif mismatch == "foreign_strategy":
         request["conductor_claim_context"]["strategy_id"] = "strategy-99999"
+    elif mismatch == "foreign_session":
+        request["conductor_claim_context"]["session_id"] = "foreign-session"
     elif mismatch == "foreign_round":
         request["conductor_claim_context"]["attempt"] += 1
     elif mismatch == "modified_prompt":
@@ -963,7 +1089,44 @@ def test_autorun_report_rejects_noncurrent_frozen_invocation(
             "Changed after the invocation was frozen.\n", encoding="utf-8"
         )
     elif mismatch == "dead_controller":
-        state["pid"] = 2**31 - 1
+        controller = subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                (
+                    "import os, sys\n"
+                    "from pathlib import Path\n"
+                    "from agentic_lean_math_assistant.runtime import campaign_run_lock\n"
+                    "with campaign_run_lock(Path(sys.argv[1])):\n"
+                    "    print(os.getpid())\n"
+                ),
+                str(session / "controller"),
+            ],
+            env={
+                **os.environ,
+                "PYTHONPATH": str(Path(autorun_module.__file__).resolve().parents[1]),
+            },
+            capture_output=True,
+            text=True,
+            timeout=30,
+            check=True,
+        )
+        state["pid"] = int(controller.stdout)
+    elif mismatch == "unlocked_controller_lock":
+        with campaign_run_lock(session / "controller"):
+            pass
+    elif mismatch == "missing_controller_pid":
+        del state["pid"]
+    elif mismatch == "null_controller_pid":
+        state["pid"] = None
+    elif mismatch == "boolean_controller_pid":
+        state["pid"] = True
+    elif mismatch == "zero_controller_pid":
+        state["pid"] = 0
+    elif mismatch == "negative_controller_pid":
+        state["pid"] = -1
+    elif mismatch == "string_controller_pid":
+        state["pid"] = str(os.getpid())
     elif mismatch == "stale_heartbeat":
         state["heartbeat_at"] = "2020-01-01T00:00:00Z"
     elif mismatch == "future_heartbeat":
@@ -975,7 +1138,8 @@ def test_autorun_report_rejects_noncurrent_frozen_invocation(
 
     lock_scope = (
         nullcontext()
-        if mismatch == "missing_controller_lock"
+        if mismatch
+        in {"missing_controller_lock", "unlocked_controller_lock", "dead_controller"}
         else campaign_run_lock(session / "controller")
     )
     with lock_scope, pytest.raises(SystemExit) as raised:
@@ -998,6 +1162,7 @@ def test_autorun_report_rejects_noncurrent_frozen_invocation(
     captured = capsys.readouterr()
     assert "CONDUCTOR_RESULT_JSON:" not in captured.out
     assert "CONDUCTOR_RESULT_JSON:" not in captured.err
+    assert not (request_path.parent / "conductor-claim-emission.json").exists()
     if mismatch == "missing_controller_lock":
         assert not (session / "controller/.campaign.lock").exists()
 
