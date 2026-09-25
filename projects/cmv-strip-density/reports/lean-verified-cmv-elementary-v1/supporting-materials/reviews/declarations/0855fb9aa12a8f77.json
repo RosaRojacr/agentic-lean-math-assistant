@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.J_continuous",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), \\(J\\) is continuous on\n\\[\n\\mathbb R.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:456-459`: The formal continuity assertion is global and unconditional in the real density, as translated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "84b0b93cd0d9eb84e88353584df2d2027343d5022858b007f7419abca4bc0d41",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedLeftArcParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The realized left parameter image on \\([-R\\phi,0]\\) equals the Euclidean image of the left coordinate trace.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:710-720`: Transporting the exact coordinate image gives the Euclidean left trace on the correct negative-to-zero interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "06e6662a39cd836487840418c7224db9c1b8779c37aa295aab4e1109503a76c7",
+  "symbol_mismatches": []
+}

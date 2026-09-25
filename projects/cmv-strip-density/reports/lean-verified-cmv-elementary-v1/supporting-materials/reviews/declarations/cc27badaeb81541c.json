@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerAngle",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\n\\beta=\\arccos q.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:53-55`: The inner angle is principal inverse cosine of the shape parameter, not the exposed side-arc turning angle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb9acabc2bc9f5427d7041305c401b4e2793720759dd063e3153448db0793dd9",
+  "symbol_mismatches": []
+}

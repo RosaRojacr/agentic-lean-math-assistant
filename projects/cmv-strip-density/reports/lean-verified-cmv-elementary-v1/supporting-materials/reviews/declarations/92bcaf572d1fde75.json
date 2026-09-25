@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_unitCircleArc_image_eq_of_span_lt_two_pi",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\),\n\\[\nu<v,\n\\]\nand\n\\[\nv-u<2\\pi R,\n\\]\n\n\\[\n\\mathcal H^1(\\gamma_R([u,v]))=v-u.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:350-389`: The strict positive span and strict sub-circumference bound are retained, so the measured image has length equal to the span without multiple traversal.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a5a68294ffad2a36064599c08079161b28ea03171c66437e00e8f24eba632c26",
+  "symbol_mismatches": []
+}

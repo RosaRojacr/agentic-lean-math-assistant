@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.three_arc_eventuallyEq",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<t<1\\), \\(A_3\\) and \\(P_3\\) agree in a neighborhood of \\(t\\) with the frozen three-arc scalar area and perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:645-656`: Neighborhood equality, rather than a single point equality, is stated for both scalar functions and is what transports derivatives.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "46dc3f0498de249294a8597ff6c3dc5893312352af2c59075b4bc7135e14271b",
+  "symbol_mismatches": []
+}

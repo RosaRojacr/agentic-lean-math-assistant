@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.geometric_comparison",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda>1\\),\n\\[\n\\gamma_\\lambda>0.\n\\]\nFor every real \\(h\\) with \\(0<h\\leq1\\), there is a real \\(r\\) such that\n\\[\n\\begin{aligned}\n0&<r<h,\\\\\nA_\\lambda(E_r)&=A_\\lambda(C_h),\\\\\nP_\\lambda(C_h)-P_\\lambda(E_r)&>\\frac{\\gamma_\\lambda}{h}>0.\n\\end{aligned}\n\\]\nHere area is Lebesgue weighted area and perimeter is Euclidean complete-frontier weighted perimeter.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:783-798`: The scalar witness remains strictly below one, permitting unconditional realization of both carriers; substituting the four integral identities gives the frozen primary conclusion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6a426578c4a240700c25141374531b26d559de5c1a0468aaffc359064d84ae40",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideHalfWidth",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nb=R(\\sin\\alpha-\\sin\\beta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:66-69`: The width is radius times outer-minus-inner sine, in the correct order; the bottom half-length interpretation matches the later carrier theorem.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c1a6374b950f6fdf60b58062fd5753e6cafd953a8fbac46cb6164191b66af1b3",
+  "symbol_mismatches": []
+}

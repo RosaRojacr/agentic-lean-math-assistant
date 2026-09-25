@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.weightedPerimeter_eq_modeledWeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The actual complete-frontier weighted perimeter equals the modeled sum of the two strip arc lengths, weighted exterior arc length and bottom chord length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:2950-2993`: The proof transports the canonical integral, applies exact frontier decomposition and null-overlap additivity, and evaluates the density-one bottom contribution explicitly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3dd334c8f3cff9146f23a5d90e6da2520151c567d49c8604446b90aa7a9f4d2b",
+  "symbol_mismatches": []
+}

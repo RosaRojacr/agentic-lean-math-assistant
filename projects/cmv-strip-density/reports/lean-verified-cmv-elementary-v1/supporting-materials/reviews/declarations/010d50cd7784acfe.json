@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.angleTerm",
+  "domain_issues": [],
+  "informal_statement": "Define the angle combination\n\\[\nT=\\lambda\\alpha+\\pi-\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:289-291`: The angle combination is density times exterior angle plus the exposed side angle, matching the article's inverse-trigonometric normalization.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8089feb5fd033f48e23e1ab4579cce22afbbbfde128400123f3b8b2b2a245332",
+  "symbol_mismatches": []
+}

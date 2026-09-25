@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.ThreeArcCalculusClaims",
+  "domain_issues": [],
+  "informal_statement": "The functions \\(A_3,P_3\\) are continuous on \\((0,1]\\), differentiable on \\((0,1)\\), satisfy\n\\[\nA_3(t)\\to+\\infty\n\\]\nas \\(t\\downarrow0\\), and\n\\[\nP_3'(t)=tA_3'(t)\n\\]\non \\((0,1)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:114-124`: The record distinguishes continuity through the right endpoint from interior differentiability, divergence and the variational identity.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9f403aa6eca1f9679fb0baa7f3fae671458d71319127b51fe69683462617d8e3",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThree_variational_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), the normalized three-arc area is differentiable at \\(h\\), and its perimeter has derivative \\(h\\) times that area derivative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:554-639`: The proof differentiates the explicit quotients and uses the radical cancellation to establish both derivative existence and the variational identity, not global area monotonicity.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "727f5f60431aed129e76617edde1e3ccdf8d18a1ae71fbf80ca33147d09b9cfa",
+  "symbol_mismatches": []
+}

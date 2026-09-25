@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "isometry_capComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "For every cap, its complex-to-Euclidean coordinate map is an isometry.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:398-408`: The map preserves Euclidean squared distances in both orientation branches, exactly the asserted isometry.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5d4136606591a26f6abf24f8ba286ddba7154e77e9f96c81673196c1854009b0",
+  "symbol_mismatches": []
+}

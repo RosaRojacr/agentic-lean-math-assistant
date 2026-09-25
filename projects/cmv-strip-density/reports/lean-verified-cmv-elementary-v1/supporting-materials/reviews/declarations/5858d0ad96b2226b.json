@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_semicircle_translated",
+  "domain_issues": [],
+  "informal_statement": "For real \\(a\\),\n\\[\nR>0,\n\\]\nand \\(0\\leq\\theta\\leq\\pi\\),\n\\[\n\\int_{a+R\\cos\\theta}^{a+R}2\\sqrt{R^2-(y-a)^2}\\,dy=R^2(\\theta-\\sin\\theta\\cos\\theta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1792-1800`: The vertical translation shifts both endpoints and the radicand by the same real center coordinate.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "06721e5dc911d180205234ff69b820e369a8d82b66f142e17c0a1377b9b27f8d",
+  "symbol_mismatches": []
+}

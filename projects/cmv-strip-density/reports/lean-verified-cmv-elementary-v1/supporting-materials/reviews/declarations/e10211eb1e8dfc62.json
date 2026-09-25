@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.elementary_route",
+  "domain_issues": [],
+  "informal_statement": "For every\n\\[\n\\lambda>1,\n\\]\nThe elementary-route assertion is the conjunction of the auxiliary, same-curvature, three-arc calculus and scalar-identification assertions, together with existence, for every\n\\[\n0<h\\leq1,\n\\]\nof \\(\\varepsilon,r\\) satisfying the greatest-root assertion.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:755-765`: The root supplies all ingredient records and all greatest-root witnesses from the density hypothesis; none becomes an additional assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a1b39bd2222e649a050d9ab1986edb3f443ebd0f728e84997914f57699a72387",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.C_perimeter",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\),\n\\[\nP_\\lambda(C_h)=P_4(h).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:738-747`: The candidate perimeter already uses the canonical frontier; its angle formula simplifies to the stated scalar perimeter.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8c97261adbc31a2bd30879f7c2a5ab32572dd45c6907559d577bd3fdfc08d3b2",
+  "symbol_mismatches": []
+}

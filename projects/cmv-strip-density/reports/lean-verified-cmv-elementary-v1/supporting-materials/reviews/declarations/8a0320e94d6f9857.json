@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "The image of a horizontal segment parametrization on \\([-L/2,L/2]\\) is exactly its coordinate carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:835-863`: The affine segment parametrization has exactly the closed interval's carrier as its image, with both endpoints present.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "78cfdac8328c8d0308b83fecd45a7d72c3a0a830edb6a3f41f9bd2da54db0f76",
+  "symbol_mismatches": []
+}

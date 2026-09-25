@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerAngle_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\beta<\\pi.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:168-170`: The strict lower shape bound keeps the inner angle strictly below a half-turn.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "31385b2dc48409bb1698d05b2b8cedcea6151f9ce4bedc38534228b77f838b5c",
+  "symbol_mismatches": []
+}

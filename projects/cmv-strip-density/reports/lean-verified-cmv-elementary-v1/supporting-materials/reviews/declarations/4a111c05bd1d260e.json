@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.A3",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda,t\\), with \\(q=2t-1\\), define\n\\[\nA_3(t)=\\frac{B(q)+\\pi/2+(2t+1)D(q)}{t^2}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:41-44`: The affine shape substitution and numerator coefficient agree, with the squared parameter denominator unchanged.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cb2c3a767813dd6743a002f60c9affd33c258de379854d6c91d5deadc49363b5",
+  "symbol_mismatches": []
+}

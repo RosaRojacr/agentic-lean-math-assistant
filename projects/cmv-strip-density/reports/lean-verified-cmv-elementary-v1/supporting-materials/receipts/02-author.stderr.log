@@ -1,0 +1,26 @@
+Running as unit: campaign-572017-041c2027ea66.service
+Working...
+============================================================
+Bun v1.4.2 (744846f84) Linux x64
+Linux Kernel v7.0.11 | glibc v2.43
+CPU: sse42 popcnt avx avx2 avx512
+Args: "/home/rosa/.local/bin/omp" "--user-agent=omp/18.2.6" "--mode=text" "--print" "--no-session" "--auto-approve" "--max-time=7200" "--cwd=/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/proof-package-v1" "--"...
+Features: Bun.stderr(2) Bun.stdin(2) Bun.stdout(2) WebSocket abort_signal(2) fetch(7) jsc spawn standalone_executable transpiler_cache virtual_modules process_dlopen yaml_parse(41) 
+Builtins: "bun:ffi" "bun:main" "bun:sqlite" "node:assert/strict" "node:async_hooks" "node:buffer" "node:console" "node:crypto" "node:events" "node:fs" "node:fs/promises" "node:https" "node:module" "node:net" "node:os" "node:path" "node:perf_hooks" "node:stream" "node:stream/promises" "node:timers/promises" "node:tls" "node:url" "node:util" "node:util/types" "node:vm" "node:zlib" 
+
+Elapsed: 391453ms | User: 4347ms | Sys: 729ms
+RSS: 0.37 GB | Peak: 0.41 GB | Commit: 1.0 GB | Faults: 7 | Machine: 8.59 GB
+
+panic(main thread): abort() called
+oh no: Bun has crashed. This indicates a bug in Bun, not your code.
+
+To send a redacted crash report to Bun's team,
+please file a GitHub issue using the link below:
+
+ https://bun.report/1.4.2/la1744846fmpkgE+hogC2smd6ovGk7Lu2+9qCmhps1Bi4ks1B8qor2B2u4x8B42px8B____ms1vvBsgyk2Bqk/0vC03pgkCkhpxqConpo2Bork8nCAa
+
+          Finished with result: core-dump
+Main processes terminated with: code=dumped, status=6/ABRT
+               Service runtime: 6min 42.984s
+             CPU time consumed: 35.185s
+                   Memory peak: 822.8M (swap: 0B)

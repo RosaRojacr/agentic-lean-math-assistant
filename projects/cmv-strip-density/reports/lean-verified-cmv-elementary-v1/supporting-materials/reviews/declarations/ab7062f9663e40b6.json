@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.measurableSet_carrier",
+  "domain_issues": [],
+  "informal_statement": "The three-arc carrier is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:1310-1316`: Closedness implies Borel measurability of the actual coordinate carrier.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "25696aa660c5c71e8ce3e6a179a069d25633bc99ff664ad8e93ea6e319cb501f",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "measurableSet_euclidean_leftArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean image of the left exposed strip-core arc is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1089-1093`: The left Euclidean trace is the continuous image of a compact interval and hence measurable.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a31ed55013e95ae690ffcc5bab6587c2933302f4970b8b673a167e6c53e1b7f8",
+  "symbol_mismatches": []
+}

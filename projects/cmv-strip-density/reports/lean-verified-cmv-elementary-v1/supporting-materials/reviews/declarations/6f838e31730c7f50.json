@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.upperCap",
+  "domain_issues": [],
+  "informal_statement": "The upper cap has chord \\(L\\) equal to the core chord, half-angle \\(\\alpha\\), midpoint \\((0,1)\\), and upper orientation.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2499-2508`: The upper cap inherits the positive core chord, acute angle and upper interface midpoint with the correct orientation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3f084f0dbec6bee8992e556fe2ca304aae5eb8981815636bf15454a3b8e613f9",
+  "symbol_mismatches": []
+}

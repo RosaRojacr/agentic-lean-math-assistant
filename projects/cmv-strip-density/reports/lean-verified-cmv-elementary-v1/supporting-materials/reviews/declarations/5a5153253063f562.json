@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sin_sideAngle",
+  "domain_issues": [],
+  "informal_statement": "For a strip core,\n\\[\n\\sin\\beta=k.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:474-477`: The sine-of-arcsine identity uses the admissible curvature interval and gives the stated curvature exactly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e85f9cb3c0c2b22c1ce74fdc60660033205e7a0821e76cfdd7248571352ea184",
+  "symbol_mismatches": []
+}

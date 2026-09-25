@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.four_upper_chord",
+  "domain_issues": [],
+  "informal_statement": "For a four-arc assembly with chord length \\(L\\), every \\((x,1)\\) with\n\\[\n|x|<L/2\n\\]\nlies in the interior of its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:689-703`: Strict upper chord points lie in the carrier but outside its exact frontier; only the endpoints can remain exposed.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a1a7708ba2cae5d73698e1a96285a00a773db00178be03734f2731b4ee4f2e11",
+  "symbol_mismatches": []
+}

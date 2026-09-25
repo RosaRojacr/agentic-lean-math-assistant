@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.isClosed_carrier",
+  "domain_issues": [],
+  "informal_statement": "The four-arc assembly carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2820-2823`: The full assembly carrier is closed as a finite union of the three closed components.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7c8404a543b7f83e631b837fdeb1bbee0f479b4e4161ccfe69e2da8d64a80c0a",
+  "symbol_mismatches": []
+}

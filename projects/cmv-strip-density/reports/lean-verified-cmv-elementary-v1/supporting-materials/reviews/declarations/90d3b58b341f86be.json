@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedArea",
+  "domain_issues": [],
+  "informal_statement": "Define the modeled weighted area as \\(4b\\) plus the auxiliary side-cap area plus \\(\\lambda\\) times the outer-cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:278-284`: The modeled area contains the rectangle, auxiliary side cap and density-weighted outer cap, with equality to the actual integral proved later.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "35499fdca0a3bbed11909d6dec0bbb1c83123d6ea5cb0599717ee289f567e87e",
+  "symbol_mismatches": []
+}

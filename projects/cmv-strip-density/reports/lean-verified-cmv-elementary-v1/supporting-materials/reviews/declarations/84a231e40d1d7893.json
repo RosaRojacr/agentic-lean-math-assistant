@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.four_regularity",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and every four-arc assembly, its carrier has the full region-regularity properties.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:675-688`: Regularity is proved for every real density and every assembly; the bounded, measurable density is integrable on the finite area and frontier measures.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6063139ac078a2209fbe7fc6efd1db58eb52039ae2c5d24774d181000e68c1d8",
+  "symbol_mismatches": []
+}

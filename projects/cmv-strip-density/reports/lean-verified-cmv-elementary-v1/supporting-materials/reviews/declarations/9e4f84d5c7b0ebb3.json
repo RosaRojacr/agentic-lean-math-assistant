@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_arcLength_eq_two_radius_theta",
+  "domain_issues": [],
+  "informal_statement": "For any cap, its scalar arc length is\n\\[\n2R\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:451-456`: The scalar chord-normalized arc length equals twice radius times half-angle by nonzero-sine cancellation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "edad6e24948a1499ce1a66a5efdc84d9c8f7899f5c52d6551716312e95163fb3",
+  "symbol_mismatches": []
+}

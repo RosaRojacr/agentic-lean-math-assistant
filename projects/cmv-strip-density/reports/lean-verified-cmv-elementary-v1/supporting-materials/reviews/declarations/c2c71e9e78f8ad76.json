@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.S_reflection",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda,z\\),\n\\[\nS(-z)=\\lambda\\pi-S(z).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:410-413`: The inverse-trigonometric reflection identity is stated for all real parameters, matching the total functions used in the proof.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "26f33ed7c33bedaef432b4c32e750889ffa3f094e21ef2c9ac3dfd7f1097086c",
+  "symbol_mismatches": []
+}

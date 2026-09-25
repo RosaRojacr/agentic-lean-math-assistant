@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.cap4_upper",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\), \\(H_h\\) equals the upper-cap carrier of the constructed four-arc assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:598-610`: The common-radius theorem identifies the cap disk exactly, with matching upper half-plane and center.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f441242c0d9f6318efed4cd2ba6e4ad6a81fcdc8e3d7771eacd9f798d79f5bc2",
+  "symbol_mismatches": []
+}

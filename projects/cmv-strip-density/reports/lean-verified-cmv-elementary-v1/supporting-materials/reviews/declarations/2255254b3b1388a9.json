@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeDelta",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h<1\\), \\(\\delta_3\\) has derivative\n\\[\n2q(h)[1/\\sqrt{1-q(h)^2}-1/(\\lambda\\sqrt{\\lambda^2-q(h)^2})].\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:206-240`: The derivative coefficient includes both the affine factor and the density in the outer radical denominator, with no endpoint derivative assertion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6a259e36542b424c2657b96b59d66f9d38d054281073fe5c590c3110a33522c8",
+  "symbol_mismatches": []
+}

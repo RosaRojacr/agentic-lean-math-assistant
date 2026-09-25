@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_sideArcAngle",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\sin\\phi=\\sin\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:227-230`: The sine of the supplementary side angle equals the inner sine, with no sign change.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "41165bd4a88985079154632e1304282b8868bb98cc6b1d97bb3ea19faaebe0dd",
+  "symbol_mismatches": []
+}

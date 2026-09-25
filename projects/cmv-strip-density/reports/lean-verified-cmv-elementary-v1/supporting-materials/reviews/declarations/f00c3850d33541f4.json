@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "continuous_realizedCapParam",
+  "domain_issues": [],
+  "informal_statement": "Every realized cap parametrization is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:442-450`: The realized cap curve is continuous by its circular representation and the continuous isometry.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "439602ca8a442d23dec8f858626a27ca71e9723ce90b04b56ee6e94cd89590f1",
+  "symbol_mismatches": []
+}

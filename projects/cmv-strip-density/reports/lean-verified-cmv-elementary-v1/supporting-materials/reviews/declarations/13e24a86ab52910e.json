@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.P3_continuousAt",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and every \\(t\\ne0\\), \\(P_3\\) is continuous at \\(t\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:640-644`: The author preserves continuity at every nonzero real parameter, including the scalar right endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7e674cd3499110482a7c44788eb37aa27ecb4b4c5616c3ed50d965f7e0f157c3",
+  "symbol_mismatches": []
+}

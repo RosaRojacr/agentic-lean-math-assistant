@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.cap3_outer",
+  "domain_issues": [],
+  "informal_statement": "For every admissible three-arc assembly of curvature \\(h\\), its upper cap carrier equals \\(H_h^{(3)}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:213-223`: Expansion of the cap center and radius yields exact set equality on the whole assembly domain, including major caps.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2140a5194c99cf5b4856225e98d69256f9c79b99ca0647ae5ad4c1adf63bf5da",
+  "symbol_mismatches": []
+}

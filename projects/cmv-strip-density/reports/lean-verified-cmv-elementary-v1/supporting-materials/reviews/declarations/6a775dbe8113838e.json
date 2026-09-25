@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.cap4_lower",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\), \\(\\sigma(H_h)\\) equals the lower-cap carrier of the constructed four-arc assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:611-638`: Both directions of the reflected-image equality are proved; the lower cap is not confused with a region merely below the upper interface.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "72a1ca1b6ff442b2e011b6c32059f321f81f287d8c74261f2c7a82c1ad2b72a7",
+  "symbol_mismatches": []
+}

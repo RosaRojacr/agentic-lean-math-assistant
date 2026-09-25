@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "upper_cap_integral",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda\\) and an upper cap based on\n\\[\ny=1,\n\\]\nthe integral of Euclidean strip density over its actual arc trace against \\(\\mathcal H^1\\) equals \\(\\lambda\\) times its arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1545-1552`: Upper orientation and the upper interface are retained; actual trace integration uses exterior density except at the two length-null endpoints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "447beffafa9faf9c0047e982aa709b3b243852770c1fde70cc3c6676215458bf",
+  "symbol_mismatches": []
+}

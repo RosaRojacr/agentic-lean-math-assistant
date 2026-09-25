@@ -1,0 +1,97 @@
+{
+  "attempt": 1,
+  "command": [
+    "/home/rosa/.local/bin/omp",
+    "--mode=text",
+    "--print",
+    "--no-session",
+    "--auto-approve",
+    "--max-time=7200",
+    "--cwd=/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/proof-package-v1",
+    "--tools=read,grep,glob,bash,write",
+    "--model=openai-codex/gpt-6-astra",
+    "--thinking=xhigh",
+    "@/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/proof-package-v1/supporting-materials/prompts/01-semantic-review.md"
+  ],
+  "completed_at": "2026-09-25T05:33:51Z",
+  "duration_seconds": 1014.182,
+  "empty_output_retries": 1,
+  "error": null,
+  "exit_code": 0,
+  "failure_class": null,
+  "handoff": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/proof-package-v1/supporting-materials/reviews/reviewer-01.json",
+  "handoff_available": true,
+  "invocations": [
+    {
+      "duration_seconds": 1014.173,
+      "effective_max_time": 7200,
+      "error": null,
+      "exit_code": 0,
+      "failure_class": null,
+      "global_model_call": null,
+      "ordinal": 1,
+      "resource_wait_seconds": 0.0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "e3445d417fc127ae928636697f38fb8a1428fc391d54ebef276f1b9e4a276632"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": true,
+        "runtime_max_seconds": 7260,
+        "tasks_max": 256,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": "supporting-materials/lean/lake-manifest.json",
+              "sha256": "8808f400512c844e59326c780e75b7017e1cb14f6030b8d392cf3e0a27dbf54b",
+              "size": 3167
+            },
+            {
+              "path": "supporting-materials/lean/lakefile.toml",
+              "sha256": "bff6210daa554176132d96750d40846706dd121c0013c7d111f24c390be6f5db",
+              "size": 538
+            },
+            {
+              "path": "supporting-materials/lean/lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/home/rosa/.local/bin/omp",
+            "resolved_path": "/home/rosa/.local/bin/omp",
+            "sha256": "0f38598c91e823d8cce07f151ec3999d51f213fb2cc3e07d89f1af8eef9247a2",
+            "size": 252405216
+          }
+        },
+        "unit": "campaign-535951-0030fde13dc0.service"
+      },
+      "status": "succeeded",
+      "stderr_truncated": false,
+      "stdout_truncated": false
+    }
+  ],
+  "output": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/proof-package-v1/supporting-materials/receipts/01-semantic-review.output.txt",
+  "role_id": "proof-builder-semantic-review",
+  "schema_version": 1,
+  "started_at": "2026-09-25T05:16:57Z",
+  "status": "succeeded",
+  "stderr_log": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/proof-package-v1/supporting-materials/receipts/01-semantic-review.stderr.log",
+  "stderr_truncated": false,
+  "stdout_log": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/proof-package-v1/supporting-materials/receipts/01-semantic-review.stdout.log",
+  "stdout_truncated": false
+}

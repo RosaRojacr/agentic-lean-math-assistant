@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.jprime_third",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\),\n\\[\nj(1/3)=0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:488-492`: The zero value at one third is unconditional in density and follows from evenness.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d0c7dbb0422c10f59db756962a83f292b34b4533d9c653ccc1f9b40c626313c7",
+  "symbol_mismatches": []
+}

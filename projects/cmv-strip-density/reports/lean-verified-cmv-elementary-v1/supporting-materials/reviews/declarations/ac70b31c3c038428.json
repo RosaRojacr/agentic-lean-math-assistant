@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.radius_pos",
+  "domain_issues": [],
+  "informal_statement": "Every admissible three-arc assembly has\n\\[\nR>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:145-147`: Positive curvature gives positive reciprocal radius, exactly as stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a610fc617d9a92f1154e4b9627bb16a0d909464945f9e22ccb900c975acb2c7d",
+  "symbol_mismatches": []
+}

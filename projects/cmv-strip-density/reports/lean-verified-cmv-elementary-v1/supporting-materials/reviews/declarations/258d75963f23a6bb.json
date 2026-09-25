@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideArcComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "For any planar center \\(c\\), define the complex-to-Euclidean map\n\\[\nz\\mapsto(c_x+\\operatorname{Im}z,c_y-\\operatorname{Re}z).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:649-652`: The map is defined for an arbitrary coordinate center and applies the exact coordinate interchange, sign and translation stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2d2b0ae6442b1aeb7779e0e2c761b53071a3b1948418645b546ba443dcc3b322",
+  "symbol_mismatches": []
+}

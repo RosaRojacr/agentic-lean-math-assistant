@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.greatest_root_claims",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\), there exist real \\(\\varepsilon,r\\) satisfying the greatest-root assertion.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:692-754`: The proof constructs a positive left endpoint and the greatest root, then derives the strict barrier and support comparison for those same witnesses.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "53fc167a9298d1af24874c5394cc36a6b816243904575d5d9ae34c2802ef1d73",
+  "symbol_mismatches": []
+}

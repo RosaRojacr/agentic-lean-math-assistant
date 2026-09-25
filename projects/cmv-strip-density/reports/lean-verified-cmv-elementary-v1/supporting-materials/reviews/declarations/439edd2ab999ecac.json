@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "continuous_unitCircleArc",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(R\\), the function\n\\[\ns\\mapsto\\gamma_R(s)\n\\]\nis continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:14-17`: Continuity is unconditional in radius under the total division convention; no positive-radius hypothesis is inserted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "343bc4472a64687ca829ebbf897c060cb6c7c3cad3716259e96fb84cf091470c",
+  "symbol_mismatches": []
+}

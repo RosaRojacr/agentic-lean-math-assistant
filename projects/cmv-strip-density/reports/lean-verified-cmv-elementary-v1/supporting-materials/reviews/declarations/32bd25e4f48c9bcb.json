@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.bottomSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "Define the bottom segment\n\\[\n\\{(x,-1):|x|\\leq b\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:132-135`: The closed bottom segment is retained when its half-width vanishes, giving a singleton rather than the empty set.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "18e70891a1386b33220d27cc96af45d0ffdcc88b970fd467c64035c04da589f5",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.ScalarIdentificationClaims",
+  "domain_issues": [],
+  "informal_statement": "For \\(-1\\leq z\\leq1\\),\n\\[\n\\sqrt{\\lambda^2-z^2}/\\lambda=\\sqrt{1-z^2/\\lambda^2}.\n\\]\nFor \\(0<t\\leq1\\), the frozen three-arc and four-arc radical differences equal \\(D(2t-1)\\) and \\(D(t)\\), respectively, and their area and perimeter functions equal \\(A_3(t),P_3(t),A_4(t),P_4(t)\\), respectively.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:141-154`: The radical normalization and all six scalar identifications have the same closed-right-endpoint parameter domains.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "223a2325121ec324ac1308ae10d552d69116f31febe80ced7adf5e478138df58",
+  "symbol_mismatches": []
+}

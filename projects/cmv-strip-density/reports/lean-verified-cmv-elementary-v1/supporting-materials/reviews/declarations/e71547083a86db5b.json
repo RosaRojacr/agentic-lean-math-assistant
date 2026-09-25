@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeShape",
+  "domain_issues": [],
+  "informal_statement": "Define the three-arc shape parameter\n\\[\nq(h)=2h-1\n\\]\nfor real \\(h\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:32-34`: The affine shape parameter and its total real domain agree exactly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9ef91461acc972465b98decfe31d601788f1354eb0ffbb8d094be6f5c46ca593",
+  "symbol_mismatches": []
+}

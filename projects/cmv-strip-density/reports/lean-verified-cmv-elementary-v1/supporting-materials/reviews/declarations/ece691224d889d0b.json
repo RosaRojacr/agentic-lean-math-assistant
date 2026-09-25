@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideCap_radius",
+  "domain_issues": [],
+  "informal_statement": "The auxiliary side cap has radius \\(R\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:423-429`: The auxiliary side-cap radius agrees because supplementary angles have equal positive sines.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "860b391d38da56536b3934963761766a28238619240605477033823fc900d1af",
+  "symbol_mismatches": []
+}

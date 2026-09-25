@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.carrier",
+  "domain_issues": [],
+  "informal_statement": "The three-arc carrier is its strip core union its upper cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:262-264`: The full carrier is the union of core and upper cap; no lower exterior cap is introduced.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0849c97e398a59f917657f18205fab9ffd6aa8e524ee751befd78f1c4735a4ff",
+  "symbol_mismatches": []
+}

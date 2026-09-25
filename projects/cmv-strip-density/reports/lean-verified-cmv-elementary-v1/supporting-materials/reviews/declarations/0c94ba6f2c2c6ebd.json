@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The assembly weighted perimeter is the density integral against the canonical complete-frontier measure of its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:269-272`: The perimeter definition directly uses the canonical complete-frontier measure of the actual carrier.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ac2df4f2daf804e358c901d1a6b496eaadc35076745e389cd399733fc5dead10",
+  "symbol_mismatches": []
+}

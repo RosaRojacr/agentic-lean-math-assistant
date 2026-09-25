@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometricRealizationStatement",
+  "domain_issues": [],
+  "informal_statement": "For every\n\\[\n\\lambda>1,\n\\]\nthe four-arc realization holds for all\n\\[\n0<h\\leq1,\n\\]\nand the three-arc realization holds for all\n\\[\n0<r<1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:117-127`: The universal realization contract includes the four-arc endpoint but excludes it for the three-arc family, exactly as stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bf9d5e6f83903980043feb1686756fd6224652d95175a5fa7761171f2e85ae57",
+  "symbol_mismatches": []
+}

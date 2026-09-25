@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "For a cap with midpoint \\((m,b)\\), radius \\(R\\), and half-angle \\(\\theta\\), map \\(z\\in\\mathbb C\\) to \\((m+\\operatorname{Im}z,b-R\\cos\\theta+\\operatorname{Re}z)\\) for an upper cap, and to \\((m+\\operatorname{Im}z,b+R\\cos\\theta-\\operatorname{Re}z)\\) for a lower cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:390-397`: Both orientation branches have the correct coordinate interchange, translation and vertical sign, matching the cap parametrization.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3ed78deaf1597a91c6218ca8fe10519ba693355e7329e0301f17fcce226f5a43",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,40 @@
+MATHEMATICAL AUDIT OF CMV_Strip_Density_Problem.pdf
+
+Verdict before Lean formalization
+The intended elementary comparison argument is mathematically valid on this audit. The literal PDF theorem is NOT valid as printed: pages 2 and 3 contain an area-versus-perimeter typo. This audit is an analytic review with numerical diagnostics, not a claim of completed Lean verification.
+
+1. Required theorem correction
+Replace A_lambda(C_h)-P_lambda(E_s) by P_lambda(C_h)-P_lambda(E_s) in both Theorem 1 statements, including equation (3.2). The page-8 proof concludes the latter, correct quantity. This discrepancy was confirmed by viewing the rendered PDF, not merely its extracted text.
+The former statement is genuinely false. For example, lambda=1.01 and h=1 give weighted area V approximately 3.706822640545596. Since 1<=f<=lambda, every finite-perimeter competitor of weighted area V satisfies
+ P_lambda(E)>=P_Euclidean(E)>=2*sqrt(pi*|E|)>=2*sqrt(pi*V/lambda),
+which here is approximately 6.791178545905693, greater than V. Thus the printed area-minus-perimeter expression is negative for every such competitor. The obstruction also follows without treating decimal computations as proof: at this rational lambda, A4(1)<(lambda+1)*pi+2<4*pi/lambda, using pi>3.
+
+2. Analytic proof check
+The identity B'+D=zD' gives S'=-2D. Evenness of D and the reflection identity for inverse trigonometric functions give S(-z)=lambda*pi-S(z). The endpoint values of J are both gamma. Gamma is positive because with theta=acos(1/lambda), gamma=lambda*theta-sin(theta)>0.
+The displayed J'=4(D(2u-1)-D(u)) has the claimed sign change at u=1/3, because D is even and strictly increasing in |z|. This proves J>=gamma. For u>=1/3, J'<=0 implies J-uJ'>=J. For 0<u<1/3, D'(2u-1)<0 and D'(u)>0 imply J''<0, hence (J-uJ')'=-uJ''>0; the limit at zero is gamma. This proves both bounds over the full required domain. No square-root derivative at u=1 is used.
+Direct substitution verifies both identities in Proposition 1, including their factors of h and h^2. Differentiating the displayed numerators verifies P3'=s*A3'. The positive numerator limit gives A3(s)->infinity at zero.
+The largest-root construction is valid: the level set in [epsilon,h] is nonempty and compact. Its greatest root r lies strictly between the endpoints. Continuity and A3(h)<V imply A3(t)<V on (r,h], without requiring root uniqueness or global monotonicity. Therefore Q'=V-A3>0 on (r,h), and continuity at h gives Q(r)<Q(h), including h=1. Combining with the support gap proves the strict quantitative perimeter margin.
+
+3. Geometry check
+The attaching chords of the explicit caps and cores have exactly matching widths. Their interiors are interior points of the union, so no internal-chord perimeter is counted. The bottom segment of the three-arc competitor has density one. Both displayed weighted area/perimeter formulas have the correct factors.
+For s<1/2, disk intersection with y>=1 really is the major segment. At s=1/2 all three arc centers coincide, giving the radius-two disk centered at (0,1), not a pinched region. The four-arc endpoint h=1 has a positive attaching chord and valid finite perimeter. The scalar endpoint A3(1),P3(1) is used only by continuity; the actual competitor always has r<h<=1.
+
+4. Numerical diagnostics actually performed
+70-digit arithmetic, 42 (lambda,h) pairs, including lambda=1+10^(-12), lambda=100, h=10^(-8), h near one, and h=1. The maximal residual in the two algebraic identities was approximately 4.64e-69. Equal-area roots gave the claimed strict gamma/h improvement in every sampled case. These samples do not prove universal assertions.
+21 independent horizontal-coordinate area integrals checked the major-cap, semicircle, minor-cap and four-arc-endpoint cases. The largest relative residual against the stated scalar area formulas was approximately 1.47e-71.
+At lambda=1.01,h=1, a sampled equal-area root is r approximately 0.9296553527250413. P4 approximately 6.852162236387912; P3(r) approximately 6.836009490135275; gap approximately 0.01615274625263771; gamma/h approximately 0.001873471126261384.
+
+5. Original CMV conjecture versus Lean scope
+The original CMV source supplies the necessary informal classification chain: Lemma 3.8 and its four-arc symmetry proof, Proposition 3.9 (every minimizer vertically reflection-symmetric), and Theorem 3.16. Thus the corrected explicit-family exclusion completes Conjecture 3.12 when these established source results are invoked.
+For the explicit finite piecewise-circular Jordan regions, complete and reduced boundaries agree H^1-almost everywhere. To transfer from an arbitrary source minimizer, use its classified regular representative and invariance of REDUCED perimeter under area-null modifications. Do not assert that complete-frontier perimeter is invariant under arbitrary null modifications.
+The draft should add this explicit corollary and reconcile page 2 with Remark 3. There is no need to claim the original source lacks classification. Preserve stadium / three-arc coexistence at the transition, not uniqueness.
+The requested Lean run must distinguish its new explicit-family proof from an additional formalization of external BV/classification results. The latter are not silently assumed as axioms.
+
+6. Other draft corrections
+Page 3, family (4): bottom exterior arc is in y<-1, not merely y<1.
+Page 3, family (2): the interface is |y|=1, not the malformed set {|y|-1}.
+Use planar reflection symmetry rather than suggesting full rotational symmetry. The draft also has duplicate introductions/theorem numbering and unfinished editorial sections.
+
+Source preservation
+Original PDF SHA-256: d04a2e8e2ad45fe505345037c046ceaeb2a8d63b9e2b1c1eeb020b5251c576ff.
+The Downloads file was not edited. The isolated references copy is byte-for-byte identical.

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedLeftArcParam_eq",
+  "domain_issues": [],
+  "informal_statement": "At every real \\(s\\), the realized left parametrization equals the side-arc complex isometry centered at its left center applied to \\(\\gamma_R(s)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:672-680`: The realized left curve agrees pointwise for every real parameter with the isometric image of the standard circle about the left center.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "538a7925bd9a6977d5e74933bd5f951885abb82dc534e3d102db01bf6aa01a1e",
+  "symbol_mismatches": []
+}

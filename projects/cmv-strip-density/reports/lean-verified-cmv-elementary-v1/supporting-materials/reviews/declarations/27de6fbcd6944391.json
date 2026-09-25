@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.volume_rectangleCarrier",
+  "domain_issues": [],
+  "informal_statement": "The planar volume of the core rectangle is \\(2L\\), in the nonnegative extended reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2060-2075`: The rectangle's product interval lengths give twice the core chord, with the correct extended-real embedding.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b2c1d8716422a2e0169b6aacae489790c14b0594bc75f1e77b6bbec1349d5110",
+  "symbol_mismatches": []
+}

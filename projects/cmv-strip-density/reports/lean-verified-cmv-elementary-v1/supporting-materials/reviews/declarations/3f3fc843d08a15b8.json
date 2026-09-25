@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "Define the boundary trace as the union of the left arc, right arc, upper cap arc, and bottom segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:1595-1599`: The declared trace contains exactly the two side arcs, upper cap arc and full bottom segment, but not the upper chord interior.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "77ded3af26dffe034b843162e20202cd8e868c69330a0cb95819f9e3b2a0bbf5",
+  "symbol_mismatches": []
+}

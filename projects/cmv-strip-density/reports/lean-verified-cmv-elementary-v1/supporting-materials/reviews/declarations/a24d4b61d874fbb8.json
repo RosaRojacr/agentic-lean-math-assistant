@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.rightCapCarrier",
+  "domain_issues": [],
+  "informal_statement": "The right core cap is\n\\[\n\\{(x,y):(x-x_{\\mathrm R})^2+y^2\\leq R^2,\\ x\\geq L/2,\\ |y|\\leq1\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:444-448`: The right disk inequality, right exterior cutoff and strip-height condition are all present.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0f7231f5e97656f30e8e5131e2afc098206a3ff9953e2cd02ae8207ac4d54b12",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.boundaryArcLength",
+  "domain_issues": [],
+  "informal_statement": "Define the exposed core-arc length\n\\[\n4\\ell(\\beta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:457-459`: The scalar boundary length includes the two exposed side arcs and excludes both attaching chords.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "74e634700740d7651d4ed773b1cb3cb71b11c7eedacd0c71b6a84a0e6ec43665",
+  "symbol_mismatches": []
+}

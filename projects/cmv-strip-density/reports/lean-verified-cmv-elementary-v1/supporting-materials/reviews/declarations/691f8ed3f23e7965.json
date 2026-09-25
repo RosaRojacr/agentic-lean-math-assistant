@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.abs_le_sqrt_iff",
+  "domain_issues": [],
+  "informal_statement": "For real \\(x,s\\) with \\(s\\geq0\\),\n\\[\n|x|\\leq\\sqrt{s}\n\\]\nif and only if\n\\[\nx^2\\leq s.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:140-150`: The nonnegative-radicand hypothesis is retained in both directions of the squaring equivalence.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2c06f5120bf21413fd7a76c0fdf930961207a98f7083bc089c888386262367b5",
+  "symbol_mismatches": []
+}

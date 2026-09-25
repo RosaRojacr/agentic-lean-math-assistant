@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.upperCap3",
+  "domain_issues": [],
+  "informal_statement": "Put\n\\[\nq=2r-1\n\\]\nand define\n\\[\nH_r^{(3)}=\\{(x,y):y\\geq1,\\ x^2+[y-(1-r^{-1}\\cos(\\arccos(q/\\lambda)))]^2\\leq r^{-2}\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:48-53`: The disk is intersected with the upper closed half-plane, preserving the major-segment branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a9e700433ec6f55d3afb3184a3b903dc0222e7e85c81667191ac80eb26edc559",
+  "symbol_mismatches": []
+}

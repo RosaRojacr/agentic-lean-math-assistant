@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.measurableSet_carrier",
+  "domain_issues": [],
+  "informal_statement": "Every four-arc assembly carrier is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2549-2553`: Measurability follows from the measurable core and caps and is asserted for every assembly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bed9e29097b5f894c003225893e3653e7d99d34980093208388840d2a9198ac1",
+  "symbol_mismatches": []
+}

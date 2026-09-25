@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreParam",
+  "domain_issues": [],
+  "informal_statement": "For a strip core with left center coordinate\n\\[\nx_{\\mathrm L},\n\\]\ndefine\n\\[\ns\\mapsto(x_{\\mathrm L}-R\\cos(s/R),R\\sin(s/R)).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1477-1481`: The minus cosine displacement selects the left exposed arc; the sine height and radius scaling agree.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "80f940fe52c510e69a283605275f10b49a7ca369836a80a40ece896dbbf606db",
+  "symbol_mismatches": []
+}

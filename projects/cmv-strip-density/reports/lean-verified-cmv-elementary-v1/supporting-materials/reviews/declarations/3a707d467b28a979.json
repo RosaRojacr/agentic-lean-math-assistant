@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_inner_le_sin_outer",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\sin\\beta\\leq\\sin\\alpha.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:303-311`: The non-strict sine comparison follows from comparing the two nonnegative square roots under the density jump.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "def468198882d033570072298a83ae1d41fc003f0ecb9d0b4ee3a6b94e6a1d10",
+  "symbol_mismatches": []
+}

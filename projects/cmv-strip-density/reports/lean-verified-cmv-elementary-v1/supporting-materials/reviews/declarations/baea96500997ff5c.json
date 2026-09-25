@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ell",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\theta\\), define\n\\[\n\\ell(\\theta)=\\theta/\\sin\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `MorgansArcFunction.lean:89-91`: The scalar function is defined for every real angle under total division; its geometric interpretation is correctly restricted to the admissible cap interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9adb32c6bf9324acec1e791c0ec46f0e17df835ffee7b3549cab07bdc3a760c9",
+  "symbol_mismatches": []
+}

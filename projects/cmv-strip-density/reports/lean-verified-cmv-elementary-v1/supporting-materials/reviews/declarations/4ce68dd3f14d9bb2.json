@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.measurableSet_carrier",
+  "domain_issues": [],
+  "informal_statement": "Every cap carrier is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:335-363`: Measurability is asserted for every admissible coordinate cap, not supplied as extra construction data.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0f551f525fbf0409babb736205ec484e0a0c2ff7039ce55de1e7a7fc5595a27",
+  "symbol_mismatches": []
+}

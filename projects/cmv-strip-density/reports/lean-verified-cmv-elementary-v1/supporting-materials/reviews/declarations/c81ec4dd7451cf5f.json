@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.volume_rightCapCarrier",
+  "domain_issues": [],
+  "informal_statement": "The planar volume of the right cap is\n\\[\n4a(\\beta),\n\\]\nin the nonnegative extended reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2139-2201`: The reflected right side cap has the same actual planar volume and coefficient as the left cap.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7bc214af5d8d445665e416853a1fab80112ca5fe1116500de0e9b2b6285dfdf7",
+  "symbol_mismatches": []
+}

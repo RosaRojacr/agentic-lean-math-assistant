@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_rightCoreParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean Hausdorff measure of the realized right core parameter image on \\([-R\\beta,R\\beta]\\) is\n\\[\n2R\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:773-800`: The right parameter image has the same exact span measure, with the admissible closed side-angle endpoint included.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5b9d17b9e5921b7fba027be4ebfa3845e68c3c43a92a67ce9d4854bf1b244db0",
+  "symbol_mismatches": []
+}

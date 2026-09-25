@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_unitCircleArc_image_eq",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\) and \\(0<\\theta<\\pi\\),\n\\[\n\\mathcal H^1(\\gamma_R([-R\\theta,R\\theta]))=2R\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:294-311`: The Lipschitz upper bound and limiting polygonal lower bound identify actual Hausdorff length on the strict sub-full-circle domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f4746d8c9b2c6ef1416bccca1f814590cdef08c393e10b7189ff167eb0402ab3",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcLength_pos",
+  "domain_issues": [],
+  "informal_statement": "Every admissible cap has strictly positive selected-arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:220-222`: The selected arc length is positive because both factors in its definition are positive.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "615464c0ac73967d872be72b9e5d931fb0644d2db70b6e9168ad1dd7c81aa184",
+  "symbol_mismatches": []
+}

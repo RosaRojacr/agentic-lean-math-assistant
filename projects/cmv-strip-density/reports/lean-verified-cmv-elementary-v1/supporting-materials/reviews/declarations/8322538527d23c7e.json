@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.P4",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda,t\\), define\n\\[\nP_4(t)=\\frac{4B(t)}{t}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:51-52`: The formal numerator is four times the angle combination, divided by curvature, exactly as stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fa98d4e58766dded99b172ec727c96faed5ce0f690c12b06cd4d7e96d0228209",
+  "symbol_mismatches": []
+}

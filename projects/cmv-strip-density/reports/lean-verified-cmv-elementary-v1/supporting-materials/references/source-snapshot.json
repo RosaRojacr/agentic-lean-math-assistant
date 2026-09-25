@@ -1,0 +1,20 @@
+{
+  "source": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/.alma/workspace/runs/20260924T183003Z-a5d18f/workspace/proof",
+  "files": {
+    "LeanSuffixAnalytic.lean": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+    "MorgansArcFunction.lean": "9df5df0307cbdcbd84c9cd2848c0499f91fe6d7a5dac627f2c1c2c9c664cf9c1",
+    "CMVGeometry.lean": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+    "FrontierPerimeter.lean": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+    "FourArcCandidate.lean": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+    "TypeThreeAssembly.lean": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+    "GreatestLevelRoot.lean": "74778c025ab603925e9bcbc41726f99a202291091a8ae8541f35dbd7a08c5a4d",
+    "CMVElementary.lean": "c4b353baecd305da498edf5935bb73562731c24369c86b0428a4dde4125c3cae",
+    "CMVElementaryGeometry.lean": "f679c6bdfa808c45dd409b0da8b16a2ab60535f3f0fd02ae43d8e4c5179b410a",
+    "CMVElementaryAudit.lean": "2ed28d80999563df5b855067d0c19c35cb1289ca10f1aeaceae332def3e3e0fd",
+    "lakefile.toml": "20344e2779e1323594e762f3645022dd0e268ad900bfc5af7a2395236672a872",
+    "lake-manifest.json": "a112fe89a2f023690e0c55fe8095c90d42e76d4c394fdb1f1988c7c06aeaa221",
+    "lean-toolchain": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6"
+  },
+  "frozen_lower_level_modules_verified": 6,
+  "fresh_project_build_objects": true
+}

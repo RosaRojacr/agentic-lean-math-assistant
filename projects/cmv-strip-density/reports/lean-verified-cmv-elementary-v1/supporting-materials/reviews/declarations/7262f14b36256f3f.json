@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideArcAngle",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\n\\phi=\\pi-\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:64-65`: The exposed side-arc angle is the supplement of the inner angle; the auxiliary symmetric cap has twice that central angle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c68849312591ff361810874588f817eab8327b61ad9b815244ad1ab61a55597a",
+  "symbol_mismatches": []
+}

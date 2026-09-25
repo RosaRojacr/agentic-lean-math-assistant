@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.hasDerivAt_B",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(-1<z<1\\), \\(B\\) is differentiable and\n\\[\nB'(z)=1/\\sqrt{1-z^2}-\\lambda/\\sqrt{\\lambda^2-z^2}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:414-431`: Both inverse-trigonometric derivative terms, including the outer density coefficient, and all interior hypotheses agree.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e1d93dd53807589db2db47f2a40f0b76ab73445942336bd1513b60f62d0be20a",
+  "symbol_mismatches": []
+}

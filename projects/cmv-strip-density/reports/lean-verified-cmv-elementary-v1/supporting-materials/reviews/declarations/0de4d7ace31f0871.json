@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.E_perimeter",
+  "domain_issues": [],
+  "informal_statement": "For every admissible three-arc assembly of curvature \\(h\\),\n\\[\nP_\\lambda(E_h)=P_3(h).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:358-370`: The formal identity concerns the canonical complete frontier; the angle and sine rewrites preserve the bottom-segment contribution.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a49183f07902e3ede19ad8a842f68990ab55b78592388d3d979e3541ccf7970b",
+  "symbol_mismatches": []
+}

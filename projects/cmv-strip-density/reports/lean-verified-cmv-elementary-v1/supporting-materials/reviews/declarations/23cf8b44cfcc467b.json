@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The right trace consists of points on the circle centered at \\((b,R-1)\\) with radius \\(R\\), satisfying\n\\[\nx\\geq b\n\\]\nand\n\\[\n-1\\leq y\\leq1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:111-119`: The right circle equality and reflected cutoff give the corresponding closed exposed trace.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "828cebab0c56e67a2a3cfaae9e912a8a76f497287dcea6b589e1a22a40edd616",
+  "symbol_mismatches": []
+}

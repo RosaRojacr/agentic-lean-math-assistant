@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_semicircle_scaled",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\) and \\(0\\leq\\theta\\leq\\pi\\),\n\\[\n\\int_{R\\cos\\theta}^{R}2\\sqrt{R^2-y^2}\\,dy=R^2(\\theta-\\sin\\theta\\cos\\theta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1759-1791`: Positive radius scaling and the factor two for full horizontal section width give the stated segment area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fe66bbeed922271b7cf0e4043f58e6b4f6651310c0d02aa776383ac42b18240d",
+  "symbol_mismatches": []
+}

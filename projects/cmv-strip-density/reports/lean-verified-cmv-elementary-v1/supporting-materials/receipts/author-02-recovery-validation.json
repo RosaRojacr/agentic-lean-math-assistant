@@ -1,0 +1,11 @@
+{
+  "validated": true,
+  "classifications": 506,
+  "main_unchanged": true,
+  "display_blocks": 566,
+  "lean_sources_unchanged": true,
+  "format_normalized_text_change_count": 327,
+  "process_status": "crashed after handoff was written",
+  "handoff_sha256": "6629fd59ec4e7e409067fcf6c62c6e37b71c4af01481588c3bf1d2a426491766",
+  "action": "Reuse validated handoff only; require a fresh independent semantic review. Original crash receipt and all model handoffs are unchanged."
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_zero",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(R,\\theta\\) and natural \\(N\\), the zeroth partition point is\n\\[\n-R\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:157-160`: The initial partition point is independent of the subdivision count, including zero.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1714782661300a21ee2d4243c7e4fbe79e1e97ce545ea187699c13d709db2db9",
+  "symbol_mismatches": []
+}

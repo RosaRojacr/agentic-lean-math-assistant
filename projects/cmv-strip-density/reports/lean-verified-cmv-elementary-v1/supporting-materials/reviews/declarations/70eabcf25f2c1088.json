@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerAngle_semicircular",
+  "domain_issues": [],
+  "informal_statement": "If \\(h=1/2\\), the outer half-angle is\n\\[\n\\alpha=\\pi/2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:374-377`: The outer argument also vanishes at half curvature, giving the same exterior half-angle for every admissible density.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9ff26a1092e7089058ecf98f24fecce78972031b475870c0e4d30009e831f8ee",
+  "symbol_mismatches": []
+}

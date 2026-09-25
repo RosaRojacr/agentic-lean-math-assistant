@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.exists_greatest_level_root",
+  "domain_issues": [],
+  "informal_statement": "Let \\(a<b\\), let\n\\[\nF:\\mathbb R\\to\\mathbb R\n\\]\nbe continuous on \\([a,b]\\), and suppose\n\\[\nF(a)>V>F(b).\n\\]\nThere exists \\(r\\in(a,b)\\) with\n\\[\nF(r)=V,\n\\]\ngreatest in \\([a,b]\\cap F^{-1}(\\{V\\})\\), and\n\\[\nF(t)<V\n\\]\nfor \\(r<t\\leq b\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `GreatestLevelRoot.lean:12-48`: The strict opposite endpoint inequalities yield a greatest interior level point and a strict barrier on the half-open interval to its right; uniqueness is not assumed.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0789ece1798caf97991b6506267400db996fa20c928696c85876071a12271aa2",
+  "symbol_mismatches": []
+}

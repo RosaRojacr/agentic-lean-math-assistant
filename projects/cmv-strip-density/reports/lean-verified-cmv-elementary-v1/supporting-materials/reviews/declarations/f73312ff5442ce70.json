@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.gamma_pos",
+  "domain_issues": [],
+  "informal_statement": "For every\n\\[\n\\lambda>1,\n\\]\n\n\\[\n\\gamma_\\lambda>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:446-455`: The proof uses a positive inverse-cosine angle and the sine bound to obtain strict positivity for every density exceeding one.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "62668904d84e7cbf785e00bbc726c316b4b51445dcf41d3119a83f33d568f2ff",
+  "symbol_mismatches": []
+}

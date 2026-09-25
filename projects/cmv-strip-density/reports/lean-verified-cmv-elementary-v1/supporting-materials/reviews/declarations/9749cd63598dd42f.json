@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.exact_euclidean_rightArcParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean Hausdorff measure of the realized right parameter image on \\([0,R\\phi]\\) is\n\\[\nR\\phi.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:779-816`: The right image has the same single-side length and the correct positive parameter interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f1f573c6c931308699d4611129bc237b3c89fe21d3a82fbb640a2bcaf452f054",
+  "symbol_mismatches": []
+}

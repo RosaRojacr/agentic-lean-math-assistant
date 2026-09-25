@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.Q",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nQ_{\\lambda,h}(t)=P_3(t)+t[A_4(h)-A_3(t)].\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:62-64`: The support function uses the fixed four-arc target area and the variable three-arc area in the correct order.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d3e3e508995be11614f5392de567ba9897b0da4cbe3fbd07c5418d5edee16afe",
+  "symbol_mismatches": []
+}

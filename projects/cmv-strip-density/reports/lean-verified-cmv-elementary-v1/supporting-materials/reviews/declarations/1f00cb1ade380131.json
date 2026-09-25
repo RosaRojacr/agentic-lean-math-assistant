@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.cos_sideArcAngle",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\cos\\phi=-q.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:231-237`: The cosine changes sign under supplementation, producing the negative shape parameter.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a8f9a8c72dcee4cc4dc59b4da10f2ae6d2741d7865a4b2faca10168fa17cc76a",
+  "symbol_mismatches": []
+}

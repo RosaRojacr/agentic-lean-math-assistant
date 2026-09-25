@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.stripCore",
+  "domain_issues": [],
+  "informal_statement": "Construct the strip core with chord\n\\[\nL=2\\sin\\alpha/h\n\\]\nand curvature \\(h\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:53-65`: The core construction uses the candidate chord and curvature and proves the required constructor bounds, retaining unit curvature.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "66aff9e1eb934bbbeeb8dd09a1a68a4c23aef3ee09735d3ba9bc12eadb4664ee",
+  "symbol_mismatches": []
+}

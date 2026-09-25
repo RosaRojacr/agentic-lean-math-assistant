@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerAngle_pos",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\alpha>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:171-173`: The strict outer-argument upper bound excludes a zero exterior half-angle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "760f9b90fd549c278aa760178ec027d7c643f8b5bd6d4bf942c86f6a65bb0e28",
+  "symbol_mismatches": []
+}

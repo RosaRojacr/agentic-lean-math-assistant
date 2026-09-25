@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.Z",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nZ_{\\lambda,h,\\varepsilon}=\\{t\\in[\\varepsilon,h]:A_3(t)=A_4(h)\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:59-61`: The closed interval and exact equality level are preserved, with the same three parameters.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c84d33665cc18e69dec374d2734337ae96f82e06e26b17b735e6b9f2251c24d9",
+  "symbol_mismatches": []
+}

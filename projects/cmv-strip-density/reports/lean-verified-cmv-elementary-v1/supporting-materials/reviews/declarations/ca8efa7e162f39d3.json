@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.radiusSquaredAt",
+  "domain_issues": [],
+  "informal_statement": "For a point \\(p\\) and cap center \\(c\\), define\n\\[\n(p_x-c_x)^2+(p_y-c_y)^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:142-145`: The expression is the sum of squared coordinate differences, so its interpretation is Euclidean even in the coordinate product type.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a1c0f970b426c7f0e6a013d8d8bbb613fbba3b5c253445dacecdb9b47cb6785a",
+  "symbol_mismatches": []
+}

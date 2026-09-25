@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.ScalarStatement",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda>1\\),\n\\[\n\\gamma_\\lambda>0.\n\\]\nFor every real \\(h\\) with \\(0<h\\leq1\\), there is a real \\(r\\) such that\n\\[\n\\begin{aligned}\n0&<r<h,\\\\\nA_3(r)&=A_4(h),\\\\\nP_4(h)-P_3(r)&>\\frac{\\gamma_\\lambda}{h}>0.\n\\end{aligned}\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:65-73`: The universal density and curvature quantifiers precede the existential competitor, with equal area and both strict positive-margin conclusions intact.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c257cd1dfa40523e9c40ad9df9512627dd550fabc8ba104a9be0654c1e976617",
+  "symbol_mismatches": []
+}

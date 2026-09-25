@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_unitCircleArc_image_le",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\) and real \\(a,b\\),\n\\[\n\\mathcal H^1(\\gamma_R([a,b]))\\leq\\max\\{b-a,0\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:93-104`: The upper bound permits reversed interval endpoints; the author's nonnegative-part convention matches the extended-real embedding.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "07ee598762aa4a7964c4db549c22833ebf32ee2d325dcc190dd9a72212015319",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeAngle",
+  "domain_issues": [],
+  "informal_statement": "Define the angle combination\n\\[\n\\lambda\\arccos(q(h)/\\lambda)+\\arcsin(q(h)).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:35-38`: The normalized three-arc angle is the article's angle combination evaluated at the affine shape parameter, with identical density scaling.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fb7617b8b745792c6f019f3cbcf3c26d5e54f1fc7dd47bb69cec919c712d110a",
+  "symbol_mismatches": []
+}

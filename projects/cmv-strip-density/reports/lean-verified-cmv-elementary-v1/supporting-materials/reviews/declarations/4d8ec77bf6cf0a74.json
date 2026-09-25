@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_rightArcTrace_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the right exposed strip-core arc is\n\\[\n2R\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:828-834`: Substituting the right trace-image equality gives its exact Euclidean length, not a separately assigned value.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "47e43c0cab0cb015904a2fe672eeec0720a25537d058b25dd2b767b05bcf1d39",
+  "symbol_mismatches": []
+}

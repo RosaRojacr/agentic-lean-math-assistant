@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_re",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(R,s\\),\n\\[\n\\operatorname{Re}\\gamma_R(s)=R\\cos(s/R).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:416-422`: The real coordinate is the radius-scaled cosine of the normalized parameter, including total values.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "238aa74976048276575d89eb69760ceb968a224b5358a1775e61818ec60df916",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.exact_euclidean_leftArcTrace_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the left three-arc trace is\n\\[\nR\\phi.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:817-824`: The trace-image equality transfers the actual left parameter-image Hausdorff measure to the coordinate trace's Euclidean image.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9b484f3710815971495ad59b2a292d470a94ac2f3cadc3edb96b8870979733b3",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.candidate_perimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "For a candidate satisfying\n\\[\n\\lambda>1\n\\]\nand\n\\[\n\\lambda\\cos\\alpha=h,\n\\]\nits perimeter is\n\\[\n4\\lambda\\alpha/h+4\\arcsin(h)/h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:391-409`: The physical predicate remains in the theorem's hypothesis even though the arithmetic proof does not use it; the author explicitly retains that contract.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b4949bdc7019f429151f2faf734db8466461943a33be006f4c104caebb493fe0",
+  "symbol_mismatches": []
+}

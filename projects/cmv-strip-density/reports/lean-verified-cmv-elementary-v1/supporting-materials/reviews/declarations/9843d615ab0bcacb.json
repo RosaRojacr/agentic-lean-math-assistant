@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.frontier_carrier_subset_boundaryTrace",
+  "domain_issues": [],
+  "informal_statement": "Every frontier point of a four-arc assembly belongs to the declared four-arc trace.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2795-2819`: The inclusion excludes unexposed attaching-chord interiors from the assembled frontier, rather than assuming a four-arc boundary.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d72e7b21e3528564863313aa2366a2e4806e01c00a4772872911d424abf3cc5",
+  "symbol_mismatches": []
+}

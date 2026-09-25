@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.hasDerivAt_jprime",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<u<1\\), \\(j\\) is differentiable with\n\\[\nj'(u)=8D'(2u-1)-4D'(u).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:253-265`: The chain-rule factors agree, and the author retains the full open unit interval rather than restricting to the lower third.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "94ad44e520ab302a768e15871418b7bd98703e11200ad83d0d006b7c265ad1c9",
+  "symbol_mismatches": []
+}

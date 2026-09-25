@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "Define the scalar core area\n\\[\n2L+8a(\\beta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:453-456`: The scalar area adds the rectangle and two normalized chord-two cap areas, with the correct coefficient eight.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d05ac0be663f49bfb5425917ab3d2dcdd3367e8ef25ec467ccc3d1ef4ccf07a7",
+  "symbol_mismatches": []
+}

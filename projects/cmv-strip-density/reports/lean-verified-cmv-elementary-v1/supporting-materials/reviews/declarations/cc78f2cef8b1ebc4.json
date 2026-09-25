@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.C_area",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\),\n\\[\nA_\\lambda(C_h)=A_4(h).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:719-737`: The actual carrier integral is evaluated via the candidate area theorem with a proved physical incidence relation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "917e6af80fc905a99360aafda85c3da61226b43930c862e06a404c527ac58964",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_lower_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "For a lower cap based on\n\\[\ny=-1\n\\]\nand any real \\(\\lambda\\), the density integral against its parametrized arc measure equals \\(\\lambda\\) times its arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1373-1394`: The lower exterior arc has the same weighted-length rule, with both endpoint exceptions correctly treated as null.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5575ee03ce1e095004c86962659c2bcf1dde6c0b1ad90b439220173f4e11e7fc",
+  "symbol_mismatches": []
+}

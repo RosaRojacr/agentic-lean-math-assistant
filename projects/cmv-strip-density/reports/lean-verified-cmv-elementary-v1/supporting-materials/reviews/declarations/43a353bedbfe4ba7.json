@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.rightArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The right exposed trace is\n\\[\n\\{(x,y):(x-x_{\\mathrm R})^2+y^2=R^2,\\ x\\geq L/2,\\ |y|\\leq1\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:767-770`: The circle equality and right cutoff select the exposed right trace with the closed height range.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "059982ba84229cdd58242cd7f98720be73ad274e207529f914e522d73ba5cbeb",
+  "symbol_mismatches": []
+}

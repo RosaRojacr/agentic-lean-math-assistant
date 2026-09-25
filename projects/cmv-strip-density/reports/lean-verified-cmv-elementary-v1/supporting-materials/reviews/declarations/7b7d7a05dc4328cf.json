@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint",
+  "domain_issues": [],
+  "informal_statement": "The upper angle parametrization is\n\\[\nc(t)=(m+R\\sin t,b+R(\\cos t-\\cos\\theta));\n\\]\nthe lower one is\n\\[\nc(t)=(m+R\\sin t,b-R(\\cos t-\\cos\\theta)).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:124-133`: Both coordinate branches and their total parameter domain agree; restriction to the selected arc is described separately.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2f12b44987266410d1b21333c27225fca467817287b4028245b465856f5540c3",
+  "symbol_mismatches": []
+}

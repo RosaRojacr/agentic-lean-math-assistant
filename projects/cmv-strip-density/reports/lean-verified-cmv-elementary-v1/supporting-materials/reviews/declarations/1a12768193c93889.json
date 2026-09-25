@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The left trace consists of points on the circle centered at \\((-b,R-1)\\) with radius \\(R\\), satisfying\n\\[\nx\\leq-b\n\\]\nand\n\\[\n-1\\leq y\\leq1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:104-110`: The left circle equality and three cutoff inequalities give the exact exposed trace, including endpoints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cfb74d8a54830ee4e695b37318a8d8c8a086063cc569f3e8d4fa167da3d5d0b9",
+  "symbol_mismatches": []
+}

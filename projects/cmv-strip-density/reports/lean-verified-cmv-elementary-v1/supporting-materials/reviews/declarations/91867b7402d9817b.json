@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.leftCapCarrier",
+  "domain_issues": [],
+  "informal_statement": "The left core cap is\n\\[\n\\{(x,y):(x-x_{\\mathrm L})^2+y^2\\leq R^2,\\ x\\leq-L/2,\\ |y|\\leq1\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:440-443`: The left disk inequality, left exterior cutoff and strip-height condition are all present.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2ca301cf56be587995c60fad814a6021c666b20d0f45e1fa3f2964b23f678cbc",
+  "symbol_mismatches": []
+}

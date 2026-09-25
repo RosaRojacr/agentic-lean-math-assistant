@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea",
+  "domain_issues": [],
+  "informal_statement": "Define the normalized three-arc scalar area\n\\[\n[B(q(h))+\\pi/2+(q(h)+2)\\delta_3(h)]/h^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:44-48`: The coefficient of the radical correction is the shape parameter plus two, agreeing with the article after the affine substitution.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63d13d5879252e16ac6f53a2d4449b4f511e353d6016e98158793484dcfaa8f7",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor",
+  "domain_issues": [],
+  "informal_statement": "The competitor data type has four alternatives: empty, a general integrable region datum, a four-arc assembly, or a replacement assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:3952-3960`: All four datatype alternatives are listed, and none is interpreted as a minimization assertion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "52c3c4597213ca5cc7d4e12b21ad852ff148bcb8179b3f52a9c03b7d3665311b",
+  "symbol_mismatches": []
+}

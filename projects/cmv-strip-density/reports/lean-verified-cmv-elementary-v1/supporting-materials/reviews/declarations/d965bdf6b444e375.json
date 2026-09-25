@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.MonotoneTangent.reflected_difference_antitone",
+  "domain_issues": [],
+  "informal_statement": "If\n\\[\nd:\\mathbb R\\to\\mathbb R\n\\]\nis strictly increasing on \\([0,1]\\), then \\(t\\mapsto4[d(1-2t)-d(t)]\\) is nonincreasing on \\([0,1/3]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:331-344`: The formal strict-increase premise is retained; both affine arguments stay in the required closed interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "94ffae68ac5742cce7dc826290e898045b7e92e6507e0ceebc649344ec938685",
+  "symbol_mismatches": []
+}

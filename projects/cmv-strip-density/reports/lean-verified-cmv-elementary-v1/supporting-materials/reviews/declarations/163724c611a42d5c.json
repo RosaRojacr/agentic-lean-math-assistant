@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.A4",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda,t\\), define\n\\[\nA_4(t)=\\frac{2\\bigl(B(t)+tD(t)\\bigr)}{t^2}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:49-50`: The factor two and the curvature-weighted radical term reproduce the formal scalar area exactly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4a8eaff3edf0f9c1b5bdc4eebb83b5e656403bb3492c00db3ddccd5bd349b4df",
+  "symbol_mismatches": []
+}

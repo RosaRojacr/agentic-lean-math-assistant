@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcTrace",
+  "domain_issues": [],
+  "informal_statement": "The selected arc trace is the radius-\\(R\\) circle intersected with the closed half-plane defining the cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:656-661`: The trace replaces the disk inequality with circle equality while retaining the closed side condition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5e3edb81f4f16ef8dbff7c15d5756a176b1f99c3bd5fb86ce703134a0a727a89",
+  "symbol_mismatches": []
+}

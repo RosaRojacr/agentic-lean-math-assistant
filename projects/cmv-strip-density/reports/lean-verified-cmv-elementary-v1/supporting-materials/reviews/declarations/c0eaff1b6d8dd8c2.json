@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_upper_external_density",
+  "domain_issues": [],
+  "informal_statement": "For any real \\(\\lambda\\), an upper cap based on\n\\[\ny=1\n\\]\nhas density \\(\\lambda\\) at every parametrized arc point with\n\\[\n-R\\theta<s<R\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1329-1340`: The author retains upper orientation, base height and the open parameter interval, excluding the density-one endpoints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d4d779bde08a636e8536f594b78dfa9705a31925f9d2e9248d0d62fdf5aa11a",
+  "symbol_mismatches": []
+}

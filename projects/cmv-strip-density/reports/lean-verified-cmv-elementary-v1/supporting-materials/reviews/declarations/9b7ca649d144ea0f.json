@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor.WeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The area accessor returns zero for the empty alternative and the corresponding weighted-area integral for every nonempty alternative.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:3968-3975`: The area accessor uses zero in the empty branch and the corresponding actual integral accessor in each other constructor branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d58b51a28690771d1b404e9048905bb6eae43f08f6798b27166b1234f3251f5e",
+  "symbol_mismatches": []
+}

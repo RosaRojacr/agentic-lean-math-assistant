@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.D_differentiableOn",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\), \\(D\\) is differentiable on \\((-1,1)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:234-239`: The formal differentiability domain is the open radical interval, exactly as translated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ea05176def925de59cfb082583ec3ac8045ebc1e63e39e642102b8aba520a3fd",
+  "symbol_mismatches": []
+}

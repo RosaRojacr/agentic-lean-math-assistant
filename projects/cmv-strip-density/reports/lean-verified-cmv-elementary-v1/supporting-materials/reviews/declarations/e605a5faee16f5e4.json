@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "fourArc_pairwiseOverlap_h1_null",
+  "domain_issues": [],
+  "informal_statement": "For every four-arc assembly, the Euclidean image of the union of pairwise arc-trace intersections has zero \\(\\mathcal H^1\\)-measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1269-1279`: The overlap set is contained in the null junction set, giving the exact measure-zero assertion needed for additivity.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "01eb58d468da4075ed5a4b3c4808bf8deddca98be0f05ef720c74c5a64fd9f4f",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\n\\gamma_R(s)=R\\exp(i s/R)\n\\]\nas a complex-valued function of real \\(R,s\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:11-13`: The complex exponential defines a circle of arbitrary real radius parameter, not specifically the unit circle suggested by the source name.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6865b0b68c07403ee39252efa35feb9b50850a4644c2bf915fb506723c7a07c7",
+  "symbol_mismatches": []
+}

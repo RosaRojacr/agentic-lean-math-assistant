@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCore_strip_density",
+  "domain_issues": [],
+  "informal_statement": "For every strip core and real \\(\\lambda\\), the density at any right arc parameter in \\([-R\\beta,R\\beta]\\) is one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1668-1674`: The density-one conclusion includes the entire closed right arc interval and needs no density contrast assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d879e18591ac7ff00f0a228fad33d85d1e290fb3c77820aaf80c672ec9411662",
+  "symbol_mismatches": []
+}

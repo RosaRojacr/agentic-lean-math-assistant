@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideArcAngle_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\phi<\\pi.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:223-226`: The positive inner angle makes its supplement strictly smaller than a half-turn.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "27c4b01d9c8710ab675792367c9a16f3b7952720c452f471c97b46d487e08c08",
+  "symbol_mismatches": []
+}

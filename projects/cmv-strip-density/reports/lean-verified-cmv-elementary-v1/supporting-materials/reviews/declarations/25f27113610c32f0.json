@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.carrier",
+  "domain_issues": [],
+  "informal_statement": "The assembled carrier is the union of the core and both exterior cap carriers.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2519-2524`: The assembly carrier is the actual union of core and both exterior cap carriers, including shared chords.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a55616796db22264c4fe11d48e20ab173ecb661c3bdced26752617ea90d1f816",
+  "symbol_mismatches": []
+}

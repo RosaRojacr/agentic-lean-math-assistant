@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.WeightedArea",
+  "domain_issues": [],
+  "informal_statement": "The assembly weighted area is the Lebesgue weighted-area integral over its actual carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:265-268`: The assembly area is defined by the actual ambient weighted integral over its carrier, independently of the modeled scalar expression.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5d054747c494e793da416a19e2d895420eb9e121366a5645e79b7ab53a0c3c7f",
+  "symbol_mismatches": []
+}

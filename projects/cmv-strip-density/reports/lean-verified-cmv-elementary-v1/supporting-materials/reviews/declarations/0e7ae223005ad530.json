@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryJoinSet_finite",
+  "domain_issues": [],
+  "informal_statement": "The three-arc junction set is finite.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:1136-1141`: The explicitly defined junction set is finite, independently of whether its two bottom points coincide.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fb8b2d3307f8905b1616f7f8934468dae8dc2d1df098e8fa72f92f5a3759db5d",
+  "symbol_mismatches": []
+}

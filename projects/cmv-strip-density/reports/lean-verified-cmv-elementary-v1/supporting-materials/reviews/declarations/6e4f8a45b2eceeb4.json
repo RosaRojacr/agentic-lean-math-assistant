@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCore_strip_density",
+  "domain_issues": [],
+  "informal_statement": "For every strip core and real \\(\\lambda\\), the density at any left arc parameter in \\([-R\\beta,R\\beta]\\) is one.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1662-1667`: The density is one throughout the closed left arc interval, including both interface endpoints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3222d64a655ce3af15a638606821b923e89c31ae75558031c08763aeb76b72b6",
+  "symbol_mismatches": []
+}

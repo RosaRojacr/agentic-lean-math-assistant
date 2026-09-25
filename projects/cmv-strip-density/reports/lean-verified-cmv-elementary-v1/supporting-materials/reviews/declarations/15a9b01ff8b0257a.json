@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.three_realization",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<r<1\\), the complete three-arc realization assertion holds.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:494-514`: The assembly is constructed from the density and open curvature bounds; regularity, both integrals, major angles and the disk branch are derived.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "db0addcbf73e2d7c5cb5db55b0994f694f8583f8e05e0428f700aa9cac29e2be",
+  "symbol_mismatches": []
+}

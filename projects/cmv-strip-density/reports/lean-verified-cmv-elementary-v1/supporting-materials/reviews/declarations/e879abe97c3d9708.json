@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.three_regularity",
+  "domain_issues": [],
+  "informal_statement": "Every admissible three-arc assembly of curvature \\(h\\) gives a region \\(E_h\\) satisfying the full region-regularity assertion.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:422-427`: The proof transports the literal carrier equality and supplies all six regularity fields from existing geometric results.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "73f3ce51b28ce02d6cc63d5fb204d846cba402ac345eddf320f580aac4f46265",
+  "symbol_mismatches": []
+}

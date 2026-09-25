@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment",
+  "domain_issues": [],
+  "informal_statement": "A horizontal segment is specified by a positive length \\(L\\) and midpoint \\((m,b)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:392-399`: The segment primitive requires strictly positive length; the explanation correctly separates it from the possibly degenerate bottom segment.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e7bebca91d2e392d80b21e5e8b5487591a5477fe10be16627e5b6180dd120506",
+  "symbol_mismatches": []
+}

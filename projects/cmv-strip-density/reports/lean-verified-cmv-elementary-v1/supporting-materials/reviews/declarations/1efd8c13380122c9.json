@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryTrace_subset_frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "Every point of the declared three-arc boundary trace is a frontier point of the carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:2840-2847`: The reverse inclusion establishes that each declared exposed piece belongs to the actual frontier.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "daeda01e39ff76764527644f12850660eec76e1d4031dd8579c24a3b55dda6ba",
+  "symbol_mismatches": []
+}

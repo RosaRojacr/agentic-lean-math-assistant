@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.D_continuous",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), \\(D_\\lambda\\) is continuous on\n\\[\n\\mathbb R.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:283-286`: Global continuity for every real density matches the total square-root definition, not merely the geometric domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c1e2565224862417f88cc26d21ac89a1eb14395b552065dfde479c911555d2da",
+  "symbol_mismatches": []
+}

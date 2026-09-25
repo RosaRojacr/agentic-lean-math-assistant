@@ -1,0 +1,67 @@
+{
+  "allowed_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "generated_at": "2026-09-25T05:43:49Z",
+  "lean_build_threads": 4,
+  "lean_toolchain_sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+  "models": {
+    "author": {
+      "model": "gpt-6-astra",
+      "provider": "openai-codex",
+      "revision": "gpt-6-astra",
+      "route": "openai-codex/gpt-6-astra"
+    },
+    "fallback_policy": "disabled",
+    "isolation": "fresh no-session invocations",
+    "max_model_calls": 8,
+    "max_revisions": 3,
+    "review_profile": "strict",
+    "semantic_reviewer": {
+      "model": "gpt-6-astra",
+      "provider": "openai-codex",
+      "revision": "gpt-6-astra",
+      "route": "openai-codex/gpt-6-astra"
+    },
+    "thinking": "xhigh"
+  },
+  "package_id": "cmv-elementary-comparison",
+  "project_manifest": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/.alma/workspace/project.toml",
+  "proof_builder_version": "1.4.3",
+  "roots": [
+    {
+      "declaration": "CMVElementary.geometric_comparison",
+      "informal_statement": "For every lambda > 1, gamma(lambda) is positive; for every 0 < h <= 1 there is 0 < r < h with equal canonical Lebesgue weighted areas of E_r and C_h and canonical Euclidean complete-frontier perimeter difference greater than gamma(lambda)/h > 0. The geometric formulas are conclusions, not additional hypotheses.",
+      "module": "CMVElementaryGeometry",
+      "role": "primary",
+      "type": "∀ lam : ℝ, 1 < lam → 0 < CMVElementary.gamma lam ∧ ∀ h : ℝ, 0 < h → h ≤ 1 → ∃ r : ℝ, 0 < r ∧ r < h ∧ WeightedArea lam (CMVElementary.E lam r) = WeightedArea lam (CMVElementary.C lam h) ∧ CMVElementary.gamma lam / h < WeightedPerimeter lam (FrontierMeasure (CMVElementary.C lam h)) - WeightedPerimeter lam (FrontierMeasure (CMVElementary.E lam r)) ∧ 0 < CMVElementary.gamma lam / h"
+    },
+    {
+      "declaration": "CMVElementary.scalar_comparison",
+      "informal_statement": "For every lambda > 1, gamma(lambda) > 0; for every 0 < h <= 1 there is 0 < r < h with A3(lambda,r) = A4(lambda,h) and P4(lambda,h)-P3(lambda,r) > gamma(lambda)/h > 0, by the required new elementary route.",
+      "module": "CMVElementary",
+      "role": "secondary",
+      "type": "∀ lam : ℝ, 1 < lam → 0 < CMVElementary.gamma lam ∧ ∀ h : ℝ, 0 < h → h ≤ 1 → ∃ r : ℝ, 0 < r ∧ r < h ∧ CMVElementary.A3 lam r = CMVElementary.A4 lam h ∧ CMVElementary.gamma lam / h < CMVElementary.P4 lam h - CMVElementary.P3 lam r ∧ 0 < CMVElementary.gamma lam / h"
+    },
+    {
+      "declaration": "CMVElementary.elementary_route",
+      "informal_statement": "Prove all AuxiliaryClaims, SameCurvatureClaims, ThreeArcCalculusClaims and ScalarIdentificationClaims, including square-root normalization, J/H lower bounds and endpoint extensions; for each 0 < h <= 1 construct epsilon and the greatest equal-area root r with compact nonempty level set, strict barrier, Q derivative and Q(r) < Q(h), without root uniqueness or global A3 monotonicity.",
+      "module": "CMVElementary",
+      "role": "secondary",
+      "type": "∀ lam : ℝ, 1 < lam → CMVElementary.ElementaryRoute lam"
+    },
+    {
+      "declaration": "CMVElementary.geometric_realization",
+      "informal_statement": "For every lambda > 1, prove FourArcRealization for all 0 < h <= 1 and ThreeArcRealization for all 0 < r < 1: literal coordinate carriers equal copied library carriers, actual area/perimeter identities and geometric regularity and finiteness, matching-chord interiors, the reflected lower cap, the exposed bottom frontier, major-cap angles and the radius-two disk at r = 1/2.",
+      "module": "CMVElementaryGeometry",
+      "role": "secondary",
+      "type": "∀ lam : ℝ, 1 < lam → (∀ h : ℝ, 0 < h → h ≤ 1 → CMVElementary.FourArcRealization lam h) ∧ (∀ r : ℝ, 0 < r → r < 1 → CMVElementary.ThreeArcRealization lam r)"
+    }
+  ],
+  "schema_version": 1,
+  "source_commit": null,
+  "source_manifest": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/proof-package.toml",
+  "version": "v1"
+}

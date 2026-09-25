@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerSin_pos",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\sin\\alpha>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:213-215`: The outer angle lies strictly between zero and a half-turn, giving strictly positive sine.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "feedd827e6203dedcb21f4f474b9fea36ae3ea708b33b644b944093c5f958959",
+  "symbol_mismatches": []
+}

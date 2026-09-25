@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.volume_carrier",
+  "domain_issues": [],
+  "informal_statement": "The Lebesgue volume of a cap carrier equals its scalar Euclidean area\n\\[\nL^2a(\\theta),\n\\]\nembedded in the nonnegative extended reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1996-2028`: The actual cap carrier volume is identified with the scalar normalized area in the extended nonnegative reals.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0d51f9d06b45af9eac50b2062d616aee51a260200ad5a2e96d2ecbe8e98be85c",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArcRotation_apply",
+  "domain_issues": [],
+  "informal_statement": "For \\(R\\ne0\\) and real \\(m,s\\), rotating \\(\\gamma_R(s)\\) by\n\\[\n\\exp(im/R)\n\\]\ngives\n\\[\n\\gamma_R(s+m).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:323-331`: The exponential addition law shifts the arclength parameter by the stated amount; the formal nonzero-radius premise is retained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dcedc37c9428c0a722c5bf130023e2389a83c7faa4036432847247c3401f6b9b",
+  "symbol_mismatches": []
+}

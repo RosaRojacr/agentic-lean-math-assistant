@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.four_realization",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\), the complete four-arc realization assertion holds.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:748-774`: All four-arc realization fields are constructed from the prescribed parameters, including both chord interiors and regularity at the endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1b8185e0cc3f160a04acc0e5e04323f2a403c0ab76c247907611a7bdaa609ec8",
+  "symbol_mismatches": []
+}

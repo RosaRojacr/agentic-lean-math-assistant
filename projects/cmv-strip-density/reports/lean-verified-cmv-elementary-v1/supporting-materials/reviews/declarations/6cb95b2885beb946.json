@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_in_closed_side",
+  "domain_issues": [],
+  "informal_statement": "If\n\\[\n|t|\\leq\\theta,\n\\]\nthe selected upper arc point has\n\\[\ny\\geq b,\n\\]\nand the selected lower arc point has\n\\[\ny\\leq b.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:240-252`: The closed parameter bound yields the correct non-strict side inequality for both orientations, including endpoints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4692c99be4beede3a58f1e164acd1cfe21db7a9160da63340de9490acd46c184",
+  "symbol_mismatches": []
+}

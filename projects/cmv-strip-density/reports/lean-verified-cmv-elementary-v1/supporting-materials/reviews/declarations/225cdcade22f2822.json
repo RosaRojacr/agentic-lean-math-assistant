@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "integral_four_union",
+  "domain_issues": [],
+  "informal_statement": "Let \\(A,B,C,D\\) be Euclidean sets whose six pairwise intersections are\n\\[\n\\mathcal H^1\n\\]\n-null, with \\(B,C,D\\) measurable. If a real function is integrable on each of the four sets against\n\\[\n\\mathcal H^1,\n\\]\nits integral over\n\\[\nA\\cup(B\\cup(C\\cup D))\n\\]\nequals the sum of the four integrals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1562-1590`: All six almost-disjointness premises, measurability of only the last three sets and integrability on all four are faithfully retained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8b3fbc02eae74d84636263a1b0bedcffb91c58bcc3410ac92807b51d54cc9ea4",
+  "symbol_mismatches": []
+}

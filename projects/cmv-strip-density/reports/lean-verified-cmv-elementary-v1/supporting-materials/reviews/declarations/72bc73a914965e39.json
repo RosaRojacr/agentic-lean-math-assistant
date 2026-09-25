@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedCapParam",
+  "domain_issues": [],
+  "informal_statement": "The realized cap parametrization is its coordinate arclength parametrization followed by the coordinate homeomorphism into the Euclidean plane.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:430-433`: The definition composes the coordinate parametrization with the Euclidean homeomorphism without changing point coordinates.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "95b1661a30d7b5d3f17854c6eabbe1a4da9d944d9ad542e596607c6cb4fd12b0",
+  "symbol_mismatches": []
+}

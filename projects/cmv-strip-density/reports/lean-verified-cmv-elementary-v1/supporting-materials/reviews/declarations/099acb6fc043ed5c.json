@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.upperCap_euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The constructed upper cap's scalar Euclidean area equals the candidate cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:153-158`: The upper cap's chord and angle are those of the candidate, so the normalized scalar area becomes the candidate cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63eb34459de3e09e8c932883edd9446c50efc2cc1a148ef60c5c77cbd56d7496",
+  "symbol_mismatches": []
+}

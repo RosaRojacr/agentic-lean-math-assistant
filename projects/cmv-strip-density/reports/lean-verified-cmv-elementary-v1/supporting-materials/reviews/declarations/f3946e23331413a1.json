@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftArcParam",
+  "domain_issues": [],
+  "informal_statement": "Define the left arclength parametrization\n\\[\ns\\mapsto(-b+R\\sin(s/R),R-1-R\\cos(s/R)).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:120-126`: The sine horizontal displacement and negative cosine vertical displacement agree; the selected interval correctly ends at bottom tangency.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f29c060ae66edf060cbefb1375e17d2584dc8c159343c7bce4a1ff009d7632c",
+  "symbol_mismatches": []
+}

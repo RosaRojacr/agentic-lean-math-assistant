@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.outer_radius_eq_core_radius",
+  "domain_issues": [],
+  "informal_statement": "If an assembly satisfies\n\\[\nLk=2\\sin\\alpha,\n\\]\nits upper-cap radius equals the core radius.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:3260-3280`: The explicit chord-curvature incidence premise is retained and gives equality of upper cap and core radii by positive-denominator cancellation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e5fdf5b4f19a967ab6a1b262eade841eb117d850d615f26e5d93bdfd93af65de",
+  "symbol_mismatches": []
+}

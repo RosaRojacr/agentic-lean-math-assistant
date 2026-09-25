@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ofReal_dist_le_hausdorffMeasure_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "Let \\(X\\) be a metric space with its Borel measurable structure and\n\\[\nf:\\mathbb R\\to X\n\\]\ncontinuous. For\n\\[\nu\\leq v,\n\\]\n\n\\[\nd(f(u),f(v))\\leq\\mathcal H^1(f([u,v])),\n\\]\ninterpreted in the nonnegative extended reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:105-123`: The metric and Borel-space assumptions, continuity and non-strict endpoint order are all preserved in the endpoint-distance lower bound.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "272ec4c298bc0f3582f8dd04d91ee8113b10ec4ec1c37538e792ec5391cc0936",
+  "symbol_mismatches": []
+}

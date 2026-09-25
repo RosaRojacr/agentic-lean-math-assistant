@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.H_continuous",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), \\(H\\) is continuous on\n\\[\n\\mathbb R.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:291-294`: The assertion is global continuity of the total expression; it does not assert endpoint differentiability.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1e9b7d4f89a28deb3482239f3babe2259c9d36603e39a28f27e59937b9c67228",
+  "symbol_mismatches": []
+}

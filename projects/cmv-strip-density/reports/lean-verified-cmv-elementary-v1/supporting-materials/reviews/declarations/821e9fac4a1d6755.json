@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_verticalLine",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(a\\), the line\n\\[\n\\{(x,y):x=a\\}\n\\]\nhas zero planar Lebesgue measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2037-2046`: The vertical line is planar-null for every real horizontal coordinate, supporting area decomposition only.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b32e9d96eca7ded1e8b5354b6d117e61bcda7b34c1fe056587cd14e1871da61b",
+  "symbol_mismatches": []
+}

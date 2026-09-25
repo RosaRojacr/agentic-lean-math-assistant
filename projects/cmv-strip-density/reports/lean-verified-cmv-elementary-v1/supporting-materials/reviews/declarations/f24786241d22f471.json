@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedRightCoreParam_eq",
+  "domain_issues": [],
+  "informal_statement": "The realized right core parametrization at \\(s\\) equals its complex isometry applied to \\(\\gamma_R(s)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:720-726`: The right realized curve is exactly the right-center isometric image of the standard circle at the same parameter.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4aab5f14bc5465771d4021be2ff0ba59e74b69eeaba0b9a9c834bd0bf72ed625",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.interiorCarrier_subset_interior",
+  "domain_issues": [],
+  "informal_statement": "The strict cap carrier is contained in the topological interior of the closed cap carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:687-696`: The assertion is an inclusion into the topological interior, not an unsupported equality of the two interior descriptions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e055c7441e3e2230b6bd3c3989fc3043eb631862e9cdc4e7fe3a7963b0242ddc",
+  "symbol_mismatches": []
+}

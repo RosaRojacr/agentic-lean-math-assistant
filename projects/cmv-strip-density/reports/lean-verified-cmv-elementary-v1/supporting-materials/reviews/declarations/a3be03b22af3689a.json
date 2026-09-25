@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "The modeled perimeter equals\n\\[\n2(T+\\delta)/h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:896-903`: The modeled perimeter simplifies to the scalar expression with the bottom segment included, not discarded as an attaching chord.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bb4c05a2ca2fd9d5b63be1b6ad16da716cc43497abcad228054765e6eaa2e39e",
+  "symbol_mismatches": []
+}

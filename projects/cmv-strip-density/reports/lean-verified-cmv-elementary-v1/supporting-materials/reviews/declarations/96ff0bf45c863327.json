@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcLength",
+  "domain_issues": [],
+  "informal_statement": "Define the scalar selected-arc length as\n\\[\nL\\ell(\\theta),\n\\]\nwhere\n\\[\n\\ell(\\theta)=\\theta/\\sin\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:167-170`: The defined scalar measures only the selected arc, not the chord, and agrees with the radius-angle expression under admissibility.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "60daa6fa20eb20410aecf4ceebd5a41e50c48a0eb958e6b55f1bcb20cd85ff25",
+  "symbol_mismatches": []
+}

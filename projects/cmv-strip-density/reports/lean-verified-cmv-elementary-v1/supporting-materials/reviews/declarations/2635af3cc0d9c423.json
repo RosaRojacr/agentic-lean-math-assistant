@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.RegionRegularity",
+  "domain_issues": [],
+  "informal_statement": "For a real \\(\\lambda\\) and planar set \\(F\\), this is the conjunction that \\(F\\) is closed, bounded and measurable, \\(f_\\lambda\\) is integrable over \\(F\\) and its canonical frontier measure, and\n\\[\n\\mathcal H^1(\\partial F)<\\infty.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:70-79`: All six regularity fields are retained, including actual integrability and finite canonical frontier mass; no bounded-variation theorem is claimed.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f00a35a7ca4c7b622746574abc71bc8314649524dfbea7af49e098990a986e81",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.SameCurvatureClaims",
+  "domain_issues": [],
+  "informal_statement": "For every\n\\[\n0<h\\leq1,\n\\]\nthe support difference multiplied by \\(h\\) equals \\(J(h)\\), and\n\\[\nh^2[A_4(h)-A_3(h)]=H(h).\n\\]\nMoreover\n\\[\nA_4(h)-A_3(h)\\geq\\gamma_\\lambda/h^2>0\n\\]\nand\n\\[\n[P_4(h)-hA_4(h)]-[P_3(h)-hA_3(h)]\\geq\\gamma_\\lambda/h>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:103-113`: Both algebraic identities and both non-strict lower bounds are retained, together with strict positivity of their margins.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "92c4827d671dfeb577f54bd3e2cd8d72eee9b5c2fe740b8108100be082a5abfd",
+  "symbol_mismatches": []
+}

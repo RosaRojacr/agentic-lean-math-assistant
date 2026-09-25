@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sideAngle_pos",
+  "domain_issues": [],
+  "informal_statement": "Every strip core has\n\\[\n\\beta>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:463-465`: The principal arcsine of the positive admissible curvature is strictly positive.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "20886da5ba412dbc0666239218b14d32a1bad68cf7a0f4837b3f6216a46aefbd",
+  "symbol_mismatches": []
+}

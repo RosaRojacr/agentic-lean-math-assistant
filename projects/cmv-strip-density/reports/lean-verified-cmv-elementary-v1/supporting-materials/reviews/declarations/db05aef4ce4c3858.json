@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CapSide",
+  "domain_issues": [],
+  "informal_statement": "The cap orientation has two alternatives: upper or lower relative to a horizontal chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:92-99`: The two constructors distinguish precisely the upper and lower half-plane orientations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6863ffc025769eb8169e9582a3d673fe180025902f766c2557257f6937cc7a7e",
+  "symbol_mismatches": []
+}

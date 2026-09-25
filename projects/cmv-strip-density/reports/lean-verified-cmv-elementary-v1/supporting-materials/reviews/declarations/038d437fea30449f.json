@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.H",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nH(u)=J(u)-uj(u).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:57-58`: The product subtraction agrees, and the area interpretation is separately restricted to nonzero curvature.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7854edb36a536e3f5422a2368eda17806c34bc8a4785388c6c3b36ab5259bb52",
+  "symbol_mismatches": []
+}

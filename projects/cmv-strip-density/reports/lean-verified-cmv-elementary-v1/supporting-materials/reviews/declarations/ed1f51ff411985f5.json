@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.derivative_coefficient_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(-1<z<1\\),\n\\[\n1/\\sqrt{1-z^2}-1/(\\lambda\\sqrt{\\lambda^2-z^2})>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:210-221`: Positive reciprocal comparison is correctly stated even at the zero argument; no unnecessary nonzero-argument hypothesis is added.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3b1dd20767a51d60e6a3184ceb9440736e6ef81eb3d05b79b085bff9fa38ccf9",
+  "symbol_mismatches": []
+}

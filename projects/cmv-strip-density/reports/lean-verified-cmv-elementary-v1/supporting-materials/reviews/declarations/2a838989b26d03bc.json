@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.rightCenterX",
+  "domain_issues": [],
+  "informal_statement": "Define the right circle center coordinate\n\\[\nx_{\\mathrm R}=L/2-R\\cos\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:434-436`: The right center is the horizontal reflection of the left center, with the signs reversed exactly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ff1acc9e9b3ef170758d23460b0f614f6eb1c034ebd024b460f189e9f303f923",
+  "symbol_mismatches": []
+}

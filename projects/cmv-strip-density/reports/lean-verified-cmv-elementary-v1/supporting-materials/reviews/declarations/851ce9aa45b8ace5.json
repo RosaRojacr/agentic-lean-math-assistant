@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_lower_external_density",
+  "domain_issues": [],
+  "informal_statement": "For any real \\(\\lambda\\), a lower cap based on\n\\[\ny=-1\n\\]\nhas density \\(\\lambda\\) at every parametrized arc point with\n\\[\n-R\\theta<s<R\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1341-1352`: The author retains lower orientation and the lower interface base; interior arc points are below that interface.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "baaf83c56acf8edc18268269454b4946af9c7098831da004f1da856c3f80d9b2",
+  "symbol_mismatches": []
+}

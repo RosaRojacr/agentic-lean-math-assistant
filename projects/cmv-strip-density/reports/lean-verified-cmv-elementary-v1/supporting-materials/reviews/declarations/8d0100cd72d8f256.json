@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capArea_eq_chord_sq_mul_area",
+  "domain_issues": [],
+  "informal_statement": "For every candidate, its cap area equals\n\\[\nL^2a(\\alpha).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:104-109`: The proof clears positive sine and curvature denominators to identify the two scalar cap-area normalizations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e9545ae1662d69d55500dc9264e42c4c5b03b78571f6473a85822aca53c6073",
+  "symbol_mismatches": []
+}

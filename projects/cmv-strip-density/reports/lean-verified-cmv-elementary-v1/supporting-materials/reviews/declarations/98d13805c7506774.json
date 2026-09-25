@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.side_width",
+  "domain_issues": [],
+  "informal_statement": "For every three-arc assembly with \\(\\lambda>1\\) and \\(0<h<1\\), its side half-width equals\n\\[\nD(2h-1)/h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:132-139`: The assembly hypotheses supply the density and curvature bounds, and the sine-gap definition gives precisely the displayed width.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a690f71ca11be015e8cbefc4396612cc139bee2f73d2713555ec3c9c25c58675",
+  "symbol_mismatches": []
+}

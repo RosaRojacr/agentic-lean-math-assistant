@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.E_half_disk",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\),\n\\[\nE_{1/2}=\\{(x,y):x^2+(y-1)^2\\leq4\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:229-248`: The disk equality is proved for every real density, not only the physical density range; both pieces have the same center at this parameter.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "33bc8668cf575aec788fdfae9213ec87b05ab1165d2368372477c264572d4074",
+  "symbol_mismatches": []
+}

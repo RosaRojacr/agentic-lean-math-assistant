@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.E",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nE_r=K_r^{(3)}\\cup H_r^{(3)}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:54-57`: The region is the union of the actual core and cap; the bottom segment is a later frontier conclusion, not extra input data.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f1d34fbfd5ea8d77eb2e384dd1e6f5674c85b88684e3f0510bf703608445bde2",
+  "symbol_mismatches": []
+}

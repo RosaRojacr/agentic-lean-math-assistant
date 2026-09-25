@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.radius_pos",
+  "domain_issues": [],
+  "informal_statement": "Every admissible cap has\n\\[\nR>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:210-212`: Positive chord and positive sine denominator give a strictly positive radius, as stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7bcdcf3411946f45cb3c854e76728bf4e1477fc16c0bd8673b5d0f6f904d6adf",
+  "symbol_mismatches": []
+}

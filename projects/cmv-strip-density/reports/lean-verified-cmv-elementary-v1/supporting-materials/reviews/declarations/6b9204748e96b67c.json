@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.center",
+  "domain_issues": [],
+  "informal_statement": "For chord midpoint \\((m,b)\\), the upper-cap center is \\((m,b-R\\cos\\theta)\\), and the lower-cap center is \\((m,b+R\\cos\\theta)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:117-123`: The center signs switch with orientation and retain the cosine sign change for major caps.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "58a018a3af71f1eb6c5aebb7ee395b60aab79f7b55a9d384d43694baace0d346",
+  "symbol_mismatches": []
+}

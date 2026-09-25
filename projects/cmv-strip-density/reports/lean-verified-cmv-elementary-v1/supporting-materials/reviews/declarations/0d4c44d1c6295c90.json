@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "The complete topological frontier of the three-arc carrier is exactly its declared boundary trace.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:2848-2854`: The exact complete-frontier identity follows from both inclusions and underlies the canonical perimeter computation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0ce2b73ef2aba31ce763d170404d962fb774d3c494bf5afe10757388adbfbd30",
+  "symbol_mismatches": []
+}

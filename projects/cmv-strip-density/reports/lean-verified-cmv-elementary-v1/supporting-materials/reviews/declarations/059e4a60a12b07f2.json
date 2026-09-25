@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.C_assembly",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\), \\(C_h\\) equals the carrier of the constructed four-arc assembly.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:639-643`: The three component set equalities identify the full four-arc coordinate carrier with the assembly carrier.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "36111eea65048699c328fdfad74c7928894d6d24d25d7d1aeac3df275ad3b185",
+  "symbol_mismatches": []
+}

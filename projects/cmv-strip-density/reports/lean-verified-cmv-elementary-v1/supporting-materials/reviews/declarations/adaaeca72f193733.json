@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.jprime_continuous",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), \\(j\\) is continuous on\n\\[\n\\mathbb R.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:287-290`: The affine composition preserves global continuity for every real density, as the author states.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "793ddb37fb86b542cee82ad8c3620a2966360336486c29f8d5e41082b4022fff",
+  "symbol_mismatches": []
+}

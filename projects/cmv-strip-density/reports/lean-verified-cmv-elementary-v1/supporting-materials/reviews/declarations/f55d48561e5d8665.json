@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerArgument",
+  "domain_issues": [],
+  "informal_statement": "Define the outer inverse-cosine argument\n\\[\nq/\\lambda.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:56-58`: The outer cosine argument is the shape parameter divided by density, with the same denominator placement.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6cfc025aa1368c77ccefa6b050dbf8bfa113c35569b4434625ec2d735b91f41",
+  "symbol_mismatches": []
+}

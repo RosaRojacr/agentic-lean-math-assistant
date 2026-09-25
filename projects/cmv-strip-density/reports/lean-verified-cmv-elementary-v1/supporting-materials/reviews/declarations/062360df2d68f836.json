@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_upper_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "For an upper cap based on\n\\[\ny=1\n\\]\nand any real \\(\\lambda\\), the density integral against its parametrized arc measure equals \\(\\lambda\\) times its arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1353-1372`: The weighted arc integral equals exterior density times arc length because the endpoint exceptions are parameter-null.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "45644ff66dcb2be9e3cb6c626527848bf909f532df9be34ffa1977e24d25b8f4",
+  "symbol_mismatches": []
+}

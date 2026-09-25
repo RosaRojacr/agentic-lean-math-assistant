@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedRightCoreParam",
+  "domain_issues": [],
+  "informal_statement": "Define the realized right core parametrization by composing the coordinate parametrization with the Euclidean coordinate homeomorphism.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:709-712`: The right realized curve uses the same coordinate transport and retains the right parametrization.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f8de565538cdbe799e2faf0a2d6452b4030fcfacd5b43a7347015b8e46924a9",
+  "symbol_mismatches": []
+}

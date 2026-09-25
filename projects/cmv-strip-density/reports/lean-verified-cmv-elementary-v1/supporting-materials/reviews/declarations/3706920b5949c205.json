@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreBoundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "The right core boundary measure is the pushforward of Lebesgue measure on \\([-R\\beta,R\\beta]\\) by the right core parametrization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1491-1493`: The right auxiliary boundary measure uses the corresponding right parametrization and identical interval, without chord terms.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "33cbc13fa6fcd71207ac7e5dfb0579966744c8887bb1c9af1b95e6c688f55ea8",
+  "symbol_mismatches": []
+}

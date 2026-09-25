@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "monotone_capPartitionPoint",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\),\n\\[\n\\theta>0,\n\\]\nand natural \\(N>0\\), the sequence\n\\[\ni\\mapsto t_i\n\\]\nis nondecreasing.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:167-174`: Positive radius, half-angle and subdivision count give a nondecreasing sequence on all natural indices, as stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "62e77199a2eb7f24e5f93307536675c49f368eab2d84be96574f544f2152a857",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "isometry_leftCoreComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "The complex-to-Euclidean map for the left strip-core arc is an isometry.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:685-695`: The left-center translation and horizontal reflection preserve the Euclidean metric.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a61c4ab4c222e88c43376bf46386ccf7697c506b7a23f81458ff102288a9e14a",
+  "symbol_mismatches": []
+}

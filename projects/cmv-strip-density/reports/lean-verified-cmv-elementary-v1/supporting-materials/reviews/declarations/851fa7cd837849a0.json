@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreBoundaryMeasure_integrable",
+  "domain_issues": [],
+  "informal_statement": "For any real \\(\\lambda\\) and strip core, the density is integrable against the left parametrized boundary measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2275-2281`: The left arc's finite parameter interval and measurable parametrization yield integrability for every real density.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "efdd79d96b8f43a7c478608fb7242070e102fd586af27d2826a566f07542e0a9",
+  "symbol_mismatches": []
+}

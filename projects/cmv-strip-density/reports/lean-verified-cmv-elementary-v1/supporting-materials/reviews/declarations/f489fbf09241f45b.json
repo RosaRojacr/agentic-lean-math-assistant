@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.radical_denominators",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\) and \\(-1<z<1\\), then \\(1-z^2\\), \\(\\lambda^2-z^2\\),\n\\[\n\\sqrt{1-z^2},\n\\]\nand\n\\[\n\\lambda\\sqrt{\\lambda^2-z^2}\n\\]\nare strictly positive.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:177-186`: All four strict positivity conclusions and the open argument interval are retained; these justify the derivative denominators.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "11268e29fea0051e68c749ca17d7b30526b0cc0f472498c62a0360246108b38e",
+  "symbol_mismatches": []
+}

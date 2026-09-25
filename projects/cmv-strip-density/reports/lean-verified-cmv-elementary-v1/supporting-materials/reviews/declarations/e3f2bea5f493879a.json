@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "Define the radius-\\(R\\) disk centered at \\((b,R-1)\\), clipped by\n\\[\nx\\geq b\n\\]\nand\n\\[\n-1\\leq y\\leq1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:92-98`: The right disk uses the reflected horizontal cutoff and the same closed strip clipping.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "889596cedc4d7d957005581540478e3a458f9f3d1f37c9af6b1a713eee05b078",
+  "symbol_mismatches": []
+}

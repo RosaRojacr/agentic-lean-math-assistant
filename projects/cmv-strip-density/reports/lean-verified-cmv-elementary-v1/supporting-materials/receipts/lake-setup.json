@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+      "update"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "info: toolchain not updated; already up-to-date\ninfo: mathlib: running post-update hooks\n",
+    "stderr_sha256": "461d5a3be07cfbb37c15afde123d93bc675c2873f9d8811ecd78eaeca4934ea0",
+    "stderr_truncated": false,
+    "stdout": "Current branch: HEAD\nUsing cache from origin: (some leanprover-community/mathlib4)\nNo files to download\nAlready decompressed 8681 file(s)\n",
+    "stdout_sha256": "ed8e58ac58ffdf3e054029ce66c4707767d7be02da4194fc980cfe4c951e54ae",
+    "stdout_truncated": false
+  },
+  {
+    "argv": [
+      "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+      "exe",
+      "cache",
+      "get"
+    ],
+    "error": null,
+    "exit_code": 0,
+    "stderr": "",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_truncated": false,
+    "stdout": "Current branch: HEAD\nUsing cache from origin: (some leanprover-community/mathlib4)\nNo files to download\nAlready decompressed 8681 file(s)\n",
+    "stdout_sha256": "ed8e58ac58ffdf3e054029ce66c4707767d7be02da4194fc980cfe4c951e54ae",
+    "stdout_truncated": false
+  }
+]

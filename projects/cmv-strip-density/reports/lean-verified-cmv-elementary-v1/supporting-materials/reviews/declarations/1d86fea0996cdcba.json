@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreParam_image_Icc",
+  "domain_issues": [],
+  "informal_statement": "For any strip core, the coordinate left arc parametrization maps \\([-R\\beta,R\\beta]\\) exactly onto the left exposed strip-core arc.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:517-596`: The image theorem is exact on the closed left arc interval; reconstruction uses the side condition to choose the correct cosine branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "01c2af95d70e04d0bac530bc681fda34196e33e841f34e26466b4a3a9c6ecd18",
+  "symbol_mismatches": []
+}

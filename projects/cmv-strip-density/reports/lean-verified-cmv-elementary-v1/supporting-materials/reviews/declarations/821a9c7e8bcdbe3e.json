@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedLeftArcParam",
+  "domain_issues": [],
+  "informal_statement": "Define the realized left arc parametrization by applying the Euclidean coordinate homeomorphism to its coordinate parametrization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:665-668`: The realized left arc is obtained by the coordinate homeomorphism with no alteration of the curve's point coordinates.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "51fbf9517aa10415de53dc106db635c5f70b9c39860ba75778e696cdebf2d6c3",
+  "symbol_mismatches": []
+}

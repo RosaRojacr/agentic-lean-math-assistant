@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.D_even",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(\\lambda,z\\),\n\\[\nD_\\lambda(-z)=D_\\lambda(z).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:391-393`: Evenness is genuinely unconditional for all real parameters because only squared arguments occur.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7b4f3c46b671c85fa9365ac233355bdd565a25b839e1a28c1a0f55338b48441a",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\theta\\), define\n\\[\na(\\theta)=(\\theta-\\sin\\theta\\cos\\theta)/(4\\sin^2\\theta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `MorgansArcFunction.lean:92-93`: The normalized area has the exact sine-cosine numerator and squared-sine denominator, including the major-segment geometric interpretation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8c44e8dff416b2208afe91aad54bf1678ad6f2299c75592fe1fed4f6cbf55dc2",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.core_bounded",
+  "domain_issues": [],
+  "informal_statement": "Every strip-core carrier is bounded.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:644-660`: The proof bounds the rectangle and both disk-contained side caps, giving boundedness of their union.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f823fe31b5fbe1402665006d839f3f12aa85b1c8db11bbfdf640c49c7cbfe890",
+  "symbol_mismatches": []
+}

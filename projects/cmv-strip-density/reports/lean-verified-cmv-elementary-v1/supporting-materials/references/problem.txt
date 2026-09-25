@@ -1,0 +1,69 @@
+VERIFY THE NEW ELEMENTARY CMV STRIP-DENSITY PROOF
+
+Authoritative task
+Formalize and Lean-verify the corrected explicit-family theorem and its quantitative perimeter improvement from the supplied PDF. Verify the NEW auxiliary-function and greatest-equal-area-root argument. Do not simply restate or import an existing all-density exclusion theorem. Preserve all real parameters, the major-cap branch, the degenerate bottom segment, and the h=1 endpoint.
+
+Original source
+references/CMV_Strip_Density_Problem.pdf, SHA-256 d04a2e8e2ad45fe505345037c046ceaeb2a8d63b9e2b1c1eeb020b5251c576ff, is an unchanged copy of the professor-supplied draft. The parent audit supports the intended mathematical argument. Numerical checks are diagnostics, not assumptions or proof certificates.
+
+Explicit correction
+Both displayed Theorem 1 statements (PDF pages 2 and 3, equation 3.2) contain A_lambda(C_h)-P_lambda(E_s). This is a confirmed typesetting error, not the theorem to verify. The authoritative target is P_lambda(C_h)-P_lambda(E_s) > gamma_lambda/h > 0. The literal A-minus-P statement is false. Clearly disclose this correction in all output; never certify the uncorrected PDF as written.
+
+Definitions and target
+Let lambda>1. Density f_lambda(x,y)=1 for |y|<=1 and lambda otherwise, including density ONE on the two interfaces. Let A_lambda be Lebesgue weighted area, and P_lambda be weighted one-dimensional Hausdorff measure of the complete topological frontier of the explicit closed regions below.
+For -1<=z<=1 set
+ B(z)=lambda*arccos(z/lambda)+arcsin(z),
+ D(z)=sqrt(1-z^2/lambda^2)-sqrt(1-z^2),
+ S(z)=B(z)-z*D(z),
+ gamma=lambda*arccos(1/lambda)-sqrt(1-lambda^(-2)).
+For 0<t<=1 set q=2*t-1 and
+ A3(t)=(B(q)+pi/2+(2*t+1)*D(q))/t^2,
+ P3(t)=2*(B(q)+pi/2+D(q))/t,
+ A4(t)=2*(B(t)+t*D(t))/t^2,
+ P4(t)=4*B(t)/t.
+
+Mandatory scalar root, in a fresh namespace such as CMVElementary:
+For every real lambda>1 and 0<h<=1, there exists real r with
+ 0<r, r<h, A3(r)=A4(h), and gamma/h < P4(h)-P3(r), with gamma>0.
+LeanSuffixAnalytic.typeThreeArea/Perimeter and typeFourArea/Perimeter may be used after identifying their definitions with these formulas. Its delta is sqrt(lambda^2-z^2)/lambda-sqrt(1-z^2); prove the positive-lambda normalization when identifying it with the displayed D.
+
+Mandatory proof route and intermediate claims
+1. D is continuous and even on [-1,1], nonnegative, and strictly increasing on [0,1]. S'=-2D on (-1,1); S(-z)=lambda*pi-S(z).
+2. Define J(u)=2*S(u)-S(2*u-1)-pi/2 and the CONTINUOUS derivative extension jprime(u)=4*(D(2*u-1)-D(u)). Prove J(0)=J(1)=gamma>0, HasDerivAt J jprime for 0<u<1, and for 0<u<=1:
+ J(u)>=gamma and J(u)-u*jprime(u)>=gamma.
+ The elementary proof: J' is positive below 1/3, zero at 1/3, and negative between 1/3 and 1. For H=J-uJ', H>=J above 1/3. Below 1/3, J''=8D'(2u-1)-4D'(u)<0, so H'>0 and H tends to gamma at 0. An equivalent concavity/monotone-derivative proof of this same step is allowed. Endpoint values are continuous limits, not derivatives of sqrt at 1.
+3. Prove the exact identities
+ h*((P4(h)-h*A4(h))-(P3(h)-h*A3(h)))=J(h),
+ h^2*(A4(h)-A3(h))=J(h)-h*jprime(h),
+ and both quantitative lower bounds gamma/h and gamma/h^2, including h=1.
+4. Prove/reuse continuity of A3/P3 on (0,1], A3(t)->+infinity as t->0+, and P3'(t)=t*A3'(t) for 0<t<1.
+5. Choose epsilon in (0,h) with A3(epsilon)>A4(h). In the nonempty compact level set within [epsilon,h], select the GREATEST root r. Prove 0<r<h and A3(t)<A4(h) for every r<t<=h by continuity and maximality. Do not assume uniqueness or global monotonicity of A3; do not substitute the old fold/stationary-envelope machinery.
+6. Set Q(t)=P3(t)+t*(A4(h)-A3(t)). Prove Q'=A4(h)-A3(t)>0 on (r,h), continuity on [r,h], and Q(r)<Q(h), including h=1. Combine this strict inequality with the support gap to prove the quantitative scalar root.
+
+Mandatory geometric root, not optional publication polish
+For each lambda>1 and 0<h<=1, set R=1/h, alpha=arccos(h/lambda), d=D(h)/h,
+ K_h={(x,y): -1<=y<=1 and |x|<=d+sqrt(R^2-y^2)},
+ H_h={(x,y): y>=1 and x^2+(y-(1-R*cos(alpha)))^2<=R^2},
+ C_h=K_h union H_h union reflection_y(H_h).
+For 0<r<1 set q=2*r-1, R=1/r, alpha=arccos(q/lambda), b=D(q)/r,
+ K3_r={(x,y): -1<=y<=1 and |x|<=b+sqrt(R^2-(y-(R-1))^2)},
+ H3_r={(x,y): y>=1 and x^2+(y-(1-R*cos(alpha)))^2<=R^2},
+ E_r=K3_r union H3_r.
+Prove or explicitly bridge these coordinate carriers to the copied FourArcCandidate / TypeThreeAssembly carriers, and use their actual integral/frontier identities to derive
+ A_lambda(E_r)=A_lambda(C_h),
+ gamma/h < P_lambda(C_h)-P_lambda(E_r), and gamma/h>0.
+A scalar theorem alone is a PARTIAL result, not completion. A theorem merely assuming freely supplied area/perimeter identities is also insufficient. The copied lower-level geometry realizes genuine regions and is available to discharge these identities. For h=1, only the four-arc candidate is instantiated; the chosen r<h is strictly less than one. For r<1/2, H3_r is the MAJOR disk segment. For r=1/2, E_r is the radius-two disk centered at (0,1), not a pinched region.
+
+Reuse and independence
+The seed library contains only frozen lower-level modules: LeanSuffixAnalytic, MorgansArcFunction, CMVGeometry, FrontierPerimeter, FourArcCandidate, TypeThreeAssembly. Reuse proved calculus and geometric measure facts where useful. Basic definitions may be factored locally without introducing a second incompatible notion of perimeter.
+Do not use CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one, UniversalStationaryPair, TypeFourStationaryRoot, EqualAreaEnvelope, or an old stationary-pair/fold-envelope final comparison as a shortcut for the new scalar root. These modules are deliberately absent. Do not fetch those sources from the old project. Do not prove only nonminimality while dropping the explicit gamma/h margin. Do not weaken lambda>1, h<=1, or the branch domains.
+
+Verification evidence
+Require actual compilation of the new theorem declarations at their exact types, an axiom audit allowing only propext, Classical.choice and Quot.sound, and no sorryAx, admits, added axioms or unsafe proof shortcuts. Include a retained elaborated dependency audit for the NEW roots showing the new J/H and greatest-root route and excluding the old final-comparison shortcuts. A source-text scan or axiom check alone does not establish route independence. Put appropriate verification commands in the formal contract. A baseline #check of an uninhabited proposition is not final verification. Keep new scalar and geometric roots separately named and report their individual status.
+
+Source-level corollary and honest scope
+The original CMV paper is included as references/Canete2010.pdf. Informally, its Lemma3.8, Proposition3.9 and Theorem3.16 combine with this corrected explicit-region exclusion to give the full conjecture. For these finite piecewise-circular Jordan regions, complete and reduced boundaries agree H^1-almost everywhere. Explain this cited corollary and reconcile the draft's page2 claim with Remark3; retain coexistence of stadium and three-arc minimizers at the transition, not uniqueness.
+Do NOT claim that Lean formalizes CMV's external classification, BV/reduced-boundary theory or the entire unrestricted conjecture unless those additional statements are actually proved. They are not assumed as axioms in the requested kernel-checked explicit-family root. This distinction must not be used to omit the mandatory coordinate-carrier bridge above.
+
+Workspace and runtime
+Work only in this new solve folder and its generated workspace. Do not modify the original PDF, old project, global model settings or existing services. The local isolated proof workspace will be seeded with an ordinary private copy of the existing pinned .lake dependency cache, not writable links into old research. Use the pinned Lean4 v4.33.0-rc2 toolchain. No external mathematical web research is needed.

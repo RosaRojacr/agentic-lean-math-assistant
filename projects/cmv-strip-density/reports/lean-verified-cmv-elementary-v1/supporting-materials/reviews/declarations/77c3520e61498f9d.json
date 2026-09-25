@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.sigma",
+  "domain_issues": [],
+  "informal_statement": "For\n\\[\np=(x,y)\\in\\mathbb R^2,\n\\]\ndefine\n\\[\n\\sigma(p)=(x,-y).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:28-29`: The coordinate map reflects only the vertical coordinate, correctly producing reflection in the horizontal axis.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "98806701b3f8eb5d60ae9b027ae38c5a4e8f3e80159c19646f8418f1e33424f4",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "joinSet_finite",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(L\\), the junction set is finite.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1253-1256`: The explicit finite set has at most four points, including possible repetitions for arbitrary real chord parameters.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c95df1795c640672a88890bc658373f829154b7fa3a2361c967c14e17f22b551",
+  "symbol_mismatches": []
+}

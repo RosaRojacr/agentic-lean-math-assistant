@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.radius_pos",
+  "domain_issues": [],
+  "informal_statement": "Every strip core has positive radius.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:460-462`: The strictly positive curvature gives a strictly positive reciprocal radius.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "754f25da7343b067aca1ccf07fea956e09bfd461a16a072435b6b938ea98f462",
+  "symbol_mismatches": []
+}

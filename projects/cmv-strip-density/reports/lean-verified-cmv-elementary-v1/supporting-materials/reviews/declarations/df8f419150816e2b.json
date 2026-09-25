@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.bottomChord_eq_zero_iff",
+  "domain_issues": [],
+  "informal_statement": "The bottom chord has zero length if and only if \\(h=1/2\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:355-358`: Twice the half-width vanishes at exactly the same parameter, giving the stated if-and-only-if degeneracy condition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1b82dffbe772075bcb5095c9dc075644068e9232dc927ae0cd23919b863062dd",
+  "symbol_mismatches": []
+}

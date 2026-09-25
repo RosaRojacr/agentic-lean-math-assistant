@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_lower_circular_segment",
+  "domain_issues": [],
+  "informal_statement": "For real \\(m,c\\),\n\\[\nR>0,\n\\]\nand \\(0\\leq\\theta\\leq\\pi\\), the Lebesgue volume of\n\\[\n\\{(x,y):(x-m)^2+(y-c)^2\\leq R^2,\\ y\\leq c-R\\cos\\theta\\}\n\\]\nis\n\\[\nR^2(\\theta-\\sin\\theta\\cos\\theta),\n\\]\nembedded in the nonnegative extended reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1945-1995`: The lower half-plane cutoff has the reflected sign, and the formula preserves volume under vertical reflection.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2301e25d7ced8d1d9e2c23a9b63e02ba7c6e8f9ea615112d4c41d15aeb777045",
+  "symbol_mismatches": []
+}

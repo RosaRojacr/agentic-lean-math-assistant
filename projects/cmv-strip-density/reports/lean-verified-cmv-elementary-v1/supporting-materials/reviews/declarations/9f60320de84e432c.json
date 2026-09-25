@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.ThreeArcRealization",
+  "domain_issues": [],
+  "informal_statement": "There is a three-arc assembly of curvature \\(r\\) whose carrier equals \\(E_r\\). It has the stated regularity and\n\\[\nA_\\lambda(E_r)=A_3(r),\n\\]\n\n\\[\nP_\\lambda(E_r)=P_3(r).\n\\]\nIts exterior half-angle\n\\[\n\\alpha=\\arccos((2r-1)/\\lambda)\n\\]\nlies in \\((0,\\pi)\\), and exceeds\n\\[\n\\pi/2\n\\]\nif \\(r<1/2\\). The chord points \\((x,1)\\) with\n\\[\n|x|<\\sin\\alpha/r\n\\]\nare interior. Its bottom frontier is exactly\n\\[\n\\{(x,-1):|x|\\leq D(2r-1)/r\\}.\n\\]\nIf \\(r=1/2\\), then\n\\[\nE_r=\\{(x,y):x^2+(y-1)^2\\leq4\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:97-116`: The existential assembly bridge and all branch-sensitive fields are retained, including the entire bottom frontier and the exact disk identity at one half.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dabdc6347c8e954b7cae2391d1c86b0e87c40ca9fe83f8a5de7e2c23a0179ca2",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.three_bounded",
+  "domain_issues": [],
+  "informal_statement": "Every admissible three-arc assembly carrier is bounded.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:410-421`: The finite union of the rectangle and disk pieces is bounded; no area or perimeter hypothesis is needed.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8dd2208ef6c92ad151b2a77cf2af0f518496c61601318bbba67d9e75d7051721",
+  "symbol_mismatches": []
+}

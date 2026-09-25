@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourArea",
+  "domain_issues": [],
+  "informal_statement": "Define the normalized four-arc scalar area\n\\[\n2[B(h)+h\\delta_4(h)]/h^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:61-64`: The normalized area retains the factor two and curvature-weighted radical correction over squared curvature.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "775f7921b66716563dd5e0e4c35562d880f5cef2a71b40cef616cd10eb9488d2",
+  "symbol_mismatches": []
+}

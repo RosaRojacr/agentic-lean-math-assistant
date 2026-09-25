@@ -1,0 +1,1 @@
+Wrote `supporting-materials/reviews/author-01.json`. Validated all 506 classifications, all four root citations, strict JSON structure, and MathML conversion without warnings.

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.horizontal_section",
+  "domain_issues": [],
+  "informal_statement": "For \\(b,s\\geq0\\) and real \\(x\\),\n\\[\n|x|\\leq b+\\sqrt{s}\n\\]\nis equivalent to the disjunction\n\\[\n-b\\leq x\\leq b,\n\\]\nor\n\\[\n(x+b)^2\\leq s\n\\]\nand\n\\[\nx\\leq-b,\n\\]\nor\n\\[\n(x-b)^2\\leq s\n\\]\nand\n\\[\nx\\geq b.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:151-175`: The three-way section decomposition retains both nonnegativity hypotheses and both outer side cutoffs, including their endpoints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e06f6eef4be5d4e887790cde04018ec9bd793a5f96e506896654d18400a3ceff",
+  "symbol_mismatches": []
+}

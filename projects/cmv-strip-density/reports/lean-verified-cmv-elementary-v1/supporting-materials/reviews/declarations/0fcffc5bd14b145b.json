@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.ElementaryRoute",
+  "domain_issues": [],
+  "informal_statement": "The elementary-route assertion is the conjunction of the auxiliary, same-curvature, three-arc calculus and scalar-identification assertions, together with existence, for every\n\\[\n0<h\\leq1,\n\\]\nof \\(\\varepsilon,r\\) satisfying the greatest-root assertion.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:155-164`: The conjunction retains all four ingredient records and the universally quantified existence of greatest-root witnesses.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4b48fa17e2a280d7cb3e3056c212a5e018edffc49f5b8e8a39a8fc2035f440f6",
+  "symbol_mismatches": []
+}

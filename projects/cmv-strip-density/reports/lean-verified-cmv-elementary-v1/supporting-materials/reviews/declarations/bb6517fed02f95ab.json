@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly",
+  "domain_issues": [],
+  "informal_statement": "A four-arc assembly consists of a strip core and an exterior half-angle\n\\[\n0<\\alpha<\\pi/2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2491-2498`: The constructor requires a core and an acute exterior half-angle, but not a common-radius incidence relation; the author preserves that distinction.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1ac9185bddaf1e6a0074fb39d1e29417262cc431ccce861d3c65ec2e5216fdb1",
+  "symbol_mismatches": []
+}

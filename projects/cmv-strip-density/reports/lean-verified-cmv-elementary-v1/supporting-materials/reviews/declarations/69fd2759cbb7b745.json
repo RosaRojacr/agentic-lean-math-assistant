@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.weightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "The actual weighted area of the assembly equals its scalar area\n\\[\n[T+(q+2)\\delta]/h^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:1584-1588`: Composing the actual-to-modeled and modeled-to-scalar identities gives the advertised actual scalar area formula.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "53616c2c25615a95257aa4773c87d4c69464dc905650e6ed5b53696dc5f08570",
+  "symbol_mismatches": []
+}

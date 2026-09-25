@@ -1,0 +1,43 @@
+{
+  "original_pdf_sha256": "d04a2e8e2ad45fe505345037c046ceaeb2a8d63b9e2b1c1eeb020b5251c576ff",
+  "source": "/mnt/games/Math_Project/LeanExperiment/projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/supporting-materials/lean",
+  "modules": [
+    {
+      "module": "LeanSuffixAnalytic",
+      "sha256": "a06b88e5dc130754eba03c20845cf96fbf625f9d45d44fc4be1bc74869163824",
+      "matches_current_working_source": true
+    },
+    {
+      "module": "MorgansArcFunction",
+      "sha256": "9df5df0307cbdcbd84c9cd2848c0499f91fe6d7a5dac627f2c1c2c9c664cf9c1",
+      "matches_current_working_source": true
+    },
+    {
+      "module": "CMVGeometry",
+      "sha256": "da9cdd9e6e1a54d666286eafa02066835c07085b4794d9da4e813c3f6ab206fe",
+      "matches_current_working_source": true
+    },
+    {
+      "module": "FrontierPerimeter",
+      "sha256": "2db3902e45379dcf82ed8b87b6a412bdeca942e28bb8f49d33b4b463e9f289ef",
+      "matches_current_working_source": true
+    },
+    {
+      "module": "FourArcCandidate",
+      "sha256": "8dd24f95c53868a1955caf946e96978dc77fb660f907f2c5082a5424d40a9ea7",
+      "matches_current_working_source": true
+    },
+    {
+      "module": "TypeThreeAssembly",
+      "sha256": "0731e677190fa988a8a858e64d5130d59aab68bf64f11119b7ab22fbc7be6bf5",
+      "matches_current_working_source": true
+    }
+  ],
+  "excluded_old_proof_modules": [
+    "UniversalStationaryPair",
+    "TypeFourStationaryRoot",
+    "EqualAreaEnvelope",
+    "CMVSuffixModel",
+    "SameCurvatureArea"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.H_ge_J",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(1/3\\leq u\\leq1\\),\n\\[\nH(u)\\geq J(u).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:502-512`: Both interval endpoints are included; the nonpositive specified derivative produces a non-strict comparison in the correct direction.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c17279ea5358a898bb176a8ea0bfb9b69861b60846ef9ece0ade666383e410f5",
+  "symbol_mismatches": []
+}

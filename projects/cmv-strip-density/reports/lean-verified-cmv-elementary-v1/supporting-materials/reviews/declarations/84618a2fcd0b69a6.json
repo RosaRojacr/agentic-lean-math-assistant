@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FinitePerimeterRegion.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "For a region datum with carrier \\(F\\), its area is \\(A_\\lambda(F)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:83-85`: The accessor evaluates the actual area functional on the stored carrier; no scalar area is stored in the record.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3892310b68bd795c4ddff8f1d276f58be0efcb96c1e8c4fad96ec7d73deea20a",
+  "symbol_mismatches": []
+}

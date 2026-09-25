@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_segmentCarrier_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of a horizontal segment carrier equals its scalar length \\(L\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:937-946`: The affine-segment Hausdorff measure is its endpoint distance, equal to the specified positive scalar length.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f2e6ec79942c7df8c258fab2922138cb782506dbaa0184c81a94b12e6e9b9896",
+  "symbol_mismatches": []
+}

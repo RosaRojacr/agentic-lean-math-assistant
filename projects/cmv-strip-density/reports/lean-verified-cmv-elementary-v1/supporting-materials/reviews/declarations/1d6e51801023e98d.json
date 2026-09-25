@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "measurableSet_euclidean_rightArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean image of the right exposed strip-core arc is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1094-1098`: The right Euclidean trace is likewise a compact parameter image and therefore measurable.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "771198ca90f5054f065ccd16a46e41b5fce0886173f7b3c654e6b61824be845e",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.bottomSegmentCarrier_subset_frontier",
+  "domain_issues": [],
+  "informal_statement": "The entire bottom segment is contained in the topological frontier of the assembled carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:1058-1079`: The entire bottom segment lies on the actual frontier, including the zero-length case, because the carrier has no points below the lower interface.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "82d466e4484f4553cdf0fe29df6958b297f06ff314377fa09237775f676763e1",
+  "symbol_mismatches": []
+}

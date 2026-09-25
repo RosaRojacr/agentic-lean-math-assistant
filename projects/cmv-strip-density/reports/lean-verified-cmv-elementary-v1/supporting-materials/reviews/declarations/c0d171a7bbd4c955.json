@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.J",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nJ(u)=2S(u)-S(2u-1)-\\pi/2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:53-54`: Both argument evaluations, their coefficients and the constant subtraction agree.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "25d540a43a2aa9c7be06cd85d61e6c7b622dc32f471c48ed20eb065861a68717",
+  "symbol_mismatches": []
+}

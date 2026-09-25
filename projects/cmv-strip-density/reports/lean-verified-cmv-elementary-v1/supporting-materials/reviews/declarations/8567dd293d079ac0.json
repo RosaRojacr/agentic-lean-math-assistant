@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_integrableOn",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and admissible cap, \\(f_\\lambda\\) is integrable over its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2303-2308`: The finite cap volume supplies the integrability premise for the bounded, measurable strip density.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bbc4a1a9af0d45bee6aa1c1152d956e0e945a869f3550ca289ef7022556292ef",
+  "symbol_mismatches": []
+}

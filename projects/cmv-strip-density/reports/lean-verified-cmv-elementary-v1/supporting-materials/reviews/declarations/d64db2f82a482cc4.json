@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.bottomChord_pos",
+  "domain_issues": [],
+  "informal_statement": "If \\(h\\ne1/2\\), the bottom chord has strictly positive length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:359-362`: The non-half-curvature premise is preserved in the strict bottom-chord positivity assertion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5deb1da8ce95e59329d432d4f1484bad3b915566f05bd8a9e6b37a69ad4de177",
+  "symbol_mismatches": []
+}

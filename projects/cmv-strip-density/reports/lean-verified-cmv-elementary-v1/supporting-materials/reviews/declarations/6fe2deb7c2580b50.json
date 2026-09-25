@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.jprime_deriv_neg",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\) and \\(0<u<1/3\\), then\n\\[\n8D'(2u-1)-4D'(u)<0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:244-252`: The two derivative arguments have opposite signs, and the coefficients give the strict inequality in the stated direction.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "58ff7311ad822a152063bce0332ab5d88a9004d4d249e43b945f5276cfd42ce7",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "coreArcEnd",
+  "domain_issues": [],
+  "informal_statement": "For a strip core with radius \\(R\\) and side angle \\(\\beta\\), define the final arc parameter\n\\[\nR\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1474-1476`: The core arc ends at the positive radius-side-angle product, giving the stated span.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ee06e3535f2fd49529132649f006dc8125adff906e2bb1c8e325a0ca4b835a4",
+  "symbol_mismatches": []
+}

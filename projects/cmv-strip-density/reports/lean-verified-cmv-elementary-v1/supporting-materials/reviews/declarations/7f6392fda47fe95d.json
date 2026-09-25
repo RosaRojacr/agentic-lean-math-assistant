@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.core_width",
+  "domain_issues": [],
+  "informal_statement": "For a strip core with chord \\(L\\), radius \\(R\\) and side angle \\(\\beta\\), its carrier is\n\\[\n\\{(x,y):|y|\\leq1,\\ |x|\\leq L/2-R\\cos\\beta+\\sqrt{R^2-y^2}\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:539-582`: The proof identifies the actual core carrier with its width sections using the chord geometry; the author preserves the absolute height bound.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "af8d9f8e6e0bf124954fc510fa0ca2b2c3e4d56c02f7c034bd8fff1b46ccb71f",
+  "symbol_mismatches": []
+}

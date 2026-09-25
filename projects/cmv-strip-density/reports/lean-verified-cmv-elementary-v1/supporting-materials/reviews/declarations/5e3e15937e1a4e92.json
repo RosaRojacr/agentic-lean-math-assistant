@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.chordCarrier_subset_carrier",
+  "domain_issues": [],
+  "informal_statement": "Every point of the closed chord belongs to the cap carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:311-334`: Every point of the closed chord satisfies the disk and half-plane conditions, including both endpoints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a35dcecd8fd218da748131deaec9b02f5328c1034952ad269b6ba1f5b686d947",
+  "symbol_mismatches": []
+}

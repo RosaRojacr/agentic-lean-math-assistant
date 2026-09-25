@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.K3_core",
+  "domain_issues": [],
+  "informal_statement": "For every admissible three-arc assembly of curvature \\(h\\), its core carrier equals \\(K_h^{(3)}\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:176-212`: The proof gives literal equality of coordinate sets using the nonnegative strip radicand and the section decomposition, not merely equal area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2864cc2e686087b540a455347a5834437db804c051a3d2801e42dcb5bd3e614c",
+  "symbol_mismatches": []
+}

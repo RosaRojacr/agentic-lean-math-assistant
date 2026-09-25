@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly",
+  "domain_issues": [],
+  "informal_statement": "A three-arc assembly consists of real \\(\\lambda,h\\) with \\(\\lambda>1\\) and\n\\[\n0<h<1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:29-35`: The assembly contains precisely the density jump and strict open curvature bounds; all other geometric quantities are determined by those data.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ba80fb031079587a301c08eeb69ef793b83ab9e2bcde30a061c829264b7e1959",
+  "symbol_mismatches": []
+}

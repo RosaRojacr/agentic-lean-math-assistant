@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.jprime",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nj(u)=4[D(2u-1)-D(u)]\n\\]\nfor real parameters.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:55-56`: The author correctly distinguishes the explicitly defined function from an endpoint derivative of the auxiliary function.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7436fde598ecb0a0029bf5d63b6fb219ce3a88490ddc40a38e83b449bcad9edd",
+  "symbol_mismatches": []
+}

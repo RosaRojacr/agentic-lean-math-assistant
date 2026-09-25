@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.J_zero",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\),\n\\[\nJ(0)=\\gamma_\\lambda.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:295-299`: The endpoint evaluation is unconditional in the real density parameter, matching the reflection simplification in the proof.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "89ec878363f839a318ed701d106d998cde8ae845aaa0b897db75b6d68f34219d",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.geometric_realization",
+  "domain_issues": [],
+  "informal_statement": "For every\n\\[\n\\lambda>1,\n\\]\nthe four-arc realization holds for all\n\\[\n0<h\\leq1,\n\\]\nand the three-arc realization holds for all\n\\[\n0<r<1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:775-782`: The proof supplies both complete realization families unconditionally on their respective curvature domains, exactly matching the frozen secondary root.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f642078096f16ab8666c13613957258016cb00512ac7e7875b5d3006f18b1646",
+  "symbol_mismatches": []
+}

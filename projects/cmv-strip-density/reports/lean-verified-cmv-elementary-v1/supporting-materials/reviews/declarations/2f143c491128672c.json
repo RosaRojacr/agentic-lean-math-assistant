@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedSegmentParam",
+  "domain_issues": [],
+  "informal_statement": "The realized segment parametrization is its coordinate parametrization followed by the Euclidean coordinate homeomorphism.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:864-867`: The realized segment parametrization changes only the metric representation, preserving its affine coordinates.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4c1728c18c2df9a1da871e357fce4f6439c6307fe654c71c273fe06b8caaa0fd",
+  "symbol_mismatches": []
+}

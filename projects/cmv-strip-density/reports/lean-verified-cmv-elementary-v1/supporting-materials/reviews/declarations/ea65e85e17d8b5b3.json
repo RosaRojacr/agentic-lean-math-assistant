@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedArea",
+  "domain_issues": [],
+  "informal_statement": "For any real \\(\\lambda\\), the assembly weighted area is the actual integral \\(A_\\lambda\\) over its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2541-2545`: The area definition evaluates the ambient weighted integral over the carrier rather than storing its eventual formula.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad43970e4ac79b935baed41701092f4d901053e35bb88583dcbd5a9003db13a3",
+  "symbol_mismatches": []
+}

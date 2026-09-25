@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.leftSegmentCarrier",
+  "domain_issues": [],
+  "informal_statement": "Define the radius-\\(R\\) disk centered at \\((-b,R-1)\\), clipped by\n\\[\nx\\leq-b\n\\]\nand\n\\[\n-1\\leq y\\leq1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:85-91`: The left disk is clipped at its center line and both strip interfaces, with all inequalities non-strict.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7a6b1fb5a536fc1614b926138e279c79369045c2b292e00c145e1a0e699dbced",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,67 @@
+schema_version = 1
+
+[package]
+id = "cmv-elementary-comparison"
+version = "v1"
+title = "An Elementary Comparison for Four-Arc Regions in a Planar Strip Density"
+author = "Rosa Pavlak"
+audience = "A mathematics professor or researcher reading a conventional mathematical article in the style of the supplied original note, without requiring Lean knowledge."
+informal_claim = "For every real lambda > 1 and 0 < h <= 1, the specified closed four-arc region C_h has a specified three-arc competitor E_r with 0 < r < h, exactly equal weighted area and perimeter improvement strictly greater than gamma(lambda)/h > 0. Establish the separately named scalar comparison, the elementary J/H and greatest-equal-area-root/Q route, and unconditional coordinate-carrier, regularity and integral/frontier bridges. Both printed Theorem 1 statements, including (3.2), require P_lambda(C_h)-P_lambda(E_r), not the false printed A_lambda(C_h)-P_lambda(E_r). Original PDF SHA-256: d04a2e8e2ad45fe505345037c046ceaeb2a8d63b9e2b1c1eeb020b5251c576ff."
+closing_scope = "Publish the completed corrected explicit-family theorem, not the old bootstrap or the prior stationary/envelope comparison. All four configured roots are proved. Match the style of the supplied professor-authored CMV_Strip_Density_Problem.pdf: a concise conventional mathematical article, short abstract, numbered sections, numbered principal displays, bold Theorem/Lemma/Proposition labels, italic statements, Proof paragraphs and end-of-proof squares. Mirror the coherent mathematical core: introduction and exact theorem; geometric formulas for C_h and E_s; two same-curvature comparisons through J and H; variational identity and the greatest equal-area root; Q comparison; endpoint and scope remarks; bibliography. Preserve the source notation B,D,S,J,H,A_3,P_3,A_4,P_4,gamma_lambda, h and r. Do not turn the main paper into a software report or declaration catalog. Explain the actual Lean tangent/monotone-derivative argument for H on (0,1/3), noting its equivalence to the source concavity argument; do not misdescribe which lemmas the formal proof uses. Mathematical exposition must remain complete rather than shortened to meet an arbitrary page count. The configured renderer supplies Computer Modern text, restrained black-on-white A4 typography, centered small-cap section headings and unboxed theorem paragraphs. Give readable principal equations using aligned displays and supported numbering, never raw TeX tags unsupported by MathML. Keep Lean references selective and move exhaustive mappings and code to the supplement. Credit the original note by Skilyn Leon, Rosa Pavlak, Evelyn Pulla, and Xi Sisi Shen in the introduction/bibliography; do not invent author approval, funding, affiliations, email addresses, acknowledgements, or an AI-use declaration on their behalf. Omit the draft's unfinished introductions and placeholders.\nCorrect BOTH original A(C_h)-P(E_r) displays to P(C_h)-P(E_r). Correct the family interface to |y|=1, the lower exterior arc to y<-1, and rotational symmetry to vertical reflection symmetry. Do not repeat the false generalization that every piecewise-constant density is non-radial. Preserve density ONE at both interfaces; cover h=1, major caps r<1/2, the radius-two disk at r=1/2, and every lambda>1 without a uniform positive margin as lambda decreases to one. The equal-area root is the greatest root, not assumed unique; no global A_3 monotonicity or old final comparison is used. Explain that the geometric identities are proved from actual coordinate carriers and integrals/frontiers, not supplied assumptions. The six lower-level modules are reused frozen mathematical infrastructure, not a reuse of the old final exclusion theorem.\nClearly distinguish the Lean-verified explicit-family comparison from the INFORMAL full-conjecture corollary using Canete--Miranda--Vittone (2010), Lemma 3.8, Proposition 3.9 and Theorem 3.16. External classification and the BV/reduced-boundary transfer are neither formalized nor extra axioms. The draft already states complete/reduced-boundary agreement for its explicit regions; do not falsely call that omitted. For arbitrary minimizers, citing the external regular representative/classification transfer remains necessary. At transition areas allow coexistence and assert no uniqueness. The original PDF remains an unchanged source/style reference, not a claim that its literal errors were kernel-verified. Ignore obsolete bootstrap-status and missing-project-metadata comments when reporting the completed proof; use the retained independent receipt and exact inhabited root checks."
+project = ".alma/workspace/project.toml"
+output = "proof-package-v1"
+canonical_pdf = "CMV-Elementary-Comparison.pdf"
+references = ["references/CMV_Strip_Density_Problem.pdf", "references/Canete2010.pdf", "problem.txt", "audit.txt", "seed-provenance.json", ".alma/parent-verification/final-check/receipt.json", ".alma/parent-verification/final-check/source-snapshot.json", "publication-inputs/professor-style.css", "publication-inputs/cmr10.ttf", "publication-inputs/LICENSE_BAKOMA.txt", "publication-inputs/pandoc-professor-style", "publication-inputs/lake-publication"]
+
+[lean]
+workspace = "publication-inputs/proof"
+lakefile = "lakefile.toml"
+support_files = ["lean-toolchain", "lake-manifest.json", "CMVElementaryAudit.lean", "audits/ScalarRootsAudit.lean", "audits/GeometricRootsAudit.lean"]
+generated_globs = []
+forbidden_declarations = ["CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one"]
+build_command = ["lake", "build"]
+verification_commands = [["lake", "env", "lean", "-o", ".lake/build/lib/lean/CMVElementaryAudit.olean", "CMVElementaryAudit.lean"], ["lake", "env", "lean", "audits/ScalarRootsAudit.lean"], ["lake", "env", "lean", "audits/GeometricRootsAudit.lean"]]
+allowed_axioms = ["propext", "Quot.sound", "Classical.choice"]
+timeout_seconds = 3600
+
+[models]
+author = "openai-codex/gpt-6-astra"
+reviewer = "openai-codex/gpt-6-astra"
+profile = "strict"
+thinking = "xhigh"
+timeout_seconds = 7200
+max_revisions = 3
+max_model_calls = 8
+
+[render]
+pandoc = "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/pandoc-professor-style"
+chromium = "/usr/bin/chromium-browser"
+timeout_seconds = 600
+
+[[roots]]
+module = "CMVElementaryGeometry"
+declaration = "CMVElementary.geometric_comparison"
+role = "primary"
+type = "∀ lam : ℝ, 1 < lam → 0 < CMVElementary.gamma lam ∧ ∀ h : ℝ, 0 < h → h ≤ 1 → ∃ r : ℝ, 0 < r ∧ r < h ∧ WeightedArea lam (CMVElementary.E lam r) = WeightedArea lam (CMVElementary.C lam h) ∧ CMVElementary.gamma lam / h < WeightedPerimeter lam (FrontierMeasure (CMVElementary.C lam h)) - WeightedPerimeter lam (FrontierMeasure (CMVElementary.E lam r)) ∧ 0 < CMVElementary.gamma lam / h"
+informal_statement = "For every lambda > 1, gamma(lambda) is positive; for every 0 < h <= 1 there is 0 < r < h with equal canonical Lebesgue weighted areas of E_r and C_h and canonical Euclidean complete-frontier perimeter difference greater than gamma(lambda)/h > 0. The geometric formulas are conclusions, not additional hypotheses."
+
+[[roots]]
+module = "CMVElementary"
+declaration = "CMVElementary.scalar_comparison"
+role = "secondary"
+type = "∀ lam : ℝ, 1 < lam → 0 < CMVElementary.gamma lam ∧ ∀ h : ℝ, 0 < h → h ≤ 1 → ∃ r : ℝ, 0 < r ∧ r < h ∧ CMVElementary.A3 lam r = CMVElementary.A4 lam h ∧ CMVElementary.gamma lam / h < CMVElementary.P4 lam h - CMVElementary.P3 lam r ∧ 0 < CMVElementary.gamma lam / h"
+informal_statement = "For every lambda > 1, gamma(lambda) > 0; for every 0 < h <= 1 there is 0 < r < h with A3(lambda,r) = A4(lambda,h) and P4(lambda,h)-P3(lambda,r) > gamma(lambda)/h > 0, by the required new elementary route."
+
+[[roots]]
+module = "CMVElementary"
+declaration = "CMVElementary.elementary_route"
+role = "secondary"
+type = "∀ lam : ℝ, 1 < lam → CMVElementary.ElementaryRoute lam"
+informal_statement = "Prove all AuxiliaryClaims, SameCurvatureClaims, ThreeArcCalculusClaims and ScalarIdentificationClaims, including square-root normalization, J/H lower bounds and endpoint extensions; for each 0 < h <= 1 construct epsilon and the greatest equal-area root r with compact nonempty level set, strict barrier, Q derivative and Q(r) < Q(h), without root uniqueness or global A3 monotonicity."
+
+[[roots]]
+module = "CMVElementaryGeometry"
+declaration = "CMVElementary.geometric_realization"
+role = "secondary"
+type = "∀ lam : ℝ, 1 < lam → (∀ h : ℝ, 0 < h → h ≤ 1 → CMVElementary.FourArcRealization lam h) ∧ (∀ r : ℝ, 0 < r → r < 1 → CMVElementary.ThreeArcRealization lam r)"
+informal_statement = "For every lambda > 1, prove FourArcRealization for all 0 < h <= 1 and ThreeArcRealization for all 0 < r < 1: literal coordinate carriers equal copied library carriers, actual area/perimeter identities and geometric regularity and finiteness, matching-chord interiors, the reflected lower cap, the exposed bottom frontier, major-cap angles and the radius-two disk at r = 1/2."

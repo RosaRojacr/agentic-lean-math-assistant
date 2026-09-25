@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "intervalPushforward",
+  "domain_issues": [],
+  "informal_statement": "For a curve\n\\[\n\\gamma:\\mathbb R\\to\\mathbb R^2\n\\]\nand real endpoints \\(a,b\\), define the pushforward of Lebesgue measure restricted to \\([a,b]\\) by \\(\\gamma\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1200-1202`: The parameter measure is Lebesgue measure restricted to the closed interval and then pushed forward, exactly as described.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "366d70f2307ddf912f8fe8519c486284fdacdab2c9bb76f371f9a65dd8ee807d",
+  "symbol_mismatches": []
+}

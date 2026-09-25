@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.MonotoneTangent.h_lower_third_of_monotone_tangent",
+  "domain_issues": [],
+  "informal_statement": "Assume \\(D\\) is even on \\([-1,1]\\) and strictly increasing on \\([0,1]\\), \\(J\\) is continuous on \\([0,1]\\),\n\\[\nJ(0)=\\gamma_\\lambda,\n\\]\nand\n\\[\nJ'=j\n\\]\non \\((0,1)\\). Then\n\\[\nH(u)\\geq\\gamma_\\lambda\n\\]\nfor \\(0\\leq u\\leq1/3\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:370-390`: All five independent premises and the closed lower-third domain are preserved; the proof invokes the tangent lemma rather than a lower-bound record projection.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e2a91072c4780dbfb00df264aa74c10fd7f6ee762c1b356a804608b807e7ace",
+  "symbol_mismatches": []
+}

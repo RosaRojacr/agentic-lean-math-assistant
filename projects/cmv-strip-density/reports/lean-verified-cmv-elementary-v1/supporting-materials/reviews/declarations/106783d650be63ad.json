@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.continuous_realizedRightArcParam",
+  "domain_issues": [],
+  "informal_statement": "The realized right arc parametrization is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:700-709`: The realized right parametrization has the same global continuity property.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3d9c0740b38c1fa009799b8c35785a0cb767211b94d4ca0bc37637a119a58afd",
+  "symbol_mismatches": []
+}

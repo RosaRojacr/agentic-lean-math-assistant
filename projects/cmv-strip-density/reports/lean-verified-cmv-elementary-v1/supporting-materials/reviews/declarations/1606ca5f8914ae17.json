@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.scalar_comparison",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda>1\\),\n\\[\n\\gamma_\\lambda>0.\n\\]\nFor every real \\(h\\) with \\(0<h\\leq1\\), there is a real \\(r\\) such that\n\\[\n\\begin{aligned}\n0&<r<h,\\\\\nA_3(r)&=A_4(h),\\\\\nP_4(h)-P_3(r)&>\\frac{\\gamma_\\lambda}{h}>0.\n\\end{aligned}\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:766-779`: The proof combines the strict support improvement with the non-strict same-curvature lower bound, yielding the stated strict perimeter margin and exact area equality.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a640af5855e5df41a3c4e3a32f7162ed7950996079c4770f3205ede3aa37114d",
+  "symbol_mismatches": []
+}

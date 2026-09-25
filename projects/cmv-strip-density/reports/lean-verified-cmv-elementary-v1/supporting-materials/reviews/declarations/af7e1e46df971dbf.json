@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.disk_bounded",
+  "domain_issues": [],
+  "informal_statement": "For any real center \\((c_x,c_y)\\) and real \\(R\\), the set\n\\[\n\\{(x,y):(x-c_x)^2+(y-c_y)^2\\leq R^2\\}\n\\]\nis bounded.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:390-406`: The boundedness statement permits any real radius symbol because its square determines the disk; the author does not add positivity.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e6037bd412d0410bbc35975c588a201fc2cbeccbcaafb12028d4c97e43ab9925",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.MonotoneTangent.jprime_antitone_lower_third",
+  "domain_issues": [],
+  "informal_statement": "If \\(D\\) is even on \\([-1,1]\\) and strictly increasing on \\([0,1]\\), then \\(j\\) is nonincreasing on \\([0,1/3]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:361-369`: This remains a conditional interface using evenness and strict increase, not a theorem obtained by assuming the desired lower bound.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4a69d4e44ae00cd18b8420c38e3a7a4932e9ddfeacaf9bb7f9417aecd67061e0",
+  "symbol_mismatches": []
+}

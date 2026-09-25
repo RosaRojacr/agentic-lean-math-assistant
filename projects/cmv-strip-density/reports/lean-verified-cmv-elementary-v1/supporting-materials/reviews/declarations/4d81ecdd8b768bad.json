@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "leftCoreBoundaryMeasure",
+  "domain_issues": [],
+  "informal_statement": "The left core boundary measure is the pushforward of Lebesgue measure on \\([-R\\beta,R\\beta]\\) by the left core parametrization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1487-1490`: The left auxiliary boundary measure is exactly the pushforward of the specified closed arclength interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e243bfd8c440c79be3e701f3e1ba7f0b4af716d3ad6d1c3de2eb88023b1a30c8",
+  "symbol_mismatches": []
+}

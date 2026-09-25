@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capStart",
+  "domain_issues": [],
+  "informal_statement": "The initial arclength coordinate of a cap is\n\\[\n-R\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1244-1245`: The initial parameter is the negative radius-half-angle product, retaining the left endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "594eb6e2bbf3cbc7a2397b6af7a93506027168fa75ecf7f70b7012b2fc6e208a",
+  "symbol_mismatches": []
+}

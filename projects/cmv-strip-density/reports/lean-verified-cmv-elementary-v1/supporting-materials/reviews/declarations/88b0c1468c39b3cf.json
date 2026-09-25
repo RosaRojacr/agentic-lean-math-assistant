@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.MonotoneTangent.endpoint_tangent",
+  "domain_issues": [],
+  "informal_statement": "Let \\(u\\geq0\\), let \\(F\\) be continuous on \\([0,u]\\), and suppose\n\\[\nF'(t)=g(t)\n\\]\nfor \\(0<t<u\\), with \\(g\\) nonincreasing on \\([0,u]\\). Then\n\\[\nF(0)\\leq F(u)-ug(u).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:313-330`: All four hypotheses are preserved, including the degenerate zero-length interval and the absence of a continuity assumption on the specified derivative.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "88e52ddc8ea9dcc69a9b432eccd375de5c9f6debf8af47520109cf01915bce90",
+  "symbol_mismatches": []
+}

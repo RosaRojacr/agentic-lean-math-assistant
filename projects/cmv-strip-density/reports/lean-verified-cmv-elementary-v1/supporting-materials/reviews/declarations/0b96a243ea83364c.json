@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedCapParam_eq",
+  "domain_issues": [],
+  "informal_statement": "For a cap of radius \\(R\\), its realized parametrization at \\(s\\) equals its complex isometry applied to \\(\\gamma_R(s)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:434-441`: Expansion of real and imaginary coordinates gives exact equality of the realized parametrization and the isometric image of the standard circle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9c421cce21d93c49e9d419ecc30c8d31de995d391da25f034d29cf3f0bd85599",
+  "symbol_mismatches": []
+}

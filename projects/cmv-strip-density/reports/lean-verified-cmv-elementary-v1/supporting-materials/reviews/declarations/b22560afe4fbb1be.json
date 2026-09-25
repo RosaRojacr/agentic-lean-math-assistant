@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.H_lower",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0\\leq u\\leq1\\),\n\\[\nH(u)\\geq\\gamma_\\lambda.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:535-544`: The proof explicitly uses the lower-third tangent route and the upper-interval comparison; the author does not misidentify the separate derivative proof as this dependency.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "720b73434d49824a156db89a9d0ba747d35c36753fbd55b86da3e68c83bdd227",
+  "symbol_mismatches": []
+}

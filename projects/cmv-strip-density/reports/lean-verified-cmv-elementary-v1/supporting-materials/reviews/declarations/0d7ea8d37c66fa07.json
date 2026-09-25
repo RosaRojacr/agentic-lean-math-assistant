@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.realizedRightArcParam",
+  "domain_issues": [],
+  "informal_statement": "Define the realized right arc parametrization by applying the Euclidean coordinate homeomorphism to its coordinate parametrization.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:669-671`: The realized right arc uses the same Euclidean transport and the right coordinate parametrization.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8a963395af5bf096a9c5748471f90364728d8fe511c4e2cc0591bd2068d9e016",
+  "symbol_mismatches": []
+}

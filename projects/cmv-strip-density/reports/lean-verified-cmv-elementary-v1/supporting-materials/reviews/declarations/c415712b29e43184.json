@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.deriv_D_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<z<1\\),\n\\[\nD'(z)>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:228-233`: The positive argument interval is preserved; the later monotonicity statement is not confused with this local derivative assertion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2ecd442f21def60181fa9ad69af687a0bd5040c9880fdb5da7b9948bb3ba3df7",
+  "symbol_mismatches": []
+}

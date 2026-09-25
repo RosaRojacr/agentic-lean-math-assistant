@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.D",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda,z\\), define\n\\[\nD_\\lambda(z)=\\sqrt{1-z^2/\\lambda^2}-\\sqrt{1-z^2}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:33-35`: The two radicands and their subtraction order coincide; nonnegativity is not made part of the definition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "03723a810a1a63abdd42a17f0c33c9ae90ceffff8b93ca60d7527ed4f150d055",
+  "symbol_mismatches": []
+}

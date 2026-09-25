@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.same_curvature_claims",
+  "domain_issues": [],
+  "informal_statement": "For every\n\\[\n\\lambda>1,\n\\]\nFor every\n\\[\n0<h\\leq1,\n\\]\nthe support difference multiplied by \\(h\\) equals \\(J(h)\\), and\n\\[\nh^2[A_4(h)-A_3(h)]=H(h).\n\\]\nMoreover\n\\[\nA_4(h)-A_3(h)\\geq\\gamma_\\lambda/h^2>0\n\\]\nand\n\\[\n[P_4(h)-hA_4(h)]-[P_3(h)-hA_3(h)]\\geq\\gamma_\\lambda/h>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:587-605`: The two identities and both positive quantitative gaps are constructed on the closed-right-endpoint curvature interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3f33553e4d18e3fbda9a031f7ee7ae0a6105fe8e92768737441091a565b9f2b8",
+  "symbol_mismatches": []
+}

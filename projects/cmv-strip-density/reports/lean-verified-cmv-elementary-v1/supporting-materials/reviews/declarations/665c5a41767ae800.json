@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.volume_leftCapCarrier",
+  "domain_issues": [],
+  "informal_statement": "The planar volume of the left cap is\n\\[\n4a(\\beta),\n\\]\nin the nonnegative extended reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2076-2138`: The left side cap has chord two, so the actual planar volume is four times the normalized cap area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ee7dbe308fa5b9feabca0b7d1f31d2c91cdf7e530a43dcc64a52dce7563fb7b8",
+  "symbol_mismatches": []
+}

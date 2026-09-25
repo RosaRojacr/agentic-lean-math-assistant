@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_partition_polygon_lower",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\),\n\\[\n0<\\theta<\\pi,\n\\]\nand natural \\(N>0\\),\n\\[\nN\\,2R\\sin(\\theta/N)\\leq\\mathcal H^1(\\gamma_R([-R\\theta,R\\theta])).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:208-268`: The polygonal lower bound retains positive subdivision count and the injective arc domain, with half-open subarcs avoiding overlap mass.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4dc7fcd936b6c56a4643f00c8d67c38ce24d6351f625a8873960fc070d61a446",
+  "symbol_mismatches": []
+}

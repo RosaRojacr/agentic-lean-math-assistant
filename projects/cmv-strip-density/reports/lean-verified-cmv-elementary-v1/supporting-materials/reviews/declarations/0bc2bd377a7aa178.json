@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.strict_support_comparison",
+  "domain_issues": [],
+  "informal_statement": "Let \\(a<b\\). Suppose \\(A,P\\) are continuous on \\([a,b]\\),\n\\[\nA(a)=V,\n\\]\nand\n\\[\nA(t)<V\n\\]\non \\((a,b)\\). Suppose also that for every interior \\(t\\), there is a real \\(d\\) with\n\\[\nA'(t)=d\n\\]\nand\n\\[\nP'(t)=td,\n\\]\nboth derivatives existing. Then\n\\[\nP(a)<P(b)+b[V-A(b)].\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `GreatestLevelRoot.lean:49-79`: Both continuity assumptions, the endpoint area equality, interior strict barrier and pointwise variational derivative witnesses are retained; no endpoint derivative is required.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "84d7d46ea81553126d7454da55589ffbab4f6aa5e17b969665fa757ca0a1b655",
+  "symbol_mismatches": []
+}

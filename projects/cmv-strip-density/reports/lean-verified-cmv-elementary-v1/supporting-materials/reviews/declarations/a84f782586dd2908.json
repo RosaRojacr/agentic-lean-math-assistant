@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rectangleArea",
+  "domain_issues": [],
+  "informal_statement": "Define the scalar rectangle area as \\(4b\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:273-277`: The rectangle area is its height times twice the half-width and remains valid for zero width.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3314187b7b48ab958a7d8415bcf10afdb2dd85317d354dfd049f5344c2569e90",
+  "symbol_mismatches": []
+}

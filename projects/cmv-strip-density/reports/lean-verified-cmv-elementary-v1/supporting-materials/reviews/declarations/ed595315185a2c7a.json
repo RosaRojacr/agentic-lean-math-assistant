@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.hasDerivAt_typeThreeShape",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(h\\), the function\n\\[\nq(h)=2h-1\n\\]\nhas derivative two.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:146-153`: The affine shape derivative exists at every real parameter and equals the stated constant.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fc5b59d714869fde00b69f1950c83bd7a32c47524e01ad8d04455ff346c39d58",
+  "symbol_mismatches": []
+}

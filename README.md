@@ -1,6 +1,6 @@
 # Agentic Lean Math Assistant
 
-Agentic Lean Math Assistant is a Python 3.12–3.14 controller for evidence-retaining mathematical research, Lean 4 formalization, semantic review, and reproducible proof publication. It treats successful execution, mathematical evidence, and accepted truth as separate states. A process can produce evidence; only configured Lean, semantic, and publication gates can accept a claim.
+Agentic Lean Math Assistant is a Python 3.12–3.14 controller for evidence-retaining mathematical research, Lean 4 formalization, semantic review, and reproducible proof publication. It treats successful execution, mathematical evidence, and accepted truth as separate states. Agentic processes produce evidence; a claim is accepted only after the configured Lean, semantic, and publication gates pass.
 
 <p align="center">
   <img src="docs/program-map.svg" width="100%" alt="Agentic Lean Math Assistant program map showing governed research, Lean verification, independent semantic review, and publication workflows.">
@@ -8,10 +8,10 @@ Agentic Lean Math Assistant is a Python 3.12–3.14 controller for evidence-reta
 
 <p align="center"><a href="docs/program-map.html"><strong>Open the standalone HTML Program Map</strong></a></p>
 
-## Solve a problem folder
+## Solve
 
 `solve` is the one-command path from informal materials to a Lean-verified,
-professor-facing proof package. Put the main question in `problem.md`; place
+researcher-facing proof package. Put the main question in `problem.md`; place
 notes, papers, datasets, and an optional existing Lean/Lake project beside it.
 The controller freezes those inputs, has independent agents agree on semantic
 and formal contracts, generates an internal autonomous project, and works in
@@ -95,9 +95,9 @@ archive the prior lineage and freeze changed source materials.
 
 ## Proof Builder
 
-`proof-builder` turns a completed Lean/Lake development into an immutable, professor-facing publication package. It is problem-agnostic: theorem names, source paths, informal claims, generated certificate families, references, model routes, and output versions come from a version-controlled `proof-package.toml` manifest.
+`proof-builder` turns a completed Lean/Lake development into a researcher-facing publication package. Theorem names, source paths, informal claims, generated certificate families, references, model routes, and output versions come from a version-controlled `proof-package.toml` manifest.
 
-An accepted package contains four reader-facing files:
+An accepted package contains four researcher-facing files:
 
 ```text
 proof-package/
@@ -113,47 +113,65 @@ proof-package/
 - **SemanticAudit.pdf** records an isolated adversarial review of hypotheses, quantifiers, domains, inequalities, boundary cases, symbols, generated families, and citations.
 - **supporting-materials/** retains the executable Lean closure, pinned toolchain and dependencies, manifest, prompts, model requests, model handoffs, review records, command receipts, source provenance, references, and SHA-256 ledger.
 
-### A complete example: the Lean-verified all-density CMV strip proof
+### A complete example: the elementary CMV strip-density comparison
 
-The repository’s primary end-to-end Proof Builder example is the all-density
-CMV strip package. It addresses one of two problems from Cañete, Miranda Jr.,
-and Vittone’s 2010 paper *Some Isoperimetric Problems in Planes with Density*.
-The strip problem and the paper’s separate ball-density transition problem
-remained unsolved for 16 years.
+The repository’s primary end-to-end Proof Builder example is
+*An Elementary Comparison for Four-Arc Regions in a Planar Strip Density*.
+It addresses Question 1 from Cañete, Miranda Jr., and Vittone’s 2010 paper
+*Some Isoperimetric Problems in Planes with Density*, using the elementary
+comparison in the note by Skilyn Leon, Rosa Pavlak, Evelyn Pulla, and Xi Sisi Shen.
+The package is Lean-verified and semantically accepted.
 
 | Output | Purpose |
 |---|---|
-| [Package README](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/README.md) | Verified status, exact modeled claim, trust boundary, and cross-platform reproduction instructions |
-| [MainProof.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/MainProof.pdf) | Professor-facing proof of the all-density modeled exclusion |
-| [LemmaSupplement.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/LemmaSupplement.pdf) | Mathematical explanations and frozen Lean source for all 464 retained declarations |
-| [SemanticAudit.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/SemanticAudit.pdf) | Strict independent review with 464 equivalent declaration judgments and no unresolved findings |
-| [proof-package.toml](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-proof-package.toml) | Reusable publication contract that produced the package |
-| [Canonical PDF](projects/cmv-strip-density/reports/lean-verified-cmv-all-density.pdf) | Stable copy of the accepted main proof |
+| [Package README](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/README.md) | Verified status and standalone reproduction instructions |
+| [MainProof.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/MainProof.pdf) | Researcher-facing proof in the original note’s mathematical-paper style |
+| [LemmaSupplement.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/LemmaSupplement.pdf) | Mathematical explanations and frozen Lean source for all 506 retained declarations |
+| [SemanticAudit.pdf](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/SemanticAudit.pdf) | Strict independent review with 506 equivalent declaration judgments and no remaining critical errors or citation issues |
+| [Frozen publication manifest](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/supporting-materials/proof-package.toml) | Exact publication contract, model routes, and original build paths |
+| [Canonical PDF](projects/cmv-strip-density/reports/lean-verified-cmv-elementary.pdf) | Stable copy of the accepted main proof |
 
-The published root is:
+The primary published root is:
 
 ```lean
-CMVSuffixModel.FourArcCandidate.not_isWeightedPerimeterMinimizer_of_density_gt_one
+CMVElementary.geometric_comparison
 ```
 
-It states that for every real density $\lambda>1$, every modeled regular
-type-(iv) four-arc candidate satisfying the formal CMV type-(iv) hypotheses is
-not a weighted-perimeter minimizer. This subsumes the earlier
-$\lambda\ge51/50$ certificate and closes the modeled interval
-$1<\lambda<51/50$. The frozen package retains the dependency-closed Lean
-sources, exact theorem contract, allowed-axiom audit, strict semantic review,
-three rendered PDFs, and standalone checksum-and-rebuild verifier.
+For every real density $\lambda>1$ and every $0<h\le1$, it supplies a
+three-arc region $E_r$, with $0<r<h$, satisfying
 
-The scope remains explicit: this is the complete verified modeled theorem, not
-an unconditional proof of CMV Conjecture 3.12. Normalizing every source-defined
-type-(iv) region into the formal candidate and reconciling reduced-boundary
-perimeter with the model’s complete-frontier perimeter are separate obligations.
+$$
+A_\lambda(E_r)=A_\lambda(C_h),\qquad
+P_\lambda(C_h)-P_\lambda(E_r)>\frac{\gamma_\lambda}{h}>0,
+$$
 
-The companion result for the second 16-year problem is the
-[Lean-verified CMV ball-density package](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/README.md);
-its [main proof](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/MainProof.pdf)
-and [canonical PDF](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition.pdf)
-prove the single-transition theorem for the faithful type-(B)/(C) profiles.
+where
+
+$$
+\gamma_\lambda=\lambda\arccos(1/\lambda)-\sqrt{1-\lambda^{-2}}.
+$$
+
+Thus every explicitly defined symmetric four-arc region $C_h$ is excluded
+as a weighted-perimeter minimizer, for every $\lambda>1$. The proof uses
+the $J/H$ inequalities, the greatest equal-area root, and a strict $Q$
+comparison—not the earlier stationary-envelope exclusion. The package also
+verifies `CMVElementary.scalar_comparison`, `CMVElementary.elementary_route`,
+and `CMVElementary.geometric_realization`. Its coordinate, integral, and
+complete-frontier identities include $h=1$, major caps, and the
+$r=1/2$ disk.
+
+The mathematical corollary combines this comparison with CMV’s existing
+classification to obtain the ball, stadium, and three-arc regimes of
+Conjecture 3.12 for every $\lambda>1$. The external classification and the
+reduced-boundary transfer are cited mathematics, not Lean-formalized results
+or additional axioms. The package distinguishes this corollary from its
+kernel-verified explicit-family theorem.
+
+The [earlier all-density modeled package](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/README.md)
+remains available as a historical development. The companion
+[CMV ball-density package](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/README.md)
+addresses Question 2 through the single-transition theorem for the faithful
+type-(B)/(C) profiles.
 
 ## How Proof Builder works
 
@@ -289,7 +307,7 @@ Supported restart points:
 - `lean-export`: discard a checksum-verified failed build and reconstruct it from the source manifest;
 - `explanation`: rerun the author explanation and downstream review;
 - `semantic-review`: reuse the latest valid author handoff for the first new reviewer pass;
-- `pdf-render`: rebuild reader-facing PDFs from retained validated handoffs without model calls;
+- `pdf-render`: rebuild researcher-facing PDFs from retained validated handoffs without model calls;
 - `checksum-ledger`: finish a package interrupted after status and rendering.
 
 Accepted packages are immutable and cannot be resumed. A revised accepted publication must use a new manifest version and output directory.
@@ -362,41 +380,51 @@ proof-builder verify --package reports/example-proof-v2 --quiet
 
 `--no-network` requires the normal Linux containment dependencies and a locally available pinned Lake dependency closure.
 
-## CMV case studies: two 16-year problems from one paper
+## CMV case studies: two problems from one paper
 
-This repository studies two problems from Cañete, Miranda Jr., and Vittone’s
-2010 paper *Some Isoperimetric Problems in Planes with Density*. The strip- and
-ball-density problems remained unsolved for 16 years and now have separate,
-source-faithful Lean developments and independently reviewed proof packages.
+This repository studies two problems posed by Cañete, Miranda Jr., and
+Vittone in their 2010 paper *Some Isoperimetric Problems in Planes with
+Density*. The strip- and ball-density projects have separate Lean
+developments and independently reviewed proof packages, with the
+formalized statements and external mathematical dependencies distinguished.
 
 ### CMV Question 1: strip density
 
-The density is 1 on $|y|\le1$ and $\lambda>1$ outside. The current proof has
-three scope levels:
+The density is 1 on $|y|\le1$ and $\lambda>1$ outside. The current
+researcher-facing example is the
+[elementary comparison package](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/README.md),
+whose primary root is `CMVElementary.geometric_comparison`.
 
-| Level | Current result |
+| Scope | Result |
 |---|---|
-| Modeled candidate | Every `FourArcCandidate` satisfying the formal CMV type-(iv) hypotheses is excluded for every $\lambda>1$. |
-| Literal source carrier | Every checked four-arc carrier is excluded for every $\lambda>1$, including the $h=1$ endpoint, horizontal translates, almost-everywhere representatives, and raw closed geometry with source radius $R\ge1$. |
-| Arbitrary source minimizer | Open. The development does not derive the required carrier classification from every source-admissible minimizer. |
+| Explicit geometric comparison | For every $\lambda>1$ and $0<h\le1$, the specified four-arc region has an equal-area three-arc competitor with perimeter improvement strictly greater than $\gamma_\lambda/h>0$. Lean-verified. |
+| Proof route and realization | The scalar comparison, $J/H$ and greatest-root/$Q$ argument, and actual coordinate-carrier area/perimeter identities are proved. No global three-arc area monotonicity or root uniqueness is assumed. |
+| Full-conjecture corollary | Combining the comparison with CMV’s classification gives the disk, stadium, and three-arc regimes. External classification and reduced-boundary transfer remain outside the Lean formalization. |
 
-Principal modules:
+The package’s principal modules are:
 
-- [`UniversalStationaryPair.lean`](projects/cmv-strip-density/proof/UniversalStationaryPair.lean) contains the frozen all-$\lambda>1$ modeled publication root.
-- [`CMVTypeThreeSourceExclusion.lean`](projects/cmv-strip-density/proof/CMVTypeThreeSourceExclusion.lean) contains checked source-carrier exclusions.
-- [`CMVSourceClassification.lean`](projects/cmv-strip-density/proof/CMVSourceClassification.lean) separates closed geometry from density and Snell-law data.
+- [`CMVElementary.lean`](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/supporting-materials/lean/CMVElementary.lean): auxiliary inequalities, calculus, and quantitative scalar comparison.
+- [`GreatestLevelRoot.lean`](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/supporting-materials/lean/GreatestLevelRoot.lean): greatest-root existence and strict support comparison.
+- [`CMVElementaryGeometry.lean`](projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1/supporting-materials/lean/CMVElementaryGeometry.lean): literal regions, area/frontier bridges, and the primary geometric theorem.
 
-The project does not claim an unconditional proof of CMV Conjecture 3.12. The remaining obligation is geometric and measure-theoretic classification: bilateral symmetry, common-circle geometry, configuration enumeration, and exact or almost-everywhere carrier identification must still be derived for arbitrary relevant source minimizers.
-
-Run the full living Lean project and axiom ledger:
+Recheck the accepted package’s checksums and pinned Lean sources:
 
 ```bash
-cd projects/cmv-strip-density/proof
-lake build
-lake env lean _Assumptions.lean
+cd projects/cmv-strip-density/reports/lean-verified-cmv-elementary-v1
+python supporting-materials/verify.py
 ```
 
-The broader frontier paper is available as [PDF](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.pdf), [Markdown](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.md), and [HTML](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.html). Those explanatory formats are not themselves part of the mathematical trust boundary.
+For each $\lambda>1$, three-arc minimizers occur in the large-area regime;
+the result does not replace small-area disks or intermediate-area stadiums.
+At the transition, stadium and three-arc minimizers coexist.
+
+The [earlier modeled package](projects/cmv-strip-density/reports/lean-verified-cmv-all-density-v1/README.md)
+and the broader frontier paper ([PDF](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.pdf),
+[Markdown](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.md),
+[HTML](projects/cmv-strip-density/reports/lean-verified-cmv-frontier.html))
+remain available as historical research artifacts. The living development in
+[`projects/cmv-strip-density/proof/`](projects/cmv-strip-density/proof/)
+is separate from the immutable elementary publication.
 
 ### CMV Question 2
 
@@ -408,7 +436,7 @@ type-(B) two-arc profile, type (B) cannot become optimal again at a larger
 weighted area.
 
 Read the [ball-density package](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/README.md),
-the professor-facing [MainProof.pdf](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/MainProof.pdf),
+the researcher-facing [MainProof.pdf](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition-v1/MainProof.pdf),
 or the stable [canonical PDF](projects/cmv-ball-density/reports/lean-verified-cmv-ball-single-transition.pdf).
 The package starts from source-faithful definitions of both candidate profiles
 and does not reuse the strip-density result. Its explicit trust boundary leaves

@@ -1,0 +1,7 @@
+Running as unit: campaign-535951-0030fde13dc0.service
+Working...
+          Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+               Service runtime: 16min 53.828s
+             CPU time consumed: 12.489s
+                   Memory peak: 277.1M (swap: 0B)

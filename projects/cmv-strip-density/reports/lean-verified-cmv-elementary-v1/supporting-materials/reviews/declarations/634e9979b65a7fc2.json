@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.lowerChordTrace",
+  "domain_issues": [],
+  "informal_statement": "The lower core chord is\n\\[\n\\{(x,-1):|x|\\leq L/2\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:774-776`: The lower chord trace is the full closed chord on the lower interface, before assembly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "faa702d9afdff2eed044fad4474692be94c38bb3a9868779993853eb74445596",
+  "symbol_mismatches": []
+}

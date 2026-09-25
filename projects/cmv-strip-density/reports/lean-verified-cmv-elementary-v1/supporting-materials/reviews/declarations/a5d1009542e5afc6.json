@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_capParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "For every cap, the Euclidean Hausdorff measure of its realized parameter image on \\([-R\\theta,R\\theta]\\) equals its scalar arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:457-483`: The measure concerns the actual realized parameter image, and the isometry transports the previously established circular Hausdorff length.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ce3a2c8ff8b380f7da5859563d117de2848052560e457ef5f88e25aa88808f43",
+  "symbol_mismatches": []
+}

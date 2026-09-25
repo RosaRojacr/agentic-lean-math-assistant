@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.three_top_circle",
+  "domain_issues": [],
+  "informal_statement": "For every admissible three-arc assembly with radius \\(R\\) and inner angle \\(\\beta\\),\n\\[\n(R\\sin\\beta)^2+(2-R)^2=R^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:442-449`: The radius-curvature identity and the inner-angle cosine give the stated top-chord circle equation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2c42afd2f1041c6eb7aaaecf9fbcab707e24f86eb7b6bf6aaa7c27e8dcdadc9c",
+  "symbol_mismatches": []
+}

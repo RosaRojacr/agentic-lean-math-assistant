@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.exact_euclidean_leftArcParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean Hausdorff measure of the realized left parameter image on \\([-R\\phi,0]\\) is\n\\[\nR\\phi.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:742-778`: The exact left image length is radius times side angle, not twice that value; the strict sub-circumference span hypothesis is available.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c6dc496bb93e612df391bdcd13229ada6ddb03a05f7a4a85318498972631a8fc",
+  "symbol_mismatches": []
+}

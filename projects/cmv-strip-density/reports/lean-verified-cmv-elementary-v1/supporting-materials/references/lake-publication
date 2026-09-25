@@ -1,0 +1,20 @@
+#!/mnt/games/Math_Project/LeanExperiment/.venv/bin/python
+"""Use the already-pinned private dependency cache; always build local proof objects."""
+import os
+import sys
+import json
+from pathlib import Path
+
+LAKE = "/home/rosa/.elan/bin/lake"
+BASE = Path("/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924")
+CACHE = BASE / ".alma/workspace/proof/.lake/packages"
+EXPECTED = BASE / ".alma/parent-verification/final-check/proof/lake-manifest.json"
+workspace = Path.cwd().resolve()
+packages = workspace / ".lake/packages"
+manifest = workspace / "lake-manifest.json"
+if workspace.is_relative_to(BASE) and manifest.is_file() and not packages.exists():
+    if json.loads(manifest.read_text())["packages"] != json.loads(EXPECTED.read_text())["packages"]:
+        raise SystemExit("Refusing cache reuse for a different dependency manifest")
+    packages.parent.mkdir(parents=True, exist_ok=True)
+    packages.symlink_to(CACHE, target_is_directory=True)
+os.execv(LAKE, [LAKE, *sys.argv[1:]])

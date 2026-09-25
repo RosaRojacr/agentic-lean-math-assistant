@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideHalfWidth_nonneg",
+  "domain_issues": [],
+  "informal_statement": "For every assembly, \\(b\\geq0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:338-340`: Nonnegative sine gap times positive radius gives a nonnegative bottom half-width, including the disk branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "be70cb71b25ed2f43754461915097af9183cc7aac3504655dda98d8a67b605ec",
+  "symbol_mismatches": []
+}

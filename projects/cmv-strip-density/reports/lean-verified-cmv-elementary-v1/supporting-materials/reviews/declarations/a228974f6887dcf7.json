@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "The core frontier is exactly its left arc, right arc, upper chord and lower chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1088-1199`: The exact frontier consists of the two exposed arcs and both horizontal chords; internal rectangle-side seams are not counted.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "34bdf246812f32ba3d6167bf3b3ff5fea490b0816170740d97a7d77e703585bf",
+  "symbol_mismatches": []
+}

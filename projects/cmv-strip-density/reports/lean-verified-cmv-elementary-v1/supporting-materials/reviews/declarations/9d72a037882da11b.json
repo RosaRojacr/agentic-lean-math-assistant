@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_in_open_side",
+  "domain_issues": [],
+  "informal_statement": "If\n\\[\n|t|<\\theta,\n\\]\nthe selected upper arc point has\n\\[\ny>b,\n\\]\nand the selected lower arc point has\n\\[\ny<b.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:253-266`: The strict parameter bound yields the strict side inequality for both orientations on the whole cap-angle domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3dbf6a865d1d6331f9c3406c05af249acf00d7c487349d982b588394a814d697",
+  "symbol_mismatches": []
+}

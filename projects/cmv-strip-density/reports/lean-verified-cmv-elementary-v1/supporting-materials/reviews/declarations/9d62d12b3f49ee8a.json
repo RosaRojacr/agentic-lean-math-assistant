@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_capTrace_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "For every cap, the Euclidean \\(\\mathcal H^1\\)-measure of its selected arc trace equals its scalar arc length.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1081-1088`: The actual cap trace has the same Hausdorff measure as its exactly identified realized parameter image.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8a0602f46d010a0d38a019d5e1052cfe4c5d69fc3db5988eaac8c5dbcc5c5e1c",
+  "symbol_mismatches": []
+}

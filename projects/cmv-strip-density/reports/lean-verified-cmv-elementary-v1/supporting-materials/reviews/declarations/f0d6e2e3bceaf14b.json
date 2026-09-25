@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "lintegral_semicircle_translated",
+  "domain_issues": [],
+  "informal_statement": "Under the same hypotheses \\(a\\in\\mathbb R\\),\n\\[\nR>0,\n\\]\n\n\\[\n0\\leq\\theta\\leq\\pi,\n\\]\nthe nonnegative Lebesgue integral of\n\\[\n2\\sqrt{R^2-(y-a)^2}\n\\]\nover \\([a+R\\cos\\theta,a+R]\\) equals the nonnegative-real embedding of\n\\[\nR^2(\\theta-\\sin\\theta\\cos\\theta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1801-1819`: The nonnegative integral and extended-real embedding are distinguished from the preceding ordinary interval integral, with the same angle domain.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3c8e90cd635d133e832b64fe2731d46db4f68d0a1a341d292df3904cf66e67e8",
+  "symbol_mismatches": []
+}

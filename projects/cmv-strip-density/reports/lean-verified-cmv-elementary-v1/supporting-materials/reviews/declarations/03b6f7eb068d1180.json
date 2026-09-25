@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.gamma",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\n\\gamma_\\lambda=\\lambda\\arccos(1/\\lambda)-\\sqrt{1-\\lambda^{-2}}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:38-40`: The negative integer power agrees with the inverse-square notation; positivity remains a separately proved assertion.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "89a6e7b6d34e63c790ca99225f414245b7afb3c33a52b21c3baa8e107a3e1c53",
+  "symbol_mismatches": []
+}

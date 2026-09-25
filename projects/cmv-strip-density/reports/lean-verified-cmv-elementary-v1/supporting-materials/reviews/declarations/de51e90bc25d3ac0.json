@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedLeftCoreParam",
+  "domain_issues": [],
+  "informal_statement": "Define the realized left core parametrization by composing the coordinate parametrization with the Euclidean coordinate homeomorphism.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:705-708`: The left realized curve is the coordinate parametrization followed by the Euclidean homeomorphism.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "854e6d1ea17e2b2d6576f273610fd43051ac61c0bb7e75c185b3d3aa821f7da4",
+  "symbol_mismatches": []
+}

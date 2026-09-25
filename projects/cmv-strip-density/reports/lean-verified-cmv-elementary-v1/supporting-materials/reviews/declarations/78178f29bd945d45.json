@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GreatestRootClaims",
+  "domain_issues": [],
+  "informal_statement": "One has\n\\[\n0<\\varepsilon<r<h\n\\]\nand\n\\[\nA_3(\\varepsilon)>A_4(h).\n\\]\nThe level set \\(Z_{\\lambda,h,\\varepsilon}\\) is nonempty and compact, with greatest element \\(r\\) and\n\\[\nA_3(r)=A_4(h).\n\\]\nFor \\(r<t\\leq h\\),\n\\[\nA_3(t)<A_4(h).\n\\]\nThe function \\(Q_{\\lambda,h}\\) is continuous on \\([r,h]\\), has derivative\n\\[\nA_4(h)-A_3(t)>0\n\\]\non \\((r,h)\\), and satisfies\n\\[\nQ_{\\lambda,h}(r)<Q_{\\lambda,h}(h).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:125-140`: The same witnesses satisfy compactness, greatestness, the right-hand strict barrier and all support-function claims; none is replaced by uniqueness.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2882e2312daec98183445737a88569349612dfd73820523f6968960d175c540c",
+  "symbol_mismatches": []
+}

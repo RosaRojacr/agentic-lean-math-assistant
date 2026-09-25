@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreBoundaryMeasure_integrable",
+  "domain_issues": [],
+  "informal_statement": "For any real \\(\\lambda\\) and strip core, the density is integrable against the right parametrized boundary measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2282-2288`: The right arc has the same finite-measure integrability property with no positivity restriction on density.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "63cd5ea28e72c7cf39aef8bfd2e698b16940d7ae74acc20f074d60c55994913c",
+  "symbol_mismatches": []
+}

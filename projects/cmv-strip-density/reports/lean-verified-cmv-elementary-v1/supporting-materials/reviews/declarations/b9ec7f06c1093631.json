@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.D_nonneg",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and every real \\(z\\), \\(D(z)\\geq0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:394-403`: The author preserves the stronger all-real argument domain of the nonnegativity theorem and the strict density hypothesis.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8ceb0e3455b90fa64499eee81dc63f1d0e17f21da82cc4b48255006f6cae2e2a",
+  "symbol_mismatches": []
+}

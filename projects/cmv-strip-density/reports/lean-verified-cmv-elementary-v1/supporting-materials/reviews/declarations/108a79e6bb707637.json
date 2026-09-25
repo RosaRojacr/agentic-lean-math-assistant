@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_end",
+  "domain_issues": [],
+  "informal_statement": "For \\(N>0\\), the partition point with index \\(N\\) is\n\\[\nR\\theta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:161-166`: The strictly positive natural subdivision count is retained because cancellation is needed to identify the final partition point.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b5d0e986af4c921461bd13ce89490a41fdc02991eaadda7d26f70db465413519",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeArea_tendsto_atRight_zero",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\), the normalized three-arc area tends to\n\\[\n+\\infty\n\\]\nas \\(h\\downarrow0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:828-871`: The numerator has the stated positive limit, and the proof compares against a diverging positive reciprocal on the right of zero.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e82ffa97f750ea7c64d3d22eebba58e03fe2fc0f731297b9787ae711ded5a49a",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.carrier",
+  "domain_issues": [],
+  "informal_statement": "The core carrier is the union of its rectangle, left cap and right cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:449-452`: The formal carrier is the union of three coordinate pieces, not an area-defined abstract region.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "05f714bedd5ca3f09fd1dac168964dc190e4830b8099d994e590458d8167e259",
+  "symbol_mismatches": []
+}

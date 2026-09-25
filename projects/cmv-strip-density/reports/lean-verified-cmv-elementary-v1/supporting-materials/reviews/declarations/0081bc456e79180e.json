@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_dist",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\),\n\\[\n0<\\theta<\\pi,\n\\]\nnatural \\(N>0\\), and any natural \\(i\\), the distance between consecutive circle partition points is\n\\[\n2R\\sin(\\theta/N).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:185-207`: The exact consecutive chord distance holds for every natural index, not only those inside the chosen finite partition; the sine sign is justified by the angle bounds.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6b90645e53e16e3855618b966b04af3ee0f15439043926ba1133c583e65b5a00",
+  "symbol_mismatches": []
+}

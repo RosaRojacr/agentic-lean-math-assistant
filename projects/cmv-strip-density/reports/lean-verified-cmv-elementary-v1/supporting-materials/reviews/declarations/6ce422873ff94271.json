@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.sin_theta_pos",
+  "domain_issues": [],
+  "informal_statement": "For every admissible cap,\n\\[\n\\sin\\theta>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:207-209`: The strict sine positivity uses precisely the cap's open half-angle interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8c22795350624813eb7b9aec2fdcda7bfc438d144ebb38b607db3cac77688583",
+  "symbol_mismatches": []
+}

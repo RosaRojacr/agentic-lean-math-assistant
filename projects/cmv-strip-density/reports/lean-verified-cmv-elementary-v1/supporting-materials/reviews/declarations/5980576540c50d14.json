@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "isometry_unitCircleArcRotation",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(R,m\\), multiplication by\n\\[\n\\exp(im/R)\n\\]\nis an isometry of the complex plane.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:315-322`: Unit complex modulus makes the map an isometry for all real parameter values, including the total zero-radius convention.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0390b164e94132c53e908a7960b31f68dc786e7272a9a9f6482fa79cade88362",
+  "symbol_mismatches": []
+}

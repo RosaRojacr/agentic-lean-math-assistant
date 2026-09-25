@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.four_lower_chord",
+  "domain_issues": [],
+  "informal_statement": "For a four-arc assembly with chord length \\(L\\), every \\((x,-1)\\) with\n\\[\n|x|<L/2\n\\]\nlies in the interior of its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:704-718`: The analogous lower chord argument retains the strict horizontal inequality and lower interface height.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ea53d14df83b28b6ff1d37f67f32312ef47517db52c766fac334806d2ca49d27",
+  "symbol_mismatches": []
+}

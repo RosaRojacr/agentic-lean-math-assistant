@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideHalfWidth_pos",
+  "domain_issues": [],
+  "informal_statement": "If \\(h\\ne1/2\\), then\n\\[\nb>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:341-343`: The author retains the non-half-curvature premise needed for strictly positive width.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a769284707d6bf25198d747cd5846bae22f2f394cc9d09e601cfcab854579d7a",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.three_strict_chord",
+  "domain_issues": [],
+  "informal_statement": "For an admissible three-arc assembly, every point \\((x,1)\\) with\n\\[\n|x|<R\\sin\\alpha\n\\]\nlies in the interior of its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:450-493`: Membership in the carrier and exclusion from every exact frontier component establish interior membership for strict attaching-chord points.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4464866837d47e9a8c1cbf531c0302898770abce4a983a8a096cdbf3a49d1a2b",
+  "symbol_mismatches": []
+}

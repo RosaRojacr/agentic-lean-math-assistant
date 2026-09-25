@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nt_i=-R\\theta+i(2R\\theta/N)\n\\]\nfor real \\(R,\\theta\\) and natural numbers \\(N,i\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:154-156`: The partition-point definition is total for all natural counts and indices; positivity is imposed only in subsequent lemmas.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "49ac6ecbe67b9040843eeee672d7b0f08055016781814c3ce0fa4e7d31ff805a",
+  "symbol_mismatches": []
+}

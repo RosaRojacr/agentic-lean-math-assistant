@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.deriv_D",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\) and \\(-1<z<1\\), the derivative value is\n\\[\nD'(z)=z[1/\\sqrt{1-z^2}-1/(\\lambda\\sqrt{\\lambda^2-z^2})].\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:204-209`: This is the derivative-value consequence of the preceding derivative theorem, with identical hypotheses and no endpoint extension.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "30a180dad9754ac8b27ff3cc498a89ca981d4205c49ae9ee5cd3a6be7fbe5a18",
+  "symbol_mismatches": []
+}

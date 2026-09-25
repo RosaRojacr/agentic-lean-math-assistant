@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.euclidean_frontier",
+  "domain_issues": [],
+  "informal_statement": "The frontier of the Euclidean image of the three-arc carrier equals the union of the Euclidean images of its left arc, right arc, upper cap arc and bottom segment.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:2937-2949`: The coordinate homeomorphism transports the exact four-piece frontier identity into the Euclidean metric space.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5e03c2ded7f93ebce1b77460290c9d90f4e5be41990287351d94b69c624d60ea",
+  "symbol_mismatches": []
+}

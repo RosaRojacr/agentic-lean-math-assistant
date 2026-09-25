@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.bottomChord",
+  "domain_issues": [],
+  "informal_statement": "Define the bottom chord length as \\(2b\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:136-139`: The scalar bottom chord is twice the side half-width, with no positivity requirement in the definition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "08cc63d3aedc396b5efa9b27fd1bac931beb8b7d14cbce558e5fde942be277c2",
+  "symbol_mismatches": []
+}

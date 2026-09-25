@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.cos_outerAngle",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\cos\\alpha=q/\\lambda.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:184-188`: The corresponding outer-angle cosine evaluates to the density-scaled shape parameter exactly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3eb066bbadef1d5d0722d2c322b7cfe8bce8e1eb62204f2872b1f8f1bbb41a24",
+  "symbol_mismatches": []
+}

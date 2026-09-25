@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.deriv_H_pos_of_J",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\),\n\\[\n0<u<1/3,\n\\]\nand\n\\[\nJ'(u)=j(u)\n\\]\nin the differentiability sense, then\n\\[\nH'(u)>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:276-282`: The conditional derivative premise is retained and the strict positivity follows from the preceding negative derivative combination.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "303bde784351003abd78c85956bcd7a5a548511d46fc0a1e12378795be4dcb69",
+  "symbol_mismatches": []
+}

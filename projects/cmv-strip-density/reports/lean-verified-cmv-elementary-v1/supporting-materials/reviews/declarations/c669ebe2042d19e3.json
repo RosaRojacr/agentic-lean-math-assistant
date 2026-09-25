@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.K_core",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\), \\(K_h\\) equals the strip-core carrier of the constructed four-arc candidate.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:583-597`: Substitution in the general core-width theorem produces the literal radical offset without adding incidence or area assumptions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a3ce44dbe7cbd338db626634d2aa7957319833c03c7387021e4daeb815f196b9",
+  "symbol_mismatches": []
+}

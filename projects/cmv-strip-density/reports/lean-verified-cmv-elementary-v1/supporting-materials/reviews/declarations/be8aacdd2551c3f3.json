@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.integrable_frontierMeasure",
+  "domain_issues": [],
+  "informal_statement": "The strip density is integrable against the canonical frontier measure of the three-arc carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:3012-3042`: Exact finite Hausdorff lengths of all frontier pieces give finite canonical mass and integrability of the bounded density, including zero bottom length.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "242285e9e93302048576853114a4bc7f6ca16cdc917f22c33a2fe025def880a8",
+  "symbol_mismatches": []
+}

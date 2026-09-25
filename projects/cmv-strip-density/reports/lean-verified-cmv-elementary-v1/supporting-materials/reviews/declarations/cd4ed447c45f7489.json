@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.H_limit_zero",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\),\n\\[\n\\lim_{u\\downarrow0}H(u)=\\gamma_\\lambda.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:300-312`: The right-hand limit is unconditional and follows from continuity and the zero-endpoint value, not from endpoint differentiation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3fa895803ef1aea4d3d273718ce23287763c81a52827fb5d35f0d8e9245453cf",
+  "symbol_mismatches": []
+}

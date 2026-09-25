@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "hausdorffMeasure_one_euclideanJoinSet",
+  "domain_issues": [],
+  "informal_statement": "Every Euclidean junction set has zero one-dimensional Hausdorff measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1263-1268`: Finite junction sets have zero positive-dimensional Hausdorff measure in the Euclidean realization.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7ebe8fae03ad531268ff769afa248cd1067ee674eba1a7f8bc77f36d3ab49ebc",
+  "symbol_mismatches": []
+}

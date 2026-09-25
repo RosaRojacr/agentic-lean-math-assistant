@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeThreeDelta",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\n\\delta_3(h)=\\sqrt{\\lambda^2-q(h)^2}/\\lambda-\\sqrt{1-q(h)^2}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:39-43`: The radical normalization includes division by density outside the first square root; the author correctly conditions its identification with the article's radical difference on positive density.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f96722ed089f4e5911c6013a0aa601eb4080090036491702cd0fa78e3e31113f",
+  "symbol_mismatches": []
+}

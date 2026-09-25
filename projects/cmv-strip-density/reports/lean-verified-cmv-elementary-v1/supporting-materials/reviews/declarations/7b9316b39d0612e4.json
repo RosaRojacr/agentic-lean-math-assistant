@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.integrableOn_carrier",
+  "domain_issues": [],
+  "informal_statement": "The strip density is integrable over the actual three-arc carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:3000-3011`: Finite core volume and finite cap volume give density integrability over the actual union, without assuming its area formula as input.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f50bce5009ef96b4081db29960a7e72186fb76edbfedf9fa6fd538bc59ab8c22",
+  "symbol_mismatches": []
+}

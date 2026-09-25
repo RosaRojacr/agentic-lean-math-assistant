@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rectangleCarrier",
+  "domain_issues": [],
+  "informal_statement": "Define the rectangle\n\\[\n\\{(x,y):-b\\leq x\\leq b,\\ -1\\leq y\\leq1\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:80-84`: The closed rectangle bounds agree and permit zero width; the constructor does not require a nondegenerate rectangle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d451775e4018b5bae444c6a8ed6911c5adcc23db4a0efc68ab71c655f2933477",
+  "symbol_mismatches": []
+}

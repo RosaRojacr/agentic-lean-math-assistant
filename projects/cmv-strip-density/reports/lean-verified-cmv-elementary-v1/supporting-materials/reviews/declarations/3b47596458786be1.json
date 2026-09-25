@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerAngle",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\n\\alpha=\\arccos(q/\\lambda).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:59-63`: The principal inverse-cosine definition permits the full open angle range, retaining the major exterior cap branch.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0e2ff2070394fdda5b4ec09824f47ed543dabdfe101c076ad378e0c92be2ff47",
+  "symbol_mismatches": []
+}

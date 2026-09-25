@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.scalar_identification_claims",
+  "domain_issues": [],
+  "informal_statement": "For every\n\\[\n\\lambda>1,\n\\]\nFor \\(-1\\leq z\\leq1\\),\n\\[\n\\sqrt{\\lambda^2-z^2}/\\lambda=\\sqrt{1-z^2/\\lambda^2}.\n\\]\nFor \\(0<t\\leq1\\), the frozen three-arc and four-arc radical differences equal \\(D(2t-1)\\) and \\(D(t)\\), respectively, and their area and perimeter functions equal \\(A_3(t),P_3(t),A_4(t),P_4(t)\\), respectively.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:606-635`: The proof normalizes radicals and rewrites each frozen scalar formula; no geometric identity is assumed in this scalar identification.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dee7445c85542ef1b0ae33e2658325f6df23a74fbf06639fe17dbbbad41e7d8d",
+  "symbol_mismatches": []
+}

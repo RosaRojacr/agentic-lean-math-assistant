@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerAngle_pos",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\beta>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:165-167`: The strict upper shape bound implies a strictly positive principal inner angle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e78599ffc8793999ca239c142df39a815df5b9220a19bd2bd882d169b85658b5",
+  "symbol_mismatches": []
+}

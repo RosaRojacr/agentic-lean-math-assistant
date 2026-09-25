@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.sin_alpha_pos",
+  "domain_issues": [],
+  "informal_statement": "For every candidate,\n\\[\n\\sin\\alpha>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:95-98`: The acute positive exterior angle gives the strict sine positivity with no additional density premise.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b92e14d3743fcaa1d6c447d96c6334ba3f5f129152aa26ff47b97d6fd8de2e28",
+  "symbol_mismatches": []
+}

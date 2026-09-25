@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.S",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nS(z)=B(z)-zD(z).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:36-37`: The defining subtraction coincides. The derivative cancellation is used only in the interior calculus of the article.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eca01a5287b23fda232f56d07e08db5438afa4ad2b1cdad6f24ae23ee6cbb5f0",
+  "symbol_mismatches": []
+}

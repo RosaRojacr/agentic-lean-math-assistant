@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.A3_tendsto_atRight_zero",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\),\n\\[\nA_3(t)\\to+\\infty\n\\]\nas \\(t\\downarrow0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:667-678`: The proof transports the right-hand divergence by eventual equality; the author states the same one-sided infinite limit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "bbfeb34d411d80b4748ecb5317b26152556ee012a4c270e7d6f639c2f722c14a",
+  "symbol_mismatches": []
+}

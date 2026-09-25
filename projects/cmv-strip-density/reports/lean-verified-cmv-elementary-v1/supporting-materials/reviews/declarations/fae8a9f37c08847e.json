@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.measurableSet_euclidean_rightArcTrace",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean image of the right three-arc trace is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:737-741`: The same compact-image argument yields measurability of the Euclidean right trace.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "64197e0a340a1643ad8bc1525fe961f5b8792a0e7cb9321824fa2436e9d02bb4",
+  "symbol_mismatches": []
+}

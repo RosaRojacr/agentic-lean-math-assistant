@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanStripDensity",
+  "domain_issues": [],
+  "informal_statement": "Define the Euclidean density as the coordinate density composed with the inverse coordinate homeomorphism.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1389-1391`: The density on the Euclidean realization is the coordinate density composed with the inverse homeomorphism, preserving interface values.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3d074997fd7c2f4c47fc25c7e8a9a39259d6fd4628b103b9b3e4da77e1679848",
+  "symbol_mismatches": []
+}

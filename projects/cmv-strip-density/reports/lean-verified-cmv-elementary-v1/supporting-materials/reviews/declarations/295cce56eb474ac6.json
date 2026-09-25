@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.K",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda,h\\), define\n\\[\nK_h=\\{(x,y):-1\\leq y\\leq1,\\ |x|\\leq D(h)/h+\\sqrt{h^{-2}-y^2}\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:30-33`: The coordinate height bounds, absolute horizontal bound and total square-root formula coincide.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a10d4858e4823efb7ef74e910633b656d8f41250c171a018f71c6c9e83eb6efa",
+  "symbol_mismatches": []
+}

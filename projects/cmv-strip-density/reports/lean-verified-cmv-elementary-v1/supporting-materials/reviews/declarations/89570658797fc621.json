@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentEndpoint_edist",
+  "domain_issues": [],
+  "informal_statement": "The extended Euclidean distance between the realized endpoints of a horizontal segment equals its positive scalar length \\(L\\), embedded in the nonnegative extended reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:923-936`: The equal endpoint heights leave exactly the positive horizontal separation as extended Euclidean distance.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "667e4fe55a19b902ccd7cc29782bd67f737d862a1bddf625b46565ed0a83a1cd",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanStripDensity_integrableOn_of_measure_ne_top",
+  "domain_issues": [],
+  "informal_statement": "For any real \\(\\lambda\\) and Euclidean set \\(S\\) with\n\\[\n\\mathcal H^1(S)<\\infty,\n\\]\nthe Euclidean strip density is integrable over \\(S\\) against \\(\\mathcal H^1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1404-1411`: Finite Hausdorff measure and globally bounded measurable density give integrability for every real density parameter; no set-measurability premise is added.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "509b7e5c9b45ab61b5e958fce825f92bda813640616ddf5c7591ac420818c5d2",
+  "symbol_mismatches": []
+}

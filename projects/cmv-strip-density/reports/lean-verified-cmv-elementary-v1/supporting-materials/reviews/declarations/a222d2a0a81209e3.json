@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.continuous_realizedLeftArcParam",
+  "domain_issues": [],
+  "informal_statement": "The realized left arc parametrization is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:690-699`: The realized left parametrization is continuous globally in its real parameter, not merely on the selected interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5aa13a8e0a54ece98427e269f77eefa81d89485ad9d1f32dde5c0e6f344ef9b4",
+  "symbol_mismatches": []
+}

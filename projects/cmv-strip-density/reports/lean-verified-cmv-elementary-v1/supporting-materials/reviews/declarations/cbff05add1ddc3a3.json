@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentParam",
+  "domain_issues": [],
+  "informal_statement": "For a segment with midpoint \\((m,b)\\), define the parametrization\n\\[\ns\\mapsto(m+s,b).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1395-1397`: The affine parametrization is horizontal displacement from the midpoint at fixed base height.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ba8ed6bbc5cd19b9c405036bea7c221ae24e5c76ea0f6ef5cc2d62c327ae1dc5",
+  "symbol_mismatches": []
+}

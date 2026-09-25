@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCoreComplexIsometryMap",
+  "domain_issues": [],
+  "informal_statement": "Define the complex-to-Euclidean map\n\\[\nz\\mapsto(x_{\\mathrm{R}}+\\operatorname{Re}z,\\operatorname{Im}z)\n\\]\nfor a strip core.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:681-684`: The map uses right-center translation with the positive real coordinate, exactly as defined.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "24206b125ec8e6de86a054126e34b32568c5cb9c365728de42d394ff9cc0ede6",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,32 @@
+/* Main-proof typography follows the supplied eight-page mathematical note. */
+@font-face {
+  font-family: "CMV Computer Modern";
+  src: url("cmr10.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  /* The legacy font's non-ASCII cmap is not Unicode; use STIX for those glyphs. */
+  unicode-range: U+0020-007E;
+}
+@page {
+  size: A4;
+  margin: 25mm 30mm 23mm;
+  @bottom-center { content: counter(page); font: 10pt "CMV Computer Modern", serif; }
+}
+:root { font-family: "CMV Computer Modern", "STIX Two Text", serif; color: #111; }
+body { max-width: none; font-size: 12pt; line-height: 1.2; hyphens: auto; }
+h1 { font-size: 14pt; font-weight: 700; line-height: 1.2; text-transform: uppercase; letter-spacing: 0; margin: 0 0 1.2em; }
+h2 { text-align: center; font-size: 12pt; font-variant: small-caps; font-weight: 400; margin: 1.4em 0 .65em; }
+h3 { font-size: 12pt; font-weight: 700; margin: 1em 0 .4em; }
+p { margin: 0 0 .45em; text-align: justify; widows: 3; orphans: 3; }
+p + p { text-indent: 1.2em; }
+.theorem { margin: .8em 0; padding: 0; border: 0; background: none; font-style: italic; }
+.theorem strong { font-style: normal; }
+.proof-credit { font-size: 9pt; line-height: 1.25; margin: 0 auto 1.5em; color: #333; }
+.proof-credit p { text-align: center; text-indent: 0; }
+.lean-references { padding: .4em 0; margin: .5em 0 .8em; border: 0; background: none; font-size: 8pt; line-height: 1.25; }
+.lean-references p { text-indent: 0; }
+math { font-family: "STIX Two Math", serif; line-height: 1.15; }
+math[display="block"] { margin: .65em auto; }
+ol, ul { margin-top: .35em; margin-bottom: .5em; }
+li { margin-bottom: .15em; }
+.bibliography { font-size: 10pt; line-height: 1.2; }

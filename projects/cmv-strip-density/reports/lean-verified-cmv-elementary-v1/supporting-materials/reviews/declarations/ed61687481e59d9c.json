@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.upperChordTrace",
+  "domain_issues": [],
+  "informal_statement": "The upper core chord is\n\\[\n\\{(x,1):|x|\\leq L/2\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:771-773`: The upper chord trace is the full closed chord on the upper interface, before assembly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "71db3f396f38ac0c4ed32b75273f08b0092359d4c0fdd7bc77976000e7791fb0",
+  "symbol_mismatches": []
+}

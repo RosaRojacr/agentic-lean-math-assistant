@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.hasDerivAt_S",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(-1<z<1\\), \\(S\\) has derivative\n\\[\n-2D(z)\n\\]\nat \\(z\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:432-445`: The product-rule cancellation yields the stated derivative under the same strict density and interior argument hypotheses.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6a00be6e98e39b229cb8434cdcde52aad95e9edad573a64b0f990aa6ffc1e07b",
+  "symbol_mismatches": []
+}

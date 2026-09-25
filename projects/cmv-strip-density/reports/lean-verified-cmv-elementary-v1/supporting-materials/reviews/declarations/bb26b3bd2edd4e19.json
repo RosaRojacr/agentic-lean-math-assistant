@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.FourArcRealization",
+  "domain_issues": [],
+  "informal_statement": "There is a four-arc candidate with curvature \\(h\\), angle\n\\[\n\\arccos(h/\\lambda),\n\\]\ndensity jump\n\\[\n\\lambda>1,\n\\]\nand incidence\n\\[\n\\lambda\\cos\\alpha=h,\n\\]\nwhose assembled coordinate set equals \\(C_h\\). The region satisfies all stated regularity properties and\n\\[\nA_\\lambda(C_h)=A_4(h),\n\\]\n\n\\[\nP_\\lambda(C_h)=P_4(h).\n\\]\nFor\n\\[\ny=\\pm1,\n\\]\npoints with\n\\[\n|x|<\\sin(\\arccos(h/\\lambda))/h\n\\]\nare interior to \\(C_h\\). The reflected cap is contained in\n\\[\ny\\leq-1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:80-96`: The existential candidate bridge, physical incidence, all regularity and integral fields, both strict chord interiors and reflected-cap location are preserved.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b4e3701b509f6d802066e8cb6919211e45a8c1e2c32ad1ab317a1b5e812217d1",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripDensity",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(\\lambda\\), define\n\\[\nf_\\lambda(x,y)=1\n\\]\nwhen \\(|y|\\leq1\\), and\n\\[\nf_\\lambda(x,y)=\\lambda\n\\]\notherwise.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:43-54`: The piecewise definition includes both interfaces in the density-one branch and permits arbitrary real density parameters.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "51e629a8115629e4652f417b9dcfc46beea6a584d8ebcb351e746df181f97ab1",
+  "symbol_mismatches": []
+}

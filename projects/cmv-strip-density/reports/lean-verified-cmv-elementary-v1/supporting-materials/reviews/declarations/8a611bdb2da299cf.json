@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideCap_euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The auxiliary side-cap area is\n\\[\nR^2(\\phi-\\sin\\phi\\cos\\phi).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:833-850`: The auxiliary cap's scalar area has the standard radius-squared segment formula at the supplementary angle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6b94a03ab653ee46e011e7fa757125fdbdfe26f1473cd6911d9100fe92583e4",
+  "symbol_mismatches": []
+}

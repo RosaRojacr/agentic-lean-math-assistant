@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "The candidate weighted perimeter is the common competitor perimeter accessor applied to its region.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:79-83`: Unfolding the accessor gives the canonical complete-frontier integral, not the auxiliary assembly measure definition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d649676f2fd717389a6e9a17a385fe854bc399e17ecfdad24bd8a7bcc9a36521",
+  "symbol_mismatches": []
+}

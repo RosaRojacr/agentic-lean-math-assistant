@@ -1,0 +1,17 @@
+#!/mnt/games/Math_Project/LeanExperiment/.venv/bin/python
+"""Add the retained professor-style stylesheet to MainProof only."""
+import os
+import sys
+from pathlib import Path
+
+PANDOC = "/mnt/games/Anaconda/anaconda3/bin/pandoc"
+args = sys.argv[1:]
+for argument in args:
+    source = Path(argument)
+    if source.name == "MainProof.md" and source.is_file():
+        retained_style = source.parent.parent / "references" / "professor-style.css"
+        if not retained_style.is_file():
+            raise SystemExit("The package must retain professor-style.css before rendering")
+        args.append("--css=" + str(retained_style.resolve()))
+        break
+os.execv(PANDOC, [PANDOC, *args])

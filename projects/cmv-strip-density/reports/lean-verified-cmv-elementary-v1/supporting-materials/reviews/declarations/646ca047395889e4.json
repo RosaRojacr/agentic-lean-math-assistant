@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.weightedPerimeter_formula",
+  "domain_issues": [],
+  "informal_statement": "For any real \\(\\lambda\\), the auxiliary assembly perimeter equals the core exposed-arc length plus \\(\\lambda\\) times the sum of the two exterior arc lengths.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2603-2624`: The assertion evaluates the auxiliary arc-measure perimeter, weighting both cap lengths and leaving core arcs at density one.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "43ff4cdbd6774032399c0e7d7f5767a18500986a522e0ace1e470e2035290acd",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "Define the modeled perimeter as the auxiliary side-cap arc length plus \\(\\lambda\\) times the outer-cap arc length plus \\(2b\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:285-288`: The modeled perimeter includes both strip arcs through the auxiliary cap length, the weighted outer arc and the full bottom chord.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "76198be6eb5b8790a4af34449bf29c4b963314e1e4bd268b4d3c9cdb2e69ea0d",
+  "symbol_mismatches": []
+}

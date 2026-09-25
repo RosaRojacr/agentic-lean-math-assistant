@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.scalarWeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "Define the scalar perimeter\n\\[\n2(T+\\delta)/h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:300-302`: The scalar perimeter retains the factor two, the angle-plus-gap numerator and the first-power curvature denominator.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fcbac6602a2b133a8e714c37e1ef51bfb698ab0ae754dcd7eca0cb6e9c49204d",
+  "symbol_mismatches": []
+}

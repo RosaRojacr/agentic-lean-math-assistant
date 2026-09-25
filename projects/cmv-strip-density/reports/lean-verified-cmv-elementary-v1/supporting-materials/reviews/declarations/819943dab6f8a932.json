@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "Define the scalar cap area as\n\\[\nL^2a(\\theta),\n\\]\nwhere\n\\[\na(\\theta)=(\\theta-\\sin\\theta\\cos\\theta)/(4\\sin^2\\theta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:164-166`: The definition is a scalar normalized area; equality with carrier volume is correctly deferred to the volume theorem.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5c476b88f35c9e9f6afcf55ed7ed9ef6be1395a7b5a3003452ff8691443c49da",
+  "symbol_mismatches": []
+}

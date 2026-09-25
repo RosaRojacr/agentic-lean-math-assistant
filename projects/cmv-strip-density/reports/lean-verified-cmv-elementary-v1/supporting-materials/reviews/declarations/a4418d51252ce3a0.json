@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.sqrt_normalization",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>0\\) and every real \\(z\\),\n\\[\n\\sqrt{\\lambda^2-z^2}/\\lambda=\\sqrt{1-z^2/\\lambda^2}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:165-170`: The formal hypothesis is positive density, not density exceeding one; the author preserves validity for every real argument.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4eb056d0891d93b9a10938ae816157b2fdb95e7a6c30ea9942c36548da144840",
+  "symbol_mismatches": []
+}

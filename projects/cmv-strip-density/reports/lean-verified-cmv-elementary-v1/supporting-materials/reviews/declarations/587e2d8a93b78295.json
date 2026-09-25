@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.fourCandidate_snell",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<h\\leq1\\), the constructed candidate satisfies the density jump and incidence relation\n\\[\n\\lambda\\cos\\alpha=h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:380-389`: Both density jump and incidence are established for the constructed candidate by the valid cosine-of-inverse-cosine identity.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d7b2da8df52c4eb799f1fd88604ac20c38b7b681ea3f936138fce2ab8263e2ba",
+  "symbol_mismatches": []
+}

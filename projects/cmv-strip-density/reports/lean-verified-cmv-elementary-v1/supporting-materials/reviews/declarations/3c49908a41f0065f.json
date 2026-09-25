@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "measurable_stripDensity",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), the strip density is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1234-1240`: The closed-strip branch set is measurable and both density branches are constants for every real parameter.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6fc908d8bba478440a5c35f7c75a94366dc691bdf7d2125848e2a8f512284af",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_upper_weightedArea",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda\\) and an upper cap based on\n\\[\ny=1,\n\\]\nits weighted area equals \\(\\lambda\\) times its Euclidean area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2334-2359`: Upper orientation and base at the upper interface are retained; only the planar-null chord has the other density value.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2f2165b544886739ec40b854c29666e67f06c7a423bd046c04eb224a5c6ee0ce",
+  "symbol_mismatches": []
+}

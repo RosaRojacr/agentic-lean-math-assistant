@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.four_arcs_common_radius",
+  "domain_issues": [],
+  "informal_statement": "For every candidate, both exterior cap radii equal the strip-core radius\n\\[\n1/h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:167-181`: Both exterior radii equal the core radius from the chord construction alone; the author correctly avoids adding a density or Snell assumption.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cb52732d26d7e21d171f55b06767618effe21e04fd18d38de3625ce3799422be",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.support_identity",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda\\) and \\(h\\ne0\\),\n\\[\nh\\{[P_4(h)-hA_4(h)]-[P_3(h)-hA_3(h)]\\}=J(h).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:574-579`: The formal algebraic identity needs only nonzero curvature, and the author preserves unrestricted real density.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4e41e8ef0decdc9764529d7bbbd6d571c686395fbef0c4920da247dc563a9bed",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.C",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nC_h=K_h\\cup H_h\\cup\\sigma(H_h).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:39-41`: The formal union includes the literal core, upper cap and its reflected image; no measure-based surrogate replaces the carrier.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dac24abe77e8fbb5c839aa4c94d56e4b1ad024651bcedbea970677ac66fb909e",
+  "symbol_mismatches": []
+}

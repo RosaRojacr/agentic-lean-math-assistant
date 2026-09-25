@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capChord",
+  "domain_issues": [],
+  "informal_statement": "Define the exterior chord length\n\\[\nL=2\\sin\\alpha/h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:42-44`: The candidate chord formula has the factor two and positive curvature denominator needed for the common radius.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c09aa141e8bbabbe7279bce2473dd47aa931f875442fe1fc79d759685536fb1e",
+  "symbol_mismatches": []
+}

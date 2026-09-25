@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerAngle_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n\\alpha<\\pi.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:174-177`: The strict outer-argument lower bound excludes a full-circle cap traversal with coincident endpoints.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ce135b6a3dc191fb33efd487aab9da31365b8ec038647a624b62a436ba911d34",
+  "symbol_mismatches": []
+}

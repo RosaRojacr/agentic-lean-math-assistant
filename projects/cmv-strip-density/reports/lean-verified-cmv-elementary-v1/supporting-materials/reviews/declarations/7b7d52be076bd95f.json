@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.three_arc_variational_hasDerivAt",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<t<1\\), \\(A_3\\) is differentiable at \\(t\\), and \\(P_3\\) has derivative\n\\[\ntA_3'(t)\n\\]\nthere.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:657-666`: Existence of the area derivative and the perimeter derivative identity are both retained on the open unit interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3fff307dbffe97d952d3fb947b083b8ae73f0b09e0a5cf42f65cc1bf735c4d5f",
+  "symbol_mismatches": []
+}

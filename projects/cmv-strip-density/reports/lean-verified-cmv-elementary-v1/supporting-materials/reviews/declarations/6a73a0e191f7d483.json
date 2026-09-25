@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.offset_section",
+  "domain_issues": [],
+  "informal_statement": "Let real \\(x,b,c,s\\) satisfy \\(s\\geq0\\),\n\\[\nb\\leq c,\n\\]\n\\(c\\geq0\\), and\n\\[\nc\\leq b+\\sqrt{s}.\n\\]\nThen\n\\[\n|x|\\leq b+\\sqrt{s}\n\\]\nis equivalent to\n\\[\n-c\\leq x\\leq c,\n\\]\nor\n\\[\n(x+b)^2\\leq s\n\\]\nwith\n\\[\nx\\leq-c,\n\\]\nor\n\\[\n(x-b)^2\\leq s\n\\]\nwith\n\\[\nx\\geq c.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:515-538`: All four section hypotheses and both disk-side cutoffs are retained, including a possibly negative offset parameter.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0f3ecd491b72066b337a40630ff772b2174b32379dec94670d56b28857d29ea3",
+  "symbol_mismatches": []
+}

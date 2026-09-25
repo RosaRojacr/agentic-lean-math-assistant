@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.carrier_y_bounds",
+  "domain_issues": [],
+  "informal_statement": "Every point of a strip-core carrier satisfies \\(|y|\\leq1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:482-490`: All three carrier components explicitly impose the closed strip-height condition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "dfd3510aaac02f0e3230984bb1d2516c15f954b7d416fa7e30c71ad44efa3ab8",
+  "symbol_mismatches": []
+}

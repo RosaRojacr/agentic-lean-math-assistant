@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sideAngle",
+  "domain_issues": [],
+  "informal_statement": "Define the strip-core side half-angle\n\\[\n\\beta=\\arcsin k.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:429-430`: The principal arcsine defines the side half-angle, with the correct closed upper angle endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4f6b6599037149db7ce42f881c45d0eb7f35fbc43f124df7507d6a83a6d6e15b",
+  "symbol_mismatches": []
+}

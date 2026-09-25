@@ -1,0 +1,319 @@
+{
+  "axiom_reports": [
+    {
+      "axioms": [
+        "Quot.sound",
+        "Classical.choice",
+        "propext"
+      ],
+      "declaration": "CMVElementary.geometric_comparison"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "CMVElementary.scalar_comparison"
+    },
+    {
+      "axioms": [
+        "Quot.sound",
+        "Classical.choice",
+        "propext"
+      ],
+      "declaration": "CMVElementary.elementary_route"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "CMVElementary.geometric_realization"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+        "build"
+      ],
+      "duration_seconds": 2.282,
+      "exit_code": 0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "ebe35de4872bd6034ff0959f6e4637e42941231aea3cf004e3f8b583782b5643"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": false,
+        "runtime_max_seconds": 3595,
+        "tasks_max": 256,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": "lake-manifest.json",
+              "sha256": "8808f400512c844e59326c780e75b7017e1cb14f6030b8d392cf3e0a27dbf54b",
+              "size": 3167
+            },
+            {
+              "path": "lakefile.toml",
+              "sha256": "bff6210daa554176132d96750d40846706dd121c0013c7d111f24c390be6f5db",
+              "size": 538
+            },
+            {
+              "path": "lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+            "resolved_path": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+            "sha256": "e6577d8a7e294867d0722f5e5683cdf1e6cc10a24b3b86778f055fb34f1938da",
+            "size": 995
+          }
+        },
+        "unit": "campaign-535951-86953c4142e7.service"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_truncated": false,
+      "stdout": "ℹ [2157/2297] Replayed GreatestLevelRoot\ninfo: GreatestLevelRoot.lean:103:0: 'CMVElementary.exists_greatest_level_root' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: GreatestLevelRoot.lean:104:0: 'CMVElementary.strict_support_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: GreatestLevelRoot.lean:105:0: 'CMVElementary.exists_equal_area_strict_support_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]\n⚠ [2213/2297] Replayed CMVElementary\nwarning: CMVElementary.lean:391:1: 'theorem D_even (lam z : ℝ) : D lam (-z) = D lam z := by\n  simp [D]' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:394:1: 'theorem D_nonneg {lam : ℝ} (hlam : 1 < lam) (z : ℝ) : 0 ≤ D lam z :=\n  by\n  unfold D\n  apply sub_nonneg.mpr\n  apply Real.sqrt_le_sqrt\n  have hsq : 1 ≤ lam ^ 2 := by nlinarith\n  have hd : z ^ 2 / lam ^ 2 ≤ z ^ 2 := div_le_self (sq_nonneg z) hsq\n  linarith' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:410:1: 'theorem S_reflection (lam z : ℝ) : S lam (-z) = lam * Real.pi - S lam z :=\n  by\n  simp only [S, B, neg_div, Real.arccos_neg, Real.arcsin_neg, D_even]\n  ring' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:414:1: 'theorem hasDerivAt_B {lam z : ℝ} (hlam : 1 < lam) (hz : z ∈ Ioo (-1) 1) :\n    HasDerivAt (B lam) (1 / Real.sqrt (1 - z ^ 2) - lam / Real.sqrt (lam ^ 2 - z ^ 2)) z :=\n  by\n  have hl : 0 < lam := by linarith\n  have hrlo : -1 < z / lam := (lt_div_iff₀ hl).mpr (by linarith [hz.1])\n  have hrhi : z / lam < 1 := (div_lt_one hl).mpr (by linarith [hz.2])\n  have hs : Real.sqrt (1 - (z / lam) ^ 2) = Real.sqrt (lam ^ 2 - z ^ 2) / lam := by\n    simpa only [div_pow] using (DerivativePilot.sqrt_normalization hl z).symm\n  have ho := (DerivativePilot.radical_denominators hlam hz).2.1\n  have hc := (Real.hasDerivAt_arccos (ne_of_gt hrlo) (ne_of_lt hrhi)).comp z ((hasDerivAt_id z).div_const lam)\n  have ha := Real.hasDerivAt_arcsin (ne_of_gt hz.1) (ne_of_lt hz.2)\n  simpa only [B, Function.comp_def, id_eq] using!\n    ((hc.const_mul lam).add ha).congr_deriv\n      (by\n        rw [hs]\n        field_simp [ne_of_gt hl, ne_of_gt (Real.sqrt_pos.mpr ho)]\n        ring)' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:437:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`\nwarning: CMVElementary.lean:432:1: 'theorem hasDerivAt_S {lam z : ℝ} (hlam : 1 < lam) (hz : z ∈ Ioo (-1) 1) : HasDerivAt (S lam) (-2 * D lam z) z :=\n  by\n  have hl : 0 < lam := by linarith\n  obtain ⟨hi, ho, hsi, hso⟩ := DerivativePilot.radical_denominators hlam hz\n  have hsout : Real.sqrt (lam ^ 2 - z ^ 2) ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr ho)\n  have hraw := (hasDerivAt_B hlam hz).sub ((hasDerivAt_id z).mul (DerivativePilot.hasDerivAt_D hlam hz))\n  simpa only [S] using!\n    hraw.congr_deriv\n      (by\n        simp only [id_eq, one_mul]\n        rw [DerivativePilot.D_normalization hl]\n        dsimp\n        field_simp [ne_of_gt hl, ne_of_gt hsi, hsout]\n        nlinarith [Real.sq_sqrt hi.le,\n          Real.sq_sqrt ho.le])' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:456:1: 'theorem J_continuous (lam : ℝ) : Continuous (J lam) :=\n  by\n  unfold J S B D\n  fun_prop' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:460:1: 'theorem J_one (lam : ℝ) : J lam 1 = gamma lam :=\n  by\n  norm_num [J, S, B, D, gamma, zpow_neg]\n  ring' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:464:1: 'theorem hasDerivAt_J {lam u : ℝ} (hlam : 1 < lam) (hu : u ∈ Ioo 0 1) : HasDerivAt (J lam) (jprime lam u) u :=\n  by\n  have hq : 2 * u - 1 ∈ Ioo (-1) 1 := ⟨by linarith [hu.1], by linarith [hu.2]⟩\n  have hu' : u ∈ Ioo (-1) 1 := ⟨by linarith [hu.1], hu.2⟩\n  have ha : HasDerivAt (fun x : ℝ => 2 * x - 1) 2 u := by simpa using ((hasDerivAt_id u).const_mul 2).sub_const 1\n  simpa only [J, Function.comp_def] using!\n    ((((hasDerivAt_S hlam hu').const_mul 2).sub ((hasDerivAt_S hlam hq).comp u ha)).sub_const (Real.pi / 2)).congr_deriv\n      (by unfold jprime; ring)' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:474:1: 'theorem D_abs (lam z : ℝ) : D lam |z| = D lam z :=\n  by\n  rcases le_or_gt 0 z with hz | hz\n  · rw [abs_of_nonneg hz]\n  · rw [abs_of_neg hz, D_even]' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:479:1: 'theorem jprime_pos {lam u : ℝ} (hlam : 1 < lam) (hu : u ∈ Ioo 0 (1 / 3)) : 0 < jprime lam u :=\n  by\n  have hdu : u ∈ Icc (0 : ℝ) 1 := ⟨hu.1.le, by linarith [hu.2]⟩\n  have hdr : 1 - 2 * u ∈ Icc (0 : ℝ) 1 := ⟨by linarith [hu.2], by linarith [hu.1]⟩\n  have hd := D_strictMono hlam hdu hdr (by linarith [hu.2] : u < 1 - 2 * u)\n  unfold jprime\n  rw [show 2 * u - 1 = -(1 - 2 * u) by ring, D_even]\n  linarith' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:488:1: 'theorem jprime_third (lam : ℝ) : jprime lam (1 / 3) = 0 :=\n  by\n  unfold jprime\n  rw [show (2 * (1 / 3) - 1 : ℝ) = -(1 / 3) by norm_num, D_even]\n  ring' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:493:1: 'theorem jprime_neg {lam u : ℝ} (hlam : 1 < lam) (hu : u ∈ Ioo (1 / 3) 1) : jprime lam u < 0 :=\n  by\n  have hu0 : 0 ≤ u := by linarith [hu.1]\n  have ha : |2 * u - 1| < u := abs_lt.mpr ⟨by linarith [hu.1], by linarith [hu.2]⟩\n  have hd := D_strictMono hlam ⟨abs_nonneg _, ha.le.trans hu.2.le⟩ ⟨hu0, hu.2.le⟩ ha\n  rw [D_abs] at hd\n  unfold jprime\n  linarith' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:502:1: 'theorem H_ge_J {lam u : ℝ} (hlam : 1 < lam) (hu : u ∈ Icc (1 / 3) 1) : J lam u ≤ H lam u :=\n  by\n  have hu0 : 0 ≤ u := by linarith [hu.1]\n  have ha : |2 * u - 1| ≤ u := abs_le.mpr ⟨by linarith [hu.1], by linarith [hu.2]⟩\n  have hd := (D_strictMono hlam).monotoneOn ⟨abs_nonneg _, ha.trans hu.2⟩ ⟨hu0, hu.2⟩ ha\n  rw [D_abs] at hd\n  have hj : jprime lam u ≤ 0 := by unfold jprime; linarith\n  unfold H\n  nlinarith [mul_nonpos_of_nonneg_of_nonpos hu0\n      hj]' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:574:1: 'theorem support_identity {lam h : ℝ} (hh : h ≠ 0) :\n    h * ((P4 lam h - h * A4 lam h) - (P3 lam h - h * A3 lam h)) = J lam h :=\n  by\n  unfold P4 A4 P3 A3 J S\n  field_simp [hh]\n  ring' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementary.lean:580:1: 'theorem area_identity {lam h : ℝ} (hh : h ≠ 0) : h ^ 2 * (A4 lam h - A3 lam h) = J lam h - h * jprime lam h :=\n  by\n  unfold A4 A3 J S jprime\n  field_simp [hh]\n  ring' starts on column 1, but all commands should start at the beginning of the line.\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\n⚠ [8701/8706] Replayed CMVGeometry\nwarning: CMVGeometry.lean:694:17: This simp argument is unused:\n  OneSidedCircularCap.carrier\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hside]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:694:46: This simp argument is unused:\n  hside\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [OneSidedCircularCap.carrier]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:690:10: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.\n  hp\nPlease focus on the current goal, for instance using `·` (typed as \"\\.\").\n\nNote: This linter can be disabled with `set_option linter.style.multiGoal false`\nwarning: CMVGeometry.lean:690:2: The following tactic starts with 2 goals and ends with 2 goals, 1 of which is not operated on.\n  intro p hp\nPlease focus on the current goal, for instance using `·` (typed as \"\\.\").\n\nNote: This linter can be disabled with `set_option linter.style.multiGoal false`\nwarning: CMVGeometry.lean:691:2: The following tactic starts with 2 goals and ends with 1 goal, 1 of which is not operated on.\n  exact\n    ⟨hp.1.le, by\n      cases hside : c.side <;> simp only [OneSidedCircularCap.interiorCarrier, hside] at hp <;>\n          simp only [OneSidedCircularCap.carrier, hside] <;>\n        linarith [hp.2]⟩\nPlease focus on the current goal, for instance using `·` (typed as \"\\.\").\n\nNote: This linter can be disabled with `set_option linter.style.multiGoal false`\nwarning: CMVGeometry.lean:1195:8: The `show` tactic should only be used to indicate intermediate goal states for readability.\nHowever, this tactic invocation changed the goal. Please use `change` instead for these purposes.\n\nNote: This linter can be disabled with `set_option linter.style.show false`\nwarning: CMVGeometry.lean:1290:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: CMVGeometry.lean:1556:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: CMVGeometry.lean:1586:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1586:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1596:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1596:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1605:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1605:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1615:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:1615:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:2065:33: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\nwarning: CMVGeometry.lean:3160:17: This simp argument is unused:\n  OneSidedCircularCap.arcTrace\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [upperCap] at this\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: CMVGeometry.lean:3220:17: This simp argument is unused:\n  OneSidedCircularCap.arcTrace\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [lowerCap] at this\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n⚠ [8702/8706] Replayed FrontierPerimeter\nwarning: FrontierPerimeter.lean:149:2: Try this: \n  letI̵\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nwarning: FrontierPerimeter.lean:305:55: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: FrontierPerimeter.lean:323:43: Variable name `hr` is not explicitly referenced.\n\nHint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:\n  [apply] _hr\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: FrontierPerimeter.lean:528:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [leftCoreParam, Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:528:42: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [leftCoreParam, Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:536:32: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [leftCoreParam]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:608:33: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [rightCoreParam, Prod.snd]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:608:43: This simp argument is unused:\n  Prod.snd\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [rightCoreParam, Prod.fst]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: FrontierPerimeter.lean:616:33: This simp argument is unused:\n  Prod.fst\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [rightCoreParam]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\ninfo: FrontierPerimeter.lean:2026:0: 'fourArc_frontier_weightedPerimeter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2027:0: 'replacement_frontier_weightedPerimeter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2028:0: 'exact_euclidean_capParam_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2029:0: 'capParam_image_Icc_eq_arcTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2030:0: 'exact_euclidean_capTrace_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2031:0: 'leftCoreParam_image_Icc' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2032:0: 'rightCoreParam_image_Icc' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2033:0: 'exact_euclidean_leftArcTrace_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2034:0: 'exact_euclidean_rightArcTrace_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2035:0: 'segmentParam_image_Icc' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2036:0: 'realizedSegmentParam_image_affineSegment' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2037:0: 'exact_euclidean_segmentCarrier_hausdorffMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2038:0: 'measurableSet_euclidean_leftArcTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2039:0: 'measurableSet_euclidean_rightArcTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2040:0: 'measurableSet_euclidean_segmentCarrier' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2041:0: 'measurableSet_euclidean_capTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2042:0: 'fourArc_pairwiseOverlap_subset_joinSet' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2043:0: 'replacement_pairwiseOverlap_subset_joinSet' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2044:0: 'fourArc_pairwiseOverlap_h1_null' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2045:0: 'replacement_pairwiseOverlap_h1_null' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2046:0: 'fourArc_euclidean_frontier' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2047:0: 'replacement_euclidean_frontier' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2048:0: 'replacement_euclidean_upper_interface' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2049:0: 'replacement_euclidean_strictUpperChord_subset_interior' depends on axioms: [propext, Classical.choice, Quot.sound]\ninfo: FrontierPerimeter.lean:2050:0: 'replacement_euclidean_exposedLowerChord_subset_frontier' depends on axioms: [propext, Classical.choice, Quot.sound]\n⚠ [8704/8706] Replayed TypeThreeAssembly\ninfo: TypeThreeAssembly.lean:437:2: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nwarning: TypeThreeAssembly.lean:1471:32: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead\nwarning: TypeThreeAssembly.lean:1891:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: TypeThreeAssembly.lean:1960:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n⚠ [8705/8706] Replayed CMVElementaryGeometry\nwarning: CMVElementaryGeometry.lean:422:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`\nwarning: CMVElementaryGeometry.lean:429:35: missing space in the source\n\nThis part of the code\n  '|p.1-c.midpointX|'\nshould be written as\n  '|p.1 - c.midpointX|'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementaryGeometry.lean:429:58: missing space in the source\n\nThis part of the code\n  'c.chord/2) :'\nshould be written as\n  'c.chord / 2)'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementaryGeometry.lean:554:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`\nwarning: CMVElementaryGeometry.lean:684:100: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`\nwarning: CMVElementaryGeometry.lean:690:45: missing space in the source\n\nThis part of the code\n  'a.core.chord/2) :'\nshould be written as\n  'a.core.chord / 2)'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nwarning: CMVElementaryGeometry.lean:705:46: missing space in the source\n\nThis part of the code\n  'a.core.chord/2) :'\nshould be written as\n  'a.core.chord / 2)'\n\n\nNote: This linter can be disabled with `set_option linter.style.whitespace false`\nBuild completed successfully (8706 jobs).\n",
+      "stdout_sha256": "f000af8223555f00542f9d217c36768370b08e78441f76a4dde1ede5e0493e10",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+        "env",
+        "which",
+        "lean"
+      ],
+      "duration_seconds": 0.53,
+      "exit_code": 0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "ebe35de4872bd6034ff0959f6e4637e42941231aea3cf004e3f8b583782b5643"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": false,
+        "runtime_max_seconds": 3593,
+        "tasks_max": 256,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": "lake-manifest.json",
+              "sha256": "8808f400512c844e59326c780e75b7017e1cb14f6030b8d392cf3e0a27dbf54b",
+              "size": 3167
+            },
+            {
+              "path": "lakefile.toml",
+              "sha256": "bff6210daa554176132d96750d40846706dd121c0013c7d111f24c390be6f5db",
+              "size": 538
+            },
+            {
+              "path": "lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+            "resolved_path": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+            "sha256": "e6577d8a7e294867d0722f5e5683cdf1e6cc10a24b3b86778f055fb34f1938da",
+            "size": 995
+          }
+        },
+        "unit": "campaign-535951-7720487e4602.service"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_truncated": false,
+      "stdout": "/home/rosa/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean\n",
+      "stdout_sha256": "03fdf364ebb7dba810376967c328bc73ca4684fd0f6d6e2ebea684ae8f0a7b08",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+        "env",
+        "lean",
+        "-R",
+        "/tmp/proof-builder-lean-audit-zgzowtbj",
+        "-o",
+        "_ProofBuilderContract_259bc5da2599b84454787001.olean",
+        "/tmp/proof-builder-lean-audit-zgzowtbj/_ProofBuilderContract_259bc5da2599b84454787001.lean"
+      ],
+      "duration_seconds": 4.792,
+      "exit_code": 0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "ebe35de4872bd6034ff0959f6e4637e42941231aea3cf004e3f8b583782b5643"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": false,
+        "runtime_max_seconds": 3593,
+        "tasks_max": 256,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": "lake-manifest.json",
+              "sha256": "8808f400512c844e59326c780e75b7017e1cb14f6030b8d392cf3e0a27dbf54b",
+              "size": 3167
+            },
+            {
+              "path": "lakefile.toml",
+              "sha256": "bff6210daa554176132d96750d40846706dd121c0013c7d111f24c390be6f5db",
+              "size": 538
+            },
+            {
+              "path": "lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+            "resolved_path": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/publication-inputs/lake-publication",
+            "sha256": "e6577d8a7e294867d0722f5e5683cdf1e6cc10a24b3b86778f055fb34f1938da",
+            "size": 995
+          }
+        },
+        "unit": "campaign-535951-e6e910fe9323.service"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_truncated": false,
+      "stdout": "'CMVElementary.geometric_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]\n'CMVElementary.scalar_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]\n'CMVElementary.elementary_route' depends on axioms: [propext, Classical.choice, Quot.sound]\n'CMVElementary.geometric_realization' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stdout_sha256": "ba162f56ac11fd468639fa463c5065b432a27ba0dd5326feec7193f14317dc8f",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "/home/rosa/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean",
+        "-R",
+        "/tmp/proof-builder-lean-audit-zgzowtbj",
+        "--run",
+        "/tmp/proof-builder-lean-audit-zgzowtbj/_ProofBuilderCertificateReader.lean",
+        "/tmp/proof-builder-lean-audit-zgzowtbj/_ProofBuilderContract_259bc5da2599b84454787001.olean",
+        "ProofBuilderAudit_259bc5da2599b84454787001",
+        "--",
+        "CMVElementary.geometric_comparison",
+        "CMVElementary.scalar_comparison",
+        "CMVElementary.elementary_route",
+        "CMVElementary.geometric_realization"
+      ],
+      "duration_seconds": 0.788,
+      "exit_code": 0,
+      "sandbox": {
+        "backend": "systemd-cgroup",
+        "cpu_quota_percent": 800,
+        "enabled": false,
+        "environment": {
+          "allowed": [
+            "HOME",
+            "LANG",
+            "LC_ALL",
+            "PATH",
+            "TZ",
+            "XDG_CONFIG_HOME"
+          ],
+          "secret": [],
+          "sha256": "190e4efeb8dc3d5246d2cca1f8b735246ea263cb7c5ffed7bbcc011519cdc3d2"
+        },
+        "file_size_max_mb": 1024,
+        "memory_max_mb": 8192,
+        "memory_swap_max_mb": 0,
+        "resource_failure_reporting": false,
+        "runtime_max_seconds": 3588,
+        "tasks_max": 256,
+        "toolchain": {
+          "dependency_manifests": [
+            {
+              "path": "lake-manifest.json",
+              "sha256": "8808f400512c844e59326c780e75b7017e1cb14f6030b8d392cf3e0a27dbf54b",
+              "size": 3167
+            },
+            {
+              "path": "lakefile.toml",
+              "sha256": "bff6210daa554176132d96750d40846706dd121c0013c7d111f24c390be6f5db",
+              "size": 538
+            },
+            {
+              "path": "lean-toolchain",
+              "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+              "size": 29
+            }
+          ],
+          "executable": {
+            "path": "/home/rosa/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean",
+            "resolved_path": "/home/rosa/.elan/toolchains/leanprover--lean4---v4.33.0-rc2/bin/lean",
+            "sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+            "size": 9024
+          }
+        },
+        "unit": "campaign-535951-f439146b18c2.service"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_truncated": false,
+      "stdout": "{\"axioms\":[\"Quot.sound\",\"Classical.choice\",\"propext\"],\"declaration\":\"CMVElementary.geometric_comparison\"}\n{\"axioms\":[\"propext\",\"Classical.choice\",\"Quot.sound\"],\"declaration\":\"CMVElementary.scalar_comparison\"}\n{\"axioms\":[\"Quot.sound\",\"Classical.choice\",\"propext\"],\"declaration\":\"CMVElementary.elementary_route\"}\n{\"axioms\":[\"propext\",\"Classical.choice\",\"Quot.sound\"],\"declaration\":\"CMVElementary.geometric_realization\"}\n",
+      "stdout_sha256": "3451719faf89e05ec14b0bd457f154b451af08077d48001ea201690b93d5b45c",
+      "stdout_truncated": false
+    }
+  ],
+  "contract_name": "root-contract.lean",
+  "contract_sha256": "99a40cd9e0db109f420235bbdfacc2e274de46d245528aacd2f5137fc4e476cb",
+  "deadline_expired": false,
+  "duration_seconds": 8.475,
+  "errors": [],
+  "rendered_contract_sha256": "99a40cd9e0db109f420235bbdfacc2e274de46d245528aacd2f5137fc4e476cb",
+  "schema_version": 2,
+  "source_issues": [],
+  "status": "passed",
+  "substitutions": {},
+  "timeout_seconds": 3600
+}

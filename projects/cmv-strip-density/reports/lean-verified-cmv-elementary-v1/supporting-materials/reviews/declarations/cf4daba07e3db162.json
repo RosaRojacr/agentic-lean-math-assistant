@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.isClosed_carrier",
+  "domain_issues": [],
+  "informal_statement": "Every cap carrier is closed.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:364-391`: The closed disk and closed half-plane conditions give a closed carrier for either orientation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d757ff8cbf988a97323a1f1c27dc667eab9b6475f2eb7d1c16beffa82e3009a4",
+  "symbol_mismatches": []
+}

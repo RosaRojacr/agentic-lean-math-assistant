@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_leftCoreParam_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean Hausdorff measure of the realized left core parameter image on \\([-R\\beta,R\\beta]\\) is\n\\[\n2R\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:745-772`: The formal difference of final and initial parameters is the stated twice-radius-side-angle length in the extended nonnegative reals.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0211c9e8b0941bc0bbeb3bd977afe28d78688025726aac98a4d738bf7f180e9",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pairwise_aedisjoint_of_overlap_null",
+  "domain_issues": [],
+  "informal_statement": "If the union of six pairwise intersections of four Euclidean sets has zero \\(\\mathcal H^1\\)-measure, then every pair of those sets is almost-everywhere disjoint for that measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1598-1616`: Nullity of the union implies nullity of each of its six intersections and hence the six almost-disjointness conclusions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4b46ea8bfc070cb38c17e38f03c2486a1eb119281a4706f7a55c5da843e21d49",
+  "symbol_mismatches": []
+}

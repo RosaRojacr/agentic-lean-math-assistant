@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentStart",
+  "domain_issues": [],
+  "informal_statement": "The initial parameter of a horizontal segment of length \\(L>0\\) is\n\\[\n-L/2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1398-1399`: The initial segment parameter is the negative half-length, exactly matching the left endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e90adf884523aab9d2e3af449adbc9d655d375051a612c0b4970a212a5dca61f",
+  "symbol_mismatches": []
+}

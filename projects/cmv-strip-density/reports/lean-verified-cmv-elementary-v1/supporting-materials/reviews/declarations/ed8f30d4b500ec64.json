@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.sine_gap",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(\\lambda,z\\),\n\\[\n\\sin(\\arccos(z/\\lambda))-\\sin(\\arccos z)=D_\\lambda(z).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:128-131`: The sine-of-inverse-cosine identity is unconditional for the total functions, and division squared matches the radical definition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "972dfd8e12f3ba528b4bc8054ce9f622e3d59c0d76ad543257c792688bb4e54e",
+  "symbol_mismatches": []
+}

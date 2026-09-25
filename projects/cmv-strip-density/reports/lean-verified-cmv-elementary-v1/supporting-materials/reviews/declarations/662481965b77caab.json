@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "euclideanJoinSet",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean junction set is the coordinate homeomorphism image of the planar junction set.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1257-1259`: The Euclidean junction set is exactly the homeomorphic image of the coordinate junction set.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "96d51d86f6c32a7f1c31ecb0290be17bec48e5d48a1aa38fdfbae4457025d389",
+  "symbol_mismatches": []
+}

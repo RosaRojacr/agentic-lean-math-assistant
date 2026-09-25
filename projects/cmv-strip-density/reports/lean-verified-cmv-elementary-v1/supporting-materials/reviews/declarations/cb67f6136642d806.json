@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.shapeParameter",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nq=2h-1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:50-52`: The affine shape definition agrees and belongs to the open inverse-cosine domain under the constructor bounds.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "29190b0ec0676db3ee8da889fc7b1e078bce75188f6b4271945e3fee045f2920",
+  "symbol_mismatches": []
+}

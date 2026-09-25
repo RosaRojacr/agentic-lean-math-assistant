@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.rightUpperJunction",
+  "domain_issues": [],
+  "informal_statement": "The point \\((b+R\\sin\\beta,1)\\) equals the outer cap's right endpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:958-968`: The reflected identity gives exact equality of the right attaching junctions.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ae6c6a14cc5b76c0f3aa60155a1fb16c629e4d67ae173c7593aa69c135bbff39",
+  "symbol_mismatches": []
+}

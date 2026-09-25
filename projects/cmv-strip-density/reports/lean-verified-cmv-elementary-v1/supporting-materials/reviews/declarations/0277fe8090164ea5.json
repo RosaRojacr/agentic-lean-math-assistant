@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.P3",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda,t\\), with \\(q=2t-1\\), define\n\\[\nP_3(t)=\\frac{2\\bigl(B(q)+\\pi/2+D(q)\\bigr)}{t}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:45-48`: The factor two, denominator, angle term and width correction agree, including the later bottom-segment interpretation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "cb5785ad3e43cf3da1bc0fe1a18a37ce203b8840e222dbdc84f4f9f0806b00b4",
+  "symbol_mismatches": []
+}

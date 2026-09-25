@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.modeledWeightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "The modeled weighted area equals\n\\[\n[T+(q+2)\\delta]/h^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:885-895`: The modeled area is algebraically identified with the scalar formula before the actual-integral bridge; the author preserves that distinction.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b0e70e8aeaefad1e18dbaff1d3d6364f544c6042f48ce97bebd3fa5c6cc8e74e",
+  "symbol_mismatches": []
+}

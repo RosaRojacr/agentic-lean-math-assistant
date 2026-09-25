@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.J_one",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\),\n\\[\nJ(1)=\\gamma_\\lambda.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:460-463`: The value at the right endpoint is exactly the same constant as at zero, with no density restriction.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b4fb08f5f0734c8c331c867147a539407df5ce79eda91cd380170130cdf58655",
+  "symbol_mismatches": []
+}

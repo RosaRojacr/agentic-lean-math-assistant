@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.carrier",
+  "domain_issues": [],
+  "informal_statement": "The cap carrier is its closed radius-\\(R\\) disk intersected with\n\\[\ny\\geq b\n\\]\nfor an upper cap, or\n\\[\ny\\leq b\n\\]\nfor a lower cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:146-152`: The closed disk and orientation-dependent closed half-plane conditions are both retained, including the chord.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e0644dd0b5f330958b79efbb3810eb1cc2f4356e5db251a95736b532b75bfcf1",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourDelta",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\n\\delta_4(h)=\\sqrt{\\lambda^2-h^2}/\\lambda-\\sqrt{1-h^2}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:57-60`: The first radical is normalized outside the square root; its positive-density identification with the article's function is stated separately.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a4c8b30971f59f8f04626dbddf49af92c98dbfa9126bf3766c0be8b6472cbfb3",
+  "symbol_mismatches": []
+}

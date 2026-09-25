@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.weightedPerimeter_components",
+  "domain_issues": [],
+  "informal_statement": "For every candidate, its canonical weighted perimeter equals its strip-core exposed-arc length plus\n\\[\n2\\lambda L\\ell(\\alpha).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:374-390`: The proof first invokes the canonical frontier bridge and then the auxiliary component formula, preserving the perimeter's geometric meaning.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d02953cec6a51d470b1b940fa2318bbd5c86354d0e420d179322c86356c9434a",
+  "symbol_mismatches": []
+}

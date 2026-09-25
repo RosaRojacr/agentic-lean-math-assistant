@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.beta",
+  "domain_issues": [],
+  "informal_statement": "Define the complementary angle\n\\[\n\\beta=\\pi/2-\\arcsin h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:39-41`: The complementary angle definition agrees and is distinguished from the core's arcsine side angle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f3520601e601026585d5024a59c3bee3be514d265897b65e66919a9d3ea7fd1e",
+  "symbol_mismatches": []
+}

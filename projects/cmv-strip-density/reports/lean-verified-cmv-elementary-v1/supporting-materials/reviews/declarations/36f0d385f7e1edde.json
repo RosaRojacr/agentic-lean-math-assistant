@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.capArea",
+  "domain_issues": [],
+  "informal_statement": "Define the area of one exterior cap as\n\\[\n(\\alpha-\\sin\\alpha\\cos\\alpha)/h^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:45-49`: The scalar cap area is the circular-segment expression divided by squared curvature, with the correct sine-cosine subtraction.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "eb6c25ab8d5e1e4d2ce589b98fc3af2d04e58bd682ad273d1b07834426ee23d0",
+  "symbol_mismatches": []
+}

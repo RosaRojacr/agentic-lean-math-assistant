@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "ReplacementAssembly.carrier",
+  "domain_issues": [],
+  "informal_statement": "The replacement carrier is the union of its strip core and upper cap.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:3305-3309`: The definition is only the union of the core and upper cap; no greatest-root or optimality claim is attached to it.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "36b80491dc0fecbf358d87c6bfe7194faf4bcad4ac91372874e8af60a30fd23e",
+  "symbol_mismatches": []
+}

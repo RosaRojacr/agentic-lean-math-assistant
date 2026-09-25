@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "area_pos",
+  "domain_issues": [],
+  "informal_statement": "For \\(0<\\theta<\\pi\\), the normalized segment area satisfies\n\\[\na(\\theta)>0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `MorgansArcFunction.lean:148-157`: The strict angle hypotheses make both the numerator and denominator positive, yielding the stated strict normalized area positivity.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0af41b50988d0bace92fc2e638571302802d8538245a2c254bedb9f164463ede",
+  "symbol_mismatches": []
+}

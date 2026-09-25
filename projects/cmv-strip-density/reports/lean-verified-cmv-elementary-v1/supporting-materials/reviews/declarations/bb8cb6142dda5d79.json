@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "joinSet",
+  "domain_issues": [],
+  "informal_statement": "For real \\(L\\), define the set\n\\[\n\\{(-L/2,1),(L/2,1),(-L/2,-1),(L/2,-1)\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1115-1117`: All four signed half-chord junction coordinates are retained, with no positivity restriction on the defining real parameter.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "613dcfda543c5255d80175237d7db38b3386ce55bc3215682252569ce26c42d5",
+  "symbol_mismatches": []
+}

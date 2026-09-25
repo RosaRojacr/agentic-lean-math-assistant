@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.weightedArea_formula",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\), the weighted area of a strip core equals its Euclidean scalar area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2315-2333`: The actual weighted integral is the core's Euclidean area because the entire carrier is in the closed density-one strip.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "22039501f3884648956188fd011ab629e4d948f733db9c19194b8b310134e20a",
+  "symbol_mismatches": []
+}

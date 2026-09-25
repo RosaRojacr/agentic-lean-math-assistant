@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.three_frontier_finite",
+  "domain_issues": [],
+  "informal_statement": "The canonical complete-frontier measure of every admissible three-arc assembly has finite total mass.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:325-344`: The proof derives finite canonical mass from the exact Euclidean frontier pieces, not from a modeled perimeter sum.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4ff646f8685352a1506b99597ef8d06abcc7865827dbb535b135a57304677708",
+  "symbol_mismatches": []
+}

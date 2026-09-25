@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "exact_euclidean_leftArcTrace_hausdorffMeasure",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean \\(\\mathcal H^1\\)-measure of the left exposed strip-core arc is\n\\[\n2R\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:821-827`: Substituting the exact left trace-image equality gives the same Hausdorff measure as the parameter image.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f6b756b038d2dd53ff9e214034534494d6216a6823376bb73c389a754a1ad0d9",
+  "symbol_mismatches": []
+}

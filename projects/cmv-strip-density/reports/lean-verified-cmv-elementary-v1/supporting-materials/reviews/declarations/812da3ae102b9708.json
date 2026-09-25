@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.B",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda,z\\), define\n\\[\nB_\\lambda(z)=\\lambda\\arccos(z/\\lambda)+\\arcsin z.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:30-32`: The definition retains both inverse-trigonometric terms and their density scaling; total real arguments are explicit.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5258c909f795e5bbd4f5ef3c79d0f8a12d32481ff10a7612a85a63a34f2572c3",
+  "symbol_mismatches": []
+}

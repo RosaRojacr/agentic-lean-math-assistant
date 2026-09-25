@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FinitePerimeterRegion",
+  "domain_issues": [],
+  "informal_statement": "A region datum consists of a measurable carrier \\(F\\), integrability of \\(f_\\lambda\\) over \\(F\\), and integrability of \\(f_\\lambda\\) against its canonical frontier measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:74-82`: The record contains a measurable carrier and the two integrability obligations, not an independent perimeter value or a general bounded-variation condition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2efb7176d17b946809f4cd07b78237ddd03cd4197c405c38d08e97342106a1a0",
+  "symbol_mismatches": []
+}

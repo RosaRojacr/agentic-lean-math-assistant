@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.hasDerivAt_J",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(0<u<1\\), \\(J\\) has derivative \\(j(u)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:464-473`: The derivative is the explicit continuous extension on the open unit interval; the affine chain-rule factor is correct.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6ea60c2da7853b72c8a574b92d5a4f302da93a6ae6fbe80e9bc57d4bda8e18c6",
+  "symbol_mismatches": []
+}

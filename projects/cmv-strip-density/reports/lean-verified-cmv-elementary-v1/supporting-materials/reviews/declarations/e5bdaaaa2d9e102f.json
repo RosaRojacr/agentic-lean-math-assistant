@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "LeanSuffixAnalytic.typeFourPerimeter",
+  "domain_issues": [],
+  "informal_statement": "Define the four-arc scalar perimeter\n\\[\n4B(h)/h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `LeanSuffixAnalytic.lean:65-70`: The normalized four-arc perimeter is definitionally the article's formula, requiring no radical identification.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ad0bebbd79c17351c0f12ce6a7fdae3e930dba33de0077415a6116df1d1e6e25",
+  "symbol_mismatches": []
+}

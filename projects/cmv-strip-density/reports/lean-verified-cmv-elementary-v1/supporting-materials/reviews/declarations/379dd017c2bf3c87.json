@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.deriv_D_neg",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\) and \\(-1<z<0\\),\n\\[\nD'(z)<0.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:222-227`: The negative argument interval is preserved, and multiplication by the positive coefficient yields the claimed negative derivative.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fd9ec3f8436fd5a4cbfa39412991f7fc77c1e1d9d9d6557a16b9878e3343ac1c",
+  "symbol_mismatches": []
+}

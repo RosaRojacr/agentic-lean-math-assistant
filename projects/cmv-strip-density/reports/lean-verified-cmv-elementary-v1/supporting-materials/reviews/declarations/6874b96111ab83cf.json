@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.SatisfiesCMVTypeIVHypotheses",
+  "domain_issues": [],
+  "informal_statement": "For a candidate, this assertion consists of\n\\[\n\\lambda>1\n\\]\nand\n\\[\n\\lambda\\cos\\alpha=h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:84-89`: The predicate contains exactly density contrast and the physical cosine incidence; both are stated explicitly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c09b9c7180b6131040333c0b3c2623f3c89af7f54fe8ab0b9f6a41be873ca0dc",
+  "symbol_mismatches": []
+}

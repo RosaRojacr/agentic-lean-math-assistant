@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "fourArc_frontier_weightedPerimeter_eq",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and four-arc assembly, its auxiliary parametrized weighted perimeter equals the density integral against the canonical complete-frontier measure of its carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1794-1844`: The proof unfolds the canonical frontier measure, transports the integral, decomposes the exact frontier and evaluates its arc integrals; it does not infer geometry from a scalar sum.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e95ee1864c7bc7d9bc3a3ec2659625a510c6cefccdafe0cd2efab0e2d93e1067",
+  "symbol_mismatches": []
+}

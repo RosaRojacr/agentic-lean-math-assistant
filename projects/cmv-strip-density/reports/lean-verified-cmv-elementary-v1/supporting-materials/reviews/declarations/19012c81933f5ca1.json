@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "continuous_realizedRightCoreParam",
+  "domain_issues": [],
+  "informal_statement": "The realized right core parametrization is continuous.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:736-744`: The right realized curve has the same continuity property under its explicit trigonometric definition.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "db06971d2e0a6e54b3ce1b2cb1ffe296cb5ed7ac07495118f10c8f5f82bfe132",
+  "symbol_mismatches": []
+}

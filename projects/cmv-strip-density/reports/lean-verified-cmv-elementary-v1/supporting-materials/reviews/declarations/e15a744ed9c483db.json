@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.coreCarrier_y_bounds",
+  "domain_issues": [],
+  "informal_statement": "Every point of the three-arc core satisfies \\(|y|\\leq1\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:1447-1455`: Every core component imposes both strip height bounds, so the absolute-value conclusion is exact.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a0a8c181bd45290d862033f8524f84e76d590a21a370fbbc0214aab783d9df85",
+  "symbol_mismatches": []
+}

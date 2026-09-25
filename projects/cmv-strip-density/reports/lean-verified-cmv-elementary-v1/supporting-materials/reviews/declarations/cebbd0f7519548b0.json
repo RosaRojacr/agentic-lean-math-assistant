@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_left",
+  "domain_issues": [],
+  "informal_statement": "The parametrized point at\n\\[\nt=-\\theta\n\\]\nequals the left chord endpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:228-232`: The negative-angle parameter gives the left endpoint in either orientation by odd sine and even cosine.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4e22ae8901c6f895322d9f1591e370b613671c823882adf707a5fac1ae750287",
+  "symbol_mismatches": []
+}

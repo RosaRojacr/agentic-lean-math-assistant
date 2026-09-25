@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.upperCap4",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nH_h=\\{(x,y):y\\geq1,\\ x^2+[y-(1-h^{-1}\\cos(\\arccos(h/\\lambda)))]^2\\leq h^{-2}\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:34-38`: The upper half-plane and closed disk inequality have the same center and radius; geometric parameter restrictions are imposed later.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "de3d1bb9a28a3f39df18922596753333140775f67fd4b89756b1e878de59e811",
+  "symbol_mismatches": []
+}

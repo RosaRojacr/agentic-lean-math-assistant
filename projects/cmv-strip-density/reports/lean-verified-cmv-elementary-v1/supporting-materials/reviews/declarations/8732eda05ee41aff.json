@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "rightCore_weightedIntegral",
+  "domain_issues": [],
+  "informal_statement": "For any strip core and real \\(\\lambda\\), the density integral against the right core boundary measure is\n\\[\n2\\ell(\\beta).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1695-1714`: The same arclength calculation yields the right arc contribution with the correct factor two.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "12c65212e5417b38acb8560f789f61c31ede351c3de6efe2b847438f7d6cf718",
+  "symbol_mismatches": []
+}

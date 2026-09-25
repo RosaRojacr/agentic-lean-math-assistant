@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.radius_mul_sin",
+  "domain_issues": [],
+  "informal_statement": "For every admissible cap,\n\\[\nR\\sin\\theta=L/2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:223-227`: Cancellation of the nonzero sine yields the exact half-chord identity with the correct factor two.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4b800b6287f8bc78c34b40f39fff02ab7d25631ad2fd22f8819095ceda60143e",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap_center",
+  "domain_issues": [],
+  "informal_statement": "The outer-cap center equals the declared upper center \\((0,1-R\\cos\\alpha)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:929-933`: Expansion of the outer cap center and its radius identity yields exactly the declared upper center.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "1057a7a30ad6e7558c1c0e586fc0147d20f1fc01e6c3e508acda901e55191c4c",
+  "symbol_mismatches": []
+}

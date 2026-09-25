@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedSegmentParam_image_carrier",
+  "domain_issues": [],
+  "informal_statement": "The realized segment parameter image equals the Euclidean image of its coordinate carrier.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:913-922`: The coordinate carrier image and the realized parameter image coincide by composition with the homeomorphism.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "fc21a65690cb2d00a27cb6aebde20046f1dffbc15b7f30d3caf58ac1aefd1725",
+  "symbol_mismatches": []
+}

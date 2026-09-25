@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "WeightedArea",
+  "domain_issues": [],
+  "informal_statement": "For any planar set \\(F\\) and real \\(\\lambda\\), define the weighted area as the Lebesgue integral\n\\[\n\\int_F f_\\lambda\\,dx\\,dy.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:55-60`: The definition is the ambient Lebesgue set integral, with integrability proved separately for the geometric carriers.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "959b5ddd7363861d4d0d79c211781b3b19e09df50087472690ae0581725b8c6d",
+  "symbol_mismatches": []
+}

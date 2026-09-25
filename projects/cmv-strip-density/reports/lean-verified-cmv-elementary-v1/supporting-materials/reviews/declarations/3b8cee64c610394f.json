@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.region",
+  "domain_issues": [],
+  "informal_statement": "Represent the candidate as the four-arc alternative of the common competitor data type.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:73-75`: The candidate is embedded in the four-arc constructor of the competitor datatype without adding a minimality claim.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8ab9f84c197a1a6dbe90236469e9ff5cc2696f04e42133db44cdf34546558b75",
+  "symbol_mismatches": []
+}

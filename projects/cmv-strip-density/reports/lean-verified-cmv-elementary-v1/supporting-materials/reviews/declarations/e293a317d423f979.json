@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate",
+  "domain_issues": [],
+  "informal_statement": "A four-arc candidate at density parameter \\(\\lambda\\) consists of curvature \\(0<h\\leq1\\) and exterior half-angle\n\\[\n0<\\alpha<\\pi/2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:23-35`: The constructor bounds on curvature and acute cap angle agree; density jump and Snell incidence are correctly left to a separate predicate.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "24dc0ff22e0918bdb2c7f16fab0da52bc08326d88e5cb8e1d2e8a8f7ec2bee62",
+  "symbol_mismatches": []
+}

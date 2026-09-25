@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "cap_lower_weightedArea",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda\\) and a lower cap based on\n\\[\ny=-1,\n\\]\nits weighted area equals \\(\\lambda\\) times its Euclidean area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2360-2389`: Lower orientation and base at the lower interface are retained, with the exterior density applying almost everywhere in area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "af4bcab3c0cdacd24a9ba22f365ac164c96fd2be59faf0a944ca162de8e4ada2",
+  "symbol_mismatches": []
+}

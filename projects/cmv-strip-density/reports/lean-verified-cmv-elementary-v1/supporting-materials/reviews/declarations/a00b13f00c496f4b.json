@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.A3_continuousAt",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda\\) and every \\(t\\ne0\\), \\(A_3\\) is continuous at \\(t\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:636-639`: Only a nonzero parameter is assumed, and the assertion is continuity at that point for any real density.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "2aa80bdfce7c015108ca71987762c2d6eec97c1a5537e77e8a4add60919387ba",
+  "symbol_mismatches": []
+}

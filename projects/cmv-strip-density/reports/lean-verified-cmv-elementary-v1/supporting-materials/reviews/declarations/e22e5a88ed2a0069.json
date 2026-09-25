@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "capPartitionPoint_mem",
+  "domain_issues": [],
+  "informal_statement": "For \\(R>0\\),\n\\[\n\\theta>0,\n\\]\nnatural \\(N>0\\), and\n\\[\ni\\leq N,\n\\]\nthe point \\(t_i\\) lies in \\([-R\\theta,R\\theta]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:175-184`: The bounded-index hypothesis is retained, and monotonicity places each selected point in the closed symmetric interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "8f26d09621c071ac8a6a1935a21253dfb29cb269e0ec21dc71e59a40f0529e9f",
+  "symbol_mismatches": []
+}

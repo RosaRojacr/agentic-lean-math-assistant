@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "coreArcStart",
+  "domain_issues": [],
+  "informal_statement": "For a strip core with radius \\(R\\) and side angle \\(\\beta\\), define the initial arc parameter\n\\[\n-R\\beta.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1472-1473`: The core arc starts at the negative radius-side-angle product for both side parametrizations.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4c395d23f09d7608737696a9d4043f61933ddaffbb62953e4470c1085d950b4e",
+  "symbol_mismatches": []
+}

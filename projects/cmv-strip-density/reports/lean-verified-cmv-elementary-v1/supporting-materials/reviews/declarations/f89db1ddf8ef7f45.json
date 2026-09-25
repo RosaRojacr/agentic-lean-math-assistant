@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.weightedArea_components",
+  "domain_issues": [],
+  "informal_statement": "For every candidate, its actual weighted area equals its strip-core Euclidean area plus twice \\(\\lambda\\) times its cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:364-373`: The actual assembly area formula and equality of the two cap areas yield the stated weighted component sum.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "654554fba4e2f4847eae4f853550061afa29cf158da02de52109cffacefd702e",
+  "symbol_mismatches": []
+}

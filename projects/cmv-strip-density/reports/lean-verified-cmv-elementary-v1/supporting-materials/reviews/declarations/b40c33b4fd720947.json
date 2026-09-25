@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.euclideanArea_pos",
+  "domain_issues": [],
+  "informal_statement": "Every admissible cap has strictly positive scalar Euclidean area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:213-215`: The statement concerns scalar Euclidean area, obtained from positive chord square and normalized segment area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "3902ccdc9eb3694014c5a47aad3179ebe09a3fd3cddb066b9c4c1ca933463218",
+  "symbol_mismatches": []
+}

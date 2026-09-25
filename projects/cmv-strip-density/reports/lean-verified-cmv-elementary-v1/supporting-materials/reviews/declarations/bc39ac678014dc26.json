@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.arcPoint_right",
+  "domain_issues": [],
+  "informal_statement": "The parametrized point at \\(t=\\theta\\) equals the right chord endpoint.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:233-239`: The positive-angle parameter gives the right endpoint in either orientation, with zero vertical displacement from the base.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ba639553cc75debbcac47cb7f164b0cdee0e14e9586cdc6d1cf857f7fa27f21b",
+  "symbol_mismatches": []
+}

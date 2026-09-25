@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "pairwiseOverlap",
+  "domain_issues": [],
+  "informal_statement": "For four planar sets \\(A,B,C,D\\), define the union of the six pairwise intersections.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1110-1114`: The formal set is exactly the union of the six distinct pairwise intersections of four planar sets.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f2051dcd764bb55c1f4c980a58c56ba3f51d928d6141df3262dbdd919f1b5fbd",
+  "symbol_mismatches": []
+}

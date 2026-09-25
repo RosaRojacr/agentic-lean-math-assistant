@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "proof": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/.alma/parent-verification/final-check/proof",
+  "commands": [
+    {
+      "name": "build",
+      "argv": [
+        "/home/rosa/.elan/bin/lake",
+        "build"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 48.961,
+      "log": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/.alma/parent-verification/final-check/build.log",
+      "log_sha256": "4d57b0f76714b9a510802ec5fdb51babc4dd02ddd0f8af95a9cb99f56d94dd51"
+    },
+    {
+      "name": "exact-types-and-axioms",
+      "argv": [
+        "/home/rosa/.elan/bin/lake",
+        "env",
+        "lean",
+        "CMVElementaryAudit.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.369,
+      "log": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/.alma/parent-verification/final-check/exact-types-and-axioms.log",
+      "log_sha256": "90e30dd79acf521a6aa83c55eb95847d940124cf9b60f5ac4dbebf7d7dd13d4b"
+    },
+    {
+      "name": "scalar-route",
+      "argv": [
+        "/home/rosa/.elan/bin/lake",
+        "env",
+        "lean",
+        "../audits/ScalarRootsAudit.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.022,
+      "log": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/.alma/parent-verification/final-check/scalar-route.log",
+      "log_sha256": "397167f1d10e840113b7a7d02e8c4f35b20ae83b456bce57fd511724a8279217"
+    },
+    {
+      "name": "geometric-route",
+      "argv": [
+        "/home/rosa/.elan/bin/lake",
+        "env",
+        "lean",
+        "../audits/GeometricRootsAudit.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 15.286,
+      "log": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/.alma/parent-verification/final-check/geometric-route.log",
+      "log_sha256": "2255c9caa75d2a7050ee29ce332002e2fdfe0de9eceaded2a0c2cffc0b9e87b0"
+    },
+    {
+      "name": "projection-aware-audit",
+      "argv": [
+        "/home/rosa/.elan/bin/lake",
+        "env",
+        "lean",
+        "../audits/KernelAudit.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 42.832,
+      "log": "/mnt/games/Math_Project/cmv-elementary-pdf-verification-20260924/.alma/parent-verification/final-check/projection-aware-audit.log",
+      "log_sha256": "635281ee4592ed604d3b0bbe531dd93034143baf3265e787515e8dbd689110dc"
+    }
+  ]
+}

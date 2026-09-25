@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.shapeParameter_mem",
+  "domain_issues": [],
+  "informal_statement": "For every assembly,\n\\[\n-1<q<1.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:153-155`: Both strict shape-parameter bounds follow from the open curvature interval and are retained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "018fe2d07fb99b9420ec19a75327dc616f0119968b1c22fb83265de47b1261df",
+  "symbol_mismatches": []
+}

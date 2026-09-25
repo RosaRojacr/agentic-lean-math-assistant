@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.D_abs",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(\\lambda,z\\),\n\\[\nD_\\lambda(|z|)=D_\\lambda(z).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:474-478`: The absolute-value identity is an unconditional consequence of evenness, with all real arguments retained.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5db30368ee603248cbd1e4396a9f85e0f017b44b1517e201076738ac74691b68",
+  "symbol_mismatches": []
+}

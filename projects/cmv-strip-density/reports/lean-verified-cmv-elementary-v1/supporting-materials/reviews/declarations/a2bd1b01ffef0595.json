@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.lowerCap_euclideanArea",
+  "domain_issues": [],
+  "informal_statement": "The constructed lower cap's scalar Euclidean area equals the same candidate cap area.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:159-166`: The reflected lower cap has the same chord-angle area, and the orientation change introduces no sign in area.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "14a860cf99daaf759c3fa7838aed86edfb2879de1a5a3f6f7d84f9996c7da155",
+  "symbol_mismatches": []
+}

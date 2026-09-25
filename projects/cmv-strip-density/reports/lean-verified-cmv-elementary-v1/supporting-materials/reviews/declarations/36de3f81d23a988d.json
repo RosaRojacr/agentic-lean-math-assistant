@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "AdmissibleCompetitor.WeightedPerimeter",
+  "domain_issues": [],
+  "informal_statement": "For a competitor with carrier \\(F\\), its weighted perimeter is\n\\[\n\\int_{\\partial F}f_\\lambda\\,d\\mathcal H^1\n\\]\nusing the canonical Euclidean frontier measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:3976-3980`: Every constructor's perimeter is computed from its carrier's canonical Euclidean frontier; no branch can select an independent boundary measure.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "17b5c5914d38bc0479d502c48cde9715c303aa7070585ade87ba56d307321437",
+  "symbol_mismatches": []
+}

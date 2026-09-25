@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "OneSidedCircularCap.frontier_carrier",
+  "domain_issues": [],
+  "informal_statement": "For every cap, its topological frontier equals the union of its selected arc trace and its closed chord.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:697-761`: The exact frontier includes both the selected circle arc and the full base chord; the author does not omit the chord at this primitive level.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d9cb2c749721b51457faae17a95033cf908527d3fdc652ebedacfbb2292d579d",
+  "symbol_mismatches": []
+}

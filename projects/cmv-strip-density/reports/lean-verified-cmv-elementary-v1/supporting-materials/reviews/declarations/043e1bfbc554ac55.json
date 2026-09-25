@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.assembly",
+  "domain_issues": [],
+  "informal_statement": "Construct the four-arc assembly from the candidate strip core and exterior half-angle \\(\\alpha\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:66-72`: The assembly uses precisely the constructed core and candidate exterior angle, giving congruent upper and lower caps.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ca67fddb2d167afab63544438387902bb645349ebfde9d83c7a2719a2277c941",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.boundaryJoinSet",
+  "domain_issues": [],
+  "informal_statement": "Define the junction set\n\\[\n\\{(-R\\sin\\alpha,1),(R\\sin\\alpha,1),(-b,-1),(b,-1)\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:1130-1135`: All four top and bottom junction coordinates are retained, and repeated bottom points are permitted at zero width.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4d107bd731d106706191e0cc66c1eb6e52b0ad83df797a9379d71e46e9ea68c7",
+  "symbol_mismatches": []
+}

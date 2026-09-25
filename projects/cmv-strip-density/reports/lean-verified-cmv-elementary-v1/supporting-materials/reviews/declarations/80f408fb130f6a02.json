@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcAssembly.lowerCap",
+  "domain_issues": [],
+  "informal_statement": "The lower cap has the same chord and half-angle, midpoint \\((0,-1)\\), and lower orientation.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2509-2518`: The lower cap uses the reflected midpoint and lower orientation while preserving the upper cap's chord and angle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a60a9393b363872f08f12dbab41380b51afefa746b9504c5841f28d389091bfe",
+  "symbol_mismatches": []
+}

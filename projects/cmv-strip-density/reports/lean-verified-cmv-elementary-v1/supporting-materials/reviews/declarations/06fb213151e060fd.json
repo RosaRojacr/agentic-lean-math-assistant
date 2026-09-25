@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "planeEuclideanHomeomorph",
+  "domain_issues": [],
+  "informal_statement": "The coordinate-preserving map from the product coordinate plane to its Euclidean realization is a homeomorphism.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:38-42`: The defined homeomorphism preserves coordinates and topology; it is not incorrectly claimed to preserve the default product metric.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0cae97f48ab4c061d7f08a907381bf52e9560477df33ffb993c23c2cbbf11049",
+  "symbol_mismatches": []
+}

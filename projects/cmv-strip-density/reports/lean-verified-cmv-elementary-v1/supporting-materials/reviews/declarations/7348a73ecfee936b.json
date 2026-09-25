@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedLeftCoreParam_eq",
+  "domain_issues": [],
+  "informal_statement": "The realized left core parametrization at \\(s\\) equals its complex isometry applied to \\(\\gamma_R(s)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:713-719`: The left realized curve is exactly the left-center isometric image of the standard circle at the same arclength parameter.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "e2c0026193d6fa0dd58c252b75c6df1a108616049c60130059ddb93311c0b2a0",
+  "symbol_mismatches": []
+}

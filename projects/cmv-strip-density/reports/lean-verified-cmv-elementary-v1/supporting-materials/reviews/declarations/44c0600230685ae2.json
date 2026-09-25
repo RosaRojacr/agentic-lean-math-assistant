@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "unitCircleArc_sub_factor",
+  "domain_issues": [],
+  "informal_statement": "For real \\(R\\ne0\\) and real \\(s,t\\),\n\\[\n\\gamma_R(s)-\\gamma_R(t)=R\\exp(it/R)[\\exp(i(s-t)/R)-1].\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:18-32`: The exponential factorization and nonzero-radius premise are both retained, with the same difference orientation.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d6c59e7f498e1352e21969a1c8084fa6600038a792db1172f4e5bd3b2836eece",
+  "symbol_mismatches": []
+}

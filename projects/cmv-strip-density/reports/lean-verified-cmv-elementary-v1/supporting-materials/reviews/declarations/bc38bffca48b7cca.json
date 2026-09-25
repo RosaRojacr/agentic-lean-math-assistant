@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.auxiliary_claims",
+  "domain_issues": [],
+  "informal_statement": "For every\n\\[\n\\lambda>1,\n\\]\nThe auxiliary assertion consists of the following claims. The function \\(D\\) is continuous, even and nonnegative on \\([-1,1]\\), strictly increasing on \\([0,1]\\), and differentiable on \\((-1,1)\\). On the latter interval\n\\[\nS'=-2D,\n\\]\nand on the closed interval\n\\[\nS(-z)=\\lambda\\pi-S(z).\n\\]\nOne has\n\\[\n\\gamma_\\lambda>0;\n\\]\n\\(J,j\\) are continuous on \\([0,1]\\);\n\\[\nJ(0)=J(1)=\\gamma_\\lambda;\n\\]\n\n\\[\nJ'=j\n\\]\non \\((0,1)\\); and\n\\[\nJ,H\\geq\\gamma_\\lambda\n\\]\non \\((0,1]\\). Furthermore\n\\[\nj>0\n\\]\non \\((0,1/3)\\),\n\\[\nj(1/3)=0,\n\\]\n\n\\[\nj<0\n\\]\non \\((1/3,1)\\), and\n\\[\nH\\geq J\n\\]\non \\([1/3,1]\\). On \\((0,1/3)\\),\n\\[\nj'=8D'(2u-1)-4D'(u)<0\n\\]\nand\n\\[\nH'=-u[8D'(2u-1)-4D'(u)]>0.\n\\]\nFinally\n\\[\nH(u)\\to\\gamma_\\lambda\n\\]\nas \\(u\\downarrow0\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:545-573`: The constructor supplies every auxiliary field from the density hypothesis, including the independently established derivative and limit fields.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "40439108bc1575c7407f75b4eb147fcee6626bb19b9ed5061fbd985ae03037d5",
+  "symbol_mismatches": []
+}

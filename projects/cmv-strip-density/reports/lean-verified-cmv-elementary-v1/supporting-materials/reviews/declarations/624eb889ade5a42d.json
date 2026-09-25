@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_upper_circular_segment",
+  "domain_issues": [],
+  "informal_statement": "For real \\(m,c\\),\n\\[\nR>0,\n\\]\nand \\(0\\leq\\theta\\leq\\pi\\), the Lebesgue volume of\n\\[\n\\{(x,y):(x-m)^2+(y-c)^2\\leq R^2,\\ y\\geq c+R\\cos\\theta\\}\n\\]\nis\n\\[\nR^2(\\theta-\\sin\\theta\\cos\\theta),\n\\]\nembedded in the nonnegative extended reals.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1820-1944`: The disk/half-plane volume formula is valid on the entire closed cap-angle interval; it is not limited to minor segments.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d23f6efcc432aaa58959c64bfa3f6f589362c33546093657b1717ec5dbfb1b34",
+  "symbol_mismatches": []
+}

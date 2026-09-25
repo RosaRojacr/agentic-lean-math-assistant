@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.cap_bounded",
+  "domain_issues": [],
+  "informal_statement": "Every admissible one-sided circular cap carrier is bounded.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:407-409`: The cap carrier is a subset of its bounded coordinate disk, with the constructor supplying admissibility.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "5f789f5ecfe21a6d9d280eafb5b4f8cb77643861d589df8496f30b5949a88aea",
+  "symbol_mismatches": []
+}

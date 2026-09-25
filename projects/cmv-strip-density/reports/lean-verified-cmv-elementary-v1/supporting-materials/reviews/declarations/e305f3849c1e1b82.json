@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.candidate_area_formula",
+  "domain_issues": [],
+  "informal_statement": "For a candidate satisfying\n\\[\n\\lambda>1\n\\]\nand\n\\[\n\\lambda\\cos\\alpha=h,\n\\]\nits area is\n\\[\n4\\sin\\alpha/h+2[\\lambda\\alpha-\\sin\\alpha\\cos\\beta]/h^2+2[\\arcsin h-h\\sqrt{1-h^2}]/h^2,\n\\]\nwhere\n\\[\n\\beta=\\pi/2-\\arcsin h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:410-430`: The area proof uses the Snell incidence to simplify the weighted cap term and the complementary-angle identity, with the exact coefficients stated.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b6d944ecc5d4bab77cadf263520f194142a9d6855088a9b98e5873be144ab8cc",
+  "symbol_mismatches": []
+}

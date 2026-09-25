@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.hasDerivAt_D",
+  "domain_issues": [],
+  "informal_statement": "If \\(\\lambda>1\\) and \\(-1<z<1\\), \\(D\\) is differentiable at \\(z\\), with\n\\[\nD'(z)=z[1/\\sqrt{1-z^2}-1/(\\lambda\\sqrt{\\lambda^2-z^2})].\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:187-203`: The exact derivative coefficient and its density factor agree, with differentiability asserted only at interior arguments.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "25ed9e8fe57ff5b6872ee31ca5e64c1daca4f7b0b2c2e6d3d202561278ec1daa",
+  "symbol_mismatches": []
+}

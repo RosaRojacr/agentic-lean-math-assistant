@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "FourArcCandidate.side_caps_area_formula",
+  "domain_issues": [],
+  "informal_statement": "For every candidate, the sum of the two side-cap areas is\n\\[\n8a(\\arcsin h)=2[\\arcsin h-h\\sqrt{1-h^2}]/h^2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FourArcCandidate.lean:351-363`: The normalized side-cap area simplifies using sine and cosine of principal arcsine, including the unit-curvature endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a639bd8c9eef40f2c4f87fdb62b671cf7db0ce41013e7d923721f6f472bc8cf1",
+  "symbol_mismatches": []
+}

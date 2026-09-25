@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.innerAngle_semicircular",
+  "domain_issues": [],
+  "informal_statement": "If \\(h=1/2\\), the inner angle is\n\\[\n\\beta=\\pi/2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:370-373`: At half curvature the shape parameter vanishes, giving the stated principal inner right angle.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "136b95db3cfbe6ffba49a9d377637e6fd44e92cfd37653b368ff453e7d5af642",
+  "symbol_mismatches": []
+}

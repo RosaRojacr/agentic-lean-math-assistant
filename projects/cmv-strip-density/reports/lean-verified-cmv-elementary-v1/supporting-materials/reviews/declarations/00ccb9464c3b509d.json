@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.DerivativePilot.D_normalization",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>0\\), the functions \\(D(z)\\) and\n\\[\n\\sqrt{\\lambda^2-z^2}/\\lambda-\\sqrt{1-z^2}\n\\]\nagree at every real \\(z\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:171-176`: The statement is equality of whole real functions, obtained by pointwise square-root normalization, not merely equality on the geometric interval.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "042c0b88a8b4aad471bbb7cd59d649270eaf82feb3afdd1eee7df1acb25b044d",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "segmentEnd",
+  "domain_issues": [],
+  "informal_statement": "The final parameter of a horizontal segment of length \\(L>0\\) is\n\\[\nL/2.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:1400-1402`: The final segment parameter is the positive half-length, exactly matching the right endpoint.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "161abc8655ce59212c511d028e178416823adf64c523c73dae6b889ae03ed1f4",
+  "symbol_mismatches": []
+}

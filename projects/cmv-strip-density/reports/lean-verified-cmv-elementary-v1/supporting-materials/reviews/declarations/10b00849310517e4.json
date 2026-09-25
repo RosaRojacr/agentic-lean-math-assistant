@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "volume_horizontalLine",
+  "domain_issues": [],
+  "informal_statement": "For every real \\(b\\), the line\n\\[\n\\{(x,y):y=b\\}\n\\]\nhas zero planar Lebesgue measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2029-2036`: The zero measure is planar Lebesgue measure; the explanation correctly avoids treating the line as length-null.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ea745db5e4b12e1d05fe0934ca3c81eb24b84ea87dd522e3aa6824c86d1a2dce",
+  "symbol_mismatches": []
+}

@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.reflected_cap_below",
+  "domain_issues": [],
+  "informal_statement": "For all real \\(\\lambda,h\\),\n\\[\n\\sigma(H_h)\\subseteq\\{(x,y):y\\leq-1\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:317-324`: Reflection changes the upper height inequality into the closed lower inequality for every real parameter pair.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "294e02a2d2dbbc8a935f73af2e7892771244bc90c2d4e857fd32d9d4484129b9",
+  "symbol_mismatches": []
+}

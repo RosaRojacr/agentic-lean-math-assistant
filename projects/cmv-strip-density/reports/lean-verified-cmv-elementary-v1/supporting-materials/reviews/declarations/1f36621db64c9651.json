@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.D_strictMono",
+  "domain_issues": [],
+  "informal_statement": "For \\(\\lambda>1\\), \\(D\\) is strictly increasing on \\([0,1]\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementary.lean:404-409`: Strict increase on the closed interval is obtained from positive interior derivatives and continuity; the endpoint is not dropped.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "6591c7dbdbd88b546f03ea069e9476a8557083684fc0bb6944048ffcd4f3f44c",
+  "symbol_mismatches": []
+}

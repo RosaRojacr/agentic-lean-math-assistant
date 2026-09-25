@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.outerCap_radius",
+  "domain_issues": [],
+  "informal_statement": "The constructed outer cap has radius \\(R\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:419-422`: The outer chord definition and positive sine cancel to give the assembly radius exactly.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "f107696210fe89f5a746d54584303c70da482f05587bc229f2d37aaa9494b57f",
+  "symbol_mismatches": []
+}

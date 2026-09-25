@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "StripCore.sideAngle_lt_pi",
+  "domain_issues": [],
+  "informal_statement": "Every strip core has\n\\[\n\\beta<\\pi.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:470-473`: The upper arcsine bound is strictly below a full half-turn, as required by the general cap infrastructure.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "4d165924e20daf34cd0cd3a93af12e6637e356347b723990beb9d1a85af59a9e",
+  "symbol_mismatches": []
+}

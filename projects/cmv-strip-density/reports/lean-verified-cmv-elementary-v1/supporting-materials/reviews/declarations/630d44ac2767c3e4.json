@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment.rightEndpoint",
+  "domain_issues": [],
+  "informal_statement": "For segment midpoint \\((m,b)\\) and length \\(L\\), define the right endpoint \\((m+L/2,b)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:403-405`: The right endpoint is the midpoint plus half the positive chord length, with the base height unchanged.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "a14791633639531ab0cb8801c8e0e16383dd7712b7d5730aa7f0d9178c83e5da",
+  "symbol_mismatches": []
+}

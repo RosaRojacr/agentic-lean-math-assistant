@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "HorizontalSegment.leftEndpoint",
+  "domain_issues": [],
+  "informal_statement": "For segment midpoint \\((m,b)\\) and length \\(L\\), define the left endpoint \\((m-L/2,b)\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:400-402`: The left endpoint is the midpoint minus half the positive chord length in the horizontal coordinate.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d64f9e0ea48cfbbc1b06bed874068659f0011957eca2b8226c738430113a0615",
+  "symbol_mismatches": []
+}

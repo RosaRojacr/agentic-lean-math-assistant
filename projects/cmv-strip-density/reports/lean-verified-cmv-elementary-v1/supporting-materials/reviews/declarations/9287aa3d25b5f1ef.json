@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "measurableSet_euclidean_capTrace",
+  "domain_issues": [],
+  "informal_statement": "The Euclidean image of every cap arc trace is measurable.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:1104-1109`: The full cap trace is a compact realized parameter image for every admissible half-angle, including major caps.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "345ff49d99187e89c9b6a7558ffa41e164108dfd32b3dc525b699de014a17b5a",
+  "symbol_mismatches": []
+}

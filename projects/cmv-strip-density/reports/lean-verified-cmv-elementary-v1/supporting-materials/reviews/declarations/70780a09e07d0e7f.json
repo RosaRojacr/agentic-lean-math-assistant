@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sin_inner_lt_sin_outer",
+  "domain_issues": [],
+  "informal_statement": "If an assembly has\n\\[\nh\\ne1/2,\n\\]\nthen\n\\[\n\\sin\\beta<\\sin\\alpha.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:312-337`: The exclusion of the half-curvature parameter is explicitly retained and is exactly what makes the radical comparison strict.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "b3a6348544f17baf0cf9a8d51663f5b8b6187359294117163fc5d2afba78dd58",
+  "symbol_mismatches": []
+}

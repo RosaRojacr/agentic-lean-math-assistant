@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.sideCap_arcLength",
+  "domain_issues": [],
+  "informal_statement": "The auxiliary side-cap arc length is\n\\[\n2R\\phi.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:865-874`: The auxiliary side cap length is twice one side-arc length and therefore represents both exposed strip arcs together.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "0735084a84605f457abd29f126bfc3b41f13fe2e361355b34befa71a89121ae9",
+  "symbol_mismatches": []
+}

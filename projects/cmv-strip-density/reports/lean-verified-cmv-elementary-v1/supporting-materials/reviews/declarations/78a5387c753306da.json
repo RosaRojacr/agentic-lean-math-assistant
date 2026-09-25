@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "TypeThreeAssembly.radius",
+  "domain_issues": [],
+  "informal_statement": "Define\n\\[\nR=1/h.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `TypeThreeAssembly.lean:47-49`: The radius is the reciprocal of the positive curvature, and the strict upper curvature bound gives radius greater than one.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "44bdb144ee33a0fe634670e914d151b3f9a50f2b2f7db8da7c3fad23bdffb70e",
+  "symbol_mismatches": []
+}

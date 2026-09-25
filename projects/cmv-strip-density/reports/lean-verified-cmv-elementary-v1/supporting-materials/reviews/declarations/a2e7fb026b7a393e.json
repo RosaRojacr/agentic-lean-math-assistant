@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "stripDensity_integrableOn_of_volume_ne_top",
+  "domain_issues": [],
+  "informal_statement": "For real \\(\\lambda\\), if a planar set \\(F\\) has finite Lebesgue measure, then \\(f_\\lambda\\) is integrable over \\(F\\).",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVGeometry.lean:2289-2302`: Finite ambient volume is the only set hypothesis; the statement does not add a measurability assumption absent from the formal theorem.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "d26957a576fdcc692079b92ac5054cbbeda2a914af15d77e6d70ad1d418d20fd",
+  "symbol_mismatches": []
+}

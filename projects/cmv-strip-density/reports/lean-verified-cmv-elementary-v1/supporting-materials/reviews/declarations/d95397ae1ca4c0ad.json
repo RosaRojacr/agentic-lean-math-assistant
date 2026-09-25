@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "realizedSegmentParam_image_affineSegment",
+  "domain_issues": [],
+  "informal_statement": "The realized parameter image on \\([-L/2,L/2]\\) equals the affine segment joining the realized left and right endpoints.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `FrontierPerimeter.lean:873-912`: The closed parameter image is exactly the affine segment between the realized endpoints, with no missing endpoint or open-segment convention.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "c3be9a5bc2d447d5c5665690a46411881b4f0933eb5c3cf50deaa41a88946c72",
+  "symbol_mismatches": []
+}

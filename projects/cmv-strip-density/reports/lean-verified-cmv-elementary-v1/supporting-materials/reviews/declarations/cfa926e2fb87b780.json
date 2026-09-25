@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.fourCandidate",
+  "domain_issues": [],
+  "informal_statement": "Given \\(\\lambda>1\\) and \\(0<h\\leq1\\), construct the four-arc candidate with curvature \\(h\\) and angle\n\\[\n\\arccos(h/\\lambda).\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:371-379`: The constructed candidate has exactly the prescribed curvature and inverse-cosine angle, and its constructor bounds follow from the stated hypotheses.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "9592404e2a8e9db2de9f06d6cd4a116fe2bca9a8fee984888822274385f8cfb9",
+  "symbol_mismatches": []
+}

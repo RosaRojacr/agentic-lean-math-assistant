@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.E_bottom_frontier",
+  "domain_issues": [],
+  "informal_statement": "For every admissible three-arc assembly of curvature \\(h\\),\n\\[\n\\partial E_h\\cap\\{y=-1\\}=\\{(x,-1):|x|\\leq D(2h-1)/h\\}.\n\\]",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:288-304`: Closedness gives the frontier inclusion and the assembly bottom-segment theorem gives the reverse inclusion, including zero width.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "ed0fb53bddfd325b31955a995791b4c29602ba5684e3bd105c2d1aa514d54853",
+  "symbol_mismatches": []
+}

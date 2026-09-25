@@ -1,0 +1,15 @@
+{
+  "added_hypotheses": [],
+  "boundary_issues": [],
+  "critical_errors": [],
+  "declaration": "CMVElementary.GeometryBridge.four_euclidean_frontier_finite",
+  "domain_issues": [],
+  "informal_statement": "For every four-arc assembly, its frontier in the Euclidean realization has finite one-dimensional Hausdorff measure.",
+  "omitted_hypotheses": [],
+  "quantifier_issues": [],
+  "reason": "Source `CMVElementaryGeometry.lean:661-674`: The formal non-infinite Hausdorff measure is equivalent to finite mass here and follows from the four exact arc-length formulas.",
+  "relation": "equivalent",
+  "schema_version": 1,
+  "source_sha256": "7255bf8d8aff02f4551a691fb699b8b854db45bd02f73e2dbbb52c481c2b0c14",
+  "symbol_mismatches": []
+}
